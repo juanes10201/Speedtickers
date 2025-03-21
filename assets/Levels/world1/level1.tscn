@@ -96,6 +96,7 @@ script = ExtResource("2_ubfur")
 position = Vector2(-317, -43)
 collision_mask = 5
 jump_height = 45.0
+PlayedBefore = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(39.0976, -149.426)
@@ -112,7 +113,7 @@ script = ExtResource("4_io765")
 script = SubResource("GDScript_kdu5x")
 
 [node name="Time_Left" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 
@@ -122,6 +123,7 @@ SPEED = 100.0
 
 [node name="Enemie2" parent="." instance=ExtResource("4_inole")]
 position = Vector2(-157, -26)
+SPEED = 130.0
 EnemyDirection = 1
 
 [node name="Enemie3" parent="." instance=ExtResource("4_inole")]
@@ -138,6 +140,7 @@ current_level = 1
 
 [node name="Enemie5" parent="." instance=ExtResource("4_inole")]
 position = Vector2(-173, -26)
+SPEED = 130.0
 EnemyDirection = 1
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("8_clwlp")]

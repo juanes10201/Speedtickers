@@ -18,6 +18,8 @@ extends Button
 @onready var hover_size : Vector2 = Vector2(original_size.x+HoverDif, original_size.y+HoverDif)
 @onready var press_size : Vector2 = Vector2(original_size.x+PressedDif, original_size.y+PressedDif)
 
+@export var ShowOnExpo : bool = true
+
 var touching_mouse : bool = false
 
 var PressedAnim : bool = false
@@ -30,6 +32,8 @@ var tween_normal = null
 func _ready() -> void:
 	#if(text == "1"):
 	#	grab_focus()
+	if(!ShowOnExpo && Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_shangai):
+		queue_free()
 	_set_text_size(original_size.y)
 	if(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_starting_with):
 		ADITIONAL_ARGUMENT += str(text)

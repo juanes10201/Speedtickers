@@ -318,20 +318,20 @@ offset = Vector2(0, -9)
 position = Vector2(0, -5.66371)
 emitting = false
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_qtktq")
 lifetime = 0.7
 one_shot = true
 speed_scale = 2.0
 explosiveness = 0.14
+process_material = SubResource("ParticleProcessMaterial_qtktq")
 
 [node name="ParticlesDeathFloor" type="GPUParticles2D" parent="."]
 position = Vector2(-0.454967, -1.13273)
 emitting = false
 amount = 80
-process_material = SubResource("ParticleProcessMaterial_lgtto")
 one_shot = true
 speed_scale = 2.0
 explosiveness = 0.14
+process_material = SubResource("ParticleProcessMaterial_lgtto")
 
 [node name="SlideRampTimer" type="Timer" parent="."]
 wait_time = 0.1

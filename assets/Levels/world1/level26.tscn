@@ -122,7 +122,7 @@ script = ExtResource("2_0fqbn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
 libraries = {
-"": SubResource("AnimationLibrary_0i2pc")
+&"": SubResource("AnimationLibrary_0i2pc")
 }
 
 [node name="Bg2" type="Sprite2D" parent="."]
@@ -139,7 +139,7 @@ PlayAnimation = "move2"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bg2"]
 libraries = {
-"": SubResource("AnimationLibrary_klj0i")
+&"": SubResource("AnimationLibrary_klj0i")
 }
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -181,7 +181,7 @@ scale = Vector2(50, 1)
 CanChange = false
 
 [node name="KillBox7" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(-74, -326)
+position = Vector2(-74, -342)
 scale = Vector2(3, 2)
 
 [node name="KillBox4" parent="." instance=ExtResource("8_8sq5l")]
@@ -202,7 +202,7 @@ position = Vector2(142, -101)
 AditionalAction = 1
 
 [node name="Key2" parent="." instance=ExtResource("11_funbt")]
-position = Vector2(-74, -383)
+position = Vector2(-74, -399)
 AditionalAction = 1
 
 [node name="Player" parent="." instance=ExtResource("12_w687e")]
@@ -222,7 +222,7 @@ position_smoothing_enabled = true
 script = ExtResource("13_0p0li")
 
 [node name="KillBox8" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(-74, -302)
+position = Vector2(-74, -318)
 scale = Vector2(3, 1)
 
 [node name="KillBox18" parent="." instance=ExtResource("10_r0gsi")]
@@ -244,11 +244,11 @@ position = Vector2(175, -205)
 scale = Vector2(1, 15)
 
 [node name="KillBox10" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(94, -326)
+position = Vector2(94, -342)
 scale = Vector2(3, 2)
 
 [node name="KillBox11" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(94, -302)
+position = Vector2(94, -318)
 scale = Vector2(3, 1)
 
 [node name="falling_sand" parent="." instance=ExtResource("14_efkra")]
@@ -261,22 +261,22 @@ position = Vector2(142, -218.49)
 MAX_SPEED = 120.0
 
 [node name="falling_sand7" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(78, -350)
+position = Vector2(78, -366)
 
 [node name="falling_sand8" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(94, -350)
+position = Vector2(94, -366)
 
 [node name="falling_sand9" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(110, -350)
+position = Vector2(110, -366)
 
 [node name="falling_sand10" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-90, -350)
+position = Vector2(-90, -366)
 
 [node name="falling_sand11" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-74, -350)
+position = Vector2(-74, -366)
 
 [node name="falling_sand12" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-58, -350)
+position = Vector2(-58, -366)
 
 [node name="falling_sand2" parent="." instance=ExtResource("14_efkra")]
 position = Vector2(-4, -178)
@@ -290,9 +290,6 @@ MAX_SPEED = 150.0
 
 [node name="AmbientParticles" parent="." instance=ExtResource("14_fsay3")]
 position = Vector2(-202, -446)
-
-[node name="AmbientParticles2" parent="." instance=ExtResource("14_fsay3")]
-position = Vector2(-76, -509)
 
 [node name="AmbientParticles3" parent="." instance=ExtResource("14_fsay3")]
 position = Vector2(142, -369)

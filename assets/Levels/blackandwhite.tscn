@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpwnpfq3j6ar1"]
+
+[ext_resource type="Shader" uid="uid://bpanhktnl458n" path="res://assets/Levels/world1/level7.gdshader" id="1_53kdn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojeta"]
+shader = ExtResource("1_53kdn")
+
+[node name="blackandwhite" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ojeta")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.344427, 0.390865, 0.392157)

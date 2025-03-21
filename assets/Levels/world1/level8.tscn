@@ -64,7 +64,7 @@ script = ExtResource("2_mvniq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
 libraries = {
-"": SubResource("AnimationLibrary_0i2pc")
+&"": SubResource("AnimationLibrary_0i2pc")
 }
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

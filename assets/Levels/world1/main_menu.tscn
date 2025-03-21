@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bn1csj47sa2bw"]
+[gd_scene load_steps=17 format=3 uid="uid://bn1csj47sa2bw"]
 
 [ext_resource type="Script" uid="uid://b40hrfks2w7u6" path="res://assets/Levels/Scripts/PauseMenuLogic.gd" id="1_p4p5w"]
 [ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://assets/Sprites/screenshot.png" id="2_b6kau"]
 [ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="3_6l5tb"]
 [ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Levels/Scripts/PauseMenuTransition.gd" id="4_i1blh"]
-[ext_resource type="Texture2D" uid="uid://yd12qv33qsva" path="res://assets/Sprites/titlemenu_placeholder.png" id="5_w07j8"]
-[ext_resource type="FontFile" uid="uid://d3ebca3t4i171" path="res://assets/Fonts/Ace Futurism.ttf" id="6_b6xsx"]
+[ext_resource type="Texture2D" uid="uid://cpkuxgr2hg7ll" path="res://assets/Sprites/menus/logo.png" id="5_0d5a2"]
 [ext_resource type="StyleBox" uid="uid://c1edtywsppgxy" path="res://assets/Sprites/menus/selectStylebox2.tres" id="7_kynhk"]
 [ext_resource type="Texture2D" uid="uid://qot7qahghomi" path="res://assets/Sprites/PauseMenuConfigButton.png" id="8_7qegd"]
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Levels/Scripts/menu_button.gd" id="9_itrmr"]
@@ -29,62 +28,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../RichTextLabel:position")
+tracks/1/path = NodePath("../PauseMenuGoBackButton2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(702.932, -6.43848)]
+"values": [Vector2(1160, 584)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../RichTextLabel2:position")
+tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(541.932, 570.562)]
+"values": [Vector2(1170, 419)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/3/path = NodePath("../PauseMenuButton2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1160, 584)]
+"values": [Vector2(605, 106)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1170, 419)]
+"values": [Vector2(384, 213)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../PauseMenuButton2:position")
+tracks/5/path = NodePath("../Bg:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(605, 106)]
+"values": [Vector2(520, 300)]
 }
 
 [sub_resource type="Animation" id="Animation_71pd5"]
@@ -105,62 +104,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../RichTextLabel:position")
+tracks/1/path = NodePath("../PauseMenuButton2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.133333, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(270, 15)]
+"values": [Vector2(74, 300), Vector2(-220, 101)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../RichTextLabel2:position")
+tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.0666667, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(504, 77)]
+"values": [Vector2(320, 383), Vector2(-161, 166)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuButton2:position")
+tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.1, 0.4),
+"times": PackedFloat32Array(0, 0.366667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(74, 206), Vector2(-220, 101)]
+"values": [Vector2(520, 439.59), Vector2(-157, 167)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
-tracks/4/interp = 2
+tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0333333, 0.366667),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(320, 323), Vector2(-161, 166)]
+"values": [Vector2(384, 213.008), Vector2(275, 213.008)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
-tracks/5/interp = 2
+tracks/5/path = NodePath("../Bg:position")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.366667),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(520, 389), Vector2(-157, 167)]
+"values": [Vector2(2019, 466), Vector2(520, 300)]
 }
 
 [sub_resource type="Animation" id="Animation_h07xo"]
@@ -181,62 +180,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../RichTextLabel:position")
+tracks/1/path = NodePath("../PauseMenuButton2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(270, 15)]
+"values": [Vector2(-220, 101), Vector2(74, 300)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../RichTextLabel2:position")
+tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(504, 77)]
+"values": [Vector2(-161, 166), Vector2(320, 383)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuButton2:position")
+tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-220, 101), Vector2(74, 206)]
+"values": [Vector2(-157, 167), Vector2(520, 439.59)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-161, 166), Vector2(320, 323)]
+"values": [Vector2(201, 210), Vector2(384, 213.008)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
-tracks/5/interp = 2
+tracks/5/path = NodePath("../Bg:position")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-157, 167), Vector2(520, 389)]
+"values": [Vector2(520, 300), Vector2(2220, 351)]
 }
 
 [sub_resource type="Animation" id="Animation_3qh4w"]
@@ -258,62 +257,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../RichTextLabel:position")
+tracks/1/path = NodePath("../PauseMenuButton2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3.56667, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(270, 15)]
+"values": [Vector2(74, 300), Vector2(74, 183.793), Vector2(74, 300)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../RichTextLabel2:position")
+tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 3.1, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(504, 77)]
+"values": [Vector2(320, 383), Vector2(320, 259.23), Vector2(320, 383)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuButton2:position")
+tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.56667, 5),
+"times": PackedFloat32Array(0, 2.7, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(74, 206), Vector2(74, 141.323), Vector2(74, 206)]
+"values": [Vector2(520, 439.59), Vector2(520, 319.405), Vector2(520, 439.59)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 3.1, 5),
+"times": PackedFloat32Array(0.0333333, 2.4, 4.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(320, 323), Vector2(320, 230), Vector2(320, 323)]
+"values": [Vector2(384, 213), Vector2(384, 172), Vector2(384, 213)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
-tracks/5/interp = 2
+tracks/5/path = NodePath("../Bg:position")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.7, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(520, 389), Vector2(520, 306), Vector2(520, 389)]
+"values": [Vector2(2216, 548)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vy804"]
@@ -345,54 +344,23 @@ position = Vector2(1750, 374.562)
 rotation = 1.33518
 scale = Vector2(-1.21884, 1.21061)
 texture = ExtResource("3_6l5tb")
+offset = Vector2(-76.585, 0)
 script = ExtResource("4_i1blh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pause_menu/Transition"]
 libraries = {
-"": SubResource("AnimationLibrary_vy804")
+&"": SubResource("AnimationLibrary_vy804")
 }
-
-[node name="TitlemenuPlaceholder" type="Sprite2D" parent="pause_menu"]
-position = Vector2(518, 110)
-scale = Vector2(8.46429, 8.46429)
-texture = ExtResource("5_w07j8")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu"]
-offset_left = 702.932
-offset_top = -6.43848
-offset_right = 1201.93
-offset_bottom = 162.562
-theme_override_fonts/normal_font = ExtResource("6_b6xsx")
-theme_override_font_sizes/normal_font_size = 120
-text = "Speed"
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="pause_menu"]
-offset_left = 541.932
-offset_top = 570.562
-offset_right = 1092.93
-offset_bottom = 752.562
-theme_override_fonts/normal_font = ExtResource("6_b6xsx")
-theme_override_font_sizes/normal_font_size = 120
-text = "Tickers"
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="pause_menu"]
-offset_left = 325.0
-offset_top = 174.0
-offset_right = 769.0
-offset_bottom = 247.0
-theme_override_fonts/normal_font = ExtResource("6_b6xsx")
-theme_override_font_sizes/normal_font_size = 60
-text = "placeholder logo"
 
 [node name="PauseMenuConfigButton2" type="Button" parent="pause_menu"]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 18.0
-offset_top = 419.0
-offset_right = 178.0
-offset_bottom = 584.0
+offset_left = -832.0
+offset_top = 383.0
+offset_right = -672.0
+offset_bottom = 548.0
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("8_7qegd")
@@ -407,10 +375,10 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -547.0
-offset_top = 106.0
-offset_right = -341.0
-offset_bottom = 318.0
+offset_left = -1078.0
+offset_top = 300.0
+offset_right = -872.0
+offset_bottom = 512.0
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("10_gopbp")
 icon = ExtResource("11_1to64")
@@ -426,10 +394,10 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 8.0
-offset_top = 584.0
-offset_right = 162.0
-offset_bottom = 743.0
+offset_left = -632.0
+offset_top = 439.59
+offset_right = -478.0
+offset_bottom = 598.59
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("12_cvx7u")
@@ -438,6 +406,17 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("9_itrmr")
 BUTTON_ACTION = 2
+
+[node name="TitlemenuPlaceholder" type="Sprite2D" parent="pause_menu"]
+position = Vector2(384, 213)
+scale = Vector2(0.61, 0.61)
+texture = ExtResource("5_0d5a2")
+
+[node name="Bg" type="Sprite2D" parent="pause_menu"]
+z_index = 2
+position = Vector2(520, 300)
+texture = ExtResource("3_6l5tb")
+flip_h = true
 
 [connection signal="pressed" from="pause_menu/PauseMenuConfigButton2" to="pause_menu/PauseMenuConfigButton2" method="_on_pressed"]
 [connection signal="pressed" from="pause_menu/PauseMenuButton2" to="pause_menu/PauseMenuButton2" method="_on_pressed"]

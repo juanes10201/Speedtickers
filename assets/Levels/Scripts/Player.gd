@@ -101,7 +101,7 @@ var Dead : bool = false
 
 var EnabledKillBox = Global.KillBoxTypes.Red
 
-var PlayedBefore : bool = false
+@export var PlayedBefore : bool = true
 
 #endregion
 
@@ -110,6 +110,9 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_F9:
 			get_tree().reload_current_scene()
+		elif event.keycode == KEY_F10:
+			var _scene_string= "res://assets/Levels/world1/main_menu_expo.tscn"
+			get_tree().change_scene_to_file(_scene_string)
 #endregion
 
 func _ready() -> void:
@@ -118,9 +121,11 @@ func _ready() -> void:
 	if(TransitionIn): TransitionIn.fade_out()
 	
 	if($"../Flag".current_level == 1): 
-		PlayedBefore = SaveGame.IfPlayedFirstTime()
-		if(!PlayedBefore):
-			Camera.offset.y = -226.31
+		PlayedBefore = false
+		#PlayedBefore = SaveGame.IfPlayedFirstTime()
+	if(!PlayedBefore):
+		Camera.offset.y = -226.31
+		FrameFreeze(.4, 2)
 	
 	#region Change music style to ingame
 	SongPlayer.MusicState = SongPlayer.MusicStates.ingame

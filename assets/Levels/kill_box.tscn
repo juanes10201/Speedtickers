@@ -10,8 +10,8 @@ size = Vector2(14.5, 14.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eos1v"]
 shader = ExtResource("2_ujujn")
-shader_parameter/tile_size = Vector2(2, 1)
-shader_parameter/speed = 0.5
+shader_parameter/tile_size = Vector2(1, 1)
+shader_parameter/speed = 0.3
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y6adf"]
 animations = [{
@@ -44,7 +44,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.235294)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_eos1v")
-scale = Vector2(2, 1)
 sprite_frames = SubResource("SpriteFrames_y6adf")
 
 [node name="LavaTimer" type="Timer" parent="."]

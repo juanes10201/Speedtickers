@@ -32,10 +32,10 @@ var direction = 0
 @onready var MoveTimer = $"MoveTimer"
 @onready var Sprite = $"Sprite2D"
 
-@onready var MoveSound = Player.AudioSlimeMove
-@onready var SlideSound = Player.AudioSlimeKill
-@onready var AudioMove = Player.AudioSlimeMove
-@onready var AudioGroundsmash = Player.AudioSlimeGroundsmash
+@onready var MoveSound = Player.AudioSlimeMove if Player else null
+@onready var SlideSound = Player.AudioSlimeKill if Player else null
+@onready var AudioMove = Player.AudioSlimeMove if Player else null
+@onready var AudioGroundsmash = Player.AudioSlimeGroundsmash if Player else null
 
 @onready var ShootBulletTimer = $ShootBulletTimer
 
@@ -50,9 +50,11 @@ var was_on_wall : bool = false
 #region Killed by Slide or Groundsmash Sound
 func _killed_by_player_sound() -> void:
 	#if(!SlideSound.playing):
-	Player._play_sound(SlideSound, true)
+	if(Player):
+		Player._play_sound(SlideSound, true)
 func _groundsmash_player_sound() -> void:
-	Player._play_sound(AudioGroundsmash, true)
+	if(Player):
+		Player._play_sound(AudioGroundsmash, true)
 #endregion
 
 #region Jumping
@@ -63,15 +65,16 @@ func _jump(_jump_velocity) -> void:
 
 #region Player GroundSmash 
 func _on_player_ground_smash_signal() -> void:
-	if(Can_BeGroundSmash && is_on_floor() && global_position.distance_to(Player.position) <= Max_groundsmash_distance):
-		_jump(JUMP_VELOCITY if enemy_type == 0 else SPECIAL_ENEMY_JUMP_VELOCITY)
-		if(enemy_type == 0):
-			$HitParticles.emitting = true
-			#Player.FrameFreeze(0.05, 0.4)
-			velocity.x = Enemy_burst_speed if Player.position.x < position.x else Enemy_burst_speed*-1
-			Move = false
-			Player.Controller_Vibrate_Player_Movement(1)
-			_groundsmash_player_sound()
+	if(Player):
+		if(Can_BeGroundSmash && is_on_floor() && global_position.distance_to(Player.position) <= Max_groundsmash_distance):
+			_jump(JUMP_VELOCITY if enemy_type == 0 else SPECIAL_ENEMY_JUMP_VELOCITY)
+			if(enemy_type == 0):
+				$HitParticles.emitting = true
+				#Player.FrameFreeze(0.05, 0.4)
+				velocity.x = Enemy_burst_speed if Player.position.x < position.x else Enemy_burst_speed*-1
+				Move = false
+				Player.Controller_Vibrate_Player_Movement(1)
+				_groundsmash_player_sound()
 #endregion
 
 #region Player Slide 
@@ -95,14 +98,15 @@ func _ready():
 
 #region Physics
 func _physics_process(delta: float) -> void:
-	if(is_on_floor() && velocity.x > 0):
-		$Moveparticles.emitting = true
-	else:
-		$Moveparticles.emitting = false
-	if(!is_on_floor() && enemy_type == 0):
-		$HitFlyParticles.emitting = true
-	else:
-		$HitFlyParticles.emitting = false
+	if(Player):
+		if(is_on_floor() && velocity.x > 0):
+			$Moveparticles.emitting = true
+		else:
+			$Moveparticles.emitting = false
+		if(!is_on_floor() && enemy_type == 0):
+			$HitFlyParticles.emitting = true
+		else:
+			$HitFlyParticles.emitting = false
 	
 	#region Shoot
 	if(enemy_type == 2):
@@ -114,7 +118,7 @@ func _physics_process(delta: float) -> void:
 			add_child(BulletInstance)
 	#endregion
 	
-	if(Player.EnemiesPhysics):
+	if(Player && Player.EnemiesPhysics):
 		if( SPEED != 0 && !is_on_wall()) :
 			Sprite.play("Walking")
 		else: Sprite.play("Idle")
@@ -142,7 +146,7 @@ func _physics_process(delta: float) -> void:
 		
 		#region Horizontal Movement
 		#Enemy Movement
-		if(Move):
+		if(Move && Player):
 			if (direction && SPEED < MAX_SPEED && SPEED > MAX_SPEED*-1 && MoveTimer.is_stopped()):
 				velocity.x = direction * SPEED# * randf_range(1, 1.2)
 				strech_size(1.7, 0.5)

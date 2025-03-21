@@ -1,0 +1,286 @@
+[gd_scene load_steps=14 format=3 uid="uid://cog43u1t7ej48"]
+
+[ext_resource type="Script" uid="uid://b40hrfks2w7u6" path="res://assets/Levels/Scripts/PauseMenuLogic.gd" id="1_ugg8d"]
+[ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://assets/Sprites/screenshot.png" id="2_6b00t"]
+[ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="3_r1bum"]
+[ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Levels/Scripts/PauseMenuTransition.gd" id="4_6mak4"]
+[ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Levels/Scripts/menu_button.gd" id="7_otm67"]
+[ext_resource type="StyleBox" uid="uid://dirm08jxjyusl" path="res://assets/Sprites/menus/selectStylebox.tres" id="8_1k187"]
+[ext_resource type="Texture2D" uid="uid://dt72x52yyj1wa" path="res://assets/Sprites/PauseMenuButton.png" id="9_gi5xy"]
+[ext_resource type="Texture2D" uid="uid://cpkuxgr2hg7ll" path="res://assets/Sprites/menus/logo.png" id="11_v88b5"]
+
+[sub_resource type="Animation" id="Animation_xvgwm"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1750, 374.562)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PauseMenuButton2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(605, 106)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TitlemenuPlaceholder:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, 213)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Bg:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(520, 300)]
+}
+
+[sub_resource type="Animation" id="Animation_71pd5"]
+resource_name = "fade_movement"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(690, 1224), Vector2(657, 1524)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PauseMenuButton2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(588, 379), Vector2(-220, 101)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TitlemenuPlaceholder:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(679, 247), Vector2(275, 213.008)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Bg:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2019, 466), Vector2(520, 300)]
+}
+
+[sub_resource type="Animation" id="Animation_h07xo"]
+resource_name = "initial_movement"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(657, 1524), Vector2(690, 1224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PauseMenuButton2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-220, 101), Vector2(588, 379)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TitlemenuPlaceholder:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(201, 210), Vector2(679, 247)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Bg:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(520, 300), Vector2(2220, 351)]
+}
+
+[sub_resource type="Animation" id="Animation_3qh4w"]
+resource_name = "main_movement"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(690, 1224), Vector2(690, 1143), Vector2(690, 1257)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PauseMenuButton2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333334, 2.66667, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(588, 379), Vector2(588, 308), Vector2(588, 379)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TitlemenuPlaceholder:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333334, 3.46667, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(679, 247), Vector2(679, 186), Vector2(679, 247)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Bg:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2216, 548)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vy804"]
+_data = {
+&"RESET": SubResource("Animation_xvgwm"),
+&"fade_movement": SubResource("Animation_71pd5"),
+&"initial_movement": SubResource("Animation_h07xo"),
+&"main_movement": SubResource("Animation_3qh4w")
+}
+
+[node name="control_pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 2
+
+[node name="pause_menu" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("1_ugg8d")
+
+[node name="Sprite2D" type="Sprite2D" parent="pause_menu"]
+position = Vector2(691, 373)
+scale = Vector2(0.744436, 0.744436)
+texture = ExtResource("2_6b00t")
+
+[node name="Transition" type="Sprite2D" parent="pause_menu"]
+position = Vector2(1750, 374.562)
+rotation = 1.33518
+scale = Vector2(-1.21884, 1.21061)
+texture = ExtResource("3_r1bum")
+offset = Vector2(-76.585, 0)
+script = ExtResource("4_6mak4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pause_menu/Transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_vy804")
+}
+
+[node name="PauseMenuButton2" type="Button" parent="pause_menu"]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -547.0
+offset_top = 106.0
+offset_right = -341.0
+offset_bottom = 318.0
+grow_horizontal = 0
+theme_override_styles/focus = ExtResource("8_1k187")
+icon = ExtResource("9_gi5xy")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_otm67")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "select_level"
+
+[node name="TitlemenuPlaceholder" type="Sprite2D" parent="pause_menu"]
+position = Vector2(384, 213)
+scale = Vector2(0.61, 0.61)
+texture = ExtResource("11_v88b5")
+
+[node name="Bg" type="Sprite2D" parent="pause_menu"]
+z_index = 2
+position = Vector2(520, 300)
+texture = ExtResource("3_r1bum")
+flip_h = true
+
+[connection signal="pressed" from="pause_menu/PauseMenuButton2" to="pause_menu/PauseMenuButton2" method="_on_pressed"]

@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 @onready var NextTimer = $"../Timer"
 @export var level_to_change = "level1"
 @export var main_menu_scene = "main_menu"
+@export var menu_expo_scene = "main_menu_expo"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,7 +19,7 @@ func _process(delta: float) -> void:
 		var _scene_string : String = ""
 		var FirstTimePlayed : bool = SaveGame.IfPlayedFirstTime()
 		print(FirstTimePlayed)
-		if(!FirstTimePlayed):
+		if(!FirstTimePlayed || Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_shangai):
 			_scene_string = "res://assets/Levels/world1/" + level_to_change + ".tscn"
 		else:
 			_scene_string= "res://assets/Levels/world1/" + main_menu_scene + ".tscn"

@@ -1,5 +1,5 @@
 # SPEEDTICKERS
-[![See the game on itch.io](./images/itch.png)](https://juanes10201.itch.io/speedtickers)
+[![See the game on itch.io](./icons/itch.png)](https://juanes10201.itch.io/speedtickers)
 
 Speedtickers is a fast paced 2d platformer game that uses the momentum based physics and fast movement from Ultrakill.
 
@@ -13,9 +13,13 @@ The music was made by Agustin Barrios
 
 ## Credits
 [Kenney Input Prompt Pixel](https://www.kenney.nl/assets/input-prompts-pixel-16) was used for the controller button icons
+
 [Hyohnoo Keyboard Controller keys](https://hyohnoo.itch.io/keyboard-controller-keys) was used for the keyboard button icons
+
 [Holographic Card Shader](https://godotshaders.com/shader/2d-holographic-card-shader/)Used for the player icon in the Level Select menu
+
 [Rotation Displacement Vertex Shader](https://godotshaders.com/shader/rotation-displacement-vertex-shader/) Used for the Player name in the Level Select menu
+
 If i missed any asset that i used for the game send a pr or send me [an email](juanesteban10201@gmail.com)
 
 ## License

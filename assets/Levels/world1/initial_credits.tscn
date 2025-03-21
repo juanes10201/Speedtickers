@@ -21,7 +21,7 @@ animations = [{
 
 [node name="InitialCredits" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="intro" type="AnimatedSprite2D" parent="."]
 position = Vector2(595, 312)
 scale = Vector2(0.496, 0.496)
 sprite_frames = SubResource("SpriteFrames_s7kdu")

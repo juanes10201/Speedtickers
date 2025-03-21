@@ -83,7 +83,7 @@ script = ExtResource("2_33leu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
 libraries = {
-"": SubResource("AnimationLibrary_klj0i")
+&"": SubResource("AnimationLibrary_klj0i")
 }
 
 [node name="Bg2" type="Sprite2D" parent="."]
@@ -100,7 +100,7 @@ PlayAnimation = "move2"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bg2"]
 libraries = {
-"": SubResource("AnimationLibrary_klj0i")
+&"": SubResource("AnimationLibrary_klj0i")
 }
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

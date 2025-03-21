@@ -120,7 +120,7 @@ script = ExtResource("2_n8qck")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
 libraries = {
-"": SubResource("AnimationLibrary_0i2pc")
+&"": SubResource("AnimationLibrary_0i2pc")
 }
 
 [node name="Bg2" type="Sprite2D" parent="."]
@@ -137,7 +137,7 @@ PlayAnimation = "move2"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bg2"]
 libraries = {
-"": SubResource("AnimationLibrary_klj0i")
+&"": SubResource("AnimationLibrary_klj0i")
 }
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -195,29 +195,20 @@ scale = Vector2(25.04, 1)
 collision_mask = 5
 
 [node name="falling_sand" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(82, -141)
+position = Vector2(25, -102)
+MAX_SPEED = 150.0
 
 [node name="falling_sand2" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(98, -141)
+position = Vector2(41, -102)
+MAX_SPEED = 150.0
 
 [node name="falling_sand3" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(66, -141)
+position = Vector2(9, -102)
+MAX_SPEED = 150.0
 
 [node name="KillBox5" parent="." instance=ExtResource("10_l76dq")]
 position = Vector2(100, -63)
 scale = Vector2(14.635, 3.365)
-
-[node name="falling_sand4" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(-3, 48)
-MAX_SPEED = 150.0
-
-[node name="falling_sand5" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(13, 48)
-MAX_SPEED = 150.0
-
-[node name="falling_sand6" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(29, 48)
-MAX_SPEED = 150.0
 
 [node name="KillBox6" parent="." instance=ExtResource("10_l76dq")]
 position = Vector2(-5, 107)

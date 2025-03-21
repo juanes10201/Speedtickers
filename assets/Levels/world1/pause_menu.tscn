@@ -363,7 +363,7 @@ script = ExtResource("4_37ts2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pause_menu/Transition"]
 libraries = {
-"": SubResource("AnimationLibrary_vy804")
+&"": SubResource("AnimationLibrary_vy804")
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="pause_menu"]
@@ -389,10 +389,10 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -603.0
-offset_top = 310.0
-offset_right = -473.0
-offset_bottom = 444.0
+offset_left = 18.0
+offset_top = 419.0
+offset_right = 148.0
+offset_bottom = 553.0
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_0ptwe")
 icon = ExtResource("6_gbpqt")
@@ -401,6 +401,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_fg2bv")
 BUTTON_ACTION = 3
+ShowOnExpo = false
 
 [node name="PauseMenuButton2" type="Button" parent="pause_menu"]
 z_index = 1
@@ -425,6 +426,25 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = 8.0
+offset_top = 584.0
+offset_right = 127.0
+offset_bottom = 707.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_yw3r3")
+icon = ExtResource("9_pn634")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_fg2bv")
+BUTTON_ACTION = 2
+ShowOnExpo = false
+
+[node name="PauseMenuGoBackButton3" type="Button" parent="pause_menu"]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
 offset_left = -662.0
 offset_top = 460.0
 offset_right = -543.0
@@ -437,7 +457,9 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_fg2bv")
 BUTTON_ACTION = 2
+ShowOnExpo = false
 
 [connection signal="pressed" from="pause_menu/PauseMenuConfigButton2" to="pause_menu/PauseMenuConfigButton2" method="_on_pressed"]
 [connection signal="pressed" from="pause_menu/PauseMenuButton2" to="pause_menu/PauseMenuButton2" method="_on_pressed"]
 [connection signal="pressed" from="pause_menu/PauseMenuGoBackButton2" to="pause_menu/PauseMenuGoBackButton2" method="_on_pressed"]
+[connection signal="pressed" from="pause_menu/PauseMenuGoBackButton3" to="pause_menu/PauseMenuGoBackButton3" method="_on_pressed"]
