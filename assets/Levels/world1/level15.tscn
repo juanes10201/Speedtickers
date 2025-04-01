@@ -149,7 +149,8 @@ tile_map_data = PackedByteArray("AADt//3/AAABAAAAAADu//3/AAABAAAAAADv//3/AAABAAA
 tile_set = ExtResource("4_uedwd")
 
 [node name="Player" parent="." instance=ExtResource("5_42i2w")]
-position = Vector2(-88, -257)
+position = Vector2(-104, -254)
+GroundSmashAcc = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(32.4265, 62.3008)
@@ -193,35 +194,35 @@ scale = Vector2(2.215, 3.125)
 position = Vector2(22, -175)
 scale = Vector2(2, 1)
 
-[node name="falling_sand" parent="." instance=ExtResource("13_wknru")]
-position = Vector2(-83, 17)
-
-[node name="falling_sand2" parent="." instance=ExtResource("13_wknru")]
-position = Vector2(-99, 17)
-
-[node name="falling_sand3" parent="." instance=ExtResource("13_wknru")]
-position = Vector2(-115, 17)
-
-[node name="falling_sand4" parent="." instance=ExtResource("13_wknru")]
-position = Vector2(-131, 17)
-
-[node name="falling_sand5" parent="." instance=ExtResource("13_wknru")]
-position = Vector2(-147, 17)
-
-[node name="falling_sand6" parent="." instance=ExtResource("13_wknru")]
-position = Vector2(-163, 17)
-
-[node name="falling_sand7" parent="." instance=ExtResource("13_wknru")]
-position = Vector2(-179, 17)
-
-[node name="falling_sand8" parent="." instance=ExtResource("13_wknru")]
-position = Vector2(-195, 17)
-
 [node name="falling_sand9" parent="." instance=ExtResource("13_wknru")]
 position = Vector2(-211, 17)
 
 [node name="falling_sand10" parent="." instance=ExtResource("13_wknru")]
 position = Vector2(-227, 17)
+
+[node name="falling_sand26" parent="." instance=ExtResource("13_wknru")]
+position = Vector2(-179, 17)
+
+[node name="falling_sand27" parent="." instance=ExtResource("13_wknru")]
+position = Vector2(-195, 17)
+
+[node name="falling_sand28" parent="." instance=ExtResource("13_wknru")]
+position = Vector2(-147, 17)
+
+[node name="falling_sand29" parent="." instance=ExtResource("13_wknru")]
+position = Vector2(-163, 17)
+
+[node name="falling_sand30" parent="." instance=ExtResource("13_wknru")]
+position = Vector2(-115, 17)
+
+[node name="falling_sand31" parent="." instance=ExtResource("13_wknru")]
+position = Vector2(-131, 17)
+
+[node name="falling_sand32" parent="." instance=ExtResource("13_wknru")]
+position = Vector2(-83, 17)
+
+[node name="falling_sand33" parent="." instance=ExtResource("13_wknru")]
+position = Vector2(-99, 17)
 
 [node name="falling_sand11" parent="." instance=ExtResource("13_wknru")]
 position = Vector2(-260, 89)

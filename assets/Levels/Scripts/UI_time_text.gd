@@ -16,6 +16,9 @@ var DangerTime : bool = false
 @export var DangerTimeStartTimer : float = 3
 @export var Danger_change_size_multiplier : float = 1.5
 
+@onready var OriginalColor = self.get_theme_color("default_color")
+@onready var OriginalColorShadow = self.get_theme_color("font_shadow_color")
+
 #region Shake
 var rng = RandomNumberGenerator.new()
 @onready var OriginalPosition = self.position
@@ -56,7 +59,7 @@ func _process(delta: float) -> void:
 		TimeRest = floor((Time_Left.time_left - CurrentSecond)*100)
 		self.text = str(CurrentSecond)+"[font_size={30}]"+str(TimeRest)+"[/font_size]"
 		#region Trigger death when timer runs out
-		if(Time_Left.time_left <= 0): get_node("../../Player").On_Death()
+		if(!Time_Left.paused && Time_Left.time_left <= 0): get_node("../../Player").On_Death()
 		#endregion
 		
 		#region Change size juice
@@ -77,6 +80,10 @@ func _process(delta: float) -> void:
 				set("theme_override_colors/default_color", Color("fff2f7ff"))
 				set("theme_override_colors/font_shadow_color", Color("ff2e6dc6"))
 			self.Shake(1.5, 1.5)
+		elif(DangerTime):
+			DangerTime = false
+			set("theme_override_colors/default_color", Color(OriginalColor))
+			set("theme_override_colors/font_shadow_color", Color(OriginalColorShadow))
 		#endregion
 	Font_Size = lerpf(Font_Size, original_size, 5  * delta)
 	

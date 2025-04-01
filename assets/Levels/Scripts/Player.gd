@@ -41,7 +41,7 @@ var HaveKey : bool = false
 @export var GroundSmashAcc : float = 25000.0
 
 @export var TimeDeath : float = 1.5
-var Physics : bool = true
+@export var Physics : bool = true
 var EnemiesPhysics : bool = true
 var Paused : bool = false
 @onready var ReturnToGameTime = $ReturnToGameTime
@@ -74,6 +74,7 @@ var direction := Input.get_axis("ui_left", "ui_right")
 @onready var AudioWalkSand = $AudioWalkSand
 @onready var AudioSwitch = $AudioSwitch
 @onready var AudioKey = $AudioKey
+@onready var AudioDeath = SongPlayer.AudioDeath
 
 @onready var AudioSlimeKill = $AudioSlimeGroundsmash #AudioSlimeKill
 @onready var AudioSlimeMove = $AudioSlimeMove
@@ -103,6 +104,8 @@ var EnabledKillBox = Global.KillBoxTypes.Red
 
 @export var PlayedBefore : bool = true
 
+@onready var OriginalPos : Vector2 = self.position
+
 #endregion
 
 #region Debug
@@ -120,7 +123,7 @@ func _ready() -> void:
 	if(TransitionIn): TransitionIn.show()
 	if(TransitionIn): TransitionIn.fade_out()
 	
-	if($"../Flag".current_level == 1): 
+	if($"../Flag" && $"../Flag".current_level == 1): 
 		PlayedBefore = false
 		#PlayedBefore = SaveGame.IfPlayedFirstTime()
 	if(!PlayedBefore):
@@ -133,44 +136,52 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
-	if($"../Flag".current_level == 1):
-		Camera.offset.y = lerpf(Camera.offset.y, 23.85, 1*delta)
-	
-	WasSliding = false
-	var direction := Input.get_axis("ui_left", "ui_right")
-	
-	if(SlidingOnRamp && !is_on_floor()): velocity.y = SlideVelocity
-	
-	if(Input.is_action_just_pressed("menu_pause")): _pause_game()
-	
-	if(!Slide):
-		if(direction):
-			Sprite.play("Walking")
-		else: Sprite.play("Idle")
-	
-	#region Particles
-	#region Jump initial particles
-	if(!is_on_floor() && was_on_floor && !ParticlesLanding.is_playing()):
-		ParticlesLanding.position = self.position
-		ParticlesLanding.position.y -= 5
-		ParticlesLanding.set_as_top_level(true)
-		ParticlesLanding.play("default")
-		ParticlesLanding.show()
-	if(!ParticlesLanding.is_playing()):
-		ParticlesLanding.hide()
-	#endregion  
-	
-	if(is_on_floor() && !was_on_floor):
-		strech_size(1.7, 0.5)
-		ParticlesJump.emitting = false
-		ParticlesLanding.hide()
-	if(!is_on_floor()):
-		ParticlesJump.emitting = true
+	#region Set direction
+	#Sprite direction
+	Sprite.flip_h = false if LastDirection >= 0 else true
+	$Wallchecker.rotation_degrees = 90 if LastDirection < 0 else -90
 	#endregion
-	
-	_pause_menu_end_tick()
-	
 	if(Physics):
+		if($"../Flag" && $"../Flag".current_level == 1):
+			Camera.offset.y = lerpf(Camera.offset.y, 23.85, 1*delta)
+		
+		WasSliding = false
+		var direction := Input.get_axis("ui_left", "ui_right")
+		
+		if(SlidingOnRamp && !is_on_floor()): velocity.y = SlideVelocity
+		
+		if(Input.is_action_just_pressed("menu_pause")): _pause_game()
+		
+		if(GroundSmash):
+			Sprite.play("Groundsmash")
+		elif(!Slide):
+			if(direction):
+				Sprite.play("Walking")
+			else: Sprite.play("Idle")
+		
+		#region Particles
+		#region Jump initial particles
+		if(!is_on_floor() && was_on_floor && !ParticlesLanding.is_playing()):
+			ParticlesLanding.position = self.position
+			ParticlesLanding.position.y -= 5
+			ParticlesLanding.set_as_top_level(true)
+			ParticlesLanding.play("default")
+			ParticlesLanding.show()
+		if(!ParticlesLanding.is_playing()):
+			ParticlesLanding.hide()
+		#endregion  
+		
+		if(is_on_floor() && !was_on_floor):
+			strech_size(1.7, 0.5)
+			ParticlesJump.emitting = false
+			ParticlesLanding.hide()
+		if(!is_on_floor()):
+			ParticlesJump.emitting = true
+		#endregion
+		
+		_pause_menu_end_tick()
+		
+		
 		_strech_tick(delta)
 		_physics_apply_gravity(delta)
 		_physics_jump(delta)
@@ -188,12 +199,6 @@ func _physics_process(delta: float) -> void:
 		#region Prevent overflow
 		if(Acc.x > MaxAcc.x): Acc.x = MaxAcc.x
 		if(velocity.y > MaxAcc.y && !GroundSmash): velocity.y = MaxAcc.y
-		#endregion
-		
-		#region Set direction
-		#Sprite direction
-		Sprite.flip_h = false if LastDirection >= 0 else true
-		$Wallchecker.rotation_degrees = 90 if LastDirection < 0 else -90
 		#endregion
 		
 		#region Apply movement	
@@ -292,7 +297,7 @@ func _physics_apply_gravity(delta: float) -> void:
 			if(!WallJump):
 				if(velocity.y < 0): strech_size(0.7, 1.3)
 				elif(velocity.y >= MaxAcc.y):
-					strech_size(0.5, 1.7)
+					strech_size(0.7, 1.2)
 					#_play_sound(AudioWind, false)
 		#else: velocity.y += Speed.y * delta
 	if (is_on_floor()):
@@ -486,11 +491,14 @@ func On_Death():
 	Sprite.hide()
 	Physics = false
 	Dead = true
+	_play_sound(AudioDeath, false)
+	
 	#TransitionOut.show()
 	#TransitionOut.fade_out()
-	await(get_tree().create_timer(TimeDeath).timeout)
-	if get_tree():
-		get_tree().reload_current_scene()
+	if(!Edition.Is_in_editor):
+		await(get_tree().create_timer(TimeDeath).timeout)
+		if get_tree():
+			get_tree().reload_current_scene()
 #endregion
 
 #region Wall Checker

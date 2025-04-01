@@ -13,10 +13,15 @@ var move_direction : Directions = Directions.LEFT
 @export var move : int = 100
 @export var PlayAnimation : String = "move"
 
+@export var Show : bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimationPlayer.play(PlayAnimation)
-	self.show()
+	if(Show):
+		self.show()
+	else:
+		self.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

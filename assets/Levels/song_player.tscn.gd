@@ -9,6 +9,7 @@ var MusicState = MusicStates.ingame
 
 @onready var SongInGame = $SongInGame
 @onready var SongMenu = $SongMenu
+@onready var AudioDeath = $AudioDeathPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
