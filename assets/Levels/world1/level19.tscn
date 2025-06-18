@@ -232,12 +232,12 @@ EnemyDirection = 1
 position = Vector2(-60, -389)
 
 [node name="KillBox3" parent="." instance=ExtResource("10_wbcye")]
-position = Vector2(195, -295.64)
-scale = Vector2(14, 1.05)
+position = Vector2(194.425, -295.225)
+scale = Vector2(14.09, 1.05)
 
 [node name="KillBox4" parent="." instance=ExtResource("10_wbcye")]
-position = Vector2(146, -70)
-scale = Vector2(8.64, 1.025)
+position = Vector2(146, -74)
+scale = Vector2(7.875, 1.025)
 
 [node name="KillBox5" parent="." instance=ExtResource("10_wbcye")]
 position = Vector2(299, -174.435)

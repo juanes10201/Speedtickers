@@ -123,6 +123,8 @@ func _process(delta: float) -> void:
 	if(Edition.Is_in_editor && Edition.Is_playing_in_editor != StatePlaying):
 		OriginalPos = self.position
 	if(Edition.Is_in_editor && CanHover && Hovering):
+		if(Edition.IsErasingInEditor):
+			self.queue_free()
 		position = get_global_mouse_position()
 		self.position.x = (floor(self.position.x/grab_grid)*grab_grid)+16.0
 		self.position.y = (floor(self.position.y/grab_grid)*grab_grid)+10.0
@@ -137,15 +139,15 @@ func _process(delta: float) -> void:
 			$Moveparticles.emitting = false
 			$HitFlyParticles.emitting = false
 	if(Enabled):
-		if(Player):
-			if(is_on_floor() && velocity.x > 0):
-				$Moveparticles.emitting = true
-			else:
-				$Moveparticles.emitting = false
-			if(!is_on_floor() && enemy_type == 0):
-				$HitFlyParticles.emitting = true
-			else:
-				$HitFlyParticles.emitting = false
+		#if(Player):
+		if(is_on_floor() && velocity.x > 0):
+			$Moveparticles.emitting = true
+		else:
+			$Moveparticles.emitting = false
+		if(!is_on_floor() && enemy_type == 0):
+			$HitFlyParticles.emitting = true
+		else:
+			$HitFlyParticles.emitting = false
 		
 		#region Shoot
 		if(enemy_type == 2):

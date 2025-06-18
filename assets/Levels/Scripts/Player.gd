@@ -46,6 +46,8 @@ var EnemiesPhysics : bool = true
 var Paused : bool = false
 @onready var ReturnToGameTime = $ReturnToGameTime
 
+@export var PlayMusic : bool = true
+
 var LastDirection : float = 0
 var direction := Input.get_axis("ui_left", "ui_right")
 
@@ -91,6 +93,10 @@ var direction := Input.get_axis("ui_left", "ui_right")
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
+@onready var UI = $"../CanvasLayer/"
+
+@export var juice : bool = true
+
 var Pause_fadeout : bool = false
 
 var OnSand : bool = false
@@ -126,12 +132,13 @@ func _ready() -> void:
 	if($"../Flag" && $"../Flag".current_level == 1): 
 		PlayedBefore = false
 		#PlayedBefore = SaveGame.IfPlayedFirstTime()
-	if(!PlayedBefore):
+	if(!PlayedBefore && !Edition.DoneIntro):
 		Camera.offset.y = -226.31
 		FrameFreeze(.4, 2)
 	
 	#region Change music style to ingame
-	SongPlayer.MusicState = SongPlayer.MusicStates.ingame
+	if(PlayMusic):
+		SongPlayer.MusicState = SongPlayer.MusicStates.ingame
 	#endregion
 	
 #region Physics proccess
@@ -140,6 +147,7 @@ func _physics_process(delta: float) -> void:
 	#Sprite direction
 	Sprite.flip_h = false if LastDirection >= 0 else true
 	$Wallchecker.rotation_degrees = 90 if LastDirection < 0 else -90
+	_pause_menu_end_tick()
 	#endregion
 	if(Physics):
 		if($"../Flag" && $"../Flag".current_level == 1):
@@ -178,10 +186,6 @@ func _physics_process(delta: float) -> void:
 		if(!is_on_floor()):
 			ParticlesJump.emitting = true
 		#endregion
-		
-		_pause_menu_end_tick()
-		
-		
 		_strech_tick(delta)
 		_physics_apply_gravity(delta)
 		_physics_jump(delta)
@@ -251,8 +255,9 @@ func _fade_sound(body):
 #region Pause and menu
 func _pause_menu_end_tick() -> void:
 	if(Pause_fadeout && ReturnToGameTime.is_stopped()):
-		if($"control_pause_menu"):
-			$"control_pause_menu".queue_free()
+		var pause = get_node("../CanvasLayer/pause_menu")
+		if(pause):
+			pause.queue_free()
 			
 		#Get timer and pause
 		$"../Time_Left".paused = false	
@@ -262,6 +267,9 @@ func _pause_menu_end_tick() -> void:
 		EnemiesPhysics = true
 		Pause_fadeout = false
 		Paused = false
+		SongPlayer.MusicState = SongPlayer.MusicStates.ingame
+
+var pause_menu_instance = null
 
 func _pause_game() -> void:
 	if(!Paused):
@@ -277,15 +285,16 @@ func _pause_game() -> void:
 		_unpause_game()
 
 func _unpause_game() -> void:
-	$"control_pause_menu/pause_menu/Transition/AnimationPlayer".play("fade_movement")
+	pause_menu_instance.Transition.Anim.play("fade_movement")
 	ReturnToGameTime.start()
 	Pause_fadeout = true
+	
 	
 func _spawn_pause_menu() -> void:
 	var pause_menu = preload("res://assets/Levels/world1/pause_menu.tscn")
 	if (pause_menu):
-		var pause_menu_instance = pause_menu.instantiate()
-		add_child(pause_menu_instance)
+		pause_menu_instance = pause_menu.instantiate()
+		UI.add_child(pause_menu_instance)
 #endregion
 
 # region Gravity
@@ -461,12 +470,13 @@ func Controller_Vibrate_Player_Movement(Force):
 #region Streching and scaling
 @onready var original_scale = Sprite.scale
 func strech_size(X, Y):
-	Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
+	if(juice):
+		Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
 
 func _strech_tick(delta : float):
-	
-	Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 20 * delta
-	Sprite.scale.y += (original_scale.y - Sprite.scale.y) * 20 * delta
+	if(juice):
+		Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 20 * delta
+		Sprite.scale.y += (original_scale.y - Sprite.scale.y) * 20 * delta
 #endregion
 
 #region FrameFreeze

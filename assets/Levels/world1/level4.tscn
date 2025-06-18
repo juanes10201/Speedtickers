@@ -188,6 +188,7 @@ position = Vector2(-129, -75)
 skew = -0.20944
 sprite_frames = SubResource("SpriteFrames_s1t2w")
 animation = &"slide"
+frame_progress = 0.455788
 script = ExtResource("5_wf4i7")
 anim_to_play = "slide"
 

@@ -20,7 +20,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(Time_Left):
-		current_text = str(floor(Time_Left.time_left*2))
+		current_text = str(int(floor(Time_Left.time_left*2)))
 		if(current_text != "0"): self.text = "[center]" + current_text + "[center]"
 		else: self.text = "[center]!!!![center]"
 		#Trigger death when timer runs out
@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 			Font_Size = original_size * change_size_multiplier
 			
 			if(number): number.stop()
-			var number = get_node( "counter" + str(current_text) )
+			var number = get_node_or_null( "counter" + str(current_text) )
 			if(number): number.play()
 	Font_Size = lerpf(Font_Size, original_size, 5  * delta)
 	

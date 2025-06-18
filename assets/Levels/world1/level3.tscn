@@ -108,20 +108,26 @@ position = Vector2(-141, 90)
 [node name="falling_sand8" parent="." instance=ExtResource("6_2ec6p")]
 position = Vector2(-125, 90)
 
+[node name="falling_sand9" parent="." instance=ExtResource("6_2ec6p")]
+position = Vector2(-109, 90)
+
+[node name="falling_sand20" parent="." instance=ExtResource("6_2ec6p")]
+position = Vector2(-93, 90)
+
 [node name="falling_sand13" parent="." instance=ExtResource("6_2ec6p")]
-position = Vector2(43, -57)
+position = Vector2(85, -29)
 
 [node name="falling_sand14" parent="." instance=ExtResource("6_2ec6p")]
-position = Vector2(59, -57)
+position = Vector2(101, -29)
 
 [node name="falling_sand15" parent="." instance=ExtResource("6_2ec6p")]
-position = Vector2(75, -57)
+position = Vector2(117, -29)
 
 [node name="falling_sand16" parent="." instance=ExtResource("6_2ec6p")]
-position = Vector2(91, -57)
+position = Vector2(133, -29)
 
 [node name="falling_sand21" parent="." instance=ExtResource("6_2ec6p")]
-position = Vector2(107, -57)
+position = Vector2(149, -29)
 
 [node name="falling_sand10" parent="." instance=ExtResource("6_2ec6p")]
 position = Vector2(-108, -24)

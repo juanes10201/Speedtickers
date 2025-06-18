@@ -150,7 +150,6 @@ tile_set = ExtResource("4_uedwd")
 
 [node name="Player" parent="." instance=ExtResource("5_42i2w")]
 position = Vector2(-104, -254)
-GroundSmashAcc = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(32.4265, 62.3008)

@@ -337,36 +337,29 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
-[node name="control_pause_menu" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-focus_mode = 2
-
-[node name="pause_menu" type="CanvasLayer" parent="."]
+[node name="pause_menu" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_lmvks")
 
-[node name="Sprite2D" type="Sprite2D" parent="pause_menu"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(589, 323)
 scale = Vector2(0.635, 0.635)
 texture = ExtResource("2_p57sw")
 
-[node name="Transition" type="Sprite2D" parent="pause_menu"]
+[node name="Transition" type="Sprite2D" parent="."]
 position = Vector2(1750, 374.562)
 rotation = -0.10821
 scale = Vector2(-0.888, 0.882)
 texture = ExtResource("3_rsgsr")
 script = ExtResource("4_37ts2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="pause_menu/Transition"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
 libraries = {
 &"": SubResource("AnimationLibrary_vy804")
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu"]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 702.932
 offset_top = -6.43848
 offset_right = 1152.93
@@ -375,7 +368,7 @@ theme_override_fonts/normal_font = ExtResource("5_rmh30")
 theme_override_font_sizes/normal_font_size = 87
 text = "Speed"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="pause_menu"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
 offset_left = 541.932
 offset_top = 570.562
 offset_right = 991.932
@@ -384,7 +377,7 @@ theme_override_fonts/normal_font = ExtResource("5_rmh30")
 theme_override_font_sizes/normal_font_size = 87
 text = "Tickers"
 
-[node name="PauseMenuConfigButton2" type="Button" parent="pause_menu"]
+[node name="PauseMenuConfigButton2" type="Button" parent="."]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -403,7 +396,7 @@ script = ExtResource("7_fg2bv")
 BUTTON_ACTION = 3
 ShowOnExpo = false
 
-[node name="PauseMenuButton2" type="Button" parent="pause_menu"]
+[node name="PauseMenuButton2" type="Button" parent="."]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -421,7 +414,7 @@ expand_icon = true
 script = ExtResource("7_fg2bv")
 BUTTON_ACTION = 1
 
-[node name="PauseMenuGoBackButton2" type="Button" parent="pause_menu"]
+[node name="PauseMenuGoBackButton2" type="Button" parent="."]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -440,26 +433,13 @@ script = ExtResource("7_fg2bv")
 BUTTON_ACTION = 2
 ShowOnExpo = false
 
-[node name="PauseMenuGoBackButton3" type="Button" parent="pause_menu"]
-z_index = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -662.0
-offset_top = 460.0
-offset_right = -543.0
-offset_bottom = 583.0
-grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxTexture_yw3r3")
-icon = ExtResource("9_pn634")
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("7_fg2bv")
-BUTTON_ACTION = 2
-ShowOnExpo = false
+[node name="control_pause_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 2
 
-[connection signal="pressed" from="pause_menu/PauseMenuConfigButton2" to="pause_menu/PauseMenuConfigButton2" method="_on_pressed"]
-[connection signal="pressed" from="pause_menu/PauseMenuButton2" to="pause_menu/PauseMenuButton2" method="_on_pressed"]
-[connection signal="pressed" from="pause_menu/PauseMenuGoBackButton2" to="pause_menu/PauseMenuGoBackButton2" method="_on_pressed"]
-[connection signal="pressed" from="pause_menu/PauseMenuGoBackButton3" to="pause_menu/PauseMenuGoBackButton3" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenuConfigButton2" to="PauseMenuConfigButton2" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenuButton2" to="PauseMenuButton2" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_pressed"]

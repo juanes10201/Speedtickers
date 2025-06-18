@@ -115,20 +115,20 @@ offset = Vector2(-0.28, -15.95)
 [node name="HitParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_iorly")
 texture = ExtResource("4_ii4mo")
 lifetime = 0.4
 one_shot = true
 explosiveness = 0.34
 randomness = 0.33
+process_material = SubResource("ParticleProcessMaterial_iorly")
 
 [node name="HitFlyParticles" type="GPUParticles2D" parent="."]
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_6npnj")
 texture = ExtResource("4_ii4mo")
+process_material = SubResource("ParticleProcessMaterial_6npnj")
 
 [node name="Moveparticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 4
-process_material = SubResource("ParticleProcessMaterial_14o53")
 texture = ExtResource("4_ii4mo")
+process_material = SubResource("ParticleProcessMaterial_14o53")

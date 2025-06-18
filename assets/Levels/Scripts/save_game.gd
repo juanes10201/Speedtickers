@@ -12,6 +12,10 @@ func IfPlayedFirstTime() -> bool:
 		config.set_value("Game", "PlayedBefore", "true")
 	return false
 
+func get_player():
+	var Player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() else null
+	return Player
+
 func savelevelrecord(Level : float = 1, RealTime : float = 0) -> void:
 	loadgamedata()
 	var current_best_score = config.get_value("Level", str(Level))
@@ -40,8 +44,3 @@ func loadgamedata() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

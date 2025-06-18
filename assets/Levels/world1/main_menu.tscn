@@ -20,10 +20,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(1750, 374.562)]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -32,10 +32,10 @@ tracks/1/path = NodePath("../PauseMenuGoBackButton2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(1160, 584)]
+"values": []
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -44,10 +44,10 @@ tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(1170, 419)]
+"values": []
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -56,10 +56,10 @@ tracks/3/path = NodePath("../PauseMenuButton2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(605, 106)]
+"values": []
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -68,10 +68,10 @@ tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(384, 213)]
+"values": []
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -80,15 +80,27 @@ tracks/5/path = NodePath("../Bg:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Vector2(520, 300)]
+"values": []
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Transition2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
 }
 
-[sub_resource type="Animation" id="Animation_71pd5"]
+[sub_resource type="Animation" id="Animation_0d5a2"]
 resource_name = "fade_movement"
-length = 0.4
+length = 1.4145
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,10 +108,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0333333, 0.666667, 1.04, 1.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(690, 1224), Vector2(657, 1524)]
+"values": [Vector2(1653, 377), Vector2(1241.52, 419.387), Vector2(624, 483), Vector2(624, 483)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,10 +120,10 @@ tracks/1/path = NodePath("../PauseMenuButton2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.133333, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0666667, 0.366667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(74, 300), Vector2(-220, 101)]
+"values": [Vector2(48.1276, 298.235), Vector2(-71.5654, 414.419), Vector2(-247, 572)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -120,10 +132,10 @@ tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.0666667, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0333333, 0.366667, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(320, 383), Vector2(-161, 166)]
+"values": [Vector2(262.298, 380.093), Vector2(129.31, 521.204), Vector2(-26, 686)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -132,86 +144,10 @@ tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0666667, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(520, 439.59), Vector2(-157, 167)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(384, 213.008), Vector2(275, 213.008)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Bg:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2019, 466), Vector2(520, 300)]
-}
-
-[sub_resource type="Animation" id="Animation_h07xo"]
-resource_name = "initial_movement"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(657, 1524), Vector2(690, 1224)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../PauseMenuButton2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-220, 101), Vector2(74, 300)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-161, 166), Vector2(320, 383)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-157, 167), Vector2(520, 439.59)]
+"values": [Vector2(432.498, 437.426), Vector2(313.939, 582.409), Vector2(145, 789)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -220,10 +156,10 @@ tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0666667, 0.866667, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(201, 210), Vector2(384, 213.008)]
+"values": [Vector2(878, 150), Vector2(563, 309), Vector2(563, 309)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -232,15 +168,115 @@ tracks/5/path = NodePath("../Bg:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(520, 300)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Transition2:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-132, 1075), Vector2(-193.745, 1134.77), Vector2(-320, 1257)]
+}
+
+[sub_resource type="Animation" id="Animation_2b324"]
+resource_name = "initial_movement"
+length = 1.964
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(520, 300), Vector2(2220, 351)]
+"values": [Vector2(566, 304), Vector2(1653, 377)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PauseMenuButton2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.23333, 1.76667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-215, 487), Vector2(48.1276, 298.235), Vector2(48.1276, 298.235)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.78333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-48, 661), Vector2(262.298, 380.093), Vector2(262.298, 380.093)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333, 1.23333, 1.76667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(115, 757), Vector2(432.498, 437.426), Vector2(432.498, 437.426)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.23333, 1.89),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(891, -164), Vector2(878, 150), Vector2(878, 150)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Bg:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(520, 300)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Transition2:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.966667, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-458, 1290), Vector2(-132, 1075), Vector2(-132, 1075)]
 }
 
 [sub_resource type="Animation" id="Animation_3qh4w"]
 resource_name = "main_movement"
-length = 5.0
+length = 6.1295
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -249,10 +285,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.0333333, 2.83333, 3.6, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(690, 1224), Vector2(690, 1143), Vector2(690, 1257)]
+"values": [Vector2(1653, 377), Vector2(1505, 389), Vector2(1653, 377), Vector2(1666.72, 375.888)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -261,10 +297,10 @@ tracks/1/path = NodePath("../PauseMenuButton2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.56667, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.0666667, 2.1, 2.93333, 3.85, 4.43, 5.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(74, 300), Vector2(74, 183.793), Vector2(74, 300)]
+"values": [Vector2(48.1276, 298.235), Vector2(48.0399, 296.822), Vector2(48, 298), Vector2(46, 357), Vector2(46, 357), Vector2(46, 324)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -273,10 +309,10 @@ tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.1, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.0333333, 2.03333, 2.83333, 4.01667, 4.59667, 5.76667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(320, 383), Vector2(320, 259.23), Vector2(320, 383)]
+"values": [Vector2(262.298, 380.093), Vector2(262.118, 376.296), Vector2(262, 381), Vector2(261, 421), Vector2(261, 421), Vector2(261, 400)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -285,10 +321,10 @@ tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.7, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.0666667, 1.96667, 2.76667, 4.21667, 4.79667, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(520, 439.59), Vector2(520, 319.405), Vector2(520, 439.59)]
+"values": [Vector2(432.498, 437.426), Vector2(432.769, 427.854), Vector2(433, 435), Vector2(434, 466), Vector2(434, 466), Vector2(434, 448)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -297,10 +333,10 @@ tracks/4/path = NodePath("../TitlemenuPlaceholder:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0333333, 2.4, 4.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(384, 213), Vector2(384, 172), Vector2(384, 213)]
+"values": [Vector2(878, 150)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -309,58 +345,64 @@ tracks/5/path = NodePath("../Bg:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2216, 548)]
+"values": [Vector2(520, 300)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Transition2:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.46667, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-132, 1075), Vector2(-112, 1027), Vector2(-132, 1075)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vy804"]
 _data = {
 &"RESET": SubResource("Animation_xvgwm"),
-&"fade_movement": SubResource("Animation_71pd5"),
-&"initial_movement": SubResource("Animation_h07xo"),
+&"fade_movement": SubResource("Animation_0d5a2"),
+&"initial_movement": SubResource("Animation_2b324"),
 &"main_movement": SubResource("Animation_3qh4w")
 }
 
-[node name="control_pause_menu" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-focus_mode = 2
-
-[node name="pause_menu" type="CanvasLayer" parent="."]
+[node name="pause_menu" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_p4p5w")
 
-[node name="Sprite2D" type="Sprite2D" parent="pause_menu"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(691, 373)
 scale = Vector2(0.744436, 0.744436)
 texture = ExtResource("2_b6kau")
 
-[node name="Transition" type="Sprite2D" parent="pause_menu"]
-position = Vector2(1750, 374.562)
+[node name="Transition" type="Sprite2D" parent="."]
+position = Vector2(1653.02, 376.998)
 rotation = 1.33518
 scale = Vector2(-1.21884, 1.21061)
 texture = ExtResource("3_6l5tb")
 offset = Vector2(-76.585, 0)
 script = ExtResource("4_i1blh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="pause_menu/Transition"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
 libraries = {
 &"": SubResource("AnimationLibrary_vy804")
 }
 
-[node name="PauseMenuConfigButton2" type="Button" parent="pause_menu"]
+[node name="PauseMenuConfigButton2" type="Button" parent="."]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -832.0
-offset_top = 383.0
-offset_right = -672.0
-offset_bottom = 548.0
+offset_left = -889.702
+offset_top = 380.094
+offset_right = -729.702
+offset_bottom = 545.094
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("8_7qegd")
@@ -370,15 +412,15 @@ expand_icon = true
 script = ExtResource("9_itrmr")
 BUTTON_ACTION = 3
 
-[node name="PauseMenuButton2" type="Button" parent="pause_menu"]
+[node name="PauseMenuButton2" type="Button" parent="."]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1078.0
-offset_top = 300.0
-offset_right = -872.0
-offset_bottom = 512.0
+offset_left = -1103.87
+offset_top = 298.236
+offset_right = -897.872
+offset_bottom = 510.236
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("10_gopbp")
 icon = ExtResource("11_1to64")
@@ -388,16 +430,17 @@ expand_icon = true
 script = ExtResource("9_itrmr")
 BUTTON_ACTION = 4
 ADITIONAL_ARGUMENT = "select_level"
+FadeTransition = true
 
-[node name="PauseMenuGoBackButton2" type="Button" parent="pause_menu"]
+[node name="PauseMenuGoBackButton2" type="Button" parent="."]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -632.0
-offset_top = 439.59
-offset_right = -478.0
-offset_bottom = 598.59
+offset_left = -719.502
+offset_top = 437.437
+offset_right = -565.502
+offset_bottom = 596.437
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("12_cvx7u")
@@ -407,17 +450,32 @@ expand_icon = true
 script = ExtResource("9_itrmr")
 BUTTON_ACTION = 2
 
-[node name="TitlemenuPlaceholder" type="Sprite2D" parent="pause_menu"]
-position = Vector2(384, 213)
-scale = Vector2(0.61, 0.61)
+[node name="TitlemenuPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(878, 150)
+scale = Vector2(0.542554, 0.542554)
 texture = ExtResource("5_0d5a2")
 
-[node name="Bg" type="Sprite2D" parent="pause_menu"]
+[node name="Bg" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(520, 300)
 texture = ExtResource("3_6l5tb")
 flip_h = true
 
-[connection signal="pressed" from="pause_menu/PauseMenuConfigButton2" to="pause_menu/PauseMenuConfigButton2" method="_on_pressed"]
-[connection signal="pressed" from="pause_menu/PauseMenuButton2" to="pause_menu/PauseMenuButton2" method="_on_pressed"]
-[connection signal="pressed" from="pause_menu/PauseMenuGoBackButton2" to="pause_menu/PauseMenuGoBackButton2" method="_on_pressed"]
+[node name="control_pause_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 2
+
+[node name="Transition2" type="Sprite2D" parent="."]
+position = Vector2(-132, 1075)
+rotation = 0.307178
+scale = Vector2(-1.21884, 1.21061)
+texture = ExtResource("3_6l5tb")
+offset = Vector2(-76.585, 0)
+
+[connection signal="pressed" from="PauseMenuConfigButton2" to="PauseMenuConfigButton2" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenuButton2" to="PauseMenuButton2" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_pressed"]

@@ -204,6 +204,7 @@ func camera_tick(delta):
 func _process(delta: float) -> void:
 	print(Is_Hovering)
 	var MousePos = get_global_mouse_position()
+	Edition.IsErasingInEditor = true if SelectedTool == Tools.ERASER else false
 	if(!Exported):
 		if(!Playing): camera_tick(delta)
 		

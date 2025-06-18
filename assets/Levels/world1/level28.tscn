@@ -209,8 +209,8 @@ position = Vector2(70, 406)
 scale = Vector2(1, 20)
 
 [node name="KillBox6" parent="." instance=ExtResource("8_uyjke")]
-position = Vector2(178, 333)
-scale = Vector2(1, 30)
+position = Vector2(178, 268)
+scale = Vector2(1, 36.935)
 
 [node name="Enemie3" parent="." instance=ExtResource("14_nmx33")]
 position = Vector2(-79, 125)

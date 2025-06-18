@@ -9,8 +9,10 @@ extends Button
 @onready var original_size = self.size
 @onready var ControlNode = $"../../pause_menu"
 @onready var SelectedSprite = $SelectedSprite
-@onready var Player = $"../../../../Player"
+@onready var Player = SaveGame.get_player()
 @export var IsPixelartButton : bool = false
+
+@export var FadeTransition : bool = false
 
 @onready var tex_selected : Texture = preload("res://assets/Sprites/levelnote-selected.png") if IsPixelartButton else null
 @onready var tex_unselected : Texture = self.icon
@@ -87,6 +89,9 @@ func _set_text_size(X : float):
 
 func _on_pressed() -> void:
 	print("Button pressed!")
+	if(FadeTransition):
+		$"../Transition".Anim.play("fade_movement")
+		await get_tree().create_timer(1.4).timeout
 	if(BUTTON_ACTION == Global.BUTTON_ACTIONS.resume_game && Player):
 		Player._pause_game()
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.restart_level):
@@ -99,4 +104,3 @@ func _on_pressed() -> void:
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_scene):
 		var _scene_string : String = "res://assets/Levels/world1/" + ADITIONAL_ARGUMENT + ".tscn"
 		get_tree().change_scene_to_file(_scene_string)
-		

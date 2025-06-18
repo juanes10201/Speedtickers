@@ -27,6 +27,7 @@ scale = Vector2(0.496, 0.496)
 sprite_frames = SubResource("SpriteFrames_s7kdu")
 frame_progress = 0.333711
 script = ExtResource("3_ywqdo")
+main_menu_scene = "main_menu_w_level_preview"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

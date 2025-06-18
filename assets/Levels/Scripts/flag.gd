@@ -26,6 +26,8 @@ func _input(event):
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
 	if(Edition.Is_in_editor && CanHover && Hovering):
+		if(Edition.IsErasingInEditor):
+			self.queue_free()
 		position = get_global_mouse_position()
 		self.position.x = (floor(self.position.x/grab_grid)*grab_grid)+16.0
 		self.position.y = (floor(self.position.y/grab_grid)*grab_grid)+10.0

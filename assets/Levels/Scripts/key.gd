@@ -13,6 +13,7 @@ func _ready() -> void:
 var editable = preload("res://assets/Levels/Scripts/default_object.gd").new()
 var Hovering : bool = false
 @export var CanHover : bool = false
+var done = false
 
 func _input(event):
 	if(Edition.Is_in_editor && CanHover):
@@ -28,6 +29,8 @@ func _input(event):
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
 	if(Edition.Is_in_editor && CanHover && Hovering):
+		if(Edition.IsErasingInEditor):
+			self.queue_free()
 		position = get_global_mouse_position()
 		self.position.x = (floor(self.position.x/grab_grid)*grab_grid)+16.0
 		self.position.y = (floor(self.position.y/grab_grid)*grab_grid)+10.0
@@ -42,7 +45,8 @@ func set_key_state(state : bool):
 	Sprite.visible = !state
 	Light.enabled = !state
 	Player.HaveKey = state
-	if(state):
+	if(state && !done):
+		done = true
 		Player._play_sound(Player.AudioSwitch, false)
 		if(AditionalAction == Global.OBJECT_ACTIONS.switch_killbox_type):
 			if(Player.EnabledKillBox == Global.KillBoxTypes.Red):

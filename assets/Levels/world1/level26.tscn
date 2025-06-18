@@ -181,7 +181,7 @@ scale = Vector2(50, 1)
 CanChange = false
 
 [node name="KillBox7" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(-74, -342)
+position = Vector2(-72, -342)
 scale = Vector2(3, 2)
 
 [node name="KillBox4" parent="." instance=ExtResource("8_8sq5l")]
@@ -202,7 +202,7 @@ position = Vector2(142, -101)
 AditionalAction = 1
 
 [node name="Key2" parent="." instance=ExtResource("11_funbt")]
-position = Vector2(-74, -399)
+position = Vector2(-72, -399)
 AditionalAction = 1
 
 [node name="Player" parent="." instance=ExtResource("12_w687e")]
@@ -222,8 +222,8 @@ position_smoothing_enabled = true
 script = ExtResource("13_0p0li")
 
 [node name="KillBox8" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(-74, -318)
-scale = Vector2(3, 1)
+position = Vector2(-72, -273)
+scale = Vector2(3, 6.615)
 
 [node name="KillBox18" parent="." instance=ExtResource("10_r0gsi")]
 position = Vector2(-201, -356)
@@ -248,8 +248,8 @@ position = Vector2(94, -342)
 scale = Vector2(3, 2)
 
 [node name="KillBox11" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(94, -318)
-scale = Vector2(3, 1)
+position = Vector2(94, -276)
+scale = Vector2(3, 6.13)
 
 [node name="falling_sand" parent="." instance=ExtResource("14_efkra")]
 position = Vector2(-4, -194)
@@ -270,13 +270,13 @@ position = Vector2(94, -366)
 position = Vector2(110, -366)
 
 [node name="falling_sand10" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-90, -366)
+position = Vector2(-88, -366)
 
 [node name="falling_sand11" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-74, -366)
+position = Vector2(-72, -366)
 
 [node name="falling_sand12" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-58, -366)
+position = Vector2(-56, -366)
 
 [node name="falling_sand2" parent="." instance=ExtResource("14_efkra")]
 position = Vector2(-4, -178)
