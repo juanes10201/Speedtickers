@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://chat6jxc63bfj"]
+[gd_scene load_steps=54 format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
 [ext_resource type="Texture2D" uid="uid://cga4opnhsehd7" path="res://assets/Sprites/knight-Sheet.png" id="2_5o2oi"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://d233ru5plyksw" path="res://assets/Sprites/particlesfall-Sheet.png" id="19_8erp2"]
 [ext_resource type="AudioStream" uid="uid://cgvt4j0ojlh60" path="res://assets/Sounds/switch.wav" id="19_uvkhq"]
 [ext_resource type="AudioStream" uid="uid://cqau2g0edyke0" path="res://assets/Sounds/key.wav" id="20_2xca2"]
+[ext_resource type="AudioStream" uid="uid://bh23td2y13ecc" path="res://assets/Sounds/orb_gravity.wav" id="22_1ia1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5171x"]
 size = Vector2(9.99999, 13.0001)
@@ -166,6 +167,40 @@ animations = [{
 "name": &"Walking",
 "speed": 5.0
 }]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_io8kl"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.84
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_max = 11.62
+angular_velocity_min = 0.549984
+angular_velocity_max = 0.549984
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = 61.9
+radial_velocity_max = 61.9
+gravity = Vector3(34.82, -98, 0)
+linear_accel_min = -55.51
+linear_accel_max = 8.6
+radial_accel_min = -27.78
+radial_accel_max = -2.23517e-06
+tangential_accel_min = 12.56
+tangential_accel_max = 12.56
+damping_min = 0.17
+damping_max = 7.899
+scale_min = 1.15
+scale_max = 3.0
+color = Color(0.851675, 0.499052, 0.754043, 1)
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.03
+turbulence_enabled = true
+turbulence_noise_strength = 0.24
+turbulence_noise_scale = 0.93
+turbulence_influence_min = 0.04
+turbulence_influence_max = 0.04
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qtktq"]
 particle_flag_disable_z = true
@@ -318,10 +353,22 @@ amount = 18
 process_material = SubResource("ParticleProcessMaterial_lgtto")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9.53)
 scale = Vector2(0.152, 1.133)
 sprite_frames = SubResource("SpriteFrames_qwuic")
 animation = &"Idle"
-offset = Vector2(0, -9)
+offset = Vector2(0, -0.58)
+
+[node name="ParticlesOrb" type="GPUParticles2D" parent="."]
+position = Vector2(0, -6.66371)
+emitting = false
+amount = 35
+lifetime = 0.7
+one_shot = true
+preprocess = 0.15
+speed_scale = 2.0
+explosiveness = 0.14
+process_material = SubResource("ParticleProcessMaterial_io8kl")
 
 [node name="ParticlesDeathAir" type="GPUParticles2D" parent="."]
 position = Vector2(0, -5.66371)
@@ -416,6 +463,9 @@ stream = ExtResource("19_uvkhq")
 
 [node name="AudioKey" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_2xca2")
+
+[node name="AudioOrbGravity" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_1ia1n")
 
 [node name="ParticlesLanding" type="AnimatedSprite2D" parent="."]
 visible = false

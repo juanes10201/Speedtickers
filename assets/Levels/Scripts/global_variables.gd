@@ -1,5 +1,4 @@
 extends Node
-class_name Global
 
 enum KillBoxTypes{
 	Red,
@@ -16,15 +15,28 @@ enum BUTTON_ACTIONS{
 enum OBJECT_ACTIONS{
 	none,
 	switch_killbox_type,
-	MoveLava
+	MoveLava,
+	Switch_Player_Gravity
+}
+enum GravityDirections{
+	INVERTED = -1,
+	MAIN = 1
 }
 
+var Player = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+	var Player = SaveGame.get_player()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func Play_Global_Action(Action : OBJECT_ACTIONS):
+	Player = SaveGame.get_player() 
+	if(!Player): return
+	if(Action == Global.OBJECT_ACTIONS.switch_killbox_type):
+		if(Player.EnabledKillBox == Global.KillBoxTypes.Red):
+			Player.EnabledKillBox = Global.KillBoxTypes.Blue
+		else:
+			Player.EnabledKillBox = Global.KillBoxTypes.Red
+	elif(Action == Global.OBJECT_ACTIONS.MoveLava):
+		Player.MoveLava = true
+	elif(Action == OBJECT_ACTIONS.Switch_Player_Gravity):
+		Player._invert_gravity()

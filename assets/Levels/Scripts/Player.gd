@@ -77,6 +77,7 @@ var direction := Input.get_axis("ui_left", "ui_right")
 @onready var AudioSwitch = $AudioSwitch
 @onready var AudioKey = $AudioKey
 @onready var AudioDeath = SongPlayer.AudioDeath
+@onready var AudioOrbGravity = $AudioOrbGravity
 
 @onready var AudioSlimeKill = $AudioSlimeGroundsmash #AudioSlimeKill
 @onready var AudioSlimeMove = $AudioSlimeMove
@@ -112,6 +113,8 @@ var EnabledKillBox = Global.KillBoxTypes.Red
 
 @onready var OriginalPos : Vector2 = self.position
 
+var GravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
+
 #endregion
 
 #region Debug
@@ -143,6 +146,7 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
+	print(_is_on_floor())
 	#region Set direction
 	#Sprite direction
 	Sprite.flip_h = false if LastDirection >= 0 else true
@@ -156,7 +160,7 @@ func _physics_process(delta: float) -> void:
 		WasSliding = false
 		var direction := Input.get_axis("ui_left", "ui_right")
 		
-		if(SlidingOnRamp && !is_on_floor()): velocity.y = SlideVelocity
+		if(SlidingOnRamp && !_is_on_floor()): velocity.y = SlideVelocity * GravityDirection
 		
 		if(Input.is_action_just_pressed("menu_pause")): _pause_game()
 		
@@ -169,7 +173,7 @@ func _physics_process(delta: float) -> void:
 		
 		#region Particles
 		#region Jump initial particles
-		if(!is_on_floor() && was_on_floor && !ParticlesLanding.is_playing()):
+		if(!_is_on_floor() && was_on_floor && !ParticlesLanding.is_playing()):
 			ParticlesLanding.position = self.position
 			ParticlesLanding.position.y -= 5
 			ParticlesLanding.set_as_top_level(true)
@@ -179,11 +183,11 @@ func _physics_process(delta: float) -> void:
 			ParticlesLanding.hide()
 		#endregion  
 		
-		if(is_on_floor() && !was_on_floor):
+		if(_is_on_floor() && !was_on_floor):
 			strech_size(1.7, 0.5)
 			ParticlesJump.emitting = false
 			ParticlesLanding.hide()
-		if(!is_on_floor()):
+		if(!_is_on_floor()):
 			ParticlesJump.emitting = true
 		#endregion
 		_strech_tick(delta)
@@ -201,14 +205,14 @@ func _physics_process(delta: float) -> void:
 		#endregion
 		
 		#region Prevent overflow
-		if(Acc.x > MaxAcc.x): Acc.x = MaxAcc.x
-		if(velocity.y > MaxAcc.y && !GroundSmash): velocity.y = MaxAcc.y
+		if(Acc.x * GravityDirection > MaxAcc.x): Acc.x = MaxAcc.x * GravityDirection
+		if(velocity.y * GravityDirection > MaxAcc.y && !GroundSmash): velocity.y = MaxAcc.y * GravityDirection
 		#endregion
 		
 		#region Apply movement	
 		if(direction != 0): LastDirection = direction
 		
-		was_on_floor = is_on_floor()
+		was_on_floor = _is_on_floor()
 		
 		#region Sand Sound
 		if(OnSand && !Slide): _play_sound(AudioWalkSand, false)
@@ -299,17 +303,18 @@ func _spawn_pause_menu() -> void:
 
 # region Gravity
 func _physics_apply_gravity(delta: float) -> void:
-	if (!is_on_floor()):
+	if (!_is_on_floor()):
 		if(was_on_floor): CoyoteTimer.start()
 		if(!WallJump && DashTime.is_stopped()):
-			velocity.y += get_gravity_player() * Acc.y * delta
+			velocity.y += get_gravity_player() * Acc.y * delta * GravityDirection
 			if(!WallJump):
-				if(velocity.y < 0): strech_size(0.7, 1.3)
-				elif(velocity.y >= MaxAcc.y):
+				if(velocity.y*GravityDirection < 0): 
+					strech_size(0.7, 1.3)
+				elif(velocity.y*GravityDirection >= MaxAcc.y):
 					strech_size(0.7, 1.2)
 					#_play_sound(AudioWind, false)
 		#else: velocity.y += Speed.y * delta
-	if (is_on_floor()):
+	if (_is_on_floor()):
 		Dashed = false
 		_stop_sound(AudioWind)
 		if(GroundSmash):
@@ -328,14 +333,26 @@ func _physics_apply_gravity(delta: float) -> void:
 			Slide = false
 #endregion
 
+#region Invert Gravity
+func _invert_gravity() -> void:
+	#DoJump()
+	velocity.y = 100 * GravityDirection
+	GravityDirection *= -1
+	Dashed = false
+	strech_size(1.5, 1.2)
+	$ParticlesOrb.emitting = true
+	_play_sound(AudioOrbGravity, true)
+	
+#endregion
+
 #region jump
 func _physics_jump(delta: float) -> void:
 	# Handle jump.
-	if ((!PreJumpTime.is_stopped() && (is_on_floor() || WallJump || !CoyoteTimer.is_stopped()) ) || (!PreWallJumpTimer.is_stopped() && Input.is_action_pressed("player_jump")) ):
+	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped()) ) || (!PreWallJumpTimer.is_stopped() && Input.is_action_pressed("player_jump")) ):
 		DoJump()
 	#Cancel jump
 	if(velocity.y < 0 && !Input.is_action_pressed("player_jump")):
-		velocity.y += JumpCancelAcc
+		velocity.y += JumpCancelAcc * GravityDirection
 	
 	if(Input.is_action_pressed("player_jump")): PreJumpTime.start()
 	
@@ -346,14 +363,14 @@ func DoJump() -> void:
 	if(Sliding != Sides.NONE):
 		Sliding = Sides.UP
 		Speed.x = Acc.x*2 if LastDirection >= 0 else Acc.x*-2
-	velocity.y = jump_velocity
+	velocity.y = jump_velocity * GravityDirection
 	Controller_Vibrate_Player_Movement(0.2)
 	_play_sound(AudioJump, false)
 	#region WallJump case
 	if(WallJump || !PreWallJumpTimer.is_stopped()):
 		Speed.x = WallJumpVelocity*-1 if WallJumpPreviousSide == Sides.RIGHT else WallJumpVelocity
 		PreWallJumpTimer.stop()
-		velocity.y -= 50
+		velocity.y -= 50 * GravityDirection
 	#endregion
 
 #region Horizontal movement
@@ -381,8 +398,8 @@ func _physics_h_movement(delta: float) -> void:
 func _physics_slide_and_groundsmash(delta: float) -> void:
 	if((Input.is_action_pressed("player_slide") || PressingGroundSmash)):
 		#Groundsmash
-		if(!is_on_floor() && !Slide && (Sliding != Sides.UP) ):# || velocity.y < jump_height+10)):
-			velocity.y = SlideVelocity
+		if(!_is_on_floor() && !Slide && (Sliding != Sides.UP) ):# || velocity.y < jump_height+10)):
+			velocity.y = SlideVelocity * GravityDirection
 			GroundSmash = true
 			PressingGroundSmash = true
 			set_collision_mask_value(4, false)
@@ -411,7 +428,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 		#strech_size(1, 1)
 	if(!Slide): set_collision_mask_value(3, true)
 	if(!GroundSmash): set_collision_mask_value(4, true)
-	if(!Input.is_action_pressed("player_slide") && is_on_floor() ):
+	if(!Input.is_action_pressed("player_slide") && _is_on_floor() ):
 		PressingGroundSmash = false
 	
 	#endregion
@@ -426,6 +443,9 @@ func _physics_dash(delta: float) -> void:
 		strech_size(2, 0.5)
 		DashTime.start()
 		DashMove = DashAcc * LastDirection
+		#Cancel groundsmash:
+		GroundSmash = false
+		PressingGroundSmash = false
 		Controller_Vibrate_Player_Movement(0.7)
 	#Dash movement
 	if(DashTime.is_stopped()):
@@ -434,7 +454,7 @@ func _physics_dash(delta: float) -> void:
 		if(DashMove.y > 250): DashMove.y -= Acc.y * LastDirection
 		else: DashMove.y = 0
 	#When dashing suspend in air
-	else: velocity.y = 0
+	else: velocity.y = 0 * GravityDirection
 #endregion
 
 #region WallJump
@@ -443,8 +463,8 @@ func _physics_walljump(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if(is_near_wall() && direction):
 		Dashed = false
-		velocity.y += 50*delta
-		if(!WallJump): velocity.y = 50
+		velocity.y += 50* delta * GravityDirection
+		if(!WallJump): velocity.y = 50 * GravityDirection
 		WallJump = true
 		if(direction > 0):
 			WallJumpSide = Sides.RIGHT
@@ -471,12 +491,12 @@ func Controller_Vibrate_Player_Movement(Force):
 @onready var original_scale = Sprite.scale
 func strech_size(X, Y):
 	if(juice):
-		Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
+		Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y*GravityDirection)
 
 func _strech_tick(delta : float):
 	if(juice):
 		Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 20 * delta
-		Sprite.scale.y += (original_scale.y - Sprite.scale.y) * 20 * delta
+		Sprite.scale.y += ((original_scale.y*GravityDirection) - Sprite.scale.y) * 20 * delta
 #endregion
 
 #region FrameFreeze
@@ -496,7 +516,7 @@ func get_gravity_player() -> float:
 
 #region Death
 func On_Death():
-	if(is_on_floor()): ParticlesDeathFloor.emitting = true
+	if(_is_on_floor()): ParticlesDeathFloor.emitting = true
 	else: ParticlesDeathAir.emitting = true
 	Sprite.hide()
 	Physics = false
@@ -510,6 +530,12 @@ func On_Death():
 		if get_tree():
 			get_tree().reload_current_scene()
 #endregion
+
+func _is_on_floor() -> bool:
+	if(GravityDirection == 1):
+		return is_on_floor()
+	else:
+		return is_on_ceiling()
 
 #region Wall Checker
 func is_near_wall() -> bool:

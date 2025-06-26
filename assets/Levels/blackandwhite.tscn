@@ -22,4 +22,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.344427, 0.390865, 0.392157)
+color = Color(0.0807833, 0.0807833, 0.0807833, 0.286275)

@@ -22,6 +22,7 @@ GlobalSignal="*res://assets/global_signal/global_signal.gd"
 SaveGame="*res://assets/Levels/Scripts/save_game.gd"
 SongPlayer="*res://assets/Levels/SongPlayer.tscn.tscn"
 Edition="*res://assets/Levels/Scripts/game_editions.gd"
+Global="*res://assets/Levels/Scripts/global_variables.gd"
 
 [display]
 

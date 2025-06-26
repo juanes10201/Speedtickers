@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://4hd3l1agtrq0"]
+[gd_scene load_steps=15 format=4 uid="uid://b0h3fvcv7v3jo"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_dy35w"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_lp5kr"]
-[ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_j2o54"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="4_wwruj"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="5_erakm"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="6_7i4ra"]
@@ -10,10 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="8_nwssj"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="9_tugpc"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="10_qllg7"]
+[ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Levels/orb.tscn" id="11_dq3tq"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="11_flumr"]
-[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="12_7aqxt"]
-[ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Levels/key.tscn" id="13_e2h04"]
-[ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Levels/kill_box_blue.tscn" id="14_fdikx"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -52,60 +49,6 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
-[sub_resource type="Animation" id="Animation_timnu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-755, -863)]
-}
-
-[sub_resource type="Animation" id="Animation_y3i1q"]
-resource_name = "move"
-length = 40.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 19.9667, 39.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
-}
-
-[sub_resource type="Animation" id="Animation_b10uo"]
-resource_name = "move2"
-length = 40.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 20.0333, 39.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-493, -367), Vector2(-755, -863), Vector2(-493, -367)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_klj0i"]
-_data = {
-&"RESET": SubResource("Animation_timnu"),
-&"move": SubResource("Animation_y3i1q"),
-&"move2": SubResource("Animation_b10uo")
-}
-
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
 
@@ -113,11 +56,10 @@ position = Vector2(0, -1)
 visible = false
 texture_repeat = 2
 position = Vector2(-755, -863)
-scale = Vector2(1.00384, 1)
 texture = ExtResource("1_dy35w")
 centered = false
 region_enabled = true
-region_rect = Rect2(0.078, 0.149, 1376.72, 1506.27)
+region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
 script = ExtResource("2_lp5kr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
@@ -125,146 +67,70 @@ libraries = {
 &"": SubResource("AnimationLibrary_0i2pc")
 }
 
-[node name="Bg2" type="Sprite2D" parent="."]
-visible = false
-texture_repeat = 2
-position = Vector2(-755, -863)
-scale = Vector2(1.00769, 1)
-texture = ExtResource("3_j2o54")
-centered = false
-region_enabled = true
-region_rect = Rect2(0.078, 0.149, 1200, 1762.79)
-script = ExtResource("2_lp5kr")
-PlayAnimation = "move2"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg2"]
-libraries = {
-&"": SubResource("AnimationLibrary_klj0i")
-}
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(242, 108)
-scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AADv/wAAAAADAAAAAADv/wEAAAADAAEAAADv/wIAAAADAAEAAADv/wMAAAADAAEAAADv/wQAAAADAAIAAADx/0IAAAAAAAAAAADx/0MAAAAAAAIAAADy/0IAAAABAAAAAADy/0MAAAABAAIAAADz/0IAAAABAAAAAADz/0MAAAABAAIAAAD0/0IAAAACAAAAAAD0/0MAAAACAAIAAAA=")
-tile_set = ExtResource("4_wwruj")
-
-[node name="Time_Left" type="Timer" parent="."]
-wait_time = 12.0
-one_shot = true
-autostart = true
-
-[node name="CanvasLayer" parent="." instance=ExtResource("5_erakm")]
-
-[node name="Flag" parent="." instance=ExtResource("6_7i4ra")]
-position = Vector2(34, 1144)
-level_to_change = "end"
-current_level = 40.0
-
-[node name="WorldEnvironment" parent="." instance=ExtResource("7_73f1d")]
-
-[node name="KillBox" parent="." instance=ExtResource("8_nwssj")]
-position = Vector2(46, 1219)
-scale = Vector2(99.32, 1)
-Visible = false
-CanChange = false
-
 [node name="Player" parent="." instance=ExtResource("9_tugpc")]
-position = Vector2(-23, 103)
-floor_stop_on_slope = false
-floor_max_angle = 1.39626
+position = Vector2(-319, -22)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-0.303314, -9.06197)
-offset = Vector2(0, -11.99)
+position = Vector2(30, 26.053)
 zoom = Vector2(2.08, 2.08)
-limit_left = -132
-limit_top = 61
-limit_right = 475
+limit_left = -403
+limit_right = 338
+limit_bottom = 153
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("10_qllg7")
 
+[node name="Time_Left" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="Flag" parent="." instance=ExtResource("6_7i4ra")]
+position = Vector2(116, -165)
+level_to_change = "level41"
+current_level = 40
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-4, 32)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//f/AAAAAAEAAADo//j/AAAAAAEAAADo//n/AAAAAAEAAADo//r/AAAAAAEAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//f/AAACAAEAAADp//j/AAACAAEAAADp//n/AAACAAEAAADp//r/AAACAAEAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAADo//b/AAAAAAEAAADp//b/AAACAAEAAADo//P/AAAAAAAAAADo//T/AAAAAAEAAADo//X/AAAAAAEAAADp//P/AAABAAAAAADp//T/AAAFAAMAAADp//X/AAACAAEAAADq//P/AAABAAAAAADq//T/AAABAAIAAADr//P/AAABAAAAAADr//T/AAABAAIAAADs//P/AAABAAAAAADs//T/AAABAAIAAADt//P/AAABAAAAAADt//T/AAABAAIAAADu//P/AAABAAAAAADu//T/AAABAAIAAADv//P/AAABAAAAAADv//T/AAABAAIAAADw//P/AAABAAAAAADw//T/AAABAAIAAADx//P/AAABAAAAAADx//T/AAABAAIAAADy//P/AAABAAAAAADy//T/AAABAAIAAADz//P/AAABAAAAAADz//T/AAABAAIAAAD0//P/AAABAAAAAAD0//T/AAABAAIAAAD1//P/AAABAAAAAAD1//T/AAABAAIAAAD2//P/AAABAAAAAAD2//T/AAABAAIAAAD3//P/AAABAAAAAAD3//T/AAABAAIAAAD4//P/AAABAAAAAAD4//T/AAABAAIAAAD5//P/AAABAAAAAAD5//T/AAABAAIAAAD6//P/AAABAAAAAAD6//T/AAABAAIAAAD7//P/AAABAAAAAAD7//T/AAABAAIAAAD8//P/AAABAAAAAAD8//T/AAABAAIAAAD9//P/AAACAAAAAAD9//T/AAACAAIAAAAFAPX/AAAAAAAAAAAGAPX/AAABAAAAAAAHAPX/AAABAAAAAAAIAPX/AAABAAAAAAAJAPX/AAABAAAAAAAFAPr/AAAAAAEAAAAFAPv/AAAAAAIAAAAGAPv/AAABAAIAAAAHAPv/AAABAAIAAAAIAPv/AAABAAIAAAAJAPv/AAABAAIAAAAGAPr/AAABAAEAAAAHAPr/AAABAAEAAAAIAPr/AAABAAEAAAAJAPr/AAABAAEAAAAFAPn/AAAAAAEAAAAGAPn/AAABAAEAAAAHAPn/AAABAAEAAAAIAPn/AAABAAEAAAAJAPn/AAABAAEAAAAFAPf/AAAAAAEAAAAGAPf/AAABAAEAAAAHAPf/AAABAAEAAAAIAPf/AAABAAEAAAAJAPf/AAABAAEAAAAFAPj/AAAAAAEAAAAGAPj/AAABAAEAAAAHAPj/AAABAAEAAAAIAPj/AAABAAEAAAAJAPj/AAABAAEAAAAFAPb/AAAAAAEAAAAGAPb/AAABAAEAAAAHAPb/AAABAAEAAAAIAPb/AAABAAEAAAAJAPb/AAABAAEAAAA=")
+tile_set = ExtResource("4_wwruj")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("7_73f1d")]
+
+[node name="KillBox" parent="." instance=ExtResource("8_nwssj")]
+position = Vector2(-196, 144)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="KillBox6" parent="." instance=ExtResource("8_nwssj")]
+position = Vector2(-204, -274)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_erakm")]
+
 [node name="AmbientParticles" parent="." instance=ExtResource("11_flumr")]
-position = Vector2(9, 108)
+position = Vector2(-62, -231)
 
-[node name="falling_sand10" parent="." instance=ExtResource("12_7aqxt")]
-position = Vector2(-23, 197)
-collision_mask = 31
-MAX_SPEED = 70.0
-
-[node name="falling_sand11" parent="." instance=ExtResource("12_7aqxt")]
-position = Vector2(-23, 213)
-collision_mask = 31
-MAX_SPEED = 70.0
-
-[node name="falling_sand12" parent="." instance=ExtResource("12_7aqxt")]
-position = Vector2(-23, 229)
-collision_mask = 31
-MAX_SPEED = 70.0
-
-[node name="falling_sand13" parent="." instance=ExtResource("12_7aqxt")]
-position = Vector2(101, 533)
-collision_mask = 31
-MAX_SPEED = 70.0
-
-[node name="falling_sand14" parent="." instance=ExtResource("12_7aqxt")]
-position = Vector2(101, 549)
-collision_mask = 31
-MAX_SPEED = 70.0
-
-[node name="falling_sand15" parent="." instance=ExtResource("12_7aqxt")]
-position = Vector2(101, 565)
-collision_mask = 31
-MAX_SPEED = 70.0
-
-[node name="Key3" parent="." instance=ExtResource("13_e2h04")]
-position = Vector2(79, 545)
-AditionalAction = 1
-
-[node name="Key4" parent="." instance=ExtResource("13_e2h04")]
-position = Vector2(0, 1020)
-AditionalAction = 1
+[node name="KillBox2" parent="." instance=ExtResource("8_nwssj")]
+position = Vector2(-158, -84)
+scale = Vector2(2, 7)
 
 [node name="KillBox3" parent="." instance=ExtResource("8_nwssj")]
-position = Vector2(-9, 356)
-scale = Vector2(6, 1)
+position = Vector2(-158, 80.215)
+scale = Vector2(2, 7)
 
 [node name="KillBox4" parent="." instance=ExtResource("8_nwssj")]
-position = Vector2(75, 487)
-scale = Vector2(7, 1)
+position = Vector2(-6, -151.63)
+scale = Vector2(2, 3)
 
-[node name="KillBox7" parent="." instance=ExtResource("8_nwssj")]
-position = Vector2(34, 620)
-scale = Vector2(13, 2)
+[node name="KillBox5" parent="." instance=ExtResource("8_nwssj")]
+position = Vector2(-6, 87.12)
+scale = Vector2(2, 20)
 
-[node name="KillBox5" parent="." instance=ExtResource("14_fdikx")]
-position = Vector2(36, 1071)
-scale = Vector2(13.87, 2)
+[node name="Key3" parent="." instance=ExtResource("11_dq3tq")]
+position = Vector2(-159, -2)
 
-[node name="KillBox6" parent="." instance=ExtResource("14_fdikx")]
-position = Vector2(2, 818)
-scale = Vector2(5, 1)
-
-[node name="KillBox10" parent="." instance=ExtResource("14_fdikx")]
-position = Vector2(-46, 255)
-scale = Vector2(1, 100)
-
-[node name="KillBox11" parent="." instance=ExtResource("14_fdikx")]
-position = Vector2(119, 255)
-scale = Vector2(1, 100)
-
-[node name="KillBox8" parent="." instance=ExtResource("14_fdikx")]
-position = Vector2(63, 943)
-scale = Vector2(6, 1)
-
-[node name="KillBox9" parent="." instance=ExtResource("14_fdikx")]
-position = Vector2(71, 676)
-scale = Vector2(5, 1)
-
-[node name="KillBox12" parent="." instance=ExtResource("8_nwssj")]
-position = Vector2(-65, 254)
-scale = Vector2(1, 100)
-
-[node name="KillBox13" parent="." instance=ExtResource("8_nwssj")]
-position = Vector2(139, 255)
-scale = Vector2(1, 100)
+[node name="Key4" parent="." instance=ExtResource("11_dq3tq")]
+position = Vector2(-7, -100)

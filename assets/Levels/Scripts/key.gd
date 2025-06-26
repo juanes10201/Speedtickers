@@ -6,9 +6,21 @@ extends Area2D
 @onready var Sprite = $"AnimatedSprite2D"
 @onready var Light = $"PointLight2D"
 
+@onready var TimerRespawn = $"TimerRespawn"
+
+@export var Respawn : bool = false
+@export var RespawnTime : float = 1.0
+
+@export var TakeKey : bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimatedSprite2D.play("default")
+	if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+		$AnimatedSprite2D.play("orb")
+	else:
+		$AnimatedSprite2D.play("default")
+	if(TimerRespawn):
+		TimerRespawn.wait_time = RespawnTime
 
 var editable = preload("res://assets/Levels/Scripts/default_object.gd").new()
 var Hovering : bool = false
@@ -35,25 +47,42 @@ func _process(delta: float) -> void:
 		self.position.x = (floor(self.position.x/grab_grid)*grab_grid)+16.0
 		self.position.y = (floor(self.position.y/grab_grid)*grab_grid)+10.0
 	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor):
-		set_key_state(false)
+		set_key_state(false, false)
+	elif(Respawn):
+		if(done):
+			Sprite.self_modulate.a = lerpf(Sprite.self_modulate.a, 0.6, 15*delta)
+		else:
+			Sprite.self_modulate.a = lerpf(Sprite.self_modulate.a, 1, 5*delta)
+			if($AnimatedSprite2D.animation == "get_orb"):
+				$AnimatedSprite2D.play("respawn_orb")
+			elif(!$AnimatedSprite2D.is_playing()):
+				$AnimatedSprite2D.play("orb")
 
 func _on_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Player") && Player):
-		set_key_state(true)
+	if(body.is_in_group("Player") && Player && !done):
+		set_key_state(true, true)
 
-func set_key_state(state : bool):
-	Sprite.visible = !state
-	Light.enabled = !state
-	Player.HaveKey = state
-	if(state && !done):
+func set_key_state(state : bool, PlayAction : bool):
+	if(!Respawn):
+		Sprite.visible = !state
+	elif(state):
+		Sprite.self_modulate.a = 0.3
+	if(Light): Light.enabled = !state
+	if(TakeKey):
+		Player.HaveKey = state
+	if(PlayAction):
 		done = true
-		Player._play_sound(Player.AudioSwitch, false)
-		if(AditionalAction == Global.OBJECT_ACTIONS.switch_killbox_type):
-			if(Player.EnabledKillBox == Global.KillBoxTypes.Red):
-				Player.EnabledKillBox = Global.KillBoxTypes.Blue
-			else:
-				Player.EnabledKillBox = Global.KillBoxTypes.Red
-		elif(AditionalAction == Global.OBJECT_ACTIONS.MoveLava):
-			Player.MoveLava = true
-		else:
+		if(AditionalAction != Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+			Player._play_sound(Player.AudioSwitch, false)
+		if(AditionalAction == Global.OBJECT_ACTIONS.none):
 			Player._play_sound(Player.AudioKey, false)
+		if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+			$AnimatedSprite2D.play("get_orb")
+		if(Respawn):
+			TimerRespawn.start() 
+		Global.Play_Global_Action(AditionalAction)
+
+
+func _on_timer_respawn_timeout() -> void:
+	done = false
+	set_key_state(false, false)

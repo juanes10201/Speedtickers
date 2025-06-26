@@ -9,6 +9,7 @@ var was_falling : bool = is_falling
 
 var is_playing : bool = false
 
+var GravityDirection : float = 1
 
 @onready var SandTimer = $SandTimer
 
@@ -26,6 +27,7 @@ var editable = preload("res://assets/Levels/Scripts/default_object.gd").new()
 var Hovering : bool = false
 var StatePlaying : bool = false
 @export var CanHover : bool = false
+@onready var Player = SaveGame.get_player()
 
 func _input(event):
 	if(Edition.Is_in_editor && CanHover):
@@ -70,13 +72,14 @@ func _integrate_forces(state):
 	var velocity = state.linear_velocity
 	var speed = velocity.length()
 	
-	if (speed > MAX_SPEED):
-		state.linear_velocity = velocity.normalized() * MAX_SPEED
+	if (speed > MAX_SPEED):#*GravityDirection):
+		state.linear_velocity = abs(velocity.normalized()) * MAX_SPEED#*GravityDirection
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player") || body.is_in_group("Enemies")):
 		if (body.is_in_group("Player")):
+			GravityDirection = Player.GravityDirection
 			body.OnSand = true
 			if(!body.GroundSmash):
 				await get_tree().create_timer(wait_time).timeout
