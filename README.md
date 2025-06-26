@@ -1,9 +1,9 @@
 # SPEEDTICKERS
-[SPEEDTICKERS logo](./md_images/logo.GIF)
+![SPEEDTICKERS logo](./md_images/logo.GIF)
 
 [![See the game on itch.io](./md_images/itch.png)](https://juanes10201.itch.io/speedtickers)
 
-[SPEEDTICKERS logo](./md_images/gameplay1.GIF)
+![SPEEDTICKERS logo](./md_images/gameplay1.GIF)
 Speedtickers is a fast paced speedrun centered 2d platformer game that uses the momentum based physics and fast movement from Ultrakill.
 
 Original prototype submited for [Hackclub Juice Gamejam](https://github.com/hackclub/juice), with special mentions from Santa Fe Argentinian province, and nominated with Hackclub White Rabbit.
