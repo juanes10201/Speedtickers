@@ -1,6 +1,11 @@
 extends CharacterBody2D
 
 #region Setup variables
+@export_group("Custom")
+@export var enemy_type : float = 0
+@export var EnemyDirection : Directions = Directions.RIGHT
+@export var distance : float = 100
+@export_group("Physics")
 @export var Enemy_burst_speed : float = 300.0
 @export var SPEED : float = 150.0
 @export var JUMP_VELOCITY : float = -370.0
@@ -10,8 +15,7 @@ extends CharacterBody2D
 @export var Cancel_speed : float = 200.0
 @export var Max_groundsmash_distance = 300.0
 @export var Can_BeGroundSmash : bool = true
-
-@export var GravityDirection = Global.GravityDirections.MAIN
+@export var GravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
 
 #For editor
 enum Directions{
@@ -20,9 +24,8 @@ enum Directions{
 	NONE
 }
 
-@export var EnemyDirection = Directions.RIGHT
-@export var distance : float = 100
-@export var enemy_type : float = 0
+
+
 
 var OriginalX : float = position.x
 
@@ -30,22 +33,22 @@ var Move : bool = true
 
 var direction = 0 
 
-@onready var Player = $"../Player"
-@onready var MoveTimer = $"MoveTimer"
-@onready var Sprite = $"Sprite2D"
+@onready var Player : ClassPlayer = SaveGame.get_player()
+@onready var MoveTimer : Timer = $"MoveTimer"
+@onready var Sprite : AnimatedSprite2D = $"Sprite2D"
 
-@onready var MoveSound = Player.AudioSlimeMove if Player else null
-@onready var SlideSound = Player.AudioSlimeKill if Player else null
-@onready var AudioMove = Player.AudioSlimeMove if Player else null
-@onready var AudioGroundsmash = Player.AudioSlimeGroundsmash if Player else null
+@onready var MoveSound : AudioStreamPlayer = Player.AudioSlimeMove if Player else null
+@onready var SlideSound : AudioStreamPlayer = Player.AudioSlimeKill if Player else null
+@onready var AudioMove : AudioStreamPlayer = Player.AudioSlimeMove if Player else null
+@onready var AudioGroundsmash : AudioStreamPlayer = Player.AudioSlimeGroundsmash if Player else null
 
-@onready var ShootBulletTimer = $ShootBulletTimer
+@onready var ShootBulletTimer : Timer = $ShootBulletTimer
 
 @onready var BulletObject = preload("res://assets/Levels/bullets.tscn")# if enemy_type == 2 else null
 
 @export var TimeToShoot : float = 1.0
 
-@export var Enabled = true
+@export var Enabled : bool = true
 
 var OriginalPos = Vector2(0, 0)
 

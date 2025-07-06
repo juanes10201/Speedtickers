@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name ClassPlayer
 
 func enemy_jump():
 	pass
@@ -24,92 +25,96 @@ var WallJump : bool = false
 var WallJumpSide: Sides = Sides.NONE
 var WallJumpPreviousSide : Sides = Sides.NONE
 
-var Speed = Vector2(10, 1)
-var Acc = Vector2(500, 1)
-var MaxAcc = Vector2(12000, 400)
+var Speed : Vector2 = Vector2(10, 1)
+var Acc : Vector2 = Vector2(500, 1)
+var MaxAcc : Vector2 = Vector2(12000, 400)
 
 var Dashed : bool = false
-var DashAcc = Vector2(600, 400)
-var DashMove = Vector2(0, 0) 
+var DashAcc : Vector2 = Vector2(600, 400)
+var DashMove : Vector2 = Vector2(0, 0) 
 
 var HaveKey : bool = false
 
-#@export var JUMP_VELOCITY = -350.0
-@export var WallJumpVelocity : float = 7000.0
-
-@export var JumpCancelAcc : float = 25.0
-@export var GroundSmashAcc : float = 25000.0
-
-@export var TimeDeath : float = 1.5
+#region Export variables
+@export var juice : bool = true
+@export_group("Physics")
 @export var Physics : bool = true
-var EnemiesPhysics : bool = true
+
+@export_subgroup("Jump")
+@export_range(0, 7000.0, .5, "or_greater", "or_less") var WallJumpVelocity : float = 7000.0
+@export_range(0, 100, .5, "or_greater", "or_less") var jump_height : float = 70.0
+@export_range(0, 1.0, .25, "or_greater", "or_less") var jump_time_to_peak : float = 0.5
+@export_range(0, 1.0, .25, "or_greater", "or_less") var jump_time_to_descent : float = 0.4
+
+@export_subgroup("Groundsmash || Slide")
+@export var SlideVelocity = 600
+@export_range(0, 25000.0, .5, "or_greater", "or_less") var GroundSmashAcc : float = 25000.0
+@export_range(0, 25.0, .5, "or_greater", "or_less") var JumpCancelAcc : float = 25.0
+
+@export_subgroup("Death")
+@export_range(0, 1.5, .25, "or_greater", "or_less") var TimeDeath : float = 1.5
+
+@export_group("Level")
+@export var PlayedBefore : bool = true
+@export var EnemiesPhysics : bool = true
+
+@export_group("Music")
+@export var PlayMusic : bool = true
+#endregion
+
 var Paused : bool = false
+
 @onready var ReturnToGameTime = $ReturnToGameTime
 
-@export var PlayMusic : bool = true
 
 var LastDirection : float = 0
 var direction := Input.get_axis("ui_left", "ui_right")
 
-@export var SlideVelocity = 600
-
-@onready var DashTime = $DashTime
-@onready var PreJumpTime = $PreJumpTime
-@onready var CoyoteTimer = $CoyoteTimer
-@onready var Sprite = $Sprite2D
-@onready var EnemyGroundSlamTimer = $EnemyGroundSlamTimer
-@onready var PreWallJumpTimer = $PreWallJumpTimer
-@onready var Camera = $Camera2D
-@onready var ParticlesLanding = $ParticlesLanding
-@onready var ParticlesSlide = $ParticlesSlide
-@onready var ParticlesJump = $ParticlesJump
-@onready var ParticlesDeathFloor = $ParticlesDeathFloor
-@onready var ParticlesDeathAir = $ParticlesDeathAir
+@onready var DashTime : Timer = $DashTime
+@onready var PreJumpTime : Timer = $PreJumpTime
+@onready var CoyoteTimer : Timer = $CoyoteTimer
+@onready var Sprite : AnimatedSprite2D = $Sprite2D
+@onready var EnemyGroundSlamTimer : Timer = $EnemyGroundSlamTimer
+@onready var PreWallJumpTimer : Timer = $PreWallJumpTimer
+@onready var Camera : Camera2D = $Camera2D
+@onready var ParticlesLanding : AnimatedSprite2D = $ParticlesLanding
+@onready var ParticlesSlide : GPUParticles2D = $ParticlesSlide
+@onready var ParticlesJump : GPUParticles2D = $ParticlesJump
+@onready var ParticlesDeathFloor : GPUParticles2D = $ParticlesDeathFloor
+@onready var ParticlesDeathAir : GPUParticles2D = $ParticlesDeathAir
 @onready var SlidingOnRamp : bool = false
 
-@onready var AudioDash = $AudioDash
-@onready var AudioWalk = $AudioWalk
-@onready var AudioSlide = $AudioSlide
-@onready var AudioGroundsmash = $AudioGroundsmash
-@onready var AudioWind = $AudioWind
-@onready var AudioJump = $AudioJump
-@onready var AudioWalkSand = $AudioWalkSand
-@onready var AudioSwitch = $AudioSwitch
-@onready var AudioKey = $AudioKey
-@onready var AudioDeath = SongPlayer.AudioDeath
-@onready var AudioOrbGravity = $AudioOrbGravity
+@onready var AudioDash : AudioStreamPlayer = $AudioDash
+@onready var AudioWalk : AudioStreamPlayer = $AudioWalk
+@onready var AudioSlide : AudioStreamPlayer = $AudioSlide
+@onready var AudioGroundsmash : AudioStreamPlayer = $AudioGroundsmash
+@onready var AudioWind : AudioStreamPlayer = $AudioWind
+@onready var AudioJump : AudioStreamPlayer = $AudioJump
+@onready var AudioWalkSand : AudioStreamPlayer = $AudioWalkSand
+@onready var AudioSwitch : AudioStreamPlayer = $AudioSwitch
+@onready var AudioKey : AudioStreamPlayer = $AudioKey
+@onready var AudioDeath : AudioStreamPlayer = SongPlayer.AudioDeath
+@onready var AudioOrbGravity : AudioStreamPlayer = $AudioOrbGravity
 
-@onready var AudioSlimeKill = $AudioSlimeGroundsmash #AudioSlimeKill
-@onready var AudioSlimeMove = $AudioSlimeMove
-@onready var AudioSlimeGroundsmash = $AudioSlimeGroundsmash
+@onready var AudioSlimeKill : AudioStreamPlayer = $AudioSlimeGroundsmash #AudioSlimeKill
+@onready var AudioSlimeMove : AudioStreamPlayer = $AudioSlimeMove
+@onready var AudioSlimeGroundsmash : AudioStreamPlayer = $AudioSlimeGroundsmash
 
-@onready var TransitionOut = $"../CanvasLayer/TransitionOut"
-@onready var TransitionIn = $"../CanvasLayer/TransitionIn"
-
-@export var jump_height : float
-@export var jump_time_to_peak : float
-@export var jump_time_to_descent : float
+@onready var TransitionOut : Node2D = $"../CanvasLayer/TransitionOut"
+@onready var TransitionIn : Node2D = $"../CanvasLayer/TransitionIn"
 
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
-@onready var UI = $"../CanvasLayer/"
-
-@export var juice : bool = true
+@onready var UI : CanvasLayer = $"../CanvasLayer/"
 
 var Pause_fadeout : bool = false
-
 var OnSand : bool = false
-
 var was_on_floor : bool = true
-
 var Dead : bool = false
 
-
-var EnabledKillBox = Global.KillBoxTypes.Red
-
-@export var PlayedBefore : bool = true
+var EnabledKillBox : Global.KillBoxTypes = Global.KillBoxTypes.Red
 
 @onready var OriginalPos : Vector2 = self.position
 
@@ -301,7 +306,7 @@ func _spawn_pause_menu() -> void:
 		UI.add_child(pause_menu_instance)
 #endregion
 
-# region Gravity
+#region Gravity
 func _physics_apply_gravity(delta: float) -> void:
 	if (!_is_on_floor()):
 		if(was_on_floor): CoyoteTimer.start()

@@ -2,7 +2,7 @@ extends Node
 
 
 @onready var PlaytimeText = $PlaytimeText
-@onready var PlaytimeTimer = $PlaytimeTimer
+@onready var PlaytimeTimer : Timer = $PlaytimeTimer
 
 var time : float = 99
 

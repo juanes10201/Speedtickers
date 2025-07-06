@@ -123,8 +123,8 @@ SPEED = 100.0
 
 [node name="Enemie2" parent="." instance=ExtResource("4_inole")]
 position = Vector2(-157, -26)
-SPEED = 130.0
 EnemyDirection = 1
+SPEED = 130.0
 
 [node name="Enemie3" parent="." instance=ExtResource("4_inole")]
 position = Vector2(-12, -26)
@@ -140,8 +140,8 @@ current_level = 1
 
 [node name="Enemie5" parent="." instance=ExtResource("4_inole")]
 position = Vector2(-173, -26)
-SPEED = 130.0
 EnemyDirection = 1
+SPEED = 130.0
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("8_clwlp")]
 

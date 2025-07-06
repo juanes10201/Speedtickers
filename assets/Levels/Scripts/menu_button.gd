@@ -3,13 +3,13 @@ extends Button
 @export var BUTTON_ACTION = Global.BUTTON_ACTIONS.none
 @export var ADITIONAL_ARGUMENT : String = ""
 
-@export var HoverDif = 30
-@export var PressedDif = -20
+@export var HoverDif : float = 30
+@export var PressedDif : float = -20
 
-@onready var original_size = self.size
+@onready var original_size : Vector2 = self.size
 @onready var ControlNode = $"../../pause_menu"
 @onready var SelectedSprite = $SelectedSprite
-@onready var Player = SaveGame.get_player()
+@onready var Player : ClassPlayer = SaveGame.get_player()
 @export var IsPixelartButton : bool = false
 
 @export var FadeTransition : bool = false
@@ -43,6 +43,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#region Press Controller
+	if(Input.is_action_just_pressed("ui_click_controller") &&  has_focus()):
+		_on_pressed()
+	#endregion
 	#region Button anims
 	if(!PressedAnim):
 		var Mouse_pos = get_global_mouse_position()

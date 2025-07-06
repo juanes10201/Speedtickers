@@ -1,12 +1,12 @@
 extends Area2D
 
-@onready var Player = $"../Player"
+@onready var Player : ClassPlayer = $"../Player"
 @export var AditionalAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
 
-@onready var Sprite = $"AnimatedSprite2D"
-@onready var Light = $"PointLight2D"
+@onready var Sprite : AnimatedSprite2D = $"AnimatedSprite2D"
+@onready var Light : PointLight2D = $"PointLight2D"
 
-@onready var TimerRespawn = $"TimerRespawn"
+@onready var TimerRespawn : Timer = $"TimerRespawn"
 
 @export var Respawn : bool = false
 @export var RespawnTime : float = 1.0

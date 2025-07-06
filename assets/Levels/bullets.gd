@@ -1,8 +1,8 @@
 extends Sprite2D
 
-@onready var Player = $"../../Player"
-@onready var PosGoto = Player.position
-@onready var DeathTimer = $DeathTimer
+@onready var Player : ClassPlayer = $"../../Player"
+@onready var PosGoto : Vector2 = Player.position
+@onready var DeathTimer : Timer = $DeathTimer
 var tween = null
 var CanDie : bool = false
 

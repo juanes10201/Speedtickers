@@ -333,9 +333,6 @@ collision_layer = 13
 collision_mask = 25
 script = ExtResource("1_uhpgg")
 TimeDeath = 0.4
-jump_height = 70.0
-jump_time_to_peak = 0.5
-jump_time_to_descent = 0.4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0.00900006, -6.79026)
