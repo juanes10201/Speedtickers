@@ -172,11 +172,9 @@ one_shot = true
 autostart = true
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_51c2l")]
-visible = false
 
 [node name="Flag" parent="." instance=ExtResource("8_cmhk3")]
 position = Vector2(-255, -242)
-level_to_change = "level22"
 current_level = 21.0
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("9_3xpfh")]

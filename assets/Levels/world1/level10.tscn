@@ -94,56 +94,51 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("5_k0xas")]
 position = Vector2(-371, 48)
-level_to_change = "level11"
 current_level = 10.0
 
 [node name="Enemie8" parent="." instance=ExtResource("6_3uh0q")]
 position = Vector2(-79, -58)
-Max_groundsmash_distance = 300.0
 EnemyDirection = 1
+Max_groundsmash_distance = 300.0
 
 [node name="Enemie13" parent="." instance=ExtResource("6_3uh0q")]
 position = Vector2(-58, -58)
 EnemyDirection = 1
 
-[node name="Enemie9" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(198, 71)
-EnemyDirection = 1
-
-[node name="Enemie14" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(9, 69)
-EnemyDirection = 1
-
-[node name="Enemie10" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(70, 70)
-EnemyDirection = 1
-
-[node name="Enemie15" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(137, 70)
-EnemyDirection = 1
-
-[node name="Enemie11" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(-62, 68)
-EnemyDirection = 1
-
 [node name="Enemie18" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(-320, 65)
+position = Vector2(-315, 72)
 EnemyDirection = 1
 
 [node name="Enemie16" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(-251, 66)
-EnemyDirection = 1
-
-[node name="Enemie12" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(-190, 67)
-EnemyDirection = 1
-
-[node name="Enemie17" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(-123, 67)
+position = Vector2(-243, 72)
 EnemyDirection = 1
 
 [node name="Enemie19" parent="." instance=ExtResource("6_3uh0q")]
-position = Vector2(272, 70)
+position = Vector2(-177, 72)
+EnemyDirection = 1
+
+[node name="Enemie17" parent="." instance=ExtResource("6_3uh0q")]
+position = Vector2(-105, 72)
+EnemyDirection = 1
+
+[node name="Enemie20" parent="." instance=ExtResource("6_3uh0q")]
+position = Vector2(-42, 72)
+EnemyDirection = 1
+
+[node name="Enemie21" parent="." instance=ExtResource("6_3uh0q")]
+position = Vector2(30, 72)
+EnemyDirection = 1
+
+[node name="Enemie22" parent="." instance=ExtResource("6_3uh0q")]
+position = Vector2(95, 72)
+EnemyDirection = 1
+
+[node name="Enemie23" parent="." instance=ExtResource("6_3uh0q")]
+position = Vector2(167, 72)
+EnemyDirection = 1
+
+[node name="Enemie24" parent="." instance=ExtResource("6_3uh0q")]
+position = Vector2(238, 72)
 EnemyDirection = 1
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_morw5")]

@@ -37,6 +37,7 @@ var HaveKey : bool = false
 
 #region Export variables
 @export var juice : bool = true
+@export var CountTime : bool = true
 @export_group("Physics")
 @export var Physics : bool = true
 
@@ -109,6 +110,8 @@ var direction := Input.get_axis("ui_left", "ui_right")
 
 @onready var UI : CanvasLayer = $"../CanvasLayer/"
 
+@onready var DashParticles1 = $"DashParticles1"
+
 var Pause_fadeout : bool = false
 var OnSand : bool = false
 var was_on_floor : bool = true
@@ -120,7 +123,23 @@ var EnabledKillBox : Global.KillBoxTypes = Global.KillBoxTypes.Red
 
 var GravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
 
+var SwitchedGravity : bool = false
+var PlayedSwitchedGravityAnimation : bool = false
+
+enum AirSides{
+	Jumping = 1,
+	Falling = 2,
+	NONE = 0
+}
+
+var AirState : AirSides = AirSides.NONE
+
 #endregion
+
+func _play_dash_particles():
+	DashParticles1.emitting = true
+func _stop_dash_particles():
+	DashParticles1.emitting = false
 
 #region Debug
 func _input(event):
@@ -152,6 +171,9 @@ func _ready() -> void:
 #region Physics proccess
 func _physics_process(delta: float) -> void:
 	print(_is_on_floor())
+	if(_is_on_floor()):
+		SwitchedGravity = false
+		PlayedSwitchedGravityAnimation = false
 	#region Set direction
 	#Sprite direction
 	Sprite.flip_h = false if LastDirection >= 0 else true
@@ -159,6 +181,12 @@ func _physics_process(delta: float) -> void:
 	_pause_menu_end_tick()
 	#endregion
 	if(Physics):
+		if(velocity.y > 0):
+			AirState = AirSides.Falling
+		elif(velocity.y < 0):
+			AirState = AirSides.Jumping
+		else:
+			AirState = AirSides.NONE
 		if($"../Flag" && $"../Flag".current_level == 1):
 			Camera.offset.y = lerpf(Camera.offset.y, 23.85, 1*delta)
 		
@@ -169,12 +197,37 @@ func _physics_process(delta: float) -> void:
 		
 		if(Input.is_action_just_pressed("menu_pause")): _pause_game()
 		
-		if(GroundSmash):
-			Sprite.play("Groundsmash")
+		print(PlayedSwitchedGravityAnimation)
+		
+		if(!DashTime.is_stopped()):
+			_play_dash_particles()
+		else:
+			_stop_dash_particles()
+		
+		if(SwitchedGravity && !PlayedSwitchedGravityAnimation ):
+			if(!Sprite.is_playing() && Sprite.animation == "Switch_gravity"):
+				PlayedSwitchedGravityAnimation = true
+			Sprite.offset_play("Switch_gravity")
+		elif(!DashTime.is_stopped()):
+			Sprite.offset_play("Dash")
+		elif(WallJump):
+			Sprite.offset_play("Wall_jump")
+		elif(GroundSmash):
+			Sprite.offset_play("Groundsmash")
+		elif(AirState == AirSides.Falling):
+			if(!Sprite.animation == "Jump"):
+				Sprite.offset_play("Jump")
+		elif(AirState == AirSides.Jumping):
+			if(!Sprite.animation == "Jump_start"):
+				Sprite.offset_play("Jump_start")
 		elif(!Slide):
 			if(direction):
-				Sprite.play("Walking")
-			else: Sprite.play("Idle")
+				Sprite.offset.y = -1.605
+				Sprite.offset_play("Walking")
+			else:
+				Sprite.offset_play("Idle")
+		if(Sprite.offset.y != -0.58 && Sprite.animation != "Walking"):
+			Sprite.offset.y = -0.58
 		
 		#region Particles
 		#region Jump initial particles
@@ -314,9 +367,9 @@ func _physics_apply_gravity(delta: float) -> void:
 			velocity.y += get_gravity_player() * Acc.y * delta * GravityDirection
 			if(!WallJump):
 				if(velocity.y*GravityDirection < 0): 
-					strech_size(0.7, 1.3)
+					strech_size(0.8, 1.2, true)
 				elif(velocity.y*GravityDirection >= MaxAcc.y):
-					strech_size(0.7, 1.2)
+					strech_size(0.8, 1.2, true)
 					#_play_sound(AudioWind, false)
 		#else: velocity.y += Speed.y * delta
 	if (_is_on_floor()):
@@ -341,6 +394,7 @@ func _physics_apply_gravity(delta: float) -> void:
 #region Invert Gravity
 func _invert_gravity() -> void:
 	#DoJump()
+	SwitchedGravity = true
 	velocity.y = 100 * GravityDirection
 	GravityDirection *= -1
 	Dashed = false
@@ -369,6 +423,7 @@ func DoJump() -> void:
 		Sliding = Sides.UP
 		Speed.x = Acc.x*2 if LastDirection >= 0 else Acc.x*-2
 	velocity.y = jump_velocity * GravityDirection
+	#strech_size(1.1, 0.7, true, 70)
 	Controller_Vibrate_Player_Movement(0.2)
 	_play_sound(AudioJump, false)
 	#region WallJump case
@@ -466,7 +521,7 @@ func _physics_dash(delta: float) -> void:
 func _physics_walljump(delta: float) -> void:
 	#The idea is to mantain some vertical movement, but still be able to jump more than before, like SuperMeatBoy
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if(is_near_wall() && direction):
+	if(is_near_wall() && direction && !Slide):
 		Dashed = false
 		velocity.y += 50* delta * GravityDirection
 		if(!WallJump): velocity.y = 50 * GravityDirection
@@ -494,14 +549,17 @@ func Controller_Vibrate_Player_Movement(Force):
 
 #region Streching and scaling
 @onready var original_scale = Sprite.scale
-func strech_size(X, Y):
+var Stretch_speed : float = 20
+func strech_size(X : float, Y : float, Override : bool = true, Speed : float = 20):
+	Stretch_speed = Speed
 	if(juice):
-		Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y*GravityDirection)
+		if(Override || (Sprite.scale.x == original_scale.x && Sprite.scale.y == original_scale.y) ):
+			Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y*GravityDirection)
 
 func _strech_tick(delta : float):
 	if(juice):
-		Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 20 * delta
-		Sprite.scale.y += ((original_scale.y*GravityDirection) - Sprite.scale.y) * 20 * delta
+		Sprite.scale.x += (original_scale.x - Sprite.scale.x) * Stretch_speed * delta
+		Sprite.scale.y += ((original_scale.y*GravityDirection) - Sprite.scale.y) * Stretch_speed * delta
 #endregion
 
 #region FrameFreeze

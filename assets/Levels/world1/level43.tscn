@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="3_r0tkd"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="4_rjil8"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="5_2rrq7"]
-[ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="6_nuxyx"]
+[ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Levels/world1/tiles_alt1.tres" id="6_r0tkd"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="7_ulyh6"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="8_oqhb3"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="9_dm26a"]
@@ -90,14 +90,13 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("5_2rrq7")]
 position = Vector2(-135, 109)
-level_to_change = "level4"
 current_level = 43
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(82, 128)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AAD7//v/AAACAAEAAAD7//r/AAACAAEAAAD7//n/AAACAAEAAAD7//j/AAACAAEAAAD7//f/AAACAAEAAAD7//b/AAACAAEAAAD7//X/AAACAAEAAAD7//T/AAACAAAAAAD6//v/AAABAAEAAAD6//r/AAABAAEAAAD6//n/AAABAAEAAAD6//j/AAABAAEAAAD6//f/AAABAAEAAAD6//b/AAABAAEAAAD6//X/AAABAAEAAAD6//T/AAABAAAAAAD5//v/AAAAAAEAAAD5//r/AAAAAAEAAAD5//n/AAAAAAEAAAD5//j/AAAAAAEAAAD5//f/AAAAAAEAAAD5//b/AAAAAAEAAAD5//X/AAABAAEAAAD5//T/AAABAAAAAAD4//X/AAABAAEAAAD4//T/AAABAAAAAAD3//X/AAABAAEAAAD3//T/AAABAAAAAAD2//X/AAABAAEAAAD2//T/AAABAAAAAAD1//X/AAABAAEAAAD1//T/AAABAAAAAAD0//X/AAAAAAEAAAD0//T/AAAAAAAAAADw//X/AAACAAEAAADw//T/AAACAAAAAADv//X/AAABAAEAAADv//T/AAABAAAAAADu//X/AAABAAEAAADu//T/AAABAAAAAADq//X/AAAAAAEAAADq//T/AAAAAAAAAADm//v/AAACAAEAAADm//r/AAACAAEAAADm//n/AAACAAEAAADm//j/AAACAAEAAADm//f/AAACAAEAAADl//v/AAABAAEAAADl//r/AAABAAEAAADl//n/AAABAAEAAADl//j/AAABAAEAAADl//f/AAABAAEAAADk//v/AAABAAEAAADk//r/AAABAAEAAADk//n/AAABAAEAAADk//j/AAABAAEAAADk//f/AAABAAEAAADj//v/AAAAAAEAAADj//r/AAAAAAEAAADj//n/AAAAAAEAAADj//j/AAAAAAEAAADj//f/AAAAAAEAAADt//T/AAABAAAAAADs//T/AAABAAAAAADr//T/AAABAAAAAADn//X/AAAAAAcAAADo//X/AAABAAcAAADp//X/AAACAAcAAADt//X/AAABAAEAAADs//X/AAABAAEAAADr//X/AAABAAEAAADn/+v/AAAAAAAAAADn/+z/AAAAAAEAAADn/+3/AAAAAAEAAADn/+7/AAAAAAEAAADn/+//AAAAAAIAAADo/+v/AAABAAAAAADo/+z/AAABAAEAAADo/+3/AAABAAEAAADo/+7/AAABAAEAAADo/+//AAABAAIAAADp/+v/AAACAAAAAADp/+z/AAACAAEAAADp/+3/AAACAAEAAADp/+7/AAACAAEAAADp/+//AAACAAIAAAD2/+z/AAACAAEAAAD2/+3/AAACAAEAAAD2/+7/AAACAAEAAAD2/+//AAACAAEAAAD2//D/AAACAAEAAAD2//H/AAACAAIAAAD0/+z/AAAAAAEAAAD0/+3/AAAAAAEAAAD0/+7/AAAAAAEAAAD0/+//AAAAAAEAAAD0//D/AAAAAAEAAAD0//H/AAAAAAIAAAD1/+z/AAABAAEAAAD1/+3/AAABAAEAAAD1/+7/AAABAAEAAAD1/+//AAABAAEAAAD1//D/AAABAAEAAAD1//H/AAABAAIAAAD2/+v/AAACAAEAAAD2/+r/AAACAAEAAAD2/+n/AAACAAEAAAD2/+j/AAACAAEAAAD2/+f/AAACAAEAAAD2/+b/AAACAAEAAAD2/+X/AAACAAAAAAD1/+v/AAABAAEAAAD1/+r/AAABAAEAAAD1/+n/AAABAAEAAAD1/+j/AAABAAEAAAD1/+f/AAABAAEAAAD1/+b/AAABAAEAAAD1/+X/AAABAAAAAAD0/+v/AAAAAAEAAAD0/+r/AAAAAAEAAAD0/+n/AAAAAAEAAAD0/+j/AAAAAAEAAAD0/+f/AAAAAAEAAAD0/+b/AAAAAAEAAAD0/+X/AAAAAAAAAADq/+j/AAAAAAAAAADr/+j/AAABAAAAAADs/+j/AAACAAAAAADq/+n/AAAAAAIAAADr/+n/AAABAAIAAADs/+n/AAACAAIAAADj//z/AAAAAAEAAADj//3/AAAAAAEAAADj//7/AAAAAAIAAADk//z/AAABAAEAAADk//3/AAABAAEAAADk//7/AAABAAIAAADl//z/AAABAAEAAADl//3/AAABAAEAAADl//7/AAABAAIAAADm//z/AAABAAEAAADm//3/AAABAAEAAADm//7/AAABAAIAAADn//7/AAABAAIAAADo//7/AAABAAIAAADp//7/AAABAAIAAADq//7/AAABAAIAAADr//7/AAABAAIAAADs//7/AAABAAIAAADt//7/AAABAAIAAADu//7/AAABAAIAAADv//7/AAABAAIAAADw//7/AAACAAIAAAD0//7/AAAAAAIAAAD1//7/AAACAAIAAAD5//z/AAAAAAEAAAD5//3/AAAAAAEAAAD5//7/AAAAAAIAAAD6//z/AAABAAEAAAD6//3/AAABAAEAAAD6//7/AAABAAIAAAD7//z/AAACAAEAAAD7//3/AAACAAEAAAD7//7/AAACAAIAAADn//z/AAABAAAAAADn//3/AAABAAEAAADo//z/AAABAAAAAADo//3/AAABAAEAAADp//z/AAABAAAAAADp//3/AAABAAEAAADq//z/AAABAAAAAADq//3/AAABAAEAAADr//z/AAABAAAAAADr//3/AAABAAEAAADs//z/AAABAAAAAADs//3/AAABAAEAAADt//z/AAABAAAAAADt//3/AAABAAEAAADu//z/AAABAAAAAADu//3/AAABAAEAAADv//z/AAABAAAAAADv//3/AAABAAEAAADw//z/AAACAAAAAADw//3/AAACAAEAAAD0//z/AAAAAAAAAAD0//3/AAAAAAEAAAD1//z/AAACAAAAAAD1//3/AAACAAEAAAD2//z/AAAAAAcAAAD3//z/AAABAAcAAAD4//z/AAACAAcAAADj//T/AAAAAAAAAADk//T/AAABAAAAAADl//T/AAABAAAAAADm//T/AAACAAAAAADj//X/AAAAAAEAAADj//b/AAAAAAEAAADk//X/AAABAAEAAADk//b/AAABAAEAAADl//X/AAABAAEAAADl//b/AAABAAEAAADm//X/AAACAAEAAADm//b/AAACAAEAAAA=")
-tile_set = ExtResource("6_nuxyx")
+tile_set = ExtResource("6_r0tkd")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_ulyh6")]
 
@@ -121,18 +120,18 @@ scale = Vector2(3, 2)
 
 [node name="Enemie4" parent="." instance=ExtResource("14_rjil8")]
 position = Vector2(-98, -17)
-GravityDirection = -1
 EnemyDirection = 2
+GravityDirection = -1
 
 [node name="Enemie2" parent="." instance=ExtResource("14_rjil8")]
 position = Vector2(-146, -17)
-GravityDirection = -1
 EnemyDirection = 2
+GravityDirection = -1
 
 [node name="Enemie3" parent="." instance=ExtResource("14_rjil8")]
 position = Vector2(-122, -17)
-GravityDirection = -1
 EnemyDirection = 2
+GravityDirection = -1
 
 [node name="Key" parent="." instance=ExtResource("13_oxuf3")]
 position = Vector2(-55, 100)

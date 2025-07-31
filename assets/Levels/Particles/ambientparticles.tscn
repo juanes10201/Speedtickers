@@ -12,7 +12,7 @@ turbulence_noise_speed = Vector3(1.385, 0, 0)
 [node name="AmbientParticles" type="GPUParticles2D"]
 scale = Vector2(1.805, 1.805)
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_6j88u")
 texture = ExtResource("1_rhgmu")
 lifetime = 20.0
 preprocess = 16.29
+process_material = SubResource("ParticleProcessMaterial_6j88u")

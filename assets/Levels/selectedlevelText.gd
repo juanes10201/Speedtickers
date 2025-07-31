@@ -5,7 +5,7 @@ extends RichTextLabel
 func _ready() -> void:
 	#region current level
 	var Flag = $"../../Flag"
-	if(Flag): 
+	if(Flag):
 		var scene_name = Flag.current_level
 		text = "[center]" + str(scene_name) + "[/center]"
 		print("Currently in level: " + str(scene_name))

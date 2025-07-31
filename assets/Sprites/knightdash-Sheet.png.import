@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o0p0o6sms80b"
-path="res://.godot/imported/itch.png-5fd38428bd726a58783aa048a8057707.ctex"
+uid="uid://bcv820hqp60jd"
+path="res://.godot/imported/knightdash-Sheet.png-60444bae401023fdde92e1b9bf2b8598.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/itch.png"
-dest_files=["res://.godot/imported/itch.png-5fd38428bd726a58783aa048a8057707.ctex"]
+source_file="res://assets/Sprites/knightdash-Sheet.png"
+dest_files=["res://.godot/imported/knightdash-Sheet.png-60444bae401023fdde92e1b9bf2b8598.ctex"]
 
 [params]
 
