@@ -157,7 +157,6 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("6_r5c4l")]
 position = Vector2(273, 354)
-level_to_change = "end"
 current_level = 35.0
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_mwdqu")]

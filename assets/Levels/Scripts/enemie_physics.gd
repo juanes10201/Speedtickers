@@ -165,9 +165,7 @@ func _process(delta: float) -> void:
 		#endregion
 		
 		if(Player && Player.EnemiesPhysics):
-			if( SPEED != 0 && !is_on_wall()) :
-				Sprite.play("Walking")
-			else: Sprite.play("Idle")
+			_update_sprite()
 			
 			if(is_on_wall() && !was_on_wall): direction *= -1
 			
@@ -280,6 +278,16 @@ func On_Death():
 	#endregion
 	self.queue_free()
 #endregion
+
+#Diferencia maxima para considerar que no se mueva
+const dif_max_move = 0
+func _update_sprite() -> void:
+	#if Y mov > 0 then play Jump
+	#If moving horizontally Walking
+	#Else idle
+	if(velocity.y != 0): Sprite.play("Air")
+	elif( abs(velocity.x-dif_max_move) > 0 && !is_on_wall() ): Sprite.play("Walking")
+	else: Sprite.play("Idle")
 
 func _is_on_floor() -> bool:
 	if(GravityDirection == 1):

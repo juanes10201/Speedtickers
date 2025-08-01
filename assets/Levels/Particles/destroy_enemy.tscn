@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0s78hw1o0f1"]
+[gd_scene load_steps=14 format=3 uid="uid://b0s78hw1o0f1"]
 
-[ext_resource type="Texture2D" uid="uid://b145nvnbk486f" path="res://assets/Sprites/slime-particles.png" id="1_0c4dd"]
+[ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/Slime-hit-particle.png" id="1_1ve5e"]
 [ext_resource type="Script" uid="uid://cfsfgd2dxfth6" path="res://assets/Levels/Particles/TempParticle.gd" id="2_uo4gt"]
+[ext_resource type="Texture2D" uid="uid://bsna244ytjal" path="res://assets/Sprites/Slime-hit-particle1.png" id="3_s66xo"]
+[ext_resource type="Texture2D" uid="uid://bclniw1yo1m6k" path="res://assets/Sprites/Slime-hit-particle2.png" id="4_g35va"]
+[ext_resource type="Texture2D" uid="uid://csav2pu8ibd4h" path="res://assets/Sprites/Slime-hit-particle3.png" id="5_gx6ma"]
+[ext_resource type="Texture2D" uid="uid://bmgwdli71ydq4" path="res://assets/Sprites/Slime-hit-particle4.png" id="6_uwfff"]
 
 [sub_resource type="Curve" id="Curve_ty0i1"]
-_data = [Vector2(0.829949, 1), 0.0, 0.0, 0, 0, Vector2(0.979695, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.742647, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.979695, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_7o1u7"]
@@ -34,7 +38,6 @@ spread = 180.0
 initial_velocity_max = 113.19
 gravity = Vector3(0, 98, 0)
 scale_curve = SubResource("CurveTexture_1re7s")
-scale_over_velocity_max = 0.05
 scale_over_velocity_curve = SubResource("CurveTexture_1vh86")
 alpha_curve = SubResource("CurveTexture_7o1u7")
 hue_variation_min = -0.16
@@ -42,15 +45,64 @@ hue_variation_max = -2.23517e-08
 anim_speed_min = 8.25
 anim_speed_max = 8.25
 
-[node name="GPUParticles2D" type="GPUParticles2D"]
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 60
-process_material = SubResource("ParticleProcessMaterial_2avgr")
-texture = ExtResource("1_0c4dd")
-lifetime = 0.5
+amount = 10
+texture = ExtResource("1_1ve5e")
 one_shot = true
 explosiveness = 1.0
 trail_lifetime = 0.1
 trail_sections = 4
 trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("3_s66xo")
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("4_g35va")
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("5_gx6ma")
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")
+
+[node name="GPUParticles2D5" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("6_uwfff")
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
 script = ExtResource("2_uo4gt")

@@ -158,7 +158,6 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("6_s1trk")]
 position = Vector2(116, -514)
-level_to_change = "level26"
 current_level = 25.0
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_wopub")]
@@ -178,8 +177,8 @@ position = Vector2(89, -25)
 scale = Vector2(1, 12.675)
 
 [node name="KillBox7" parent="." instance=ExtResource("8_lgjn0")]
-position = Vector2(154, -152)
-scale = Vector2(1, 14)
+position = Vector2(154, -159)
+scale = Vector2(1, 12)
 
 [node name="KillBox5" parent="." instance=ExtResource("8_lgjn0")]
 position = Vector2(90, -274)
@@ -324,7 +323,7 @@ position = Vector2(170, -213)
 position = Vector2(154, -273)
 
 [node name="falling_sand11" parent="." instance=ExtResource("15_2wuc7")]
-position = Vector2(-199, -331)
+position = Vector2(-199, -347)
 
 [node name="falling_sand17" parent="." instance=ExtResource("15_2wuc7")]
 position = Vector2(-151, -437)
@@ -339,19 +338,19 @@ position = Vector2(-151, -469)
 position = Vector2(-151, -485)
 
 [node name="falling_sand12" parent="." instance=ExtResource("15_2wuc7")]
-position = Vector2(-183, -331)
+position = Vector2(-183, -347)
 
 [node name="falling_sand13" parent="." instance=ExtResource("15_2wuc7")]
-position = Vector2(-167, -331)
+position = Vector2(-167, -347)
 
 [node name="falling_sand14" parent="." instance=ExtResource("15_2wuc7")]
-position = Vector2(-151, -331)
+position = Vector2(-151, -347)
 
 [node name="falling_sand15" parent="." instance=ExtResource("15_2wuc7")]
-position = Vector2(-135, -331)
+position = Vector2(-135, -347)
 
 [node name="falling_sand16" parent="." instance=ExtResource("15_2wuc7")]
-position = Vector2(-119, -331)
+position = Vector2(-119, -347)
 
 [node name="AmbientParticles" parent="." instance=ExtResource("15_yy6ai")]
 position = Vector2(248, -257)
