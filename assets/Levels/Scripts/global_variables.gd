@@ -25,6 +25,17 @@ enum GravityDirections{
 
 var Player = null
 
+#Order of levels
+@export var LevelOrder: Array[PackedScene]
+
+var Level : int = -99
+
+func get_level() -> int:
+	return Level
+
+func change_to_level(Lvl : int) -> void:
+	get_tree().change_scene_to_packed(LevelOrder[Lvl])
+
 func _ready():
 	var Player = SaveGame.get_player()
 

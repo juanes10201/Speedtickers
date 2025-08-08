@@ -109,6 +109,7 @@ script = ExtResource("2_ubfur")
 [node name="Player" parent="." instance=ExtResource("2_kmi6g")]
 position = Vector2(-317, -43)
 collision_mask = 5
+PlayIntro = true
 CountTime = false
 jump_height = 45.0
 PlayedBefore = false
@@ -135,7 +136,6 @@ autostart = true
 [node name="Flag" parent="." instance=ExtResource("6_gwfxy")]
 position = Vector2(68, -37)
 scale = Vector2(1.01682, 1)
-current_level = 1
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("8_clwlp")]
 environment = SubResource("Environment_vmlh1")

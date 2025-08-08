@@ -1,7 +1,5 @@
 extends Area2D
 
-@export var current_level : int = 0
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.body_entered.connect(_on_body_entered)
@@ -33,11 +31,11 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body):
 	if(body.is_in_group("Player") && !body.Dead):
+		var _lvl = LevelManager.get_level()
+		if(_lvl <= 0): _lvl = 0
 		#region Save level
-		SaveGame.savelevelrecord(current_level ,$"../Time_Left".wait_time - $"../Time_Left".time_left)
+		SaveGame.savelevelrecord(_lvl ,$"../Time_Left".wait_time - $"../Time_Left".time_left)
 		#endregion
 		#region Change level
-		var _scene_string : String = "res://assets/Levels/world1/level" + str(current_level+1) + ".tscn"
-		print(_scene_string)
-		get_tree().change_scene_to_file(_scene_string)
+		LevelManager.change_to_level(_lvl+1)
 		#endregion

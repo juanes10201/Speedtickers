@@ -558,6 +558,78 @@ tracks/44/keys = {
 "update": 0,
 "values": [Vector2(563, 309)]
 }
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("../select42:position")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 428)]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("../select43:position")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(125, 428)]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("../select44:position")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(221, 428)]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("../select45:position")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(323, 428)]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("../select40:position")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(634, 350)]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("../select41:position")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(727, 350)]
+}
 
 [sub_resource type="Animation" id="Animation_ec4ib"]
 resource_name = "idle"
@@ -1020,7 +1092,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.566667, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(647, 583), Vector2(1016.71, 527.984), Vector2(1487, 458)]
+"values": [Vector2(647, 583), Vector2(1016.71, 527.984), Vector2(1490.71, 458)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1497,7 +1569,7 @@ tracks/40/path = NodePath("../select35:position")
 tracks/40/interp = 2
 tracks/40/loop_wrap = true
 tracks/40/keys = {
-"times": PackedFloat32Array(0.0333333, 0.933333),
+"times": PackedFloat32Array(0.0333333, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(180, 755), Vector2(221, 350)]
@@ -1521,7 +1593,7 @@ tracks/42/path = NodePath("../select37:position")
 tracks/42/interp = 2
 tracks/42/loop_wrap = true
 tracks/42/keys = {
-"times": PackedFloat32Array(0.0666667, 0.933333),
+"times": PackedFloat32Array(0.0666667, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(386, 755), Vector2(427, 350)]
@@ -1533,7 +1605,7 @@ tracks/43/path = NodePath("../select38:position")
 tracks/43/interp = 2
 tracks/43/loop_wrap = true
 tracks/43/keys = {
-"times": PackedFloat32Array(0.0333333, 0.933333),
+"times": PackedFloat32Array(0.0333333, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(488, 755), Vector2(529, 350)]
@@ -1545,10 +1617,82 @@ tracks/44/path = NodePath("../TitlemenuPlaceholder:position")
 tracks/44/interp = 2
 tracks/44/loop_wrap = true
 tracks/44/keys = {
-"times": PackedFloat32Array(0.133333, 0.5, 0.766667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.133333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(563, 309), Vector2(920.082, 318.28), Vector2(1448, 332)]
+"values": [Vector2(563, 309), Vector2(756, 523)]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("../select42:position")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-94, 927), Vector2(24, 428)]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("../select43:position")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7, 927), Vector2(125, 428)]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("../select44:position")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(103, 927), Vector2(221, 428)]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("../select45:position")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(205, 927), Vector2(323, 428)]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("../select40:position")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(584, 756), Vector2(634, 350)]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("../select41:position")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(677, 757), Vector2(727, 350)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k8t8m"]
@@ -1661,6 +1805,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select2" type="Button" parent="."]
 z_index = 1
@@ -1685,6 +1830,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select3" type="Button" parent="."]
 z_index = 1
@@ -1709,6 +1855,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select4" type="Button" parent="."]
 z_index = 1
@@ -1733,6 +1880,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select5" type="Button" parent="."]
 z_index = 1
@@ -1757,6 +1905,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select6" type="Button" parent="."]
 z_index = 1
@@ -1781,6 +1930,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select7" type="Button" parent="."]
 z_index = 1
@@ -1805,6 +1955,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select8" type="Button" parent="."]
 z_index = 1
@@ -1829,6 +1980,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select9" type="Button" parent="."]
 z_index = 1
@@ -1853,6 +2005,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select10" type="Button" parent="."]
 z_index = 1
@@ -1877,6 +2030,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select11" type="Button" parent="."]
 z_index = 1
@@ -1901,6 +2055,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select12" type="Button" parent="."]
 z_index = 1
@@ -1925,6 +2080,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select13" type="Button" parent="."]
 z_index = 1
@@ -1949,6 +2105,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select14" type="Button" parent="."]
 z_index = 1
@@ -1973,6 +2130,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select15" type="Button" parent="."]
 z_index = 1
@@ -1997,6 +2155,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select16" type="Button" parent="."]
 z_index = 1
@@ -2021,6 +2180,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select17" type="Button" parent="."]
 z_index = 1
@@ -2045,6 +2205,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select18" type="Button" parent="."]
 z_index = 1
@@ -2069,6 +2230,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select19" type="Button" parent="."]
 z_index = 1
@@ -2093,6 +2255,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select20" type="Button" parent="."]
 z_index = 1
@@ -2117,6 +2280,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select21" type="Button" parent="."]
 z_index = 1
@@ -2141,6 +2305,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select22" type="Button" parent="."]
 z_index = 1
@@ -2165,6 +2330,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select23" type="Button" parent="."]
 z_index = 1
@@ -2189,6 +2355,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select24" type="Button" parent="."]
 z_index = 1
@@ -2213,6 +2380,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select25" type="Button" parent="."]
 z_index = 1
@@ -2237,6 +2405,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select26" type="Button" parent="."]
 z_index = 1
@@ -2261,6 +2430,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select27" type="Button" parent="."]
 z_index = 1
@@ -2285,6 +2455,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select28" type="Button" parent="."]
 z_index = 1
@@ -2309,6 +2480,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select29" type="Button" parent="."]
 z_index = 1
@@ -2333,6 +2505,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select30" type="Button" parent="."]
 z_index = 1
@@ -2357,6 +2530,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select31" type="Button" parent="."]
 z_index = 1
@@ -2381,6 +2555,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select32" type="Button" parent="."]
 z_index = 1
@@ -2405,6 +2580,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select33" type="Button" parent="."]
 z_index = 1
@@ -2429,6 +2605,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select34" type="Button" parent="."]
 z_index = 1
@@ -2453,6 +2630,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select35" type="Button" parent="."]
 z_index = 1
@@ -2477,6 +2655,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select36" type="Button" parent="."]
 z_index = 1
@@ -2501,6 +2680,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select37" type="Button" parent="."]
 z_index = 1
@@ -2525,6 +2705,7 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select38" type="Button" parent="."]
 z_index = 1
@@ -2549,6 +2730,158 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
+
+[node name="select40" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 594.0
+offset_top = 350.0
+offset_right = 667.0
+offset_bottom = 425.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_tpl6t")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "39
+"
+icon = ExtResource("6_06y12")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_lq2g5")
+BUTTON_ACTION = 5
+ADITIONAL_ARGUMENT = "level"
+IsPixelartButton = true
+MobileBoxSize = 0
+
+[node name="select41" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 687.0
+offset_top = 350.0
+offset_right = 760.0
+offset_bottom = 425.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_tpl6t")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "40"
+icon = ExtResource("6_06y12")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_lq2g5")
+BUTTON_ACTION = 5
+ADITIONAL_ARGUMENT = "level"
+IsPixelartButton = true
+MobileBoxSize = 0
+
+[node name="select42" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 428.0
+offset_right = 57.0
+offset_bottom = 503.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_tpl6t")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "41"
+icon = ExtResource("6_06y12")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_lq2g5")
+BUTTON_ACTION = 5
+ADITIONAL_ARGUMENT = "level"
+IsPixelartButton = true
+MobileBoxSize = 0
+
+[node name="select43" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 85.0
+offset_top = 428.0
+offset_right = 158.0
+offset_bottom = 503.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_tpl6t")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "42"
+icon = ExtResource("6_06y12")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_lq2g5")
+BUTTON_ACTION = 5
+ADITIONAL_ARGUMENT = "level"
+IsPixelartButton = true
+MobileBoxSize = 0
+
+[node name="select44" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 181.0
+offset_top = 428.0
+offset_right = 254.0
+offset_bottom = 503.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_tpl6t")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "43"
+icon = ExtResource("6_06y12")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_lq2g5")
+BUTTON_ACTION = 5
+ADITIONAL_ARGUMENT = "level"
+IsPixelartButton = true
+MobileBoxSize = 0
+
+[node name="select45" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 283.0
+offset_top = 428.0
+offset_right = 356.0
+offset_bottom = 503.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_tpl6t")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "44"
+icon = ExtResource("6_06y12")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_lq2g5")
+BUTTON_ACTION = 5
+ADITIONAL_ARGUMENT = "level"
+IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="select39" type="Button" parent="."]
 visible = false
@@ -2574,8 +2907,10 @@ script = ExtResource("7_lq2g5")
 BUTTON_ACTION = 5
 ADITIONAL_ARGUMENT = "level"
 IsPixelartButton = true
+MobileBoxSize = 0
 
 [node name="Iconuser" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_jubap")
 position = Vector2(-241, -41)
 scale = Vector2(1.09358, 1.09358)
@@ -2671,4 +3006,10 @@ texture = ExtResource("15_fd6n5")
 [connection signal="pressed" from="select36" to="select36" method="_on_pressed"]
 [connection signal="pressed" from="select37" to="select37" method="_on_pressed"]
 [connection signal="pressed" from="select38" to="select38" method="_on_pressed"]
+[connection signal="pressed" from="select40" to="select40" method="_on_pressed"]
+[connection signal="pressed" from="select41" to="select41" method="_on_pressed"]
+[connection signal="pressed" from="select42" to="select42" method="_on_pressed"]
+[connection signal="pressed" from="select43" to="select43" method="_on_pressed"]
+[connection signal="pressed" from="select44" to="select44" method="_on_pressed"]
+[connection signal="pressed" from="select45" to="select45" method="_on_pressed"]
 [connection signal="pressed" from="select39" to="select39" method="_on_pressed"]

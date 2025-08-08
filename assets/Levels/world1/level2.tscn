@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bvi5piwn8p4tm"]
+[gd_scene load_steps=25 format=4 uid="uid://bvi5piwn8p4tm"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_18p41"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="1_61j43"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Levels/Scripts/animated_button.gd" id="10_hm2hf"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="11_1dasu"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="11_17duw"]
+[ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="12_qonc7"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="14_vwp2c"]
 [ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="15_r2eqi"]
 
@@ -154,13 +155,12 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("6_bkyjx")]
 position = Vector2(52, -150)
-current_level = 2.0
-
-[node name="falling_sand" parent="." instance=ExtResource("6_3il1a")]
-position = Vector2(-235, -88)
 
 [node name="falling_sand2" parent="." instance=ExtResource("6_3il1a")]
 position = Vector2(-219, -88)
+
+[node name="falling_sand5" parent="." instance=ExtResource("6_3il1a")]
+position = Vector2(-235, -88)
 
 [node name="falling_sand3" parent="." instance=ExtResource("6_3il1a")]
 position = Vector2(-203, -88)
@@ -169,24 +169,32 @@ position = Vector2(-203, -88)
 position = Vector2(-187, -88)
 
 [node name="KillBox" parent="." instance=ExtResource("11_1dasu")]
-position = Vector2(-194, 211)
+position = Vector2(-194, 176)
 scale = Vector2(99.32, 1)
 Visible = false
 CanChange = false
 
 [node name="CanvasLayer" parent="." instance=ExtResource("11_17duw")]
 
-[node name="DashButton" type="AnimatedSprite2D" parent="."]
-position = Vector2(-146, -25)
+[node name="AmbientParticles" parent="." instance=ExtResource("14_vwp2c")]
+position = Vector2(-223, -366)
+
+[node name="DashTutorial" type="RichTextLabel" parent="."]
+offset_left = -243.0
+offset_top = -49.0
+offset_right = -164.0
+offset_bottom = -20.0
+theme_override_fonts/normal_font = ExtResource("12_qonc7")
+text = "Dash with"
+
+[node name="DashButton" type="AnimatedSprite2D" parent="DashTutorial"]
+position = Vector2(8, 17)
 sprite_frames = SubResource("SpriteFrames_l7k34")
 script = ExtResource("10_hm2hf")
 ButtonToPress = "player_dash"
 
-[node name="DashButtonKeyboard" type="AnimatedSprite2D" parent="."]
-position = Vector2(-179, -41)
+[node name="DashButtonKeyboard" type="AnimatedSprite2D" parent="DashTutorial"]
+position = Vector2(48, 18)
 sprite_frames = SubResource("SpriteFrames_h5v7n")
 script = ExtResource("10_hm2hf")
 ButtonToPress = "player_dash"
-
-[node name="AmbientParticles" parent="." instance=ExtResource("14_vwp2c")]
-position = Vector2(-223, -366)

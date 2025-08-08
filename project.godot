@@ -22,6 +22,7 @@ GlobalSignal="*res://assets/global_signal/global_signal.gd"
 SaveGame="*res://assets/Levels/Scripts/save_game.gd"
 SongPlayer="*res://assets/Levels/SongPlayer.tscn.tscn"
 Edition="*res://assets/Levels/Scripts/game_editions.gd"
+LevelManager="*res://assets/Levels/world1/LevelManager.tscn"
 Global="*res://assets/Levels/Scripts/global_variables.gd"
 
 [display]
@@ -176,6 +177,11 @@ ui_click_controller={
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 

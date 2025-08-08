@@ -32,3 +32,7 @@ func _process(delta: float) -> void:
 		if(SelectedButton == PauseButtons.RESUME_GAME): $PauseMenuButton2.grab_focus()
 		elif(SelectedButton == PauseButtons.CONFIG): $PauseMenuConfigButton2.grab_focus()
 		else: $PauseMenuGoBackButton2.grab_focus()
+
+
+func _on_pause_menu_button_2_button_down() -> void:
+	pass # Replace with function body.

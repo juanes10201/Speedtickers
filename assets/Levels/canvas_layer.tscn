@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cfa7sxsc3ppdn"]
+[gd_scene load_steps=30 format=3 uid="uid://cfa7sxsc3ppdn"]
 
 [ext_resource type="Texture2D" uid="uid://d1y21fe855ulp" path="res://assets/Sprites/ray-time.png" id="1_g8qx6"]
 [ext_resource type="Script" uid="uid://n4qwd5l56oy4" path="res://assets/Levels/Scripts/UI_time_text.gd" id="1_lu8t7"]
@@ -18,10 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://dtrd6thhu6b8c" path="res://assets/Sprites/levelnote.png" id="16_lxrql"]
 [ext_resource type="FontFile" uid="uid://dfigptrdw0fg2" path="res://assets/Fonts/pixelart/Gossamer Girls.ttf" id="17_uf5fu"]
 [ext_resource type="Script" uid="uid://dr6lh5wlohuyn" path="res://assets/Levels/selectedlevelText.gd" id="18_cwi7m"]
-[ext_resource type="FontFile" uid="uid://b2f6tdmtymqi6" path="res://assets/Fonts/titles/All the Way to the Sun.otf" id="19_42qlo"]
+[ext_resource type="FontFile" uid="uid://f0hkvlt4avd6" path="res://assets/Fonts/ChocolateClassicalSans-Regular.ttf" id="19_2n7mv"]
 [ext_resource type="Texture2D" uid="uid://cpkuxgr2hg7ll" path="res://assets/Sprites/menus/logo.png" id="20_42qlo"]
 [ext_resource type="Script" uid="uid://d17qirinur7vk" path="res://assets/Levels/logo_anim.gd" id="21_lvo4f"]
 [ext_resource type="Script" uid="uid://bln4k4jkwrgb6" path="res://assets/Levels/expo.gd" id="22_2n7mv"]
+[ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="23_8ohxx"]
 
 [sub_resource type="GDScript" id="GDScript_4cp2g"]
 script/source = "extends Sprite2D
@@ -116,22 +117,10 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../LogoText:position")
+tracks/5/path = NodePath(".:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(126, 13)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -144,82 +133,70 @@ length = 2.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../LogoText:position")
-tracks/0/interp = 1
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(580, 332), Vector2(579, 318), Vector2(579, 352)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2, 1.96667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.64, 0.64), Vector2(0.719, 0.719), Vector2(0.76, 0.76)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../LogoText:theme_override_constants/line_separation")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../LogoText:theme_override_constants/line_separation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.2, 1.16667, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [40, -20, -5]
+"values": [-120, -105, -65]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../LogoText:theme_override_font_sizes/normal_font_size")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../LogoText:theme_override_font_sizes/normal_font_size")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.0333333, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [289, 295]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../LogoText:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../LogoText:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(1.63333, 1.96667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0.643137), Color(1, 1, 1, 0)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.1, 0.233333, 1.89961, 2.06667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
@@ -401,16 +378,17 @@ text = "1"
 script = ExtResource("18_cwi7m")
 
 [node name="LogoText" type="RichTextLabel" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
-offset_left = 140.0
-offset_top = 17.0
-offset_right = 1266.0
-offset_bottom = 712.0
+offset_left = -11.0
+offset_top = 7.0
+offset_right = 1253.0
+offset_bottom = 702.0
 theme_override_constants/line_separation = -65
-theme_override_fonts/normal_font = ExtResource("19_42qlo")
+theme_override_fonts/normal_font = ExtResource("19_2n7mv")
 theme_override_font_sizes/normal_font_size = 300
-text = "SPEED
-TICKERS"
+text = "速度代码
+速度代码"
 
 [node name="Logo" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -428,19 +406,19 @@ libraries = {
 script = ExtResource("22_2n7mv")
 
 [node name="ProgressBar2" type="ProgressBar" parent="expo"]
-offset_left = 956.0
-offset_top = 551.0
+offset_left = 995.0
+offset_top = 583.0
 offset_right = 1153.0
 offset_bottom = 647.0
 show_percentage = false
 
 [node name="PlaytimeText" type="RichTextLabel" parent="expo"]
-offset_left = 967.0
-offset_top = 565.0
-offset_right = 1125.0
-offset_bottom = 642.0
+offset_left = 987.0
+offset_top = 578.0
+offset_right = 1145.0
+offset_bottom = 655.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.619608, 0.478431, 1, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("2_7riok")
 theme_override_font_sizes/normal_font_size = 80
@@ -450,5 +428,15 @@ text = " 10.10"
 wait_time = 420.0
 one_shot = true
 autostart = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="expo"]
+offset_left = 1010.0
+offset_top = 543.0
+offset_right = 1148.0
+offset_bottom = 586.0
+theme_override_fonts/normal_font = ExtResource("23_8ohxx")
+theme_override_font_sizes/normal_font_size = 32
+text = "Crack Bang
+Boom  Expo"
 
 [connection signal="timeout" from="expo/PlaytimeTimer" to="expo" method="_on_playtime_timeout"]

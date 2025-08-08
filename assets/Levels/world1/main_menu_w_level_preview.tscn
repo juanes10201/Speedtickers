@@ -91,8 +91,6 @@ _data = {
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
 
-[node name="pause_menu" parent="." instance=ExtResource("1_atvat")]
-
 [node name="Bg" type="Sprite2D" parent="."]
 visible = false
 texture_repeat = 2
@@ -122,8 +120,6 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("5_bpyiq")]
 position = Vector2(-283, 203)
-level_to_change = "level10"
-current_level = 9.0
 
 [node name="falling_sand" parent="." instance=ExtResource("6_5boix")]
 position = Vector2(-331, -7)
@@ -230,3 +226,5 @@ position = Vector2(-801, -100)
 collision_mask = 61
 Physics = false
 PlayMusic = false
+
+[node name="pause_menu" parent="." instance=ExtResource("1_atvat")]

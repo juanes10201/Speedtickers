@@ -269,23 +269,21 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("6_rj8dq")]
 position = Vector2(-29, 267)
-level_to_change = "level8"
-current_level = 7.0
 
 [node name="Enemie" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-255, 170)
-Can_BeGroundSmash = false
 EnemyDirection = 2
+Can_BeGroundSmash = false
 
 [node name="Enemie3" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-212, 169)
-Can_BeGroundSmash = false
 EnemyDirection = 2
+Can_BeGroundSmash = false
 
 [node name="Enemie5" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-84, 280)
-Max_groundsmash_distance = 100.0
 EnemyDirection = 1
+Max_groundsmash_distance = 100.0
 
 [node name="falling_sand" parent="." instance=ExtResource("8_crrle")]
 position = Vector2(-379, 23)
@@ -301,18 +299,18 @@ wait_time = 0.05
 
 [node name="Enemie2" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-232, 170)
-Can_BeGroundSmash = false
 EnemyDirection = 2
+Can_BeGroundSmash = false
 
 [node name="Enemie4" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-52, 282)
-Max_groundsmash_distance = 100.0
 EnemyDirection = 1
+Max_groundsmash_distance = 100.0
 
 [node name="Enemie6" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-117, 280)
-Max_groundsmash_distance = 100.0
 EnemyDirection = 1
+Max_groundsmash_distance = 100.0
 
 [node name="Enemie8" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-264, 9)
@@ -324,13 +322,13 @@ EnemyDirection = 2
 
 [node name="Enemie11" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-56, 57)
-Max_groundsmash_distance = 100.0
 EnemyDirection = 2
+Max_groundsmash_distance = 100.0
 
 [node name="Enemie13" parent="." instance=ExtResource("7_141wr")]
 position = Vector2(-39, 58)
-Max_groundsmash_distance = 100.0
 EnemyDirection = 2
+Max_groundsmash_distance = 100.0
 
 [node name="falling_sand4" parent="." instance=ExtResource("8_crrle")]
 position = Vector2(25, 74)

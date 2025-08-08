@@ -36,6 +36,7 @@ var DashMove : Vector2 = Vector2(0, 0)
 var HaveKey : bool = false
 
 #region Export variables
+@export var PlayIntro : bool = false
 @export var juice : bool = true
 @export var CountTime : bool = true
 @export_group("Physics")
@@ -147,16 +148,32 @@ func _input(event):
 		if event.keycode == KEY_F9:
 			get_tree().reload_current_scene()
 		elif event.keycode == KEY_F10:
-			var _scene_string= "res://assets/Levels/world1/main_menu_expo.tscn"
+			var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
 			get_tree().change_scene_to_file(_scene_string)
+		elif event.keycode == KEY_F11:
+			var _scene_string = "res://assets/Levels/world1/select_level.tscn"
+			get_tree().change_scene_to_file(_scene_string)
+		elif event.keycode == KEY_F12:
+			LevelManager.ReturnAfterTimerInExpo = !LevelManager.ReturnAfterTimerInExpo
 #endregion
 
 func _ready() -> void:
+	if(Physics && Edition.Mobile):
+		var MobileControls = preload("res://assets/Levels/ui_android_control.tscn")
+		if (MobileControls != null):
+			var MobileControlsInstance = MobileControls.instantiate()
+			if(MobileControlsInstance != null): UI.add_child(MobileControlsInstance)
+	
+	if(PlayIntro):
+		#If level is not identified search for it
+		Global.Level = LevelManager.LevelOrder.find(get_tree().current_scene)
+	
 	if(TransitionOut): TransitionOut.hide()
 	if(TransitionIn): TransitionIn.show()
 	if(TransitionIn): TransitionIn.fade_out()
-	
-	if($"../Flag" && $"../Flag".current_level == 1): 
+
+	print(LevelManager.get_level())
+	if(PlayIntro):
 		PlayedBefore = false
 		#PlayedBefore = SaveGame.IfPlayedFirstTime()
 	if(!PlayedBefore && !Edition.DoneIntro):
@@ -170,7 +187,6 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
-	print(_is_on_floor())
 	if(_is_on_floor()):
 		SwitchedGravity = false
 		PlayedSwitchedGravityAnimation = false
@@ -187,7 +203,7 @@ func _physics_process(delta: float) -> void:
 			AirState = AirSides.Jumping
 		else:
 			AirState = AirSides.NONE
-		if($"../Flag" && $"../Flag".current_level == 1):
+		if(PlayIntro):
 			Camera.offset.y = lerpf(Camera.offset.y, 23.85, 1*delta)
 		
 		WasSliding = false
@@ -196,8 +212,6 @@ func _physics_process(delta: float) -> void:
 		if(SlidingOnRamp && !_is_on_floor()): velocity.y = SlideVelocity * GravityDirection
 		
 		if(Input.is_action_just_pressed("menu_pause")): _pause_game()
-		
-		print(PlayedSwitchedGravityAnimation)
 		
 		if(!DashTime.is_stopped()):
 			_play_dash_particles()
