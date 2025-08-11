@@ -30,6 +30,10 @@ Global="*res://assets/Levels/Scripts/global_variables.gd"
 window/stretch/mode="viewport"
 window/quality/use_taa=false
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_accept={
