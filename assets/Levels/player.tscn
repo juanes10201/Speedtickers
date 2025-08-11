@@ -592,6 +592,10 @@ one_shot = true
 wait_time = 1.8
 one_shot = true
 
+[node name="JumpGroundsmashMultiplier" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
 [node name="Wallchecker" type="RayCast2D" parent="."]
 position = Vector2(0.151668, -7.9292)
 rotation = -1.5708

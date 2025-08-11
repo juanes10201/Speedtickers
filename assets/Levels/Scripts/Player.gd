@@ -19,6 +19,7 @@ var WasSliding : bool = false
 var Slide : bool = false
 
 var GroundSmash : bool = false
+var WasGroundSmash : bool = false
 var PressingGroundSmash : bool = false
 
 var WallJump : bool = false
@@ -32,6 +33,7 @@ var MaxAcc : Vector2 = Vector2(12000, 400)
 var Dashed : bool = false
 var DashAcc : Vector2 = Vector2(600, 400)
 var DashMove : Vector2 = Vector2(0, 0) 
+var DashWithJump : bool = false
 
 var HaveKey : bool = false
 
@@ -72,6 +74,7 @@ var Paused : bool = false
 var LastDirection : float = 0
 var direction := Input.get_axis("ui_left", "ui_right")
 
+@onready var JumpGroundsmashMultiplier : Timer = $JumpGroundsmashMultiplier
 @onready var DashTime : Timer = $DashTime
 @onready var PreJumpTime : Timer = $PreJumpTime
 @onready var CoyoteTimer : Timer = $CoyoteTimer
@@ -263,8 +266,8 @@ func _physics_process(delta: float) -> void:
 			ParticlesJump.emitting = true
 		#endregion
 		_strech_tick(delta)
-		_physics_apply_gravity(delta)
 		_physics_jump(delta)
+		_physics_apply_gravity(delta)
 		_physics_h_movement(delta)
 		_physics_dash(delta)
 		_physics_slide_and_groundsmash(delta)
@@ -389,6 +392,8 @@ func _physics_apply_gravity(delta: float) -> void:
 	if (_is_on_floor()):
 		Dashed = false
 		_stop_sound(AudioWind)
+		#DashWithJump = false
+		DashWithJump = false
 		if(GroundSmash):
 			ParticlesLanding.position = self.position
 			ParticlesLanding.position.y -= 10
@@ -397,6 +402,7 @@ func _physics_apply_gravity(delta: float) -> void:
 			ParticlesLanding.show()
 			AudioGroundsmash.play()
 			GroundSmash = false
+			JumpGroundsmashMultiplier.start()
 			Camera.Shake(10.0, 10.0)
 			enemy_jump()
 			EnemyGroundSlamTimer.start()
@@ -421,10 +427,11 @@ func _invert_gravity() -> void:
 #region jump
 func _physics_jump(delta: float) -> void:
 	# Handle jump.
+	DashWithJump = false
 	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped()) ) || (!PreWallJumpTimer.is_stopped() && Input.is_action_pressed("player_jump")) ):
 		DoJump()
 	#Cancel jump
-	if(velocity.y < 0 && !Input.is_action_pressed("player_jump")):
+	if(velocity.y < 0 && !Input.is_action_pressed("player_jump") && !DashWithJump):
 		velocity.y += JumpCancelAcc * GravityDirection
 	
 	if(Input.is_action_pressed("player_jump")): PreJumpTime.start()
@@ -437,7 +444,15 @@ func DoJump() -> void:
 		Sliding = Sides.UP
 		Speed.x = Acc.x*2 if LastDirection >= 0 else Acc.x*-2
 	velocity.y = jump_velocity * GravityDirection
-	#strech_size(1.1, 0.7, true, 70)
+	if(!DashTime.is_stopped() || DashWithJump):
+		DashWithJump = true
+		velocity.y *= .5
+		velocity.x *= 2
+	#En caso de haber aplicado antes un groundsmash hacer un multiplicador de velocidad
+	if(!JumpGroundsmashMultiplier.is_stopped()):
+		JumpGroundsmashMultiplier.start()
+		velocity.y *= 1.3
+ 	#strech_size(1.1, 0.7, true, 70)
 	Controller_Vibrate_Player_Movement(0.2)
 	_play_sound(AudioJump, false)
 	#region WallJump case
@@ -510,25 +525,25 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 #region Dash
 func _physics_dash(delta: float) -> void:
 	#Dash
+	print(DashWithJump)
 	if(Input.is_action_just_pressed("player_dash") && !Dashed):
+		velocity.y = 0
 		Dashed = true
 		AudioDash.pitch_scale = randf_range(0.8, 1.2)
 		AudioDash.play()
 		strech_size(2, 0.5)
 		DashTime.start()
 		DashMove = DashAcc * LastDirection
-		#Cancel groundsmash:
-		GroundSmash = false
-		PressingGroundSmash = false
 		Controller_Vibrate_Player_Movement(0.7)
 	#Dash movement
-	if(DashTime.is_stopped()):
-		if(DashMove.x > 250): DashMove.x -= Acc.x * LastDirection 
+	if(DashWithJump): DashMove = DashAcc * LastDirection
+	if(false):
+		if(DashMove.x > 250): DashMove.x -= Acc.x * LastDirection
 		else: DashMove.x = 0
 		if(DashMove.y > 250): DashMove.y -= Acc.y * LastDirection
 		else: DashMove.y = 0
-	#When dashing suspend in air
-	else: velocity.y = 0 * GravityDirection
+	#La idea es que al ejecutar un dash el movimiento vertical este suspendido
+	#else: velocity.y = 0 * GravityDirection
 #endregion
 
 #region WallJump
@@ -575,7 +590,7 @@ func _strech_tick(delta : float):
 		Sprite.scale.x += (original_scale.x - Sprite.scale.x) * Stretch_speed * delta
 		Sprite.scale.y += ((original_scale.y*GravityDirection) - Sprite.scale.y) * Stretch_speed * delta
 #endregion
-
+#andino was here
 #region FrameFreeze
 var FrameFreezeEnabled : bool = false
 func FrameFreeze(TimeScale, duration):
