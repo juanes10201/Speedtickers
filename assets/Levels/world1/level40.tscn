@@ -88,7 +88,6 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("6_7i4ra")]
 position = Vector2(116, -165)
-current_level = 40
 
 [node name="AmbientParticles2" parent="." instance=ExtResource("11_flumr")]
 position = Vector2(-96, -160)

@@ -184,7 +184,6 @@ Enemy_burst_speed = 400.0
 
 [node name="Flag" parent="." instance=ExtResource("9_pssnl")]
 position = Vector2(-358, 265)
-current_level = 14.0
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("10_7hnw6")]
 

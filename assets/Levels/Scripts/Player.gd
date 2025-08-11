@@ -37,7 +37,7 @@ var HaveKey : bool = false
 
 #region Export variables
 @export var PlayIntro : bool = false
-@export var juice : bool = true
+var juice : bool = true
 @export var CountTime : bool = true
 @export_group("Physics")
 @export var Physics : bool = true

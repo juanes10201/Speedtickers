@@ -13,6 +13,7 @@ stream_1/stream = ExtResource("3_jeb53")
 
 [node name="SongPlayer_tscn" type="Node2D"]
 script = ExtResource("1_wkvdr")
+PlayMusic = false
 
 [node name="SongInGame" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_2k4mj")

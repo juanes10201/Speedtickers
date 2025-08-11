@@ -378,7 +378,6 @@ text = "1"
 script = ExtResource("18_cwi7m")
 
 [node name="LogoText" type="RichTextLabel" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -11.0
 offset_top = 7.0
