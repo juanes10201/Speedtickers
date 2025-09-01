@@ -84,7 +84,7 @@ limit_right = 170
 position_smoothing_enabled = true
 script = ExtResource("3_in43c")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 7.0
 one_shot = true
 autostart = true
@@ -93,11 +93,11 @@ autostart = true
 position = Vector2(15, 217)
 
 [node name="Enemie8" parent="." instance=ExtResource("6_c0iwm")]
-position = Vector2(-115, -91)
+position = Vector2(-120, -91)
 EnemyDirection = 1
 
 [node name="Enemie13" parent="." instance=ExtResource("6_c0iwm")]
-position = Vector2(-140, -91)
+position = Vector2(-145, -91)
 EnemyDirection = 1
 
 [node name="Enemie10" parent="." instance=ExtResource("6_c0iwm")]

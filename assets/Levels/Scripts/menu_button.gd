@@ -108,7 +108,9 @@ func _set_text_size(X : float):
 func _on_pressed() -> void:
 	print("Button pressed!")
 	if(FadeTransition):
-		$"../Transition".Anim.play("fade_movement")
+		var Transition
+		Transition = $"../Transition" if $"../Transition" else $"../../Transition"
+		Transition.Anim.play("fade_movement")
 		await get_tree().create_timer(1.4).timeout
 	if(BUTTON_ACTION == Global.BUTTON_ACTIONS.resume_game && Player):
 		Player._pause_game()
@@ -121,7 +123,8 @@ func _on_pressed() -> void:
 		await(get_tree().create_timer(Player.TimeDeath).timeout)
 		if get_tree(): get_tree().reload_current_scene()
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.config_menu):
-		print("TO-DO: Lazy developer didn't implement config menu...")
+		Edition.CrtFilter = !Edition.CrtFilter
+		#print("TO-DO: Lazy developer didn't implement config menu...")
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_scene):
 		if(ExpoButton && Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
 			var _scene_string : String = "res://assets/Levels/world1/level1.tscn"

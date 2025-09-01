@@ -224,10 +224,11 @@ texture = ExtResource("1_f3432")
 12:1/0/terrains_peering_bit/top_left_corner = 0
 12:1/0/terrains_peering_bit/top_side = 0
 12:1/0/terrains_peering_bit/top_right_corner = 0
+6:4/0 = 0
 
 [resource]
-physics_layer_0/collision_layer = 3
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_layer = 258
+physics_layer_0/collision_mask = 259
 physics_layer_1/collision_layer = 4
 physics_layer_1/collision_mask = 4
 physics_layer_2/collision_layer = 8

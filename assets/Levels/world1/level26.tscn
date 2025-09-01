@@ -108,6 +108,7 @@ _data = {
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
+metadata/_edit_horizontal_guides_ = [-400.0]
 
 [node name="Bg" type="Sprite2D" parent="."]
 visible = false
@@ -148,7 +149,7 @@ scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AAAAAOn/AAACAAEAAAAAAOr/AAACAAEAAAAAAOv/AAACAAEAAAAAAOz/AAACAAEAAAAAAO3/AAACAAEAAAAAAO7/AAACAAEAAAAAAO//AAACAAEAAAAAAPD/AAACAAEAAAAAAPH/AAACAAEAAAAAAPL/AAACAAEAAAAAAPP/AAACAAEAAAAAAPT/AAACAAEAAAAAAPX/AAACAAEAAAAAAPb/AAACAAEAAAAAAPf/AAACAAIAAAD//+n/AAAAAAEAAAD//+r/AAAAAAEAAAD//+v/AAAAAAEAAAD//+z/AAAAAAEAAAD//+3/AAAAAAEAAAD//+7/AAAAAAEAAAD//+//AAAAAAEAAAD///D/AAAAAAEAAAD///H/AAAAAAEAAAD///L/AAAAAAEAAAD///P/AAAAAAEAAAD///T/AAAAAAEAAAD///X/AAAAAAEAAAD///b/AAAAAAEAAAD///f/AAAAAAIAAAAAAOj/AAACAAEAAAAAAOf/AAACAAAAAAD//+j/AAAAAAEAAAD//+f/AAAAAAAAAADr//H/AAAAAAEAAADr//L/AAAAAAIAAADs//H/AAABAAEAAADs//L/AAABAAIAAADt//H/AAACAAEAAADt//L/AAACAAIAAADr//D/AAAAAAAAAADs//D/AAABAAAAAADt//D/AAACAAAAAAA=")
 tile_set = ExtResource("4_8404c")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 16.0
 one_shot = true
 autostart = true
@@ -170,7 +171,7 @@ position = Vector2(-21, -177)
 scale = Vector2(2.33, 6.16)
 
 [node name="KillBox6" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(34, -280)
+position = Vector2(34, -289)
 scale = Vector2(1, 3)
 
 [node name="KillBox19" parent="." instance=ExtResource("8_8sq5l")]
@@ -179,21 +180,18 @@ scale = Vector2(50, 1)
 CanChange = false
 
 [node name="KillBox7" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(-72, -342)
-scale = Vector2(3, 2)
+position = Vector2(-53, -353)
+scale = Vector2(15.23, 2)
 
 [node name="KillBox4" parent="." instance=ExtResource("8_8sq5l")]
 position = Vector2(-167, -268)
 scale = Vector2(1, 12)
 
 [node name="KillBox13" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(219, -167)
+position = Vector2(219, -146)
 
 [node name="KillBox16" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(219, -248)
-
-[node name="KillBox17" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(219, -332)
+position = Vector2(219, -238)
 
 [node name="Key" parent="." instance=ExtResource("11_funbt")]
 position = Vector2(142, -101)
@@ -204,7 +202,7 @@ position = Vector2(-72, -399)
 AditionalAction = 1
 
 [node name="Player" parent="." instance=ExtResource("12_w687e")]
-position = Vector2(-69, -222)
+position = Vector2(-79, -222)
 floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
@@ -220,8 +218,8 @@ position_smoothing_enabled = true
 script = ExtResource("13_0p0li")
 
 [node name="KillBox8" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(-72, -273)
-scale = Vector2(3, 6.615)
+position = Vector2(-72, -277)
+scale = Vector2(3, 7.41)
 
 [node name="KillBox18" parent="." instance=ExtResource("10_r0gsi")]
 position = Vector2(-201, -356)
@@ -232,22 +230,22 @@ position = Vector2(94, -158)
 scale = Vector2(3, 8.57)
 
 [node name="KillBox14" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(126, -164)
+position = Vector2(125, -135)
 
 [node name="KillBox15" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(159, -133)
+position = Vector2(160, -175)
 
 [node name="KillBox12" parent="." instance=ExtResource("8_8sq5l")]
 position = Vector2(175, -205)
 scale = Vector2(1, 15)
 
 [node name="KillBox10" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(94, -342)
+position = Vector2(94, -323)
 scale = Vector2(3, 2)
 
 [node name="KillBox11" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(94, -276)
-scale = Vector2(3, 6.13)
+position = Vector2(94, -267)
+scale = Vector2(3, 5)
 
 [node name="falling_sand" parent="." instance=ExtResource("14_efkra")]
 position = Vector2(-4, -194)
@@ -259,22 +257,22 @@ position = Vector2(142, -218.49)
 MAX_SPEED = 120.0
 
 [node name="falling_sand7" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(78, -366)
+position = Vector2(78, -347)
 
 [node name="falling_sand8" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(94, -366)
+position = Vector2(94, -347)
 
 [node name="falling_sand9" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(110, -366)
+position = Vector2(110, -347)
 
 [node name="falling_sand10" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-88, -366)
+position = Vector2(-88, -377)
 
 [node name="falling_sand11" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-72, -366)
+position = Vector2(-72, -377)
 
 [node name="falling_sand12" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-56, -366)
+position = Vector2(-56, -377)
 
 [node name="falling_sand2" parent="." instance=ExtResource("14_efkra")]
 position = Vector2(-4, -178)

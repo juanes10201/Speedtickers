@@ -180,20 +180,10 @@ turbulence_enabled = true
 
 [node name="Enemie" type="CharacterBody2D" groups=["Enemie"]]
 position = Vector2(115.72, -23.74)
-collision_layer = 4
-collision_mask = 17
+collision_layer = 512
+collision_mask = 400
 script = ExtResource("1_ny8g4")
 Max_groundsmash_distance = 200.0
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-script = ExtResource("2_x2l0f")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.215, 1.825)
-scale = Vector2(1.225, 1.39)
-shape = SubResource("RectangleShape2D_4y4c6")
-debug_color = Color(0.846084, 0.377331, 0, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.14, 4.138)
@@ -228,3 +218,16 @@ emitting = false
 amount = 4
 texture = ExtResource("4_caayp")
 process_material = SubResource("ParticleProcessMaterial_boibh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 128
+script = ExtResource("2_x2l0f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.215, 1.825)
+scale = Vector2(1.225, 1.39)
+shape = SubResource("RectangleShape2D_4y4c6")
+debug_color = Color(0.846084, 0.377331, 0, 0.42)
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

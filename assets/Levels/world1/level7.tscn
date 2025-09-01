@@ -251,7 +251,6 @@ tile_set = ExtResource("4_7m610")
 
 [node name="Player" parent="." instance=ExtResource("4_i76ih")]
 position = Vector2(-283, -102)
-collision_mask = 61
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(14.5308, 64.5662)
@@ -262,7 +261,7 @@ limit_right = 170
 position_smoothing_enabled = true
 script = ExtResource("5_gf3s4")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 7.0
 one_shot = true
 autostart = true

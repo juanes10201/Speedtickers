@@ -31,6 +31,11 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body):
 	if(body.is_in_group("Player") && !body.Dead):
+		var StyleRatio : float = 1.0
+		if(LevelManager.get_level_time()):
+			StyleRatio = LevelManager.get_level_time().time_left/LevelManager.get_level_time().wait_time
+		print(StyleRatio)
+		LevelManager.AddStyle(3, "Finished level", 1/3+StyleRatio*2/3)
 		var _lvl = LevelManager.get_level()
 		if(_lvl <= 0): _lvl = 0
 		#region Save level

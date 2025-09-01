@@ -5,6 +5,7 @@ enum ALL_GAME_STATUS{
 	expo_shangai,
 	expo_cbb
 }
+var CrtFilter : bool = true
 
 var GAME_STATUS = ALL_GAME_STATUS.retail
 

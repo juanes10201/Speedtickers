@@ -3,6 +3,11 @@ extends Node
 var config = ConfigFile.new()
 const SAVE_GAME_PATH = "user://savegame.save"
 
+var PlayedIntroBool : bool = false
+
+func PlayedIntro() -> bool:
+	return PlayedIntroBool
+
 func IfPlayedFirstTime() -> bool:
 	loadgamedata()
 	var playedbefore = config.get_value("Game", "PlayedBefore")

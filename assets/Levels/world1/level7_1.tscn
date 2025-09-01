@@ -74,7 +74,7 @@ tile_map_data = PackedByteArray("AADk//3/AAABAAEAAADl//3/AAABAAEAAAADAP3/AAABAAE
 tile_set = ExtResource("3_3jo41")
 
 [node name="Player" parent="." instance=ExtResource("4_ry652")]
-position = Vector2(-319, -22)
+position = Vector2(-318, -21)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(30, 26.053)
@@ -84,7 +84,7 @@ limit_right = 170
 position_smoothing_enabled = true
 script = ExtResource("5_k0moy")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 9.0
 one_shot = true
 autostart = true

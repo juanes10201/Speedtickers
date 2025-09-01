@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://xjx2k63akbn3"]
+[gd_scene load_steps=5 format=3 uid="uid://xjx2k63akbn3"]
+
+[ext_resource type="Shader" uid="uid://b7m1msxbjwy2t" path="res://assets/Levels/world1/CrtShader.gdshader" id="1_pfp11"]
+[ext_resource type="Script" uid="uid://2d642xujef5r" path="res://assets/Levels/LevelEnvironment.gd" id="1_pouvw"]
 
 [sub_resource type="Environment" id="Environment_dklr8"]
 background_mode = 3
@@ -11,11 +14,32 @@ adjustment_enabled = true
 adjustment_brightness = 1.05
 adjustment_saturation = 1.15
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pfp11"]
+shader = ExtResource("1_pfp11")
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/scan_line_amount = 0.073
+shader_parameter/warp_amount = 0.094
+shader_parameter/vignette_amount = 0.332
+shader_parameter/vignette_intensity = 0.438
+shader_parameter/grille_amount = 0.348
+shader_parameter/brightness_boost = 1.087
+
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_dklr8")
+script = ExtResource("1_pouvw")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.332903, 0.463423, 0.655491, 1)
 energy = 0.2
 shadow_enabled = true
 shadow_item_cull_mask = 1023
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+top_level = true
+z_index = 99
+material = SubResource("ShaderMaterial_pfp11")
+offset_left = -1140.0
+offset_top = -703.0
+offset_right = 1424.0
+offset_bottom = 780.0

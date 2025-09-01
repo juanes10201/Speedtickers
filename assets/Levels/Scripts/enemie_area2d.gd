@@ -1,19 +1,20 @@
 extends Area2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#get_parent().disable_collision()
 	pass
 
-func _on_body_entered(body: Node2D):
- 	#Trigger gameover if touches Player	
-	if (body.is_in_group("Player")):
-		if(get_parent().enemy_type == 0 && get_parent().check_collision()): get_parent().disable_collision()
-		if(body.Slide && get_parent().enemy_type == 0): get_parent()._on_player_slide_signal()
-		else: body.On_Death()
+func _on_area_entered(area: Area2D) -> void:
+	var playerbody = area.get_parent()
+	if(playerbody.is_in_group("Player")):
+		if(area.is_in_group("PlayerEnemiesCollision") && get_parent().enemy_type == 0):
+			#Disable enemie collision if enemy type == 0
+			if(get_parent().check_collision()): get_parent().disable_collision()
+			#If sliding and enemy type's == 0 then do slide action 
+			if(playerbody.Slide):
+				get_parent()._on_player_slide_signal()
+		elif(area.is_in_group("PlayerHitBox") && (get_parent().enemy_type != 0 || !playerbody.Slide)):
+			playerbody.On_Death()
 	else:
 		if(!get_parent().check_collision()): get_parent().enable_collision()

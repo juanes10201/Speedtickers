@@ -143,11 +143,11 @@ libraries = {
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(182, -200)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AADu//3/AAABAAMAAADv//3/AAACAAMAAADt//3/AAAAAAMAAADs/xIAAAACAAAAAADs/xMAAAACAAEAAADs/xQAAAACAAEAAADs/xUAAAACAAEAAADs/xYAAAACAAIAAADr/xYAAAAAAAIAAADr/xUAAAAAAAEAAADr/xQAAAAAAAEAAADr/xMAAAAAAAEAAADr/xIAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADq//3/AAAAAAMAAADr//3/AAABAAMAAADs//3/AAACAAMAAADr/xMAAAAAAAAAAADr/xQAAAAAAAEAAADr/xUAAAAAAAEAAADr/xYAAAAAAAEAAADs/xMAAAACAAAAAADs/xQAAAACAAEAAADs/xUAAAACAAEAAADs/xYAAAACAAEAAADr/xcAAAAAAAIAAADs/xcAAAACAAIAAAA=")
 tile_set = ExtResource("4_kpjie")
 
 [node name="Player" parent="." instance=ExtResource("5_844n7")]
-position = Vector2(-100, -249)
+position = Vector2(-148, -249)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(29.09, 61.1681)
@@ -160,7 +160,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("6_kymax")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 12.0
 one_shot = true
 autostart = true
@@ -178,13 +178,13 @@ scale = Vector2(99.32, 1)
 Visible = false
 CanChange = false
 
-[node name="KillBox2" parent="." instance=ExtResource("10_l76dq")]
-position = Vector2(16, -236)
-scale = Vector2(1.065, 6.18)
+[node name="KillBox6" parent="." instance=ExtResource("10_l76dq")]
+position = Vector2(82, -331)
+scale = Vector2(1.065, 33.49)
 
 [node name="KillBox14" parent="." instance=ExtResource("10_l76dq")]
-position = Vector2(-91, -136)
-scale = Vector2(1.065, 6.18)
+position = Vector2(-91, -128)
+scale = Vector2(1.065, 8.595)
 
 [node name="KillBox17" parent="." instance=ExtResource("10_l76dq")]
 position = Vector2(-137.485, -4)
@@ -194,38 +194,47 @@ scale = Vector2(1.065, 6.18)
 position = Vector2(50.48, 40)
 scale = Vector2(1.065, 15.805)
 
+[node name="KillBox19" parent="." instance=ExtResource("10_l76dq")]
+position = Vector2(-139, 311)
+scale = Vector2(1.065, 15.805)
+
 [node name="KillBox4" parent="." instance=ExtResource("10_l76dq")]
 position = Vector2(89, -425)
 scale = Vector2(99.32, 1)
 Visible = false
 
 [node name="KillBox3" parent="." instance=ExtResource("10_l76dq")]
-position = Vector2(-176, -192)
-scale = Vector2(25.04, 1)
+position = Vector2(-72, -194)
+scale = Vector2(9, 1)
 collision_mask = 5
 
 [node name="falling_sand" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(-43, -331)
-is_falling = true
-MAX_SPEED = 80.0
-
-[node name="falling_sand2" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(-27, -331)
+position = Vector2(-45, -335)
 is_falling = true
 MAX_SPEED = 80.0
 
 [node name="falling_sand3" parent="." instance=ExtResource("13_y7odo")]
-position = Vector2(-59, -331)
+position = Vector2(-61, -335)
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand2" parent="." instance=ExtResource("13_y7odo")]
+position = Vector2(-48, -46)
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand4" parent="." instance=ExtResource("13_y7odo")]
+position = Vector2(-64, -46)
 is_falling = true
 MAX_SPEED = 80.0
 
 [node name="KillBox5" parent="." instance=ExtResource("10_l76dq")]
-position = Vector2(100, -63)
-scale = Vector2(14.635, 3.365)
+position = Vector2(46, -65)
+scale = Vector2(5.54, 3.365)
 
 [node name="KillBox13" parent="." instance=ExtResource("10_l76dq")]
-position = Vector2(-185, -63)
-scale = Vector2(14.635, 3.365)
+position = Vector2(-114, -61)
+scale = Vector2(4, 1)
 
 [node name="KillBox15" parent="." instance=ExtResource("10_l76dq")]
 position = Vector2(-82, 52)

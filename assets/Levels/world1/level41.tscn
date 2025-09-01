@@ -81,15 +81,13 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_edmom")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 8.0
 one_shot = true
 autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("5_t2b1t")]
 position = Vector2(-8, -175)
-level_to_change = "level4"
-current_level = 41
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-4, 32)

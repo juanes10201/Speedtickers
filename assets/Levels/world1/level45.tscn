@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c1omaoaixr6ov"]
+[gd_scene load_steps=15 format=4 uid="uid://c1omaoaixr6ov"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_xhqd5"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_5cd6a"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="9_wo7gl"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="10_tbfs0"]
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Levels/orb.tscn" id="11_jww4d"]
-[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="12_dsswy"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -81,7 +80,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_m5uqm")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 8.0
 one_shot = true
 autostart = true
@@ -92,7 +91,7 @@ position = Vector2(-144, 161)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(90, 80)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AADv/wMAAAAAAAcAAADw/wMAAAABAAcAAADx/wMAAAABAAcAAADy/wMAAAABAAcAAADz/wMAAAACAAcAAADt/+7/AAAAAAAAAADt/+//AAAAAAEAAADt//D/AAAAAAEAAADu/+7/AAACAAAAAADu/+//AAACAAEAAADu//D/AAACAAEAAADt//H/AAAAAAEAAADt//L/AAAAAAIAAADu//H/AAACAAEAAADu//L/AAACAAIAAAD2//v/AAAAAAcAAAD3//v/AAABAAcAAAD4//v/AAACAAcAAADm//3/AAAAAAIAAADn//3/AAABAAIAAADo//3/AAABAAIAAADp//3/AAACAAIAAADm//z/AAAAAAAAAADn//z/AAABAAAAAADo//z/AAABAAAAAADp//z/AAACAAAAAADw/wYAAAAJAAAAABDv/wUAAAAJAAAAABDy/wYAAAAJAAAAAADz/wUAAAAJAAAAAADy/wUAAAALAAAAAADz/wQAAAALAAAAAADw/wUAAAALAAAAABDv/wQAAAALAAAAABDv/wYAAAAFAAMAAADz/wYAAAAFAAMAAAA=")
+tile_map_data = PackedByteArray("AADt/+7/AAAAAAAAAADt/+//AAAAAAEAAADt//D/AAAAAAEAAADu/+7/AAACAAAAAADu/+//AAACAAEAAADu//D/AAACAAEAAADt//H/AAAAAAEAAADt//L/AAAAAAIAAADu//H/AAACAAEAAADu//L/AAACAAIAAADm//3/AAAAAAIAAADn//3/AAABAAIAAADo//3/AAABAAIAAADp//3/AAACAAIAAADm//z/AAAAAAAAAADn//z/AAABAAAAAADo//z/AAABAAAAAADp//z/AAACAAAAAADw/wYAAAAJAAAAABDv/wUAAAAJAAAAABDy/wYAAAAJAAAAAADz/wUAAAAJAAAAAADy/wUAAAALAAAAAADw/wUAAAALAAAAABDv/wYAAAAFAAMAAADz/wYAAAAFAAMAAADv//X/AAAAAAcAAADw//X/AAABAAcAAADx//X/AAABAAcAAADy//X/AAABAAcAAADz//X/AAACAAcAAAA=")
 tile_set = ExtResource("6_xhqd5")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_rprtc")]
@@ -123,9 +122,6 @@ Respawn = false
 [node name="Key4" parent="." instance=ExtResource("11_jww4d")]
 position = Vector2(-48, 49)
 Respawn = false
-
-[node name="falling_sand" parent="." instance=ExtResource("12_dsswy")]
-position = Vector2(-360, -103)
 
 [node name="KillBox2" parent="." instance=ExtResource("8_rybqb")]
 position = Vector2(-88, 81)

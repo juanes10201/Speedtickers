@@ -24,9 +24,6 @@ enum Directions{
 	NONE
 }
 
-
-
-
 var OriginalX : float = position.x
 
 var Move : bool = true
@@ -81,6 +78,7 @@ func _on_player_ground_smash_signal() -> void:
 		if(Can_BeGroundSmash && _is_on_floor() && Player.GravityDirection == GravityDirection && global_position.distance_to(Player.position) <= Max_groundsmash_distance):
 			_jump(JUMP_VELOCITY if enemy_type == 0 else SPECIAL_ENEMY_JUMP_VELOCITY)
 			if(enemy_type == 0):
+				LevelManager.AddStyle(0, "GroundSmash enemy")
 				$HitParticles.emitting = true
 				#Player.FrameFreeze(0.05, 0.4)
 				velocity.x = Enemy_burst_speed if Player.position.x < position.x else Enemy_burst_speed*-1
@@ -92,6 +90,7 @@ func _on_player_ground_smash_signal() -> void:
 #region Player Slide 
 func _on_player_slide_signal() -> void:
 	if(_is_on_floor() && enemy_type == 0 && Player.GravityDirection == GravityDirection):
+		LevelManager.AddStyle(0, "Slide enemy")
 		$HitParticles.emitting = true
 		#Player.FrameFreeze(0.05, 0.4)
 		_jump(-400)
@@ -123,8 +122,12 @@ func _input(event):
 					$"../".Is_Hovering = false
 					Hovering = false
 
+func _Enemie_Shoot_Sprite_Shader() -> void:
+	Sprite.material.set_shader_parameter("progress", 1-(ShootBulletTimer.time_left/ShootBulletTimer.wait_time))
+
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
+	if(enemy_type == 2.0): _Enemie_Shoot_Sprite_Shader()
 	if(Edition.Is_in_editor && Edition.Is_playing_in_editor != StatePlaying):
 		OriginalPos = self.position
 	if(Edition.Is_in_editor && CanHover && Hovering):
@@ -162,6 +165,7 @@ func _process(delta: float) -> void:
 				BulletInstance.position = self.position
 				BulletInstance.top_level = true
 				add_child(BulletInstance)
+				Sprite.play("Shoot")
 		#endregion
 		
 		if(Player && Player.EnemiesPhysics):
@@ -285,9 +289,10 @@ func _update_sprite() -> void:
 	#if Y mov > 0 then play Jump
 	#If moving horizontally Walking
 	#Else idle
-	if(velocity.y != 0): Sprite.play("Air")
-	elif( abs(velocity.x-dif_max_move) > 0 && !is_on_wall() ): Sprite.play("Walking")
-	else: Sprite.play("Idle")
+	if(enemy_type != 2.0):
+		if(velocity.y != 0): Sprite.play("Air")
+		elif( abs(velocity.x-dif_max_move) > 0 && !is_on_wall() ): Sprite.play("Walking")
+		else: Sprite.play("Idle")
 
 func _is_on_floor() -> bool:
 	if(GravityDirection == 1):

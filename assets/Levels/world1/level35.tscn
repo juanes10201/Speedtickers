@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_vmsg1"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_2oo03"]
 [ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_puni7"]
-[ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="4_05fd1"]
+[ext_resource type="TileSet" uid="uid://ce6l7o26fuqgd" path="res://assets/Levels/world1/tiles_alt_neon.tres" id="4_hkiej"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="5_cyijr"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="6_r5c4l"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="7_mwdqu"]
@@ -146,9 +146,9 @@ libraries = {
 position = Vector2(242, 111)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AADn/w8AAAACAAIAAADn/w4AAAACAAAAAADm/w8AAAABAAIAAADm/w4AAAABAAAAAADl/w8AAAAAAAIAAADl/w4AAAAAAAAAAAD+/wwAAAADAAEAAAD+/wsAAAADAAEAAAD+/woAAAADAAEAAAD+/w0AAAADAAIAAAD+/wkAAAADAAAAAAD7/wUAAAADAAIAAAD7/wQAAAADAAEAAAD7/wMAAAADAAEAAAD7/wIAAAADAAAAAAADAA4AAAADAAEAAAADAA0AAAADAAEAAAADAAwAAAADAAEAAAADAAsAAAADAAEAAAADAAoAAAADAAEAAAADAAkAAAADAAEAAAADAAgAAAADAAEAAAADAAcAAAADAAEAAAADAAYAAAADAAEAAAADAAUAAAADAAEAAAADAAQAAAADAAEAAAADAAMAAAADAAEAAAADAAIAAAADAAAAAAADABQAAAADAAIAAAADABMAAAADAAEAAAADABIAAAADAAEAAAADABEAAAADAAEAAAADABAAAAADAAEAAAADAA8AAAADAAEAAAA=")
-tile_set = ExtResource("4_05fd1")
+tile_set = ExtResource("4_hkiej")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 10.0
 one_shot = true
 autostart = true
@@ -157,7 +157,6 @@ autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("6_r5c4l")]
 position = Vector2(273, 354)
-current_level = 35.0
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_mwdqu")]
 

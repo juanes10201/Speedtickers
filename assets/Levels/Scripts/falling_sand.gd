@@ -53,32 +53,35 @@ func _process(delta: float) -> void:
 		position = get_global_mouse_position()
 		self.position.x = (floor(self.position.x/grab_grid)*grab_grid)+16.0
 		self.position.y = (floor(self.position.y/grab_grid)*grab_grid)+10.0
-	if(is_falling && Edition.Is_in_editor && !Edition.Is_playing_in_editor):
-		set_falling(false)
-		self.position = OriginalPos
+	#if(is_falling && Edition.Is_in_editor && !Edition.Is_playing_in_editor):
+	#	set_falling(false)
+	#	self.position = OriginalPos
 	if(!Edition.Is_in_editor && $"../Player"):
 		if($"../Player".Paused):
 			was_falling = is_falling
 			set_deferred("freeze", false)
 			self.set_deferred("sleeping", false)
 			is_falling = false
-		else:
-			if(was_falling && !is_falling):
-				set_falling(true)
-		set_falling(false)
-@export var MAX_SPEED : float = 300.0  # Set your desired max speed
+		#else:
+			#if(was_falling && !is_falling):
+			#	set_falling(true)
+		#set_falling(false)
+@export var MAX_SPEED : float = 300.0
 
 func _integrate_forces(state):
 	var velocity = state.linear_velocity
 	var speed = velocity.length()
 	
-	if (speed > MAX_SPEED):#*GravityDirection):
-		state.linear_velocity = abs(velocity.normalized()) * MAX_SPEED#*GravityDirection
+	if (speed > MAX_SPEED):
+		state.linear_velocity = velocity.normalized() * MAX_SPEED
 
+#var SlamAdd : int = 1000
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player") || body.is_in_group("Enemies")):
 		if (body.is_in_group("Player")):
+			#if(body.GroundSmash):
+			#	MAX_SPEED *= SlamAdd
 			GravityDirection = Player.GravityDirection
 			body.OnSand = true
 			if(!body.GroundSmash):
@@ -86,10 +89,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		set_falling(true)
 
 func set_falling(falling : bool) -> void:
-	if(falling):
-		set_deferred("freeze", is_falling)
-		self.set_deferred("sleeping", is_falling)
-		is_falling = falling
+	print("Changing to " + str(falling))
+	set_deferred("freeze", !falling)
+	self.set_deferred("sleeping", !falling)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Player")):

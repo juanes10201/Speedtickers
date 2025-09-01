@@ -6,11 +6,13 @@ func enemy_jump():
 
 #region Variable defining
 enum Sides{
-	LEFT,
-	RIGHT,
+	LEFT = -1,
+	RIGHT = 1,
 	NONE,
 	UP
 }
+
+var SlidingInAir : bool = false
 
 var MoveLava : bool = false
 
@@ -18,6 +20,9 @@ var Sliding: Sides = Sides.NONE
 var WasSliding : bool = false
 var Slide : bool = false
 
+var GroundSmashMultiplier : int = 1
+var GroundSmashMultiplierLimit : int = 2
+@onready var SlamStorageTimer : Timer = $SlamStorageTimer
 var GroundSmash : bool = false
 var WasGroundSmash : bool = false
 var PressingGroundSmash : bool = false
@@ -34,6 +39,7 @@ var Dashed : bool = false
 var DashAcc : Vector2 = Vector2(600, 400)
 var DashMove : Vector2 = Vector2(0, 0) 
 var DashWithJump : bool = false
+var DashedWithJump : bool = false
 
 var HaveKey : bool = false
 
@@ -51,15 +57,18 @@ var juice : bool = true
 @export_range(0, 1.0, .25, "or_greater", "or_less") var jump_time_to_descent : float = 0.4
 
 @export_subgroup("Groundsmash || Slide")
-@export var SlideVelocity = 600
-@export_range(0, 25000.0, .5, "or_greater", "or_less") var GroundSmashAcc : float = 25000.0
+@export var GroundSmashVelocity = 600
+
+@export_range(0, 25000.0, .5, "or_greater", "or_less") var SlideInitialVelocity : float = 25000.0
+@export var SlideAcc = 6000
+var SlideVelocity = 0
+
 @export_range(0, 25.0, .5, "or_greater", "or_less") var JumpCancelAcc : float = 25.0
 
 @export_subgroup("Death")
 @export_range(0, 1.5, .25, "or_greater", "or_less") var TimeDeath : float = 1.5
 
 @export_group("Level")
-@export var PlayedBefore : bool = true
 @export var EnemiesPhysics : bool = true
 
 @export_group("Music")
@@ -74,6 +83,7 @@ var Paused : bool = false
 var LastDirection : float = 0
 var direction := Input.get_axis("ui_left", "ui_right")
 
+@onready var CeilingMovementMultiplierTimer : Timer = $CeilingMovementMultiplierTimer
 @onready var JumpGroundsmashMultiplier : Timer = $JumpGroundsmashMultiplier
 @onready var DashTime : Timer = $DashTime
 @onready var PreJumpTime : Timer = $PreJumpTime
@@ -148,7 +158,10 @@ func _stop_dash_particles():
 #region Debug
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_F9:
+		if event.keycode == KEY_F1:
+			var _scene_string = "res://assets/Levels/world1/main_menu_expo_video.tscn"
+			get_tree().change_scene_to_file(_scene_string)
+		elif event.keycode == KEY_F9:
 			get_tree().reload_current_scene()
 		elif event.keycode == KEY_F10:
 			var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
@@ -158,28 +171,31 @@ func _input(event):
 			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F12:
 			LevelManager.ReturnAfterTimerInExpo = !LevelManager.ReturnAfterTimerInExpo
+		elif event.keycode == KEY_F2:
+			LevelManager.StyloMetter += 100
+		elif event.keycode == KEY_F3:
+			LevelManager.StyloMetter -= 100
 #endregion
 
 func _ready() -> void:
+	if(LevelManager.StyleTimer.is_stopped()): LevelManager.StyleTimer.start()
+	
 	if(Physics && Edition.Mobile):
 		var MobileControls = preload("res://assets/Levels/ui_android_control.tscn")
 		if (MobileControls != null):
 			var MobileControlsInstance = MobileControls.instantiate()
 			if(MobileControlsInstance != null): UI.add_child(MobileControlsInstance)
-	
+	if(SaveGame.PlayedIntro()): PlayIntro = false
 	if(PlayIntro):
 		#If level is not identified search for it
-		Global.Level = LevelManager.LevelOrder.find(get_tree().current_scene)
+		SaveGame.PlayedIntroBool = true
+		Global.Level = 0
 	
 	if(TransitionOut): TransitionOut.hide()
 	if(TransitionIn): TransitionIn.show()
 	if(TransitionIn): TransitionIn.fade_out()
-
-	print(LevelManager.get_level())
+	
 	if(PlayIntro):
-		PlayedBefore = false
-		#PlayedBefore = SaveGame.IfPlayedFirstTime()
-	if(!PlayedBefore && !Edition.DoneIntro):
 		Camera.offset.y = -226.31
 		FrameFreeze(.4, 2)
 	
@@ -190,7 +206,15 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
+	if(LevelManager.ExpoMoveTimeout.is_stopped()):
+		LevelManager.ExpoMoveTimeout.start()
+		LevelManager.ExpoMoveTimeout.paused = true
+		var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
+		get_tree().change_scene_to_file(_scene_string)
+	
 	if(_is_on_floor()):
+		DashedWithJump = false
+		SlidingInAir = false
 		SwitchedGravity = false
 		PlayedSwitchedGravityAnimation = false
 	#region Set direction
@@ -200,6 +224,7 @@ func _physics_process(delta: float) -> void:
 	_pause_menu_end_tick()
 	#endregion
 	if(Physics):
+		LevelManager.ExpoMoveTimeout.paused = false
 		if(velocity.y > 0):
 			AirState = AirSides.Falling
 		elif(velocity.y < 0):
@@ -212,7 +237,7 @@ func _physics_process(delta: float) -> void:
 		WasSliding = false
 		var direction := Input.get_axis("ui_left", "ui_right")
 		
-		if(SlidingOnRamp && !_is_on_floor()): velocity.y = SlideVelocity * GravityDirection
+		if(SlidingOnRamp && !_is_on_floor()): velocity.y = GroundSmashVelocity * GravityDirection
 		
 		if(Input.is_action_just_pressed("menu_pause")): _pause_game()
 		
@@ -248,14 +273,16 @@ func _physics_process(delta: float) -> void:
 		
 		#region Particles
 		#region Jump initial particles
-		if(!_is_on_floor() && was_on_floor && !ParticlesLanding.is_playing()):
-			ParticlesLanding.position = self.position
-			ParticlesLanding.position.y -= 5
-			ParticlesLanding.set_as_top_level(true)
-			ParticlesLanding.play("default")
-			ParticlesLanding.show()
-		if(!ParticlesLanding.is_playing()):
-			ParticlesLanding.hide()
+		if(!_is_on_floor() && was_on_floor):
+			Reset_Slide()
+			if(!ParticlesLanding.is_playing()):
+				ParticlesLanding.position = self.position
+				ParticlesLanding.position.y -= 5
+				ParticlesLanding.set_as_top_level(true)
+				ParticlesLanding.play("default")
+				ParticlesLanding.show()
+			if(!ParticlesLanding.is_playing()):
+				ParticlesLanding.hide()
 		#endregion  
 		
 		if(_is_on_floor() && !was_on_floor):
@@ -293,24 +320,15 @@ func _physics_process(delta: float) -> void:
 		if(OnSand && !Slide): _play_sound(AudioWalkSand, false)
 		else: _stop_sound(AudioWalkSand)
 		#endregion
-	
+		
+		#When touching ceiling granted to player *1.3 multiplier in x movement, so that the player doesn't get stuck
+		if(_is_on_ceiling()):
+			CeilingMovementMultiplierTimer.start()
+		if(!CeilingMovementMultiplierTimer.is_stopped()): velocity.x *= 1.3
+		
 		# Move the character
 		move_and_slide()
 		#endregion
-	
-	
-	
-	#region Destructible walls w slide
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		
-		# Check if the collider is a destructible wall
-		if (collider.is_in_group("destructible_walls_slide")):
-			# Check the wall's Sliding variable
-			if Slide:
-				collider.destroy()  # Call the wall's destroy method
-	#endregion
 #endregion
 
 #region Walking sound
@@ -384,9 +402,9 @@ func _physics_apply_gravity(delta: float) -> void:
 			velocity.y += get_gravity_player() * Acc.y * delta * GravityDirection
 			if(!WallJump):
 				if(velocity.y*GravityDirection < 0): 
-					strech_size(0.8, 1.2, true)
+					strech_size(0.7, 1.2, true)
 				elif(velocity.y*GravityDirection >= MaxAcc.y):
-					strech_size(0.8, 1.2, true)
+					strech_size(0.7, 1.3, true)
 					#_play_sound(AudioWind, false)
 		#else: velocity.y += Speed.y * delta
 	if (_is_on_floor()):
@@ -402,11 +420,14 @@ func _physics_apply_gravity(delta: float) -> void:
 			ParticlesLanding.show()
 			AudioGroundsmash.play()
 			GroundSmash = false
+			DidSlamStorage = false
+			DidDiagonalSlam = false
+			GroundSmashMultiplier = 1
 			JumpGroundsmashMultiplier.start()
 			Camera.Shake(10.0, 10.0)
 			enemy_jump()
 			EnemyGroundSlamTimer.start()
-		if(Sliding == Sides.UP):
+		if(SlidingInAir):
 			Sliding = Sides.NONE
 			Slide = false
 #endregion
@@ -430,6 +451,7 @@ func _physics_jump(delta: float) -> void:
 	DashWithJump = false
 	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped()) ) || (!PreWallJumpTimer.is_stopped() && Input.is_action_pressed("player_jump")) ):
 		DoJump()
+		LevelManager.ExpoMoveTimeout.start()
 	#Cancel jump
 	if(velocity.y < 0 && !Input.is_action_pressed("player_jump") && !DashWithJump):
 		velocity.y += JumpCancelAcc * GravityDirection
@@ -440,23 +462,34 @@ func _physics_jump(delta: float) -> void:
 #endregion
 
 func DoJump() -> void:
+	#Slide + Jump combo
 	if(Sliding != Sides.NONE):
-		Sliding = Sides.UP
-		Speed.x = Acc.x*2 if LastDirection >= 0 else Acc.x*-2
+		SlidingInAir = true
+		Speed.x = Acc.x*3 * ceil(LastDirection)
 	velocity.y = jump_velocity * GravityDirection
 	if(!DashTime.is_stopped() || DashWithJump):
 		DashWithJump = true
+		if(!DashedWithJump):
+			LevelManager.AddStyle(0, "Dash with Jump Combo")
+		DashedWithJump = true
 		velocity.y *= .5
-		velocity.x *= 2
+		DashMove *= 2
 	#En caso de haber aplicado antes un groundsmash hacer un multiplicador de velocidad
 	if(!JumpGroundsmashMultiplier.is_stopped()):
 		JumpGroundsmashMultiplier.start()
-		velocity.y *= 1.3
- 	#strech_size(1.1, 0.7, true, 70)
+		velocity.y *= 1.2
 	Controller_Vibrate_Player_Movement(0.2)
 	_play_sound(AudioJump, false)
 	#region WallJump case
 	if(WallJump || !PreWallJumpTimer.is_stopped()):
+		if(GroundSmash):
+			GroundSmash = false
+			DidSlamStorage = false
+			SlamStorageTimer.start()
+			velocity.y = 0
+			PressingGroundSmash = false
+			if(GroundSmashMultiplier < GroundSmashMultiplierLimit):
+				GroundSmashMultiplier += 1.1
 		Speed.x = WallJumpVelocity*-1 if WallJumpPreviousSide == Sides.RIGHT else WallJumpVelocity
 		PreWallJumpTimer.stop()
 		velocity.y -= 50 * GravityDirection
@@ -483,73 +516,102 @@ func _physics_h_movement(delta: float) -> void:
 		#_stop_sound(AudioWalk)
 #endregion
 
+var PressedSlide : bool = false
+var DidSlamStorage : bool = false
+var DidDiagonalSlam : bool = false
+
 #region Slide and Ground Smash
 func _physics_slide_and_groundsmash(delta: float) -> void:
+	if(!Input.is_action_pressed("player_slide")):
+		SlidingInAir = false
 	if((Input.is_action_pressed("player_slide") || PressingGroundSmash)):
+		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash
-		if(!_is_on_floor() && !Slide && (Sliding != Sides.UP) ):# || velocity.y < jump_height+10)):
-			velocity.y = SlideVelocity * GravityDirection
+		if(!_is_on_floor() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
+			velocity.y = GroundSmashVelocity * GravityDirection
+			#Slam Storage
+			if(!SlamStorageTimer.is_stopped()):
+				if(!DidSlamStorage):
+					DidSlamStorage = true
+					LevelManager.AddStyle(1, "Slam Storage")
+				velocity.y *= GroundSmashMultiplier
 			GroundSmash = true
+			if(!DashTime.is_stopped() && !DidDiagonalSlam):
+				LevelManager.AddStyle(0, "Diagonal Groundsmash")
+				DidDiagonalSlam = true
 			PressingGroundSmash = true
 			set_collision_mask_value(4, false)
 		#Slide
-		elif(Sliding != Sides.UP && !PressingGroundSmash):
+		elif(!SlidingInAir && !PressingGroundSmash):
+			if(SlideVelocity == 0): SlideVelocity = SlideInitialVelocity
+			#SlideVelocity += SlideAcc * delta
+			PressedSlide = true
+			
 			_play_sound(AudioSlide, false)
 			Controller_Vibrate_Player_Movement(0.2)
-			Speed.x = GroundSmashAcc if Sliding == Sides.RIGHT else GroundSmashAcc * -1
+			Speed.x = SlideVelocity * Sliding
 			#if(SlidingOnRamp): Speed.x *= 1.2
 			if(Sliding == Sides.NONE): Sliding = Sides.RIGHT if LastDirection > 0  else Sides.LEFT
 			Slide = true
 			ParticlesSlide.emitting = true
-			#strech_size(1, .6)
+			strech_size(1, .9)
 			Sprite.play("Slide")
 			set_collision_mask_value(3, false)
+		elif(Slide && velocity.y < 0):
+			Speed.x = SlideVelocity * Sliding
 	elif(Sliding != Sides.NONE):
-		#strech_size(1, 1)
-		#Speed.x -= Acc.x * LastDirection
-		#if((Speed.x <= 250 && Speed.x > 0) || (Speed.x >= -250 && Speed.x < 0)):
-		_fade_sound(AudioSlide)
-		Sliding = Sides.NONE
-		ParticlesSlide.emitting = false
-		Slide = false
-		if(Sliding != Sides.UP): Speed.x = 0
-	#if(Sliding == Sides.UP):
+		Reset_Slide()
+		Speed.x = 0
+	
+	if(!Input.is_action_pressed("player_slide")): PressedSlide = false
+	
+	#if(!SlidingInAir):
 		#strech_size(1, 1)
 	if(!Slide): set_collision_mask_value(3, true)
 	if(!GroundSmash): set_collision_mask_value(4, true)
 	if(!Input.is_action_pressed("player_slide") && _is_on_floor() ):
 		PressingGroundSmash = false
-	
+
+func Reset_Slide():
+	_fade_sound(AudioSlide)
+	Sliding = Sides.NONE
+	ParticlesSlide.emitting = false
+	Slide = false
+	if(!SlidingInAir):
+		#Speed.x = 0
+		SlideVelocity = 0
+
 	#endregion
 
 #region Dash
 func _physics_dash(delta: float) -> void:
 	#Dash
-	print(DashWithJump)
-	if(Input.is_action_just_pressed("player_dash") && !Dashed):
+	if(Input.is_action_pressed("player_dash") && !Dashed):
+		LevelManager.ExpoMoveTimeout.start()
 		velocity.y = 0
 		Dashed = true
 		AudioDash.pitch_scale = randf_range(0.8, 1.2)
 		AudioDash.play()
-		strech_size(2, 0.5)
+		strech_size(2.5, 0.5)
 		DashTime.start()
 		DashMove = DashAcc * LastDirection
 		Controller_Vibrate_Player_Movement(0.7)
 	#Dash movement
 	if(DashWithJump): DashMove = DashAcc * LastDirection
-	if(false):
+	if(DashTime.is_stopped()):
 		if(DashMove.x > 250): DashMove.x -= Acc.x * LastDirection
 		else: DashMove.x = 0
 		if(DashMove.y > 250): DashMove.y -= Acc.y * LastDirection
 		else: DashMove.y = 0
 	#La idea es que al ejecutar un dash el movimiento vertical este suspendido
-	#else: velocity.y = 0 * GravityDirection
+	elif(SwitchedGravity): velocity.y = 0
 #endregion
+
 
 #region WallJump
 func _physics_walljump(delta: float) -> void:
 	#The idea is to mantain some vertical movement, but still be able to jump more than before, like SuperMeatBoy
-	var direction := Input.get_axis("ui_left", "ui_right")
+	direction = Input.get_axis("ui_left", "ui_right")
 	if(is_near_wall() && direction && !Slide):
 		Dashed = false
 		velocity.y += 50* delta * GravityDirection
@@ -608,12 +670,14 @@ func get_gravity_player() -> float:
 
 #region Death
 func On_Death():
-	if(_is_on_floor()): ParticlesDeathFloor.emitting = true
-	else: ParticlesDeathAir.emitting = true
-	Sprite.hide()
-	Physics = false
-	Dead = true
-	_play_sound(AudioDeath, false)
+	if(Physics):
+		LevelManager.RemoveStyle(100)
+		if(_is_on_floor()): ParticlesDeathFloor.emitting = true
+		else: ParticlesDeathAir.emitting = true
+		Sprite.hide()
+		Physics = false
+		Dead = true
+		_play_sound(AudioDeath, false)
 	
 	#TransitionOut.show()
 	#TransitionOut.fade_out()
@@ -624,7 +688,13 @@ func On_Death():
 #endregion
 
 func _is_on_floor() -> bool:
-	if(GravityDirection == 1):
+	if(GravityDirection == Global.GravityDirections.MAIN):
+		return is_on_floor()
+	else:
+		return is_on_ceiling()
+
+func _is_on_ceiling() -> bool:
+	if(GravityDirection == Global.GravityDirections.INVERTED):
 		return is_on_floor()
 	else:
 		return is_on_ceiling()

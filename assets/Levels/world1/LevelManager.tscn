@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cispxmxkgqevq"]
+[gd_scene load_steps=42 format=3 uid="uid://cispxmxkgqevq"]
 
 [ext_resource type="Script" uid="uid://sp85faq0sp01" path="res://assets/Levels/Scripts/Level-order.gd" id="1_72qwh"]
 [ext_resource type="PackedScene" uid="uid://1q1rsb3yrxn0" path="res://assets/Levels/world1/level1.tscn" id="2_5wudn"]
@@ -14,13 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://h70id5quy52h" path="res://assets/Levels/world1/level10.tscn" id="13_fyqwo"]
 [ext_resource type="PackedScene" uid="uid://bitlmcq7vy28o" path="res://assets/Levels/world1/level11.tscn" id="14_355rg"]
 [ext_resource type="PackedScene" uid="uid://cafn7pokf25fd" path="res://assets/Levels/world1/level12.tscn" id="15_yihc6"]
-[ext_resource type="PackedScene" uid="uid://bqov503amlnpt" path="res://assets/Levels/world1/level14.tscn" id="17_bnsg7"]
+[ext_resource type="PackedScene" uid="uid://bqov503amlnpt" path="res://assets/Levels/world1/level14.tscn" id="16_lkles"]
 [ext_resource type="PackedScene" uid="uid://dgu46ihyo375i" path="res://assets/Levels/world1/level15.tscn" id="18_ina62"]
 [ext_resource type="PackedScene" uid="uid://c5ueymd87lgb0" path="res://assets/Levels/world1/level16.tscn" id="19_7y1xq"]
 [ext_resource type="PackedScene" uid="uid://co2k25ef47oxc" path="res://assets/Levels/world1/level17.tscn" id="20_ljyuh"]
-[ext_resource type="PackedScene" uid="uid://bc2g1v4d5dgw0" path="res://assets/Levels/world1/level18.tscn" id="21_ldoos"]
 [ext_resource type="PackedScene" uid="uid://cmoi1akylmxsx" path="res://assets/Levels/world1/level19.tscn" id="22_5o0iu"]
-[ext_resource type="PackedScene" uid="uid://xso5fmuvkiea" path="res://assets/Levels/world1/level20.tscn" id="23_y46dh"]
 [ext_resource type="PackedScene" uid="uid://dhgyon50kqkuc" path="res://assets/Levels/world1/level21.tscn" id="24_3pft1"]
 [ext_resource type="PackedScene" uid="uid://ca7f4l784adso" path="res://assets/Levels/world1/level22.tscn" id="25_kmm50"]
 [ext_resource type="PackedScene" uid="uid://dmwlprrnl3ma8" path="res://assets/Levels/world1/level23.tscn" id="26_gq5g1"]
@@ -28,29 +26,36 @@
 [ext_resource type="PackedScene" uid="uid://cy4ir61bv7xvw" path="res://assets/Levels/world1/level25.tscn" id="28_q7ii6"]
 [ext_resource type="PackedScene" uid="uid://c8r0ebu1qkgf2" path="res://assets/Levels/world1/level26.tscn" id="29_3ejch"]
 [ext_resource type="PackedScene" uid="uid://c688753g83gfm" path="res://assets/Levels/world1/level27.tscn" id="30_1ed2a"]
-[ext_resource type="PackedScene" uid="uid://bjksqled8yecv" path="res://assets/Levels/world1/level28.tscn" id="31_7gi8j"]
 [ext_resource type="PackedScene" uid="uid://d3wx8nlwo3lm1" path="res://assets/Levels/world1/level29.tscn" id="32_iq6eh"]
 [ext_resource type="PackedScene" uid="uid://y8hoxiwewykl" path="res://assets/Levels/world1/level30.tscn" id="33_nrfoo"]
 [ext_resource type="PackedScene" uid="uid://ddjqbantsc3or" path="res://assets/Levels/world1/level31.tscn" id="34_w2xte"]
 [ext_resource type="PackedScene" uid="uid://5ryr6mg0gjyl" path="res://assets/Levels/world1/level32.tscn" id="35_mugeg"]
-[ext_resource type="PackedScene" uid="uid://dut7edei0ifi" path="res://assets/Levels/world1/level33.tscn" id="36_ap78i"]
 [ext_resource type="PackedScene" uid="uid://bjl7alpu2ji21" path="res://assets/Levels/world1/level34.tscn" id="37_csxsy"]
 [ext_resource type="PackedScene" uid="uid://bb4ghxs75e4ig" path="res://assets/Levels/world1/level35.tscn" id="38_h87q3"]
 [ext_resource type="PackedScene" uid="uid://bi2gv4fm2u868" path="res://assets/Levels/world1/level36.tscn" id="39_2volh"]
 [ext_resource type="PackedScene" uid="uid://do7ass5r04xl8" path="res://assets/Levels/world1/level37.tscn" id="40_7s562"]
 [ext_resource type="PackedScene" uid="uid://m2kw68naxoqh" path="res://assets/Levels/world1/level38.tscn" id="41_a1afj"]
-[ext_resource type="PackedScene" uid="uid://chgmjx3b2cyvw" path="res://assets/Levels/world1/level39.tscn" id="42_i522l"]
+[ext_resource type="PackedScene" uid="uid://chgmjx3b2cyvw" path="res://assets/Levels/world1/level46.tscn" id="42_i522l"]
 [ext_resource type="PackedScene" uid="uid://b0h3fvcv7v3jo" path="res://assets/Levels/world1/level40.tscn" id="43_xmmsi"]
 [ext_resource type="PackedScene" uid="uid://b4gnyo8qbsvlr" path="res://assets/Levels/world1/level41.tscn" id="44_eewox"]
 [ext_resource type="PackedScene" uid="uid://d286uugkfxjlw" path="res://assets/Levels/world1/level42.tscn" id="45_2lnpm"]
 [ext_resource type="PackedScene" uid="uid://ct3vr78lsiu6c" path="res://assets/Levels/world1/level43.tscn" id="46_n8j5l"]
 [ext_resource type="PackedScene" uid="uid://blfm6ie28ns47" path="res://assets/Levels/world1/level44.tscn" id="47_7aba3"]
-[ext_resource type="PackedScene" uid="uid://c1omaoaixr6ov" path="res://assets/Levels/world1/level45.tscn" id="48_lvdhw"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_72qwh")
-LevelOrder = Array[PackedScene]([ExtResource("2_5wudn"), ExtResource("3_aqenk"), ExtResource("4_wakub"), ExtResource("5_rer4g"), ExtResource("6_li161"), ExtResource("7_3ii21"), ExtResource("8_y02bg"), ExtResource("9_mvh84"), ExtResource("11_hrmad"), ExtResource("12_npu4a"), ExtResource("13_fyqwo"), ExtResource("14_355rg"), ExtResource("15_yihc6"), ExtResource("17_bnsg7"), ExtResource("18_ina62"), ExtResource("19_7y1xq"), ExtResource("20_ljyuh"), ExtResource("21_ldoos"), ExtResource("22_5o0iu"), ExtResource("23_y46dh"), ExtResource("24_3pft1"), ExtResource("25_kmm50"), ExtResource("26_gq5g1"), ExtResource("27_a6d28"), ExtResource("28_q7ii6"), ExtResource("29_3ejch"), ExtResource("30_1ed2a"), ExtResource("31_7gi8j"), ExtResource("32_iq6eh"), ExtResource("33_nrfoo"), ExtResource("34_w2xte"), ExtResource("35_mugeg"), ExtResource("36_ap78i"), ExtResource("37_csxsy"), ExtResource("38_h87q3"), ExtResource("39_2volh"), ExtResource("40_7s562"), ExtResource("41_a1afj"), ExtResource("42_i522l"), ExtResource("43_xmmsi"), ExtResource("44_eewox"), ExtResource("45_2lnpm"), ExtResource("46_n8j5l"), ExtResource("47_7aba3"), ExtResource("48_lvdhw")])
+LevelOrder = Array[PackedScene]([ExtResource("2_5wudn"), ExtResource("3_aqenk"), ExtResource("4_wakub"), ExtResource("5_rer4g"), ExtResource("7_3ii21"), ExtResource("6_li161"), ExtResource("8_y02bg"), ExtResource("9_mvh84"), ExtResource("11_hrmad"), ExtResource("12_npu4a"), ExtResource("13_fyqwo"), ExtResource("14_355rg"), ExtResource("15_yihc6"), ExtResource("16_lkles"), ExtResource("16_lkles"), ExtResource("18_ina62"), ExtResource("19_7y1xq"), ExtResource("20_ljyuh"), ExtResource("22_5o0iu"), ExtResource("24_3pft1"), ExtResource("25_kmm50"), ExtResource("26_gq5g1"), ExtResource("27_a6d28"), ExtResource("28_q7ii6"), ExtResource("29_3ejch"), ExtResource("43_xmmsi"), ExtResource("44_eewox"), ExtResource("45_2lnpm"), ExtResource("46_n8j5l"), ExtResource("47_7aba3"), ExtResource("30_1ed2a"), ExtResource("32_iq6eh"), ExtResource("33_nrfoo"), ExtResource("34_w2xte"), ExtResource("35_mugeg"), ExtResource("37_csxsy"), ExtResource("38_h87q3"), ExtResource("39_2volh"), ExtResource("40_7s562"), ExtResource("41_a1afj"), ExtResource("42_i522l")])
 
 [node name="ExpoTimer" type="Timer" parent="."]
-wait_time = 600.0
+wait_time = 420.0
 one_shot = true
+
+[node name="StyleTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="ExpoMoveTimeout" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="StyleTimer" to="." method="_on_style_timer_timeout"]

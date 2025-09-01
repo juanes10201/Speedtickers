@@ -162,7 +162,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("6_ygabv")
 
-[node name="Time_Left" type="Timer" parent="."]
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 12.0
 one_shot = true
 autostart = true

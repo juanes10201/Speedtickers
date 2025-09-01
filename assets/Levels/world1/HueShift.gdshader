@@ -1,0 +1,50 @@
+shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+uniform sampler2D MASK_TEXTURE; // black = apply saturation, white = skip
+
+uniform vec2 resolution = vec2(320.0, 180.0);
+
+uniform float scan_line_amount : hint_range(0.0, 1.0) = 0.5;
+uniform float warp_amount : hint_range(0.0, 1.0) = 0.05;
+uniform float vignette_amount : hint_range(0.0, 1.0) = 0.5;
+uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.3;
+uniform float grille_amount : hint_range(0.0, 1.0) = 0.05;
+uniform float brightness_boost : hint_range(1.0, 2.0) = 1.2;
+
+uniform float saturation : hint_range(0.0, 2.0) = 0.0; // default B&W
+
+void fragment() {
+    vec2 uv = SCREEN_UV;
+
+    // Warp
+    vec2 delta = uv - 0.5;
+    float warp_factor = dot(delta, delta) * warp_amount;
+    uv += delta * warp_factor;
+
+    // Scanlines
+    float scanline = sin(uv.y * resolution.y * PI) * 0.5 + 0.5;
+    scanline = mix(1.0, scanline, scan_line_amount * 0.5);
+
+    // Grille
+    float grille = mod(uv.x * resolution.x, 3.0) < 1.5 ? 0.95 : 1.05;
+    grille = mix(1.0, grille, grille_amount * 0.5);
+
+    // Base color
+    vec3 color = texture(SCREEN_TEXTURE, uv).rgb * scanline * grille;
+
+    // Vignette
+    vec2 v_uv = uv * (1.0 - uv.xy);
+    float vignette = v_uv.x * v_uv.y * 15.0;
+    vignette = mix(1.0, vignette, vignette_amount * 0.7);
+    color *= vignette * brightness_boost;
+
+    // --- Saturation only if MASK says so ---
+    float mask = texture(MASK_TEXTURE, uv).r; // 1.0 = ignore saturation
+    if (mask < 0.5) {
+        float gray = dot(color, vec3(0.2126, 0.7152, 0.0722));
+        color = mix(vec3(gray), color, saturation);
+    }
+
+    COLOR = vec4(color, 1.0);
+}
