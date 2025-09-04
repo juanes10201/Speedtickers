@@ -46,4 +46,8 @@ animation = &"disabled"
 scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_3qvlp")
 
+[node name="LavaTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

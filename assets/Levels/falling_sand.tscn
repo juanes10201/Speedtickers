@@ -16,7 +16,7 @@ size = Vector2(16, 16)
 [node name="falling_sand" type="RigidBody2D" groups=["sand"]]
 position = Vector2(-63, -142)
 collision_layer = 16
-collision_mask = 15
+collision_mask = 256
 sleeping = true
 lock_rotation = true
 freeze = true
@@ -24,6 +24,7 @@ freeze_mode = 1
 script = ExtResource("1_8diny")
 
 [node name="Area2DCrush" type="Area2D" parent="."]
+gravity_space_override = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DCrush"]
 position = Vector2(-0.17, 1.73)

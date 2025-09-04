@@ -185,7 +185,7 @@ collision_mask = 400
 script = ExtResource("1_ny8g4")
 Max_groundsmash_distance = 200.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemie"]]
 position = Vector2(0.14, 4.138)
 scale = Vector2(0.61, 0.6)
 shape = SubResource("RectangleShape2D_4y4c6")
@@ -219,12 +219,12 @@ amount = 4
 texture = ExtResource("4_caayp")
 process_material = SubResource("ParticleProcessMaterial_boibh")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Enemie"]]
 collision_layer = 2
-collision_mask = 128
+collision_mask = 1152
 script = ExtResource("2_x2l0f")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" groups=["Enemie"]]
 position = Vector2(0.215, 1.825)
 scale = Vector2(1.225, 1.39)
 shape = SubResource("RectangleShape2D_4y4c6")

@@ -135,10 +135,10 @@ shape = SubResource("RectangleShape2D_4y4c6")
 one_shot = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.559998, 13.48)
+position = Vector2(0.28, 3.87)
 sprite_frames = SubResource("SpriteFrames_cwqvb")
 animation = &"Idle"
-offset = Vector2(-0.28, -15.95)
+offset = Vector2(-0.28, -4.835)
 
 [node name="HitParticles" type="GPUParticles2D" parent="."]
 emitting = false

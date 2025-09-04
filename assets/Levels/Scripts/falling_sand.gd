@@ -4,12 +4,13 @@ extends RigidBody2D
 @export var push_force : float = 80.0
 @export var wait_time : float = 0.1
 
+@export var GravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
+@onready var CurrentGravityDirection : Global.GravityDirections = GravityDirection
+
 @export var is_falling : bool = false
 var was_falling : bool = is_falling
 
 var is_playing : bool = false
-
-var GravityDirection : float = 1
 
 @onready var SandTimer = $SandTimer
 
@@ -42,6 +43,11 @@ func _input(event):
 
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
+	CurrentGravityDirection = GravityDirection * Player.GlobalGravityDirection
+	if(CurrentGravityDirection == Global.GravityDirections.INVERTED):
+		set_falling(true)
+	gravity_scale = CurrentGravityDirection
+	
 	if(Edition.Is_in_editor && Edition.Is_playing_in_editor != is_playing):
 		self.position = OriginalPos
 	elif(Edition.Is_in_editor && !Edition.Is_playing_in_editor):
@@ -78,11 +84,12 @@ func _integrate_forces(state):
 #var SlamAdd : int = 1000
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Player") || body.is_in_group("Enemies")):
+	if(body.is_in_group("Player") || body.is_in_group("Enemie")):
 		if (body.is_in_group("Player")):
+			#Player.GravitySandFallDirection = Player.GlobalGravityDirection
 			#if(body.GroundSmash):
 			#	MAX_SPEED *= SlamAdd
-			GravityDirection = Player.GravityDirection
+			#GravityDirection = Player.GravityDirection
 			body.OnSand = true
 			if(!body.GroundSmash):
 				await get_tree().create_timer(wait_time).timeout
@@ -95,9 +102,10 @@ func set_falling(falling : bool) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
+		#Player.GravitySandFallDirection = Global.GravityDirections.MAIN
 		body.OnSand = false
 
 
 func _on_area_2d_crush_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Player")):
+	if(body.is_in_group("Player") && CurrentGravityDirection != Global.GravityDirections.INVERTED):
 		body.On_Death()

@@ -201,6 +201,7 @@ pointing/emulate_mouse_from_touch=false
 2d_physics/layer_8="Player Enemy Collision Shape"
 2d_physics/layer_9="Level collisions"
 2d_physics/layer_10="Regular enemies"
+2d_physics/layer_11="Killbox"
 
 [rendering]
 

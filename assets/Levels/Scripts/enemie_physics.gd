@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var enemy_type : float = 0
 @export var EnemyDirection : Directions = Directions.RIGHT
 @export var distance : float = 100
+@export var GravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
+@export var TimeToShoot : float = 1.0
+
 @export_group("Physics")
 @export var Enemy_burst_speed : float = 300.0
 @export var SPEED : float = 150.0
@@ -15,7 +18,6 @@ extends CharacterBody2D
 @export var Cancel_speed : float = 200.0
 @export var Max_groundsmash_distance = 300.0
 @export var Can_BeGroundSmash : bool = true
-@export var GravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
 
 #For editor
 enum Directions{
@@ -43,8 +45,6 @@ var direction = 0
 
 @onready var BulletObject = preload("res://assets/Levels/bullets.tscn")# if enemy_type == 2 else null
 
-@export var TimeToShoot : float = 1.0
-
 @export var Enabled : bool = true
 
 var OriginalPos = Vector2(0, 0)
@@ -53,6 +53,8 @@ var was_on_floor : bool = false
 var was_on_wall : bool = false
 
 var StatePlaying : bool = false
+
+@onready var PrevGravityDirection : Global.GravityDirections = GravityDirection
 
 #endregion
 
@@ -69,7 +71,7 @@ func _groundsmash_player_sound() -> void:
 #region Jumping
 func _jump(_jump_velocity) -> void:
 	#The idea is for the enemies to jump when the player does a ground-smash
-	if(_is_on_floor()): velocity.y = _jump_velocity * GravityDirection# * randf_range(1, 1.2)
+	if(_is_on_floor()): velocity.y = _jump_velocity * GravityDirection*Player.GlobalGravityDirection# * randf_range(1, 1.2)
 #endregion
 
 #region Player GroundSmash 
@@ -127,6 +129,10 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
+	if(Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
+		PrevGravityDirection = Player.GlobalGravityDirection * GravityDirection
+		velocity.y = 100 * PrevGravityDirection*GravityDirection
+	
 	if(enemy_type == 2.0): _Enemie_Shoot_Sprite_Shader()
 	if(Edition.Is_in_editor && Edition.Is_playing_in_editor != StatePlaying):
 		OriginalPos = self.position
@@ -188,11 +194,10 @@ func _process(delta: float) -> void:
 			#endregion
 			#region Gravity
 			if (!_is_on_floor() &&  velocity.y < MAX_FALL_SPEED):
-				velocity += get_gravity() * delta * GravityDirection
+				velocity += get_gravity() * delta * GravityDirection*Player.GlobalGravityDirection
 			#endregion
 			if(direction): Sprite.flip_h = false if direction >= 0 else true
-			Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection
-			
+			Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
 			#region Horizontal Movement
 			#Enemy Movement
 			if(Move && Player):
@@ -221,11 +226,11 @@ func _process(delta: float) -> void:
 @onready var original_scale = Sprite.scale
 func strech_size(X, Y):
 	Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
-	Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection
+	Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
 
 func _strech_tick(delta : float):
 	Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 15 * delta
-	Sprite.scale.y += (original_scale.y*GravityDirection - Sprite.scale.y) * 15 * delta
+	Sprite.scale.y += (original_scale.y*GravityDirection*Player.GlobalGravityDirection - Sprite.scale.y) * 15 * delta
 #endregion
 
 #region toggle collision
@@ -295,7 +300,7 @@ func _update_sprite() -> void:
 		else: Sprite.play("Idle")
 
 func _is_on_floor() -> bool:
-	if(GravityDirection == 1):
+	if(GravityDirection*Player.GlobalGravityDirection == 1):
 		return is_on_floor()
 	else:
 		return is_on_ceiling()

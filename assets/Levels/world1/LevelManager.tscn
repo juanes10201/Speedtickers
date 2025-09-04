@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cispxmxkgqevq"]
+[gd_scene load_steps=51 format=3 uid="uid://cispxmxkgqevq"]
 
 [ext_resource type="Script" uid="uid://sp85faq0sp01" path="res://assets/Levels/Scripts/Level-order.gd" id="1_72qwh"]
 [ext_resource type="PackedScene" uid="uid://1q1rsb3yrxn0" path="res://assets/Levels/world1/level1.tscn" id="2_5wudn"]
@@ -35,16 +35,26 @@
 [ext_resource type="PackedScene" uid="uid://bi2gv4fm2u868" path="res://assets/Levels/world1/level36.tscn" id="39_2volh"]
 [ext_resource type="PackedScene" uid="uid://do7ass5r04xl8" path="res://assets/Levels/world1/level37.tscn" id="40_7s562"]
 [ext_resource type="PackedScene" uid="uid://m2kw68naxoqh" path="res://assets/Levels/world1/level38.tscn" id="41_a1afj"]
+[ext_resource type="PackedScene" uid="uid://ymekc38o4di1" path="res://assets/Levels/world1/level1_bside.tscn" id="42_by85b"]
 [ext_resource type="PackedScene" uid="uid://chgmjx3b2cyvw" path="res://assets/Levels/world1/level46.tscn" id="42_i522l"]
+[ext_resource type="PackedScene" uid="uid://ddlbdi21epsm3" path="res://assets/Levels/world1/level2_bside.tscn" id="43_l6x6i"]
 [ext_resource type="PackedScene" uid="uid://b0h3fvcv7v3jo" path="res://assets/Levels/world1/level40.tscn" id="43_xmmsi"]
+[ext_resource type="PackedScene" uid="uid://du2hxxfmivmta" path="res://assets/Levels/world1/level3_bside.tscn" id="44_bddof"]
 [ext_resource type="PackedScene" uid="uid://b4gnyo8qbsvlr" path="res://assets/Levels/world1/level41.tscn" id="44_eewox"]
 [ext_resource type="PackedScene" uid="uid://d286uugkfxjlw" path="res://assets/Levels/world1/level42.tscn" id="45_2lnpm"]
+[ext_resource type="PackedScene" uid="uid://beyrlugw36155" path="res://assets/Levels/world1/level5_bside.tscn" id="45_bddof"]
+[ext_resource type="PackedScene" uid="uid://bw0d6ow68gg4l" path="res://assets/Levels/world1/level14_bside.tscn" id="46_bddof"]
 [ext_resource type="PackedScene" uid="uid://ct3vr78lsiu6c" path="res://assets/Levels/world1/level43.tscn" id="46_n8j5l"]
 [ext_resource type="PackedScene" uid="uid://blfm6ie28ns47" path="res://assets/Levels/world1/level44.tscn" id="47_7aba3"]
+[ext_resource type="PackedScene" uid="uid://nw24lwng272g" path="res://assets/Levels/world1/level15_bside.tscn" id="47_o60qi"]
+[ext_resource type="PackedScene" uid="uid://c72rm5hbjobw6" path="res://assets/Levels/world1/level17_bside.tscn" id="48_72qwh"]
+[ext_resource type="PackedScene" uid="uid://c2xplrpfsh4pj" path="res://assets/Levels/world1/level24_bside.tscn" id="49_5wudn"]
+[ext_resource type="PackedScene" uid="uid://b0m1xb0mqbsb1" path="res://assets/Levels/world1/level25_bside.tscn" id="50_aqenk"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_72qwh")
 LevelOrder = Array[PackedScene]([ExtResource("2_5wudn"), ExtResource("3_aqenk"), ExtResource("4_wakub"), ExtResource("5_rer4g"), ExtResource("7_3ii21"), ExtResource("6_li161"), ExtResource("8_y02bg"), ExtResource("9_mvh84"), ExtResource("11_hrmad"), ExtResource("12_npu4a"), ExtResource("13_fyqwo"), ExtResource("14_355rg"), ExtResource("15_yihc6"), ExtResource("16_lkles"), ExtResource("16_lkles"), ExtResource("18_ina62"), ExtResource("19_7y1xq"), ExtResource("20_ljyuh"), ExtResource("22_5o0iu"), ExtResource("24_3pft1"), ExtResource("25_kmm50"), ExtResource("26_gq5g1"), ExtResource("27_a6d28"), ExtResource("28_q7ii6"), ExtResource("29_3ejch"), ExtResource("43_xmmsi"), ExtResource("44_eewox"), ExtResource("45_2lnpm"), ExtResource("46_n8j5l"), ExtResource("47_7aba3"), ExtResource("30_1ed2a"), ExtResource("32_iq6eh"), ExtResource("33_nrfoo"), ExtResource("34_w2xte"), ExtResource("35_mugeg"), ExtResource("37_csxsy"), ExtResource("38_h87q3"), ExtResource("39_2volh"), ExtResource("40_7s562"), ExtResource("41_a1afj"), ExtResource("42_i522l")])
+LevelOrderBsides = Array[PackedScene]([ExtResource("42_by85b"), ExtResource("43_l6x6i"), ExtResource("44_bddof"), ExtResource("45_bddof"), ExtResource("46_bddof"), ExtResource("47_o60qi"), ExtResource("48_72qwh"), ExtResource("49_5wudn"), ExtResource("50_aqenk")])
 
 [node name="ExpoTimer" type="Timer" parent="."]
 wait_time = 420.0

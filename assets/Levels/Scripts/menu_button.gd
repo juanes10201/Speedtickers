@@ -22,6 +22,8 @@ extends Button
 
 @export var ShowOnExpo : bool = true
 
+@export var BSide : bool = false
+
 enum BoxSize{
 	Mini,
 	Regular
@@ -116,7 +118,7 @@ func _on_pressed() -> void:
 		Player._pause_game()
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_starting_with):
 		#LevelManager.Level = int(text)-1
-		LevelManager.change_to_level(int(text)-1)
+		LevelManager.change_to_level(int(text)-1, BSide)
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.restart_level):
 		Player.TransitionOut.show()
 		Player.TransitionOut.fade_out()

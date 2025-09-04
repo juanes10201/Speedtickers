@@ -16,7 +16,8 @@ enum OBJECT_ACTIONS{
 	none,
 	switch_killbox_type,
 	MoveLava,
-	Switch_Player_Gravity
+	Switch_Player_Gravity,
+	Switch_Gravity_Remix
 }
 enum GravityDirections{
 	INVERTED = -1,
@@ -51,3 +52,5 @@ func Play_Global_Action(Action : OBJECT_ACTIONS):
 		Player.MoveLava = true
 	elif(Action == OBJECT_ACTIONS.Switch_Player_Gravity):
 		Player._invert_gravity()
+	elif(Action == OBJECT_ACTIONS.Switch_Gravity_Remix):
+		Player._invert_gravity_remix()

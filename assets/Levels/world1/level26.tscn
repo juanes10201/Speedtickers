@@ -146,7 +146,7 @@ libraries = {
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(242, 37)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AAAAAOn/AAACAAEAAAAAAOr/AAACAAEAAAAAAOv/AAACAAEAAAAAAOz/AAACAAEAAAAAAO3/AAACAAEAAAAAAO7/AAACAAEAAAAAAO//AAACAAEAAAAAAPD/AAACAAEAAAAAAPH/AAACAAEAAAAAAPL/AAACAAEAAAAAAPP/AAACAAEAAAAAAPT/AAACAAEAAAAAAPX/AAACAAEAAAAAAPb/AAACAAEAAAAAAPf/AAACAAIAAAD//+n/AAAAAAEAAAD//+r/AAAAAAEAAAD//+v/AAAAAAEAAAD//+z/AAAAAAEAAAD//+3/AAAAAAEAAAD//+7/AAAAAAEAAAD//+//AAAAAAEAAAD///D/AAAAAAEAAAD///H/AAAAAAEAAAD///L/AAAAAAEAAAD///P/AAAAAAEAAAD///T/AAAAAAEAAAD///X/AAAAAAEAAAD///b/AAAAAAEAAAD///f/AAAAAAIAAAAAAOj/AAACAAEAAAAAAOf/AAACAAAAAAD//+j/AAAAAAEAAAD//+f/AAAAAAAAAADr//H/AAAAAAEAAADr//L/AAAAAAIAAADs//H/AAABAAEAAADs//L/AAABAAIAAADt//H/AAACAAEAAADt//L/AAACAAIAAADr//D/AAAAAAAAAADs//D/AAABAAAAAADt//D/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAOn/AAACAAEAAAAAAOr/AAACAAEAAAAAAOv/AAACAAEAAAAAAOz/AAACAAEAAAAAAO3/AAACAAEAAAAAAO7/AAACAAEAAAAAAO//AAACAAEAAAAAAPD/AAACAAEAAAAAAPH/AAACAAEAAAAAAPL/AAACAAEAAAAAAPP/AAACAAEAAAAAAPT/AAACAAEAAAAAAPX/AAACAAEAAAAAAPb/AAACAAEAAAAAAPf/AAACAAIAAAD//+n/AAAAAAEAAAD//+r/AAAAAAEAAAD//+v/AAAAAAEAAAD//+z/AAAAAAEAAAD//+3/AAAAAAEAAAD//+7/AAAAAAEAAAD//+//AAAAAAEAAAD///D/AAAAAAEAAAD///H/AAAAAAEAAAD///L/AAAAAAEAAAD///P/AAAAAAEAAAD///T/AAAAAAEAAAD///X/AAAAAAEAAAD///b/AAAAAAEAAAD///f/AAAAAAIAAAAAAOj/AAACAAEAAAAAAOf/AAACAAAAAAD//+j/AAAAAAEAAAD//+f/AAAAAAAAAADr//H/AAAAAAEAAADr//L/AAAAAAIAAADs//H/AAABAAEAAADs//L/AAABAAIAAADt//H/AAACAAEAAADt//L/AAACAAIAAADr//D/AAAAAAAAAADs//D/AAABAAAAAADt//D/AAACAAAAAADw//P/AAADAAIAAADw//L/AAADAAEAAADw//H/AAADAAAAAAA=")
 tile_set = ExtResource("4_8404c")
 
 [node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
@@ -167,7 +167,7 @@ scale = Vector2(99.32, 1)
 Visible = false
 
 [node name="KillBox5" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(-21, -177)
+position = Vector2(-27, -177)
 scale = Vector2(2.33, 6.16)
 
 [node name="KillBox6" parent="." instance=ExtResource("8_8sq5l")]
@@ -247,11 +247,6 @@ scale = Vector2(3, 2)
 position = Vector2(94, -267)
 scale = Vector2(3, 5)
 
-[node name="falling_sand" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-4, -194)
-wait_time = 0.2
-MAX_SPEED = 150.0
-
 [node name="falling_sand5" parent="." instance=ExtResource("14_efkra")]
 position = Vector2(142, -218.49)
 MAX_SPEED = 120.0
@@ -273,16 +268,6 @@ position = Vector2(-72, -377)
 
 [node name="falling_sand12" parent="." instance=ExtResource("14_efkra")]
 position = Vector2(-56, -377)
-
-[node name="falling_sand2" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-4, -178)
-wait_time = 0.2
-MAX_SPEED = 150.0
-
-[node name="falling_sand3" parent="." instance=ExtResource("14_efkra")]
-position = Vector2(-4, -162)
-wait_time = 0.2
-MAX_SPEED = 150.0
 
 [node name="AmbientParticles" parent="." instance=ExtResource("14_fsay3")]
 position = Vector2(-202, -446)

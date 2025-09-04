@@ -136,6 +136,7 @@ var EnabledKillBox : Global.KillBoxTypes = Global.KillBoxTypes.Red
 @onready var OriginalPos : Vector2 = self.position
 
 var GravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
+var GravitySandFallDirection : Global.GravityDirections = Global.GravityDirections.MAIN
 
 var SwitchedGravity : bool = false
 var PlayedSwitchedGravityAnimation : bool = false
@@ -206,7 +207,7 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
-	if(LevelManager.ExpoMoveTimeout.is_stopped()):
+	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb && LevelManager.ExpoMoveTimeout.is_stopped()):
 		LevelManager.ExpoMoveTimeout.start()
 		LevelManager.ExpoMoveTimeout.paused = true
 		var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
@@ -307,8 +308,8 @@ func _physics_process(delta: float) -> void:
 		#endregion
 		
 		#region Prevent overflow
-		if(Acc.x * GravityDirection > MaxAcc.x): Acc.x = MaxAcc.x * GravityDirection
-		if(velocity.y * GravityDirection > MaxAcc.y && !GroundSmash): velocity.y = MaxAcc.y * GravityDirection
+		if(Acc.x * GravityDirection > MaxAcc.x): Acc.x = MaxAcc.x * GravityDirection * GravitySandFallDirection
+		if(velocity.y * GravityDirection > MaxAcc.y && !GroundSmash): velocity.y = MaxAcc.y * GravityDirection * GravitySandFallDirection
 		#endregion
 		
 		#region Apply movement	
@@ -399,7 +400,7 @@ func _physics_apply_gravity(delta: float) -> void:
 	if (!_is_on_floor()):
 		if(was_on_floor): CoyoteTimer.start()
 		if(!WallJump && DashTime.is_stopped()):
-			velocity.y += get_gravity_player() * Acc.y * delta * GravityDirection
+			velocity.y += get_gravity_player() * Acc.y * delta * GravityDirection * GravitySandFallDirection
 			if(!WallJump):
 				if(velocity.y*GravityDirection < 0): 
 					strech_size(0.7, 1.2, true)
@@ -433,16 +434,23 @@ func _physics_apply_gravity(delta: float) -> void:
 #endregion
 
 #region Invert Gravity
-func _invert_gravity() -> void:
-	#DoJump()
+func _change_gravity_decal() -> void:
 	SwitchedGravity = true
 	velocity.y = 100 * GravityDirection
-	GravityDirection *= -1
 	Dashed = false
 	strech_size(1.5, 1.2)
 	$ParticlesOrb.emitting = true
 	_play_sound(AudioOrbGravity, true)
-	
+
+func _invert_gravity() -> void:
+	GravityDirection *= -1
+	_change_gravity_decal()
+
+var GlobalGravityDirection = Global.GravityDirections.MAIN
+
+func _invert_gravity_remix() -> void:
+	GlobalGravityDirection *= -1
+
 #endregion
 
 #region jump
@@ -594,7 +602,7 @@ func _physics_dash(delta: float) -> void:
 		AudioDash.play()
 		strech_size(2.5, 0.5)
 		DashTime.start()
-		DashMove = DashAcc * LastDirection
+		DashMove = DashAcc * ceil(LastDirection)
 		Controller_Vibrate_Player_Movement(0.7)
 	#Dash movement
 	if(DashWithJump): DashMove = DashAcc * LastDirection

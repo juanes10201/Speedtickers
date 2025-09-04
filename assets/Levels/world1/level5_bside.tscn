@@ -1,0 +1,253 @@
+[gd_scene load_steps=15 format=4 uid="uid://beyrlugw36155"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_tict8"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_g5h8u"]
+[ext_resource type="TileSet" uid="uid://bploughbnnh38" path="res://assets/Levels/world1/tiles_alt_bside.tres" id="3_tict8"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="4_rc44a"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="5_oolnl"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="6_s3mwf"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="7_c1yt4"]
+[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="8_en10a"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="9_f8v7r"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="10_15lb6"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="11_2007k"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="Bg" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+scale = Vector2(1.00384, 1)
+texture = ExtResource("1_tict8")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1200, 1455.86)
+script = ExtResource("2_g5h8u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
+libraries = {
+&"": SubResource("AnimationLibrary_0i2pc")
+}
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-2, 31)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AAD0//X/AAADAAEAAAD0//b/AAADAAEAAAD0//f/AAADAAEAAAD0//P/AAADAAEAAAD0//T/AAADAAEAAAD0/+//AAADAAEAAAD0//D/AAADAAEAAAD0//H/AAADAAEAAAD0//L/AAADAAEAAAD0/wYAAAAAAAMAAAD1/wYAAAABAAMAAAD2/wYAAAABAAMAAAD3/wYAAAABAAMAAAD4/wYAAAABAAMAAAD5/wYAAAABAAMAAAD6/wYAAAABAAMAAAD7/wYAAAABAAMAAAD8/wYAAAABAAMAAAD9/wYAAAABAAMAAAD+/wYAAAABAAMAAAD//wYAAAABAAMAAAAAAAYAAAABAAMAAAABAAYAAAABAAMAAAACAAYAAAACAAMAAAAGAAYAAAADAAEAAAAGAAcAAAADAAEAAAAGAAgAAAADAAEAAAD0/wIAAAADAAEAAAD0/wMAAAADAAEAAAD0/wQAAAADAAEAAAD0/wUAAAADAAEAAAACAAIAAAADAAEAAAACAAMAAAADAAEAAAACAAQAAAADAAEAAAACAAUAAAADAAEAAAAGAAUAAAADAAEAAAAGAAQAAAADAAEAAAAGAAMAAAADAAEAAAAGAAIAAAADAAEAAAAGAAoAAAADAAEAAAAGAAsAAAADAAIAAAAGAAkAAAADAAEAAAD0//r/AAADAAEAAAD0/wAAAAADAAAAAAD0/wEAAAADAAEAAAACAPr/AAADAAEAAAACAPv/AAADAAEAAAACAPz/AAADAAEAAAACAP3/AAADAAEAAAACAP7/AAADAAEAAAACAP//AAADAAEAAAACAAAAAAADAAEAAAACAAEAAAADAAEAAAAGAPr/AAADAAEAAAAGAPv/AAADAAEAAAAGAPz/AAADAAEAAAAGAP3/AAADAAEAAAAGAP7/AAADAAEAAAAGAP//AAADAAEAAAAGAAAAAAADAAEAAAAGAAEAAAADAAEAAAD0//v/AAADAAIAAAD4//v/AAADAAAAAAD4//z/AAADAAEAAAD///n/AAAAAAMAAAAAAPn/AAABAAMAAAABAPn/AAABAAMAAAACAPn/AAACAAMAAAAGAPn/AAADAAEAAAAGAPj/AAADAAAAAAD0//j/AAADAAEAAAD0//n/AAADAAEAAAD4//7/AAADAAEAAAD4//3/AAADAAEAAAD4////AAADAAIAAADu/wIAAAAAAAAAAADu/wMAAAAAAAIAAADv/wIAAAABAAAAAADv/wMAAAABAAIAAADw/wIAAAABAAAAAADw/wMAAAABAAIAAADx/wIAAAACAAAAAADx/wMAAAACAAIAAAA=")
+tile_set = ExtResource("3_tict8")
+
+[node name="Player" parent="." instance=ExtResource("4_rc44a")]
+position = Vector2(-258, 61)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(14.5308, 64.5662)
+zoom = Vector2(2.08, 2.08)
+limit_left = -403
+limit_top = -137
+limit_right = 170
+limit_bottom = 236
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("5_oolnl")
+
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+wait_time = 9.0
+one_shot = true
+autostart = true
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("6_s3mwf")]
+
+[node name="Flag" parent="." instance=ExtResource("7_c1yt4")]
+position = Vector2(-205, 167)
+BSide = true
+CanHover = null
+grab_grid = null
+
+[node name="falling_sand" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-60, 43)
+wait_time = 0.05
+
+[node name="falling_sand12" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-172, -134)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand13" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-156, -134)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand14" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-140, -134)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand15" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-68, -192)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand18" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-52, -192)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand19" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-36, -192)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand25" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(82, -526)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 100.0
+
+[node name="falling_sand22" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(57, -415)
+wait_time = 0.05
+is_falling = true
+CanHover = true
+MAX_SPEED = 100.0
+
+[node name="falling_sand26" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(82, -738)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 100.0
+
+[node name="falling_sand23" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(57, -627)
+wait_time = 0.05
+is_falling = true
+CanHover = true
+MAX_SPEED = 100.0
+
+[node name="falling_sand16" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-98, -288)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand17" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-82, -288)
+wait_time = 0.05
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand4" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-172, 210)
+wait_time = 0.05
+
+[node name="falling_sand5" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-156, 210)
+wait_time = 0.05
+
+[node name="falling_sand6" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-140, 210)
+wait_time = 0.05
+
+[node name="falling_sand10" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-124, 210)
+wait_time = 0.05
+
+[node name="falling_sand7" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(40, 212)
+wait_time = 0.05
+
+[node name="falling_sand8" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(56, 212)
+wait_time = 0.05
+
+[node name="falling_sand9" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(72, 212)
+wait_time = 0.05
+
+[node name="falling_sand11" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(88, 212)
+wait_time = 0.05
+
+[node name="falling_sand2" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-60, 59)
+wait_time = 0.05
+
+[node name="falling_sand3" parent="." instance=ExtResource("8_en10a")]
+position = Vector2(-60, 75)
+wait_time = 0.05
+
+[node name="KillBox" parent="." instance=ExtResource("9_f8v7r")]
+position = Vector2(-139, 281)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="CanvasLayer" parent="." instance=ExtResource("10_15lb6")]
+
+[node name="KillBox2" parent="." instance=ExtResource("9_f8v7r")]
+position = Vector2(-168, 119)
+scale = Vector2(24.815, 1)
+
+[node name="KillBox3" parent="." instance=ExtResource("9_f8v7r")]
+position = Vector2(-358.525, 174.21)
+scale = Vector2(1, 7.88)
+
+[node name="AmbientParticles" parent="." instance=ExtResource("11_2007k")]
+position = Vector2(-155, -178)
+
+[node name="AmbientParticles2" parent="." instance=ExtResource("11_2007k")]
+position = Vector2(75, -192)
+
+[node name="KillBox4" parent="." instance=ExtResource("9_f8v7r")]
+position = Vector2(62, -57)
+scale = Vector2(2, 1)
+
+[node name="KillBox5" parent="." instance=ExtResource("9_f8v7r")]
+position = Vector2(80, 34)
+scale = Vector2(2, 1)
+
+[node name="KillBox6" parent="." instance=ExtResource("9_f8v7r")]
+position = Vector2(62, 119)
+scale = Vector2(2, 1)

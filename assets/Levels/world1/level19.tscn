@@ -233,6 +233,10 @@ position = Vector2(-60, -389)
 position = Vector2(194.425, -295.225)
 scale = Vector2(14.09, 1.05)
 
+[node name="KillBox8" parent="." instance=ExtResource("10_wbcye")]
+position = Vector2(-82, -430)
+scale = Vector2(75.65, 1.05)
+
 [node name="KillBox4" parent="." instance=ExtResource("10_wbcye")]
 position = Vector2(146, -74)
 scale = Vector2(7.875, 1.025)

@@ -6,12 +6,9 @@
  uniform float speed = 0.5;
 
  void fragment() {
-  vec2 uv = UV * tile_size;
-  uv = fract(uv);
-  vec2 offset;
-  offset.x = TIME * speed;
-  offset.y = TIME * speed;
-  uv += offset;
-
-  COLOR = texture(TEXTURE, uv);
+  vec2 tiled_uv = UV * tile_size;
+  vec2 offset = vec2(TIME * speed);
+  vec2 scrolled_uv = tiled_uv + offset;
+  vec2 final_uv = fract(scrolled_uv + 1e-5);
+  COLOR = texture(TEXTURE, final_uv);
 }

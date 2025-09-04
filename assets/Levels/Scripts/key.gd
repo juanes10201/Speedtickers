@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var Player : ClassPlayer = $"../Player"
 @export var AditionalAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
+@export var AnotherAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
 
 @onready var Sprite : AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var Light : PointLight2D = $"PointLight2D"
@@ -81,6 +82,7 @@ func set_key_state(state : bool, PlayAction : bool):
 		if(Respawn):
 			TimerRespawn.start() 
 		Global.Play_Global_Action(AditionalAction)
+		Global.Play_Global_Action(AnotherAction)
 
 
 func _on_timer_respawn_timeout() -> void:
