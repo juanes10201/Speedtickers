@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://b0s78hw1o0f1"]
 
-[ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/Slime-hit-particle.png" id="1_1ve5e"]
+[ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="1_1ve5e"]
 [ext_resource type="Script" uid="uid://cfsfgd2dxfth6" path="res://assets/Levels/Particles/TempParticle.gd" id="2_uo4gt"]
-[ext_resource type="Texture2D" uid="uid://bsna244ytjal" path="res://assets/Sprites/Slime-hit-particle1.png" id="3_s66xo"]
-[ext_resource type="Texture2D" uid="uid://bclniw1yo1m6k" path="res://assets/Sprites/Slime-hit-particle2.png" id="4_g35va"]
-[ext_resource type="Texture2D" uid="uid://csav2pu8ibd4h" path="res://assets/Sprites/Slime-hit-particle3.png" id="5_gx6ma"]
-[ext_resource type="Texture2D" uid="uid://bmgwdli71ydq4" path="res://assets/Sprites/Slime-hit-particle4.png" id="6_uwfff"]
+[ext_resource type="Texture2D" uid="uid://bsna244ytjal" path="res://assets/Sprites/particles/Slime-hit-particle1.png" id="3_s66xo"]
+[ext_resource type="Texture2D" uid="uid://bclniw1yo1m6k" path="res://assets/Sprites/particles/Slime-hit-particle2.png" id="4_g35va"]
+[ext_resource type="Texture2D" uid="uid://csav2pu8ibd4h" path="res://assets/Sprites/particles/Slime-hit-particle3.png" id="5_gx6ma"]
+[ext_resource type="Texture2D" uid="uid://bmgwdli71ydq4" path="res://assets/Sprites/particles/Slime-hit-particle4.png" id="6_uwfff"]
 
 [sub_resource type="Curve" id="Curve_ty0i1"]
 _data = [Vector2(0.742647, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.979695, 0), 0.0, 0.0, 0, 0]

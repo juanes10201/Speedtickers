@@ -83,6 +83,7 @@ var Paused : bool = false
 var LastDirection : float = 0
 var direction := Input.get_axis("ui_left", "ui_right")
 
+@onready var DashCooldownTimer : Timer = $DashCooldownTimer
 @onready var CeilingMovementMultiplierTimer : Timer = $CeilingMovementMultiplierTimer
 @onready var JumpGroundsmashMultiplier : Timer = $JumpGroundsmashMultiplier
 @onready var DashTime : Timer = $DashTime
@@ -125,6 +126,7 @@ var direction := Input.get_axis("ui_left", "ui_right")
 @onready var UI : CanvasLayer = $"../CanvasLayer/"
 
 @onready var DashParticles1 = $"DashParticles1"
+@onready var SlamParticles1 = $"SlamParticles1"
 
 var Pause_fadeout : bool = false
 var OnSand : bool = false
@@ -156,18 +158,31 @@ func _play_dash_particles():
 func _stop_dash_particles():
 	DashParticles1.emitting = false
 
+func _play_slam_particles():
+	SlamParticles1.emitting = true
+func _stop_slam_particles():
+	SlamParticles1.emitting = false
+
 #region Debug
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_F1:
+			LevelManager.ExpoMoveTimeout.start()
+			LevelManager.ExpoMoveTimeout.paused = true
 			var _scene_string = "res://assets/Levels/world1/main_menu_expo_video.tscn"
 			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F9:
+			LevelManager.ExpoMoveTimeout.start()
+			LevelManager.ExpoMoveTimeout.paused = true
 			get_tree().reload_current_scene()
 		elif event.keycode == KEY_F10:
+			LevelManager.ExpoMoveTimeout.start()
+			LevelManager.ExpoMoveTimeout.paused = true
 			var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
 			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F11:
+			LevelManager.ExpoMoveTimeout.start()
+			LevelManager.ExpoMoveTimeout.paused = true
 			var _scene_string = "res://assets/Levels/world1/select_level.tscn"
 			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F12:
@@ -186,7 +201,7 @@ func _ready() -> void:
 		if (MobileControls != null):
 			var MobileControlsInstance = MobileControls.instantiate()
 			if(MobileControlsInstance != null): UI.add_child(MobileControlsInstance)
-	if(SaveGame.PlayedIntro()): PlayIntro = false
+	if(SaveGame.PlayedIntro() && Edition.GAME_STATUS != Edition.ALL_GAME_STATUS.expo_cbb): PlayIntro = false
 	if(PlayIntro):
 		#If level is not identified search for it
 		SaveGame.PlayedIntroBool = true
@@ -237,6 +252,11 @@ func _physics_process(delta: float) -> void:
 		
 		WasSliding = false
 		var direction := Input.get_axis("ui_left", "ui_right")
+		
+		if(GroundSmash):
+			_play_slam_particles()
+		else:
+			_stop_slam_particles()
 		
 		if(SlidingOnRamp && !_is_on_floor()): velocity.y = GroundSmashVelocity * GravityDirection
 		
@@ -585,16 +605,17 @@ func Reset_Slide():
 	Sliding = Sides.NONE
 	ParticlesSlide.emitting = false
 	Slide = false
-	if(!SlidingInAir):
+	#if(!SlidingInAir):
 		#Speed.x = 0
-		SlideVelocity = 0
+	SlideVelocity = 0
 
 	#endregion
 
 #region Dash
 func _physics_dash(delta: float) -> void:
 	#Dash
-	if(Input.is_action_pressed("player_dash") && !Dashed):
+	if(Input.is_action_pressed("player_dash") && !Dashed && DashCooldownTimer.is_stopped()):
+		DashCooldownTimer.start()
 		LevelManager.ExpoMoveTimeout.start()
 		velocity.y = 0
 		Dashed = true
@@ -686,13 +707,12 @@ func On_Death():
 		Physics = false
 		Dead = true
 		_play_sound(AudioDeath, false)
-	
-	#TransitionOut.show()
-	#TransitionOut.fade_out()
-	if(!Edition.Is_in_editor):
-		await(get_tree().create_timer(TimeDeath).timeout)
-		if get_tree():
-			get_tree().reload_current_scene()
+		#TransitionOut.show()
+		#TransitionOut.fade_out()
+		if(!Edition.Is_in_editor):
+			await(get_tree().create_timer(TimeDeath).timeout)
+			if get_tree():
+				get_tree().reload_current_scene()
 #endregion
 
 func _is_on_floor() -> bool:

@@ -30,6 +30,8 @@ var StatePlaying : bool = false
 @export var CanHover : bool = false
 @onready var Player = SaveGame.get_player()
 
+@onready var Sprite = $Sprite2D
+
 func _input(event):
 	if(Edition.Is_in_editor && CanHover):
 		if event is InputEventMouseButton:
@@ -46,6 +48,10 @@ func _process(delta: float) -> void:
 	CurrentGravityDirection = GravityDirection * Player.GlobalGravityDirection
 	if(CurrentGravityDirection == Global.GravityDirections.INVERTED):
 		set_falling(true)
+		Sprite.play("inverted")
+	if(CurrentGravityDirection == Global.GravityDirections.MAIN):
+		Sprite.play("default")
+		
 	gravity_scale = CurrentGravityDirection
 	
 	if(Edition.Is_in_editor && Edition.Is_playing_in_editor != is_playing):
@@ -96,7 +102,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		set_falling(true)
 
 func set_falling(falling : bool) -> void:
-	print("Changing to " + str(falling))
+	print("Changing sand fall to " + str(falling))
 	set_deferred("freeze", !falling)
 	self.set_deferred("sleeping", !falling)
 
@@ -107,5 +113,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_area_2d_crush_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Player") && CurrentGravityDirection != Global.GravityDirections.INVERTED):
+	if(body.is_in_group("Player") && Player.GravityDirection != Global.GravityDirections.INVERTED && CurrentGravityDirection != Global.GravityDirections.INVERTED):
 		body.On_Death()

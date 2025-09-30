@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cw42kfrmafcwu" path="res://assets/Levels/Scripts/enemie_physics.gd" id="1_qsr6m"]
 [ext_resource type="Script" uid="uid://df5b37mf1d4n6" path="res://assets/Levels/Scripts/enemie_area2d.gd" id="2_tlbfg"]
 [ext_resource type="Texture2D" uid="uid://nml6ogr01e78" path="res://assets/Sprites/slime-special-Sheet-idle.png" id="3_v671c"]
-[ext_resource type="Texture2D" uid="uid://bcqhpwtu5xyn8" path="res://assets/Sprites/slime-special-particles.png" id="4_ii4mo"]
+[ext_resource type="Texture2D" uid="uid://bcqhpwtu5xyn8" path="res://assets/Sprites/particles/slime-special-particles.png" id="4_ii4mo"]
 [ext_resource type="Texture2D" uid="uid://qau13prnrdsh" path="res://assets/Sprites/slime-special-Sheet-move.png" id="4_k8esh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4y4c6"]

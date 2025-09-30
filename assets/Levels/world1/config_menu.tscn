@@ -1,0 +1,211 @@
+[gd_scene load_steps=13 format=3 uid="uid://b525swwsu41yx"]
+
+[ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://assets/Sprites/screenshot.png" id="2_ajo72"]
+[ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="3_cuiuk"]
+[ext_resource type="Script" uid="uid://dem10pngkaf12" path="res://assets/Levels/world1/controller_music.gd" id="4_6f5jg"]
+[ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Levels/Scripts/PauseMenuTransition.gd" id="4_68s3g"]
+[ext_resource type="StyleBox" uid="uid://c1edtywsppgxy" path="res://assets/Sprites/menus/selectStylebox2.tres" id="5_8q134"]
+[ext_resource type="Texture2D" uid="uid://0s62gu0b77n1" path="res://assets/Sprites/PauseMenuGoBackButton.png" id="6_inmrc"]
+[ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Levels/Scripts/menu_button.gd" id="7_ddlxb"]
+[ext_resource type="Texture2D" uid="uid://cpkuxgr2hg7ll" path="res://assets/Sprites/menus/logo.png" id="11_3lhgp"]
+
+[sub_resource type="Animation" id="Animation_xvgwm"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TitlemenuPlaceholder:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Bg:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Transition2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vy804"]
+_data = {
+&"RESET": SubResource("Animation_xvgwm")
+}
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6f5jg"]
+thickness = 18
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ux0do"]
+color = Color(0, 0.711655, 0.742756, 1)
+thickness = 18
+
+[node name="pause_menu" type="CanvasLayer"]
+layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(691, 373)
+scale = Vector2(0.744436, 0.744436)
+texture = ExtResource("2_ajo72")
+
+[node name="Transition" type="Sprite2D" parent="."]
+position = Vector2(1894, 398)
+rotation = 1.33518
+scale = Vector2(-1.21884, 1.21061)
+texture = ExtResource("3_cuiuk")
+offset = Vector2(-76.585, 0)
+script = ExtResource("4_68s3g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_vy804")
+}
+
+[node name="Transition2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.592157)
+position = Vector2(364, 943)
+rotation = -3.0712
+scale = Vector2(1.21884, -1.21061)
+texture = ExtResource("3_cuiuk")
+offset = Vector2(-76.585, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 299.0
+offset_top = 348.0
+offset_right = 794.0
+offset_bottom = 448.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Music
+"
+
+[node name="ConfigLogic" type="Node" parent="."]
+
+[node name="ControlMusic" type="HSlider" parent="ConfigLogic"]
+offset_left = 301.0
+offset_top = 365.0
+offset_right = 856.0
+offset_bottom = 429.0
+theme_override_styles/slider = SubResource("StyleBoxLine_6f5jg")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_ux0do")
+min_value = -80.0
+max_value = 0.0
+rounded = true
+script = ExtResource("4_6f5jg")
+Audio_Bus_Name = "Music"
+
+[node name="ControlSfx" type="HSlider" parent="ConfigLogic"]
+offset_left = 304.0
+offset_top = 445.0
+offset_right = 859.0
+offset_bottom = 509.0
+theme_override_styles/slider = SubResource("StyleBoxLine_6f5jg")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_ux0do")
+min_value = -80.0
+max_value = 0.0
+rounded = true
+script = ExtResource("4_6f5jg")
+Audio_Bus_Name = "Sfx"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 366.0
+offset_top = 221.0
+offset_right = 861.0
+offset_bottom = 321.0
+theme_override_font_sizes/normal_font_size = 30
+text = "placeholder menu
+lazy developer fix this"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 302.0
+offset_top = 421.0
+offset_right = 797.0
+offset_bottom = 521.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Sfx
+"
+
+[node name="PauseMenuGoBackButton2" type="Button" parent="."]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1136.0
+offset_top = 14.0
+offset_right = -1006.0
+offset_bottom = 148.0
+grow_horizontal = 0
+theme_override_styles/focus = ExtResource("5_8q134")
+icon = ExtResource("6_inmrc")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_ddlxb")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "main_menu_w_level_preview"
+
+[node name="TitlemenuPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(556, 97)
+scale = Vector2(0.567837, 0.567837)
+texture = ExtResource("11_3lhgp")
+
+[node name="Bg" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(520, 300)
+texture = ExtResource("3_cuiuk")
+flip_h = true
+
+[node name="control_pause_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 2
+
+[connection signal="value_changed" from="ConfigLogic/ControlMusic" to="ConfigLogic/ControlMusic" method="_on_value_changed"]
+[connection signal="value_changed" from="ConfigLogic/ControlSfx" to="ConfigLogic/ControlSfx" method="_on_value_changed"]
+[connection signal="button_down" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_button_down"]
+[connection signal="pressed" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_pressed"]

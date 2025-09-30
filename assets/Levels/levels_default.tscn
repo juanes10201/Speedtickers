@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://xjx2k63akbn3"]
 
-[ext_resource type="Shader" uid="uid://b7m1msxbjwy2t" path="res://assets/Levels/world1/CrtShader.gdshader" id="1_pfp11"]
+[ext_resource type="Shader" uid="uid://b7m1msxbjwy2t" path="res://assets/Levels/Shader/CrtShader.gdshader" id="1_pfp11"]
 [ext_resource type="Script" uid="uid://2d642xujef5r" path="res://assets/Levels/LevelEnvironment.gd" id="1_pouvw"]
 
 [sub_resource type="Environment" id="Environment_dklr8"]

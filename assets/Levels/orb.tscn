@@ -136,7 +136,7 @@
 [ext_resource type="Texture2D" uid="uid://ccl8wr8ye1qw" path="res://assets/Sprites/in_orb/0014.png" id="134_5h4xv"]
 [ext_resource type="Texture2D" uid="uid://c17qytysd0glb" path="res://assets/Sprites/in_orb/0015.png" id="135_0afui"]
 [ext_resource type="Texture2D" uid="uid://bfymm6h17m4db" path="res://assets/Sprites/in_orb/0016.png" id="136_eojew"]
-[ext_resource type="Texture2D" uid="uid://cc6sao5m1uf1p" path="res://assets/Sprites/light3.png" id="137_qmd2o"]
+[ext_resource type="Texture2D" uid="uid://cc6sao5m1uf1p" path="res://assets/Sprites/particles/light3.png" id="137_qmd2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_px0dq"]
 atlas = ExtResource("2_aasca")

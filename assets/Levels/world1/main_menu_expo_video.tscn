@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b40hrfks2w7u6" path="res://assets/Levels/Scripts/PauseMenuLogic.gd" id="1_50x6f"]
 [ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://assets/Sprites/screenshot.png" id="2_nrq70"]
-[ext_resource type="VideoStream" uid="uid://3u8xfsctuick" path="res://assets/Videos/MiniGameplayExpo.ogv" id="3_8giob"]
+[ext_resource type="VideoStream" uid="uid://bdy0obdykfaao" path="res://assets/Videos/trailer.ogv" id="3_8giob"]
 [ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="3_vqfb1"]
 [ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Levels/Scripts/PauseMenuTransition.gd" id="4_8giob"]
 [ext_resource type="StyleBox" uid="uid://c1edtywsppgxy" path="res://assets/Sprites/menus/selectStylebox2.tres" id="5_vq1pe"]

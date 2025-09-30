@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvmo1pn0pi6nc"]
+
+[ext_resource type="Script" uid="uid://30vlnpw4vxkh" path="res://assets/Levels/world1/Piston.gd" id="1_210bg"]
+[ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Levels/Shader/enemie_skeleton.gdshader" id="2_h7kks"]
+[ext_resource type="Texture2D" uid="uid://b5dgnadnkajsr" path="res://assets/Sprites/killbox_gray.png" id="3_210bg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fxfy"]
+shader = ExtResource("2_h7kks")
+shader_parameter/progress = 0.5
+shader_parameter/overlay_color = Color(0.498039, 0.831373, 0.882353, 0.623529)
+shader_parameter/fill_dir = Vector2(0, -1)
+shader_parameter/alpha_cutoff = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hc80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_210bg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs5mn"]
+size = Vector2(47, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hc80"]
+size = Vector2(38, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dumbc"]
+size = Vector2(50, 69)
+
+[node name="Piston" type="RigidBody2D" groups=["Piston"]]
+disable_mode = 1
+collision_layer = 2048
+collision_mask = 2304
+lock_rotation = true
+freeze = true
+script = ExtResource("1_210bg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_1fxfy")
+sprite_frames = SubResource("SpriteFrames_7hc80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_fs5mn")
+debug_color = Color(0, 0.6, 0.701961, 0.176471)
+
+[node name="PlayerArea" type="Area2D" parent="."]
+collision_layer = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_7hc80")
+debug_color = Color(0.677701, 0.298345, 0.744544, 0.839216)
+
+[node name="TilesetArea" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 2304
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TilesetArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_dumbc")
+debug_color = Color(0, 0.6, 0.701961, 0.309804)
+
+[node name="Time_Hit" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer_BackDelay" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Timer_Start" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="PlayerArea" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="PlayerArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="TilesetArea" to="." method="_on_tileset_area_body_entered"]
+[connection signal="timeout" from="Time_Hit" to="." method="_on_time_hit_timeout"]
+[connection signal="timeout" from="Timer_BackDelay" to="." method="_on_timer_back_delay_timeout"]
+[connection signal="timeout" from="Timer_Start" to="." method="_on_timer_start_timeout"]

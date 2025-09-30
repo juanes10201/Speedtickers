@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1ji315fcqjjv"]
 
-[ext_resource type="Texture2D" uid="uid://bcqhpwtu5xyn8" path="res://assets/Sprites/slime-special-particles.png" id="1_rhgmu"]
+[ext_resource type="Texture2D" uid="uid://bcqhpwtu5xyn8" path="res://assets/Sprites/particles/slime-special-particles.png" id="1_rhgmu"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6j88u"]
 particle_flag_disable_z = true

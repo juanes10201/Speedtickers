@@ -18,9 +18,12 @@ PlayMusic = false
 [node name="SongInGame" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_2k4mj")
 volume_db = -5.0
+bus = &"Music"
 
 [node name="SongMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_i1pet")
+bus = &"Music"
 
 [node name="AudioDeathPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7olny")
+bus = &"Music"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://chat6jxc63bfj"]
+[gd_scene load_steps=88 format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
 [ext_resource type="Texture2D" uid="uid://cga4opnhsehd7" path="res://assets/Sprites/knight-Sheet.png" id="2_5o2oi"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b24u10fr84s05" path="res://assets/Sprites/knight-Sheet-throw.png" id="2_io8kl"]
 [ext_resource type="Texture2D" uid="uid://cdsiigp1xfsle" path="res://assets/Sprites/knight-Sheet-slide.png" id="3_7hiw4"]
 [ext_resource type="Texture2D" uid="uid://cbctoqrlaxvyh" path="res://assets/Sprites/knightmove-Sheet.png" id="3_ra12e"]
-[ext_resource type="Texture2D" uid="uid://d2hw4c4hq34qe" path="res://assets/Sprites/particles-Sheet.png" id="4_8hwr6"]
+[ext_resource type="Texture2D" uid="uid://d2hw4c4hq34qe" path="res://assets/Sprites/particles/particles-Sheet.png" id="4_8hwr6"]
 [ext_resource type="Texture2D" uid="uid://cxq3td63idir" path="res://assets/Sprites/jump-Sheet.png" id="4_f3flh"]
 [ext_resource type="Texture2D" uid="uid://v2fqscx6vwjf" path="res://assets/Sprites/jump_start-sheet.png" id="5_jjr88"]
 [ext_resource type="AudioStream" uid="uid://bfqk2r6n43smr" path="res://assets/Sounds/dash1.wav" id="5_pfel7"]
@@ -26,13 +26,15 @@
 [ext_resource type="AudioStream" uid="uid://wvfyegwnf1q4" path="res://assets/Sounds/slime_slide.wav" id="14_8u734"]
 [ext_resource type="AudioStream" uid="uid://c2jyf1ulqt0qj" path="res://assets/Sounds/slime_move.wav" id="15_4ir8m"]
 [ext_resource type="AudioStream" uid="uid://baawx3chmik64" path="res://assets/Sounds/PlayerWind.wav" id="15_ehprd"]
-[ext_resource type="Texture2D" uid="uid://d233ru5plyksw" path="res://assets/Sprites/particlesfall-Sheet.png" id="19_8erp2"]
+[ext_resource type="Texture2D" uid="uid://d233ru5plyksw" path="res://assets/Sprites/particles/particlesfall-Sheet.png" id="19_8erp2"]
 [ext_resource type="AudioStream" uid="uid://cgvt4j0ojlh60" path="res://assets/Sounds/switch.wav" id="19_uvkhq"]
 [ext_resource type="AudioStream" uid="uid://cqau2g0edyke0" path="res://assets/Sounds/key.wav" id="20_2xca2"]
 [ext_resource type="AudioStream" uid="uid://bh23td2y13ecc" path="res://assets/Sounds/orb_gravity.wav" id="22_1ia1n"]
 [ext_resource type="Script" uid="uid://br2udgydnxtcm" path="res://assets/Levels/Shadow.gd" id="31_ivnav"]
 [ext_resource type="Texture2D" uid="uid://xxpg8y3lwraj" path="res://assets/Sprites/shadow.png" id="32_sc7ng"]
+[ext_resource type="Script" uid="uid://6tsgj1qxp6y2" path="res://assets/Levels/Player_hitbox.gd" id="33_isg5t"]
 [ext_resource type="Script" uid="uid://j6i335kxhhlw" path="res://assets/Levels/System_replay_player.gd" id="33_t4ba7"]
+[ext_resource type="Texture2D" uid="uid://dcndijav61ai4" path="res://assets/Sprites/particles/Slam-smoke.png" id="35_xowug"]
 
 [sub_resource type="Curve" id="Curve_ivnav"]
 _data = [Vector2(0.742647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -142,7 +144,7 @@ turbulence_influence_min = 0.04
 turbulence_influence_max = 0.04
 
 [sub_resource type="Curve" id="Curve_5sgfr"]
-_data = [Vector2(0, 0.550562), 0.0, 0.0, 0, 0, Vector2(0.735294, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.5151515, 0.57303375), 0.0, 0.0, 0, 0, Vector2(0.735294, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_ivnav"]
@@ -160,14 +162,44 @@ orbit_velocity_max = 9.49949e-08
 radial_velocity_min = -2.23517e-05
 radial_velocity_max = -2.23517e-05
 gravity = Vector3(-60.73, 0, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = -2.23517e-06
+linear_accel_min = -6.3500023
+linear_accel_max = 50.789997
 radial_accel_min = -2.23517e-06
 radial_accel_max = -2.23517e-06
 color = Color(0.863868, 0.890513, 1, 1)
 alpha_curve = SubResource("CurveTexture_ivnav")
-hue_variation_min = 0.03
-hue_variation_max = 0.09
+hue_variation_min = 0.009999977
+hue_variation_max = 0.119999975
+turbulence_noise_strength = 0.31
+turbulence_noise_scale = 2.678
+turbulence_noise_speed_random = 0.0
+
+[sub_resource type="Gradient" id="Gradient_xowug"]
+offsets = PackedFloat32Array(0.754717, 1)
+colors = PackedColorArray(1, 1, 1, 0.8235294, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t8k5k"]
+gradient = SubResource("Gradient_xowug")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8k5k"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.42, 1, 1)
+emission_shape = 2
+emission_sphere_radius = 1.0
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+gravity = Vector3(0, -160.835, 0)
+linear_accel_min = 99.99999
+linear_accel_max = 99.99999
+radial_accel_min = 19.049997
+radial_accel_max = 38.089996
+color_ramp = SubResource("GradientTexture1D_t8k5k")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+turbulence_enabled = true
+turbulence_noise_strength = 0.08
+turbulence_noise_scale = 5.322
+turbulence_noise_speed_random = 0.15
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sc7ng"]
 light_mode = 1
@@ -486,17 +518,17 @@ size = Vector2(0.909953, 6.79646)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sgfr"]
 size = Vector2(2.42654, 21.5221)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xowug"]
+size = Vector2(1.51659, 11.3274)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5171x"]
 size = Vector2(12, 13.0001)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sc7ng"]
-size = Vector2(2, 3)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(8, 19)
 scale = Vector2(6.59375, 0.882813)
 collision_layer = 13
-collision_mask = 285
+collision_mask = 2333
 script = ExtResource("1_uhpgg")
 TimeDeath = 0.4
 
@@ -571,20 +603,34 @@ explosiveness = 0.14
 process_material = SubResource("ParticleProcessMaterial_lgtto")
 
 [node name="DashParticles1" type="GPUParticles2D" parent="."]
-position = Vector2(0.454977, -9.06194)
+position = Vector2(0, -10.194685)
 emitting = false
-amount = 30
+amount = 200
+lifetime = 2.0
 preprocess = 0.33
 trail_enabled = true
-trail_lifetime = 0.01
+trail_lifetime = 0.22
+trail_sections = 4
+trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_5sgfr")
+
+[node name="SlamParticles1" type="GPUParticles2D" parent="."]
+position = Vector2(4.7683716e-07, 0)
+scale = Vector2(0.9999998, 0.99999964)
+emitting = false
+amount = 60
+texture = ExtResource("35_xowug")
+lifetime = 1.06
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_t8k5k")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_sc7ng")
 position = Vector2(0.454976, -9.06194)
 scale = Vector2(0.152, 1.133)
 sprite_frames = SubResource("SpriteFrames_qwuic")
-animation = &"Jump"
+animation = &"Dash"
 offset = Vector2(0, -0.58)
 script = ExtResource("9_rsv67")
 positions = Dictionary[String, Vector2]({
@@ -601,9 +647,13 @@ positions = Dictionary[String, Vector2]({
 
 [node name="ParticlesLanding" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(9.05991e-06, -7.9292)
+top_level = true
+position = Vector2(10, 12)
 sprite_frames = SubResource("SpriteFrames_dbk5q")
-animation = &"groundsmash"
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [node name="SlideRampTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -647,49 +697,62 @@ one_shot = true
 position = Vector2(0.151668, -7.9292)
 rotation = -1.5708
 target_position = Vector2(-5.72205e-06, 1.21326)
-collision_mask = 30
+collision_mask = 2334
 
 [node name="AudioDash" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_4mswk")
+bus = &"Sfx"
 
 [node name="AudioJump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_f6d5f")
+bus = &"Sfx"
 
 [node name="AudioWalk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_dfg8f")
+bus = &"Sfx"
 
 [node name="AudioWalkSand" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ltsn2")
+bus = &"Sfx"
 
 [node name="AudioSlide" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_mayjg")
 volume_db = -10.0
+bus = &"Sfx"
 
 [node name="AudioGroundsmash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_6xtp5")
+bus = &"Sfx"
 
 [node name="AudioSlimeKill" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_8u734")
+bus = &"Sfx"
 
 [node name="AudioWind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ehprd")
 volume_db = -5.0
+bus = &"Sfx"
 
 [node name="AudioSlimeMove" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_4ir8m")
 volume_db = -10.74
+bus = &"Sfx"
 
 [node name="AudioSlimeGroundsmash" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_ppcfx")
+bus = &"Sfx"
 
 [node name="AudioSwitch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_uvkhq")
+bus = &"Sfx"
 
 [node name="AudioKey" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_2xca2")
+bus = &"Sfx"
 
 [node name="AudioOrbGravity" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_1ia1n")
+bus = &"Sfx"
 
 [node name="SlamStorageTimer" type="Timer" parent="."]
 one_shot = true
@@ -708,21 +771,26 @@ debug_color = Color(1.54018e-06, 0.777631, 0.637363, 0.42)
 position = Vector2(9.05991e-06, -7.9292)
 collision_layer = 128
 collision_mask = 2
+script = ExtResource("33_isg5t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitArea" groups=["PlayerEnemiesCollision"]]
+[node name="CollisionShapeMain" type="CollisionShape2D" parent="EnemyHitArea" groups=["PlayerEnemiesCollision"]]
 position = Vector2(0.454967, -1.69912)
 scale = Vector2(1, 0.999999)
 shape = SubResource("RectangleShape2D_5sgfr")
-debug_color = Color(0.945098, 0, 0.596078, 0.105882)
+debug_color = Color(0.945098, 0, 0.596078, 0.309804)
+
+[node name="CollisionShapeDash" type="CollisionShape2D" parent="EnemyHitArea" groups=["PlayerEnemiesCollision"]]
+position = Vector2(-0.151668, -2.26548)
+scale = Vector2(1, 0.999998)
+shape = SubResource("RectangleShape2D_xowug")
+disabled = true
+debug_color = Color(0.760784, 0.517647, 0.0745098, 0.639216)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(0.303318, -6.23005)
 scale = Vector2(0.151659, 1.13274)
 shape = SubResource("RectangleShape2D_5171x")
 debug_color = Color(0, 0.6, 0.701961, 0.14902)
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_sc7ng")
 
 [node name="System_replay" type="Node2D" parent="."]
 script = ExtResource("33_t4ba7")

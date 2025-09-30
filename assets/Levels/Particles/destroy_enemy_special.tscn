@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b2si0xxs4tpfs"]
 
-[ext_resource type="Texture2D" uid="uid://bcqhpwtu5xyn8" path="res://assets/Sprites/slime-special-particles.png" id="1_eg2ya"]
+[ext_resource type="Texture2D" uid="uid://bcqhpwtu5xyn8" path="res://assets/Sprites/particles/slime-special-particles.png" id="1_eg2ya"]
 [ext_resource type="Script" uid="uid://cfsfgd2dxfth6" path="res://assets/Levels/Particles/TempParticle.gd" id="2_ejw3d"]
 
 [sub_resource type="Curve" id="Curve_ty0i1"]

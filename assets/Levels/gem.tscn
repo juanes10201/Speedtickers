@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkxnggsy0tpc" path="res://assets/Levels/Scripts/flag.gd" id="1_5y1re"]
 [ext_resource type="Texture2D" uid="uid://dkbe2fkhjradr" path="res://assets/Sprites/gem-sheet.png" id="3_5y1re"]
-[ext_resource type="Texture2D" uid="uid://cc6sao5m1uf1p" path="res://assets/Sprites/light3.png" id="3_j7qi1"]
+[ext_resource type="Texture2D" uid="uid://cc6sao5m1uf1p" path="res://assets/Sprites/particles/light3.png" id="3_j7qi1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbb13"]
 size = Vector2(16.8272, 19)

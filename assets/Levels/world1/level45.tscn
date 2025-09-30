@@ -86,12 +86,12 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." instance=ExtResource("5_e678g")]
-position = Vector2(-144, 161)
+position = Vector2(-145, 175)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(90, 80)
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+position = Vector2(89, 79)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AADt/+7/AAAAAAIAACDt/+//AAAAAAEAAADt//D/AAAAAAEAAADu/+7/AAACAAIAACDu/+//AAACAAEAAADu//D/AAACAAEAAADw/wYAAAAJAAAAABDv/wUAAAAJAAAAABDy/wYAAAAJAAAAAADz/wUAAAAJAAAAAADy/wUAAAALAAAAAADw/wUAAAALAAAAABDv/wYAAAAFAAMAAADz/wYAAAAFAAMAAADi//3/AAAAAAAAAADi//7/AAAAAAIAAADj//3/AAABAAAAAADj//7/AAABAAIAAADk//3/AAABAAAAAADk//7/AAABAAIAAADl//3/AAACAAAAAADl//7/AAACAAIAAADt//T/AAAAAAEAAADt//X/AAAAAAIAAADu//T/AAACAAEAAADu//X/AAACAAIAAADt//H/AAAAAAEAAADu//H/AAACAAEAAADt//L/AAAAAAEAAADu//L/AAACAAEAAADt//P/AAAAAAEAAADu//P/AAACAAEAAADv//f/AAAAAAcAAADw//f/AAABAAcAAADx//f/AAABAAcAAADy//f/AAABAAcAAADz//f/AAACAAcAAAD2//v/AAAAAAcAAAD3//v/AAABAAcAAAD4//v/AAACAAcAAAA=")
+tile_map_data = PackedByteArray("AADi//3/AAAAAAAAAADi//7/AAAAAAIAAADj//3/AAABAAAAAADj//7/AAABAAIAAADk//3/AAABAAAAAADk//7/AAABAAIAAADl//3/AAACAAAAAADl//7/AAACAAIAAADv//f/AAAAAAcAAADw//f/AAABAAcAAADx//f/AAABAAcAAADy//f/AAABAAcAAADz//f/AAACAAcAAAD3//3/AAAAAAcAAAD4//3/AAABAAcAAAD5//3/AAABAAcAAAD6//3/AAACAAcAAAD3/+//AAAAAAAAACD4/+//AAABAAAAACD5/+//AAABAAAAACD6/+//AAACAAAAACD3/+7/AAAAAAIAACD4/+7/AAABAAIAACD5/+7/AAABAAIAACD6/+7/AAACAAIAACDv/wQAAAAAAAcAAADw/wQAAAABAAcAAADx/wQAAAABAAcAAADy/wQAAAABAAcAAADz/wQAAAACAAcAAADv/wYAAAAJAAAAABDw/wYAAAALAAAAABDy/wYAAAALAAAAAADz/wYAAAAJAAAAAADv/wcAAAAFAAMAAADw/wcAAAAJAAAAABDy/wcAAAAJAAAAAADz/wcAAAAFAAMAAAA=")
 tile_set = ExtResource("6_xhqd5")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_rprtc")]
@@ -112,57 +112,52 @@ Visible = false
 position = Vector2(32, -183)
 
 [node name="Key2" parent="." instance=ExtResource("11_jww4d")]
-position = Vector2(-88, -26)
+position = Vector2(-88, -23)
 Respawn = false
 
 [node name="Key5" parent="." instance=ExtResource("11_jww4d")]
-position = Vector2(-90, -183)
-AnotherAction = 1
+position = Vector2(-89, -157)
 Respawn = false
 
 [node name="Key4" parent="." instance=ExtResource("11_jww4d")]
-position = Vector2(-48, 49)
+position = Vector2(-25, 79)
 Respawn = false
 
 [node name="KillBox2" parent="." instance=ExtResource("8_rybqb")]
-position = Vector2(-88, 99)
-scale = Vector2(2, 13)
-
-[node name="KillBox10" parent="." instance=ExtResource("8_rybqb")]
-position = Vector2(-144, 192)
-scale = Vector2(9, 1)
+position = Vector2(-80, 112)
+scale = Vector2(3, 13)
 
 [node name="KillBox3" parent="." instance=ExtResource("8_rybqb")]
-position = Vector2(-88, -95)
-scale = Vector2(2, 5.45)
+position = Vector2(-88, -90)
+scale = Vector2(2, 5.03)
 
 [node name="KillBox11" parent="." instance=ExtResource("8_rybqb")]
-position = Vector2(-47, 121)
-scale = Vector2(3.98, 1)
+position = Vector2(-18, 121)
+scale = Vector2(5.33, 1)
 
 [node name="KillBox7" parent="." instance=ExtResource("8_rybqb")]
 position = Vector2(-101, -229)
 scale = Vector2(14.05, 3)
 
 [node name="KillBox8" parent="." instance=ExtResource("8_rybqb")]
-position = Vector2(-104, 505)
+position = Vector2(-104, 529)
 scale = Vector2(75.705, 38.47)
-AditionalAction = 1
+Visible = false
 lavaMovDif = 30.0
 
 [node name="KillBox6" parent="." instance=ExtResource("8_rybqb")]
-position = Vector2(-4, -61)
+position = Vector2(25, -61)
 scale = Vector2(2, 23.76)
 
 [node name="Key3" parent="." instance=ExtResource("11_jww4d")]
-position = Vector2(-200, 105)
+position = Vector2(-200, 103)
 AnotherAction = 2
 Respawn = false
 
 [node name="KillBox4" parent="." instance=ExtResource("8_rybqb")]
-position = Vector2(-200, 233)
+position = Vector2(-200, 237)
 scale = Vector2(2, 13)
 
 [node name="KillBox5" parent="." instance=ExtResource("8_rybqb")]
-position = Vector2(-200, -2)
-scale = Vector2(2, 10.115)
+position = Vector2(-198, -79)
+scale = Vector2(2, 19.02)

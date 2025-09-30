@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://5ryr6mg0gjyl"]
+[gd_scene load_steps=23 format=4 uid="uid://5ryr6mg0gjyl"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_gini6"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_ivgeh"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="10_4duhd"]
 [ext_resource type="PackedScene" uid="uid://cqqh8fidhrwc3" path="res://assets/Levels/enemie_skeleton.tscn" id="11_cv313"]
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Levels/key.tscn" id="12_ok3jw"]
-[ext_resource type="PackedScene" uid="uid://c1ytdkacld0nb" path="res://assets/Levels/open_box.tscn" id="13_qp4cl"]
 [ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Levels/kill_box_blue.tscn" id="14_4wmwx"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="15_wntub"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="16_1eupy"]
@@ -144,7 +143,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_klj0i")
 }
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(242, 37)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AAD6/wsAAAACAAIAAAD6/woAAAACAAEAAAD6/wkAAAACAAEAAAD6/wgAAAACAAEAAAD6/wcAAAACAAEAAAD6/wYAAAACAAEAAAD6/wUAAAACAAEAAAD6/wQAAAACAAEAAAD6/wMAAAACAAEAAAD6/wIAAAACAAAAAAD5/wsAAAAAAAIAAAD5/woAAAAAAAEAAAD5/wkAAAAAAAEAAAD5/wgAAAAAAAEAAAD5/wcAAAAAAAEAAAD5/wYAAAAAAAEAAAD5/wUAAAAAAAEAAAD5/wQAAAAAAAEAAAD5/wMAAAAAAAEAAAD5/wIAAAAAAAAAAAD3/wQAAAAAAAMAAAD4/wQAAAACAAMAAADj/w4AAAAAAAAAAADj/w8AAAAAAAIAAADk/w4AAAABAAAAAADk/w8AAAABAAIAAADl/w4AAAABAAAAAADl/w8AAAABAAIAAADm/w4AAAACAAAAAADm/w8AAAACAAIAAAA=")
@@ -220,10 +219,6 @@ scale = Vector2(4, 1)
 [node name="KillBox8" parent="." instance=ExtResource("8_s46yw")]
 position = Vector2(50, 286)
 scale = Vector2(10, 1)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("13_qp4cl")]
-position = Vector2(-183, 381)
-scale = Vector2(3, 1)
 
 [node name="KillBox4" parent="." instance=ExtResource("14_4wmwx")]
 position = Vector2(-38, 226.79)

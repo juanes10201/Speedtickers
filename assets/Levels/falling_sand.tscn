@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cykeyxkv73jjt"]
+[gd_scene load_steps=8 format=3 uid="uid://cykeyxkv73jjt"]
 
 [ext_resource type="Script" uid="uid://fce3hghglf5u" path="res://assets/Levels/Scripts/falling_sand.gd" id="1_8diny"]
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="2_703h2"]
@@ -6,9 +6,32 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bujpq"]
 size = Vector2(8, 5.7561)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b824a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol8f7"]
 atlas = ExtResource("2_703h2")
-region = Rect2(96, 0, 16.0757, 16.125)
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn0sm"]
+atlas = ExtResource("2_703h2")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bdg0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol8f7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn0sm")
+}],
+"loop": true,
+"name": &"inverted",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
 size = Vector2(16, 16)
@@ -31,8 +54,8 @@ position = Vector2(-0.17, 1.73)
 scale = Vector2(1.355, 1.875)
 shape = SubResource("RectangleShape2D_bujpq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_b824a")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bdg0v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qn4ou")

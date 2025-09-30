@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1ytdkacld0nb"]
+[gd_scene load_steps=10 format=3 uid="uid://c1ytdkacld0nb"]
 
 [ext_resource type="Script" uid="uid://bgk0oiktjml4b" path="res://assets/Levels/Scripts/open_box.gd" id="1_5cidy"]
-[ext_resource type="Shader" uid="uid://bdshb7ecjuhu2" path="res://assets/Levels/open_box.gdshader" id="2_1dae4"]
+[ext_resource type="Shader" uid="uid://bdshb7ecjuhu2" path="res://assets/Levels/Shader/open_box.gdshader" id="2_1dae4"]
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="2_lrgft"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g70l8"]
+size = Vector2(13.4529, 12.931)
 
 [sub_resource type="Gradient" id="Gradient_5xgts"]
 offsets = PackedFloat32Array(0, 0.803279, 1)
@@ -28,12 +28,13 @@ shader_parameter/pause_duration = 0.2
 atlas = ExtResource("2_lrgft")
 region = Rect2(160.004, 0.00147152, 15.9422, 15.9943)
 
-[node name="StaticBody2D" type="StaticBody2D"]
-script = ExtResource("1_5cidy")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
+size = Vector2(15, 15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_qn4ou")
-debug_color = Color(0.697578, 0.493659, 0, 0.42)
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 256
+collision_mask = 2817
+script = ExtResource("1_5cidy")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -41,13 +42,17 @@ collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(1.115, 1.16)
-shape = SubResource("RectangleShape2D_qn4ou")
+shape = SubResource("RectangleShape2D_g70l8")
 debug_color = Color(0.826248, 0.397122, 3.85046e-07, 0.42)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_otnnh")
-scale = Vector2(1.055, 1.055)
+position = Vector2(-1.19209e-07, -1.19209e-07)
 texture = SubResource("AtlasTexture_lei70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qn4ou")
+debug_color = Color(0.697578, 0.493659, 0, 0.42)
 
 [node name="SandTimer" type="Timer" parent="."]
 wait_time = 0.2

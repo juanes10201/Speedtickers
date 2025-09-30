@@ -18,6 +18,12 @@ enum Actions{
 @export var lavaMovDif : float = 10
 var posygoto : float = position.y - lavaMovDif
 @onready var LavaTimer = $LavaTimer
+enum LavaDirections{
+	Up = 1,
+	Down = -1
+}
+@export var LavaMoveDirection : LavaDirections = LavaDirections.Up
+@export var LavaGoBack : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,16 +65,24 @@ func _process(delta: float) -> void:
 		Sprite.play("default")
 		$CollisionShape2D.hide()
 		$CollisionShape2D.disabled = false
-	elif(CanChange):
+	elif(CanChange && AditionalAction != Actions.raise_up_on_key):
 		#if(AditionalAction.raise_up_on_key):
 		Sprite.play("disabled")
 		$CollisionShape2D.disabled = true
 	if(AditionalAction == Actions.raise_up_on_key && Player.MoveLava):
-		position.y = lerpf(position.y, posygoto, 2 * delta)
-		position.y -= lavaMovDif/10
+		if(Player.EnabledKillBox == Type):
+			position.y = lerpf(position.y, posygoto, 2 * delta)
+			position.y -= lavaMovDif/10*LavaMoveDirection
+		elif(LavaGoBack):
+			position.y = lerpf(position.y, posygoto, 2 * delta)
+			position.y += lavaMovDif/10*LavaMoveDirection
 		if(LavaTimer.is_stopped()):
-			posygoto = position.y - lavaMovDif
-			LavaTimer.start()
+			if(Player.EnabledKillBox == Type):
+				posygoto = position.y - lavaMovDif*LavaMoveDirection
+				LavaTimer.start()
+			elif(LavaGoBack):
+				posygoto = position.y + lavaMovDif*LavaMoveDirection*1.5
+				LavaTimer.start()
 		
 func _on_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Player") || body.is_in_group("Enemie")):

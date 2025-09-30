@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://frgvamgpi0lw" path="res://assets/Sprites/key-Sheet.png" id="2_kxj2g"]
 [ext_resource type="Texture2D" uid="uid://b3bx2qfiimdbf" path="res://assets/Sprites/get_orb/0001.png" id="3_3m0rj"]
 [ext_resource type="Texture2D" uid="uid://dc50wxml0agxn" path="res://assets/Sprites/orb/0001.png" id="3_5rhod"]
-[ext_resource type="Texture2D" uid="uid://cc6sao5m1uf1p" path="res://assets/Sprites/light3.png" id="3_bajnl"]
+[ext_resource type="Texture2D" uid="uid://cc6sao5m1uf1p" path="res://assets/Sprites/particles/light3.png" id="3_bajnl"]
 [ext_resource type="Texture2D" uid="uid://cr5hxtgo72pbl" path="res://assets/Sprites/orb/0002.png" id="4_ta8cx"]
 [ext_resource type="Texture2D" uid="uid://bdai42po607wt" path="res://assets/Sprites/get_orb/0002.png" id="4_wxkdn"]
 [ext_resource type="Texture2D" uid="uid://co3tlhsb1jwtd" path="res://assets/Sprites/get_orb/0003.png" id="5_gd1d7"]

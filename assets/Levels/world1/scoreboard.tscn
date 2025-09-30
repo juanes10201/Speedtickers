@@ -143,5 +143,12 @@ scale = Vector2(-1.21884, 1.21061)
 texture = ExtResource("3_em7d6")
 offset = Vector2(-76.585, 0)
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 286.0
+offset_top = 883.0
+offset_right = 326.0
+offset_bottom = 923.0
+text = "1rst place"
+
 [connection signal="button_down" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_button_down"]
 [connection signal="pressed" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_pressed"]

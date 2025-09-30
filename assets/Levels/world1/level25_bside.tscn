@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b0m1xb0mqbsb1"]
+[gd_scene load_steps=26 format=4 uid="uid://b0m1xb0mqbsb1"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_sve6f"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_qm7oe"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="14_ugljv"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="15_xawxd"]
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Levels/orb.tscn" id="16_qm7oe"]
+[ext_resource type="Script" uid="uid://bhxgp1p35ljfi" path="res://assets/Levels/world1/b_side_particle.gd" id="16_r8pxi"]
+[ext_resource type="Texture2D" uid="uid://dcmh5rplixxob" path="res://assets/Sprites/particles/bside-particles.png" id="17_d5acf"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -107,6 +109,13 @@ _data = {
 &"move2": SubResource("Animation_b10uo")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e74mb"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+turbulence_enabled = true
+turbulence_noise_strength = 2.39
+turbulence_noise_speed = Vector3(1.385, 0, 0)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
 
@@ -143,7 +152,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_klj0i")
 }
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(242, 34)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AAAFAAQAAAADAAIAAAAFAAMAAAADAAAAAADp//r/AAACAAIAAADp//n/AAACAAAAAADo//r/AAABAAIAAADo//n/AAABAAAAAADn//r/AAAAAAIAAADn//n/AAAAAAAAAADv//j/AAAAAAcAAADw//j/AAABAAcAAADy//j/AAACAAcAAADx//j/AAABAAcAAAD0//P/AAABAAMAAAD6/+3/AAAAAAMAAAD7/+3/AAACAAMAAAD9/+3/AAAAAAAAAAD9/+7/AAAAAAEAAAD9/+//AAAAAAEAAAD9//D/AAAAAAEAAAD9//H/AAAAAAEAAAD9//L/AAAAAAEAAAD9//P/AAAAAAIAAAD+/+3/AAABAAAAAAD+/+7/AAABAAEAAAD+/+//AAABAAEAAAD+//D/AAABAAEAAAD+//H/AAABAAEAAAD+//L/AAABAAEAAAD+//P/AAABAAIAAAD//+3/AAABAAAAAAD//+7/AAABAAEAAAD//+//AAABAAEAAAD///D/AAABAAEAAAD///H/AAABAAEAAAD///L/AAABAAEAAAD///P/AAABAAIAAAAAAO3/AAACAAAAAAAAAO7/AAACAAEAAAAAAO//AAACAAEAAAAAAPD/AAACAAEAAAAAAPH/AAACAAEAAAAAAPL/AAACAAEAAAAAAPP/AAACAAIAAAD1//P/AAABAAMAAAD2//P/AAABAAMAAAD3//P/AAACAAMAAAD4//P/AAAAAAcAAAD5//P/AAABAAcAAAD6//P/AAABAAcAAAD7//P/AAABAAcAAAD8//P/AAACAAcAAAD4//v/AAADAAAAAAD4//z/AAADAAEAAAD4//3/AAADAAEAAAD4//7/AAADAAIAAADv//L/AAAAAAcAAADw//L/AAABAAcAAADx//L/AAABAAcAAADy//L/AAACAAcAAADz//L/AAAAAAMAAAA=")
@@ -171,11 +180,15 @@ position = Vector2(162, 54)
 scale = Vector2(8.225, 2)
 
 [node name="KillBox8" parent="." instance=ExtResource("9_760j1")]
-position = Vector2(-16, 66)
+position = Vector2(-16, 105)
+scale = Vector2(2, 1)
+
+[node name="KillBox10" parent="." instance=ExtResource("9_760j1")]
+position = Vector2(16, 49)
 scale = Vector2(2, 1)
 
 [node name="KillBox9" parent="." instance=ExtResource("9_760j1")]
-position = Vector2(16, 187)
+position = Vector2(16, 177)
 scale = Vector2(2, 1)
 
 [node name="KillBox6" parent="." instance=ExtResource("9_760j1")]
@@ -265,30 +278,6 @@ script = ExtResource("12_23siu")
 position = Vector2(0, -39)
 MAX_SPEED = 90.0
 
-[node name="falling_sand24" parent="." instance=ExtResource("14_ugljv")]
-position = Vector2(27, 414)
-MAX_SPEED = 200.0
-
-[node name="falling_sand25" parent="." instance=ExtResource("14_ugljv")]
-position = Vector2(11, 414)
-MAX_SPEED = 200.0
-
-[node name="falling_sand26" parent="." instance=ExtResource("14_ugljv")]
-position = Vector2(-11, 524)
-MAX_SPEED = 200.0
-
-[node name="falling_sand27" parent="." instance=ExtResource("14_ugljv")]
-position = Vector2(-27, 524)
-MAX_SPEED = 200.0
-
-[node name="falling_sand28" parent="." instance=ExtResource("14_ugljv")]
-position = Vector2(27, 651)
-MAX_SPEED = 200.0
-
-[node name="falling_sand29" parent="." instance=ExtResource("14_ugljv")]
-position = Vector2(11, 651)
-MAX_SPEED = 200.0
-
 [node name="AmbientParticles" parent="." instance=ExtResource("15_xawxd")]
 position = Vector2(248, -257)
 
@@ -307,3 +296,20 @@ position = Vector2(152, -15)
 
 [node name="Key8" parent="." instance=ExtResource("16_qm7oe")]
 position = Vector2(88, -279)
+
+[node name="BSideParticle" type="Node2D" parent="."]
+position = Vector2(0, -167)
+scale = Vector2(1.805, 1.805)
+script = ExtResource("16_r8pxi")
+
+[node name="Regular" parent="BSideParticle" instance=ExtResource("15_xawxd")]
+scale = Vector2(1, 1)
+amount = 16
+
+[node name="Inverted" type="GPUParticles2D" parent="BSideParticle"]
+position = Vector2(0, 248.199)
+amount = 16
+texture = ExtResource("17_d5acf")
+lifetime = 20.0
+preprocess = 16.29
+process_material = SubResource("ParticleProcessMaterial_e74mb")
