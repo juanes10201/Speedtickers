@@ -54,7 +54,7 @@
 [ext_resource type="PackedScene" uid="uid://fs5eu6sgt4ra" path="res://assets/Levels/world1/level57.tscn" id="47_hrmad"]
 [ext_resource type="PackedScene" uid="uid://nw24lwng272g" path="res://assets/Levels/world1/level15_bside.tscn" id="47_o60qi"]
 [ext_resource type="PackedScene" uid="uid://c72rm5hbjobw6" path="res://assets/Levels/world1/level17_bside.tscn" id="48_72qwh"]
-[ext_resource type="PackedScene" uid="uid://bmt46tcgr4xov" path="res://assets/Levels/world1/level58.tscn" id="48_npu4a"]
+[ext_resource type="PackedScene" uid="uid://bmt46tcgr4xov" path="res://assets/Levels/world1/level_test.tscn" id="48_npu4a"]
 [ext_resource type="PackedScene" uid="uid://c2xplrpfsh4pj" path="res://assets/Levels/world1/level24_bside.tscn" id="49_5wudn"]
 [ext_resource type="PackedScene" uid="uid://dtexo5vnid1nk" path="res://assets/Levels/world1/level49.tscn" id="49_hrmad"]
 [ext_resource type="PackedScene" uid="uid://b0m1xb0mqbsb1" path="res://assets/Levels/world1/level25_bside.tscn" id="50_aqenk"]

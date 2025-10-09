@@ -152,7 +152,7 @@ position = Vector2(-96, 361)
 Respawn = false
 
 [node name="Key5" parent="." instance=ExtResource("10_xiriw")]
-position = Vector2(-64, -167)
+position = Vector2(-64, -175)
 Respawn = false
 
 [node name="KillBox13" parent="." instance=ExtResource("7_m76uo")]

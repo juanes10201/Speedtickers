@@ -34,7 +34,9 @@ energy = 0.2
 shadow_enabled = true
 shadow_item_cull_mask = 1023
 
-[node name="ColorRect3" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
 visible = false
 top_level = true
 z_index = 99
