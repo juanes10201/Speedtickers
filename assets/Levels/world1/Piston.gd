@@ -16,6 +16,7 @@ extends RigidBody2D
 @onready var CurrentDirecion : Global.GravityDirections = GravityDirection
 @onready var Direction = GravityDirection
 
+
 enum MoveTypes{
 	Horizontal,
 	Vertical
@@ -26,56 +27,74 @@ var VelX : float = 0
 
 @onready var OriginalPos = position.y if MoveType == MoveTypes.Horizontal else position.x
 
+@export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
+
+var Started : bool = false
+
+func _start() -> void:
+	self.freeze = false
+	Timer_Start.start()
+	Started = true
+	#CurrentDirecion = Global.GravityDirections.MAIN
+	
+
 func _ready() -> void:
+	if(Activate_on_color != Global.LASER_COLORS.NONE): AutoStartHit = false
 	WaitTimer.wait_time = WaitTime
 	Timer_BackDelay.wait_time = Time_BackDelay
 	Timer_Start.wait_time = Time_Start
-	if(AutoStartHit):
-		Timer_Start.start()
+	if(AutoStartHit && Activate_on_color == Global.LASER_COLORS.NONE):
+		_start()
 
 func _physics_process(delta: float) -> void:
-	Direction = GravityDirection * CurrentDirecion
-	gravity_scale = Direction*GravityDirection
-	if(MoveType == MoveTypes.Horizontal):
-		position.y = OriginalPos
-		gravity_scale = 0
-		VelX = lerp(VelX, MAX_SPEED*Direction*GravityDirection, 1*delta)
-	else:
-		position.x = OriginalPos
-	
-	if(!WaitTimer.is_stopped()):
-		Sprite.material.set_shader_parameter("progress", 1-(WaitTimer.time_left/WaitTimer.wait_time))
-	if(!Timer_Start.is_stopped()):
-		Sprite.material.set_shader_parameter("progress", 1-(Timer_Start.time_left/Timer_Start.wait_time))
-
-func _integrate_forces(state):
-	if(MoveType == MoveTypes.Vertical):
-		var velocity = state.linear_velocity
-		var speed = velocity.length()
-
+	if(Activate_on_color == Global.LASER_COLORS.NONE || SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
+		if(!Started): _start()
+		self.freeze = false
+		Direction = GravityDirection * CurrentDirecion
+		gravity_scale = Direction*GravityDirection
+		if(MoveType == MoveTypes.Horizontal):
+			position.y = OriginalPos
+			gravity_scale = 0
+			VelX = lerp(VelX, MAX_SPEED*Direction*GravityDirection, 1*delta)
+		else:
+			position.x = OriginalPos
+		
+		if(!WaitTimer.is_stopped()):
+			Sprite.material.set_shader_parameter("progress", 1-(WaitTimer.time_left/WaitTimer.wait_time))
 		if(!Timer_Start.is_stopped()):
-			state.linear_velocity.y = 0
+			Sprite.material.set_shader_parameter("progress", 1-(Timer_Start.time_left/Timer_Start.wait_time))
+	else:
+		self.freeze = true
+	
+func _integrate_forces(state):
+	if(Started):
+		if(MoveType == MoveTypes.Vertical):
+			var velocity = state.linear_velocity
+			var speed = velocity.length()
 
-		if(velocity.y != 0 && velocity.y < 100 && velocity.y>CurrentDirecion):
-			state.linear_velocity.y = velocity.normalized().y * StartSpeed
+			if(!Timer_Start.is_stopped()):
+				state.linear_velocity.y = 0
+			else:
+				if(velocity.y != 0 && velocity.y < 100 && velocity.y>CurrentDirecion):
+					state.linear_velocity.y = velocity.normalized().y * StartSpeed
 
-		if(speed > MAX_SPEED):
-			state.linear_velocity.y = velocity.normalized().y * MAX_SPEED
-	elif(MoveType == MoveTypes.Horizontal):
-		var velocity = state.linear_velocity
-		var speed = velocity.length()
-		state.linear_velocity.x = VelX
+				if(speed > MAX_SPEED):
+					state.linear_velocity.y = velocity.normalized().y * MAX_SPEED
+		elif(MoveType == MoveTypes.Horizontal):
+			var velocity = state.linear_velocity
+			var speed = velocity.length()
+			state.linear_velocity.x = VelX
 
-		if(!Timer_Start.is_stopped() && !Timer_BackDelay.is_stopped() && !WaitTimer.is_stopped()):
-			state.linear_velocity.x = 0
+			if(!Timer_Start.is_stopped() || !Timer_BackDelay.is_stopped() || !WaitTimer.is_stopped()):
+				state.linear_velocity.x = 0
+			else:
+				if(velocity.x < 100 && velocity.x>CurrentDirecion):
+					state.linear_velocity.x = StartSpeed*Direction*GravityDirection
+					VelX = StartSpeed*Direction*GravityDirection
+				print(VelX)
 
-		if(velocity.x < 100 && velocity.x>CurrentDirecion):
-			state.linear_velocity.x = StartSpeed*Direction*GravityDirection
-			VelX = StartSpeed*Direction*GravityDirection
-		print(VelX)
-
-		if(speed > MAX_SPEED):
-			state.linear_velocity.x = velocity.normalized().x * MAX_SPEED
+				if(speed > MAX_SPEED):
+					state.linear_velocity.x = velocity.normalized().x * MAX_SPEED
 
 func set_falling(falling : bool) -> void:
 	print("Changing piston fall to " + str(falling))

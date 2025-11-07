@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 #region Setup variables
 @export_group("Custom")
+@export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
 @export var enemy_type : float = 0
 @export var EnemyDirection : Directions = Directions.RIGHT
 @export var distance : float = 100
@@ -108,6 +109,9 @@ func _ready():
 	elif(EnemyDirection == Directions.LEFT): direction = -1
 	else: direction = 0
 	if(ShootBulletTimer): ShootBulletTimer.wait_time = TimeToShoot
+	if(Activate_on_color != Global.LASER_COLORS.NONE):
+		Enabled = false
+		Sprite.play("Laser")
 
 var editable = preload("res://assets/Levels/Scripts/default_object.gd").new()
 var Hovering : bool = false
@@ -129,6 +133,9 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
+	if(Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
+		Enabled = true
+	
 	if(Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
 		PrevGravityDirection = Player.GlobalGravityDirection * GravityDirection
 		velocity.y = 100 * PrevGravityDirection*GravityDirection

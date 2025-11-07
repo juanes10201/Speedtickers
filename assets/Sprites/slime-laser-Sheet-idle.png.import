@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m6ge6ocgjl2a"
-path="res://.godot/imported/slime-Sheet-idle.png-a00a072e5b0bfb474ead6359e14ef801.ctex"
+uid="uid://bdfwqq1sobvi8"
+path="res://.godot/imported/slime-laser-Sheet-idle.png-35897adf401501622251e594557e646a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/slime-Sheet-idle.png"
-dest_files=["res://.godot/imported/slime-Sheet-idle.png-a00a072e5b0bfb474ead6359e14ef801.ctex"]
+source_file="res://assets/Sprites/slime-laser-Sheet-idle.png"
+dest_files=["res://.godot/imported/slime-laser-Sheet-idle.png-35897adf401501622251e594557e646a.ctex"]
 
 [params]
 

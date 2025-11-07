@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_aj7xg"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_1q6ls"]
 [ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_3atcb"]
-[ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="4_n8sk5"]
+[ext_resource type="TileSet" uid="uid://bgemxi3r71x1i" path="res://assets/Levels/world1/tiles_alt_alt2.tres" id="4_aj7xg"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="5_4gpfx"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="6_vi42n"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="7_fv0ad"]
@@ -147,7 +147,7 @@ libraries = {
 position = Vector2(241, 106)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AAABAAoAAAACAAIAAAABAAkAAAACAAEAAAABAAgAAAACAAAAAAAAAAoAAAABAAIAAAAAAAkAAAABAAEAAAAAAAgAAAABAAAAAAD//woAAAABAAIAAAD//wkAAAABAAEAAAD//wgAAAABAAAAAAD+/woAAAAAAAIAAAD+/wkAAAAAAAEAAAD+/wgAAAAAAAAAAAA=")
-tile_set = ExtResource("4_n8sk5")
+tile_set = ExtResource("4_aj7xg")
 
 [node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 12.0
@@ -157,7 +157,7 @@ autostart = true
 [node name="CanvasLayer" parent="." instance=ExtResource("5_4gpfx")]
 
 [node name="Flag" parent="." instance=ExtResource("6_vi42n")]
-position = Vector2(296, -360)
+position = Vector2(312, -360)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_fv0ad")]
 
@@ -188,11 +188,11 @@ AditionalAction = 1
 lavaMovDif = 20.0
 
 [node name="KillBox7" parent="." instance=ExtResource("11_q7qcm")]
-position = Vector2(136, -112)
+position = Vector2(136, -431.99997)
 scale = Vector2(2, 93.985)
 
 [node name="KillBox13" parent="." instance=ExtResource("11_q7qcm")]
-position = Vector2(344, -104.00001)
+position = Vector2(344, -439.99997)
 scale = Vector2(2, 93.985)
 
 [node name="KillBox8" parent="." instance=ExtResource("11_q7qcm")]
@@ -212,8 +212,12 @@ position = Vector2(283, -264.00003)
 scale = Vector2(6, 7.935)
 
 [node name="KillBox14" parent="." instance=ExtResource("11_q7qcm")]
-position = Vector2(240, -432)
+position = Vector2(248.00002, -440)
 scale = Vector2(14.06, 2)
+
+[node name="KillBox15" parent="." instance=ExtResource("11_q7qcm")]
+position = Vector2(296.00003, -424.00003)
+scale = Vector2(7.96, 3.685)
 
 [node name="KillBox11" parent="." instance=ExtResource("11_q7qcm")]
 position = Vector2(192, -128)
@@ -224,13 +228,15 @@ position = Vector2(303, 138)
 mass = 3.0
 MAX_SPEED = 170.0
 Time_Start = 0.7
+StartSpeed = 170.0
 GravityDirection = -1
 
 [node name="Piston32" parent="." instance=ExtResource("12_gne85")]
 position = Vector2(175, 138)
 mass = 3.0
-MAX_SPEED = 170.0
-Time_Start = 0.8
+MAX_SPEED = 160.0
+Time_Start = 0.7
+StartSpeed = 160.0
 GravityDirection = -1
 
 [node name="falling_sand2" parent="." instance=ExtResource("13_764pn")]

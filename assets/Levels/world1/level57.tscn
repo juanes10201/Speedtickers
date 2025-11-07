@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_16buh"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_1j84c"]
 [ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_wjny8"]
-[ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="4_iacng"]
+[ext_resource type="TileSet" uid="uid://bgemxi3r71x1i" path="res://assets/Levels/world1/tiles_alt_alt2.tres" id="4_a44jm"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="5_retnq"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="6_l5o00"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="7_08tuk"]
@@ -147,7 +147,7 @@ libraries = {
 position = Vector2(241, 106)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AADv/wAAAAAAAAAAAADv/wEAAAAAAAIAAADx/wEAAAACAAIAAADx/wAAAAACAAAAAADw/wEAAAABAAIAAADw/wAAAAABAAAAAAAQAPr/AAACAAEAAAAQAPn/AAACAAEAAAAQAPj/AAACAAAAAAAPAPr/AAAAAAEAAAAPAPn/AAAAAAEAAAAPAPj/AAAAAAAAAAAQAPv/AAACAAIAAAAPAPv/AAAAAAIAAAD//wEAAAAAAAcAAAAAAAEAAAABAAcAAAABAAEAAAACAAcAAAA=")
-tile_set = ExtResource("4_iacng")
+tile_set = ExtResource("4_a44jm")
 
 [node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 12.0

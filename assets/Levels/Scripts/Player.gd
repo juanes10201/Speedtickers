@@ -41,6 +41,8 @@ var DashMove : Vector2 = Vector2(0, 0)
 var DashWithJump : bool = false
 var DashedWithJump : bool = false
 
+var LASERS_ENABLED : Array[bool] = [false, false, false, false, false]
+
 var HaveKey : bool = false
 
 #region Export variables
@@ -172,8 +174,6 @@ func _input(event):
 			var _scene_string = "res://assets/Levels/world1/main_menu_expo_video.tscn"
 			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F9:
-			LevelManager.ExpoMoveTimeout.start()
-			LevelManager.ExpoMoveTimeout.paused = true
 			get_tree().reload_current_scene()
 		elif event.keycode == KEY_F10:
 			LevelManager.ExpoMoveTimeout.start()
@@ -194,7 +194,9 @@ func _input(event):
 #endregion
 
 func _ready() -> void:
-	if(LevelManager.StyleTimer.is_stopped()): LevelManager.StyleTimer.start()
+	if(LevelManager.StyleTimer.is_stopped()): 
+		LevelManager.ExpoMoveTimeout.paused = false
+		LevelManager.StyleTimer.start()
 	
 	if(Physics && Edition.Mobile):
 		var MobileControls = preload("res://assets/Levels/ui_android_control.tscn")
@@ -222,10 +224,11 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
+	print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
 	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb && LevelManager.ExpoMoveTimeout.is_stopped()):
 		LevelManager.ExpoMoveTimeout.start()
 		LevelManager.ExpoMoveTimeout.paused = true
-		var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
+		var _scene_string = "res://assets/Levels/world1/main_menu_expo_video.tscn"
 		get_tree().change_scene_to_file(_scene_string)
 	
 	if(_is_on_floor()):
@@ -484,7 +487,9 @@ func _physics_jump(delta: float) -> void:
 	if(velocity.y < 0 && !Input.is_action_pressed("player_jump") && !DashWithJump):
 		velocity.y += JumpCancelAcc * GravityDirection
 	
-	if(Input.is_action_pressed("player_jump")): PreJumpTime.start()
+	if(Input.is_action_pressed("player_jump")):
+		LevelManager.ExpoMoveTimeout.start()
+		PreJumpTime.start()
 	
 	#Pre-detect jump
 #endregion
@@ -526,6 +531,7 @@ func DoJump() -> void:
 #region Horizontal movement
 func _physics_h_movement(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
+	if(abs(direction) > 0.4): LevelManager.ExpoMoveTimeout.start()
 	# Fix the Movement Speed accumulating in the side touching a wall
 	if(WallJump && WallJumpSide == Sides.RIGHT && Speed.x > 0): Speed.x = 0
 	if(WallJump && WallJumpSide == Sides.LEFT && Speed.x < 0): Speed.x = 0
@@ -552,6 +558,7 @@ var DidDiagonalSlam : bool = false
 func _physics_slide_and_groundsmash(delta: float) -> void:
 	if(!Input.is_action_pressed("player_slide")):
 		SlidingInAir = false
+		#LevelManager.ExpoMoveTimeout.start()
 	if((Input.is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash

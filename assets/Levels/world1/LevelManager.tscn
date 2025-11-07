@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cispxmxkgqevq"]
+[gd_scene load_steps=68 format=3 uid="uid://cispxmxkgqevq"]
 
 [ext_resource type="Script" uid="uid://sp85faq0sp01" path="res://assets/Levels/Scripts/Level-order.gd" id="1_72qwh"]
 [ext_resource type="PackedScene" uid="uid://1q1rsb3yrxn0" path="res://assets/Levels/world1/level1.tscn" id="2_5wudn"]
@@ -30,9 +30,13 @@
 [ext_resource type="PackedScene" uid="uid://y8hoxiwewykl" path="res://assets/Levels/world1/level30.tscn" id="33_nrfoo"]
 [ext_resource type="PackedScene" uid="uid://ddjqbantsc3or" path="res://assets/Levels/world1/level31.tscn" id="34_w2xte"]
 [ext_resource type="PackedScene" uid="uid://5ryr6mg0gjyl" path="res://assets/Levels/world1/level32.tscn" id="35_mugeg"]
+[ext_resource type="PackedScene" uid="uid://ctjq2ny2lt7nh" path="res://assets/Levels/world1/level50.tscn" id="36_ina62"]
+[ext_resource type="PackedScene" uid="uid://c5gleju0p2cda" path="res://assets/Levels/world1/level51.tscn" id="37_7y1xq"]
 [ext_resource type="PackedScene" uid="uid://bjl7alpu2ji21" path="res://assets/Levels/world1/level34.tscn" id="37_csxsy"]
 [ext_resource type="PackedScene" uid="uid://bb4ghxs75e4ig" path="res://assets/Levels/world1/level35.tscn" id="38_h87q3"]
+[ext_resource type="PackedScene" uid="uid://ryi54uavhw7n" path="res://assets/Levels/world1/level52.tscn" id="38_ljyuh"]
 [ext_resource type="PackedScene" uid="uid://bi2gv4fm2u868" path="res://assets/Levels/world1/level36.tscn" id="39_2volh"]
+[ext_resource type="PackedScene" uid="uid://dessf4151ca55" path="res://assets/Levels/world1/level54.tscn" id="39_ldoos"]
 [ext_resource type="PackedScene" uid="uid://do7ass5r04xl8" path="res://assets/Levels/world1/level37.tscn" id="40_7s562"]
 [ext_resource type="PackedScene" uid="uid://m2kw68naxoqh" path="res://assets/Levels/world1/level38.tscn" id="41_a1afj"]
 [ext_resource type="PackedScene" uid="uid://ymekc38o4di1" path="res://assets/Levels/world1/level1_bside.tscn" id="42_by85b"]
@@ -54,14 +58,19 @@
 [ext_resource type="PackedScene" uid="uid://fs5eu6sgt4ra" path="res://assets/Levels/world1/level57.tscn" id="47_hrmad"]
 [ext_resource type="PackedScene" uid="uid://nw24lwng272g" path="res://assets/Levels/world1/level15_bside.tscn" id="47_o60qi"]
 [ext_resource type="PackedScene" uid="uid://c72rm5hbjobw6" path="res://assets/Levels/world1/level17_bside.tscn" id="48_72qwh"]
-[ext_resource type="PackedScene" uid="uid://bmt46tcgr4xov" path="res://assets/Levels/world1/level_test.tscn" id="48_npu4a"]
 [ext_resource type="PackedScene" uid="uid://c2xplrpfsh4pj" path="res://assets/Levels/world1/level24_bside.tscn" id="49_5wudn"]
+[ext_resource type="PackedScene" uid="uid://bohbbe21r5b7b" path="res://assets/Levels/world1/level58.tscn" id="49_355rg"]
 [ext_resource type="PackedScene" uid="uid://dtexo5vnid1nk" path="res://assets/Levels/world1/level49.tscn" id="49_hrmad"]
 [ext_resource type="PackedScene" uid="uid://b0m1xb0mqbsb1" path="res://assets/Levels/world1/level25_bside.tscn" id="50_aqenk"]
+[ext_resource type="PackedScene" uid="uid://b524l058pnkvf" path="res://assets/Levels/world1/level59.tscn" id="50_yihc6"]
+[ext_resource type="PackedScene" uid="uid://bkoarpk2eev6h" path="res://assets/Levels/world1/level60.tscn" id="51_ooasb"]
+[ext_resource type="PackedScene" uid="uid://den8ycl3pv4ha" path="res://assets/Levels/world1/level61.tscn" id="52_bnsg7"]
+[ext_resource type="PackedScene" uid="uid://chypkjv5owwgo" path="res://assets/Levels/world1/level62.tscn" id="57_ljyuh"]
+[ext_resource type="PackedScene" uid="uid://dr8xua1vjx24o" path="res://assets/Levels/world1/level63.tscn" id="58_ldoos"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_72qwh")
-LevelOrder = Array[PackedScene]([ExtResource("2_5wudn"), ExtResource("3_aqenk"), ExtResource("4_wakub"), ExtResource("5_rer4g"), ExtResource("7_3ii21"), ExtResource("6_li161"), ExtResource("8_y02bg"), ExtResource("9_mvh84"), ExtResource("11_hrmad"), ExtResource("12_npu4a"), ExtResource("13_fyqwo"), ExtResource("14_355rg"), ExtResource("15_yihc6"), ExtResource("16_lkles"), ExtResource("16_lkles"), ExtResource("18_ina62"), ExtResource("19_7y1xq"), ExtResource("20_ljyuh"), ExtResource("22_5o0iu"), ExtResource("24_3pft1"), ExtResource("25_kmm50"), ExtResource("26_gq5g1"), ExtResource("27_a6d28"), ExtResource("28_q7ii6"), ExtResource("29_3ejch"), ExtResource("43_xmmsi"), ExtResource("44_eewox"), ExtResource("45_2lnpm"), ExtResource("46_n8j5l"), ExtResource("47_7aba3"), ExtResource("42_rer4g"), ExtResource("43_li161"), ExtResource("44_3ii21"), ExtResource("45_y02bg"), ExtResource("49_hrmad"), ExtResource("30_1ed2a"), ExtResource("32_iq6eh"), ExtResource("33_nrfoo"), ExtResource("34_w2xte"), ExtResource("35_mugeg"), ExtResource("37_csxsy"), ExtResource("38_h87q3"), ExtResource("39_2volh"), ExtResource("40_7s562"), ExtResource("41_a1afj"), ExtResource("42_rer4g"), ExtResource("43_li161"), ExtResource("44_3ii21"), ExtResource("45_y02bg"), ExtResource("42_i522l"), ExtResource("46_4brgl"), ExtResource("47_hrmad"), ExtResource("48_npu4a")])
+LevelOrder = Array[PackedScene]([ExtResource("2_5wudn"), ExtResource("3_aqenk"), ExtResource("4_wakub"), ExtResource("5_rer4g"), ExtResource("7_3ii21"), ExtResource("6_li161"), ExtResource("8_y02bg"), ExtResource("9_mvh84"), ExtResource("11_hrmad"), ExtResource("12_npu4a"), ExtResource("13_fyqwo"), ExtResource("14_355rg"), ExtResource("15_yihc6"), ExtResource("16_lkles"), ExtResource("16_lkles"), ExtResource("18_ina62"), ExtResource("19_7y1xq"), ExtResource("20_ljyuh"), ExtResource("22_5o0iu"), ExtResource("24_3pft1"), ExtResource("25_kmm50"), ExtResource("26_gq5g1"), ExtResource("27_a6d28"), ExtResource("28_q7ii6"), ExtResource("29_3ejch"), ExtResource("43_xmmsi"), ExtResource("44_eewox"), ExtResource("45_2lnpm"), ExtResource("46_n8j5l"), ExtResource("47_7aba3"), ExtResource("42_rer4g"), ExtResource("43_li161"), ExtResource("44_3ii21"), ExtResource("45_y02bg"), ExtResource("49_hrmad"), ExtResource("36_ina62"), ExtResource("37_7y1xq"), ExtResource("38_ljyuh"), ExtResource("39_ldoos"), ExtResource("30_1ed2a"), ExtResource("32_iq6eh"), ExtResource("33_nrfoo"), ExtResource("34_w2xte"), ExtResource("35_mugeg"), ExtResource("37_csxsy"), ExtResource("38_h87q3"), ExtResource("39_2volh"), ExtResource("40_7s562"), ExtResource("41_a1afj"), ExtResource("42_i522l"), ExtResource("46_4brgl"), ExtResource("47_hrmad"), ExtResource("49_355rg"), ExtResource("50_yihc6"), ExtResource("51_ooasb"), ExtResource("52_bnsg7"), ExtResource("57_ljyuh"), ExtResource("58_ldoos")])
 LevelOrderBsides = Array[PackedScene]([ExtResource("42_by85b"), ExtResource("43_l6x6i"), ExtResource("44_bddof"), ExtResource("45_bddof"), ExtResource("46_bddof"), ExtResource("47_o60qi"), ExtResource("48_72qwh"), ExtResource("49_5wudn"), ExtResource("50_aqenk")])
 
 [node name="ExpoTimer" type="Timer" parent="."]
@@ -72,7 +81,7 @@ one_shot = true
 wait_time = 3.0
 
 [node name="ExpoMoveTimeout" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 

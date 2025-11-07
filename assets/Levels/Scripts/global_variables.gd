@@ -23,6 +23,15 @@ enum GravityDirections{
 	INVERTED = -1,
 	MAIN = 1
 }
+enum LASER_COLORS{
+	NONE = 0,
+	RED = 1,
+	BLUE = 2,
+	ORANGE = 3,
+	GREEN = 4,
+	YELLOW = 5
+}
+
 
 var Player = null
 

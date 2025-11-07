@@ -584,6 +584,7 @@ explosiveness = 0.14
 process_material = SubResource("ParticleProcessMaterial_io8kl")
 
 [node name="ParticlesDeathAir" type="GPUParticles2D" parent="."]
+z_index = 10
 position = Vector2(0, -5.66371)
 emitting = false
 amount = 100

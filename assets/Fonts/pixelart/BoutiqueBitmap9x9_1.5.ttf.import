@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://fqse3r3bukwu"
-path="res://.godot/imported/BoutiqueBitmap9x9_1.5.ttf-fbd2e0ac652075716e33d34b9fdee86a.fontdata"
+path="res://.godot/imported/BoutiqueBitmap9x9_1.5.ttf-fb35370d92243816bf79b05afa0e4012.fontdata"
 
 [deps]
 
-source_file="res://assets/Fonts/BoutiqueBitmap9x9_1.5.ttf"
-dest_files=["res://.godot/imported/BoutiqueBitmap9x9_1.5.ttf-fbd2e0ac652075716e33d34b9fdee86a.fontdata"]
+source_file="res://assets/Fonts/pixelart/BoutiqueBitmap9x9_1.5.ttf"
+dest_files=["res://.godot/imported/BoutiqueBitmap9x9_1.5.ttf-fb35370d92243816bf79b05afa0e4012.fontdata"]
 
 [params]
 
@@ -21,6 +21,7 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
 subpixel_positioning=4
 keep_rounding_remainders=true

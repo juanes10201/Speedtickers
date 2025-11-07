@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cfa7sxsc3ppdn"]
+[gd_scene load_steps=61 format=3 uid="uid://cfa7sxsc3ppdn"]
 
 [ext_resource type="Texture2D" uid="uid://d1y21fe855ulp" path="res://assets/Sprites/ray-time.png" id="1_g8qx6"]
 [ext_resource type="Script" uid="uid://n4qwd5l56oy4" path="res://assets/Levels/Scripts/UI_time_text.gd" id="1_lu8t7"]
@@ -470,10 +470,10 @@ tracks/0/path = NodePath("StyleSprite:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.766667),
+"times": PackedFloat32Array(0, 0.1, 0.26666668),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.42, 0.42), Vector2(0.4, 0.4), Vector2(0.4, 0.4)]
+"values": [Vector2(0.525, 0.525), Vector2(0.4, 0.4), Vector2(0.4, 0.4)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -756,6 +756,12 @@ _data = {
 &"Show": SubResource("Animation_pi2gu")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd35p"]
+bg_color = Color(0.03529412, 0, 0.12156863, 0.6666667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gu5b"]
+bg_color = Color(0.61960787, 0.47843137, 1, 0.3372549)
+
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 2
 
@@ -978,7 +984,7 @@ show_percentage = false
 offset_left = 997.0
 offset_top = 478.0
 offset_right = 1190.0
-offset_bottom = 512.0
+offset_bottom = 511.99994
 theme_override_colors/default_color = Color(0.823529, 0.658824, 1, 1)
 theme_override_fonts/normal_font = ExtResource("23_8ohxx")
 theme_override_font_sizes/normal_font_size = 32
@@ -1039,19 +1045,17 @@ libraries = {
 script = ExtResource("22_2n7mv")
 
 [node name="ProgressBar2" type="ProgressBar" parent="expo"]
-visible = false
 offset_left = 963.0
-offset_top = 583.0
+offset_top = 41.0
 offset_right = 1153.0
-offset_bottom = 647.0
+offset_bottom = 105.0
 show_percentage = false
 
 [node name="PlaytimeText" type="RichTextLabel" parent="expo"]
-visible = false
 offset_left = 954.0
-offset_top = 574.0
+offset_top = 32.0
 offset_right = 1227.0
-offset_bottom = 658.0
+offset_bottom = 116.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.619608, 0.478431, 1, 1)
 theme_override_constants/outline_size = 12
@@ -1065,14 +1069,43 @@ one_shot = true
 autostart = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="expo"]
-visible = false
-offset_left = 996.0
-offset_top = 544.0
-offset_right = 1134.0
-offset_bottom = 587.0
+offset_left = 1010.0
+offset_top = 19.0
+offset_right = 1148.0
+offset_bottom = 62.0
 theme_override_fonts/normal_font = ExtResource("23_8ohxx")
 theme_override_font_sizes/normal_font_size = 32
-text = "Crack Bang
-Boom  Expo"
+text = "EVA 2025"
+
+[node name="inactive_bar" type="ProgressBar" parent="expo"]
+offset_left = 99.0
+offset_top = 201.0
+offset_right = 1043.0
+offset_bottom = 458.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fd35p")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1gu5b")
+max_value = 10.0
+show_percentage = false
+
+[node name="inactive_time" type="RichTextLabel" parent="expo"]
+offset_left = 96.0
+offset_top = 207.0
+offset_right = 1044.0
+offset_bottom = 483.0
+theme_override_colors/default_color = Color(0.61960787, 0.47843137, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_7riok")
+theme_override_font_sizes/normal_font_size = 300
+text = "10"
+horizontal_alignment = 1
+
+[node name="inactive_text" type="RichTextLabel" parent="expo"]
+offset_left = 185.0
+offset_top = 238.0
+offset_right = 978.0
+offset_bottom = 283.0
+theme_override_colors/default_color = Color(0.61960787, 0.47843137, 1, 1)
+theme_override_fonts/normal_font = ExtResource("23_8ohxx")
+theme_override_font_sizes/normal_font_size = 55
+text = "Se retornara al menu por inactividad!"
 
 [connection signal="timeout" from="expo/PlaytimeTimer" to="expo" method="_on_playtime_timeout"]

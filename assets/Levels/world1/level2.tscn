@@ -219,7 +219,7 @@ offset_top = -49.0
 offset_right = -164.0
 offset_bottom = -20.0
 theme_override_fonts/normal_font = ExtResource("12_qonc7")
-text = "Dash with"
+text = "Dash con:"
 
 [node name="DashButton" type="AnimatedSprite2D" parent="DashTutorial"]
 use_parent_material = true

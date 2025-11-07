@@ -234,7 +234,7 @@ StartSpeed = 150.0
 MoveType = 0
 
 [node name="Piston23" parent="." instance=ExtResource("15_4rn4c")]
-position = Vector2(472, 145)
+position = Vector2(472, 136)
 mass = 3.0
 MAX_SPEED = 100.0
 StartSpeed = 110.0
@@ -250,7 +250,7 @@ GravityDirection = -1
 MoveType = 0
 
 [node name="Piston25" parent="." instance=ExtResource("15_4rn4c")]
-position = Vector2(728, 145)
+position = Vector2(728, 136)
 mass = 3.0
 MAX_SPEED = 100.0
 StartSpeed = 110.0
@@ -266,7 +266,7 @@ GravityDirection = -1
 MoveType = 0
 
 [node name="Piston27" parent="." instance=ExtResource("15_4rn4c")]
-position = Vector2(992, 145)
+position = Vector2(992, 136)
 mass = 3.0
 MAX_SPEED = 100.0
 StartSpeed = 110.0
@@ -282,7 +282,7 @@ GravityDirection = -1
 MoveType = 0
 
 [node name="Piston29" parent="." instance=ExtResource("15_4rn4c")]
-position = Vector2(1248, 145)
+position = Vector2(1248, 136)
 mass = 3.0
 MAX_SPEED = 100.0
 StartSpeed = 110.0

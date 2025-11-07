@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://djqwajvc8m3td"]
+[gd_scene load_steps=35 format=3 uid="uid://djqwajvc8m3td"]
 
 [ext_resource type="Script" uid="uid://cw42kfrmafcwu" path="res://assets/Levels/Scripts/enemie_physics.gd" id="1_ny8g4"]
 [ext_resource type="Script" uid="uid://df5b37mf1d4n6" path="res://assets/Levels/Scripts/enemie_area2d.gd" id="2_x2l0f"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://m6ge6ocgjl2a" path="res://assets/Sprites/slime-Sheet-idle.png" id="3_15oel"]
 [ext_resource type="Texture2D" uid="uid://ib3mucyvuvch" path="res://assets/Sprites/slime-Sheet-move.png" id="4_15oel"]
 [ext_resource type="Texture2D" uid="uid://b145nvnbk486f" path="res://assets/Sprites/particles/slime-particles.png" id="4_caayp"]
+[ext_resource type="Texture2D" uid="uid://bdfwqq1sobvi8" path="res://assets/Sprites/slime-laser-Sheet-idle.png" id="4_k4yf5"]
 [ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="6_20qa8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4y4c6"]
@@ -50,6 +51,18 @@ region = Rect2(17, 0, 17, 19)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxbrk"]
 atlas = ExtResource("3_15oel")
 region = Rect2(34, 0, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf07t"]
+atlas = ExtResource("4_k4yf5")
+region = Rect2(0, 0, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmkoi"]
+atlas = ExtResource("4_k4yf5")
+region = Rect2(34, 0, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fujvc"]
+atlas = ExtResource("4_k4yf5")
+region = Rect2(17, 0, 17, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wgm2"]
 atlas = ExtResource("4_15oel")
@@ -115,6 +128,20 @@ animations = [{
 }],
 "loop": false,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf07t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmkoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fujvc")
+}],
+"loop": true,
+"name": &"Laser",
 "speed": 5.0
 }, {
 "frames": [{
