@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://c8r0ebu1qkgf2"]
+[gd_scene load_steps=24 format=4 uid="uid://c8r0ebu1qkgf2"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_gwkwp"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_0fqbn"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="13_0p0li"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="14_efkra"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="14_fsay3"]
+[ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Levels/world1/style_add_box.gd" id="15_c18ho"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -105,6 +106,9 @@ _data = {
 &"move": SubResource("Animation_y3i1q"),
 &"move2": SubResource("Animation_b10uo")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3lxf"]
+size = Vector2(30.7479, 28.6468)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -247,6 +251,10 @@ scale = Vector2(3, 2)
 position = Vector2(94, -267)
 scale = Vector2(3, 5)
 
+[node name="KillBox17" parent="." instance=ExtResource("10_r0gsi")]
+position = Vector2(142.575, -315)
+scale = Vector2(3.145, 0.615)
+
 [node name="falling_sand5" parent="." instance=ExtResource("14_efkra")]
 position = Vector2(142, -218.49)
 MAX_SPEED = 120.0
@@ -274,3 +282,15 @@ position = Vector2(-202, -446)
 
 [node name="AmbientParticles3" parent="." instance=ExtResource("14_fsay3")]
 position = Vector2(142, -369)
+
+[node name="StyleAddBox" type="Area2D" parent="."]
+position = Vector2(144, -311)
+scale = Vector2(1.775, 1)
+script = ExtResource("15_c18ho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StyleAddBox"]
+position = Vector2(-0.5633774, -1)
+scale = Vector2(0.96, 0.33)
+shape = SubResource("RectangleShape2D_t3lxf")
+
+[connection signal="body_entered" from="StyleAddBox" to="StyleAddBox" method="_on_body_entered"]

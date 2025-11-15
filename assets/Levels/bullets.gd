@@ -40,6 +40,7 @@ func _on_player_jump_area_2d_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
 		Player.DoJump()
 		Destroy()
+		LevelManager.AddStyle(0, "Jumped Bullet")
 
 
 func _on_player_death_area_2d_body_entered(body: Node2D) -> void:

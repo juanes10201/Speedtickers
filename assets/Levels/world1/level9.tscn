@@ -81,15 +81,15 @@ position = Vector2(-283, -102)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(14.5308, 64.5662)
 zoom = Vector2(2.08, 2.08)
-limit_left = -403
-limit_right = 170
+limit_left = -404
+limit_right = 169
 limit_bottom = 293
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("3_ofk6x")
 
 [node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
-wait_time = 7.0
+wait_time = 9.0
 one_shot = true
 autostart = true
 

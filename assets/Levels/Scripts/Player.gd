@@ -48,9 +48,11 @@ var HaveKey : bool = false
 #region Export variables
 @export var PlayIntro : bool = false
 var juice : bool = true
+@export var Styleometter : bool = true 
 @export var CountTime : bool = true
 @export_group("Physics")
 @export var Physics : bool = true
+@export var Acc_Multiplier : float = 1
 
 @export_subgroup("Jump")
 @export_range(0, 7000.0, .5, "or_greater", "or_less") var WallJumpVelocity : float = 7000.0
@@ -194,6 +196,7 @@ func _input(event):
 #endregion
 
 func _ready() -> void:
+	Engine.time_scale = 1
 	if(LevelManager.StyleTimer.is_stopped()): 
 		LevelManager.ExpoMoveTimeout.paused = false
 		LevelManager.StyleTimer.start()
@@ -224,7 +227,8 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
-	print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
+	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
+		print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
 	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb && LevelManager.ExpoMoveTimeout.is_stopped()):
 		LevelManager.ExpoMoveTimeout.start()
 		LevelManager.ExpoMoveTimeout.paused = true
@@ -543,7 +547,7 @@ func _physics_h_movement(delta: float) -> void:
 		#Move faster if coming from Walljump
 		if((WallJumpPreviousSide == Sides.LEFT && direction < 0) || (WallJumpPreviousSide == Sides.RIGHT && direction > 0) && !PreWallJumpTimer.is_stopped()): Speed.x += Acc.x * direction *2
 		
-		Speed.x += Acc.x * direction  # Adjust speed based on input direction
+		Speed.x += Acc.x * direction * Acc_Multiplier  # Adjust speed based on input direction
 	else:
 		if(Speed.x > 0): Speed.x -= Acc.x
 		if(Speed.x < 0): Speed.x += Acc.x
@@ -623,6 +627,7 @@ func _physics_dash(delta: float) -> void:
 	#Dash
 	if(Input.is_action_pressed("player_dash") && !Dashed && DashCooldownTimer.is_stopped()):
 		DashCooldownTimer.start()
+		if(Slide): LevelManager.AddStyle(0, "Slide Dash")
 		LevelManager.ExpoMoveTimeout.start()
 		velocity.y = 0
 		Dashed = true

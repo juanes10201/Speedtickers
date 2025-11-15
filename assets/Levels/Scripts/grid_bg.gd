@@ -33,3 +33,7 @@ func _process(delta: float) -> void:
 	#	move_direction == Directions.LEFT if move_direction == Directions.RIGHT else Directions.RIGHT
 	#	objetive_move = Vector2(first_pos.x*-1+difference_move, first_pos.y*-1+difference_move)
   
+
+
+func _on_style_add_box_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

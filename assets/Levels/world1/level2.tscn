@@ -15,9 +15,9 @@
 [ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="12_qonc7"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="14_vwp2c"]
 [ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="15_r2eqi"]
-[ext_resource type="PackedScene" uid="uid://dt16mtapdmwk6" path="res://assets/Levels/SecretKey.tscn" id="16_np4up"]
 [ext_resource type="Script" uid="uid://cemn5v31uprsc" path="res://assets/Levels/world1/tutorial_time_stop.gd" id="17_cq5md"]
 [ext_resource type="Shader" uid="uid://b3fwo3rcm5x8m" path="res://assets/Levels/Shader/HueShift.gdshader" id="17_e7a5q"]
+[ext_resource type="PackedScene" uid="uid://423rmnuehv0r" path="res://assets/Levels/gem.tscn" id="18_lhkcl"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -195,9 +195,6 @@ CanChange = false
 [node name="AmbientParticles" parent="." instance=ExtResource("14_vwp2c")]
 position = Vector2(-223, -366)
 
-[node name="Key" parent="." instance=ExtResource("16_np4up")]
-position = Vector2(-183, -305)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 position = Vector2(-755, -863)
@@ -257,15 +254,19 @@ scale = Vector2(1.775, 1)
 script = ExtResource("17_cq5md")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop"]
-position = Vector2(6.19718, 4)
+position = Vector2(-6.1971865, 4)
+scale = Vector2(2.87, 1)
 shape = SubResource("RectangleShape2D_np4up")
 
 [node name="StopRemover" type="Area2D" parent="TimeStop"]
 position = Vector2(84.25, 7.625)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop/StopRemover"]
-position = Vector2(-15.5176, 3.375)
+position = Vector2(-7.0669003, 2.375)
 shape = SubResource("RectangleShape2D_lhkcl")
+
+[node name="Flag2" parent="." instance=ExtResource("18_lhkcl")]
+position = Vector2(-176, -301)
 
 [connection signal="body_entered" from="TimeStop" to="TimeStop" method="_on_body_entered"]
 [connection signal="body_entered" from="TimeStop/StopRemover" to="TimeStop" method="_on_stop_remover_body_entered"]

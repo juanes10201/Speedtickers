@@ -62,6 +62,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player") && Player && !done):
 		set_key_state(true, true)
+		if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+			LevelManager.AddStyle(0, "Changed Gravity")
+		else: LevelManager.AddStyle(0, "Got Key")
 
 func set_key_state(state : bool, PlayAction : bool):
 	if(!Respawn):

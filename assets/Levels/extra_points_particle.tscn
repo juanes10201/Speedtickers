@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1p4y76afqiqv"]
+
+[ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="1_c0ex6"]
+[ext_resource type="Script" uid="uid://cumktr5skn6c4" path="res://assets/Levels/extra_points_particle.gd" id="2_vgwid"]
+
+[sub_resource type="Animation" id="Animation_1j23w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.823529, 0.658824, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c0ex6"]
+resource_name = "default"
+
+[sub_resource type="Animation" id="Animation_vgwid"]
+resource_name = "fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.7666667, 1.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.823529, 0.658824, 1, 1), Color(0.8235294, 0.65882355, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3cwmp"]
+_data = {
+&"RESET": SubResource("Animation_1j23w"),
+&"default": SubResource("Animation_c0ex6"),
+&"fade_out": SubResource("Animation_vgwid")
+}
+
+[node name="ExtraPointsParticle" type="RichTextLabel"]
+offset_left = -28.0
+offset_top = -7.0
+offset_right = 41.0
+offset_bottom = 22.0
+theme_override_colors/default_color = Color(0.823529, 0.658824, 1, 1)
+theme_override_fonts/normal_font = ExtResource("1_c0ex6")
+theme_override_font_sizes/normal_font_size = 32
+text = "+100"
+script = ExtResource("2_vgwid")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3cwmp")
+}
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

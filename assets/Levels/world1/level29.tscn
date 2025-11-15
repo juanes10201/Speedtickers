@@ -214,10 +214,6 @@ scale = Vector2(1.5, 1)
 position = Vector2(-39, 225)
 scale = Vector2(1, 6.5)
 
-[node name="Enemie3" parent="." instance=ExtResource("15_rmily")]
-position = Vector2(133.28, 138)
-EnemyDirection = 1
-
 [node name="Enemie4" parent="." instance=ExtResource("15_rmily")]
 position = Vector2(101, 221.26)
 

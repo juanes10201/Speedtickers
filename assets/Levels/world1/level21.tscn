@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dhgyon50kqkuc"]
+[gd_scene load_steps=26 format=4 uid="uid://dhgyon50kqkuc"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_qq1m5"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_27gdk"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Levels/key.tscn" id="15_8x346"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="16_jo1nc"]
 [ext_resource type="PackedScene" uid="uid://bygxx5ppwysc3" path="res://assets/Levels/enemie_special.tscn" id="16_okquh"]
+[ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Levels/world1/style_add_box.gd" id="17_wyuh8"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -107,6 +108,9 @@ _data = {
 &"move": SubResource("Animation_y3i1q"),
 &"move2": SubResource("Animation_b10uo")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p25h"]
+size = Vector2(30.7479, 28.6468)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -298,3 +302,16 @@ collision_mask = 517
 
 [node name="AmbientParticles" parent="." instance=ExtResource("16_jo1nc")]
 position = Vector2(-295, -201)
+
+[node name="StyleAddBox" type="Area2D" parent="."]
+position = Vector2(-391, -85)
+scale = Vector2(1.155, 1)
+script = ExtResource("17_wyuh8")
+StyleTypeAdd = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StyleAddBox"]
+position = Vector2(-0.5633774, -1)
+scale = Vector2(1.155, 0.33)
+shape = SubResource("RectangleShape2D_3p25h")
+
+[connection signal="body_entered" from="StyleAddBox" to="StyleAddBox" method="_on_body_entered"]

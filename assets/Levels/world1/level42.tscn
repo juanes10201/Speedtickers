@@ -116,25 +116,22 @@ position = Vector2(162, -13)
 scale = Vector2(7, 6)
 
 [node name="falling_sand3" parent="." instance=ExtResource("13_yhahi")]
-position = Vector2(-156, -54)
+position = Vector2(-150, -54)
 
 [node name="falling_sand6" parent="." instance=ExtResource("13_yhahi")]
-position = Vector2(-140, -54)
+position = Vector2(-134, -54)
 
 [node name="falling_sand5" parent="." instance=ExtResource("13_yhahi")]
-position = Vector2(-108, -54)
+position = Vector2(-102, -54)
 
 [node name="falling_sand7" parent="." instance=ExtResource("13_yhahi")]
-position = Vector2(-124, -54)
+position = Vector2(-118, -54)
 
 [node name="falling_sand8" parent="." instance=ExtResource("13_yhahi")]
-position = Vector2(-76, -54)
+position = Vector2(-70, -54)
 
 [node name="falling_sand11" parent="." instance=ExtResource("13_yhahi")]
-position = Vector2(-92, -54)
-
-[node name="falling_sand12" parent="." instance=ExtResource("13_yhahi")]
-position = Vector2(-60, -54)
+position = Vector2(-86, -54)
 
 [node name="falling_sand9" parent="." instance=ExtResource("13_yhahi")]
 position = Vector2(1, -54)

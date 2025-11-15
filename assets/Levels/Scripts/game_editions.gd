@@ -7,7 +7,7 @@ enum ALL_GAME_STATUS{
 }
 var CrtFilter : bool = true
 
-var GAME_STATUS = ALL_GAME_STATUS.expo_cbb
+var GAME_STATUS = ALL_GAME_STATUS.retail
 
 var Is_in_editor : bool = false
 

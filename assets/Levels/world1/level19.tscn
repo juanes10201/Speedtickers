@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cmoi1akylmxsx"]
+[gd_scene load_steps=28 format=4 uid="uid://cmoi1akylmxsx"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_wspew"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_uhmqi"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Levels/key.tscn" id="14_glfla"]
 [ext_resource type="PackedScene" uid="uid://bygxx5ppwysc3" path="res://assets/Levels/enemie_special.tscn" id="15_7h57r"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="16_a6nlu"]
+[ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Levels/world1/style_add_box.gd" id="17_lbwgj"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -115,6 +116,9 @@ b = Vector2(-40.8431, 48)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_b1tps"]
 a = Vector2(151.419, -42)
 b = Vector2(-7.96941, -121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t70fv"]
+size = Vector2(30.7479, 28.6468)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -319,7 +323,19 @@ position = Vector2(243, -231)
 [node name="AmbientParticles2" parent="." instance=ExtResource("16_a6nlu")]
 position = Vector2(-59, -451)
 
+[node name="StyleAddBox" type="Area2D" parent="."]
+position = Vector2(65, -453)
+scale = Vector2(1.775, 1)
+script = ExtResource("17_lbwgj")
+StyleTypeAdd = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StyleAddBox"]
+position = Vector2(-0.5633774, -1)
+scale = Vector2(0.96, 0.33)
+shape = SubResource("RectangleShape2D_t70fv")
+
 [connection signal="body_entered" from="SlideRampArea2D2" to="SlideRampArea2D2" method="_on_body_entered"]
 [connection signal="body_exited" from="SlideRampArea2D2" to="SlideRampArea2D2" method="_on_body_exited"]
 [connection signal="body_entered" from="SlideRampArea2D3" to="SlideRampArea2D3" method="_on_body_entered"]
 [connection signal="body_exited" from="SlideRampArea2D3" to="SlideRampArea2D3" method="_on_body_exited"]
+[connection signal="body_entered" from="StyleAddBox" to="StyleAddBox" method="_on_body_entered"]

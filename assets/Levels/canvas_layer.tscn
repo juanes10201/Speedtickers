@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cfa7sxsc3ppdn"]
+[gd_scene load_steps=68 format=3 uid="uid://cfa7sxsc3ppdn"]
 
 [ext_resource type="Texture2D" uid="uid://d1y21fe855ulp" path="res://assets/Sprites/ray-time.png" id="1_g8qx6"]
 [ext_resource type="Script" uid="uid://n4qwd5l56oy4" path="res://assets/Levels/Scripts/UI_time_text.gd" id="1_lu8t7"]
@@ -39,6 +39,9 @@
 [ext_resource type="Texture2D" uid="uid://dec2ktmjvg223" path="res://assets/Sprites/menus/Ranks/P.png" id="28_4ao8e"]
 [ext_resource type="Texture2D" uid="uid://dfio4ujwr26yk" path="res://assets/Sprites/menus/Ranks/SSS.png" id="29_4qspi"]
 [ext_resource type="Texture2D" uid="uid://crlcxksd8b3se" path="res://assets/Sprites/menus/Ranks/Untitled.png" id="32_fd35p"]
+[ext_resource type="Texture2D" uid="uid://b3wvvk0ma14a3" path="res://assets/Sprites/menus/CurrentStyleBar.png" id="33_brorv"]
+[ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Levels/Shader/enemie_skeleton.gdshader" id="34_1gu5b"]
+[ext_resource type="Texture2D" uid="uid://cx8iia5w8wcen" path="res://assets/Sprites/particles/star.png" id="40_g7nh5"]
 
 [sub_resource type="GDScript" id="GDScript_4cp2g"]
 script/source = "extends Sprite2D
@@ -377,11 +380,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_g7nh5"]
+_data = [Vector2(0.93939394, 1), 0.0, 0.0, 0, 0, Vector2(0.995671, 0.022471905), -20.439579, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_brorv"]
+curve = SubResource("Curve_g7nh5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_brorv"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 39.47
+emission_ring_inner_radius = 69.24
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+radial_accel_min = 3.1799977
+radial_accel_max = 38.1
+tangential_accel_min = 3.1799977
+tangential_accel_max = 19.049997
+alpha_curve = SubResource("CurveTexture_brorv")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.009999977
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_500le"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfuuw"]
 bg_color = Color(1, 0.419608, 0.709804, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7nh5"]
+shader = ExtResource("34_1gu5b")
+shader_parameter/progress = 0.5010000237975
+shader_parameter/overlay_color = Color(0.6889207, 0.21622825, 0.6368769, 0.5019608)
+shader_parameter/fill_dir = Vector2(4.86, -1.085)
+shader_parameter/alpha_cutoff = 0.01
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g7nh5"]
 animations = [{
@@ -958,18 +994,35 @@ libraries = {
 position = Vector2(346.44, 0)
 script = ExtResource("22_g0tcv")
 
+[node name="NewScoreReference" type="Marker2D" parent="Style"]
+position = Vector2(904, 536)
+
 [node name="StyleMenu" type="Sprite2D" parent="Style"]
 position = Vector2(1075.17, 559)
 scale = Vector2(0.452206, 0.523529)
 texture = ExtResource("23_av385")
 
 [node name="StyleSprite" type="AnimatedSprite2D" parent="Style"]
+z_index = 3
 position = Vector2(1072, 531)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_def47")
-animation = &"A"
+animation = &"P"
+
+[node name="StyleMotoBar" type="Sprite2D" parent="Style"]
+z_index = 1
+position = Vector2(1066.6558, 613.49335)
+scale = Vector2(0.4492649, 0.44926494)
+texture = ExtResource("33_brorv")
+
+[node name="ParticlesPerfectRank" type="GPUParticles2D" parent="Style"]
+position = Vector2(1064.56, 542)
+emitting = false
+texture = ExtResource("40_g7nh5")
+process_material = SubResource("ParticleProcessMaterial_brorv")
 
 [node name="StyleBar" type="ProgressBar" parent="Style"]
+z_index = 2
 offset_left = 969.24
 offset_top = 587.75
 offset_right = 1172.24
@@ -981,16 +1034,18 @@ value = 2.71
 show_percentage = false
 
 [node name="Points" type="RichTextLabel" parent="Style"]
+z_index = 2
 offset_left = 997.0
 offset_top = 478.0
 offset_right = 1190.0
-offset_bottom = 511.99994
+offset_bottom = 511.99988
 theme_override_colors/default_color = Color(0.823529, 0.658824, 1, 1)
 theme_override_fonts/normal_font = ExtResource("23_8ohxx")
 theme_override_font_sizes/normal_font_size = 32
 text = "X1000 Score"
 
 [node name="Moto" type="RichTextLabel" parent="Style"]
+z_index = 2
 offset_left = 975.0
 offset_top = 606.0
 offset_right = 1177.0
@@ -1003,12 +1058,15 @@ text = "Killed Slime"
 [node name="Mult" type="Node2D" parent="Style"]
 
 [node name="MultDiagonalBg" type="AnimatedSprite2D" parent="Style/Mult"]
+z_index = 1
+material = SubResource("ShaderMaterial_g7nh5")
 position = Vector2(896.25, 594.68)
 scale = Vector2(0.321615, 0.321615)
 sprite_frames = SubResource("SpriteFrames_g7nh5")
-animation = &"1"
+animation = &"2"
 
 [node name="MultX" type="RichTextLabel" parent="Style/Mult"]
+z_index = 1
 offset_left = 790.0
 offset_top = 571.356
 offset_right = 944.0
@@ -1023,9 +1081,10 @@ text = " x"
 horizontal_alignment = 1
 
 [node name="MultText" type="RichTextLabel" parent="Style/Mult"]
-offset_left = 841.0
+z_index = 1
+offset_left = 845.0
 offset_top = 560.0
-offset_right = 972.0
+offset_right = 976.0
 offset_bottom = 649.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0.501961, 1)
@@ -1045,6 +1104,7 @@ libraries = {
 script = ExtResource("22_2n7mv")
 
 [node name="ProgressBar2" type="ProgressBar" parent="expo"]
+visible = false
 offset_left = 963.0
 offset_top = 41.0
 offset_right = 1153.0
@@ -1052,6 +1112,7 @@ offset_bottom = 105.0
 show_percentage = false
 
 [node name="PlaytimeText" type="RichTextLabel" parent="expo"]
+visible = false
 offset_left = 954.0
 offset_top = 32.0
 offset_right = 1227.0
@@ -1069,6 +1130,7 @@ one_shot = true
 autostart = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="expo"]
+visible = false
 offset_left = 1010.0
 offset_top = 19.0
 offset_right = 1148.0
@@ -1078,6 +1140,7 @@ theme_override_font_sizes/normal_font_size = 32
 text = "EVA 2025"
 
 [node name="inactive_bar" type="ProgressBar" parent="expo"]
+visible = false
 offset_left = 99.0
 offset_top = 201.0
 offset_right = 1043.0
@@ -1088,6 +1151,7 @@ max_value = 10.0
 show_percentage = false
 
 [node name="inactive_time" type="RichTextLabel" parent="expo"]
+visible = false
 offset_left = 96.0
 offset_top = 207.0
 offset_right = 1044.0
@@ -1099,6 +1163,7 @@ text = "10"
 horizontal_alignment = 1
 
 [node name="inactive_text" type="RichTextLabel" parent="expo"]
+visible = false
 offset_left = 185.0
 offset_top = 238.0
 offset_right = 978.0

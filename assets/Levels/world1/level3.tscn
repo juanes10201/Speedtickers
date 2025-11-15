@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://rfc7e15hhxq"]
+[gd_scene load_steps=16 format=4 uid="uid://rfc7e15hhxq"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_llh53"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_0saqq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="10_0gvix"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="10_rm0lo"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="11_p2l43"]
+[ext_resource type="PackedScene" uid="uid://423rmnuehv0r" path="res://assets/Levels/gem.tscn" id="12_x373i"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -149,3 +150,6 @@ Visible = false
 
 [node name="AmbientParticles" parent="." instance=ExtResource("11_p2l43")]
 position = Vector2(-62, -231)
+
+[node name="Flag2" parent="." instance=ExtResource("12_x373i")]
+position = Vector2(-104, -268)

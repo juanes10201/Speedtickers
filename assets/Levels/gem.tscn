@@ -289,21 +289,21 @@ animations = [{
 }]
 
 [node name="Flag" type="Area2D"]
-position = Vector2(82, -35)
+position = Vector2(1, 0)
 script = ExtResource("1_5y1re")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-73.4136, 25.5)
+position = Vector2(-0.4135971, -0.5)
 shape = SubResource("RectangleShape2D_sbb13")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-71.8272, 17)
+position = Vector2(1.1727982, -9)
 scale = Vector2(1.00384, 1)
 color = Color(0.809302, 0.528971, 0.270935, 1)
 energy = 0.3
 texture = ExtResource("3_j7qi1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-74, 26)
+position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_jatou")
 frame_progress = 0.00432576

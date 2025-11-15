@@ -26,10 +26,13 @@ func _process(delta: float) -> void:
 	#if(Cinematic_type == Cinematic_types.CREDITS): self.position.y = lerpf(self.position.y, credits_ystart, 2*delta)
 
 #region Camera Shake
-func Shake(_shakerangestrenght, _shakefade) -> void:
-	ShakeRangeStrenght = _shakerangestrenght
-	ShakeFade = _shakefade
-	ShakeStrenght = ShakeRangeStrenght
+func Shake(_shakerangestrenght, _shakefade, _override : bool = false) -> void:
+	if(abs(ShakeStrenght) < .01 || _override):
+		ShakeRangeStrenght = _shakerangestrenght
+		ShakeFade = _shakefade
+		ShakeStrenght = ShakeRangeStrenght
+	else:
+		print("Camera Shake invalid because another is already in place")
 
 func TickShake(delta) -> void:
 	if(ShakeStrenght > 0):

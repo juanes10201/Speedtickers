@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://den8ycl3pv4ha"]
+[gd_scene load_steps=28 format=4 uid="uid://den8ycl3pv4ha"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_b618f"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_y5y3h"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Levels/key.tscn" id="14_5t6dw"]
 [ext_resource type="PackedScene" uid="uid://bygxx5ppwysc3" path="res://assets/Levels/enemie_special.tscn" id="15_rhm51"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Levels/enemie.tscn" id="16_y5y3h"]
+[ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Levels/world1/style_add_box.gd" id="17_0m1pv"]
 [ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Levels/kill_box_blue.tscn" id="17_wqwyd"]
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Levels/orb.tscn" id="18_12r7m"]
 
@@ -109,6 +110,9 @@ _data = {
 &"move": SubResource("Animation_y3i1q"),
 &"move2": SubResource("Animation_b10uo")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so1t7"]
+size = Vector2(30.7479, 28.6468)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-80, 136)
@@ -340,6 +344,17 @@ SPEED = 0.0
 JUMP_VELOCITY = 0.0
 SPECIAL_ENEMY_JUMP_VELOCITY = 0.0
 
+[node name="StyleAddBox" type="Area2D" parent="."]
+position = Vector2(128, 208)
+scale = Vector2(1.775, 1)
+script = ExtResource("17_0m1pv")
+StyleTypeAdd = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StyleAddBox"]
+position = Vector2(-0.5633774, -1)
+scale = Vector2(0.345, 3.555)
+shape = SubResource("RectangleShape2D_so1t7")
+
 [node name="Piston33" parent="." instance=ExtResource("12_387rq")]
 position = Vector2(179, 87.000015)
 mass = 3.0
@@ -396,3 +411,5 @@ AnotherAction = 4
 [node name="Key4" parent="." instance=ExtResource("18_12r7m")]
 position = Vector2(64, 30)
 AnotherAction = 4
+
+[connection signal="body_entered" from="StyleAddBox" to="StyleAddBox" method="_on_body_entered"]
