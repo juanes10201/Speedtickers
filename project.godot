@@ -221,34 +221,6 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
-player_replay_dash={
-"deadzone": 0.5,
-"events": []
-}
-replay_player_jump={
-"deadzone": 0.5,
-"events": []
-}
-slide_player_jump={
-"deadzone": 0.5,
-"events": []
-}
-replay_ui_left={
-"deadzone": 0.2,
-"events": []
-}
-replay_ui_right={
-"deadzone": 0.2,
-"events": []
-}
-replay_player_slide={
-"deadzone": 0.2,
-"events": []
-}
-replay_player_dash={
-"deadzone": 0.2,
-"events": []
-}
 
 [input_devices]
 

@@ -159,6 +159,7 @@ var PlayedSwitchedGravityAnimation : bool = false
 
 @onready var Time_Left : Timer = $"../Time_Left"
 
+
 enum AirSides{
 	Jumping = 1,
 	Falling = 2,
@@ -475,7 +476,7 @@ func _physics_apply_gravity(delta: float) -> void:
 			DidDiagonalSlam = false
 			GroundSmashMultiplier = 1
 			JumpGroundsmashMultiplier.start()
-			Camera.Shake(10.0, 10.0)
+			if(Camera): Camera.Shake(10.0, 10.0)
 			enemy_jump()
 			EnemyGroundSlamTimer.start()
 		if(SlidingInAir):
@@ -745,7 +746,7 @@ func On_Death():
 		_play_sound(AudioDeath, true)
 		#TransitionOut.show()
 		#TransitionOut.fade_out()
-		if(!Edition.Is_in_editor):
+		if(!Edition.Is_in_editor && ReplayAction == Global.ReplayStates.STOPPED):
 			await(get_tree().create_timer(TimeDeath).timeout)
 			if get_tree():
 				get_tree().reload_current_scene()
@@ -770,12 +771,14 @@ func is_near_wall() -> bool:
 
 func is_action_pressed(Action : String):
 	if(ReplayAction == Global.ReplayStates.STOPPED):
-		return Input.is_action_pressed(Action)
+		return Input.is_action_pressed(str(Action))
 	else:
-		return Input.is_action_pressed("replay_" + Action)
+		return Replay.ReplayActions[Action]
 
 func get_axis():
 	if(ReplayAction == Global.ReplayStates.STOPPED):
 		return Input.get_axis("ui_left", "ui_right")
 	else:
-		return Input.get_axis("replay_ui_left", "replay_ui_right")
+		if(Replay.ReplayActions["ui_left"]): return -1
+		if(Replay.ReplayActions["ui_right"]): return 1
+		else: return 0
