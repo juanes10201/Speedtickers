@@ -143,7 +143,7 @@ script = ExtResource("4_diu55")
 [node name="Player2" parent="." instance=ExtResource("5_cyxtg")]
 position = Vector2(-304.00003, -68.00003)
 ReplayAction = 0
-RecordedActions = Array[Vector3]([Vector3(1.2, 4, 1)])
+RecordedActions = Array[Vector3]([Vector3(1.2, 4, 1), Vector3(1.5, 0, 1), Vector3(3, 0, 0), Vector3(3, 4, 0), Vector3(4, 5, 1)])
 CountTime = false
 jump_height = 65.0
 

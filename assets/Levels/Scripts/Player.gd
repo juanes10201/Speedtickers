@@ -512,7 +512,7 @@ func _physics_jump(delta: float) -> void:
 		DoJump()
 		LevelManager.ExpoMoveTimeout.start()
 	#Cancel jump
-	if(velocity.y < 0 && !Input.is_action_pressed("player_jump") && !DashWithJump):
+	if(velocity.y < 0 && !is_action_pressed("player_jump") && !DashWithJump):
 		velocity.y += JumpCancelAcc * GravityDirection
 	
 	if(is_action_pressed("player_jump")):

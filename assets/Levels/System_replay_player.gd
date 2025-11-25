@@ -7,7 +7,8 @@ var ReplayCurrentAction : int = 0
 
 @onready var Player = get_parent()
 
-var Actions : Array[String] = ["replay_player_jump", "replay_player_slide", "replay_player_dash", "replay_ui_left", "replay_ui_right", "reset"]
+
+var Actions : Array[String] = ["player_jump", "player_slide", "player_dash", "ui_left", "ui_right", "reset"]
 
 var ReplayActions = {
 	"player_jump": false,
@@ -23,9 +24,19 @@ func _ready() -> void:
 	ReplayCurrentAction = 0
 	CurrentTime = 0
 
+func Reset() -> void:
+	Player.position = Player.OriginalPos
+	ReplayCurrentAction = 0
+	CurrentTime = 0
+	for i in ReplayActions:
+		ReplayActions[i] = false
+
 func Play_action(A : String, Press : int):
 	print("Simulating Press of Action of type: " + str(A) + ", Condition: " + str(Press))
-	if(Press):
+	if(A == "reset"):
+		Reset()
+		return
+	if(Press == 1):
 		ReplayActions[A] = true
 	else:
 		ReplayActions[A] = false
