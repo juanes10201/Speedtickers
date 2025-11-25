@@ -26,8 +26,8 @@ func _ready() -> void:
 
 func Reset() -> void:
 	Player.position = Player.OriginalPos
-	ReplayCurrentAction = 0
-	CurrentTime = 0
+	ReplayCurrentAction = -1
+	CurrentTime = -0.5
 	for i in ReplayActions:
 		ReplayActions[i] = false
 

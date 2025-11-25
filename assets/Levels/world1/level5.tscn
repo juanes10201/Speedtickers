@@ -74,8 +74,13 @@ scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AAD0//X/AAADAAEAAAD0//b/AAADAAEAAAD0//f/AAADAAEAAAD0//P/AAADAAEAAAD0//T/AAADAAEAAAD0/+//AAADAAEAAAD0//D/AAADAAEAAAD0//H/AAADAAEAAAD0//L/AAADAAEAAAD0/wYAAAAAAAMAAAD1/wYAAAABAAMAAAD2/wYAAAABAAMAAAD3/wYAAAABAAMAAAD4/wYAAAABAAMAAAD5/wYAAAABAAMAAAD6/wYAAAABAAMAAAD7/wYAAAABAAMAAAD8/wYAAAABAAMAAAD9/wYAAAABAAMAAAD+/wYAAAABAAMAAAD//wYAAAABAAMAAAAAAAYAAAABAAMAAAABAAYAAAABAAMAAAACAAYAAAACAAMAAAAGAAYAAAADAAEAAAAGAAcAAAADAAEAAAAGAAgAAAADAAEAAAD0/wIAAAADAAEAAAD0/wMAAAADAAEAAAD0/wQAAAADAAEAAAD0/wUAAAADAAEAAAACAAIAAAADAAEAAAACAAMAAAADAAEAAAACAAQAAAADAAEAAAACAAUAAAADAAEAAAAGAAUAAAADAAEAAAAGAAQAAAADAAEAAAAGAAMAAAADAAEAAAAGAAIAAAADAAEAAAAGAAoAAAADAAEAAAAGAAsAAAADAAIAAAAGAAkAAAADAAEAAAD0//r/AAADAAEAAAD0/wAAAAADAAAAAAD0/wEAAAADAAEAAAACAPr/AAADAAEAAAACAPv/AAADAAEAAAACAPz/AAADAAEAAAACAP3/AAADAAEAAAACAP7/AAADAAEAAAACAP//AAADAAEAAAACAAAAAAADAAEAAAACAAEAAAADAAEAAAAGAPr/AAADAAEAAAAGAPv/AAADAAEAAAAGAPz/AAADAAEAAAAGAP3/AAADAAEAAAAGAP7/AAADAAEAAAAGAP//AAADAAEAAAAGAAAAAAADAAEAAAAGAAEAAAADAAEAAADs//z/AAAAAAAAAADt//z/AAABAAAAAADu//z/AAABAAAAAAD0//v/AAADAAEAAAD0//z/AAADAAIAAAD4//v/AAAAAAMAAAD4//z/AAADAAIAAAD5//v/AAABAAMAAAD6//v/AAABAAMAAAD7//v/AAABAAMAAAD8//v/AAACAAMAAAD///n/AAAAAAMAAAAAAPn/AAABAAMAAAABAPn/AAABAAMAAAACAPn/AAACAAMAAAAGAPn/AAADAAEAAAAGAPj/AAADAAAAAAD0//j/AAADAAEAAAD0//n/AAADAAEAAADv//z/AAACAAAAAADt//3/AAABAAIAAADs//3/AAAAAAIAAADu//3/AAABAAIAAADv//3/AAACAAIAAAA=")
 tile_set = ExtResource("3_1yg1q")
 
+[node name="Player2" parent="." instance=ExtResource("2_igmiy")]
+position = Vector2(-300.00003, -36.000015)
+ReplayAction = 0
+RecordedActions = Array[Vector3]([Vector3(0.45, 4, 1), Vector3(0.867, 4, 0), Vector3(1.033, 4, 1), Vector3(1.15, 2, 1), Vector3(1.233, 2, 0), Vector3(1.317, 0, 1), Vector3(1.917, 2, 1), Vector3(2.017, 2, 0), Vector3(2.317, 4, 0), Vector3(2.35, 0, 0), Vector3(2.367, 3, 1), Vector3(2.517, 3, 0), Vector3(3.417, 3, 1), Vector3(3.767, 0, 1), Vector3(3.8, 0, 0), Vector3(4.083, 2, 1), Vector3(4.15, 2, 0), Vector3(4.216, 3, 0), Vector3(4.616, 3, 1), Vector3(4.7, 0, 1), Vector3(4.783, 0, 0), Vector3(5.05, 3, 0)])
+
 [node name="Player" parent="." instance=ExtResource("2_igmiy")]
-position = Vector2(-300, -68)
+position = Vector2(-300, -35.999996)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(14.5308, 64.5662)
@@ -96,9 +101,7 @@ autostart = true
 [node name="WorldEnvironment" parent="." instance=ExtResource("6_m4vu1")]
 
 [node name="Flag" parent="." instance=ExtResource("5_yf14x")]
-position = Vector2(-222, 168)
-CanHover = null
-grab_grid = null
+position = Vector2(-221, 177)
 
 [node name="falling_sand" parent="." instance=ExtResource("6_vghth")]
 position = Vector2(-122, -10)
@@ -120,8 +123,24 @@ wait_time = 0.05
 position = Vector2(-124, 210)
 wait_time = 0.05
 
+[node name="falling_sand12" parent="." instance=ExtResource("6_vghth")]
+position = Vector2(-108, 210)
+wait_time = 0.05
+
+[node name="falling_sand14" parent="." instance=ExtResource("6_vghth")]
+position = Vector2(-92, 210)
+wait_time = 0.05
+
 [node name="falling_sand7" parent="." instance=ExtResource("6_vghth")]
 position = Vector2(40, 212)
+wait_time = 0.05
+
+[node name="falling_sand13" parent="." instance=ExtResource("6_vghth")]
+position = Vector2(23, 212)
+wait_time = 0.05
+
+[node name="falling_sand15" parent="." instance=ExtResource("6_vghth")]
+position = Vector2(7, 212)
 wait_time = 0.05
 
 [node name="falling_sand8" parent="." instance=ExtResource("6_vghth")]

@@ -92,6 +92,7 @@ func _integrate_forces(state):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player") || body.is_in_group("Enemie")):
 		if (body.is_in_group("Player")):
+			if(Player.ReplayAction != Global.ReplayStates.STOPPED): return
 			#Player.GravitySandFallDirection = Player.GlobalGravityDirection
 			#if(body.GroundSmash):
 			#	MAX_SPEED *= SlamAdd

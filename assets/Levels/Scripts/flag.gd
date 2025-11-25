@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		self.position.y = (floor(self.position.y/grab_grid)*grab_grid)+10.0
 
 func _on_body_entered(body):
-	if(body.is_in_group("Player") && !body.Dead):
+	if(body.is_in_group("Player") && !body.Dead && body.ReplayAction == Global.ReplayStates.STOPPED):
 		var StyleRatio : float = 1.0
 		if(LevelManager.get_level_time()):
 			StyleRatio = LevelManager.get_level_time().time_left/LevelManager.get_level_time().wait_time
