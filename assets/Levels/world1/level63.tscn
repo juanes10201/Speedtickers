@@ -155,7 +155,7 @@ autostart = true
 [node name="CanvasLayer" parent="." instance=ExtResource("5_m0k7o")]
 
 [node name="Flag" parent="." instance=ExtResource("6_8knha")]
-position = Vector2(688, 152)
+position = Vector2(704, 128)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_s6gwa")]
 
@@ -199,31 +199,31 @@ position = Vector2(349.00003, 250)
 scale = Vector2(2.7, 6.21)
 
 [node name="KillBox17" parent="." instance=ExtResource("12_rbuxl")]
-position = Vector2(551, 222.00003)
+position = Vector2(559, 222.00003)
 scale = Vector2(5.61, 6.59)
 
 [node name="KillBox15" parent="." instance=ExtResource("12_rbuxl")]
-position = Vector2(431.99994, 143)
-scale = Vector2(1, 7.845)
+position = Vector2(432, 128)
+scale = Vector2(1, 8.99)
 
 [node name="KillBox19" parent="." instance=ExtResource("12_rbuxl")]
-position = Vector2(652, 152)
-scale = Vector2(2, 6.975)
+position = Vector2(672, 148)
+scale = Vector2(2, 7.545)
 
 [node name="KillBox12" parent="." instance=ExtResource("12_rbuxl")]
 position = Vector2(367.77997, 136)
 scale = Vector2(8.94, 2)
 
 [node name="KillBox18" parent="." instance=ExtResource("12_rbuxl")]
-position = Vector2(624, 96)
+position = Vector2(616, 72)
 scale = Vector2(23.07, 2)
 
 [node name="KillBox16" parent="." instance=ExtResource("12_rbuxl")]
 position = Vector2(792, 248)
-scale = Vector2(2, 16.685)
+scale = Vector2(2, 24.04)
 
 [node name="KillBox13" parent="." instance=ExtResource("12_rbuxl")]
-position = Vector2(472, 284)
+position = Vector2(481.00003, 284)
 scale = Vector2(15.4, 2)
 
 [node name="Piston32" parent="." instance=ExtResource("13_ta83c")]
@@ -241,11 +241,11 @@ position = Vector2(248, 240)
 position = Vector2(264, 240)
 
 [node name="falling_sand9" parent="." instance=ExtResource("14_ewq76")]
-position = Vector2(625, 198)
+position = Vector2(637, 199)
 MAX_SPEED = 150.0
 
 [node name="falling_sand10" parent="." instance=ExtResource("14_ewq76")]
-position = Vector2(609, 198)
+position = Vector2(621, 199)
 MAX_SPEED = 150.0
 
 [node name="falling_sand11" parent="." instance=ExtResource("14_ewq76")]

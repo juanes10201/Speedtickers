@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://dquxxw3fjk3yr"]
+
+[ext_resource type="Script" uid="uid://d3tf5emrtsw71" path="res://assets/Levels/select_level_control.gd" id="1_7aw2u"]
+[ext_resource type="PackedScene" uid="uid://fo7p1nt5o3y8" path="res://assets/Levels/world1/level_select_canvas.tscn" id="2_pdath"]
+[ext_resource type="Shader" uid="uid://bewtpgjognj1i" path="res://assets/Levels/Shader/playertexttime.gdshader" id="34_c2dw0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwm5l"]
+resource_local_to_scene = true
+shader = ExtResource("34_c2dw0")
+shader_parameter/center = Vector2(50, 50)
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 1.0
+shader_parameter/downward_offset = 22.512
+
+[node name="control_pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 41.0
+focus_mode = 2
+script = ExtResource("1_7aw2u")
+metadata/_edit_vertical_guides_ = [634.0]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_pdath")]
+
+[node name="select1" parent="CanvasLayer/Levels" index="0"]
+text = "51"
+
+[node name="select2" parent="CanvasLayer/Levels" index="1"]
+text = "52"
+
+[node name="select3" parent="CanvasLayer/Levels" index="2"]
+text = "53"
+
+[node name="select4" parent="CanvasLayer/Levels" index="3"]
+text = "54"
+
+[node name="select5" parent="CanvasLayer/Levels" index="4"]
+text = "55"
+
+[node name="select6" parent="CanvasLayer/Levels" index="5"]
+text = "56"
+
+[node name="select7" parent="CanvasLayer/Levels" index="6"]
+text = "57"
+
+[node name="select8" parent="CanvasLayer/Levels" index="7"]
+text = "58"
+
+[node name="select9" parent="CanvasLayer/Levels" index="8"]
+text = "59"
+
+[node name="select10" parent="CanvasLayer/Levels" index="9"]
+text = "60"
+
+[node name="select11" parent="CanvasLayer/Levels" index="10"]
+visible = false
+
+[node name="select12" parent="CanvasLayer/Levels" index="11"]
+visible = false
+
+[node name="select13" parent="CanvasLayer/Levels" index="12"]
+visible = false
+
+[node name="select14" parent="CanvasLayer/Levels" index="13"]
+visible = false
+
+[node name="select15" parent="CanvasLayer/Levels" index="14"]
+visible = false
+
+[node name="BestUser" parent="CanvasLayer/Iconuser" index="0"]
+material = SubResource("ShaderMaterial_fwm5l")
+
+[node name="PauseMenuButton2" parent="CanvasLayer" index="16"]
+visible = false
+ExpoButton = false
+
+[node name="PauseMenuButton3" parent="CanvasLayer" index="17"]
+ADITIONAL_ARGUMENT = "select_level_world4"
+ExpoButton = false
+
+[node name="MiniStar2" parent="CanvasLayer" index="20"]
+visible = false
+
+[node name="9" parent="CanvasLayer" index="21"]
+offset_right = 4023.3618
+text = "WORLD 5"
+
+[editable path="CanvasLayer"]

@@ -1,11 +1,7 @@
 extends Node2D
 
-enum States{
-	REPLAY,
-	RECORD,
-	STOPPED
-}
-@export var State = States.REPLAY
+
+var State = Global.ReplayStates.REPLAY
 
 var Actions : Array[String] = ["player_jump", "player_slide", "player_dash", "ui_left", "ui_right"]
 
@@ -16,6 +12,9 @@ var RecordedActions : Array[Vector3] = [
 
 var CurrentTime : float = 0
 var ReplayCurrentAction : int = 0
+
+func _ready() -> void:
+	State = get_parent().ReplayAction
 
 func Play_action(A : int, Press : int):
 	var event = InputEventAction.new()
@@ -43,5 +42,5 @@ func Replay_Actions() -> void:
 #the idea is to check every frame is the player action is pressed, then record
 func _process(delta: float) -> void:
 	CurrentTime += 1 * delta
-	if(State == States.RECORD): Record_Actions()
-	elif(State == States.REPLAY): Replay_Actions()
+	if(State == Global.ReplayStates.RECORD): Record_Actions()
+	elif(State == Global.ReplayStates.REPLAY): Replay_Actions()

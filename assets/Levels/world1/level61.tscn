@@ -355,6 +355,17 @@ position = Vector2(-0.5633774, -1)
 scale = Vector2(0.345, 3.555)
 shape = SubResource("RectangleShape2D_so1t7")
 
+[node name="StyleAddBox2" type="Area2D" parent="."]
+position = Vector2(320, -40)
+scale = Vector2(1.775, 1)
+script = ExtResource("17_0m1pv")
+StyleTypeAdd = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StyleAddBox2"]
+position = Vector2(-0.5633774, -1)
+scale = Vector2(0.345, 3.555)
+shape = SubResource("RectangleShape2D_so1t7")
+
 [node name="Piston33" parent="." instance=ExtResource("12_387rq")]
 position = Vector2(179, 87.000015)
 mass = 3.0
@@ -413,3 +424,4 @@ position = Vector2(64, 30)
 AnotherAction = 4
 
 [connection signal="body_entered" from="StyleAddBox" to="StyleAddBox" method="_on_body_entered"]
+[connection signal="body_entered" from="StyleAddBox2" to="StyleAddBox2" method="_on_body_entered"]

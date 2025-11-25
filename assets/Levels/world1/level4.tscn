@@ -401,7 +401,6 @@ tile_set = ExtResource("8_ksm2t")
 
 [node name="Player" parent="." instance=ExtResource("2_snkaw")]
 position = Vector2(-285, -18)
-CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(30, 26.053)

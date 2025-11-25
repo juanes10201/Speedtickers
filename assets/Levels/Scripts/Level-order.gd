@@ -61,14 +61,16 @@ var PointsLeftMult = 5
 @onready var StyleMultiplierTimer = $StyleMultiplierTimer 
 
 func RemoveStyle(Qt : int, Moto : String = ""):
-	if(!SaveGame.get_player().Styleometter): return
+	var _player = SaveGame.get_player()
+	if(_player && !_player.Styleometter): return
 	StyloMetter -= Qt
 	if(StyloMetter < 0): StyloMetter = 0
 	ScoreMult = 1
 
 func AddStyle(Qt : int, Moto : String = "", Mult : float = 1.0):
 	#Score Multiplier
-	if(!SaveGame.get_player().Styleometter): return
+	var _player = SaveGame.get_player()
+	if(_player && !_player.Styleometter): return
 	StyleMultiplierTimer.start()
 	if(Moto == StyleMoto):#!=1
 		PointsLeftMult -= 1

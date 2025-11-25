@@ -1,0 +1,246 @@
+[gd_scene load_steps=19 format=3 uid="uid://c76f7ijliyaxi"]
+
+[ext_resource type="Texture2D" uid="uid://beprealj0qs6q" path="res://assets/Sprites/menus/Config/CategoryButton.png" id="2_vbm3d"]
+[ext_resource type="Texture2D" uid="uid://dw0ncpljn2flf" path="res://assets/Sprites/menus/Config/CategorySelectedButton.png" id="3_flfk0"]
+[ext_resource type="Script" uid="uid://dr01tagft84hb" path="res://assets/Levels/world1/button_category_config.gd" id="4_6nxjj"]
+[ext_resource type="FontFile" uid="uid://c2f44214fpbiv" path="res://assets/Fonts/pixelart/Vermin Vibes 1989.ttf" id="5_2pimt"]
+[ext_resource type="FontFile" uid="uid://bphx4hxrs7qgv" path="res://assets/Fonts/AudioNugget.ttf" id="6_6sn1y"]
+[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="7_6pwn8"]
+[ext_resource type="Texture2D" uid="uid://cwrmu6xw4jjlj" path="res://assets/Sprites/menus/Config/CategorySelectedButton_border.png" id="7_rb6nj"]
+
+[sub_resource type="Shader" id="Shader_rbx0e"]
+code = "shader_type canvas_item;
+
+// 0.0 → 1.0
+uniform float progress : hint_range(0.0, 1.0) = 0.5;
+// Tint applied to the filled (consumed) region
+uniform vec4 overlay_color : source_color = vec4(0.2, 1.0, 0.2, 0.5);
+// Fill direction: (1,0)=L→R, (-1,0)=R→L, (0,1)=T→B, (0,-1)=B→T, (1,1)=diag, etc.
+uniform vec2 fill_dir = vec2(1.0, 0.0);
+// Alpha threshold to treat as transparent (mask out)
+uniform float alpha_cutoff : hint_range(0.0, 1.0) = 0.01;
+
+void fragment() {
+    vec4 tex = texture(TEXTURE, UV);
+    if (tex.a <= alpha_cutoff) {
+        discard; // ignore transparent pixels
+    }
+
+    // Safe, normalized direction (fallback to +X if near zero)
+    vec2 dir = fill_dir;
+    float len_dir = length(dir);
+    dir = (len_dir < 1e-5) ? vec2(1.0, 0.0) : dir / len_dir;
+
+    // Compute min/max projection of the UV quad [0,1]^2 along 'dir'
+    vec2 min_corner = vec2(dir.x > 0.0 ? 0.0 : 1.0, dir.y > 0.0 ? 0.0 : 1.0);
+    vec2 max_corner = vec2(1.0 - min_corner.x, 1.0 - min_corner.y);
+
+    float min_proj = dot(min_corner, dir);
+    float max_proj = dot(max_corner, dir);
+
+    // Current pixel's normalized coordinate along the fill axis → [0,1]
+    float p = dot(UV, dir);
+    float t = clamp((p - min_proj) / max(1e-6, (max_proj - min_proj)), 0.0, 1.0);
+
+    // Fill if within progress
+    if (t <= progress) {
+        COLOR = mix(tex, overlay_color, overlay_color.a);
+    } else {
+        COLOR = tex;
+    }
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pwn8"]
+shader = SubResource("Shader_rbx0e")
+shader_parameter/progress = 0.0
+shader_parameter/overlay_color = Color(0.3019608, 0.2901961, 0.54901963, 1)
+shader_parameter/fill_dir = Vector2(1, -0.105)
+shader_parameter/alpha_cutoff = 0.694000032965
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbm3d"]
+atlas = ExtResource("7_6pwn8")
+region = Rect2(288, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1e14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_rb6nj")
+}],
+"loop": true,
+"name": &"selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbm3d")
+}],
+"loop": true,
+"name": &"unselected",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_gwa7r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_exxqf"]
+resource_name = "initial_pressed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.50000002375, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0j3i0"]
+resource_name = "initial_selected"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333337, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.4370000207575, 0.50000002375, 0.50000002375]
+}
+
+[sub_resource type="Animation" id="Animation_g1e14"]
+resource_name = "pressed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ddlxb"]
+resource_name = "selected"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 1.5704225, 2.859772, 3.2487657, 4.540082, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.50000002375, 0.60800002888, 0.60800002888, 0.4110000195225, 0.4110000195225, 0.50000002375, 0.50000002375]
+}
+
+[sub_resource type="Animation" id="Animation_ry4mo"]
+resource_name = "unselected"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_umv48"]
+_data = {
+&"RESET": SubResource("Animation_gwa7r"),
+&"initial_pressed": SubResource("Animation_exxqf"),
+&"initial_selected": SubResource("Animation_0j3i0"),
+&"pressed": SubResource("Animation_g1e14"),
+&"selected": SubResource("Animation_ddlxb"),
+&"unselected": SubResource("Animation_ry4mo")
+}
+
+[node name="ButtonAudio" type="TextureButton"]
+material = SubResource("ShaderMaterial_6pwn8")
+offset_left = -184.0
+offset_top = -64.0
+offset_right = 248.78223
+offset_bottom = 72.0
+texture_normal = ExtResource("2_vbm3d")
+texture_pressed = ExtResource("3_flfk0")
+texture_hover = ExtResource("3_flfk0")
+stretch_mode = 0
+script = ExtResource("4_6nxjj")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(55.00009, 29.000015)
+rotation = 0.082030475
+scale = Vector2(1, 0.9999999)
+skew = -0.102974415
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Node2D"]
+offset_left = -56.656376
+offset_top = -0.29125977
+offset_right = 1059.9099
+offset_bottom = 241.18759
+theme_override_colors/default_color = Color(0.3019608, 0.2901961, 0.54901963, 1)
+theme_override_fonts/normal_font = ExtResource("5_2pimt")
+theme_override_font_sizes/normal_font_size = 246
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
+offset_left = -79.298096
+offset_top = 1.4978848
+offset_right = 1087.1274
+offset_bottom = 285.64755
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.6431373, 0.6431373, 0.8392157, 1)
+theme_override_constants/outline_size = 27
+theme_override_fonts/normal_font = ExtResource("6_6sn1y")
+theme_override_font_sizes/normal_font_size = 139
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Border" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(574.4586, 177.75)
+scale = Vector2(2.4139073, 2.4139075)
+sprite_frames = SubResource("SpriteFrames_g1e14")
+animation = &"selected"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_umv48")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

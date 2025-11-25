@@ -47,7 +47,7 @@ func ProcessPosition() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#If timer disabled destroy
-	if(SaveGame.get_player() && SaveGame.get_player().is_in_group("Player") && SaveGame.get_player().CountTime == false):
+	if((SaveGame.get_player() && SaveGame.get_player().is_in_group("Player") && SaveGame.get_player().CountTime == false) || (SaveGame.get_config_value("DisableTimer") && SaveGame.get_config_value("DisableTimer") == 1)):
 		RaySprite.queue_free()
 		$"../ui_text_seg".queue_free()
 		self.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://chat6jxc63bfj"]
+[gd_scene load_steps=89 format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
 [ext_resource type="Texture2D" uid="uid://cga4opnhsehd7" path="res://assets/Sprites/knight-Sheet.png" id="2_5o2oi"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://xxpg8y3lwraj" path="res://assets/Sprites/shadow.png" id="32_sc7ng"]
 [ext_resource type="Script" uid="uid://6tsgj1qxp6y2" path="res://assets/Levels/Player_hitbox.gd" id="33_isg5t"]
 [ext_resource type="Script" uid="uid://j6i335kxhhlw" path="res://assets/Levels/System_replay_player.gd" id="33_t4ba7"]
+[ext_resource type="AudioStream" uid="uid://c8ek4gdiphi33" path="res://assets/Sounds/ClockBreak.wav" id="34_t8k5k"]
 [ext_resource type="Texture2D" uid="uid://dcndijav61ai4" path="res://assets/Sprites/particles/Slam-smoke.png" id="35_xowug"]
 
 [sub_resource type="Curve" id="Curve_ivnav"]
@@ -754,6 +755,9 @@ bus = &"Sfx"
 [node name="AudioOrbGravity" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_1ia1n")
 bus = &"Sfx"
+
+[node name="AudioClockBreak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_t8k5k")
 
 [node name="SlamStorageTimer" type="Timer" parent="."]
 one_shot = true

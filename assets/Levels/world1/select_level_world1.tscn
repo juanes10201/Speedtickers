@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8hfdqkkc1qu4"]
+
+[ext_resource type="PackedScene" uid="uid://fo7p1nt5o3y8" path="res://assets/Levels/world1/level_select_canvas.tscn" id="2_4iqwx"]
+[ext_resource type="Shader" uid="uid://bewtpgjognj1i" path="res://assets/Levels/Shader/playertexttime.gdshader" id="14_12lcu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4iqwx"]
+resource_local_to_scene = true
+shader = ExtResource("14_12lcu")
+shader_parameter/center = Vector2(50, 50)
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 1.0
+shader_parameter/downward_offset = 22.512
+
+[node name="control_level_select" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 41.0
+focus_mode = 2
+metadata/_edit_vertical_guides_ = [634.0]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_4iqwx")]
+
+[node name="select15" parent="CanvasLayer/Levels" index="14"]
+visible = false
+
+[node name="BestUser" parent="CanvasLayer/Iconuser" index="0"]
+material = SubResource("ShaderMaterial_4iqwx")
+
+[node name="placeholder" parent="CanvasLayer" index="10"]
+visible = false
+
+[node name="PauseMenuButton2" parent="CanvasLayer" index="16"]
+ExpoButton = false
+
+[node name="PauseMenuButton3" parent="CanvasLayer" index="17"]
+visible = false
+ExpoButton = false
+
+[node name="MiniStar1" parent="CanvasLayer" index="19"]
+visible = false
+
+[node name="9" parent="CanvasLayer" index="21"]
+offset_right = 4206.667
+
+[editable path="CanvasLayer"]

@@ -68,7 +68,8 @@ func _process(delta: float) -> void:
 			#Checks if mouse is touching button or if has focused(For controller support)
 			if(has_focus() || (Mouse_pos.x >= self.position.x && Mouse_pos.x <= self.position.x + self.size.x && Mouse_pos.y >= self.position.y && Mouse_pos.y <= self.position.y + self.size.y+20)):
 				if(IsPixelartButton && !touching_mouse):
-					$"../Iconuser"._update_best_scores(float(text))
+					if($"../../Bg"): $"../../Bg".frame = int(text)-1
+					if($"../Iconuser"): $"../Iconuser"._update_best_scores(float(text))
 				touching_mouse = true
 				if(IsPixelartButton): icon = tex_selected
 				#region On pressed
@@ -102,9 +103,9 @@ func _process(delta: float) -> void:
 		_set_text_size(self.size.x)
 
 func _set_text_size(X : float):
-	var tosize = X-45
-	if(get_theme_font_size("font_size") != tosize):
-		add_theme_font_size_override('font_size', X-52)
+	var tosize = X-140
+	if(get_theme_font_size("font_size") < tosize && get_theme_font_size("font_size") < 140):
+		add_theme_font_size_override('font_size', X-140)
 @export var ExpoButton : bool = false
 
 func _on_pressed() -> void:
@@ -137,6 +138,8 @@ func _on_pressed() -> void:
 		else:
 			var _scene_string : String = "res://assets/Levels/world1/" + ADITIONAL_ARGUMENT + ".tscn"
 			get_tree().change_scene_to_file(_scene_string)
+	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.quit):
+		get_tree().quit()
 
 
 func _on_button_down() -> void:

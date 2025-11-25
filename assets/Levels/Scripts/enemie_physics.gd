@@ -55,6 +55,8 @@ var was_on_wall : bool = false
 
 var StatePlaying : bool = false
 
+@export var Particles : bool = true
+
 @onready var PrevGravityDirection : Global.GravityDirections = GravityDirection
 
 #endregion
@@ -82,7 +84,7 @@ func _on_player_ground_smash_signal() -> void:
 			_jump(JUMP_VELOCITY if enemy_type == 0 else SPECIAL_ENEMY_JUMP_VELOCITY)
 			if(enemy_type == 0):
 				LevelManager.AddStyle(0, "GroundSmash enemy")
-				$HitParticles.emitting = true
+				if(Particles): $HitParticles.emitting = true
 				#Player.FrameFreeze(0.05, 0.4)
 				velocity.x = Enemy_burst_speed if Player.position.x < position.x else Enemy_burst_speed*-1
 				Move = false
@@ -94,7 +96,7 @@ func _on_player_ground_smash_signal() -> void:
 func _on_player_slide_signal() -> void:
 	if(_is_on_floor() && enemy_type == 0 && Player.GravityDirection == GravityDirection):
 		LevelManager.AddStyle(0, "Slide enemy")
-		$HitParticles.emitting = true
+		if(Particles): $HitParticles.emitting = true
 		#Player.FrameFreeze(0.05, 0.4)
 		_jump(-400)
 		Player.Camera.Shake(1.0, 5.0)
@@ -105,6 +107,8 @@ func _on_player_slide_signal() -> void:
 #endregion
 
 func _ready():
+	if(SaveGame.get_config_value("Particles") != null):
+		Particles = SaveGame.get_config_value("Particles")
 	if(EnemyDirection == Directions.RIGHT): direction = 1
 	elif(EnemyDirection == Directions.LEFT): direction = -1
 	else: direction = 0
@@ -161,11 +165,11 @@ func _process(delta: float) -> void:
 			$HitFlyParticles.emitting = false
 	if(Enabled):
 		#if(Player):
-		if(_is_on_floor() && velocity.x > 0):
+		if(Particles && _is_on_floor() && velocity.x > 0):
 			$Moveparticles.emitting = true
 		else:
 			$Moveparticles.emitting = false
-		if(!_is_on_floor() && enemy_type == 0):
+		if(Particles && !_is_on_floor() && enemy_type == 0):
 			$HitFlyParticles.emitting = true
 		else:
 			$HitFlyParticles.emitting = false
@@ -281,12 +285,12 @@ func check_collision() -> bool:
 #region Enemie Death
 func On_Death():
 	#region Create destroy particles
-	if(enemy_type == 0):
+	if(enemy_type == 0 && Particles):
 		var DestroyParticles = preload("res://assets/Levels/Particles/destroy_enemy.tscn")
 		var InstanceParticles = DestroyParticles.instantiate()
 		get_tree().current_scene.add_child(InstanceParticles)
 		InstanceParticles.position = self.position
-	elif(enemy_type == 1):
+	elif(enemy_type == 1 && Particles):
 		var DestroyParticles = preload("res://assets/Levels/Particles/destroy_enemy_special.tscn")
 		var InstanceParticles = DestroyParticles.instantiate()
 		get_tree().current_scene.add_child(InstanceParticles)

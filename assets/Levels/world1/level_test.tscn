@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bmt46tcgr4xov"]
+[gd_scene load_steps=21 format=4 uid="uid://bmt46tcgr4xov"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_1i3yi"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_po07x"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Levels/key.tscn" id="13_i8cjj"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="14_1i3yi"]
 [ext_resource type="PackedScene" uid="uid://dvmo1pn0pi6nc" path="res://assets/Levels/piston.tscn" id="14_rtthr"]
+[ext_resource type="PackedScene" uid="uid://bpmqbjj1pfwxd" path="res://assets/Levels/clock.tscn" id="15_d77xg"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -111,7 +112,7 @@ tile_set = ExtResource("3_mfle3")
 script = ExtResource("4_uw8l8")
 
 [node name="Player" parent="." instance=ExtResource("5_ljyct")]
-position = Vector2(-120, -159)
+position = Vector2(-292, -257)
 jump_height = 45.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -161,3 +162,12 @@ mass = 3.0
 MAX_SPEED = 600.0
 Time_Start = 0.9
 GravityDirection = -1
+
+[node name="Key" parent="." instance=ExtResource("15_d77xg")]
+position = Vector2(-224, -254)
+
+[node name="Key3" parent="." instance=ExtResource("15_d77xg")]
+position = Vector2(-181, -254)
+
+[node name="Key4" parent="." instance=ExtResource("15_d77xg")]
+position = Vector2(-84, -257)

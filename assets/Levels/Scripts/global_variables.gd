@@ -1,5 +1,16 @@
 extends Node
 
+enum ReplayStates{
+	REPLAY,
+	RECORD,
+	STOPPED
+}
+enum ConfigCategories{
+	audio,
+	input,
+	video,
+	gameplay
+}
 enum KillBoxTypes{
 	Red,
 	Blue
@@ -10,14 +21,16 @@ enum BUTTON_ACTIONS{
 	restart_level,
 	config_menu,
 	move_to_scene,
-	move_to_level_starting_with
+	move_to_level_starting_with,
+	quit
 }
 enum OBJECT_ACTIONS{
 	none,
 	switch_killbox_type,
 	MoveLava,
 	Switch_Player_Gravity,
-	Switch_Gravity_Remix
+	Switch_Gravity_Remix,
+	Restart_Time
 }
 enum GravityDirections{
 	INVERTED = -1,
@@ -63,3 +76,6 @@ func Play_Global_Action(Action : OBJECT_ACTIONS):
 		Player._invert_gravity()
 	elif(Action == OBJECT_ACTIONS.Switch_Gravity_Remix):
 		Player._invert_gravity_remix()
+	elif(Action == OBJECT_ACTIONS.Restart_Time):
+		Player.Time_Left.start()
+		Player.Dashed = false

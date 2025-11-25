@@ -18,6 +18,8 @@ extends Area2D
 func _ready() -> void:
 	if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
 		$AnimatedSprite2D.play("orb")
+	elif(AditionalAction == Global.OBJECT_ACTIONS.Restart_Time):
+		$AnimatedSprite2D.play("clock")
 	else:
 		$AnimatedSprite2D.play("default")
 	if(TimerRespawn):
@@ -64,6 +66,8 @@ func _on_body_entered(body: Node2D) -> void:
 		set_key_state(true, true)
 		if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
 			LevelManager.AddStyle(0, "Changed Gravity")
+		elif(AditionalAction == Global.OBJECT_ACTIONS.Restart_Time):
+			LevelManager.AddStyle(1, "Got Clock")
 		else: LevelManager.AddStyle(0, "Got Key")
 
 func set_key_state(state : bool, PlayAction : bool):
@@ -76,10 +80,17 @@ func set_key_state(state : bool, PlayAction : bool):
 		Player.HaveKey = state
 	if(PlayAction):
 		done = true
-		if(AditionalAction != Global.OBJECT_ACTIONS.Switch_Player_Gravity):
-			Player._play_sound(Player.AudioSwitch, false)
-		if(AditionalAction == Global.OBJECT_ACTIONS.none):
-			Player._play_sound(Player.AudioKey, false)
+		if(AditionalAction == Global.OBJECT_ACTIONS.Restart_Time):
+			Player._play_sound(Player.AudioClockBreak, true)
+			$ParticleDestroy1.emitting = true
+			$ParticleDestroy2.emitting = true
+			$ParticleDestroy3.emitting = true
+			$ParticleDestroy4.emitting = true
+		else:
+			if(AditionalAction != Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+				Player._play_sound(Player.AudioSwitch, false)
+			if(AditionalAction == Global.OBJECT_ACTIONS.none):
+				Player._play_sound(Player.AudioKey, false)
 		if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
 			$AnimatedSprite2D.play("get_orb")
 		if(Respawn):

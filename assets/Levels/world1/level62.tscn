@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://chypkjv5owwgo"]
+[gd_scene load_steps=23 format=3 uid="uid://chypkjv5owwgo"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_cwcrc"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_kr8mg"]
@@ -7,16 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="5_qyhw2"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="6_xn5lh"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="7_13usn"]
-[ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Levels/kill_box_blue.tscn" id="8_kbsvm"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="9_w1f8c"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="10_mqckc"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="11_6pgra"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="12_scqan"]
 [ext_resource type="PackedScene" uid="uid://dvmo1pn0pi6nc" path="res://assets/Levels/piston.tscn" id="13_e6fkq"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="14_3cj4e"]
-[ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Levels/key.tscn" id="15_ldo2g"]
-[ext_resource type="PackedScene" uid="uid://bygxx5ppwysc3" path="res://assets/Levels/enemie_special.tscn" id="16_7een3"]
-[ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Levels/enemie.tscn" id="17_x7ppc"]
+[ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Levels/world1/style_add_box.gd" id="14_kr8mg"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -109,6 +106,9 @@ _data = {
 &"move2": SubResource("Animation_b10uo")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac1uh"]
+size = Vector2(30.7479, 28.6468)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(-80, 136)
 
@@ -161,10 +161,6 @@ autostart = true
 position = Vector2(32, 1120)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_13usn")]
-
-[node name="KillBox5" parent="." instance=ExtResource("8_kbsvm")]
-position = Vector2(-208, -40)
-scale = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("9_w1f8c")]
 position = Vector2(64, 200.00002)
@@ -252,8 +248,16 @@ Time_Start = 0.4
 WaitTime = 2.2
 StartSpeed = 180.0
 
-[node name="falling_sand2" parent="." instance=ExtResource("14_3cj4e")]
-position = Vector2(-304, 24)
+[node name="StyleAddBox" type="Area2D" parent="Piston33"]
+position = Vector2(2, -51)
+scale = Vector2(1.775, 1)
+script = ExtResource("14_kr8mg")
+StyleTypeAdd = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston33/StyleAddBox"]
+position = Vector2(-0.5633774, -1)
+scale = Vector2(0.93, 1.09)
+shape = SubResource("RectangleShape2D_ac1uh")
 
 [node name="falling_sand3" parent="." instance=ExtResource("14_3cj4e")]
 position = Vector2(160, 424)
@@ -267,18 +271,6 @@ position = Vector2(160, 440)
 [node name="falling_sand5" parent="." instance=ExtResource("14_3cj4e")]
 position = Vector2(160, 456)
 
-[node name="Key" parent="." instance=ExtResource("15_ldo2g")]
-position = Vector2(-168, -24)
-AditionalAction = 1
-
-[node name="Enemie2" parent="." instance=ExtResource("16_7een3")]
-position = Vector2(-248, 0)
-EnemyDirection = 2
-Enemy_burst_speed = 0.0
-SPEED = 0.0
-JUMP_VELOCITY = 0.0
-SPECIAL_ENEMY_JUMP_VELOCITY = 0.0
-
 [node name="falling_sand9" parent="." instance=ExtResource("14_3cj4e")]
 position = Vector2(626, 198)
 MAX_SPEED = 150.0
@@ -287,14 +279,4 @@ MAX_SPEED = 150.0
 position = Vector2(610, 198)
 MAX_SPEED = 150.0
 
-[node name="Enemie" parent="." instance=ExtResource("17_x7ppc")]
-position = Vector2(-136, 15.999985)
-EnemyDirection = 2
-
-[node name="Enemie8" parent="." instance=ExtResource("17_x7ppc")]
-position = Vector2(-120, 15.999985)
-EnemyDirection = 2
-
-[node name="Enemie9" parent="." instance=ExtResource("17_x7ppc")]
-position = Vector2(-104, 15.999985)
-EnemyDirection = 2
+[connection signal="body_entered" from="Piston33/StyleAddBox" to="Piston33/StyleAddBox" method="_on_body_entered"]

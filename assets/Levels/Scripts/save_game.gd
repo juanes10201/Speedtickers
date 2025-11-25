@@ -17,21 +17,56 @@ func IfPlayedFirstTime() -> bool:
 		config.set_value("Game", "PlayedBefore", "true")
 	return false
 
-func get_player():
-	var Player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() else null
-	return Player
+func set_config_value(id : String, Val) -> void:
+	print("Set config id: " + id + " to val: " + str(Val))
+	config.set_value("Config", id, Val)
+	writegamedata()
+
+func get_value(sc: String, id : String):
+	if(config.get_value(sc, id) != null):
+		return config.get_value(sc, id)
+
+func get_config_value(id : String):
+	if(config.get_value("Config", id) != null):
+		return config.get_value("Config", id)
+
+func writegamedata() -> void:
+	config.save(SAVE_GAME_PATH)
+	print("Saved game data!")
+
+func _setup_default_value(sc : String, id : String, val) -> void:
+	if(get_value(sc, id) == null):
+		print("Setup var " + id + " to " + str(val))
+		config.set_value(sc, id, val)
+
+func setup_default_values() -> void:
+	_setup_default_value("Config", "AudioMusic", 1)
+	_setup_default_value("Config", "AudioSfx", 1)
+	_setup_default_value("Config", "Fullscreen", 0)
+	_setup_default_value("Config", "Shake", 1)
+	_setup_default_value("Config", "PixelPerfect", 0)
+	_setup_default_value("Config", "Juice", 1)
+	_setup_default_value("Config", "Particles", 1)
+	_setup_default_value("Config", "CrtShader", 1)
+	_setup_default_value("Config", "Cheats", 0)
+	_setup_default_value("Config", "DisableTimer", 0)
+	_setup_default_value("Config", "GodMode", 0)
+	_setup_default_value("Config", "UnlockAll", 0)
+	_setup_default_value("Config", "ShowHitboxes", 0)
+	writegamedata()
 
 func savelevelrecord(Level : float = 1, RealTime : float = 0) -> void:
 	loadgamedata()
+	setup_default_values()
 	var current_best_score = config.get_value("Level", str(Level))
 	if(current_best_score != null && RealTime < current_best_score):
 		config.set_value("Level", str(Level), RealTime)
 	print("Saved data of level!")
 	writegamedata()
-	
-func writegamedata() -> void:
-	config.save(SAVE_GAME_PATH)
-	print("Saved game data!")
+
+func get_player():
+	var Player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() else null
+	return Player
 
 func getleveltime(Level : float) -> float:
 	var leveltime = config.get_value("Level", str(Level))
@@ -44,8 +79,5 @@ func loadgamedata() -> void:
 	if(err == OK):
 		#Here put values given savefile
 		pass
+	setup_default_values()
 	print("loaded game saved data!")
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.

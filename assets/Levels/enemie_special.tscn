@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bygxx5ppwysc3"]
+[gd_scene load_steps=25 format=3 uid="uid://bygxx5ppwysc3"]
 
 [ext_resource type="Script" uid="uid://cw42kfrmafcwu" path="res://assets/Levels/Scripts/enemie_physics.gd" id="1_qsr6m"]
 [ext_resource type="Script" uid="uid://df5b37mf1d4n6" path="res://assets/Levels/Scripts/enemie_area2d.gd" id="2_tlbfg"]
+[ext_resource type="Texture2D" uid="uid://dvgpvnehw55qc" path="res://assets/Sprites/slime-laser-especial-Sheet-idle-export.png" id="3_k8esh"]
 [ext_resource type="Texture2D" uid="uid://nml6ogr01e78" path="res://assets/Sprites/slime-special-Sheet-idle.png" id="3_v671c"]
 [ext_resource type="Texture2D" uid="uid://bcqhpwtu5xyn8" path="res://assets/Sprites/particles/slime-special-particles.png" id="4_ii4mo"]
 [ext_resource type="Texture2D" uid="uid://qau13prnrdsh" path="res://assets/Sprites/slime-special-Sheet-move.png" id="4_k8esh"]
@@ -19,6 +20,18 @@ region = Rect2(17, 0, 17, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckfxe"]
 atlas = ExtResource("3_v671c")
+region = Rect2(34, 0, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hisan"]
+atlas = ExtResource("3_k8esh")
+region = Rect2(0, 0, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n7rk"]
+atlas = ExtResource("3_k8esh")
+region = Rect2(17, 0, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fs8l"]
+atlas = ExtResource("3_k8esh")
 region = Rect2(34, 0, 17, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fkiu"]
@@ -59,6 +72,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hisan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n7rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fs8l")
+}],
+"loop": true,
+"name": &"Laser",
 "speed": 5.0
 }, {
 "frames": [{

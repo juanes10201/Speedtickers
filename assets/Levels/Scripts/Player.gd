@@ -46,6 +46,11 @@ var LASERS_ENABLED : Array[bool] = [false, false, false, false, false]
 var HaveKey : bool = false
 
 #region Export variables
+@onready var Replay = $System_replay
+@export var ReplayAction : Global.ReplayStates = Global.ReplayStates.STOPPED
+
+@export var EnableParticles : bool = true
+
 @export var PlayIntro : bool = false
 var juice : bool = true
 @export var Styleometter : bool = true 
@@ -116,6 +121,8 @@ var direction := Input.get_axis("ui_left", "ui_right")
 @onready var AudioDeath : AudioStreamPlayer = SongPlayer.AudioDeath
 @onready var AudioOrbGravity : AudioStreamPlayer = $AudioOrbGravity
 
+@onready var AudioClockBreak : AudioStreamPlayer = $AudioClockBreak
+
 @onready var AudioSlimeKill : AudioStreamPlayer = $AudioSlimeGroundsmash #AudioSlimeKill
 @onready var AudioSlimeMove : AudioStreamPlayer = $AudioSlimeMove
 @onready var AudioSlimeGroundsmash : AudioStreamPlayer = $AudioSlimeGroundsmash
@@ -147,6 +154,10 @@ var GravitySandFallDirection : Global.GravityDirections = Global.GravityDirectio
 var SwitchedGravity : bool = false
 var PlayedSwitchedGravityAnimation : bool = false
 
+@export var Particles : bool = true
+
+@onready var Time_Left : Timer = $"../Time_Left"
+
 enum AirSides{
 	Jumping = 1,
 	Falling = 2,
@@ -158,12 +169,14 @@ var AirState : AirSides = AirSides.NONE
 #endregion
 
 func _play_dash_particles():
-	DashParticles1.emitting = true
+	if(Particles):
+		DashParticles1.emitting = true
 func _stop_dash_particles():
 	DashParticles1.emitting = false
 
 func _play_slam_particles():
-	SlamParticles1.emitting = true
+	if(Particles):
+		SlamParticles1.emitting = true
 func _stop_slam_particles():
 	SlamParticles1.emitting = false
 
@@ -185,7 +198,7 @@ func _input(event):
 		elif event.keycode == KEY_F11:
 			LevelManager.ExpoMoveTimeout.start()
 			LevelManager.ExpoMoveTimeout.paused = true
-			var _scene_string = "res://assets/Levels/world1/select_level.tscn"
+			var _scene_string = "res://assets/Levels/world1/select_level_world1.tscn"
 			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F12:
 			LevelManager.ReturnAfterTimerInExpo = !LevelManager.ReturnAfterTimerInExpo
@@ -196,6 +209,10 @@ func _input(event):
 #endregion
 
 func _ready() -> void:
+	if(SaveGame.get_config_value("Particles") != null):
+		Particles = SaveGame.get_config_value("Particles")
+	if(SaveGame.get_config_value("Juice") != null):
+		juice = SaveGame.get_config_value("Juice")
 	Engine.time_scale = 1
 	if(LevelManager.StyleTimer.is_stopped()): 
 		LevelManager.ExpoMoveTimeout.paused = false
@@ -227,12 +244,15 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
-	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
-		print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
+	if(ReplayAction != Global.ReplayStates.STOPPED):
+		Sprite.modulate.a = 0.7
+		Particles = false
+	#if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
+	#	print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
 	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb && LevelManager.ExpoMoveTimeout.is_stopped()):
 		LevelManager.ExpoMoveTimeout.start()
 		LevelManager.ExpoMoveTimeout.paused = true
-		var _scene_string = "res://assets/Levels/world1/main_menu_expo_video.tscn"
+		var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
 		get_tree().change_scene_to_file(_scene_string)
 	
 	if(_is_on_floor()):
@@ -317,7 +337,7 @@ func _physics_process(delta: float) -> void:
 			strech_size(1.7, 0.5)
 			ParticlesJump.emitting = false
 			ParticlesLanding.hide()
-		if(!_is_on_floor()):
+		if(!_is_on_floor() && Particles):
 			ParticlesJump.emitting = true
 		#endregion
 		_strech_tick(delta)
@@ -385,7 +405,7 @@ func _pause_menu_end_tick() -> void:
 			pause.queue_free()
 			
 		#Get timer and pause
-		$"../Time_Left".paused = false	
+		Time_Left.paused = false	
 		#Stop player movement
 		Physics = true
 		#Stop enemie movement
@@ -400,7 +420,7 @@ func _pause_game() -> void:
 	if(!Paused):
 		_spawn_pause_menu()
 		#Get timer and pause
-		$"../Time_Left".paused = true	
+		Time_Left.paused = true	
 		#Stop player movement
 		Physics = false
 		#Stop enemie movement
@@ -466,7 +486,7 @@ func _change_gravity_decal() -> void:
 	velocity.y = 100 * GravityDirection
 	Dashed = false
 	strech_size(1.5, 1.2)
-	$ParticlesOrb.emitting = true
+	if(Particles): $ParticlesOrb.emitting = true
 	_play_sound(AudioOrbGravity, true)
 
 func _invert_gravity() -> void:
@@ -567,6 +587,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash
 		if(!_is_on_floor() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
+			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			velocity.y = GroundSmashVelocity * GravityDirection
 			#Slam Storage
 			if(!SlamStorageTimer.is_stopped()):
@@ -592,7 +613,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 			#if(SlidingOnRamp): Speed.x *= 1.2
 			if(Sliding == Sides.NONE): Sliding = Sides.RIGHT if LastDirection > 0  else Sides.LEFT
 			Slide = true
-			ParticlesSlide.emitting = true
+			if(Particles): ParticlesSlide.emitting = true
 			strech_size(1, .9)
 			Sprite.play("Slide")
 			set_collision_mask_value(3, false)
@@ -713,12 +734,12 @@ func get_gravity_player() -> float:
 func On_Death():
 	if(Physics):
 		LevelManager.RemoveStyle(100)
-		if(_is_on_floor()): ParticlesDeathFloor.emitting = true
-		else: ParticlesDeathAir.emitting = true
+		if(_is_on_floor() && Particles): ParticlesDeathFloor.emitting = true
+		elif(Particles): ParticlesDeathAir.emitting = true
 		Sprite.hide()
 		Physics = false
 		Dead = true
-		_play_sound(AudioDeath, false)
+		_play_sound(AudioDeath, true)
 		#TransitionOut.show()
 		#TransitionOut.fade_out()
 		if(!Edition.Is_in_editor):

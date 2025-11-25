@@ -1,9 +1,9 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dirm08jxjyusl"]
 
-[ext_resource type="Texture2D" uid="uid://vi0hlyugenl0" path="res://assets/Sprites/menus/ButtonSelect.png" id="1_p20vx"]
+[ext_resource type="Texture2D" uid="uid://dmtlxnnunguoy" path="res://assets/Sprites/menus/Button/play_border.png" id="1_vqg0v"]
 
 [resource]
-texture = ExtResource("1_p20vx")
+texture = ExtResource("1_vqg0v")
 expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0

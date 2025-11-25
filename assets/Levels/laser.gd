@@ -60,4 +60,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Player") || body.is_in_group("Enemie")):
 		SaveGame.get_player().LASERS_ENABLED[Laser_Color] = true
 		_set_visible(false)
+		LevelManager.AddStyle(0, "Laser")
 		

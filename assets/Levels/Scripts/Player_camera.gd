@@ -6,6 +6,8 @@ var ShakeStrenght : float = 0.0
 
 var rng = RandomNumberGenerator.new()
 
+var ShakeEnabled : bool = true
+
 enum Cinematic_types{
 	FOLLOW_PLAYER,
 	CREDITS
@@ -15,7 +17,7 @@ enum Cinematic_types{
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	ShakeEnabled = SaveGame.get_config_value("Shake")
 	#if(Cinematic_type == Cinematic_types.CREDITS): self.position.y -= 250
 
 
@@ -27,6 +29,7 @@ func _process(delta: float) -> void:
 
 #region Camera Shake
 func Shake(_shakerangestrenght, _shakefade, _override : bool = false) -> void:
+	if(!ShakeEnabled): return
 	if(abs(ShakeStrenght) < .01 || _override):
 		ShakeRangeStrenght = _shakerangestrenght
 		ShakeFade = _shakefade
@@ -35,6 +38,7 @@ func Shake(_shakerangestrenght, _shakefade, _override : bool = false) -> void:
 		print("Camera Shake invalid because another is already in place")
 
 func TickShake(delta) -> void:
+	if(!ShakeEnabled): return
 	if(ShakeStrenght > 0):
 		ShakeStrenght = lerpf(ShakeStrenght, 0, ShakeFade * delta)
 		offset = ApplyShake()

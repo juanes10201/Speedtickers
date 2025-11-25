@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0gynshcpetio"]
+
+[ext_resource type="Script" uid="uid://d3tf5emrtsw71" path="res://assets/Levels/select_level_control.gd" id="1_rn8e2"]
+[ext_resource type="PackedScene" uid="uid://fo7p1nt5o3y8" path="res://assets/Levels/world1/level_select_canvas.tscn" id="2_epm3a"]
+[ext_resource type="Shader" uid="uid://bewtpgjognj1i" path="res://assets/Levels/Shader/playertexttime.gdshader" id="34_3qa8k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvj4i"]
+resource_local_to_scene = true
+shader = ExtResource("34_3qa8k")
+shader_parameter/center = Vector2(50, 50)
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 1.0
+shader_parameter/downward_offset = 22.512
+
+[node name="control_pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 41.0
+focus_mode = 2
+script = ExtResource("1_rn8e2")
+metadata/_edit_vertical_guides_ = [634.0]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_epm3a")]
+
+[node name="select1" parent="CanvasLayer/Levels" index="0"]
+text = "15"
+
+[node name="select2" parent="CanvasLayer/Levels" index="1"]
+text = "16"
+
+[node name="select3" parent="CanvasLayer/Levels" index="2"]
+text = "17"
+
+[node name="select4" parent="CanvasLayer/Levels" index="3"]
+text = "18"
+
+[node name="select5" parent="CanvasLayer/Levels" index="4"]
+text = "19"
+
+[node name="select6" parent="CanvasLayer/Levels" index="5"]
+text = "20"
+
+[node name="select7" parent="CanvasLayer/Levels" index="6"]
+text = "21"
+
+[node name="select8" parent="CanvasLayer/Levels" index="7"]
+text = "22"
+
+[node name="select9" parent="CanvasLayer/Levels" index="8"]
+text = "23"
+
+[node name="select10" parent="CanvasLayer/Levels" index="9"]
+text = "24"
+
+[node name="select11" parent="CanvasLayer/Levels" index="10"]
+text = "25"
+
+[node name="select12" parent="CanvasLayer/Levels" index="11"]
+text = "26"
+
+[node name="select13" parent="CanvasLayer/Levels" index="12"]
+visible = false
+text = "28"
+
+[node name="select14" parent="CanvasLayer/Levels" index="13"]
+visible = false
+text = "29"
+
+[node name="select15" parent="CanvasLayer/Levels" index="14"]
+visible = false
+text = "30"
+
+[node name="BestUser" parent="CanvasLayer/Iconuser" index="0"]
+material = SubResource("ShaderMaterial_xvj4i")
+
+[node name="PauseMenuButton2" parent="CanvasLayer" index="16"]
+ADITIONAL_ARGUMENT = "select_level_world3"
+ExpoButton = false
+
+[node name="PauseMenuButton3" parent="CanvasLayer" index="17"]
+ADITIONAL_ARGUMENT = "select_level_world1"
+ExpoButton = false
+
+[node name="9" parent="CanvasLayer" index="21"]
+text = "WORLD 2"
+
+[editable path="CanvasLayer"]
