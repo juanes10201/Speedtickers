@@ -3,8 +3,8 @@ extends RichTextLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if(Global.get_level()+1 < 10):
-		position.x = 25
+	#if(Global.get_level()+1 < 10):
+	#	position.x = 25
 	#region current level
 	print("Current level: " + str(Global.get_level()+1))
 	text = str(Global.get_level()+1)

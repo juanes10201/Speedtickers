@@ -154,7 +154,6 @@ tile_set = ExtResource("4_xdos2")
 
 [node name="Player" parent="." instance=ExtResource("5_kr6ob")]
 position = Vector2(-367.99997, -33.999905)
-ReplayAction = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(7.43128, -13.592905)

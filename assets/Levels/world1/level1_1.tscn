@@ -156,6 +156,13 @@ limit_bottom = 20
 limit_smoothed = true
 script = ExtResource("6_a5x1v")
 
+[node name="Player2" parent="." instance=ExtResource("5_cyxtg")]
+position = Vector2(-304.00003, -68.00003)
+ReplayAction = 0
+RecordedActions = Array[Vector3]([Vector3(2, 4, 1), Vector3(2.4, 0, 1), Vector3(4, 4, 0), Vector3(4, 0, 0)])
+CountTime = false
+jump_height = 65.0
+
 [node name="CanvasLayer" parent="." instance=ExtResource("7_n014a")]
 script = SubResource("GDScript_kdu5x")
 

@@ -48,6 +48,7 @@ var HaveKey : bool = false
 #region Export variables
 @onready var Replay = $System_replay
 @export var ReplayAction : Global.ReplayStates = Global.ReplayStates.STOPPED
+@export var RecordedActions : Array[Vector3] = []
 
 @export var EnableParticles : bool = true
 
@@ -90,7 +91,7 @@ var Paused : bool = false
 
 
 var LastDirection : float = 0
-var direction := Input.get_axis("ui_left", "ui_right")
+var direction = get_axis()
 
 @onready var DashCooldownTimer : Timer = $DashCooldownTimer
 @onready var CeilingMovementMultiplierTimer : Timer = $CeilingMovementMultiplierTimer
@@ -179,6 +180,8 @@ func _play_slam_particles():
 		SlamParticles1.emitting = true
 func _stop_slam_particles():
 	SlamParticles1.emitting = false
+
+
 
 #region Debug
 func _input(event):
@@ -278,7 +281,7 @@ func _physics_process(delta: float) -> void:
 			Camera.offset.y = lerpf(Camera.offset.y, 23.85, 1*delta)
 		
 		WasSliding = false
-		var direction := Input.get_axis("ui_left", "ui_right")
+		var direction = get_axis()
 		
 		if(GroundSmash):
 			_play_slam_particles()
@@ -504,14 +507,14 @@ func _invert_gravity_remix() -> void:
 func _physics_jump(delta: float) -> void:
 	# Handle jump.
 	DashWithJump = false
-	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped()) ) || (!PreWallJumpTimer.is_stopped() && Input.is_action_pressed("player_jump")) ):
+	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped()) ) || (!PreWallJumpTimer.is_stopped() && is_action_pressed("player_jump")) ):
 		DoJump()
 		LevelManager.ExpoMoveTimeout.start()
 	#Cancel jump
 	if(velocity.y < 0 && !Input.is_action_pressed("player_jump") && !DashWithJump):
 		velocity.y += JumpCancelAcc * GravityDirection
 	
-	if(Input.is_action_pressed("player_jump")):
+	if(is_action_pressed("player_jump")):
 		LevelManager.ExpoMoveTimeout.start()
 		PreJumpTime.start()
 	
@@ -554,7 +557,7 @@ func DoJump() -> void:
 
 #region Horizontal movement
 func _physics_h_movement(delta: float) -> void:
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction = get_axis()
 	if(abs(direction) > 0.4): LevelManager.ExpoMoveTimeout.start()
 	# Fix the Movement Speed accumulating in the side touching a wall
 	if(WallJump && WallJumpSide == Sides.RIGHT && Speed.x > 0): Speed.x = 0
@@ -580,10 +583,10 @@ var DidDiagonalSlam : bool = false
 
 #region Slide and Ground Smash
 func _physics_slide_and_groundsmash(delta: float) -> void:
-	if(!Input.is_action_pressed("player_slide")):
+	if(!is_action_pressed("player_slide")):
 		SlidingInAir = false
 		#LevelManager.ExpoMoveTimeout.start()
-	if((Input.is_action_pressed("player_slide") || PressingGroundSmash)):
+	if((is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash
 		if(!_is_on_floor() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
@@ -623,13 +626,13 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 		Reset_Slide()
 		Speed.x = 0
 	
-	if(!Input.is_action_pressed("player_slide")): PressedSlide = false
+	if(!is_action_pressed("player_slide")): PressedSlide = false
 	
 	#if(!SlidingInAir):
 		#strech_size(1, 1)
 	if(!Slide): set_collision_mask_value(3, true)
 	if(!GroundSmash): set_collision_mask_value(4, true)
-	if(!Input.is_action_pressed("player_slide") && _is_on_floor() ):
+	if(!is_action_pressed("player_slide") && _is_on_floor() ):
 		PressingGroundSmash = false
 
 func Reset_Slide():
@@ -646,7 +649,7 @@ func Reset_Slide():
 #region Dash
 func _physics_dash(delta: float) -> void:
 	#Dash
-	if(Input.is_action_pressed("player_dash") && !Dashed && DashCooldownTimer.is_stopped()):
+	if(is_action_pressed("player_dash") && !Dashed && DashCooldownTimer.is_stopped()):
 		DashCooldownTimer.start()
 		if(Slide): LevelManager.AddStyle(0, "Slide Dash")
 		LevelManager.ExpoMoveTimeout.start()
@@ -673,7 +676,7 @@ func _physics_dash(delta: float) -> void:
 #region WallJump
 func _physics_walljump(delta: float) -> void:
 	#The idea is to mantain some vertical movement, but still be able to jump more than before, like SuperMeatBoy
-	direction = Input.get_axis("ui_left", "ui_right")
+	direction = get_axis()
 	if(is_near_wall() && direction && !Slide):
 		Dashed = false
 		velocity.y += 50* delta * GravityDirection
@@ -764,3 +767,15 @@ func _is_on_ceiling() -> bool:
 func is_near_wall() -> bool:
 	return $Wallchecker.is_colliding()
 #endregion
+
+func is_action_pressed(Action : String):
+	if(ReplayAction == Global.ReplayStates.STOPPED):
+		return Input.is_action_pressed(Action)
+	else:
+		return Input.is_action_pressed("replay_" + Action)
+
+func get_axis():
+	if(ReplayAction == Global.ReplayStates.STOPPED):
+		return Input.get_axis("ui_left", "ui_right")
+	else:
+		return Input.get_axis("replay_ui_left", "replay_ui_right")

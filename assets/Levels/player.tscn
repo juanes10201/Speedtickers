@@ -528,8 +528,7 @@ size = Vector2(12, 13.0001)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(8, 19)
 scale = Vector2(6.59375, 0.882813)
-collision_layer = 13
-collision_mask = 2333
+collision_mask = 2332
 script = ExtResource("1_uhpgg")
 TimeDeath = 0.4
 
