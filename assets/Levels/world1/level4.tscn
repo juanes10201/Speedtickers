@@ -1,20 +1,18 @@
-[gd_scene load_steps=63 format=4 uid="uid://qw4dpb57t7yw"]
+[gd_scene load_steps=31 format=4 uid="uid://qw4dpb57t7yw"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_bi0fk"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="2_snkaw"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_u03ck"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="3_dqsa5"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Levels/enemie.tscn" id="5_h6i6c"]
-[ext_resource type="Script" uid="uid://oox68moq28k0" path="res://assets/Levels/world1/blackboard.gd" id="5_wf4i7"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="6_35nne"]
+[ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="7_4bv7n"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="8_ksm2t"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="9_ntw5c"]
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="11_sx557"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="12_8csto"]
 [ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Levels/Scripts/animated_button.gd" id="12_h62lm"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="12_obget"]
-[ext_resource type="Texture2D" uid="uid://co2vd0580bfaf" path="res://assets/Sprites/tutorial1-Sheet.png" id="15_reu32"]
-[ext_resource type="Texture2D" uid="uid://jkp2uan30s1d" path="res://assets/Sprites/tutorial2-Sheet.png" id="16_8vuuc"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="18_6522k"]
 [ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="18_reu32"]
 [ext_resource type="Script" uid="uid://cemn5v31uprsc" path="res://assets/Levels/world1/tutorial_time_stop.gd" id="19_b5voc"]
@@ -56,241 +54,6 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b5voc"]
-light_mode = 1
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5voc"]
-atlas = ExtResource("15_reu32")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6niov"]
-atlas = ExtResource("15_reu32")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmt3o"]
-atlas = ExtResource("15_reu32")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w7ae7"]
-atlas = ExtResource("15_reu32")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2utor"]
-atlas = ExtResource("15_reu32")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_25fng"]
-atlas = ExtResource("15_reu32")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e34pc"]
-atlas = ExtResource("15_reu32")
-region = Rect2(600, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h5p4m"]
-atlas = ExtResource("15_reu32")
-region = Rect2(700, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5d5i3"]
-atlas = ExtResource("15_reu32")
-region = Rect2(800, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q7mxp"]
-atlas = ExtResource("15_reu32")
-region = Rect2(900, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhde3"]
-atlas = ExtResource("15_reu32")
-region = Rect2(1000, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_se2og"]
-atlas = ExtResource("15_reu32")
-region = Rect2(1100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gmbg8"]
-atlas = ExtResource("15_reu32")
-region = Rect2(1200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4i2ep"]
-atlas = ExtResource("15_reu32")
-region = Rect2(1300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t5qkh"]
-atlas = ExtResource("15_reu32")
-region = Rect2(1400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nt01u"]
-atlas = ExtResource("15_reu32")
-region = Rect2(1500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0dk7"]
-atlas = ExtResource("15_reu32")
-region = Rect2(1600, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vv73s"]
-atlas = ExtResource("15_reu32")
-region = Rect2(1700, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_reu32"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3n4vj"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_afpxl"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpytd"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2y5w"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gu00t"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xa15g"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(600, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_14uqu"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(700, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mknt"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(800, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f0u8g"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(900, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fgev5"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(1000, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ow0j8"]
-atlas = ExtResource("16_8vuuc")
-region = Rect2(1100, 0, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s1t2w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5voc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6niov")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nmt3o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w7ae7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2utor")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_25fng")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e34pc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h5p4m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5d5i3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q7mxp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hhde3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_se2og")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gmbg8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4i2ep")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t5qkh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nt01u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y0dk7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vv73s")
-}],
-"loop": true,
-"name": &"groundsmash",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_reu32")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3n4vj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_afpxl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gpytd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s2y5w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gu00t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xa15g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_14uqu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7mknt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f0u8g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fgev5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ow0j8")
-}],
-"loop": true,
-"name": &"slide",
-"speed": 15.0
-}]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_reu32"]
-light_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6niov"]
-light_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nmt3o"]
-light_mode = 1
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w7ae7"]
 light_mode = 1
 
@@ -321,11 +84,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nmt3o"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_np4up"]
 size = Vector2(30.7479, 28.6468)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhkcl"]
 size = Vector2(77.1953, 132)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6niov"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reu32"]
+atlas = ExtResource("7_4bv7n")
+region = Rect2(15, 80, 23, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5voc"]
+atlas = ExtResource("7_4bv7n")
+region = Rect2(15, 176, 23, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6niov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reu32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5voc")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -354,45 +150,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_0i2pc")
 }
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.76662, 0.76662, 0.76662, 1)
-material = SubResource("CanvasItemMaterial_b5voc")
-position = Vector2(43, -85)
-skew = 0.0890118
-sprite_frames = SubResource("SpriteFrames_s1t2w")
-animation = &"groundsmash"
-frame_progress = 0.13826
-script = ExtResource("5_wf4i7")
-anim_to_play = "groundsmash"
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.76662, 0.76662, 0.76662, 1)
-material = SubResource("CanvasItemMaterial_reu32")
-position = Vector2(-117, -91)
-skew = 0.0890118
-sprite_frames = SubResource("SpriteFrames_s1t2w")
-animation = &"slide"
-script = ExtResource("5_wf4i7")
-anim_to_play = "slide"
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-material = SubResource("CanvasItemMaterial_6niov")
-offset_left = -26.0
-offset_top = -125.0
-offset_right = 73.0
-offset_bottom = -113.0
-theme_override_fonts/normal_font = ExtResource("18_reu32")
-text = "Slam con:"
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="."]
-material = SubResource("CanvasItemMaterial_nmt3o")
-offset_left = -173.0
-offset_top = -106.0
-offset_right = -61.0
-offset_bottom = -86.0
-theme_override_fonts/normal_font = ExtResource("18_reu32")
-text = "Slide con:"
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(-2.00006, 32)
 scale = Vector2(1.00384, 1)
@@ -401,6 +158,7 @@ tile_set = ExtResource("8_ksm2t")
 
 [node name="Player" parent="." instance=ExtResource("2_snkaw")]
 position = Vector2(-285, -18)
+CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(30, 26.053)
@@ -412,25 +170,23 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("3_dqsa5")
 
-[node name="DashButton" type="AnimatedSprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_w7ae7")
-position = Vector2(-104, -99)
-sprite_frames = SubResource("SpriteFrames_8vuuc")
-script = ExtResource("12_h62lm")
-ButtonToPress = "player_slide"
-
 [node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
 wait_time = 10.0
 one_shot = true
 autostart = true
 
 [node name="Enemie2" parent="." instance=ExtResource("5_h6i6c")]
-position = Vector2(-153, -24)
+position = Vector2(-162, -24)
 EnemyDirection = 2
 Enemy_burst_speed = 400.0
 
 [node name="Enemie" parent="." instance=ExtResource("5_h6i6c")]
-position = Vector2(-135, -24)
+position = Vector2(-144, -24)
+EnemyDirection = 2
+Enemy_burst_speed = 400.0
+
+[node name="Enemie3" parent="." instance=ExtResource("5_h6i6c")]
+position = Vector2(-126, -24)
 EnemyDirection = 2
 Enemy_burst_speed = 400.0
 
@@ -438,15 +194,15 @@ Enemy_burst_speed = 400.0
 position = Vector2(-30.0001, 219)
 
 [node name="Enemie9" parent="." instance=ExtResource("5_h6i6c")]
-position = Vector2(-73.0001, 86.26)
+position = Vector2(-82, 86.26)
 EnemyDirection = 2
 
 [node name="Enemie10" parent="." instance=ExtResource("5_h6i6c")]
-position = Vector2(-51.72, 86)
+position = Vector2(-60.719902, 86)
 EnemyDirection = 2
 
 [node name="Enemie11" parent="." instance=ExtResource("5_h6i6c")]
-position = Vector2(-30.72, 86)
+position = Vector2(-39.719902, 86)
 EnemyDirection = 2
 
 [node name="KillBox" parent="." instance=ExtResource("12_obget")]
@@ -463,6 +219,25 @@ position = Vector2(-241, -26)
 script = ExtResource("19_b5voc")
 StopAction = "player_slide"
 WaitAnimation = "Dash"
+
+[node name="Tutorial" type="Node2D" parent="TimeStop"]
+position = Vector2(-30, -30)
+
+[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop/Tutorial"]
+material = SubResource("CanvasItemMaterial_w7ae7")
+position = Vector2(27, -1)
+sprite_frames = SubResource("SpriteFrames_8vuuc")
+script = ExtResource("12_h62lm")
+ButtonToPress = "player_slide"
+
+[node name="Text" type="RichTextLabel" parent="TimeStop/Tutorial"]
+material = SubResource("CanvasItemMaterial_nmt3o")
+offset_left = -42.0
+offset_top = -10.0
+offset_right = 70.0
+offset_bottom = 10.0
+theme_override_fonts/normal_font = ExtResource("18_reu32")
+text = "Slide con:"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop"]
 position = Vector2(3, -3)
@@ -491,6 +266,34 @@ position = Vector2(84.25, 7.625)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop2/StopRemover"]
 position = Vector2(-79.25, 109.375)
 shape = SubResource("RectangleShape2D_lhkcl")
+
+[node name="Tutorial" type="Node2D" parent="TimeStop2"]
+position = Vector2(-95, -62)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TimeStop2/Tutorial"]
+material = SubResource("CanvasItemMaterial_6niov")
+offset_left = -72.0
+offset_top = -9.0
+offset_right = 73.0
+offset_bottom = 15.0
+theme_override_fonts/normal_font = ExtResource("18_reu32")
+text = "Mientras en el aire,Slam con"
+metadata/_edit_use_anchors_ = true
+
+[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop2/Tutorial"]
+material = SubResource("CanvasItemMaterial_w7ae7")
+position = Vector2(28, -1)
+sprite_frames = SubResource("SpriteFrames_8vuuc")
+script = ExtResource("12_h62lm")
+ButtonToPress = "player_slide"
+
+[node name="DashButton2" type="AnimatedSprite2D" parent="TimeStop2/Tutorial"]
+material = SubResource("CanvasItemMaterial_w7ae7")
+position = Vector2(50, -2)
+sprite_frames = SubResource("SpriteFrames_6niov")
+animation = &"pressed"
+script = ExtResource("12_h62lm")
+ButtonToPress = "player_slide"
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("9_ntw5c")]
 

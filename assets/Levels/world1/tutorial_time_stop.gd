@@ -7,7 +7,10 @@ var HadStopped : bool = false
 @onready var Player = SaveGame.get_player()
 @export var WaitAnimation = "Jump"
 
+var ShowTutorial : bool = false
+
 func _ready() -> void:
+	if($Tutorial): $Tutorial.modulate.a = 0.0
 	if(TutorialCanvas): TutorialCanvas.hide()
 
 func _on_body_entered(body: Node2D) -> void:
@@ -16,6 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _stop() -> void:
 	if(HadStopped): return
+	if($Tutorial): ShowTutorial = true
 	Done = false
 	Player.Physics = false
 	TutorialCanvas.show()
@@ -24,6 +28,7 @@ func _stop() -> void:
 	Player.Sprite.play(WaitAnimation)
 
 func _resume_mov() -> void:
+	if($Tutorial): ShowTutorial = false
 	Done = true
 	TutorialCanvas.show()
 	Player.Physics = true
@@ -33,6 +38,10 @@ func _resume_mov() -> void:
 var GreyVal : float = 1.0
 
 func _process(delta: float) -> void:
+	if($Tutorial):
+		if(!ShowTutorial): $Tutorial.modulate.a = 0.0
+		else:
+			$Tutorial.modulate.a = lerp($Tutorial.modulate.a, 1.0, 1*delta)
 	if(!Done):
 		GreyVal = lerp(GreyVal, .1, 5*delta)
 		TutorialCanvas.modulate.a = GreyVal

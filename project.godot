@@ -62,6 +62,7 @@ PlayerHitBox=""
 sand=""
 Enemie=""
 Piston=""
+PlayerReplay=""
 
 [input]
 

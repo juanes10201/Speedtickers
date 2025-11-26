@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://b7j8834feho55"]
+[gd_scene load_steps=27 format=4 uid="uid://b7j8834feho55"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_infck"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_up3lq"]
@@ -86,6 +86,33 @@ adjustment_saturation = 1.15
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kdsa1"]
 light_mode = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7rt8"]
+atlas = ExtResource("13_r7rt8")
+region = Rect2(16, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq6ls"]
+atlas = ExtResource("13_r7rt8")
+region = Rect2(32, 224, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdsa1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7rt8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq6ls")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4n2d"]
 atlas = ExtResource("13_r7rt8")
 region = Rect2(80, 208, 16, 16)
@@ -140,7 +167,7 @@ tile_map_data = PackedByteArray("AAACAO//AAAAAAEAAAADAO//AAABAAEAAADr/+//AAABAAE
 tile_set = ExtResource("3_2oxv3")
 script = ExtResource("4_diu55")
 
-[node name="Player2" parent="." instance=ExtResource("5_cyxtg")]
+[node name="Player2" parent="." groups=["PlayerReplay"] instance=ExtResource("5_cyxtg")]
 position = Vector2(-304.00003, -68.00003)
 ReplayAction = 0
 RecordedActions = Array[Vector3]([Vector3(1.2, 4, 1), Vector3(1.5, 0, 1), Vector3(3, 0, 0), Vector3(3, 4, 0), Vector3(4, 5, 1)])
@@ -186,18 +213,30 @@ position = Vector2(-108, 34)
 scale = Vector2(58.64, 1)
 Visible = false
 
-[node name="DashTutorial" type="RichTextLabel" parent="."]
+[node name="DashTutorial2" type="RichTextLabel" parent="."]
 material = SubResource("CanvasItemMaterial_kdsa1")
-offset_left = -275.0
-offset_top = -174.0
-offset_right = -167.0
-offset_bottom = -148.0
+offset_left = -305.0
+offset_top = -170.0
+offset_right = -163.0
+offset_bottom = -133.0
 theme_override_fonts/normal_font = ExtResource("12_fneve")
 text = "
-Escala la pared"
+Mantener apretado
+para escalar pared"
 
-[node name="DashButton" type="AnimatedSprite2D" parent="DashTutorial"]
+[node name="DashButton2" type="AnimatedSprite2D" parent="DashTutorial2"]
+self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
-position = Vector2(100.99999, 13)
+position = Vector2(117.38501, 21.650604)
+sprite_frames = SubResource("SpriteFrames_kdsa1")
+script = ExtResource("14_oq6ls")
+ReadFromReplay = true
+ButtonToPress = "ui_right"
+
+[node name="DashButton" type="AnimatedSprite2D" parent="DashTutorial2"]
+self_modulate = Color(1, 1, 1, 0.8627451)
+use_parent_material = true
+position = Vector2(132, 14)
 sprite_frames = SubResource("SpriteFrames_8fc2q")
 script = ExtResource("14_oq6ls")
+ReadFromReplay = true

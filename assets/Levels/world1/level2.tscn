@@ -209,29 +209,6 @@ offset_top = -406.0
 offset_right = 278.0
 offset_bottom = 258.0
 
-[node name="DashTutorial" type="RichTextLabel" parent="."]
-material = SubResource("CanvasItemMaterial_lhkcl")
-offset_left = -243.0
-offset_top = -49.0
-offset_right = -164.0
-offset_bottom = -20.0
-theme_override_fonts/normal_font = ExtResource("12_qonc7")
-text = "Dash con:"
-
-[node name="DashButton" type="AnimatedSprite2D" parent="DashTutorial"]
-use_parent_material = true
-position = Vector2(8, 17)
-sprite_frames = SubResource("SpriteFrames_l7k34")
-script = ExtResource("10_hm2hf")
-ButtonToPress = "player_dash"
-
-[node name="DashButtonKeyboard" type="AnimatedSprite2D" parent="DashTutorial"]
-use_parent_material = true
-position = Vector2(48, 18)
-sprite_frames = SubResource("SpriteFrames_h5v7n")
-script = ExtResource("10_hm2hf")
-ButtonToPress = "player_dash"
-
 [node name="Player" parent="." instance=ExtResource("2_lriho")]
 position = Vector2(-304, -117)
 CountTime = false
@@ -252,6 +229,34 @@ script = ExtResource("3_mr0pl")
 position = Vector2(-199, 2)
 scale = Vector2(1.775, 1)
 script = ExtResource("17_cq5md")
+
+[node name="Tutorial" type="Node2D" parent="TimeStop"]
+position = Vector2(36.61972, -31)
+scale = Vector2(0.5633803, 1)
+
+[node name="DashTutorial" type="RichTextLabel" parent="TimeStop/Tutorial"]
+material = SubResource("CanvasItemMaterial_lhkcl")
+offset_left = -37.0
+offset_top = -13.0
+offset_right = 42.0
+offset_bottom = 16.0
+theme_override_fonts/normal_font = ExtResource("12_qonc7")
+text = "Dash con:"
+metadata/_edit_use_anchors_ = true
+
+[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop/Tutorial"]
+use_parent_material = true
+position = Vector2(-29, 4)
+sprite_frames = SubResource("SpriteFrames_l7k34")
+script = ExtResource("10_hm2hf")
+ButtonToPress = "player_dash"
+
+[node name="DashButtonKeyboard" type="AnimatedSprite2D" parent="TimeStop/Tutorial"]
+use_parent_material = true
+position = Vector2(11, 5)
+sprite_frames = SubResource("SpriteFrames_h5v7n")
+script = ExtResource("10_hm2hf")
+ButtonToPress = "player_dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop"]
 position = Vector2(-6.1971865, 4)
