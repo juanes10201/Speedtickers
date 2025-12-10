@@ -1,0 +1,66 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://6h705pgtj7bn"]
+
+[ext_resource type="Script" uid="uid://crvn733r6kq6d" path="res://addons/shaderV/rgba/turnGBPalette.gd" id="1_h8tqo"]
+[ext_resource type="Script" uid="uid://ci580rvwexuhh" path="res://addons/shaderV/rgba/turnCGA4Palette.gd" id="2_w6san"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_h8tqo"]
+source = 1
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_w6san"]
+default_input_values = [1, 0.81]
+initialized = true
+script = ExtResource("1_h8tqo")
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_mrq2o"]
+default_input_values = [1, 1.415]
+initialized = true
+script = ExtResource("2_w6san")
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_hdoi8"]
+default_input_values = [1, 0.645]
+initialized = true
+script = ExtResource("2_w6san")
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D screen_tex_frg_2 : hint_screen_texture;
+
+
+// TurnGameBoyPalette
+#include \"res://addons/shaderV/rgba/turnGBPalette.gdshaderinc\"
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(screen_tex_frg_2, SCREEN_UV);
+
+
+	vec3 n_out3p0;
+// TurnGameBoyPalette:3
+	float n_in3p1 = 0.81000;
+	{
+		n_out3p0 = _gameboyPaletteFunc(vec3(n_out2p0.xyz), n_in3p1);
+	}
+
+
+// Output:0
+	COLOR.rgb = n_out3p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(500, 160)
+nodes/fragment/0/position = Vector2(420, 180)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_h8tqo")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeCustom_w6san")
+nodes/fragment/3/position = Vector2(160, 140)
+nodes/fragment/4/node = SubResource("VisualShaderNodeCustom_mrq2o")
+nodes/fragment/4/position = Vector2(180, 480)
+nodes/fragment/5/node = SubResource("VisualShaderNodeCustom_hdoi8")
+nodes/fragment/5/position = Vector2(240, 280)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 3, 0, 0, 0)

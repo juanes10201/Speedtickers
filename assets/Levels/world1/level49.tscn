@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dtexo5vnid1nk"]
+[gd_scene load_steps=17 format=4 uid="uid://dtexo5vnid1nk"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_id63m"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_s842t"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Levels/orb.tscn" id="10_p8xhn"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="11_8dgio"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="12_4d2to"]
+[ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Levels/laser.tscn" id="13_s842t"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -133,8 +134,8 @@ position = Vector2(-64, 187)
 scale = Vector2(6, 2)
 
 [node name="KillBox19" parent="." instance=ExtResource("7_itxwh")]
-position = Vector2(-192, 257)
-scale = Vector2(4.14, 2)
+position = Vector2(-192, 281)
+scale = Vector2(4.14, 1.32)
 
 [node name="KillBox24" parent="." instance=ExtResource("7_itxwh")]
 position = Vector2(-88, 569)
@@ -149,23 +150,23 @@ position = Vector2(-24, 689)
 scale = Vector2(3.715, 2)
 
 [node name="KillBox20" parent="." instance=ExtResource("7_itxwh")]
-position = Vector2(-128, 385)
-scale = Vector2(4.14, 2)
+position = Vector2(-128, 398)
+scale = Vector2(4.14, 1.32)
 
 [node name="KillBox22" parent="." instance=ExtResource("7_itxwh")]
-position = Vector2(-160, 489)
-scale = Vector2(9.08, 2)
+position = Vector2(-163.00002, 515)
+scale = Vector2(9.355, 2)
 
 [node name="KillBox15" parent="." instance=ExtResource("7_itxwh")]
 position = Vector2(-104, 25)
 scale = Vector2(2, 10)
 
 [node name="KillBox18" parent="." instance=ExtResource("7_itxwh")]
-position = Vector2(-103, 286)
-scale = Vector2(2, 14.44)
+position = Vector2(-103, 290)
+scale = Vector2(2, 14.88)
 
 [node name="KillBox23" parent="." instance=ExtResource("7_itxwh")]
-position = Vector2(-103, 706.005)
+position = Vector2(-103, 714.00507)
 scale = Vector2(2, 28.625)
 
 [node name="KillBox26" parent="." instance=ExtResource("7_itxwh")]
@@ -184,17 +185,35 @@ scale = Vector2(2, 10)
 position = Vector2(-71, 728)
 
 [node name="falling_sand15" parent="." instance=ExtResource("12_4d2to")]
-position = Vector2(-169, -96)
+position = Vector2(-176, -111)
+Activate_on_color = 1
 MAX_SPEED = 150.0
 
 [node name="falling_sand18" parent="." instance=ExtResource("12_4d2to")]
-position = Vector2(-153, -96)
+position = Vector2(-160, -111)
+Activate_on_color = 1
+MAX_SPEED = 150.0
+
+[node name="falling_sand20" parent="." instance=ExtResource("12_4d2to")]
+position = Vector2(-144, -111)
+Activate_on_color = 1
 MAX_SPEED = 150.0
 
 [node name="falling_sand17" parent="." instance=ExtResource("12_4d2to")]
-position = Vector2(-56, -32)
+position = Vector2(-56, -39)
+Activate_on_color = 2
 MAX_SPEED = 120.0
 
 [node name="falling_sand19" parent="." instance=ExtResource("12_4d2to")]
-position = Vector2(-72, -32)
+position = Vector2(-72, -39)
+Activate_on_color = 2
 MAX_SPEED = 120.0
+
+[node name="KillBox28" parent="." instance=ExtResource("13_s842t")]
+position = Vector2(-163, -53)
+scale = Vector2(8.99, 0.125)
+
+[node name="KillBox29" parent="." instance=ExtResource("13_s842t")]
+position = Vector2(-90, -79)
+scale = Vector2(0.125, 7.445)
+Laser_Color = 2

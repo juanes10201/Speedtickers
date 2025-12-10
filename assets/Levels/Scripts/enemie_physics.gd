@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 #region Setup variables
 @export_group("Custom")
+@export var RetroStyle : bool = false
 @export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
 @export var enemy_type : float = 0
 @export var EnemyDirection : Directions = Directions.RIGHT
@@ -59,6 +60,8 @@ var StatePlaying : bool = false
 
 @onready var PrevGravityDirection : Global.GravityDirections = GravityDirection
 
+@onready var _Position = self.position 
+
 #endregion
 
 #region Killed by Slide or Groundsmash Sound
@@ -107,6 +110,13 @@ func _on_player_slide_signal() -> void:
 #endregion
 
 func _ready():
+	if(RetroStyle):
+		$Moveparticles.fixed_fps = 10
+		$Moveparticles.interpolate = false
+		$HitParticles.fixed_fps = 15
+		$HitParticles.interpolate = false
+		$HitFlyParticles.fixed_fps = 10
+		$HitFlyParticles.interpolate = false
 	if(SaveGame.get_config_value("Particles") != null):
 		Particles = SaveGame.get_config_value("Particles")
 	if(EnemyDirection == Directions.RIGHT): direction = 1
@@ -137,6 +147,11 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
+	if(RetroStyle):
+		position = _Position
+		position.x /= 8
+		position.x = round(global_position.x)
+		position.x *= 8
 	if(Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
 		Enabled = true
 	
@@ -228,7 +243,14 @@ func _process(delta: float) -> void:
 			#endregion
 			was_on_floor = _is_on_floor()
 			was_on_wall = is_on_wall()
-			move_and_slide()
+			if(RetroStyle):
+				var _pos = position
+				position = _Position
+				move_and_slide()
+				_Position = position
+				position = _pos
+			else:
+				move_and_slide()
 	else:
 		pass
 #endregion
@@ -290,11 +312,15 @@ func On_Death():
 		var InstanceParticles = DestroyParticles.instantiate()
 		get_tree().current_scene.add_child(InstanceParticles)
 		InstanceParticles.position = self.position
+		if(RetroStyle):
+			InstanceParticles.RetroStyle()
 	elif(enemy_type == 1 && Particles):
 		var DestroyParticles = preload("res://assets/Levels/Particles/destroy_enemy_special.tscn")
 		var InstanceParticles = DestroyParticles.instantiate()
 		get_tree().current_scene.add_child(InstanceParticles)
 		InstanceParticles.position = self.position
+		if(RetroStyle):
+			InstanceParticles.RetroStyle()
 	#endregion
 	self.queue_free()
 #endregion

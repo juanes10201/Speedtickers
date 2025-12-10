@@ -25,4 +25,4 @@ bus = &"Music"
 
 [node name="AudioDeathPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7olny")
-bus = &"Music"
+bus = &"Sfx"

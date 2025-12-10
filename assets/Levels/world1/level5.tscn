@@ -71,19 +71,19 @@ libraries = {
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(-2, 31)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AAD0//X/AAADAAEAAAD0//b/AAADAAEAAAD0//f/AAADAAEAAAD0//P/AAADAAEAAAD0//T/AAADAAEAAAD0/+//AAADAAEAAAD0//D/AAADAAEAAAD0//H/AAADAAEAAAD0//L/AAADAAEAAAD0/wYAAAAAAAMAAAD1/wYAAAABAAMAAAD2/wYAAAABAAMAAAD3/wYAAAABAAMAAAD4/wYAAAABAAMAAAD5/wYAAAABAAMAAAD6/wYAAAABAAMAAAD7/wYAAAABAAMAAAD8/wYAAAABAAMAAAD9/wYAAAABAAMAAAD+/wYAAAABAAMAAAD//wYAAAABAAMAAAAAAAYAAAABAAMAAAABAAYAAAABAAMAAAACAAYAAAACAAMAAAAGAAYAAAADAAEAAAAGAAcAAAADAAEAAAAGAAgAAAADAAEAAAD0/wIAAAADAAEAAAD0/wMAAAADAAEAAAD0/wQAAAADAAEAAAD0/wUAAAADAAEAAAACAAIAAAADAAEAAAACAAMAAAADAAEAAAACAAQAAAADAAEAAAACAAUAAAADAAEAAAAGAAUAAAADAAEAAAAGAAQAAAADAAEAAAAGAAMAAAADAAEAAAAGAAIAAAADAAEAAAAGAAoAAAADAAEAAAAGAAsAAAADAAIAAAAGAAkAAAADAAEAAAD0//r/AAADAAEAAAD0/wAAAAADAAAAAAD0/wEAAAADAAEAAAACAPr/AAADAAEAAAACAPv/AAADAAEAAAACAPz/AAADAAEAAAACAP3/AAADAAEAAAACAP7/AAADAAEAAAACAP//AAADAAEAAAACAAAAAAADAAEAAAACAAEAAAADAAEAAAAGAPr/AAADAAEAAAAGAPv/AAADAAEAAAAGAPz/AAADAAEAAAAGAP3/AAADAAEAAAAGAP7/AAADAAEAAAAGAP//AAADAAEAAAAGAAAAAAADAAEAAAAGAAEAAAADAAEAAADs//z/AAAAAAAAAADt//z/AAABAAAAAADu//z/AAABAAAAAAD0//v/AAADAAEAAAD0//z/AAADAAIAAAD4//v/AAAAAAMAAAD4//z/AAADAAIAAAD5//v/AAABAAMAAAD6//v/AAABAAMAAAD7//v/AAABAAMAAAD8//v/AAACAAMAAAD///n/AAAAAAMAAAAAAPn/AAABAAMAAAABAPn/AAABAAMAAAACAPn/AAACAAMAAAAGAPn/AAADAAEAAAAGAPj/AAADAAAAAAD0//j/AAADAAEAAAD0//n/AAADAAEAAADv//z/AAACAAAAAADt//3/AAABAAIAAADs//3/AAAAAAIAAADu//3/AAABAAIAAADv//3/AAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAD0//X/AAADAAEAAAD0//b/AAADAAEAAAD0//f/AAADAAEAAAD0//P/AAADAAEAAAD0//T/AAADAAEAAAD0/+//AAADAAEAAAD0//D/AAADAAEAAAD0//H/AAADAAEAAAD0//L/AAADAAEAAAD0/wYAAAAAAAMAAAD1/wYAAAABAAMAAAD2/wYAAAABAAMAAAD3/wYAAAABAAMAAAD4/wYAAAABAAMAAAD5/wYAAAABAAMAAAD6/wYAAAABAAMAAAD7/wYAAAABAAMAAAD8/wYAAAABAAMAAAD9/wYAAAABAAMAAAD+/wYAAAABAAMAAAD//wYAAAABAAMAAAAAAAYAAAABAAMAAAABAAYAAAABAAMAAAACAAYAAAACAAMAAAAGAAYAAAADAAEAAAAGAAcAAAADAAEAAAAGAAgAAAADAAEAAAD0/wIAAAADAAEAAAD0/wMAAAADAAEAAAD0/wQAAAADAAEAAAD0/wUAAAADAAEAAAACAAIAAAADAAEAAAACAAMAAAADAAEAAAACAAQAAAADAAEAAAACAAUAAAADAAEAAAAGAAUAAAADAAEAAAAGAAQAAAADAAEAAAAGAAMAAAADAAEAAAAGAAIAAAADAAEAAAAGAAoAAAADAAEAAAAGAAsAAAADAAIAAAAGAAkAAAADAAEAAAD0//r/AAADAAEAAAD0/wAAAAADAAAAAAD0/wEAAAADAAEAAAACAPr/AAADAAEAAAACAPv/AAADAAEAAAACAPz/AAADAAEAAAACAP3/AAADAAEAAAACAP7/AAADAAEAAAACAP//AAADAAEAAAACAAAAAAADAAEAAAACAAEAAAADAAEAAAAGAPr/AAADAAEAAAAGAPv/AAADAAEAAAAGAPz/AAADAAEAAAAGAP3/AAADAAEAAAAGAP7/AAADAAEAAAAGAP//AAADAAEAAAAGAAAAAAADAAEAAAAGAAEAAAADAAEAAADs//z/AAAAAAAAAADt//z/AAABAAAAAADu//z/AAABAAAAAAD0//v/AAADAAEAAAD0//z/AAADAAIAAAD4//v/AAAAAAMAAAD4//z/AAADAAIAAAD5//v/AAABAAMAAAD6//v/AAABAAMAAAD7//v/AAABAAMAAAD8//v/AAACAAMAAAD///n/AAAAAAMAAAAAAPn/AAABAAMAAAABAPn/AAABAAMAAAACAPn/AAACAAMAAAAGAPn/AAADAAEAAAAGAPj/AAADAAAAAAD0//j/AAADAAEAAAD0//n/AAADAAEAAADv//z/AAACAAAAAADw/wYAAAADAAAAAADw/wcAAAADAAEAAADw/wgAAAADAAEAAADw/wkAAAADAAEAAADw/woAAAADAAEAAADw/wsAAAADAAEAAADw/wwAAAADAAEAAADw/w0AAAADAAEAAADw/w4AAAADAAIAAADv//3/AAACAAIAAADu//3/AAABAAIAAADt//3/AAABAAIAAADs//3/AAAAAAIAAAAFAAkAAAABAAMAAAAEAAkAAAABAAMAAAADAAkAAAABAAMAAAACAAkAAAABAAMAAAABAAkAAAABAAMAAAAAAAkAAAAAAAMAAAA=")
 tile_set = ExtResource("3_1yg1q")
 
 [node name="Player" parent="." instance=ExtResource("2_igmiy")]
 position = Vector2(-300, -35.999996)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(14.5308, 64.5662)
+position = Vector2(31.545025, 87.22118)
 zoom = Vector2(2.08, 2.08)
-limit_left = -403
-limit_top = -137
-limit_right = 170
-limit_bottom = 236
+limit_left = -409
+limit_top = -135
+limit_right = 215
+limit_bottom = 238
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("3_63h1i")
@@ -103,52 +103,22 @@ position = Vector2(-122, -10)
 wait_time = 0.05
 
 [node name="falling_sand4" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(-172, 210)
-wait_time = 0.05
+position = Vector2(-152, 212)
 
 [node name="falling_sand5" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(-156, 210)
-wait_time = 0.05
+position = Vector2(-136, 212)
 
 [node name="falling_sand6" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(-140, 210)
-wait_time = 0.05
+position = Vector2(-120, 212)
 
 [node name="falling_sand10" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(-124, 210)
-wait_time = 0.05
+position = Vector2(-104, 212)
 
 [node name="falling_sand12" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(-108, 210)
-wait_time = 0.05
+position = Vector2(-88, 212)
 
 [node name="falling_sand14" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(-92, 210)
-wait_time = 0.05
-
-[node name="falling_sand7" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(40, 212)
-wait_time = 0.05
-
-[node name="falling_sand13" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(23, 212)
-wait_time = 0.05
-
-[node name="falling_sand15" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(7, 212)
-wait_time = 0.05
-
-[node name="falling_sand8" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(56, 212)
-wait_time = 0.05
-
-[node name="falling_sand9" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(72, 212)
-wait_time = 0.05
-
-[node name="falling_sand11" parent="." instance=ExtResource("6_vghth")]
-position = Vector2(88, 212)
-wait_time = 0.05
+position = Vector2(-72, 212)
 
 [node name="falling_sand2" parent="." instance=ExtResource("6_vghth")]
 position = Vector2(-122, 6)
@@ -166,12 +136,12 @@ Visible = false
 [node name="CanvasLayer" parent="." instance=ExtResource("11_868bk")]
 
 [node name="KillBox2" parent="." instance=ExtResource("11_q5bbx")]
-position = Vector2(-168, 119)
-scale = Vector2(24.815, 1)
+position = Vector2(-122.99998, 117)
+scale = Vector2(18.895, 1)
 
 [node name="KillBox3" parent="." instance=ExtResource("11_q5bbx")]
-position = Vector2(-358.525, 174.21)
-scale = Vector2(1, 7.88)
+position = Vector2(-266, 207)
+scale = Vector2(1, 10.615)
 
 [node name="AmbientParticles" parent="." instance=ExtResource("12_p6vs0")]
 position = Vector2(-155, -178)

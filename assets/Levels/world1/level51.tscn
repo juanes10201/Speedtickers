@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c5gleju0p2cda"]
+[gd_scene load_steps=17 format=4 uid="uid://c5gleju0p2cda"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_qp6va"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_sg8hi"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="9_mglbs"]
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Levels/orb.tscn" id="10_xiriw"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="11_jg551"]
+[ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Levels/laser.tscn" id="11_sg8hi"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="12_lgntm"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
@@ -155,6 +156,10 @@ Respawn = false
 position = Vector2(-64, -175)
 Respawn = false
 
+[node name="KillBox21" parent="Key5" instance=ExtResource("11_sg8hi")]
+position = Vector2(-120, 320)
+scale = Vector2(8.05, 0.125)
+
 [node name="KillBox13" parent="." instance=ExtResource("7_m76uo")]
 position = Vector2(-235, -159.00003)
 scale = Vector2(2.5, 25.58)
@@ -180,8 +185,10 @@ position = Vector2(-184, -231)
 
 [node name="falling_sand17" parent="." instance=ExtResource("12_lgntm")]
 position = Vector2(-192, 174)
+Activate_on_color = 1
 MAX_SPEED = 120.0
 
 [node name="falling_sand18" parent="." instance=ExtResource("12_lgntm")]
 position = Vector2(-176, 174)
+Activate_on_color = 1
 MAX_SPEED = 120.0

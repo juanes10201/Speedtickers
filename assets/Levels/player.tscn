@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://chat6jxc63bfj"]
+[gd_scene load_steps=95 format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
 [ext_resource type="Texture2D" uid="uid://cga4opnhsehd7" path="res://assets/Sprites/knight-Sheet.png" id="2_5o2oi"]
@@ -44,18 +44,51 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_sc7ng"]
 curve = SubResource("Curve_ivnav")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lgtto"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6sg21"]
 particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 1.84
+emission_shape = 3
+emission_box_extents = Vector3(1.98, 8.285, 1)
 angle_min = -720.0
 angle_max = 720.0
-inherit_velocity_ratio = -0.3
+inherit_velocity_ratio = -0.5
+initial_velocity_min = 0.5
+initial_velocity_max = 15.88
+angular_velocity_min = 0.549984
+angular_velocity_max = 0.549984
+gravity = Vector3(34.82, -98, 0)
+linear_accel_min = -55.51
+linear_accel_max = 8.6
+radial_accel_min = -27.78
+radial_accel_max = -2.23517e-06
+tangential_accel_min = 12.56
+tangential_accel_max = 12.56
+damping_min = 0.17
+damping_max = 7.899
+scale_min = 1.15
+scale_max = 2.05
+color = Color(0.796078, 0.858824, 0.988235, 1)
+alpha_curve = SubResource("CurveTexture_sc7ng")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.04
+turbulence_enabled = true
+turbulence_noise_strength = 0.24
+turbulence_noise_scale = 0.93
+turbulence_influence_min = 0.04
+turbulence_influence_max = 0.04
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t3qgo"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 0.37, 1)
+emission_shape = 3
+emission_box_extents = Vector3(2.445, 13.255, 1)
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = -0.5
 initial_velocity_min = 0.5
 initial_velocity_max = 0.5
 angular_velocity_min = 0.549984
 angular_velocity_max = 0.549984
-gravity = Vector3(34.82, -98, 0)
+gravity = Vector3(-63.03, -98, 0)
 linear_accel_min = -55.51
 linear_accel_max = 8.6
 radial_accel_min = -27.78
@@ -110,32 +143,49 @@ turbulence_noise_scale = 0.93
 turbulence_influence_min = 0.04
 turbulence_influence_max = 0.04
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qtktq"]
+[sub_resource type="Curve" id="Curve_t8k5k"]
+_data = [Vector2(0.7452229, 1), 0.0, -8.673221, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t3qgo"]
+curve = SubResource("Curve_t8k5k")
+
+[sub_resource type="Curve" id="Curve_t3qgo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8333333, 1), -0.7191007, -0.7191007, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a8flc"]
+curve = SubResource("Curve_t3qgo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a8flc"]
 particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 1.84
+emission_shape_scale = Vector3(1, 0.67, 1)
+emission_shape = 3
+emission_box_extents = Vector3(2.185, 16.93, 1)
 angle_min = -720.0
 angle_max = 720.0
 spread = 180.0
 initial_velocity_max = 11.62
-angular_velocity_min = 0.549984
-angular_velocity_max = 0.549984
+angular_velocity_min = 0.5499839
+angular_velocity_max = 360.55
 orbit_velocity_min = 9.49949e-08
 orbit_velocity_max = 9.49949e-08
 radial_velocity_min = 61.9
 radial_velocity_max = 61.9
-gravity = Vector3(34.82, -98, 0)
-linear_accel_min = -55.51
-linear_accel_max = 8.6
+gravity = Vector3(0, -98, 0)
+linear_accel_min = -57.56
+linear_accel_max = 66.03999
 radial_accel_min = -27.78
 radial_accel_max = -2.23517e-06
-tangential_accel_min = 12.56
-tangential_accel_max = 12.56
+tangential_accel_min = -44.870003
+tangential_accel_max = 70.0
 damping_min = 0.17
-damping_max = 7.899
+damping_max = 21.232
 scale_min = 1.15
 scale_max = 3.0
+scale_curve = SubResource("CurveTexture_a8flc")
 color = Color(0.796078, 0.858824, 0.988235, 1)
+alpha_curve = SubResource("CurveTexture_t3qgo")
 hue_variation_min = -2.23517e-08
 hue_variation_max = 0.04
 turbulence_enabled = true
@@ -499,6 +549,38 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lgtto"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1.98, 8.285, 1)
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = 2.0
+initial_velocity_min = 0.5
+initial_velocity_max = 15.88
+angular_velocity_min = 0.549984
+angular_velocity_max = 0.549984
+gravity = Vector3(34.82, -98, 0)
+linear_accel_min = -55.51
+linear_accel_max = 8.6
+radial_accel_min = -27.78
+radial_accel_max = -2.23517e-06
+tangential_accel_min = 12.56
+tangential_accel_max = 12.56
+damping_min = 0.17
+damping_max = 7.899
+scale_min = 1.15
+scale_max = 2.05
+color = Color(0.796078, 0.858824, 0.988235, 1)
+alpha_curve = SubResource("CurveTexture_sc7ng")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.04
+turbulence_enabled = true
+turbulence_noise_strength = 0.24
+turbulence_noise_scale = 0.93
+turbulence_influence_min = 0.04
+turbulence_influence_max = 0.04
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4mswk"]
 streams_count = 6
 stream_0/stream = ExtResource("5_pfel7")
@@ -542,7 +624,7 @@ position = Vector2(11, 20)
 texture = ExtResource("32_sc7ng")
 
 [node name="ShadowRaycast" type="RayCast2D" parent="Shadow"]
-position = Vector2(0.454977, 10.1947)
+position = Vector2(0.45497704, 9.061958)
 exclude_parent = false
 target_position = Vector2(-7.15256e-07, 189.168)
 collision_mask = 272
@@ -558,19 +640,28 @@ collision_mask = 272
 hit_from_inside = true
 collide_with_areas = true
 
+[node name="GroundRaycast" type="RayCast2D" parent="."]
+position = Vector2(2.9802322e-08, -4.5309706)
+scale = Vector2(0.085, 1)
+target_position = Vector2(0, 14.725658)
+collision_mask = 2398
+hit_from_inside = true
+collide_with_areas = true
+
 [node name="ParticlesJump" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 18
-process_material = SubResource("ParticleProcessMaterial_lgtto")
+process_material = SubResource("ParticleProcessMaterial_6sg21")
 
 [node name="ParticlesSlide" type="GPUParticles2D" parent="."]
+position = Vector2(0, -1.1327429)
 emitting = false
 amount = 18
 trail_enabled = true
 trail_lifetime = 0.1
 trail_sections = 6
 trail_section_subdivisions = 7
-process_material = SubResource("ParticleProcessMaterial_lgtto")
+process_material = SubResource("ParticleProcessMaterial_t3qgo")
 
 [node name="ParticlesOrb" type="GPUParticles2D" parent="."]
 position = Vector2(0, -6.66371)
@@ -587,26 +678,21 @@ process_material = SubResource("ParticleProcessMaterial_io8kl")
 z_index = 10
 position = Vector2(0, -5.66371)
 emitting = false
-amount = 100
-lifetime = 0.7
-one_shot = true
-speed_scale = 2.0
-explosiveness = 0.14
-process_material = SubResource("ParticleProcessMaterial_qtktq")
-
-[node name="ParticlesDeathFloor" type="GPUParticles2D" parent="."]
-position = Vector2(-0.454967, -1.13273)
-emitting = false
 amount = 80
-one_shot = true
+lifetime = 0.8
 speed_scale = 2.0
-explosiveness = 0.14
-process_material = SubResource("ParticleProcessMaterial_lgtto")
+explosiveness = 0.4
+randomness = 0.31
+trail_enabled = true
+trail_lifetime = 0.16
+trail_sections = 7
+trail_section_subdivisions = 6
+process_material = SubResource("ParticleProcessMaterial_a8flc")
 
 [node name="DashParticles1" type="GPUParticles2D" parent="."]
 position = Vector2(0, -10.194685)
 emitting = false
-amount = 200
+amount = 160
 lifetime = 2.0
 preprocess = 0.33
 trail_enabled = true
@@ -631,7 +717,7 @@ material = SubResource("CanvasItemMaterial_sc7ng")
 position = Vector2(0.454976, -9.06194)
 scale = Vector2(0.152, 1.133)
 sprite_frames = SubResource("SpriteFrames_qwuic")
-animation = &"Idle"
+animation = &"Jump"
 offset = Vector2(0, -0.58)
 script = ExtResource("9_rsv67")
 positions = Dictionary[String, Vector2]({
@@ -651,6 +737,22 @@ visible = false
 top_level = true
 position = Vector2(10, 12)
 sprite_frames = SubResource("SpriteFrames_dbk5q")
+
+[node name="ParticlesDeathFloor" type="GPUParticles2D" parent="."]
+z_index = 10
+position = Vector2(9.298325e-06, -2.265479)
+scale = Vector2(0.99999994, 0.9999999)
+emitting = false
+amount = 55
+lifetime = 2.74
+one_shot = true
+speed_scale = 3.17
+explosiveness = 0.39
+trail_enabled = true
+trail_lifetime = 0.21
+trail_sections = 3
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_lgtto")
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
 wait_time = 0.1

@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var BSide : bool = false
+@export var Gb : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,5 +45,5 @@ func _on_body_entered(body):
 		SaveGame.savelevelrecord(_lvl ,$"../Time_Left".wait_time - $"../Time_Left".time_left)
 		#endregion
 		#region Change level
-		LevelManager.change_to_level(_lvl+1, BSide)
+		LevelManager.change_to_level(_lvl+1, BSide, Gb)
 		#endregion

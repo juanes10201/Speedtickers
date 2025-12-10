@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cmrxabift4221"]
+[gd_scene load_steps=16 format=4 uid="uid://cmrxabift4221"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_b6ua6"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="2_ck00r"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="7_x5mvq"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="9_3dbsn"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="10_3dkqx"]
+[ext_resource type="Texture2D" uid="uid://c2k8y8oqnbgqu" path="res://assets/Sprites/Tileset/Streetart/papu.png" id="11_ejkea"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -47,6 +48,10 @@ _data = {
 &"RESET": SubResource("Animation_wh1ld"),
 &"move": SubResource("Animation_6ubuh")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_banu8"]
+atlas = ExtResource("11_ejkea")
+region = Rect2(0, 20.777107, 100, 40.518337)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -130,3 +135,7 @@ EnemyDirection = 2
 
 [node name="AmbientParticles" parent="." instance=ExtResource("10_3dkqx")]
 position = Vector2(10, -29)
+
+[node name="Papu" type="Sprite2D" parent="."]
+position = Vector2(-325, -102)
+texture = SubResource("AtlasTexture_banu8")

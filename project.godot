@@ -63,6 +63,7 @@ sand=""
 Enemie=""
 Piston=""
 PlayerReplay=""
+Boss=""
 
 [input]
 
@@ -242,6 +243,8 @@ pointing/emulate_mouse_from_touch=false
 2d_physics/layer_10="Regular enemies"
 2d_physics/layer_11="Killbox"
 2d_physics/layer_12="piston"
+2d_physics/layer_13="SlimeBoss"
+2d_physics/layer_14="Clock"
 
 [rendering]
 

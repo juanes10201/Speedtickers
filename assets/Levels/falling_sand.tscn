@@ -1,10 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://cykeyxkv73jjt"]
+[gd_scene load_steps=14 format=3 uid="uid://cykeyxkv73jjt"]
 
 [ext_resource type="Script" uid="uid://fce3hghglf5u" path="res://assets/Levels/Scripts/falling_sand.gd" id="1_8diny"]
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="2_703h2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bujpq"]
 size = Vector2(8, 5.7561)
+
+[sub_resource type="Curve" id="Curve_ol8f7"]
+_data = [Vector2(0.34375, 1), 0.0, -3.726249, 0, 0, Vector2(0.9166667, 0), -9.861949, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bn0sm"]
+curve = SubResource("Curve_ol8f7")
+
+[sub_resource type="Curve" id="Curve_bdg0v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.515625, 1), 0.0, 0.0, 0, 0, Vector2(0.9635417, 0.15730345), -8.629206, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h1pwc"]
+curve = SubResource("Curve_bdg0v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l121k"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8.09, 7.995, 1)
+inherit_velocity_ratio = -0.5
+gravity = Vector3(0, -98, 0)
+scale_curve = SubResource("CurveTexture_h1pwc")
+alpha_curve = SubResource("CurveTexture_bn0sm")
+hue_variation_min = 0.059999976
+hue_variation_max = 0.119999975
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.13
+turbulence_influence_min = 0.017
+turbulence_influence_max = 0.067
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ol8f7"]
 atlas = ExtResource("2_703h2")
@@ -36,6 +65,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol8f7"]
+size = Vector2(32, 32)
+
 [node name="falling_sand" type="RigidBody2D" groups=["sand"]]
 position = Vector2(-63, -142)
 collision_layer = 16
@@ -54,6 +86,17 @@ position = Vector2(-0.17, 1.73)
 scale = Vector2(1.355, 1.875)
 shape = SubResource("RectangleShape2D_bujpq")
 
+[node name="MoveParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -6)
+emitting = false
+amount = 3
+lifetime = 0.6900000000000001
+trail_enabled = true
+trail_lifetime = 0.14
+trail_sections = 7
+trail_section_subdivisions = 3
+process_material = SubResource("ParticleProcessMaterial_l121k")
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bdg0v")
 
@@ -70,9 +113,33 @@ scale = Vector2(1.115, 1.16)
 shape = SubResource("RectangleShape2D_qn4ou")
 debug_color = Color(0.823213, 0.373721, 0.385799, 0.42)
 
+[node name="BossDestroy2" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossDestroy2"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ol8f7")
+
 [node name="SandTimer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="RetroTimer" type="Timer" parent="."]
+wait_time = 0.07
+one_shot = true
+
+[node name="RetroTimerMove" type="Timer" parent="."]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="BossDestroy" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [connection signal="body_entered" from="Area2DCrush" to="." method="_on_area_2d_crush_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="BossDestroy2" to="." method="_on_boss_destroy_2_body_entered"]
+[connection signal="timeout" from="RetroTimer" to="." method="_on_retro_timer_timeout"]
+[connection signal="timeout" from="RetroTimerMove" to="." method="_on_retro_timer_move_timeout"]
+[connection signal="timeout" from="BossDestroy" to="." method="_on_boss_destroy_timeout"]

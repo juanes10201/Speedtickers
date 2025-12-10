@@ -1,0 +1,177 @@
+[gd_scene load_steps=20 format=4 uid="uid://c33sp2pt55ctp"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_cshvh"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_c5hqx"]
+[ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="3_3av5j"]
+[ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Levels/Scripts/tile_map_layer.gd" id="4_w44gu"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="5_884pn"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="6_7ulu0"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="7_s26qe"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="8_oghcr"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="9_2vnwu"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="10_c13u2"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="11_uxdt6"]
+[ext_resource type="Shader" uid="uid://bqv1myhf1mr1x" path="res://assets/Levels/world1/SquiggleVision.gdshader" id="12_dyhps"]
+[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="13_cg276"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[sub_resource type="GDScript" id="GDScript_kdu5x"]
+script/source = "extends CanvasLayer
+@export var ShowFadeIn : bool = true
+@export var ShowFadeOut : bool = false
+@export var ShowTimer : bool = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Environment" id="Environment_vmlh1"]
+background_mode = 3
+glow_enabled = true
+glow_levels/3 = 0.0
+glow_levels/6 = 0.97
+glow_intensity = 0.21
+glow_strength = 1.27
+glow_bloom = 0.03
+glow_blend_mode = 1
+glow_hdr_threshold = 1.29
+adjustment_enabled = true
+adjustment_brightness = 1.05
+adjustment_saturation = 1.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oq6ls"]
+shader = ExtResource("12_dyhps")
+shader_parameter/jiggle = 0.515
+shader_parameter/speed = 2.21
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="Bg" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+texture = ExtResource("1_cshvh")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1000, 1000)
+script = ExtResource("2_c5hqx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
+libraries = {
+&"": SubResource("AnimationLibrary_0i2pc")
+}
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-2, 0)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AADv//z/AAACAAAAAADu//z/AAABAAAAAADt//z/AAABAAAAAADs//z/AAABAAAAAADr//z/AAAAAAAAAADv/wEAAAACAAIAAADv/wAAAAACAAEAAADv////AAACAAEAAADv//7/AAACAAEAAADv//3/AAACAAEAAADu/wEAAAABAAIAAADu/wAAAAABAAEAAADu////AAABAAEAAADu//7/AAABAAEAAADu//3/AAABAAEAAADt/wEAAAABAAIAAADt/wAAAAABAAEAAADt////AAABAAEAAADt//7/AAABAAEAAADt//3/AAABAAEAAADs/wEAAAABAAIAAADs/wAAAAABAAEAAADs////AAABAAEAAADs//7/AAABAAEAAADs//3/AAABAAEAAADr/wEAAAAAAAIAAADr/wAAAAAAAAEAAADr////AAAAAAEAAADr//7/AAAAAAEAAADr//3/AAAAAAEAAADu//D/AAAAAAEAAADu//H/AAAAAAEAAADu//L/AAAAAAEAAADu//P/AAAAAAIAAADv//D/AAACAAEAAADv//H/AAACAAEAAADv//L/AAACAAEAAADv//P/AAACAAIAAAD0//b/AAAAAAEAAAD0//f/AAAAAAEAAAD0//j/AAAAAAEAAAD0//n/AAAAAAIAAAD1//b/AAACAAEAAAD1//f/AAACAAEAAAD1//j/AAACAAEAAAD1//n/AAACAAIAAADu/+//AAAAAAAAAADv/+//AAACAAAAAAD0//X/AAAAAAAAAAD1//X/AAACAAAAAAD9//D/AAACAAIAAAD9/+//AAACAAAAAAD8//D/AAABAAIAAAD8/+//AAABAAAAAAD7//D/AAABAAIAAAD7/+//AAABAAAAAAD6//D/AAAAAAIAAAD6/+//AAAAAAAAAAA=")
+tile_set = ExtResource("3_3av5j")
+script = ExtResource("4_w44gu")
+
+[node name="Player2" parent="." instance=ExtResource("5_884pn")]
+position = Vector2(-317, -67)
+CountTime = false
+jump_height = 65.0
+ReplayAction = 0
+RecordedLocation = "res://assets/Replays/tutorial_level1_2.json"
+
+[node name="Player" parent="." instance=ExtResource("5_884pn")]
+position = Vector2(-317, -67)
+CountTime = false
+jump_height = 65.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(34.72986, -140.46005)
+offset = Vector2(-28.055, 23.85)
+zoom = Vector2(2.12, 2.12)
+limit_left = -383
+limit_top = -347
+limit_right = 153
+limit_bottom = 13
+limit_smoothed = true
+script = ExtResource("6_7ulu0")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("7_s26qe")]
+script = SubResource("GDScript_kdu5x")
+
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Flag" parent="." instance=ExtResource("8_oghcr")]
+position = Vector2(-65, -290)
+scale = Vector2(1.01682, 1)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("9_2vnwu")]
+environment = SubResource("Environment_vmlh1")
+
+[node name="AmbientParticles" parent="." instance=ExtResource("10_c13u2")]
+position = Vector2(-128, -319)
+
+[node name="KillBox" parent="." instance=ExtResource("11_uxdt6")]
+position = Vector2(-108, 34)
+scale = Vector2(58.64, 1)
+Visible = false
+
+[node name="Tutorial" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_oq6ls")
+position = Vector2(-187.61499, -148.3494)
+
+[node name="falling_sand" parent="." instance=ExtResource("13_cg276")]
+position = Vector2(-108, -263)
+
+[node name="falling_sand2" parent="." instance=ExtResource("13_cg276")]
+position = Vector2(-124, -263)
+
+[node name="falling_sand3" parent="." instance=ExtResource("13_cg276")]
+position = Vector2(-140, -263)
+
+[node name="falling_sand4" parent="." instance=ExtResource("13_cg276")]
+position = Vector2(-156, -263)

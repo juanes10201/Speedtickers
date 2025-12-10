@@ -46,12 +46,8 @@ var LASERS_ENABLED : Array[bool] = [false, false, false, false, false]
 var HaveKey : bool = false
 
 #region Export variables
-@onready var Replay = $System_replay
-@export var ReplayAction : Global.ReplayStates = Global.ReplayStates.STOPPED
-@export var RecordedActions : Array[Vector3] = []
-
 @export var EnableParticles : bool = true
-
+@export var RetroStyle : bool = false
 @export var PlayIntro : bool = false
 var juice : bool = true
 @export var Styleometter : bool = true 
@@ -143,6 +139,7 @@ var direction = get_axis()
 var Pause_fadeout : bool = false
 var OnSand : bool = false
 var was_on_floor : bool = true
+var was_on_floor_raycast : bool = true
 var Dead : bool = false
 
 var EnabledKillBox : Global.KillBoxTypes = Global.KillBoxTypes.Red
@@ -184,6 +181,35 @@ func _stop_slam_particles():
 
 
 
+@export_group("Recording")
+@onready var Replay = $System_replay
+@export var ReplayAction : Global.ReplayStates = Global.ReplayStates.STOPPED
+var RecordedActions : Array[Vector3] = []
+@export var RecordedLocation : String = "res://assets/Replays/tutorial_level1_1.json"
+
+
+func array_to_vec3(arr: Array) -> Array[Vector3]:
+	var out: Array[Vector3] = []
+	for a in arr:
+		out.append(Vector3(a[0], a[1], a[2]))
+	return out
+
+func _load_replay(Location : String) -> void:
+	var file = FileAccess.open(Location, FileAccess.READ)
+	if file:
+		var data = JSON.parse_string(file.get_as_text())
+		if typeof(data) == TYPE_ARRAY:
+			RecordedActions = array_to_vec3(data)
+		else:
+			push_error("Invalid JSON structure")
+
+func _save_replay(Location : String) -> void:
+	var json_array = RecordedActions.map(func(v): return [v.x, v.y, v.z])
+
+	var file := FileAccess.open(Location, FileAccess.WRITE)
+	file.store_string(JSON.stringify(json_array, "\t"))
+	print("Saved Replay Json")
+
 #region Debug
 func _input(event):
 	if event is InputEventKey and event.pressed:
@@ -210,9 +236,23 @@ func _input(event):
 			LevelManager.StyloMetter += 100
 		elif event.keycode == KEY_F3:
 			LevelManager.StyloMetter -= 100
+		elif event.keycode == KEY_F4:
+			if(ReplayAction != Global.ReplayStates.STOPPED):
+				_save_replay("res://assets/Replays/saved_replay.json")
 #endregion
 
 func _ready() -> void:
+	if(RetroStyle):
+		ParticlesSlide.fixed_fps = 15
+		ParticlesSlide.interpolate = false
+		ParticlesJump.fixed_fps = 15
+		ParticlesJump.interpolate = false
+		ParticlesDeathFloor.fixed_fps = 15
+		ParticlesDeathFloor.interpolate = false
+		ParticlesDeathAir.fixed_fps = 15
+		ParticlesDeathAir.interpolate = false
+	if(ReplayAction == Global.ReplayStates.REPLAY):
+		_load_replay(RecordedLocation)
 	if(SaveGame.get_config_value("Particles") != null):
 		Particles = SaveGame.get_config_value("Particles")
 	if(SaveGame.get_config_value("Juice") != null):
@@ -308,10 +348,10 @@ func _physics_process(delta: float) -> void:
 			Sprite.offset_play("Wall_jump")
 		elif(GroundSmash):
 			Sprite.offset_play("Groundsmash")
-		elif(AirState == AirSides.Falling):
+		elif(AirState == AirSides.Falling && !_is_on_floor_raycast()):
 			if(!Sprite.animation == "Jump"):
 				Sprite.offset_play("Jump")
-		elif(AirState == AirSides.Jumping):
+		elif(AirState == AirSides.Jumping && !_is_on_floor_raycast()):
 			if(!Sprite.animation == "Jump_start"):
 				Sprite.offset_play("Jump_start")
 		elif(!Slide):
@@ -325,7 +365,7 @@ func _physics_process(delta: float) -> void:
 		
 		#region Particles
 		#region Jump initial particles
-		if(!_is_on_floor() && was_on_floor):
+		if(!_is_on_floor_raycast() && was_on_floor_raycast):
 			Reset_Slide()
 			if(!ParticlesLanding.is_playing()):
 				ParticlesLanding.position = self.position
@@ -337,11 +377,11 @@ func _physics_process(delta: float) -> void:
 				ParticlesLanding.hide()
 		#endregion  
 		
-		if(_is_on_floor() && !was_on_floor):
+		if(_is_on_floor_raycast() && !was_on_floor_raycast):
 			strech_size(1.7, 0.5)
 			ParticlesJump.emitting = false
 			ParticlesLanding.hide()
-		if(!_is_on_floor() && Particles):
+		if(!_is_on_floor_raycast() && Particles):
 			ParticlesJump.emitting = true
 		#endregion
 		_strech_tick(delta)
@@ -367,6 +407,7 @@ func _physics_process(delta: float) -> void:
 		if(direction != 0): LastDirection = direction
 		
 		was_on_floor = _is_on_floor()
+		was_on_floor_raycast = _is_on_floor_raycast()
 		
 		#region Sand Sound
 		if(OnSand && !Slide): _play_sound(AudioWalkSand, false)
@@ -384,13 +425,14 @@ func _physics_process(delta: float) -> void:
 #endregion
 
 #region Walking sound
-func _play_sound(body, override):
+func _play_sound(body, override, pitch_scale: bool = true, gain : float = 1, pitch : float = 1):
 	if(body):
 		if(override && body.playing):
 			body.stop()
 		if(!body.playing):
 			if(body == AudioSlide): body.volume_db = -10
-			body.pitch_scale = randf_range(0.8, 1)
+			body.volume_db = gain
+			if(pitch_scale): body.pitch_scale = randf_range(0.8, 1)*pitch
 			body.play()
 func _stop_sound(body):
 	if(body.playing):
@@ -453,9 +495,9 @@ func _physics_apply_gravity(delta: float) -> void:
 		if(!WallJump && DashTime.is_stopped()):
 			velocity.y += get_gravity_player() * Acc.y * delta * GravityDirection * GravitySandFallDirection
 			if(!WallJump):
-				if(velocity.y*GravityDirection < 0): 
+				if(velocity.y*GravityDirection < 0 && !_is_on_floor_raycast()): 
 					strech_size(0.7, 1.2, true)
-				elif(velocity.y*GravityDirection >= MaxAcc.y):
+				elif(velocity.y*GravityDirection >= MaxAcc.y && !_is_on_floor_raycast()):
 					strech_size(0.7, 1.3, true)
 					#_play_sound(AudioWind, false)
 		#else: velocity.y += Speed.y * delta
@@ -465,20 +507,7 @@ func _physics_apply_gravity(delta: float) -> void:
 		#DashWithJump = false
 		DashWithJump = false
 		if(GroundSmash):
-			ParticlesLanding.position = self.position
-			ParticlesLanding.position.y -= 10
-			ParticlesLanding.set_as_top_level(true)
-			ParticlesLanding.play("groundsmash")
-			ParticlesLanding.show()
-			AudioGroundsmash.play()
-			GroundSmash = false
-			DidSlamStorage = false
-			DidDiagonalSlam = false
-			GroundSmashMultiplier = 1
-			JumpGroundsmashMultiplier.start()
-			if(Camera): Camera.Shake(10.0, 10.0)
-			enemy_jump()
-			EnemyGroundSlamTimer.start()
+			Reset_Groundsmash()
 		if(SlidingInAir):
 			Sliding = Sides.NONE
 			Slide = false
@@ -590,7 +619,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	if((is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash
-		if(!_is_on_floor() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
+		if(!_is_on_floor_raycast() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			velocity.y = GroundSmashVelocity * GravityDirection
 			#Slam Storage
@@ -738,7 +767,7 @@ func get_gravity_player() -> float:
 func On_Death():
 	if(Physics):
 		LevelManager.RemoveStyle(100)
-		if(_is_on_floor() && Particles): ParticlesDeathFloor.emitting = true
+		if(_is_on_floor_raycast() && Particles): ParticlesDeathFloor.emitting = true
 		elif(Particles): ParticlesDeathAir.emitting = true
 		Sprite.hide()
 		Physics = false
@@ -751,6 +780,12 @@ func On_Death():
 			if get_tree():
 				get_tree().reload_current_scene()
 #endregion
+
+
+@onready var GroundRaycast : RayCast2D = $GroundRaycast
+func _is_on_floor_raycast() -> bool:
+	GroundRaycast.enabled = true
+	return GroundRaycast.is_colliding()
 
 func _is_on_floor() -> bool:
 	if(GravityDirection == Global.GravityDirections.MAIN):
@@ -770,15 +805,31 @@ func is_near_wall() -> bool:
 #endregion
 
 func is_action_pressed(Action : String):
-	if(ReplayAction == Global.ReplayStates.STOPPED):
+	if(ReplayAction != Global.ReplayStates.REPLAY):
 		return Input.is_action_pressed(str(Action))
-	else:
+	elif(Replay):
 		return Replay.ReplayActions[Action]
 
 func get_axis():
-	if(ReplayAction == Global.ReplayStates.STOPPED):
+	if(ReplayAction != Global.ReplayStates.REPLAY):
 		return Input.get_axis("ui_left", "ui_right")
-	else:
+	elif(Replay):
 		if(Replay.ReplayActions["ui_left"]): return -1
 		if(Replay.ReplayActions["ui_right"]): return 1
 		else: return 0
+
+func Reset_Groundsmash() -> void:
+	ParticlesLanding.position = self.position
+	ParticlesLanding.position.y -= 10
+	ParticlesLanding.set_as_top_level(true)
+	ParticlesLanding.play("groundsmash")
+	ParticlesLanding.show()
+	AudioGroundsmash.play()
+	GroundSmash = false
+	DidSlamStorage = false
+	DidDiagonalSlam = false
+	GroundSmashMultiplier = 1
+	JumpGroundsmashMultiplier.start()
+	if(Camera): Camera.Shake(10.0, 10.0)
+	enemy_jump()
+	EnemyGroundSlamTimer.start()

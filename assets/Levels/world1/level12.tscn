@@ -191,7 +191,7 @@ position_smoothing_enabled = true
 script = ExtResource("6_mk621")
 
 [node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
-wait_time = 9.0
+wait_time = 11.0
 one_shot = true
 autostart = true
 

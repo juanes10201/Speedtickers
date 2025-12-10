@@ -3,6 +3,7 @@ extends Node
 #Order of levels
 @export var LevelOrder: Array[PackedScene]
 @export var LevelOrderBsides : Array[PackedScene]
+@export var LevelOrderGb : Array[PackedScene]
 @onready var ExpoTimer = $ExpoTimer
 var PlayedExpo : bool = false
 var ReturnAfterTimerInExpo : bool = true
@@ -20,16 +21,19 @@ func get_level_time():
 func get_level() -> int:
 	return Global.Level
 
-func change_to_level(Lvl : int, Bside : bool = false) -> void:
+func change_to_level(Lvl : int, Bside : bool = false, Gb : bool = false) -> void:
 	Global.Level = Lvl
 	print("Changing to level " + str(Lvl))
 	if(Lvl <= 0): Global.Level = 1
-	if(!Bside):
-		if(Lvl < LevelOrder.size()):
-			get_tree().change_scene_to_packed(LevelOrder[Lvl])
-	else:
+	if(Bside):
 		if(Lvl < LevelOrderBsides.size()):
 			get_tree().change_scene_to_packed(LevelOrderBsides[Lvl])
+	elif(Gb):
+		if(Lvl < LevelOrderBsides.size()):
+			get_tree().change_scene_to_packed(LevelOrderGb[Lvl])
+	else:
+		if(Lvl < LevelOrder.size()):
+			get_tree().change_scene_to_packed(LevelOrder[Lvl])
 
 var StyloMetter : int = 5 
 var StyloString : String = "B"
