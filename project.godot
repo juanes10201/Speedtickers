@@ -64,6 +64,8 @@ Enemie=""
 Piston=""
 PlayerReplay=""
 Boss=""
+TimerSpawner=""
+ClockRigidBody=""
 
 [input]
 

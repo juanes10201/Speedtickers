@@ -5,12 +5,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1rl84"]
 radius = 8.0
 
-[node name="ClockRigidBody" type="RigidBody2D"]
+[node name="ClockRigidBody" type="RigidBody2D" groups=["ClockRigidBody"]]
 collision_layer = 8192
 collision_mask = 336
 gravity_scale = 0.398
+angular_velocity = 0.65694195
+angular_damp_mode = 1
 
-[node name="Key16" parent="." instance=ExtResource("1_tl7vl")]
+[node name="Key" parent="." instance=ExtResource("1_tl7vl")]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

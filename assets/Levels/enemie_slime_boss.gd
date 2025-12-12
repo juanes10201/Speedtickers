@@ -11,8 +11,11 @@ extends CharacterBody2D
 @export var DistanceSlam : float = 200.0
 @export var DistanceStopMovSlam : float = 45.0
 @export var DistanceSlide : float = 350.0
+@export var DistanceWallJump : float = 200.0
 @export var VelSlideX : float = 500.0
 var Slide : bool = false
+var WallJump : bool = false
+var WallJumped : bool = false
 
 @export_group("Physics")
 @export var Enemy_burst_speed : float = 300.0
@@ -42,6 +45,7 @@ var direction = 0
 @onready var Player : ClassPlayer = SaveGame.get_player()
 @onready var MoveTimer : Timer = $"MoveTimer"
 @onready var Sprite : AnimatedSprite2D = $"Sprite2D"
+@onready var SlamTimer : Timer = $SlamTimer
 
 @onready var MoveSound : AudioStreamPlayer = Player.AudioSlimeMove if Player else null
 @onready var SlideSound : AudioStreamPlayer = Player.AudioSlimeKill if Player else null
@@ -71,11 +75,13 @@ var StatePlaying : bool = false
 
 @onready var AttackLight = $AttackLight
 
-@onready var SlamTimer = $SlamTimer
+@onready var WallJumpTimer = $WallJumpTimer
 @export var SlamTime : float = 1.0
 @export var GroundSmashVelocity : float = 600
 
 var Jumped : bool = false
+
+@onready var TimerSpawner = get_tree().get_nodes_in_group("TimerSpawner")[0] if get_tree().get_nodes_in_group("TimerSpawner").size() else null
 
 #endregion
 
@@ -90,10 +96,12 @@ func _groundsmash_player_sound() -> void:
 #endregion
 
 #region Jumping
-func _jump(_jump_velocity) -> void:
+func _jump(_jump_velocity, ignore : bool = false, Reg : bool = true, Replace : bool = true) -> void:
 	#The idea is for the enemies to jump when the player does a ground-smash
-	if(_is_on_floor()): velocity.y = _jump_velocity * GravityDirection*Player.GlobalGravityDirection# * randf_range(1, 1.2)
-	Jumped = true
+	if(velocity.y != 0 && !Replace): return
+	if(_is_on_floor() || ignore):
+		velocity.y = _jump_velocity * GravityDirection*Player.GlobalGravityDirection# * randf_range(1, 1.2)
+		if(Reg): Jumped = true
 #endregion
 
 #region Player GroundSmash 
@@ -149,7 +157,11 @@ var Hovering : bool = false
 @export var CanHover : bool = false
 
 func _update_direction() -> void:
-	direction = -1 if self.position.x-Player.position.x > 0 else 1
+	if(self.position.x-70 > Player.position.x):
+		direction = -1
+	elif(self.position.x+70 < Player.position.x):
+		direction = 1
+	#print("Direction: " + str(direction))
 
 func _input(event):
 	if(Edition.Is_in_editor && CanHover):
@@ -166,7 +178,16 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 	Sprite.material.set_shader_parameter("progress", 1-(ShootBulletTimer.time_left/ShootBulletTimer.wait_time))
 
 @export var grab_grid : float = 8.0
+
+var SlamJump : bool = false
+
 func _process(delta: float) -> void:
+	if(!WallJumpTimer.is_stopped()):
+		velocity.x = lerpf(velocity.x, -600.0*direction, 5*delta)
+		Slam = false
+	
+	if(Player && Player.Time_Left && Player.Time_Left.time_left <= 5.0):
+		TimerSpawner.spawn_clock(true)
 	if(RetroStyle):
 		position = _Position
 		position.x /= 8
@@ -200,20 +221,31 @@ func _process(delta: float) -> void:
 			$Moveparticles.emitting = false
 			$HitFlyParticles.emitting = false
 	if(Enabled):
-		if(abs(position.x-Player.position.x) >= DistanceSlide && !Jumped):
-			Slide = true
 		if(is_on_floor()):
 			Jumped = false
-		if(Jumped && velocity.y > 0 && !SlamTimer.is_stopped()):
-			if(abs(position.x-Player.position.x) <= DistanceStopMovSlam):
+			SlamJump = false
+		if(Jumped && !Slam && !WallJump):
+			if(!SlamJump && abs(position.x-Player.position.x) <= DistanceSlam && SlamTimer.is_stopped()):
+				SlamTimer.start()
+			if(velocity.y > 0 && !SlamTimer.is_stopped()):
+				if(abs(position.x-Player.position.x) <= DistanceStopMovSlam):
+					velocity.x = 0
+					velocity.y = 0
+		if(Slam || (WallJump && WallJumpTimer.is_stopped())):
+			if(!WallJump):
+				velocity.y = GroundSmashVelocity
 				velocity.x = 0
-			velocity.y -= 800 * delta
-		if(Slam):
-			if(is_on_floor()):
-				Slam = false
-				velocity.y = 0
-				Player.Camera.Shake(20.0, 20.0)
-			velocity.y = GroundSmashVelocity
+				if(is_on_floor()):
+					if(WallJump && WallJumpTimer.is_stopped()): WallJump = false
+					if(Slam && !SlamJump):
+						Slam = false
+						TimerSpawner.spawn_clock()
+						Player.Camera.Shake(20.0, 20.0)
+						if(WallJumped):
+							velocity.x = direction * SPEED * .4
+							SlamJump = true
+							_jump(JUMP_VELOCITY*.7)
+							WallJumped = false
 		AttackLight.enabled = (CountSpecialAttack+1) % 3 == 0
 		if(Slide):
 			velocity.x = VelSlideX * direction
@@ -253,19 +285,24 @@ func _process(delta: float) -> void:
 			Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
 			#region Horizontal Movement
 			#Enemy Movement
-			if(Move && Player):# && !Slide):
-				if (!Slide && direction && SPEED < MAX_SPEED && SPEED > MAX_SPEED*-1 && MoveTimer.is_stopped()):
-					velocity.x = direction * SPEED# * randf_range(1, 1.2)
-					strech_size(1.7, 0.5)
-					MoveTimer.start()
-					Player._play_sound(AudioMove, false)
-					CountSpecialAttack += 1
-					#Special Attack and Groundsmash
-					_update_direction()
-					if(CountSpecialAttack % 3 == 0):
-						_jump(JUMP_VELOCITY)
-						if(abs(position.x-Player.position.x) <= DistanceSlam):
-							SlamTimer.start()
+			if(Move && Player && !Slam && !WallJump):
+				if (!Jumped && direction && SPEED < MAX_SPEED && SPEED > MAX_SPEED*-1 && MoveTimer.is_stopped()):
+					if(!Slide):
+						velocity.x = direction * SPEED# * randf_range(1, 1.2)
+					if(abs(position.x-Player.position.x) >= DistanceSlide && !Jumped):
+						Slide = true
+					else:
+						strech_size(1.7, 0.5)
+						MoveTimer.start()
+						Player._play_sound(AudioMove, false)
+						CountSpecialAttack += 1
+						#Special Attack and Groundsmash
+						_update_direction()
+						if(CountSpecialAttack % 3 == 0):
+							_jump(JUMP_VELOCITY)
+							if(!Slide): velocity.x = direction * SPEED
+						else:
+							_jump(JUMP_VELOCITY*.3, false, false, false)
 				elif(!MoveTimer.is_stopped()):
 					if(direction > 0): velocity.x -= Cancel_speed*delta
 					elif(direction < 0): velocity.x += Cancel_speed*delta
@@ -378,13 +415,50 @@ func _on_damage_jump_body_entered(body: Node2D) -> void:
 
 
 func _on_slam_timer_timeout() -> void:
+	print("Done Slam")
 	Slam = true
 	Player._play_sound(AudioGroundsmash, true, true, 20, .7)
 	Player.Camera.Shake(7.0, 7.0)
 
 
 func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
-	_update_direction()
-	Slide = false
-	_jump(JUMP_VELOCITY)
-	MoveTimer.start()
+	if(Jumped):
+		_update_direction()
+		velocity.x = direction * SPEED * 1.2
+	if(!body.is_in_group("Tileset") || !(body is TileMap)): pass
+	if(WallJump):
+		_update_direction()
+		_jump(JUMP_VELOCITY*.8, true)
+		velocity.x = direction * SPEED * 1.5
+		Slam = false
+		WallJump = false
+		WallJumped = true
+	elif(Slide && !WallJump && abs(Player.position.x-position.x) >= DistanceWallJump):
+		print("Walljump")
+		WallJumpTimer.start()
+		_update_direction()
+		_jump(JUMP_VELOCITY, true)
+		velocity.x = direction * SPEED * 1.8
+		WallJump = true
+	if(Slide):
+		#Done Slide and touched wall
+		_update_direction()
+		Slide = false
+		TimerSpawner.spawn_clock()
+		_jump(JUMP_VELOCITY)
+		MoveTimer.start()
+
+
+func _on_wall_jump_timer_timeout() -> void:
+	pass
+	#print("Ended Walljump")
+
+
+func _on_damage_boss_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("Player")):
+		print("ATTACK")
+		Player.GroundSmash = false
+		Player.Reset_Groundsmash()
+		Player.DoJump()
+		velocity.y = 0
+		Player.velocity.y *= 2

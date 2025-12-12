@@ -156,7 +156,6 @@ var PlayedSwitchedGravityAnimation : bool = false
 
 @onready var Time_Left : Timer = $"../Time_Left"
 
-
 enum AirSides{
 	Jumping = 1,
 	Falling = 2,
@@ -618,7 +617,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 		#LevelManager.ExpoMoveTimeout.start()
 	if((is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
-		#Groundsmash
+		#3
 		if(!_is_on_floor_raycast() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			velocity.y = GroundSmashVelocity * GravityDirection

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://omysgch8q758" path="res://assets/Sprites/particles/enemy-boss-light.png" id="7_k3wkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o00k"]
-size = Vector2(86.00001, 46)
+size = Vector2(84.00001, 17.333334)
 
 [sub_resource type="Curve" id="Curve_o3y1q"]
 _data = [Vector2(0.87445885, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -93,12 +93,6 @@ alpha_curve = SubResource("CurveTexture_mxkeg")
 hue_variation_min = -0.02
 hue_variation_max = 0.03
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgh3g"]
-size = Vector2(47.34694, 38.3693)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3wkr"]
-size = Vector2(58.66668, 23.33333)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_2fkqx"]
 animations = [{
 "frames": [{
@@ -134,23 +128,30 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3wkr"]
+size = Vector2(62.58503, 18.705036)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgh3g"]
+size = Vector2(47.738766, 28.652275)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4y4c6"]
-size = Vector2(81.96721, 84.299995)
+size = Vector2(74.31693, 61.788883)
 
 [node name="Enemie" type="CharacterBody2D" groups=["Boss", "Enemie"]]
-position = Vector2(115.72, -23.74)
+position = Vector2(-1, -3)
 scale = Vector2(1.5, 1.5)
 collision_layer = 512
-collision_mask = 2448
+collision_mask = 2320
 script = ExtResource("1_kgh3g")
 SPEED = 220.0
 Can_BeGroundSmash = false
 
 [node name="StopSlideArea2D" type="Area2D" parent="."]
-collision_mask = 90
+collision_layer = 0
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StopSlideArea2D"]
-position = Vector2(0.5200043, 4.826667)
+position = Vector2(1.333334, 0.666667)
 shape = SubResource("RectangleShape2D_5o00k")
 debug_color = Color(0.6305382, 0.5291067, 0, 0.1882353)
 
@@ -188,32 +189,36 @@ trail_enabled = true
 trail_lifetime = 0.08
 process_material = SubResource("ParticleProcessMaterial_kgh3g")
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemie"]]
-collision_layer = 2
-collision_mask = 1152
-script = ExtResource("5_e2swo")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" groups=["Enemie"]]
-position = Vector2(1.186676, 5.16)
-scale = Vector2(1.2250001, 1.3900001)
-shape = SubResource("RectangleShape2D_kgh3g")
-debug_color = Color(0.846084, 0.377331, 0, 0.42)
-
-[node name="DamageJump" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageJump"]
-position = Vector2(0.8533325, -26.506668)
-shape = SubResource("RectangleShape2D_k3wkr")
-debug_color = Color(0.8917581, 0.29665956, 0.36566538, 0.41960785)
-
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.5199993, 31.826668)
 sprite_frames = SubResource("SpriteFrames_2fkqx")
 animation = &"Walking"
 offset = Vector2(-0.28, -34.75)
 
+[node name="DamageBoss" type="Area2D" parent="." groups=["Enemie"]]
+collision_layer = 2
+collision_mask = 129
+script = ExtResource("5_e2swo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageBoss" groups=["Enemie"]]
+position = Vector2(1.6666667, -21)
+scale = Vector2(1.2250001, 1.3900001)
+shape = SubResource("RectangleShape2D_k3wkr")
+debug_color = Color(0, 0.59545445, 0.72595024, 0.41960785)
+
+[node name="DamagePlayer" type="Area2D" parent="." groups=["Enemie"]]
+collision_layer = 2
+collision_mask = 1152
+script = ExtResource("5_e2swo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamagePlayer" groups=["Enemie"]]
+position = Vector2(1.4266698, 11.913333)
+scale = Vector2(1.2250001, 1.3900001)
+shape = SubResource("RectangleShape2D_kgh3g")
+debug_color = Color(0.846084, 0.377331, 0, 0.42)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemie"]]
-position = Vector2(1.8533325, 6.449998)
+position = Vector2(1.333334, 13.203334)
 scale = Vector2(0.61, 0.6)
 shape = SubResource("RectangleShape2D_4y4c6")
 
@@ -223,11 +228,16 @@ color = Color(1, 1, 1, 0.12941177)
 energy = 7.79
 texture = ExtResource("7_k3wkr")
 
+[node name="WallJumpTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="SlamTimer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
 
 [connection signal="body_entered" from="StopSlideArea2D" to="." method="_on_stop_slide_area_2d_body_entered"]
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
-[connection signal="body_entered" from="DamageJump" to="." method="_on_damage_jump_body_entered"]
+[connection signal="body_entered" from="DamageBoss" to="." method="_on_damage_boss_body_entered"]
+[connection signal="area_entered" from="DamagePlayer" to="DamagePlayer" method="_on_area_entered"]
+[connection signal="timeout" from="WallJumpTimer" to="." method="_on_wall_jump_timer_timeout"]
 [connection signal="timeout" from="SlamTimer" to="." method="_on_slam_timer_timeout"]

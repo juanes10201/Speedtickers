@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 		self.position.y = (floor(self.position.y/grab_grid)*grab_grid)+10.0
 		
 func _on_body_entered(body: Node2D) -> void:
-	if (body.is_in_group("Player") || body.is_in_group("Enemie")):
+	if ((body.is_in_group("Player") || body.is_in_group("Enemie")) && visible):
 		SaveGame.get_player().LASERS_ENABLED[Laser_Color] = true
 		_set_visible(false)
 		LevelManager.AddStyle(0, "Laser")

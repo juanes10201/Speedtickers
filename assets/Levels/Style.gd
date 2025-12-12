@@ -41,8 +41,6 @@ func _create_point_particles(score: int):
 	if(score <= 0): return
 	var _particle = _get_free_point_particle()
 	if(!_particle): return
-	
-	print("done")
 	_particle.visible = true
 	_particle.DespawnTimer.start()
 	_particle.text = "+" + str(score)

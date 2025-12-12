@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var Player : ClassPlayer = $"../Player"
+@onready var Player : ClassPlayer = SaveGame.get_player()
 @export var AditionalAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
 @export var AnotherAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
 
@@ -13,6 +13,8 @@ extends Area2D
 @export var RespawnTime : float = 1.0
 
 @export var TakeKey : bool = true
+
+@export var Despawn : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,7 +64,7 @@ func _process(delta: float) -> void:
 				$AnimatedSprite2D.play("orb")
 
 func _on_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Player") && Player && !done):
+	if(body.is_in_group("Player") && !done):
 		set_key_state(true, true)
 		if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
 			LevelManager.AddStyle(0, "Changed Gravity")
@@ -97,6 +99,9 @@ func set_key_state(state : bool, PlayAction : bool):
 			TimerRespawn.start() 
 		Global.Play_Global_Action(AditionalAction)
 		Global.Play_Global_Action(AnotherAction)
+	if(state && Despawn):
+		if(get_parent().is_in_group("ClockRigidBody")): get_parent().queue_free()
+		queue_free()
 
 
 func _on_timer_respawn_timeout() -> void:
