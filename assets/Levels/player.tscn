@@ -900,3 +900,11 @@ debug_color = Color(0, 0.6, 0.701961, 0.14902)
 
 [node name="System_replay" type="Node2D" parent="."]
 script = ExtResource("33_t4ba7")
+
+[node name="KickTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="InvencibilityTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

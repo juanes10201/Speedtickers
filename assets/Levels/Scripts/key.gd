@@ -100,6 +100,10 @@ func set_key_state(state : bool, PlayAction : bool):
 		Global.Play_Global_Action(AditionalAction)
 		Global.Play_Global_Action(AnotherAction)
 	if(state && Despawn):
+		var Boss = get_tree().get_nodes_in_group("Boss")[0] if get_tree().get_nodes_in_group("Boss").size() else null
+		if(Boss):
+			Boss.CooldownHitTimer.start()
+			Boss.Move = false
 		if(get_parent().is_in_group("ClockRigidBody")): get_parent().queue_free()
 		queue_free()
 

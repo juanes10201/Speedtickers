@@ -9,7 +9,6 @@ var CountClock : int = 0
 # Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
 #	spawn_clock()
-
 func spawn_clock(SpawnAlways : bool = false) -> void:
 	CountClock += 1
 	#print(CountClock)

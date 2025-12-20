@@ -13,6 +13,10 @@ extends CharacterBody2D
 @export var DistanceSlide : float = 350.0
 @export var DistanceWallJump : float = 200.0
 @export var VelSlideX : float = 500.0
+@export var InitialLife : int = 15
+@export var Phase2Life : int = 5
+@export var Phase2SlamTime : float = .7
+@export var Phase2MoveTime : float = .7
 var Slide : bool = false
 var WallJump : bool = false
 var WallJumped : bool = false
@@ -53,6 +57,8 @@ var direction = 0
 @onready var AudioGroundsmash : AudioStreamPlayer = Player.AudioSlimeGroundsmash if Player else null
 
 @onready var ShootBulletTimer : Timer = $ShootBulletTimer
+@onready var CooldownFastTimer : Timer = $CooldownFastTimer
+@onready var CooldownHitTimer : Timer = $CooldownHitTimer
 
 @onready var BulletObject = preload("res://assets/Levels/bullets.tscn")# if enemy_type == 2 else null
 
@@ -82,6 +88,8 @@ var StatePlaying : bool = false
 var Jumped : bool = false
 
 @onready var TimerSpawner = get_tree().get_nodes_in_group("TimerSpawner")[0] if get_tree().get_nodes_in_group("TimerSpawner").size() else null
+
+@onready var EnemyLife : int = InitialLife
 
 #endregion
 
@@ -150,7 +158,7 @@ func _ready():
 	if(MoveTimer): MoveTimer.wait_time = TimeAttack
 	if(Activate_on_color != Global.LASER_COLORS.NONE):
 		Enabled = false
-		Sprite.play("Laser")
+		_Play_Animation("Laser")
 
 var editable = preload("res://assets/Levels/Scripts/default_object.gd").new()
 var Hovering : bool = false
@@ -224,7 +232,7 @@ func _process(delta: float) -> void:
 		if(is_on_floor()):
 			Jumped = false
 			SlamJump = false
-		if(Jumped && !Slam && !WallJump):
+		if(Jumped && !Slam && !WallJump && Move):
 			if(!SlamJump && abs(position.x-Player.position.x) <= DistanceSlam && SlamTimer.is_stopped()):
 				SlamTimer.start()
 			if(velocity.y > 0 && !SlamTimer.is_stopped()):
@@ -232,22 +240,23 @@ func _process(delta: float) -> void:
 					velocity.x = 0
 					velocity.y = 0
 		if(Slam || (WallJump && WallJumpTimer.is_stopped())):
-			if(!WallJump):
-				velocity.y = GroundSmashVelocity
-				velocity.x = 0
-				if(is_on_floor()):
-					if(WallJump && WallJumpTimer.is_stopped()): WallJump = false
-					if(Slam && !SlamJump):
-						Slam = false
-						TimerSpawner.spawn_clock()
-						Player.Camera.Shake(20.0, 20.0)
-						if(WallJumped):
-							velocity.x = direction * SPEED * .4
-							SlamJump = true
-							_jump(JUMP_VELOCITY*.7)
-							WallJumped = false
+			if(Move):
+				if(!WallJump && Slam):
+					velocity.y = GroundSmashVelocity
+					velocity.x = 0
+					if(is_on_floor()):
+						if(WallJump && WallJumpTimer.is_stopped()): WallJump = false
+						if(Slam && !SlamJump):
+							Slam = false
+							TimerSpawner.spawn_clock()
+							Player.Camera.Shake(20.0, 20.0)
+							if(WallJumped):
+								velocity.x = direction * SPEED * .4
+								SlamJump = true
+								_jump(JUMP_VELOCITY*.7)
+								WallJumped = false
 		AttackLight.enabled = (CountSpecialAttack+1) % 3 == 0
-		if(Slide):
+		if(Slide && Move):
 			velocity.x = VelSlideX * direction
 		
 		#if(Player):
@@ -266,10 +275,15 @@ func _process(delta: float) -> void:
 			#if(is_on_wall() && !was_on_wall): direction *= -1
 			
 			#if(is_on_ceiling()): queue_free()
-			if(velocity.y < 0): strech_size(0.7, 1.3)
-			if(velocity.y >= MAX_FALL_SPEED): strech_size(0.5, 1.7)
 			
-			if(_is_on_floor() && was_on_floor == false): strech_size(1.7, 0.5)
+			#var _def_x = 0.6/MAX_FALL_SPEED*velocity.y
+			#var _def_y = 1.4/MAX_FALL_SPEED*velocity.y
+			#strech_size(_def_x, _def_y)
+			
+			if(velocity.y < 0): strech_size(0.7, 1.4)
+			if(velocity.y >= MAX_FALL_SPEED): strech_size(0.4, 1.8)
+			
+			if(_is_on_floor() && was_on_floor == false): strech_size(1.8, 0.5)
 			
 			_strech_tick(delta)
 			
@@ -328,9 +342,10 @@ func _process(delta: float) -> void:
 
 #region Scaling
 @onready var original_scale = Sprite.scale
-func strech_size(X, Y):
-	Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
-	Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
+func strech_size(X, Y, Override : bool = true):
+	if(Override || (Sprite.scale.x == original_scale.x && Sprite.scale.y == original_scale.y) ):
+		Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
+		Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
 
 func _strech_tick(delta : float):
 	Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 15 * delta
@@ -395,9 +410,9 @@ func _update_sprite() -> void:
 	#if Y mov > 0 then play Jump
 	#If moving horizontally Walking
 	#Else idle
-	if(velocity.y != 0): Sprite.play("Air")
-	elif( abs(velocity.x-dif_max_move) > 0 && !is_on_wall() ): Sprite.play("Walking")
-	else: Sprite.play("Idle")
+	if(velocity.y != 0): _Play_Animation("Air")
+	elif( abs(velocity.x-dif_max_move) > 0 && !is_on_wall() ): _Play_Animation("Walking")
+	else: _Play_Animation("Idle")
 
 func _is_on_floor() -> bool:
 	if(GravityDirection*Player.GlobalGravityDirection == 1):
@@ -456,9 +471,39 @@ func _on_wall_jump_timer_timeout() -> void:
 
 func _on_damage_boss_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
-		print("ATTACK")
+		Player.DashTime.stop()
 		Player.GroundSmash = false
 		Player.Reset_Groundsmash()
-		Player.DoJump()
-		velocity.y = 0
+		Player.DoJump() 
 		Player.velocity.y *= 2
+		Player.KickSpeed.x = 20000.0
+		Player.Dashed = false
+		if(Player.global_position.x <= $DamagePlayerMarker.global_position.x):
+			Player.KickSpeed.x *= -1 
+		if(CooldownFastTimer.is_stopped()):
+			Player.KickTimer.start()
+			CooldownFastTimer.start()
+			Move = false
+			EnemyLife -= 1
+			LevelManager.AddStyle(1, "Damaged Boss")
+			print("ATTACKED BOSS: " + str(EnemyLife))
+			UpdateLife()
+			Player.InvencibilityTimer.start()
+
+
+func _on_cooldown_hit_timer_timeout() -> void:
+	Move = true
+
+func UpdateLife() -> void:
+	if(EnemyLife <= Phase2Life):
+		print("Entered phase 2")
+		MoveTimer.wait_time = Phase2MoveTime
+		SlamTimer.wait_time = Phase2SlamTime
+	if(EnemyLife <= 0):
+		On_Death()
+
+func _Play_Animation(Anim : String, Phase : bool = true) -> void:
+	if(!Phase || EnemyLife > Phase2Life):
+		Sprite.play(Anim)
+	else:
+		Sprite.play("Phase2_" + Anim)

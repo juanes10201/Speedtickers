@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://fswjgnqueri7"]
+[gd_scene load_steps=27 format=3 uid="uid://fswjgnqueri7"]
 
 [ext_resource type="Script" uid="uid://cgi2e0x746x3q" path="res://assets/Levels/enemie_slime_boss.gd" id="1_kgh3g"]
 [ext_resource type="Texture2D" uid="uid://bvoudjtf4fdrs" path="res://assets/Sprites/particles/slime-move-particles.png" id="2_qnnf1"]
 [ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="3_pu110"]
 [ext_resource type="Texture2D" uid="uid://b145nvnbk486f" path="res://assets/Sprites/particles/slime-particles.png" id="4_oe3ev"]
 [ext_resource type="Script" uid="uid://bxajmd1fdab0t" path="res://assets/Levels/Enemie_slime_boss_area_2d.gd" id="5_e2swo"]
+[ext_resource type="Texture2D" uid="uid://cp3kt7qp3n0rx" path="res://assets/Sprites/Bosses/placeholder-slime-phase2.png" id="6_5o00k"]
 [ext_resource type="Texture2D" uid="uid://gf7k4l1cys8w" path="res://assets/Sprites/Bosses/placeholder-slime.png" id="6_e2swo"]
 [ext_resource type="Texture2D" uid="uid://omysgch8q758" path="res://assets/Sprites/particles/enemy-boss-light.png" id="7_k3wkr"]
 
@@ -121,6 +122,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_5o00k")
+}],
+"loop": true,
+"name": &"Phase2_Air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5o00k")
+}],
+"loop": true,
+"name": &"Phase2_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5o00k")
+}],
+"loop": true,
+"name": &"Phase2_Laser",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5o00k")
+}],
+"loop": true,
+"name": &"Phase2_Walking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_e2swo")
 }],
 "loop": true,
@@ -129,7 +162,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3wkr"]
-size = Vector2(62.58503, 18.705036)
+size = Vector2(62.58503, 27.33813)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgh3g"]
 size = Vector2(47.738766, 28.652275)
@@ -192,7 +225,7 @@ process_material = SubResource("ParticleProcessMaterial_kgh3g")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.5199993, 31.826668)
 sprite_frames = SubResource("SpriteFrames_2fkqx")
-animation = &"Walking"
+animation = &"Idle"
 offset = Vector2(-0.28, -34.75)
 
 [node name="DamageBoss" type="Area2D" parent="." groups=["Enemie"]]
@@ -201,7 +234,7 @@ collision_mask = 129
 script = ExtResource("5_e2swo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageBoss" groups=["Enemie"]]
-position = Vector2(1.6666667, -21)
+position = Vector2(1.6666667, -21.666668)
 scale = Vector2(1.2250001, 1.3900001)
 shape = SubResource("RectangleShape2D_k3wkr")
 debug_color = Color(0, 0.59545445, 0.72595024, 0.41960785)
@@ -236,8 +269,21 @@ one_shot = true
 wait_time = 0.7
 one_shot = true
 
+[node name="DamagePlayerMarker" type="Marker2D" parent="."]
+position = Vector2(0.6666667, -24)
+
+[node name="CooldownFastTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CooldownHitTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="body_entered" from="StopSlideArea2D" to="." method="_on_stop_slide_area_2d_body_entered"]
 [connection signal="body_entered" from="DamageBoss" to="." method="_on_damage_boss_body_entered"]
 [connection signal="area_entered" from="DamagePlayer" to="DamagePlayer" method="_on_area_entered"]
 [connection signal="timeout" from="WallJumpTimer" to="." method="_on_wall_jump_timer_timeout"]
 [connection signal="timeout" from="SlamTimer" to="." method="_on_slam_timer_timeout"]
+[connection signal="timeout" from="CooldownFastTimer" to="." method="_on_cooldown_hit_timer_timeout"]
+[connection signal="timeout" from="CooldownHitTimer" to="." method="_on_cooldown_hit_timer_timeout"]

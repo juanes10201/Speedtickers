@@ -55,6 +55,7 @@ var juice : bool = true
 @export_group("Physics")
 @export var Physics : bool = true
 @export var Acc_Multiplier : float = 1
+@onready var InvencibilityTimer : Timer = $InvencibilityTimer
 
 @export_subgroup("Jump")
 @export_range(0, 7000.0, .5, "or_greater", "or_less") var WallJumpVelocity : float = 7000.0
@@ -155,6 +156,9 @@ var PlayedSwitchedGravityAnimation : bool = false
 @export var Particles : bool = true
 
 @onready var Time_Left : Timer = $"../Time_Left"
+
+var KickSpeed : Vector2 = Vector2(0.0,0.0)
+@onready var KickTimer : Timer = $KickTimer
 
 enum AirSides{
 	Jumping = 1,
@@ -417,6 +421,10 @@ func _physics_process(delta: float) -> void:
 		if(_is_on_ceiling()):
 			CeilingMovementMultiplierTimer.start()
 		if(!CeilingMovementMultiplierTimer.is_stopped()): velocity.x *= 1.3
+		
+		if(!KickTimer.is_stopped() && DashTime.is_stopped() && !GroundSmash):
+			velocity.x += KickSpeed.x * delta
+			velocity.x = lerpf(velocity.x, 0, 10*delta)
 		
 		# Move the character
 		move_and_slide()
@@ -764,7 +772,7 @@ func get_gravity_player() -> float:
 
 #region Death
 func On_Death():
-	if(Physics):
+	if(Physics && InvencibilityTimer.is_stopped()):
 		LevelManager.RemoveStyle(100)
 		if(_is_on_floor_raycast() && Particles): ParticlesDeathFloor.emitting = true
 		elif(Particles): ParticlesDeathAir.emitting = true

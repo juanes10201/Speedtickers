@@ -16,6 +16,9 @@ func _on_area_entered(area: Area2D) -> void:
 				#if(playerbody.Slide):
 				#	get_parent()._on_player_slide_signal()
 			elif(area.is_in_group("PlayerHitBox")):# && !playerbody.Slide):
-				playerbody.On_Death()
+				if(playerbody.Dashed && !playerbody.DashTime.is_stopped()):
+					get_parent()._on_damage_boss_body_entered(playerbody)
+				else:
+					playerbody.On_Death()
 		else:
 			if(!get_parent().check_collision()): get_parent().enable_collision()
