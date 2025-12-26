@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://djqwajvc8m3td"]
+[gd_scene load_steps=45 format=3 uid="uid://djqwajvc8m3td"]
 
 [ext_resource type="Script" uid="uid://cw42kfrmafcwu" path="res://assets/Levels/Scripts/enemie_physics.gd" id="1_ny8g4"]
 [ext_resource type="Texture2D" uid="uid://bvoudjtf4fdrs" path="res://assets/Sprites/particles/slime-move-particles.png" id="2_o3y1q"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b145nvnbk486f" path="res://assets/Sprites/particles/slime-particles.png" id="4_caayp"]
 [ext_resource type="Texture2D" uid="uid://bdfwqq1sobvi8" path="res://assets/Sprites/slime-laser-Sheet-idle.png" id="4_k4yf5"]
 [ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="6_20qa8"]
+[ext_resource type="Texture2D" uid="uid://btdvgj622febg" path="res://assets/Sprites/slime-laser-Sheet-cleaning.png" id="7_c4dyi"]
 
 [sub_resource type="Curve" id="Curve_o3y1q"]
 _data = [Vector2(0.87445885, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -196,6 +197,14 @@ animations = [{
 "loop": true,
 "name": &"Air",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_c4dyi")
+}],
+"loop": true,
+"name": &"Cleaning",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,

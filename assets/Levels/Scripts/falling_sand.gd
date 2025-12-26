@@ -114,7 +114,7 @@ func _integrate_forces(state):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player") || body.is_in_group("Enemie") || body.is_in_group("Boss")):
 		if (body.is_in_group("Player")):
-			if(body.ReplayAction != Global.ReplayStates.STOPPED): return
+			if(body.ReplayStyle): return
 			#Player.GravitySandFallDirection = Player.GlobalGravityDirection
 			#if(body.GroundSmash):
 			#	MAX_SPEED *= SlamAdd
@@ -124,6 +124,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				await get_tree().create_timer(wait_time).timeout
 		if(body.is_in_group("Boss")):
 			$BossDestroy.start()
+		Player._play_sound(Player.AudioSandFall, true, true, 1, 1, .6)
 		set_falling(true)
 
 func set_falling(falling : bool) -> void:

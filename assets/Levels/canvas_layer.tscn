@@ -885,7 +885,6 @@ theme_override_font_sizes/normal_font_size = 81
 bbcode_enabled = true
 text = "0"
 scroll_active = false
-script = ExtResource("1_lu8t7")
 
 [node name="ui_text_seg2" type="RichTextLabel" parent="."]
 visible = false

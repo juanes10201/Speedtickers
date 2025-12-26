@@ -87,7 +87,7 @@ var Paused : bool = false
 @onready var ReturnToGameTime = $ReturnToGameTime
 
 
-var LastDirection : float = 0
+var LastDirection : float = 1
 var direction = get_axis()
 
 @onready var DashCooldownTimer : Timer = $DashCooldownTimer
@@ -118,6 +118,7 @@ var direction = get_axis()
 @onready var AudioKey : AudioStreamPlayer = $AudioKey
 @onready var AudioDeath : AudioStreamPlayer = SongPlayer.AudioDeath
 @onready var AudioOrbGravity : AudioStreamPlayer = $AudioOrbGravity
+@onready var AudioSandFall : AudioStreamPlayer = $AudioSandFall
 
 @onready var AudioClockBreak : AudioStreamPlayer = $AudioClockBreak
 
@@ -136,6 +137,11 @@ var direction = get_axis()
 
 @onready var DashParticles1 = $"DashParticles1"
 @onready var SlamParticles1 = $"SlamParticles1"
+
+@onready var SlideDestroyTiles = $"SlideDestroyTiles"
+@onready var SlamDestroyTiles = $"SlamDestroyTiles"
+
+#@onready var OriginalCameraY : float = Camera.offset.y if Camera else 0
 
 var Pause_fadeout : bool = false
 var OnSand : bool = false
@@ -187,6 +193,7 @@ func _stop_slam_particles():
 @export_group("Recording")
 @onready var Replay = $System_replay
 @export var ReplayAction : Global.ReplayStates = Global.ReplayStates.STOPPED
+@export var ReplayStyle : bool = false
 var RecordedActions : Array[Vector3] = []
 @export var RecordedLocation : String = "res://assets/Replays/tutorial_level1_1.json"
 
@@ -275,13 +282,17 @@ func _ready() -> void:
 		#If level is not identified search for it
 		SaveGame.PlayedIntroBool = true
 		Global.Level = 0
+		$TimerIntroSlam.start()
+		Physics = false
+		Sprite.hide()
 	
 	if(TransitionOut): TransitionOut.hide()
 	if(TransitionIn): TransitionIn.show()
 	if(TransitionIn): TransitionIn.fade_out()
 	
 	if(PlayIntro):
-		Camera.offset.y = -226.31
+		$Camera2D/AnimationPlayer.play("Start")
+		#Camera.offset.y = $Camera2D/InitialPoint.global_position.y
 		FrameFreeze(.4, 2)
 	
 	#region Change music style to ingame
@@ -291,7 +302,9 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
-	if(ReplayAction != Global.ReplayStates.STOPPED):
+	SlideDestroyTiles.target_position.x = abs(SlideDestroyTiles.target_position.x)
+	if(LastDirection < 0): SlideDestroyTiles.target_position.x *= -1
+	if(ReplayStyle):
 		Sprite.modulate.a = 0.7
 		Particles = false
 	#if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
@@ -313,6 +326,8 @@ func _physics_process(delta: float) -> void:
 	$Wallchecker.rotation_degrees = 90 if LastDirection < 0 else -90
 	_pause_menu_end_tick()
 	#endregion
+	#if(PlayIntro):
+	#	Camera.offset.y = lerpf(Camera.offset.y, OriginalCameraY, .6*delta)
 	if(Physics):
 		LevelManager.ExpoMoveTimeout.paused = false
 		if(velocity.y > 0):
@@ -321,8 +336,6 @@ func _physics_process(delta: float) -> void:
 			AirState = AirSides.Jumping
 		else:
 			AirState = AirSides.NONE
-		if(PlayIntro):
-			Camera.offset.y = lerpf(Camera.offset.y, 23.85, 1*delta)
 		
 		WasSliding = false
 		var direction = get_axis()
@@ -432,14 +445,14 @@ func _physics_process(delta: float) -> void:
 #endregion
 
 #region Walking sound
-func _play_sound(body, override, pitch_scale: bool = true, gain : float = 1, pitch : float = 1):
+func _play_sound(body, override, pitch_scale: bool = true, gain : float = 1, pitch : float = 1, min_pitch : float = .8, min_time_change : float = 0.0):
 	if(body):
-		if(override && body.playing):
+		if(override && body.playing && body.get_playback_position() >= min_time_change):
 			body.stop()
 		if(!body.playing):
 			if(body == AudioSlide): body.volume_db = -10
 			body.volume_db = gain
-			if(pitch_scale): body.pitch_scale = randf_range(0.8, 1)*pitch
+			if(pitch_scale): body.pitch_scale = randf_range(min_pitch, 1)*pitch
 			body.play()
 func _stop_sound(body):
 	if(body.playing):
@@ -620,12 +633,14 @@ var DidDiagonalSlam : bool = false
 
 #region Slide and Ground Smash
 func _physics_slide_and_groundsmash(delta: float) -> void:
+	if(GroundSmash):
+		_Destroy_Tiles_Slam()
 	if(!is_action_pressed("player_slide")):
 		SlidingInAir = false
 		#LevelManager.ExpoMoveTimeout.start()
 	if((is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
-		#3
+		#Groundsmash/Slam
 		if(!_is_on_floor_raycast() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			velocity.y = GroundSmashVelocity * GravityDirection
@@ -643,6 +658,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 			set_collision_mask_value(4, false)
 		#Slide
 		elif(!SlidingInAir && !PressingGroundSmash):
+			_Destroy_Tiles_Slide()
 			if(SlideVelocity == 0): SlideVelocity = SlideInitialVelocity
 			#SlideVelocity += SlideAcc * delta
 			PressedSlide = true
@@ -785,8 +801,41 @@ func On_Death():
 		if(!Edition.Is_in_editor && ReplayAction == Global.ReplayStates.STOPPED):
 			await(get_tree().create_timer(TimeDeath).timeout)
 			if get_tree():
-				get_tree().reload_current_scene()
+				get_tree().reload_current_scene() 
 #endregion
+
+func _Destroy_Tiles_Slide() -> void:
+	_Raycast_Destroy_Tiles(SlideDestroyTiles)
+
+func _Destroy_Tiles_Slam() -> void:
+	_Raycast_Destroy_Tiles(SlamDestroyTiles)
+
+func _Raycast_Destroy_Tiles(Raycaster : RayCast2D) -> void:
+	Raycaster.enabled = true
+	if(Raycaster.is_colliding()):
+		var hit_collider = Raycaster.get_collider()
+		if hit_collider.get_class() == "TileMapLayer":
+			var tilemap = hit_collider
+			var hit_pos_global = Raycaster.get_collision_point()
+			var hit_pos_local = tilemap.to_local(hit_pos_global)
+			var tile_pos: Vector2i = tilemap.local_to_map(hit_pos_local)
+			tilemap.set_cell(tile_pos, -1)
+			
+			print("Destroyed tile: " + str(tile_pos))
+			
+			var DestroyParticles = preload("res://assets/Levels/world1/ParticleBreakGlass.tscn")
+			var InstanceParticles = DestroyParticles.instantiate()
+			get_tree().current_scene.add_child(InstanceParticles)
+			InstanceParticles.position = self.position
+			print(tile_pos)
+			if(randf() > .7):
+				_play_sound($AudioGlassBreak_part1, true, true, -5, 1, .9, .1)
+			if(randf() > .4):
+				_play_sound($AudioGlassBreak_part2, true, true, -5, 1, .7, 0.0)
+			_play_sound($AudioGlassBreak_part3, true, true, -5, 1, .7, 0.2)
+			_play_sound($AudioGlassBreak_part4, true, true, -5, 1, .7, .1)
+			_play_sound($AudioGlassBreak_part5, true, true, -5, 1, .8, .1)
+			LevelManager.AddStyle(0, "Broke Glass")
 
 
 @onready var GroundRaycast : RayCast2D = $GroundRaycast
@@ -840,3 +889,11 @@ func Reset_Groundsmash() -> void:
 	if(Camera): Camera.Shake(10.0, 10.0)
 	enemy_jump()
 	EnemyGroundSlamTimer.start()
+
+
+func _on_timer_intro_slam_timeout() -> void:
+	Physics = true
+	Sprite.show()
+	Input.action_press("player_slide")
+	await get_tree().create_timer(.5).timeout
+	Input.action_release("player_slide")

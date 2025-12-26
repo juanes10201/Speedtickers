@@ -11,6 +11,7 @@ var SelectedButton = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	show()
 	#If connected controller
 	if(!Input.get_connected_joypads().size() == 0):
 		SelectedButton = PauseButtons.RESUME_GAME

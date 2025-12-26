@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cykeyxkv73jjt"]
 
 [ext_resource type="Script" uid="uid://fce3hghglf5u" path="res://assets/Levels/Scripts/falling_sand.gd" id="1_8diny"]
-[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="2_703h2"]
+[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="2_ol8f7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bujpq"]
 size = Vector2(8, 5.7561)
@@ -35,19 +35,25 @@ turbulence_noise_speed_random = 0.13
 turbulence_influence_min = 0.017
 turbulence_influence_max = 0.067
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ol8f7"]
-atlas = ExtResource("2_703h2")
-region = Rect2(96, 0, 16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol8f7"]
+size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn0sm"]
-atlas = ExtResource("2_703h2")
-region = Rect2(208, 0, 16, 16)
+atlas = ExtResource("2_ol8f7")
+region = Rect2(224, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdg0v"]
+atlas = ExtResource("2_ol8f7")
+region = Rect2(224, 160, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bdg0v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ol8f7")
+"texture": SubResource("AtlasTexture_bn0sm")
 }],
 "loop": true,
 "name": &"default",
@@ -55,18 +61,12 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bn0sm")
+"texture": SubResource("AtlasTexture_bdg0v")
 }],
 "loop": true,
 "name": &"inverted",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol8f7"]
-size = Vector2(32, 32)
 
 [node name="falling_sand" type="RigidBody2D" groups=["sand"]]
 position = Vector2(-63, -142)
@@ -97,9 +97,6 @@ trail_sections = 7
 trail_section_subdivisions = 3
 process_material = SubResource("ParticleProcessMaterial_l121k")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_bdg0v")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qn4ou")
 debug_color = Color(0.893685, 0.000220054, 0.783477, 0.42)
@@ -118,8 +115,10 @@ collision_layer = 512
 collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossDestroy2"]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ol8f7")
+debug_color = Color(0, 0.6, 0.69803923, 0.10980392)
 
 [node name="SandTimer" type="Timer" parent="."]
 wait_time = 0.2
@@ -135,6 +134,9 @@ one_shot = true
 [node name="BossDestroy" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bdg0v")
 
 [connection signal="body_entered" from="Area2DCrush" to="." method="_on_area_2d_crush_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

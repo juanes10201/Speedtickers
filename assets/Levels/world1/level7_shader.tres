@@ -7,7 +7,7 @@
 source = 1
 
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_w6san"]
-default_input_values = [1, 0.81]
+default_input_values = [1, 0.805]
 initialized = true
 script = ExtResource("1_h8tqo")
 
@@ -39,7 +39,7 @@ void fragment() {
 
 	vec3 n_out3p0;
 // TurnGameBoyPalette:3
-	float n_in3p1 = 0.81000;
+	float n_in3p1 = 0.80500;
 	{
 		n_out3p0 = _gameboyPaletteFunc(vec3(n_out2p0.xyz), n_in3p1);
 	}

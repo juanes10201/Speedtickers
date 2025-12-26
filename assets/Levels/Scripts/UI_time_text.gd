@@ -44,17 +44,31 @@ func ProcessPosition() -> void:
 	self.position = OriginalPosition+offset
 #endregion
 
+@onready var Player = SaveGame.get_player()
+
+var AddSize : float = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#If timer disabled destroy
-	if((SaveGame.get_player() && SaveGame.get_player().is_in_group("Player") && SaveGame.get_player().CountTime == false) || (SaveGame.get_config_value("DisableTimer") && SaveGame.get_config_value("DisableTimer") == 1)):
-		RaySprite.queue_free()
-		$"../ui_text_seg".queue_free()
-		self.queue_free()
-
+	if((Player.is_in_group("Player") && Player.CountTime == false) || (SaveGame.get_config_value("DisableTimer") && SaveGame.get_config_value("DisableTimer") == 1)):
+		RaySprite.hide()
+		$"../ui_text_seg".hide()
+		self.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(Player.is_in_group("Player") && Player.CountTime && !self.visible):
+		AddSize = 30
+		RaySprite.show()
+		$"../ui_text_seg".show()
+		self.show()
+		self.modulate.a = 0.0
+		RaySprite.modulate.a = 0.0
+	AddSize = lerpf(AddSize, 0, 1*delta)
+	self.modulate.a = lerpf(self.modulate.a, 1, 1*delta)
+	RaySprite.modulate.a = lerpf(RaySprite.modulate.a, 1, 1*delta)
+	
 	TickShake(delta)
 	#region Counter juice
 	if(Time_Left):
@@ -62,7 +76,7 @@ func _process(delta: float) -> void:
 		TimeRest = floor((Time_Left.time_left - CurrentSecond)*100)
 		self.text = str(CurrentSecond)+"[font_size={30}]"+str(TimeRest)+"[/font_size]"
 		#region Trigger death when timer runs out
-		if(!Time_Left.paused && Time_Left.time_left <= 0): get_node("../../Player").On_Death()
+		if(!Time_Left.paused && Time_Left.time_left <= 0 && Player.is_in_group("Player") && Player.CountTime): Player.On_Death()
 		#endregion
 		
 		#region Change size juice
@@ -91,7 +105,7 @@ func _process(delta: float) -> void:
 	Font_Size = lerpf(Font_Size, original_size, 5  * delta)
 	
 	#Apply font change
-	if(get_theme_font_size("normal_font_size") != Font_Size): add_theme_font_size_override("normal_font_size", Font_Size)
+	if(get_theme_font_size("normal_font_size") != Font_Size+AddSize): add_theme_font_size_override("normal_font_size", Font_Size+AddSize)
 	#endregion
 	
 	ProcessPosition()

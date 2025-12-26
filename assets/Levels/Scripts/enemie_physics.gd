@@ -81,17 +81,17 @@ func _jump(_jump_velocity) -> void:
 #endregion
 
 #region Player GroundSmash 
-func _on_player_ground_smash_signal() -> void:
-	if(Player):
-		if(Can_BeGroundSmash && _is_on_floor() && Player.GravityDirection == GravityDirection && global_position.distance_to(Player.position) <= Max_groundsmash_distance):
+func _on_player_ground_smash_signal(player_instance : CharacterBody2D = Player) -> void:
+	if(player_instance):
+		if(Can_BeGroundSmash && _is_on_floor() && player_instance.GravityDirection == GravityDirection && global_position.distance_to(player_instance.position) <= Max_groundsmash_distance):
 			_jump(JUMP_VELOCITY if enemy_type == 0 else SPECIAL_ENEMY_JUMP_VELOCITY)
 			if(enemy_type == 0):
 				LevelManager.AddStyle(0, "GroundSmash enemy")
 				if(Particles): $HitParticles.emitting = true
 				#Player.FrameFreeze(0.05, 0.4)
-				velocity.x = Enemy_burst_speed if Player.position.x < position.x else Enemy_burst_speed*-1
+				velocity.x = Enemy_burst_speed if player_instance.position.x < position.x else Enemy_burst_speed*-1
 				Move = false
-				Player.Controller_Vibrate_Player_Movement(1)
+				player_instance.Controller_Vibrate_Player_Movement(1)
 				_groundsmash_player_sound()
 #endregion
 
@@ -216,7 +216,9 @@ func _process(delta: float) -> void:
 			
 			
 			#region Trigger Player GroundSmash
-			if(Player && !Player.EnemyGroundSlamTimer.is_stopped()): _on_player_ground_smash_signal()
+			for child in get_parent().get_children():
+				if child.is_in_group("Player") && !child.EnemyGroundSlamTimer.is_stopped(): 
+					_on_player_ground_smash_signal(child)
 			#endregion
 			#region Gravity
 			if (!_is_on_floor() &&  velocity.y < MAX_FALL_SPEED):

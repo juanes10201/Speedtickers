@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cjr5dj81gf86x"]
+
+[ext_resource type="Shader" uid="uid://bqv1myhf1mr1x" path="res://assets/Levels/world1/SquiggleVision.gdshader" id="1_pk1a3"]
+
+[resource]
+shader = ExtResource("1_pk1a3")
+shader_parameter/jiggle = 0.515
+shader_parameter/speed = 2.21

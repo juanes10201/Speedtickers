@@ -51,6 +51,7 @@ position = Vector2(-1.19209e-07, -1.19209e-07)
 texture = SubResource("AtlasTexture_lei70")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_qn4ou")
 debug_color = Color(0.697578, 0.493659, 0, 0.42)
 

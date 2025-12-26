@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c8r0ebu1qkgf2"]
+[gd_scene load_steps=23 format=4 uid="uid://c8r0ebu1qkgf2"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_gwkwp"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_0fqbn"]
@@ -107,9 +107,6 @@ _data = {
 &"move2": SubResource("Animation_b10uo")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3lxf"]
-size = Vector2(30.7479, 28.6468)
-
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
 metadata/_edit_horizontal_guides_ = [-400.0]
@@ -150,7 +147,17 @@ libraries = {
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(242, 37)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AAAAAOn/AAACAAEAAAAAAOr/AAACAAEAAAAAAOv/AAACAAEAAAAAAOz/AAACAAEAAAAAAO3/AAACAAEAAAAAAO7/AAACAAEAAAAAAO//AAACAAEAAAAAAPD/AAACAAEAAAAAAPH/AAACAAEAAAAAAPL/AAACAAEAAAAAAPP/AAACAAEAAAAAAPT/AAACAAEAAAAAAPX/AAACAAEAAAAAAPb/AAACAAEAAAAAAPf/AAACAAIAAAD//+n/AAAAAAEAAAD//+r/AAAAAAEAAAD//+v/AAAAAAEAAAD//+z/AAAAAAEAAAD//+3/AAAAAAEAAAD//+7/AAAAAAEAAAD//+//AAAAAAEAAAD///D/AAAAAAEAAAD///H/AAAAAAEAAAD///L/AAAAAAEAAAD///P/AAAAAAEAAAD///T/AAAAAAEAAAD///X/AAAAAAEAAAD///b/AAAAAAEAAAD///f/AAAAAAIAAAAAAOj/AAACAAEAAAAAAOf/AAACAAAAAAD//+j/AAAAAAEAAAD//+f/AAAAAAAAAADr//H/AAAAAAEAAADr//L/AAAAAAIAAADs//H/AAABAAEAAADs//L/AAABAAIAAADt//H/AAACAAEAAADt//L/AAACAAIAAADr//D/AAAAAAAAAADs//D/AAABAAAAAADt//D/AAACAAAAAADw//P/AAADAAIAAADw//L/AAADAAEAAADw//H/AAADAAAAAAA=")
+tile_map_data = PackedByteArray("AADr//H/AQAAAAEAAADr//L/AQAAAAIAAADs//H/AQABAAEAAADs//L/AQABAAIAAADt//H/AQACAAEAAADt//L/AQACAAIAAADr//D/AQAAAAAAAADs//D/AQABAAAAAADt//D/AQACAAAAAADw//L/AQAEAAIAAFDw//H/AQAEAAIAAFABAOf/AQAAAAAAAAABAOj/AQAAAAEAAAABAOn/AQAEAAIAAGABAOr/AQAAAAEAAAABAOv/AQAEAAIAAGABAOz/AQAEAAIAAGABAO3/AQAAAAEAAAABAO7/AQAAAAEAAAABAO//AQAAAAEAAAABAPD/AQAEAAIAAGABAPH/AQAEAAIAAGABAPL/AQAEAAIAAGABAPP/AQAAAAEAAAABAPT/AQAAAAEAAAABAPX/AQAAAAEAAAABAPb/AQAEAAIAAGABAPf/AQAEAAIAAGABAPj/AQAEAAIAAGABAPn/AQAAAAIAAAACAOf/AQACAAAAAAACAOj/AQACAAEAAAACAOn/AQACAAEAAAACAOr/AQACAAEAAAACAOv/AQACAAEAAAACAOz/AQACAAEAAAACAO3/AQACAAEAAAACAO7/AQACAAEAAAACAO//AQACAAEAAAACAPD/AQACAAEAAAACAPH/AQACAAEAAAACAPL/AQACAAEAAAACAPP/AQACAAEAAAACAPT/AQACAAEAAAACAPX/AQACAAEAAAACAPb/AQACAAEAAAACAPf/AQACAAEAAAACAPj/AQACAAEAAAACAPn/AQACAAIAAADl//r/AQACAAIAAADl//n/AQACAAEAAADl//j/AQACAAEAAADl//f/AQACAAEAAADl//b/AQACAAEAAADl//X/AQACAAEAAADl//T/AQACAAEAAADl//P/AQACAAEAAADl//L/AQACAAEAAADl//H/AQACAAEAAADl//D/AQACAAEAAADl/+//AQACAAEAAADl/+7/AQACAAEAAADl/+3/AQACAAEAAADl/+z/AQACAAAAAADk//r/AQABAAIAAADk//n/AQABAAEAAADk//j/AQABAAEAAADk//f/AQABAAEAAADk//b/AQABAAEAAADk//X/AQABAAEAAADk//T/AQABAAEAAADk//P/AQABAAEAAADk//L/AQABAAEAAADk//H/AQABAAEAAADk//D/AQABAAEAAADk/+//AQABAAEAAADk/+7/AQABAAEAAADk/+3/AQABAAEAAADk/+z/AQABAAAAAADj//r/AQABAAIAAADj//n/AQABAAEAAADj//j/AQABAAEAAADj//f/AQABAAEAAADj//b/AQABAAEAAADj//X/AQABAAEAAADj//T/AQABAAEAAADj//P/AQABAAEAAADj//L/AQABAAEAAADj//H/AQABAAEAAADj//D/AQABAAEAAADj/+//AQABAAEAAADj/+7/AQABAAEAAADj/+3/AQABAAEAAADj/+z/AQABAAAAAAAAAPD/AQABAAgAABAAAPH/AQABAAkAABDt/+7/AQAAAAgAAADt/+//AQAAAAkAAADw//X/AQAEAAIAAFDw//T/AQAEAAIAAFDw//P/AQAEAAIAAFDx//L/AQAEAAoAAFDx//P/AQAFAAoAAFDx//T/AQAGAAoAAFDu//f/AQAHABAAAADu//j/AQAHABAAAADu//n/AQAHABAAAADu//r/AQAHABAAAADu//v/AQAHABAAAADu//z/AQAHABAAAADu//3/AQAHABAAAADu//7/AQAHABAAAADv//f/AQAHABEAAADv//j/AQAHABEAAADv//n/AQAHABEAAADv//r/AQAHABEAAADv//v/AQAHABEAAADv//z/AQAHABEAAADv//3/AQAHABEAAADv//7/AQAHABEAAADv////AQAHABEAAADv/wAAAQAHABEAAADi/+3/AQAAAAEAAADi/+z/AQAAAAAAAADi//r/AQAAAAIAAADi//n/AQAAAAEAAADi//j/AQAAAAEAAADi//f/AQAAAAEAAADi//b/AQAAAAEAAADi//X/AQAAAAEAAADi//T/AQAAAAEAAADi//P/AQAAAAEAAADi//L/AQAAAAEAAADi//H/AQAAAAEAAADi//D/AQAAAAEAAADi/+//AQAAAAEAAADi/+7/AQAAAAEAAAAAAOj/AQAEAAoAAEAAAOn/AQAFAAoAAEAAAOr/AQAGAAoAAEAAAOH/AQAAABIAAAAAAOL/AQAAABMAAAAAAOP/AQAAABQAAAAAAOT/AQAAABUAAAAAAOX/AQAAABYAAAABAOH/AQABABIAAAABAOL/AQABABMAAAABAOP/AQABABQAAAABAOT/AQABABUAAAABAOX/AQABABYAAAABAOb/AQABABcAAAACAOH/AQACABIAAAACAOL/AQACABMAAAACAOP/AQACABQAAAACAOT/AQACABUAAAACAOX/AQACABYAAAACAOb/AQACABcAAAADAOL/AQADABMAAAADAOP/AQADABQAAAADAOT/AQADABUAAAADAOX/AQADABYAAAA=")
+tile_set = ExtResource("4_8404c")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="TileMapLayer" groups=["Tileset"]]
+position = Vector2(10.957916, 0)
+tile_map_data = PackedByteArray("AADj/+3/AQAMAAcAAGDj/+7/AQALAAcAAGDk/+3/AQAMAAgAAGDk/+7/AQALAAgAAGDk/+//AQAKAAgAAGDi/+3/AQAMAAYAAGDi/+7/AQALAAYAAGDj/+z/AQANAAcAAGDj/+//AQAKAAcAAGA=")
+tile_set = ExtResource("4_8404c")
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="TileMapLayer" groups=["Tileset"]]
+position = Vector2(0, 7)
+tile_map_data = PackedByteArray("AAD3/+b/AQAFAAYAAAA=")
 tile_set = ExtResource("4_8404c")
 
 [node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
@@ -161,7 +168,7 @@ autostart = true
 [node name="CanvasLayer" parent="." instance=ExtResource("5_ul124")]
 
 [node name="Flag" parent="." instance=ExtResource("6_hgv1h")]
-position = Vector2(-199, -326)
+position = Vector2(-200, -311)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_fh841")]
 
@@ -171,31 +178,37 @@ scale = Vector2(99.32, 1)
 Visible = false
 
 [node name="KillBox5" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(-27, -177)
-scale = Vector2(2.33, 6.16)
+position = Vector2(-31, -160)
+scale = Vector2(1.955, 7.035)
 
 [node name="KillBox6" parent="." instance=ExtResource("8_8sq5l")]
 position = Vector2(34, -289)
 scale = Vector2(1, 3)
 
 [node name="KillBox19" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(34, -58)
-scale = Vector2(50, 1)
+position = Vector2(32, -23)
+scale = Vector2(9999, 1)
 CanChange = false
 
 [node name="KillBox7" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(-53, -353)
+position = Vector2(-52.000004, -354)
 scale = Vector2(15.23, 2)
 
 [node name="KillBox4" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(-167, -268)
-scale = Vector2(1, 12)
+position = Vector2(-166, -303.00003)
+scale = Vector2(1, 8.37)
+
+[node name="KillBox20" parent="." instance=ExtResource("8_8sq5l")]
+position = Vector2(-232, -542)
+scale = Vector2(1, 32.11)
 
 [node name="KillBox13" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(219, -146)
+position = Vector2(250, -147)
+scale = Vector2(0.7, 1)
 
 [node name="KillBox16" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(219, -238)
+position = Vector2(251, -239)
+scale = Vector2(0.7, 1)
 
 [node name="Key" parent="." instance=ExtResource("11_funbt")]
 position = Vector2(142, -101)
@@ -211,19 +224,19 @@ floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(89.6018, -74.761)
+position = Vector2(15.014216, 16.991135)
 zoom = Vector2(2.08, 2.08)
-limit_left = -379
+limit_left = -288
 limit_top = -450
-limit_right = 327
-limit_bottom = -81
+limit_right = 360
+limit_bottom = -32
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("13_0p0li")
 
 [node name="KillBox8" parent="." instance=ExtResource("10_r0gsi")]
-position = Vector2(-72, -277)
-scale = Vector2(3, 7.41)
+position = Vector2(-72, -316)
+scale = Vector2(3, 6.54)
 
 [node name="KillBox18" parent="." instance=ExtResource("10_r0gsi")]
 position = Vector2(-201, -356)
@@ -240,8 +253,8 @@ position = Vector2(125, -135)
 position = Vector2(160, -175)
 
 [node name="KillBox12" parent="." instance=ExtResource("8_8sq5l")]
-position = Vector2(175, -205)
-scale = Vector2(1, 15)
+position = Vector2(175, -218.00002)
+scale = Vector2(1, 16)
 
 [node name="KillBox10" parent="." instance=ExtResource("8_8sq5l")]
 position = Vector2(94, -323)
@@ -287,10 +300,5 @@ position = Vector2(142, -369)
 position = Vector2(144, -311)
 scale = Vector2(1.775, 1)
 script = ExtResource("15_c18ho")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StyleAddBox"]
-position = Vector2(-0.5633774, -1)
-scale = Vector2(0.96, 0.33)
-shape = SubResource("RectangleShape2D_t3lxf")
 
 [connection signal="body_entered" from="StyleAddBox" to="StyleAddBox" method="_on_body_entered"]

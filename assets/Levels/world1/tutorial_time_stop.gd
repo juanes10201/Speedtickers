@@ -6,6 +6,9 @@ var HadStopped : bool = false
 @onready var TutorialCanvas : CanvasModulate = $"../CanvasModulate"
 @onready var Player = SaveGame.get_player()
 @export var WaitAnimation = "Jump"
+@export var PlayerHasToBeInGround : bool = false
+
+var WillDo : bool = false
 
 var ShowTutorial : bool = false
 
@@ -18,6 +21,9 @@ func _on_body_entered(body: Node2D) -> void:
 		_stop()
 
 func _stop() -> void:
+	if(PlayerHasToBeInGround && !Player._is_on_floor()):
+		WillDo = true
+		return
 	if(HadStopped): return
 	if($Tutorial): ShowTutorial = true
 	Done = false
@@ -38,6 +44,8 @@ func _resume_mov() -> void:
 var GreyVal : float = 1.0
 
 func _process(delta: float) -> void:
+	if(WillDo && Player._is_on_floor()):
+		_stop()
 	if($Tutorial):
 		if(!ShowTutorial): $Tutorial.modulate.a = 0.0
 		else:

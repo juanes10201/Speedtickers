@@ -77,5 +77,6 @@ func Play_Global_Action(Action : OBJECT_ACTIONS):
 	elif(Action == OBJECT_ACTIONS.Switch_Gravity_Remix):
 		Player._invert_gravity_remix()
 	elif(Action == OBJECT_ACTIONS.Restart_Time):
+		Player.CountTime = true
 		Player.Time_Left.start()
 		Player.Dashed = false
