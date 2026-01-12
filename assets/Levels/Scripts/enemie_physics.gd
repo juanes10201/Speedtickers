@@ -36,7 +36,7 @@ var direction = 0
 
 @onready var Player : ClassPlayer = SaveGame.get_player()
 @onready var MoveTimer : Timer = $"MoveTimer"
-@onready var Sprite : AnimatedSprite2D = $"Sprite2D"
+@onready var Sprite : Node2D = $"Sprite2D"
 
 @onready var MoveSound : AudioStreamPlayer = Player.AudioSlimeMove if Player else null
 @onready var SlideSound : AudioStreamPlayer = Player.AudioSlimeKill if Player else null
@@ -83,6 +83,7 @@ func _jump(_jump_velocity) -> void:
 #region Player GroundSmash 
 func _on_player_ground_smash_signal(player_instance : CharacterBody2D = Player) -> void:
 	if(player_instance):
+		if(player_instance.ReplayStyle): return
 		if(Can_BeGroundSmash && _is_on_floor() && player_instance.GravityDirection == GravityDirection && global_position.distance_to(player_instance.position) <= Max_groundsmash_distance):
 			_jump(JUMP_VELOCITY if enemy_type == 0 else SPECIAL_ENEMY_JUMP_VELOCITY)
 			if(enemy_type == 0):

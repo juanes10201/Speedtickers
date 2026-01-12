@@ -811,6 +811,7 @@ func _Destroy_Tiles_Slam() -> void:
 	_Raycast_Destroy_Tiles(SlamDestroyTiles)
 
 func _Raycast_Destroy_Tiles(Raycaster : RayCast2D) -> void:
+	if(ReplayStyle): return
 	Raycaster.enabled = true
 	if(Raycaster.is_colliding()):
 		var hit_collider = Raycaster.get_collider()

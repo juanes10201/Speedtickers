@@ -228,7 +228,7 @@ ReplayAction = 0
 ReplayStyle = true
 
 [node name="Player" parent="." instance=ExtResource("5_cyxtg")]
-position = Vector2(-317, -67)
+position = Vector2(-317.00003, -65)
 CountTime = false
 jump_height = 65.0
 
@@ -361,7 +361,7 @@ CurrentAnimation = 3
 position = Vector2(72, -110)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.8255318, 0.6290966, 0.018607348, 1)
-energy = 0.67
+energy = 0.82
 texture = SubResource("GradientTexture2D_8fc2q")
 texture_scale = 1.72
 height = 13.0

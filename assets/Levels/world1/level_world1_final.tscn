@@ -483,7 +483,7 @@ JUMP_VELOCITY = -500.0
 SlamTime = 0.9
 
 [node name="Player" parent="." instance=ExtResource("5_kr6ob")]
-position = Vector2(-384.99994, -34.00003)
+position = Vector2(151.99988, -280.99997)
 
 [node name="Camera2D3" type="Camera2D" parent="Player"]
 position = Vector2(-0.45497894, -75.89376)

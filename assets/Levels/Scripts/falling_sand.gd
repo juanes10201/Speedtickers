@@ -63,9 +63,9 @@ func _process(delta: float) -> void:
 		CurrentGravityDirection = GravityDirection * Player.GlobalGravityDirection
 	if(CurrentGravityDirection == Global.GravityDirections.INVERTED):
 		set_falling(true)
-		Sprite.play("inverted")
-	if(CurrentGravityDirection == Global.GravityDirections.MAIN):
-		Sprite.play("default")
+		#Sprite.play("inverted")
+	#if(CurrentGravityDirection == Global.GravityDirections.MAIN):
+		#Sprite.play("default")
 		
 	gravity_scale = CurrentGravityDirection
 	
