@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://m5h8wu8oumvi"]
+[gd_scene load_steps=55 format=4 uid="uid://m5h8wu8oumvi"]
 
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="1_0pcor"]
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="2_2rpnx"]
@@ -15,8 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="13_d3ak1"]
 [ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Levels/Scripts/animated_button.gd" id="14_igvnc"]
 [ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="15_drd3g"]
+[ext_resource type="Script" uid="uid://b7kp4oyo8y484" path="res://assets/Levels/world1/text_tutorial_anim.gd" id="16_b5voc"]
 [ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="16_tprg3"]
+[ext_resource type="AudioStream" uid="uid://dsvfo3erylgm" path="res://assets/Sounds/Tutorial/voicetutorial.wav" id="17_6niov"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="17_lf5tw"]
+[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="20_6niov"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -54,6 +57,86 @@ _data = {
 &"RESET": SubResource("Animation_wh1ld"),
 &"move": SubResource("Animation_6ubuh")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7ae7"]
+atlas = ExtResource("20_6niov")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6niov"]
+atlas = ExtResource("20_6niov")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmt3o"]
+atlas = ExtResource("20_6niov")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2utor"]
+atlas = ExtResource("20_6niov")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25fng"]
+atlas = ExtResource("20_6niov")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e34pc"]
+atlas = ExtResource("20_6niov")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5p4m"]
+atlas = ExtResource("20_6niov")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d5i3"]
+atlas = ExtResource("20_6niov")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nmt3o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ae7")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_6niov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmt3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ae7")
+}],
+"loop": true,
+"name": &"hide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2utor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25fng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e34pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5p4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d5i3")
+}],
+"loop": false,
+"name": &"show",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nmt3o"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vuuc"]
 atlas = ExtResource("13_d3ak1")
@@ -274,9 +357,37 @@ StopAction = "player_slide"
 WaitAnimation = "Dash"
 PlayerHasToBeInGround = true
 
+[node name="Hologram" type="AnimatedSprite2D" parent="TimeStop"]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-70, -1)
+sprite_frames = SubResource("SpriteFrames_nmt3o")
+animation = &"disabled"
+
 [node name="Tutorial" type="Node2D" parent="TimeStop"]
 material = ExtResource("12_t5o3b")
 position = Vector2(-32, -22)
+
+[node name="Text" type="RichTextLabel" parent="TimeStop/Tutorial" node_paths=PackedStringArray("TextDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_nmt3o")
+offset_left = -76.0
+offset_top = -9.0
+offset_right = 66.0
+offset_bottom = 28.0
+theme_override_fonts/normal_font = ExtResource("15_drd3g")
+text = "Deslizate desde
+el suelo con"
+script = ExtResource("16_b5voc")
+TextDelay = NodePath("TextDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TimeStop/Tutorial/Text"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TimeStop/Tutorial/Text"]
+stream = ExtResource("17_6niov")
+volume_db = -20.0
 
 [node name="DashButton" type="AnimatedSprite2D" parent="TimeStop/Tutorial"]
 use_parent_material = true
@@ -284,16 +395,6 @@ position = Vector2(27, -1)
 sprite_frames = SubResource("SpriteFrames_8vuuc")
 script = ExtResource("14_igvnc")
 ButtonToPress = "player_slide"
-
-[node name="Text" type="RichTextLabel" parent="TimeStop/Tutorial"]
-use_parent_material = true
-offset_left = -42.0
-offset_top = -10.0
-offset_right = 70.0
-offset_bottom = 10.0
-theme_override_fonts/normal_font = ExtResource("15_drd3g")
-text = "Slide con:"
-metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop"]
 position = Vector2(3, -3)
@@ -332,15 +433,28 @@ shape = SubResource("RectangleShape2D_lhkcl")
 material = ExtResource("12_t5o3b")
 position = Vector2(-99, -45)
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="TimeStop2/Tutorial"]
-use_parent_material = true
-offset_left = -72.0
+[node name="Text" type="RichTextLabel" parent="TimeStop2/Tutorial" node_paths=PackedStringArray("TextDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_nmt3o")
+offset_left = -70.0
 offset_top = -9.0
-offset_right = 73.0
-offset_bottom = 15.0
+offset_right = 72.0
+offset_bottom = 28.0
 theme_override_fonts/normal_font = ExtResource("15_drd3g")
-text = "Mientras en el aire,Slam con"
+text = "Mientras en el
+aire, hace un
+Slam con"
+script = ExtResource("16_b5voc")
+TextDelay = NodePath("TextDelay")
+Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TimeStop2/Tutorial/Text"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TimeStop2/Tutorial/Text"]
+stream = ExtResource("17_6niov")
+volume_db = -20.0
 
 [node name="DashButton" type="AnimatedSprite2D" parent="TimeStop2/Tutorial"]
 use_parent_material = true
@@ -356,6 +470,12 @@ sprite_frames = SubResource("SpriteFrames_6niov")
 animation = &"pressed"
 script = ExtResource("14_igvnc")
 ButtonToPress = "player_slide"
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TimeStop2"]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-67, -27)
+sprite_frames = SubResource("SpriteFrames_nmt3o")
+animation = &"disabled"
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("17_lf5tw")]
 

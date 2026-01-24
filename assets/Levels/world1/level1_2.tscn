@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=4 uid="uid://c33sp2pt55ctp"]
+[gd_scene load_steps=32 format=4 uid="uid://c33sp2pt55ctp"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_cshvh"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_c5hqx"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="3_3av5j"]
 [ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Levels/Scripts/tile_map_layer.gd" id="4_w44gu"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="5_884pn"]
+[ext_resource type="PackedScene" uid="uid://bxp63dfc0g300" path="res://assets/Levels/player_hologram.tscn" id="5_cshvh"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="6_7ulu0"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="7_s26qe"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="8_oghcr"]
@@ -167,10 +168,9 @@ tile_map_data = PackedByteArray("AADw/+v/AQABAAsAAADu//n/AQAbABEAAADu//r/AQAbABI
 tile_set = ExtResource("3_3av5j")
 script = ExtResource("4_w44gu")
 
-[node name="Player2" parent="." instance=ExtResource("5_884pn")]
+[node name="Player3" parent="." groups=["PlayerReplay"] instance=ExtResource("5_cshvh")]
 position = Vector2(-317, -67)
 CountTime = false
-jump_height = 65.0
 ReplayAction = 0
 ReplayStyle = true
 RecordedLocation = "res://assets/Replays/tutorial_level1_2.json"

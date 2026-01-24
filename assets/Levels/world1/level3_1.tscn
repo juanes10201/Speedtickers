@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://egw80mc81w82"]
+[gd_scene load_steps=37 format=4 uid="uid://egw80mc81w82"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_dk84l"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_qojo6"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="9_a53cf"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="10_l37yp"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="11_6ocj3"]
-[ext_resource type="Material" uid="uid://cjr5dj81gf86x" path="res://assets/Levels/Shader/tutorial_button_shader_config.tres" id="12_k0btq"]
+[ext_resource type="PackedScene" uid="uid://bxp63dfc0g300" path="res://assets/Levels/player_hologram.tscn" id="12_njdfe"]
 [ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="13_k0btq"]
+[ext_resource type="Script" uid="uid://b7kp4oyo8y484" path="res://assets/Levels/world1/text_tutorial_anim.gd" id="13_njdfe"]
+[ext_resource type="AudioStream" uid="uid://dsvfo3erylgm" path="res://assets/Sounds/Tutorial/voicetutorial.wav" id="14_4jr87"]
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="14_qsjwe"]
 [ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Levels/Scripts/animated_button.gd" id="15_76ppp"]
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Levels/Scripts/DynamicLightAnimation.gd" id="16_qsjwe"]
@@ -53,6 +55,9 @@ _data = {
 &"RESET": SubResource("Animation_wh1ld"),
 &"move": SubResource("Animation_6ubuh")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a53cf"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r7rt8"]
 atlas = ExtResource("14_qsjwe")
@@ -223,39 +228,50 @@ Visible = false
 [node name="AmbientParticles" parent="." instance=ExtResource("11_6ocj3")]
 position = Vector2(-62, -231)
 
-[node name="Player2" parent="." groups=["PlayerReplay"] instance=ExtResource("3_cbuhv")]
-position = Vector2(-319, -20)
+[node name="Player3" parent="." groups=["PlayerReplay"] instance=ExtResource("12_njdfe")]
+position = Vector2(-319.00003, -22)
 CountTime = false
-jump_height = 65.0
 ReplayAction = 0
 ReplayStyle = true
 RecordedLocation = "res://assets/Replays/tutorial_level_3_1.json"
 
-[node name="DashTutorial2" type="RichTextLabel" parent="."]
-material = ExtResource("12_k0btq")
+[node name="Text" type="RichTextLabel" parent="." node_paths=PackedStringArray("TextDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_a53cf")
 offset_left = -274.0
 offset_top = -96.0
-offset_right = -132.0
+offset_right = -105.600006
 offset_bottom = -59.0
 theme_override_fonts/normal_font = ExtResource("13_k0btq")
 text = "
-Mantener apretado
-para saltar mas
-alto"
+Mantene apretado 	  para
+saltar mas alto"
+script = ExtResource("13_njdfe")
+Animate = true
+TextDelay = NodePath("TextDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
 
-[node name="DashButton2" type="AnimatedSprite2D" parent="DashTutorial2"]
+[node name="TextDelay" type="Timer" parent="Text"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="Text"]
+stream = ExtResource("14_4jr87")
+volume_db = -20.0
+
+[node name="DashButton2" type="AnimatedSprite2D" parent="Text"]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
-position = Vector2(117.38501, 21.650604)
+position = Vector2(106, 17.650604)
 sprite_frames = SubResource("SpriteFrames_4jr87")
 script = ExtResource("15_76ppp")
 ReadFromReplay = true
 ButtonToPress = "ui_right"
 
-[node name="DashButton" type="AnimatedSprite2D" parent="DashTutorial2"]
+[node name="DashButton" type="AnimatedSprite2D" parent="Text"]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
-position = Vector2(132, 14)
+position = Vector2(120.61499, 10)
 sprite_frames = SubResource("SpriteFrames_a53cf")
 script = ExtResource("15_76ppp")
 ReadFromReplay = true

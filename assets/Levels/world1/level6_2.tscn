@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://e8ku6ir8edoq"]
+[gd_scene load_steps=44 format=4 uid="uid://e8ku6ir8edoq"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_udltt"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_trt81"]
@@ -11,7 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Levels/levels_default.tscn" id="10_v35s5"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="11_oc802"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="12_xq3gd"]
+[ext_resource type="Script" uid="uid://b70n1us6src5o" path="res://assets/Levels/world1/dialog_text_area.gd" id="13_kg7ln"]
+[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="14_bme14"]
+[ext_resource type="Script" uid="uid://6216kh0o2v0m" path="res://assets/Levels/world1/hologram.gd" id="15_qfcf4"]
+[ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="16_amwd2"]
+[ext_resource type="Script" uid="uid://b7kp4oyo8y484" path="res://assets/Levels/world1/text_tutorial_anim.gd" id="17_v35s5"]
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Levels/Scripts/DynamicLightAnimation.gd" id="17_v62b1"]
+[ext_resource type="AudioStream" uid="uid://dsvfo3erylgm" path="res://assets/Sounds/Tutorial/voicetutorial.wav" id="18_oc802"]
 
 [sub_resource type="Animation" id="Animation_timnu"]
 length = 0.001
@@ -111,6 +117,89 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_udltt")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7ae7"]
+atlas = ExtResource("14_bme14")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6niov"]
+atlas = ExtResource("14_bme14")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmt3o"]
+atlas = ExtResource("14_bme14")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2utor"]
+atlas = ExtResource("14_bme14")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25fng"]
+atlas = ExtResource("14_bme14")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e34pc"]
+atlas = ExtResource("14_bme14")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5p4m"]
+atlas = ExtResource("14_bme14")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d5i3"]
+atlas = ExtResource("14_bme14")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xq3gd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ae7")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_6niov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmt3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ae7")
+}],
+"loop": false,
+"name": &"hide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2utor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25fng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e34pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5p4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d5i3")
+}],
+"loop": false,
+"name": &"show",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tfggo"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2a1w"]
+size = Vector2(48.5, 34.5)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -342,3 +431,44 @@ EnemyDirection = 2
 [node name="Enemie" parent="." instance=ExtResource("9_amwd2")]
 position = Vector2(-192, -103)
 EnemyDirection = 2
+
+[node name="TextArea" type="Area2D" parent="." node_paths=PackedStringArray("Text")]
+position = Vector2(-50, -158)
+script = ExtResource("13_kg7ln")
+Text = NodePath("DashTutorial2")
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TextArea"]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-19, -75)
+sprite_frames = SubResource("SpriteFrames_xq3gd")
+animation = &"disabled"
+script = ExtResource("15_qfcf4")
+
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_tfggo")
+offset_left = 17.0
+offset_top = -162.0
+offset_right = 159.0
+offset_bottom = -108.0
+theme_override_fonts/normal_font = ExtResource("16_amwd2")
+text = "
+Ahi intenta hacer un dash"
+fit_content = true
+script = ExtResource("17_v35s5")
+TextDelay = NodePath("TextDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TextArea/DashTutorial2"]
+stream = ExtResource("18_oc802")
+volume_db = -20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea"]
+position = Vector2(61, -65)
+shape = SubResource("RectangleShape2D_d2a1w")
+
+[connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]

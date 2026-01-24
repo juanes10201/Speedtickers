@@ -13,6 +13,7 @@ var WillDo : bool = false
 var ShowTutorial : bool = false
 
 func _ready() -> void:
+	if($Hologram): $Hologram.play("disabled")
 	if($Tutorial): $Tutorial.modulate.a = 0.0
 	if(TutorialCanvas): TutorialCanvas.hide()
 
@@ -21,6 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 		_stop()
 
 func _stop() -> void:
+	if($Hologram): $Hologram.play("show")
 	if(PlayerHasToBeInGround && !Player._is_on_floor()):
 		WillDo = true
 		return
@@ -49,6 +51,7 @@ func _process(delta: float) -> void:
 	if($Tutorial):
 		if(!ShowTutorial): $Tutorial.modulate.a = 0.0
 		else:
+			if($Tutorial/Text): $Tutorial/Text.animate()
 			$Tutorial.modulate.a = lerp($Tutorial.modulate.a, 1.0, 1*delta)
 	if(!Done):
 		GreyVal = lerp(GreyVal, .1, 5*delta)
@@ -58,4 +61,6 @@ func _process(delta: float) -> void:
 
 
 func _on_stop_remover_body_entered(body: Node2D) -> void:
+	if($Hologram): $Hologram.play("hide")
+	await get_tree().create_timer(1.0).timeout
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bermbdmqlics7"]
+[gd_scene load_steps=53 format=4 uid="uid://bermbdmqlics7"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_3ait8"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_ypkjn"]
@@ -16,6 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="12_0svnx"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="12_48m0r"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="13_ypkjn"]
+[ext_resource type="PackedScene" uid="uid://bxp63dfc0g300" path="res://assets/Levels/player_hologram.tscn" id="17_l234x"]
+[ext_resource type="Script" uid="uid://b70n1us6src5o" path="res://assets/Levels/world1/dialog_text_area.gd" id="18_48m0r"]
+[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="19_l7odx"]
+[ext_resource type="Script" uid="uid://6216kh0o2v0m" path="res://assets/Levels/world1/hologram.gd" id="20_qtxsb"]
+[ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="21_xxhv1"]
+[ext_resource type="Script" uid="uid://b7kp4oyo8y484" path="res://assets/Levels/world1/text_tutorial_anim.gd" id="22_bfkdq"]
+[ext_resource type="AudioStream" uid="uid://dsvfo3erylgm" path="res://assets/Sounds/Tutorial/voicetutorial.wav" id="23_kkda2"]
 
 [sub_resource type="Animation" id="Animation_timnu"]
 length = 0.001
@@ -160,6 +167,89 @@ animations = [{
 "name": &"pressed",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7ae7"]
+atlas = ExtResource("19_l7odx")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6niov"]
+atlas = ExtResource("19_l7odx")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmt3o"]
+atlas = ExtResource("19_l7odx")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2utor"]
+atlas = ExtResource("19_l7odx")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25fng"]
+atlas = ExtResource("19_l7odx")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e34pc"]
+atlas = ExtResource("19_l7odx")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5p4m"]
+atlas = ExtResource("19_l7odx")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d5i3"]
+atlas = ExtResource("19_l7odx")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bu7th"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ae7")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_6niov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmt3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ae7")
+}],
+"loop": false,
+"name": &"hide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2utor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25fng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e34pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5p4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d5i3")
+}],
+"loop": false,
+"name": &"show",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wx6ao"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1jth"]
+size = Vector2(48.5, 34.5)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -419,10 +509,49 @@ position = Vector2(-512, -391)
 [node name="falling_sand8" parent="." instance=ExtResource("13_ypkjn")]
 position = Vector2(-528, -391)
 
-[node name="Player2" parent="." groups=["PlayerReplay"] instance=ExtResource("6_l234x")]
-position = Vector2(-288, -278.99997)
+[node name="Player3" parent="." groups=["PlayerReplay"] instance=ExtResource("17_l234x")]
+position = Vector2(-288.00003, -279)
 CountTime = false
-jump_height = 65.0
 ReplayAction = 0
 ReplayStyle = true
 RecordedLocation = "res://assets/Replays/tutorial_level_6_1.json"
+
+[node name="TextArea" type="Area2D" parent="." node_paths=PackedStringArray("Text")]
+position = Vector2(-50, -158)
+script = ExtResource("18_48m0r")
+Text = NodePath("DashTutorial2")
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TextArea"]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(109, 36)
+sprite_frames = SubResource("SpriteFrames_bu7th")
+animation = &"disabled"
+script = ExtResource("20_qtxsb")
+
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_wx6ao")
+offset_left = -9.0
+offset_right = 133.0
+offset_bottom = 54.0
+theme_override_fonts/normal_font = ExtResource("21_xxhv1")
+text = "
+Recuerda consultar por las expensas del Entrenamiento Speedtest(tm)"
+fit_content = true
+script = ExtResource("22_bfkdq")
+TextDelay = NodePath("TextDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TextArea/DashTutorial2"]
+stream = ExtResource("23_kkda2")
+volume_db = -20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea"]
+position = Vector2(-36, 17)
+shape = SubResource("RectangleShape2D_x1jth")
+
+[connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]

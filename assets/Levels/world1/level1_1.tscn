@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=4 uid="uid://b7j8834feho55"]
+[gd_scene load_steps=41 format=4 uid="uid://b7j8834feho55"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_infck"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_up3lq"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="3_2oxv3"]
 [ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Levels/Scripts/tile_map_layer.gd" id="4_diu55"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="5_cyxtg"]
+[ext_resource type="PackedScene" uid="uid://bxp63dfc0g300" path="res://assets/Levels/player_hologram.tscn" id="5_jfyc5"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="6_a5x1v"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="7_n014a"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="8_r8e1x"]
@@ -15,7 +16,9 @@
 [ext_resource type="Material" uid="uid://cjr5dj81gf86x" path="res://assets/Levels/Shader/tutorial_button_shader_config.tres" id="12_oq6ls"]
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="13_r7rt8"]
 [ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Levels/Scripts/animated_button.gd" id="14_oq6ls"]
+[ext_resource type="Script" uid="uid://b7kp4oyo8y484" path="res://assets/Levels/world1/text_tutorial_anim.gd" id="16_8fc2q"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="16_oq6ls"]
+[ext_resource type="AudioStream" uid="uid://dsvfo3erylgm" path="res://assets/Sounds/Tutorial/voicetutorial.wav" id="17_jlc0c"]
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Levels/Scripts/DynamicLightAnimation.gd" id="17_kdsa1"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
@@ -220,10 +223,9 @@ tile_map_data = PackedByteArray("AAAEAPb/AQABAAYAABAEAPf/AQABAAcAABA=")
 tile_set = ExtResource("3_2oxv3")
 script = ExtResource("4_diu55")
 
-[node name="Player2" parent="." groups=["PlayerReplay"] instance=ExtResource("5_cyxtg")]
-position = Vector2(-304.00003, -68.00003)
+[node name="Player2" parent="." groups=["PlayerReplay"] instance=ExtResource("5_jfyc5")]
+position = Vector2(-328, -66)
 CountTime = false
-jump_height = 65.0
 ReplayAction = 0
 ReplayStyle = true
 
@@ -273,6 +275,7 @@ position = Vector2(-188, -205)
 [node name="DashButton2" type="AnimatedSprite2D" parent="Tutorial"]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
+position = Vector2(-12, -1)
 sprite_frames = SubResource("SpriteFrames_kdsa1")
 script = ExtResource("14_oq6ls")
 ReadFromReplay = true
@@ -281,12 +284,12 @@ ButtonToPress = "ui_right"
 [node name="DashButton" type="AnimatedSprite2D" parent="Tutorial"]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
-position = Vector2(14.61499, -7.6506042)
+position = Vector2(2.6149902, -8.650604)
 sprite_frames = SubResource("SpriteFrames_8fc2q")
 script = ExtResource("14_oq6ls")
 ReadFromReplay = true
 
-[node name="DashTutorial2" type="RichTextLabel" parent="Tutorial"]
+[node name="DashTutorial2" type="RichTextLabel" parent="Tutorial" node_paths=PackedStringArray("TextDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_kdsa1")
 offset_left = -117.38501
 offset_top = -21.650604
@@ -294,9 +297,22 @@ offset_right = 24.61499
 offset_bottom = 15.349396
 theme_override_fonts/normal_font = ExtResource("12_fneve")
 text = "
-Mantener apretado
-para escalar pared"
+Mantene apretado
+para escalar la
+pared"
+script = ExtResource("16_8fc2q")
+Animate = true
+TextDelay = NodePath("TextDelay")
+Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="Tutorial/DashTutorial2"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="Tutorial/DashTutorial2"]
+stream = ExtResource("17_jlc0c")
+volume_db = -20.0
 
 [node name="falling_sand" parent="." instance=ExtResource("16_oq6ls")]
 position = Vector2(-42, -232)
