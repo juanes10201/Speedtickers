@@ -33,10 +33,14 @@ file_logging/enable_file_logging=true
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"Npc1": "res://assets/Dialogic/Charactesr/Npc1.dch"
+}
 directories/dtl_directory={
 "lobby_initial": "res://assets/Timeline/lobby_initial.dtl",
-"npc_lobby1": "res://assets/Timeline/npc_lobby1.dtl"
+"npc_lobby1": "res://assets/Timeline/npc_lobby1.dtl",
+"npc_lobby2": "res://assets/Timeline/npc_lobby2.dtl",
+"npc_lobby3": "res://assets/Timeline/npc_lobby3.dtl"
 }
 layout/style_directory={
 "": "res://assets/Dialog/Styles/FaceShow.tres",
@@ -107,6 +111,7 @@ PlayerReplay=""
 Boss=""
 TimerSpawner=""
 ClockRigidBody=""
+Npc=""
 
 [input]
 

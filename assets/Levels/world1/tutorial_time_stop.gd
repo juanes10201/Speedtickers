@@ -62,5 +62,6 @@ func _process(delta: float) -> void:
 
 func _on_stop_remover_body_entered(body: Node2D) -> void:
 	if($Hologram): $Hologram.play("hide")
+	if($Tutorial/Text): $Tutorial/Text.Animate = false
 	await get_tree().create_timer(1.0).timeout
 	queue_free()

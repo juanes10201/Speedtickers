@@ -12,12 +12,21 @@ const JUMP_VELOCITY = -400.0
 @export var PointTo : Marker2D
 @onready var InitialX : float = self.position.x
 @onready var GoToX : float = PointTo.position.x if PointTo else 0.0
+@onready var Sprite = $Sprite
+var Move : bool = true
+@export var Dialogue_Action : String = "npc_lobby1"
+@onready var Player = SaveGame.get_player()
+
+func _ready() -> void:
+	$DialogueTrigger.Action = Dialogue_Action
 
 func _physics_process(delta: float) -> void:
-	$Sprite.scale.x = abs($Sprite.scale.x) if self.global_position.x-GoToX > 0 else abs($Sprite.scale.x)*-1
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if(PointTo):
+	if(PointTo && Move):
+		Sprite.play("move")
+		Sprite.speed_scale = velocity.x/SPEED
+		$Sprite.scale.x = abs($Sprite.scale.x) if self.global_position.x-GoToX > 0 else abs($Sprite.scale.x)*-1
 		if(Direction == Directions.Go): GoToX = PointTo.position.x
 		elif(Direction == Directions.Return): GoToX = InitialX
 		if(abs(GoToX - self.global_position.x) < 60):
@@ -29,5 +38,13 @@ func _physics_process(delta: float) -> void:
 		elif(GoToX >= self.global_position.x):
 			if(abs(velocity.x) < SPEED):
 				velocity.x += AccX*delta
+	else:
+		velocity.x = lerp(velocity.x, 0.0, 8*delta)
+		Sprite.scale.x = abs(Sprite.scale.x) if Player.global_position < Sprite.global_position else abs(Sprite.scale.x)*-1 
+		Sprite.play("interact")
 
 	move_and_slide()
+
+func _on_timeline_ended():
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	Move = true

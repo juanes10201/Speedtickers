@@ -1,0 +1,72 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "Regular",
+"sound_moods": {
+"Alt Regular": {
+"mode": 0,
+"name": "Alt Regular",
+"pitch_base": 0.8,
+"pitch_variance": -0.1,
+"skip_characters": 4.0,
+"sound_path": "res://assets/Sounds/Voices/Npc/4.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+},
+"Happy": {
+"mode": 0,
+"name": "Happy",
+"pitch_base": 0.7,
+"pitch_variance": 0.2,
+"skip_characters": 4.0,
+"sound_path": "res://assets/Sounds/Voices/Npc/2.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+},
+"Regular": {
+"mode": 0,
+"name": "Regular",
+"pitch_base": 0.8,
+"pitch_variance": 0.3,
+"skip_characters": 4.0,
+"sound_path": "res://assets/Sounds/Voices/Npc/1.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+},
+"Sad": {
+"mode": 0,
+"name": "Sad",
+"pitch_base": 0.6,
+"pitch_variance": -0.2,
+"skip_characters": 5.0,
+"sound_path": "res://assets/Sounds/Voices/Npc/3.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+},
+"Sappy": {
+"mode": 0,
+"name": "Sappy",
+"pitch_base": 0.6,
+"pitch_variance": -0.1,
+"skip_characters": 5.0,
+"sound_path": "res://assets/Sounds/Voices/Npc/2.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
+"style": "FaceShow",
+"suffix": ""
+},
+&"default_portrait": "",
+&"description": "",
+&"display_name": "Worker",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {},
+&"scale": 1.0
+}

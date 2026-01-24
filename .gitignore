@@ -2,4 +2,12 @@
 .godot/
 /android/
 /.import
+# Export and builds, should be in godot releases, idk how to do that lmao
 /build
+Linux/
+*.x86_64
+*.exe
+*.pck
+.export/
+.builds/
+builds/
