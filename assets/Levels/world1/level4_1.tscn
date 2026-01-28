@@ -427,13 +427,12 @@ script = ExtResource("17_vfkf5")
 
 [node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_8g546")
-offset_left = -1.0
-offset_top = -8.0
-offset_right = 141.0
-offset_bottom = 46.0
+offset_top = -2.0
+offset_right = 142.0
+offset_bottom = 70.0
 theme_override_fonts/normal_font = ExtResource("18_myvs5")
 text = "
-Participando de Speedtest 3036 aceptas los terminos y condiciones de usuario Speedtest."
+Hate to say it but now the real contest begins. Higher ups tell me that you should sign some terms & conditions and bla bla bla"
 fit_content = true
 script = ExtResource("19_khvyn")
 TextDelay = NodePath("TextDelay")
@@ -477,7 +476,9 @@ offset_top = 139.0
 offset_right = -24.805
 offset_bottom = 211.0
 theme_override_fonts/normal_font = ExtResource("18_myvs5")
-text = "Tarifas y expensas del Cronometro Speedtest son abonadas individualmente"
+text = "Oh and don't break that watch 'cause it's not included in the insurance.
+
+booorinngggg stuff right?"
 fit_content = true
 script = ExtResource("19_khvyn")
 TextDelay = NodePath("TextDelay")

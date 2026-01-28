@@ -275,7 +275,7 @@ position = Vector2(-188, -205)
 [node name="DashButton2" type="AnimatedSprite2D" parent="Tutorial"]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
-position = Vector2(-12, -1)
+position = Vector2(-29, -1)
 sprite_frames = SubResource("SpriteFrames_kdsa1")
 script = ExtResource("14_oq6ls")
 ReadFromReplay = true
@@ -284,7 +284,7 @@ ButtonToPress = "ui_right"
 [node name="DashButton" type="AnimatedSprite2D" parent="Tutorial"]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
-position = Vector2(2.6149902, -8.650604)
+position = Vector2(-14.38501, -8.650604)
 sprite_frames = SubResource("SpriteFrames_8fc2q")
 script = ExtResource("14_oq6ls")
 ReadFromReplay = true
@@ -297,9 +297,13 @@ offset_right = 24.61499
 offset_bottom = 15.349396
 theme_override_fonts/normal_font = ExtResource("12_fneve")
 text = "
-Mantene apretado
-para escalar la
-pared"
+Try mastering
+Wallclimbing
+
+(personal tip, keep
+the buttons presses
+to climb higher)"
+fit_content = true
 script = ExtResource("16_8fc2q")
 Animate = true
 TextDelay = NodePath("TextDelay")
