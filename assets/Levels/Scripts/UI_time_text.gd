@@ -51,14 +51,14 @@ var AddSize : float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#If timer disabled destroy
-	if((Player.is_in_group("Player") && Player.CountTime == false) || (SaveGame.get_config_value("DisableTimer") && SaveGame.get_config_value("DisableTimer") == 1)):
+	if((Player && Player.is_in_group("Player") && Player.CountTime == false) || (SaveGame.get_config_value("DisableTimer") && SaveGame.get_config_value("DisableTimer") == 1)):
 		RaySprite.hide()
 		$"../ui_text_seg".hide()
 		self.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(Player.is_in_group("Player") && Player.CountTime && !self.visible):
+	if(Player && Player.is_in_group("Player") && Player.CountTime && !self.visible):
 		AddSize = 30
 		RaySprite.show()
 		$"../ui_text_seg".show()

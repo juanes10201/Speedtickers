@@ -156,7 +156,7 @@ func _process(delta: float) -> void:
 	if(Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
 		Enabled = true
 	
-	if(Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
+	if(Player && Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
 		PrevGravityDirection = Player.GlobalGravityDirection * GravityDirection
 		velocity.y = 100 * PrevGravityDirection*GravityDirection
 	
@@ -340,7 +340,7 @@ func _update_sprite() -> void:
 		else: Sprite.play("Idle")
 
 func _is_on_floor() -> bool:
-	if(GravityDirection*Player.GlobalGravityDirection == 1):
+	if(Player && GravityDirection*Player.GlobalGravityDirection == 1):
 		return is_on_floor()
 	else:
 		return is_on_ceiling()

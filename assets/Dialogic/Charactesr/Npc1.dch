@@ -50,7 +50,7 @@
 "Sappy": {
 "mode": 0,
 "name": "Sappy",
-"pitch_base": 0.6,
+"pitch_base": 0.5,
 "pitch_variance": -0.1,
 "skip_characters": 5.0,
 "sound_path": "res://assets/Sounds/Voices/Npc/2.wav",

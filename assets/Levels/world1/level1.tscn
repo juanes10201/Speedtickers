@@ -706,6 +706,9 @@ Enabled = false
 [node name="Sprite2D" parent="Enemie4" index="6"]
 position = Vector2(1, -5.722046e-06)
 
+[node name="shadow" parent="Enemie4/Sprite2D" index="0"]
+script = null
+
 [node name="Player" parent="." instance=ExtResource("2_kmi6g")]
 position = Vector2(-310.99994, -342)
 PlayIntro = true

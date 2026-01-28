@@ -10,7 +10,7 @@ func _ready() -> void:
 @onready var Player = SaveGame.get_player()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(Player.is_in_group("Player") && Player.CountTime == false):
+	if(Player && Player.is_in_group("Player") && Player.CountTime == false):
 		hide()
 	else:
 		show()

@@ -21,6 +21,8 @@ func _ready() -> void:
 	$DialogueTrigger.Action = Dialogue_Action
 
 func _physics_process(delta: float) -> void:
+	if(!Move && Player && self.global_position.distance_to(Player.global_position) > 250):
+		Dialogic.end_timeline()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if(PointTo && Move):
@@ -40,7 +42,7 @@ func _physics_process(delta: float) -> void:
 				velocity.x += AccX*delta
 	else:
 		velocity.x = lerp(velocity.x, 0.0, 8*delta)
-		Sprite.scale.x = abs(Sprite.scale.x) if Player.global_position < Sprite.global_position else abs(Sprite.scale.x)*-1 
+		if(Player): Sprite.scale.x = abs(Sprite.scale.x) if Player.global_position < Sprite.global_position else abs(Sprite.scale.x)*-1 
 		Sprite.play("interact")
 
 	move_and_slide()

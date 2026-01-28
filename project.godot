@@ -83,6 +83,7 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+audio/type_sound_bus="Sfx"
 
 [display]
 

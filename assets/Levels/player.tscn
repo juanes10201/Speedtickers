@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=4 uid="uid://chat6jxc63bfj"]
+[gd_scene load_steps=110 format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
 [ext_resource type="Texture2D" uid="uid://bcv820hqp60jd" path="res://assets/Sprites/knightdash-Sheet.png" id="2_6abi3"]
@@ -22,6 +22,8 @@
 [ext_resource type="AudioStream" uid="uid://b53kcu1sjusbk" path="res://assets/Sounds/slide.wav" id="12_mayjg"]
 [ext_resource type="AudioStream" uid="uid://dpxr2ky640n13" path="res://assets/Sounds/groundsmash.wav" id="13_6xtp5"]
 [ext_resource type="AudioStream" uid="uid://bgb5h0wh5v6uq" path="res://assets/Sounds/sand_walking.wav" id="13_ltsn2"]
+[ext_resource type="Script" uid="uid://d23fnhxwc5cxw" path="res://assets/Levels/ShadowSprite.gd" id="14_2dlrs"]
+[ext_resource type="Shader" uid="uid://vf7wbaxmykte" path="res://assets/Levels/blur.gdshader" id="14_3c4ps"]
 [ext_resource type="AudioStream" uid="uid://wvfyegwnf1q4" path="res://assets/Sounds/slime_slide.wav" id="14_8u734"]
 [ext_resource type="AudioStream" uid="uid://c2jyf1ulqt0qj" path="res://assets/Sounds/slime_move.wav" id="15_4ir8m"]
 [ext_resource type="AudioStream" uid="uid://baawx3chmik64" path="res://assets/Sounds/PlayerWind.wav" id="15_ehprd"]
@@ -438,6 +440,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckcmk"]
+shader = ExtResource("14_3c4ps")
+shader_parameter/blur_size = 0.50000002375
+shader_parameter/max_alpha = 0.400000019
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1j8a"]
 atlas = ExtResource("4_8hwr6")
 region = Rect2(0, 0, 16, 16)
@@ -713,6 +720,7 @@ trail_lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_t8k5k")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 material = SubResource("CanvasItemMaterial_sc7ng")
 position = Vector2(0.454976, -9.06194)
 scale = Vector2(0.152, 1.133)
@@ -731,6 +739,16 @@ positions = Dictionary[String, Vector2]({
 "Walking": Vector2(0, -1.58),
 "Wall_jump": Vector2(0, 0.265)
 })
+
+[node name="shadow" type="AnimatedSprite2D" parent="Sprite2D"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_ckcmk")
+position = Vector2(-2.9932632, -1.999548)
+scale = Vector2(1.0000001, 1.0000001)
+sprite_frames = SubResource("SpriteFrames_qwuic")
+animation = &"Idle"
+offset = Vector2(0, -0.58)
+script = ExtResource("14_2dlrs")
 
 [node name="ParticlesLanding" type="AnimatedSprite2D" parent="."]
 visible = false
