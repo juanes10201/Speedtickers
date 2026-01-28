@@ -40,7 +40,13 @@ directories/dtl_directory={
 "lobby_initial": "res://assets/Timeline/lobby_initial.dtl",
 "npc_lobby1": "res://assets/Timeline/npc_lobby1.dtl",
 "npc_lobby2": "res://assets/Timeline/npc_lobby2.dtl",
-"npc_lobby3": "res://assets/Timeline/npc_lobby3.dtl"
+"npc_lobby3": "res://assets/Timeline/npc_lobby3.dtl",
+"npc_lobby4": "res://assets/Timeline/npc_lobby4.dtl",
+"npc_lobby5": "res://assets/Timeline/npc_lobby5.dtl",
+"npc_lobby6": "res://assets/Timeline/npc_lobby6.dtl",
+"npc_lobby7": "res://assets/Timeline/npc_lobby7.dtl",
+"npc_lobby8": "res://assets/Timeline/npc_lobby8.dtl",
+"npc_lobby9": "res://assets/Timeline/npc_lobby9.dtl"
 }
 layout/style_directory={
 "": "res://assets/Dialog/Styles/FaceShow.tres",

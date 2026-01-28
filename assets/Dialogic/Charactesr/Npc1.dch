@@ -5,7 +5,7 @@
 &"color": Color(1, 1, 1, 1),
 &"custom_info": {
 "prefix": "",
-"sound_mood_default": "Regular",
+"sound_mood_default": "Happy",
 "sound_moods": {
 "Alt Regular": {
 "mode": 0,

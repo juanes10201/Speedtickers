@@ -443,7 +443,7 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ckcmk"]
 shader = ExtResource("14_3c4ps")
 shader_parameter/blur_size = 0.50000002375
-shader_parameter/max_alpha = 0.400000019
+shader_parameter/max_alpha = 0.52400002489
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1j8a"]
 atlas = ExtResource("4_8hwr6")
@@ -743,7 +743,7 @@ positions = Dictionary[String, Vector2]({
 [node name="shadow" type="AnimatedSprite2D" parent="Sprite2D"]
 z_as_relative = false
 material = SubResource("ShaderMaterial_ckcmk")
-position = Vector2(-2.9932632, -1.999548)
+position = Vector2(-2.9932632, -0.99977493)
 scale = Vector2(1.0000001, 1.0000001)
 sprite_frames = SubResource("SpriteFrames_qwuic")
 animation = &"Idle"

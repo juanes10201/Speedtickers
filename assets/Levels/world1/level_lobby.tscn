@@ -621,11 +621,11 @@ position = Vector2(356, -648)
 Dialogue_Action = "npc_lobby3"
 
 [node name="CharacterBody2D10" parent="." instance=ExtResource("13_wsgti")]
-position = Vector2(644, -792)
+position = Vector2(-765, -328)
 Dialogue_Action = "npc_lobby8"
 
 [node name="CharacterBody2D11" parent="." instance=ExtResource("13_wsgti")]
-position = Vector2(183, -848)
+position = Vector2(649, -796)
 Dialogue_Action = "npc_lobby9"
 
 [node name="CharacterBody2D6" parent="." node_paths=PackedStringArray("PointTo") instance=ExtResource("13_wsgti")]
@@ -683,12 +683,12 @@ shape = SubResource("RectangleShape2D_gt17r")
 
 [node name="CharacterBody2D7" parent="." instance=ExtResource("13_wsgti")]
 position = Vector2(481, -139)
-Dialogue_Action = "npc_lobby5"
+Dialogue_Action = "npc_lobby6"
 
 [node name="CharacterBody2D8" parent="." node_paths=PackedStringArray("PointTo") instance=ExtResource("13_wsgti")]
 position = Vector2(3.9999847, -216)
 PointTo = NodePath("PointTo")
-Dialogue_Action = "npc_lobby6"
+Dialogue_Action = "npc_lobby5"
 
 [node name="PointTo" type="Marker2D" parent="CharacterBody2D8"]
 top_level = true

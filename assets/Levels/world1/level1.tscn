@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://1q1rsb3yrxn0"]
+[gd_scene load_steps=45 format=4 uid="uid://1q1rsb3yrxn0"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_flqp5"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_amxxm"]
@@ -228,12 +228,6 @@ light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3oydu"]
 size = Vector2(41.5, 60.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_37m73"]
-size = Vector2(25.5, 175)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_suqse"]
-size = Vector2(43.5, 76.5)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -788,7 +782,7 @@ Text = NodePath("DashTutorial2")
 
 [node name="Hologram" type="AnimatedSprite2D" parent="TextArea"]
 modulate = Color(1, 1, 1, 0.77254903)
-position = Vector2(19, 57)
+position = Vector2(113, 58)
 sprite_frames = SubResource("SpriteFrames_suqse")
 animation = &"disabled"
 script = ExtResource("18_suqse")
@@ -799,7 +793,8 @@ offset_right = 142.0
 offset_bottom = 37.0
 theme_override_fonts/normal_font = ExtResource("16_uug2w")
 text = "
-Bienvenido a las competencias anuales SpeedTest"
+Bienvenido a Speedtest 3036. Me llamo ----, y te voy a acompa;ar en esta pista de prueba"
+fit_content = true
 script = ExtResource("17_3oydu")
 TextDelay = NodePath("TextDelay")
 Voice = NodePath("Voice")
@@ -817,50 +812,6 @@ volume_db = -20.0
 position = Vector2(-99.75, 116.75)
 shape = SubResource("RectangleShape2D_3oydu")
 
-[node name="EraseText" type="Area2D" parent="TextArea"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea/EraseText"]
-position = Vector2(107, 37.75)
-shape = SubResource("RectangleShape2D_37m73")
-
-[node name="TextArea2" type="Area2D" parent="." node_paths=PackedStringArray("Text")]
-position = Vector2(-43, -131)
-script = ExtResource("16_3oydu")
-Text = NodePath("DashTutorial2")
-
-[node name="Hologram" type="AnimatedSprite2D" parent="TextArea2"]
-modulate = Color(1, 1, 1, 0.77254903)
-position = Vector2(19, 57)
-sprite_frames = SubResource("SpriteFrames_suqse")
-animation = &"disabled"
-script = ExtResource("18_suqse")
-
-[node name="DashTutorial2" type="RichTextLabel" parent="TextArea2" node_paths=PackedStringArray("TextDelay", "Voice")]
-material = SubResource("CanvasItemMaterial_suqse")
-offset_right = 142.0
-offset_bottom = 37.0
-theme_override_fonts/normal_font = ExtResource("16_uug2w")
-text = "
-Me llamo ----, y te voy a acompa;ar en esta pista de prueba"
-script = ExtResource("17_3oydu")
-TextDelay = NodePath("TextDelay")
-Voice = NodePath("Voice")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextDelay" type="Timer" parent="TextArea2/DashTutorial2"]
-wait_time = 0.05
-one_shot = true
-
-[node name="Voice" type="AudioStreamPlayer" parent="TextArea2/DashTutorial2"]
-stream = ExtResource("18_ocf2v")
-volume_db = -20.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea2"]
-position = Vector2(-6.75, -48)
-shape = SubResource("RectangleShape2D_suqse")
-
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]
-[connection signal="body_entered" from="TextArea/EraseText" to="TextArea" method="_on_erase_text_body_entered"]
-[connection signal="body_entered" from="TextArea2" to="TextArea2" method="_on_body_entered"]
 
 [editable path="Enemie4"]
