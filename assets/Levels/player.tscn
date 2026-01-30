@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://chat6jxc63bfj"]
+[gd_scene load_steps=111 format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
 [ext_resource type="Texture2D" uid="uid://bcv820hqp60jd" path="res://assets/Sprites/knightdash-Sheet.png" id="2_6abi3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://da2a3o3gvsn3j" path="res://assets/Sprites/Player/jump.png" id="8_3c4ps"]
 [ext_resource type="AudioStream" uid="uid://bp0r66nyk5ajk" path="res://assets/Sounds/dash4.wav" id="8_ndawj"]
 [ext_resource type="Texture2D" uid="uid://wcmkhx0w1ghi" path="res://assets/Sprites/Player/slide.png" id="9_ckcmk"]
+[ext_resource type="Texture2D" uid="uid://b1pqjeytvkeo5" path="res://assets/Sprites/Player/skate-rail.png" id="9_gu8yx"]
 [ext_resource type="AudioStream" uid="uid://kugth1ul3tvv" path="res://assets/Sounds/dash5.wav" id="9_jbnmf"]
 [ext_resource type="Script" uid="uid://dj3qnpf8vf8o3" path="res://assets/Levels/Player_Sprite.gd" id="9_rsv67"]
 [ext_resource type="AudioStream" uid="uid://cnogbwvf1ey7m" path="res://assets/Sounds/dash6.wav" id="10_evg0t"]
@@ -382,6 +383,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_gu8yx")
+}],
+"loop": true,
+"name": &"Rail",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("9_ckcmk")
 }],
 "loop": true,
@@ -603,20 +612,19 @@ stream_5/stream = ExtResource("49_vfcmg")
 stream_6/stream = ExtResource("50_mxrx7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivnav"]
-size = Vector2(0.909953, 6.79646)
+size = Vector2(6, 15)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sgfr"]
-size = Vector2(2.42654, 21.5221)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckcmk"]
+size = Vector2(6, 14.000015)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xowug"]
-size = Vector2(1.51659, 11.3274)
+size = Vector2(7, 8.000015)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5171x"]
-size = Vector2(12, 13.0001)
+size = Vector2(65.9374, 13.242227)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(8, 19)
-scale = Vector2(6.59375, 0.882813)
 collision_mask = 2332
 script = ExtResource("1_uhpgg")
 TimeDeath = 0.4
@@ -627,13 +635,13 @@ script = ExtResource("31_ivnav")
 [node name="ShadowSprite" type="Sprite2D" parent="Shadow"]
 modulate = Color(1, 1, 1, 0.866667)
 top_level = true
-position = Vector2(11, 20)
+position = Vector2(7, 20)
 texture = ExtResource("32_sc7ng")
 
 [node name="ShadowRaycast" type="RayCast2D" parent="Shadow"]
 position = Vector2(0.45497704, 9.061958)
 exclude_parent = false
-target_position = Vector2(-7.15256e-07, 189.168)
+target_position = Vector2(-0.45497704, 149.93805)
 collision_mask = 272
 hit_from_inside = true
 collide_with_areas = true
@@ -642,7 +650,7 @@ collide_with_areas = true
 position = Vector2(0.606635, -28.3186)
 enabled = false
 exclude_parent = false
-target_position = Vector2(1.19209e-07, -185.77)
+target_position = Vector2(-0.6066351, -159.6814)
 collision_mask = 272
 hit_from_inside = true
 collide_with_areas = true
@@ -723,7 +731,6 @@ process_material = SubResource("ParticleProcessMaterial_t8k5k")
 z_index = 1
 material = SubResource("CanvasItemMaterial_sc7ng")
 position = Vector2(0.454976, -9.06194)
-scale = Vector2(0.152, 1.133)
 sprite_frames = SubResource("SpriteFrames_qwuic")
 animation = &"Idle"
 offset = Vector2(0, -0.58)
@@ -817,7 +824,7 @@ one_shot = true
 [node name="Wallchecker" type="RayCast2D" parent="."]
 position = Vector2(0.151668, -7.9292)
 rotation = -1.5708
-target_position = Vector2(-5.72205e-06, 1.21326)
+target_position = Vector2(0.07077122, 7.8483324)
 collision_mask = 2334
 
 [node name="AudioDash" type="AudioStreamPlayer" parent="."]
@@ -911,7 +918,7 @@ collision_layer = 128
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitboxArea" groups=["PlayerHitBox"]]
-position = Vector2(0.454967, -9.53674e-07)
+position = Vector2(-2.0000095, 0.42920017)
 shape = SubResource("RectangleShape2D_ivnav")
 debug_color = Color(1.54018e-06, 0.777631, 0.637363, 0.42)
 
@@ -922,20 +929,20 @@ collision_mask = 2
 script = ExtResource("33_isg5t")
 
 [node name="CollisionShapeMain" type="CollisionShape2D" parent="EnemyHitArea" groups=["PlayerEnemiesCollision"]]
-position = Vector2(0.454967, -1.69912)
+position = Vector2(-2.0000095, 0.9292002)
 scale = Vector2(1, 0.999999)
-shape = SubResource("RectangleShape2D_5sgfr")
+shape = SubResource("RectangleShape2D_ckcmk")
 debug_color = Color(0.945098, 0, 0.596078, 0.309804)
 
 [node name="CollisionShapeDash" type="CollisionShape2D" parent="EnemyHitArea" groups=["PlayerEnemiesCollision"]]
-position = Vector2(-0.151668, -2.26548)
+position = Vector2(-2.5000095, -0.07079983)
 scale = Vector2(1, 0.999998)
 shape = SubResource("RectangleShape2D_xowug")
 disabled = true
 debug_color = Color(0.760784, 0.517647, 0.0745098, 0.639216)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." groups=["Player"]]
-position = Vector2(0.303318, -6.23005)
+position = Vector2(-2, -7.500001)
 scale = Vector2(0.151659, 1.13274)
 shape = SubResource("RectangleShape2D_5171x")
 debug_color = Color(0, 0.6, 0.701961, 0.14902)
@@ -944,7 +951,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.14902)
 script = ExtResource("33_t4ba7")
 
 [node name="KickTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="InvencibilityTimer" type="Timer" parent="."]
@@ -953,7 +960,13 @@ one_shot = true
 
 [node name="SlideDestroyTiles" type="RayCast2D" parent="."]
 position = Vector2(0, -9.061937)
-scale = Vector2(1, 8.64)
+scale = Vector2(1, 2.205)
+target_position = Vector2(12, 0.12290943)
+collision_mask = 4
+
+[node name="RailDestroyTiles" type="RayCast2D" parent="."]
+position = Vector2(0, 1.1327477)
+scale = Vector2(5.61, 8.64)
 target_position = Vector2(2.2748814, -4.7683716e-06)
 collision_mask = 4
 
@@ -962,8 +975,8 @@ wait_time = 9.0
 one_shot = true
 
 [node name="SlamDestroyTiles" type="RayCast2D" parent="."]
-position = Vector2(0, -9.061937)
-scale = Vector2(0.255, 1)
+position = Vector2(-1.0000002, -9.061937)
+scale = Vector2(2.675, 1)
 target_position = Vector2(0, 18.12388)
 collision_mask = 8
 

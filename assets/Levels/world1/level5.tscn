@@ -238,7 +238,7 @@ texture = SubResource("GradientTexture2D_lhi1r")
 height = 13.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1.5258789e-05, -28)
+position = Vector2(20, -8.000002)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.95631605, 0.47549087, 0.7099316, 1)
 texture = SubResource("GradientTexture2D_txvqh")

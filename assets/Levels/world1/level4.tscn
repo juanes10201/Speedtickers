@@ -454,13 +454,15 @@ position = Vector2(-32, -22)
 
 [node name="Text" type="RichTextLabel" parent="TimeStop/Tutorial" node_paths=PackedStringArray("TextDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_nmt3o")
-offset_left = -75.0
-offset_top = -39.0
-offset_right = 67.0
-offset_bottom = -2.0
+offset_left = -58.0
+offset_top = -24.0
+offset_right = 84.0
+offset_bottom = 30.0
 theme_override_fonts/normal_font = ExtResource("15_drd3g")
-text = "This is one secret skill
-Try using your shild as a Skate with"
+text = "Try skating with your
+
+shield with"
+fit_content = true
 script = ExtResource("16_b5voc")
 TextDelay = NodePath("TextDelay")
 Voice = NodePath("Voice")
@@ -476,7 +478,7 @@ volume_db = -20.0
 
 [node name="DashButton" type="AnimatedSprite2D" parent="TimeStop/Tutorial"]
 use_parent_material = true
-position = Vector2(27, -5)
+position = Vector2(22, -1)
 sprite_frames = SubResource("SpriteFrames_8vuuc")
 script = ExtResource("14_igvnc")
 ButtonToPress = "player_slide"
@@ -526,7 +528,9 @@ offset_right = 72.0
 offset_bottom = 28.0
 theme_override_fonts/normal_font = ExtResource("15_drd3g")
 text = "Not bad, but can you kid Slam trought ground?
-Try with"
+
+Try with:"
+fit_content = true
 script = ExtResource("16_b5voc")
 TextDelay = NodePath("TextDelay")
 Voice = NodePath("Voice")
@@ -542,14 +546,14 @@ volume_db = -20.0
 
 [node name="DashButton" type="AnimatedSprite2D" parent="TimeStop2/Tutorial"]
 use_parent_material = true
-position = Vector2(-13, 19)
+position = Vector2(-62, 47)
 sprite_frames = SubResource("SpriteFrames_8vuuc")
 script = ExtResource("14_igvnc")
 ButtonToPress = "player_slide"
 
 [node name="DashButton2" type="AnimatedSprite2D" parent="TimeStop2/Tutorial"]
 use_parent_material = true
-position = Vector2(9, 18)
+position = Vector2(-40, 46)
 sprite_frames = SubResource("SpriteFrames_6niov")
 animation = &"pressed"
 script = ExtResource("14_igvnc")

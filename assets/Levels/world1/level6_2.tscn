@@ -452,7 +452,7 @@ offset_right = 159.0
 offset_bottom = -108.0
 theme_override_fonts/normal_font = ExtResource("16_amwd2")
 text = "
-Ahi intenta hacer un dash"
+Let's see if you had forgoten dashing"
 fit_content = true
 script = ExtResource("17_v35s5")
 TextDelay = NodePath("TextDelay")

@@ -425,21 +425,28 @@ sprite_frames = SubResource("SpriteFrames_ow3ka")
 animation = &"disabled"
 script = ExtResource("17_vfkf5")
 
-[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "Voice")]
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_8g546")
-offset_top = -2.0
-offset_right = 142.0
-offset_bottom = 70.0
+offset_left = -2.0
+offset_top = -14.0
+offset_right = 140.0
+offset_bottom = 58.0
 theme_override_fonts/normal_font = ExtResource("18_myvs5")
 text = "
-Hate to say it but now the real contest begins. Higher ups tell me that you should sign some terms & conditions and bla bla bla"
+Get ready for the real contest
+Pick the clock before HQ guys start telling you about terms & conditions an boooring stuff"
 fit_content = true
 script = ExtResource("19_khvyn")
 TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
 Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2"]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea/DashTutorial2"]
 wait_time = 0.05
 one_shot = true
 
@@ -469,23 +476,26 @@ sprite_frames = SubResource("SpriteFrames_ow3ka")
 animation = &"disabled"
 script = ExtResource("17_vfkf5")
 
-[node name="DashTutorial2" type="RichTextLabel" parent="TextArea2" node_paths=PackedStringArray("TextDelay", "Voice")]
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea2" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_8g546")
 offset_left = -144.0
 offset_top = 139.0
 offset_right = -24.805
 offset_bottom = 211.0
 theme_override_fonts/normal_font = ExtResource("18_myvs5")
-text = "Oh and don't break that watch 'cause it's not included in the insurance.
-
-booorinngggg stuff right?"
+text = "Try not breaking that watch 'cause insurance ain't covering it"
 fit_content = true
 script = ExtResource("19_khvyn")
 TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
 Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextDelay" type="Timer" parent="TextArea2/DashTutorial2"]
+wait_time = 0.009999999999999998
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea2/DashTutorial2"]
 wait_time = 0.05
 one_shot = true
 

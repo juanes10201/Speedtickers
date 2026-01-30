@@ -39,6 +39,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "lobby_initial": "res://assets/Timeline/lobby_initial.dtl",
 "npc_lobby1": "res://assets/Timeline/npc_lobby1.dtl",
+"npc_lobby10": "res://assets/Timeline/npc_lobby10.dtl",
 "npc_lobby2": "res://assets/Timeline/npc_lobby2.dtl",
 "npc_lobby3": "res://assets/Timeline/npc_lobby3.dtl",
 "npc_lobby4": "res://assets/Timeline/npc_lobby4.dtl",
@@ -284,6 +285,10 @@ player_dialog_confirm={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
+}
+jum={
+"deadzone": 0.2,
+"events": []
 }
 
 [input_devices]

@@ -249,7 +249,7 @@ animations = [{
 light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1jth"]
-size = Vector2(48.5, 34.5)
+size = Vector2(22.25, 60.25)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -528,21 +528,26 @@ sprite_frames = SubResource("SpriteFrames_bu7th")
 animation = &"disabled"
 script = ExtResource("20_qtxsb")
 
-[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "Voice")]
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_wx6ao")
 offset_left = -9.0
 offset_right = 133.0
 offset_bottom = 54.0
 theme_override_fonts/normal_font = ExtResource("21_xxhv1")
 text = "
-Recuerda consultar por las expensas del Entrenamiento Speedtest(tm)"
+You kid owned a skate before didn't ya?"
 fit_content = true
 script = ExtResource("22_bfkdq")
 TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
 Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2"]
+wait_time = 0.009999999999999998
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea/DashTutorial2"]
 wait_time = 0.05
 one_shot = true
 
@@ -551,7 +556,7 @@ stream = ExtResource("23_kkda2")
 volume_db = -20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea"]
-position = Vector2(-36, 17)
+position = Vector2(-147.125, 31.875)
 shape = SubResource("RectangleShape2D_x1jth")
 
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]

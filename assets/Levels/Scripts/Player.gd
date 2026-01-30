@@ -45,6 +45,8 @@ var LASERS_ENABLED : Array[bool] = [false, false, false, false, false]
 
 var HaveKey : bool = false
 
+var SnappedOnRail : bool = false
+
 #region Export variables
 @export var EnableParticles : bool = true
 @export var RetroStyle : bool = false
@@ -140,6 +142,7 @@ var direction = get_axis()
 
 @onready var SlideDestroyTiles = $"SlideDestroyTiles"
 @onready var SlamDestroyTiles = $"SlamDestroyTiles"
+@onready var RailDestroyTiles = $"RailDestroyTiles"
 
 #@onready var OriginalCameraY : float = Camera.offset.y if Camera else 0
 
@@ -328,7 +331,7 @@ func _physics_process(delta: float) -> void:
 	#endregion
 	#if(PlayIntro):
 	#	Camera.offset.y = lerpf(Camera.offset.y, OriginalCameraY, .6*delta)
-	if(Physics):
+	if(Physics && !SnappedOnRail):
 		LevelManager.ExpoMoveTimeout.paused = false
 		if(velocity.y > 0):
 			AirState = AirSides.Falling
@@ -435,13 +438,21 @@ func _physics_process(delta: float) -> void:
 			CeilingMovementMultiplierTimer.start()
 		if(!CeilingMovementMultiplierTimer.is_stopped()): velocity.x *= 1.3
 		
-		if(!KickTimer.is_stopped() && DashTime.is_stopped() && !GroundSmash):
+		if(DashTime.is_stopped() && !GroundSmash):
 			velocity.x += KickSpeed.x * delta
-			velocity.x = lerpf(velocity.x, 0, 10*delta)
+		if(KickTimer.is_stopped()):
+			KickSpeed.x = lerpf(KickSpeed.x, 0, delta*7)
 		
 		# Move the character
 		move_and_slide()
 		#endregion
+	elif(SnappedOnRail):
+		Sprite.play("Rail")
+		_Destroy_Tiles_Slide()
+		_Destroy_Tiles_Rail()
+		#_physics_jump(delta)
+		#move_and_slide()
+		
 #endregion
 
 #region Walking sound
@@ -558,6 +569,7 @@ func _physics_jump(delta: float) -> void:
 	# Handle jump.
 	DashWithJump = false
 	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped()) ) || (!PreWallJumpTimer.is_stopped() && is_action_pressed("player_jump")) ):
+		SnappedOnRail = false
 		DoJump()
 		LevelManager.ExpoMoveTimeout.start()
 	#Cancel jump
@@ -565,6 +577,7 @@ func _physics_jump(delta: float) -> void:
 		velocity.y += JumpCancelAcc * GravityDirection
 	
 	if(is_action_pressed("player_jump")):
+		SnappedOnRail = false
 		LevelManager.ExpoMoveTimeout.start()
 		PreJumpTime.start()
 	
@@ -804,6 +817,9 @@ func On_Death():
 				get_tree().reload_current_scene() 
 #endregion
 
+func _Destroy_Tiles_Rail() -> void:
+	_Raycast_Destroy_Tiles(RailDestroyTiles)
+
 func _Destroy_Tiles_Slide() -> void:
 	_Raycast_Destroy_Tiles(SlideDestroyTiles)
 
@@ -876,6 +892,7 @@ func get_axis():
 		else: return 0
 
 func Reset_Groundsmash() -> void:
+	PressingGroundSmash = false
 	ParticlesLanding.position = self.position
 	ParticlesLanding.position.y -= 10
 	ParticlesLanding.set_as_top_level(true)
@@ -890,6 +907,7 @@ func Reset_Groundsmash() -> void:
 	if(Camera): Camera.Shake(10.0, 10.0)
 	enemy_jump()
 	EnemyGroundSlamTimer.start()
+	velocity.y = 0
 
 
 func _on_timer_intro_slam_timeout() -> void:

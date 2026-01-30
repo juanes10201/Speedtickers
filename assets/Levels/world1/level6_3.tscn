@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://dqtkefg1t6fkk"]
+[gd_scene load_steps=62 format=4 uid="uid://dqtkefg1t6fkk"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_eqw1s"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_b3igw"]
@@ -13,8 +13,15 @@
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="12_dq18w"]
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="14_7b3gs"]
 [ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Levels/Scripts/animated_button.gd" id="15_elnin"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="16_b3igw"]
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Levels/Scripts/DynamicLightAnimation.gd" id="16_eqw1s"]
 [ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="16_ll0s4"]
+[ext_resource type="Script" uid="uid://b70n1us6src5o" path="res://assets/Levels/world1/dialog_text_area.gd" id="17_a2p30"]
+[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="18_v138t"]
+[ext_resource type="Script" uid="uid://6216kh0o2v0m" path="res://assets/Levels/world1/hologram.gd" id="19_c6omg"]
+[ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="20_1l7hu"]
+[ext_resource type="Script" uid="uid://b7kp4oyo8y484" path="res://assets/Levels/world1/text_tutorial_anim.gd" id="21_33pmm"]
+[ext_resource type="AudioStream" uid="uid://dsvfo3erylgm" path="res://assets/Sounds/Tutorial/voicetutorial.wav" id="22_dq18w"]
 
 [sub_resource type="Animation" id="Animation_timnu"]
 length = 0.001
@@ -232,6 +239,89 @@ gradient = SubResource("Gradient_eqw1s")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7ae7"]
+atlas = ExtResource("18_v138t")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6niov"]
+atlas = ExtResource("18_v138t")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmt3o"]
+atlas = ExtResource("18_v138t")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2utor"]
+atlas = ExtResource("18_v138t")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25fng"]
+atlas = ExtResource("18_v138t")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e34pc"]
+atlas = ExtResource("18_v138t")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5p4m"]
+atlas = ExtResource("18_v138t")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d5i3"]
+atlas = ExtResource("18_v138t")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gjf13"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ae7")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_6niov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmt3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ae7")
+}],
+"loop": false,
+"name": &"hide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2utor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25fng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e34pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5p4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d5i3")
+}],
+"loop": false,
+"name": &"show",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7b3gs"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elnin"]
+size = Vector2(163.25, 3.25)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
 
@@ -256,6 +346,12 @@ position = Vector2(-8, 237)
 scale = Vector2(54.01218, 1)
 Visible = false
 CanChange = false
+
+[node name="Rail" parent="." instance=ExtResource("16_b3igw")]
+position = Vector2(-122, 35)
+points = PackedVector2Array(-6, 6, 0, 2, 4, 21, 63, 27, 87, -9, 174, 5, 176, 23)
+MoveSpeed = 500
+EndWithSlam = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(-757.008, -830)
@@ -512,3 +608,49 @@ color = Color(0.9885257, 0.43792143, 0.71769613, 1)
 energy = 0.7
 texture = SubResource("GradientTexture2D_05rqf")
 height = 13.0
+
+[node name="TextArea" type="Area2D" parent="." node_paths=PackedStringArray("Text")]
+position = Vector2(107, 228)
+script = ExtResource("17_a2p30")
+Text = NodePath("DashTutorial2")
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TextArea"]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-19, -75)
+sprite_frames = SubResource("SpriteFrames_gjf13")
+animation = &"disabled"
+script = ExtResource("19_c6omg")
+
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_7b3gs")
+offset_left = -40.0
+offset_top = -123.0
+offset_right = 102.0
+offset_bottom = -69.0
+theme_override_fonts/normal_font = ExtResource("20_1l7hu")
+text = "
+Rails are cool right?"
+fit_content = true
+script = ExtResource("21_33pmm")
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2"]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea/DashTutorial2"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TextArea/DashTutorial2"]
+stream = ExtResource("22_dq18w")
+volume_db = -20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea"]
+position = Vector2(25.375, -67.375)
+shape = SubResource("RectangleShape2D_elnin")
+
+[connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]
