@@ -349,7 +349,7 @@ EnemyDirection = 2
 position = Vector2(208.00002, 353)
 
 [node name="KillBox18" parent="." instance=ExtResource("18_xdos2")]
-position = Vector2(408.99997, -469)
+position = Vector2(193.00002, -456)
 collision_layer = 1024
 Laser_Color = 3
 

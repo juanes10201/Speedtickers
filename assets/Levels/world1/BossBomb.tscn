@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vuuthlna3tf0"]
+[gd_scene load_steps=7 format=3 uid="uid://vuuthlna3tf0"]
 
 [ext_resource type="Script" uid="uid://ibdcnv47udet" path="res://assets/Levels/world1/BossBomb.gd" id="1_bmav0"]
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Levels/Shader/enemie_skeleton.gdshader" id="2_x255c"]
@@ -12,16 +12,10 @@ shader_parameter/overlay_color = Color(0.9411765, 0, 0.1764706, 0.67058825)
 shader_parameter/fill_dir = Vector2(1, -17.885)
 shader_parameter/alpha_cutoff = 0.01
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sw0pm"]
-radius = 16.00003
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8p1a"]
 radius = 62.0
 
-[node name="Bomb" type="RigidBody2D" groups=["BossBomb"]]
-collision_layer = 8192
-collision_mask = 2334
-angular_velocity = 0.30822515
+[node name="Bomb" type="Node2D" groups=["BossBomb"]]
 script = ExtResource("1_bmav0")
 
 [node name="SpriteDamageArea" type="Sprite2D" parent="."]
@@ -29,9 +23,6 @@ self_modulate = Color(1, 1, 1, 0.43137255)
 material = SubResource("ShaderMaterial_o6gnl")
 scale = Vector2(0.48904413, 0.48904413)
 texture = ExtResource("3_hra8k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_sw0pm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3.795, 3.795)

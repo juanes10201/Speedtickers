@@ -15,6 +15,8 @@ extends CharacterBody2D
 @export var DistanceWallJump : float = 200.0
 @export var VelSlideX : float = 500.0
 @export var InitialLife : int = 15
+@export var LifeThrowbombs : int = 10
+@export var SpawnBombTimePhase2 : float = 4.0
 @export var Phase2Life : int = 5
 @export var Phase2SlamTime : float = .7
 @export var Phase2MoveTime : float = .7
@@ -191,9 +193,11 @@ var SlamJump : bool = false
 
 func _process(delta: float) -> void:
 	if(Slam && SlamNearPlayer):
-		Player._play_sound($AudioNear,false)
-	if(EnemyLife < Phase2Life):
+		Player._play_sound($AudioNear, true, true, .6, 1, .7, .15, 1.2)
+	if(EnemyLife <= LifeThrowbombs):
 		if($SpawnBomb.is_stopped()): $SpawnBomb.start()
+		if(EnemyLife <= Phase2Life):
+			$SpawnBomb.wait_time = SpawnBombTimePhase2
 	if(!WallJumpTimer.is_stopped()):
 		velocity.x = lerpf(velocity.x, -600.0*direction, 5*delta)
 		Slam = false
@@ -252,6 +256,7 @@ func _process(delta: float) -> void:
 						if(WallJump && WallJumpTimer.is_stopped()): WallJump = false
 						if(Slam && !SlamJump):
 							Slam = false
+							Player._play_sound($AudioCrashSlam, true, true, .6, 1, .7, .15, 1.2)
 							BossSpawner.spawn_clock()
 							Player.Camera.Shake(20.0, 20.0)
 							if(WallJumped):
@@ -453,6 +458,7 @@ func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
 		WallJumped = true
 	elif(Slide && !WallJump && abs(Player.position.x-position.x) >= DistanceWallJump):
 		print("Walljump")
+		Player._play_sound($AudioWalljump, true, true, .6, 1, .7, .15, 1.2)
 		WallJumpTimer.start()
 		_update_direction()
 		_jump(JUMP_VELOCITY, true)
@@ -460,6 +466,7 @@ func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
 		WallJump = true
 	if(Slide):
 		#Done Slide and touched wall
+		Player._play_sound($AudioCrashWall, true, true, .6, 1, .7, .15, 1.2)
 		_update_direction()
 		Slide = false
 		BossSpawner.spawn_clock()
@@ -498,7 +505,7 @@ func _on_cooldown_hit_timer_timeout() -> void:
 	Move = true
 
 func UpdateLife() -> void:
-	Player._play_sound($AudioHit)
+	Player._play_sound($AudioHit, true, true, .6, 1, .7, .15, 1.2)
 	if(EnemyLife <= Phase2Life):
 		print("Entered phase 2")
 		MoveTimer.wait_time = Phase2MoveTime
@@ -514,6 +521,7 @@ func _Play_Animation(Anim : String, Phase : bool = true) -> void:
 
 
 func _on_spawn_bomb_timeout() -> void:
+	Player._play_sound($AudioIntroBomb, true, true, .6, 1, .7, .15, 1.2)
 	BossSpawner.spawn_bomb()
 
 func _on_area_near_body_entered(body: Node2D) -> void:
