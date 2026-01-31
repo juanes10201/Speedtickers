@@ -427,10 +427,10 @@ script = ExtResource("17_vfkf5")
 
 [node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_8g546")
-offset_left = -2.0
-offset_top = -14.0
-offset_right = 140.0
-offset_bottom = 58.0
+offset_left = -4.0
+offset_top = -15.0
+offset_right = 138.0
+offset_bottom = 57.0
 theme_override_fonts/normal_font = ExtResource("18_myvs5")
 text = "
 Get ready for the real contest
@@ -492,7 +492,7 @@ Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextDelay" type="Timer" parent="TextArea2/DashTutorial2"]
-wait_time = 0.009999999999999998
+wait_time = 0.00999999999999999
 one_shot = true
 
 [node name="VoiceDelay" type="Timer" parent="TextArea2/DashTutorial2"]

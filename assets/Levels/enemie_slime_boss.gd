@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 #region Setup variables
 @export_group("Custom")
+@export var BossSpawner : Node2D
 @export var RetroStyle : bool = false
 @export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
 @export var EnemyDirection : Directions = Directions.RIGHT
@@ -20,6 +21,7 @@ extends CharacterBody2D
 var Slide : bool = false
 var WallJump : bool = false
 var WallJumped : bool = false
+var SlamNearPlayer : bool = false
 
 @export_group("Physics")
 @export var Enemy_burst_speed : float = 300.0
@@ -86,8 +88,6 @@ var StatePlaying : bool = false
 @export var GroundSmashVelocity : float = 600
 
 var Jumped : bool = false
-
-@onready var TimerSpawner = get_tree().get_nodes_in_group("TimerSpawner")[0] if get_tree().get_nodes_in_group("TimerSpawner").size() else null
 
 @onready var EnemyLife : int = InitialLife
 
@@ -190,12 +190,16 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 var SlamJump : bool = false
 
 func _process(delta: float) -> void:
+	if(Slam && SlamNearPlayer):
+		Player._play_sound($AudioNear,false)
+	if(EnemyLife < Phase2Life):
+		if($SpawnBomb.is_stopped()): $SpawnBomb.start()
 	if(!WallJumpTimer.is_stopped()):
 		velocity.x = lerpf(velocity.x, -600.0*direction, 5*delta)
 		Slam = false
 	
 	if(Player && Player.Time_Left && Player.Time_Left.time_left <= 5.0):
-		TimerSpawner.spawn_clock(true)
+		BossSpawner.spawn_clock(true)
 	if(RetroStyle):
 		position = _Position
 		position.x /= 8
@@ -248,7 +252,7 @@ func _process(delta: float) -> void:
 						if(WallJump && WallJumpTimer.is_stopped()): WallJump = false
 						if(Slam && !SlamJump):
 							Slam = false
-							TimerSpawner.spawn_clock()
+							BossSpawner.spawn_clock()
 							Player.Camera.Shake(20.0, 20.0)
 							if(WallJumped):
 								velocity.x = direction * SPEED * .4
@@ -424,8 +428,7 @@ func _is_on_floor() -> bool:
 func _on_damage_jump_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player") && Player.GroundSmash):
 		Player.Reset_Groundsmash()
-		Player.velocity.y = 0
-		Player.DoJump()
+		Player.velocity.y = -50
 		Player.Dashed = false
 
 
@@ -459,7 +462,7 @@ func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
 		#Done Slide and touched wall
 		_update_direction()
 		Slide = false
-		TimerSpawner.spawn_clock()
+		BossSpawner.spawn_clock()
 		_jump(JUMP_VELOCITY)
 		MoveTimer.start()
 
@@ -474,9 +477,9 @@ func _on_damage_boss_body_entered(body: Node2D) -> void:
 		Player.DashTime.stop()
 		Player.GroundSmash = false
 		Player.Reset_Groundsmash()
-		Player.DoJump() 
+		Player.velocity.y = -200
 		Player.velocity.y *= 2
-		Player.KickSpeed.x = 20000.0
+		Player.KickSpeed.x = 25000.0
 		Player.Dashed = false
 		if(Player.global_position.x <= $DamagePlayerMarker.global_position.x):
 			Player.KickSpeed.x *= -1 
@@ -495,6 +498,7 @@ func _on_cooldown_hit_timer_timeout() -> void:
 	Move = true
 
 func UpdateLife() -> void:
+	Player._play_sound($AudioHit)
 	if(EnemyLife <= Phase2Life):
 		print("Entered phase 2")
 		MoveTimer.wait_time = Phase2MoveTime
@@ -507,3 +511,13 @@ func _Play_Animation(Anim : String, Phase : bool = true) -> void:
 		Sprite.play(Anim)
 	else:
 		Sprite.play("Phase2_" + Anim)
+
+
+func _on_spawn_bomb_timeout() -> void:
+	BossSpawner.spawn_bomb()
+
+func _on_area_near_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("Player")): SlamNearPlayer = true
+
+func _on_area_near_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Player")): SlamNearPlayer = false

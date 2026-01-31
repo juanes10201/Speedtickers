@@ -10,6 +10,7 @@ var MusicState = MusicStates.ingame
 @onready var SongInGame = $SongInGame
 @onready var SongMenu = $SongMenu
 @onready var AudioDeath = $AudioDeathPlayer
+@onready var AudioCompleteLevel = $AudioCompleteLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +27,15 @@ func _play_song(Song):
 		SongInGame.stop()
 		SongMenu.stop()
 		Song.play()
+#endregion
+
+func _play_sound_end_level():
+	_play_global_sound(AudioCompleteLevel)
+
+#region Play Sound
+func _play_global_sound(Sound):
+	if(Sound && !Sound.playing):
+		Sound.play()
 #endregion
 
 #region Songs

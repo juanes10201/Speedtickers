@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=4 uid="uid://dhgyon50kqkuc"]
+[gd_scene load_steps=33 format=4 uid="uid://dhgyon50kqkuc"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_qq1m5"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_27gdk"]
 [ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_lqvjt"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="4_lnq2d"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="5_3p25h"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="5_t2ce6"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="6_buw6l"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="7_51c2l"]
@@ -180,6 +181,20 @@ position = Vector2(140, -414)
 scale = Vector2(3, 4)
 collision_mask = 517
 
+[node name="Rail" parent="." instance=ExtResource("5_3p25h")]
+position = Vector2(-134, -292)
+points = PackedVector2Array(10, 14, 6, 8, 189, -88, 199, -102, 201, -78)
+EndWithSlam = true
+
+[node name="Rail2" parent="." instance=ExtResource("5_3p25h")]
+position = Vector2(54, -309)
+points = PackedVector2Array(-5, 4, 0, 2, 42, 28, 15, 52, 27, 74, 14, 98, 10, 123)
+EndWithSlam = true
+
+[node name="Rail3" parent="." instance=ExtResource("5_3p25h")]
+position = Vector2(-253, 168)
+points = PackedVector2Array(9, 18, 2, 7, 44, -12, 240, -12, 258, -17)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(242, -206)
 scale = Vector2(1.00384, 1)
@@ -251,7 +266,7 @@ position = Vector2(-280, 90)
 position = Vector2(-264, 90)
 
 [node name="Enemie4" parent="." instance=ExtResource("13_lupcs")]
-position = Vector2(-30, -340)
+position = Vector2(-1, -355)
 floor_max_angle = 1.39626
 EnemyDirection = 1
 Enemy_burst_speed = 500.0
@@ -265,13 +280,13 @@ position = Vector2(-216, -215)
 scale = Vector2(3, 1)
 
 [node name="Enemie5" parent="." instance=ExtResource("13_lupcs")]
-position = Vector2(38, -372)
+position = Vector2(41, -374)
 floor_max_angle = 1.39626
 EnemyDirection = 1
 Enemy_burst_speed = 500.0
 
 [node name="Enemie6" parent="." instance=ExtResource("13_lupcs")]
-position = Vector2(4, -357)
+position = Vector2(20, -365)
 floor_max_angle = 1.39626
 EnemyDirection = 1
 Enemy_burst_speed = 500.0

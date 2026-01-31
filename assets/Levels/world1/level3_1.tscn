@@ -235,7 +235,7 @@ ReplayAction = 0
 ReplayStyle = true
 RecordedLocation = "res://assets/Replays/tutorial_level_3_1.json"
 
-[node name="Text" type="RichTextLabel" parent="." node_paths=PackedStringArray("TextDelay", "Voice")]
+[node name="Text" type="RichTextLabel" parent="." node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_a53cf")
 offset_left = -274.0
 offset_top = -96.0
@@ -250,11 +250,16 @@ fit_content = true
 script = ExtResource("13_njdfe")
 Animate = true
 TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
 Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextDelay" type="Timer" parent="Text"]
+[node name="VoiceDelay" type="Timer" parent="Text"]
 wait_time = 0.05
+one_shot = true
+
+[node name="TextDelay" type="Timer" parent="Text"]
+wait_time = 0.00999999999999999
 one_shot = true
 
 [node name="Voice" type="AudioStreamPlayer" parent="Text"]

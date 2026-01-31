@@ -289,7 +289,7 @@ sprite_frames = SubResource("SpriteFrames_8fc2q")
 script = ExtResource("14_oq6ls")
 ReadFromReplay = true
 
-[node name="DashTutorial2" type="RichTextLabel" parent="Tutorial" node_paths=PackedStringArray("TextDelay", "Voice")]
+[node name="DashTutorial2" type="RichTextLabel" parent="Tutorial" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_kdsa1")
 offset_left = -117.38501
 offset_top = -21.650604
@@ -300,17 +300,20 @@ text = "
 Try mastering
 Wallclimbing
 
-(personal tip, keep
-the buttons presses
-to climb higher)"
+Try keeping pressed both to scale further"
 fit_content = true
 script = ExtResource("16_8fc2q")
 Animate = true
 TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
 Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextDelay" type="Timer" parent="Tutorial/DashTutorial2"]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="Tutorial/DashTutorial2"]
 wait_time = 0.05
 one_shot = true
 

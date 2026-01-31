@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c5ueymd87lgb0"]
+[gd_scene load_steps=29 format=4 uid="uid://c5ueymd87lgb0"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_86mg3"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_y1ig7"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bygxx5ppwysc3" path="res://assets/Levels/enemie_special.tscn" id="14_5dlhc"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Levels/enemie.tscn" id="15_lf3du"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="16_m63sx"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="17_85htg"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -295,12 +296,6 @@ EnemyDirection = 1
 position = Vector2(302, -254)
 EnemyDirection = 1
 
-[node name="falling_sand12" parent="." instance=ExtResource("13_4nnxb")]
-position = Vector2(-99, -32)
-
-[node name="falling_sand23" parent="." instance=ExtResource("13_4nnxb")]
-position = Vector2(-83, -32)
-
 [node name="KillBox3" parent="." instance=ExtResource("10_xrwsc")]
 position = Vector2(-43, 65)
 scale = Vector2(7.93, 2.875)
@@ -357,3 +352,8 @@ color = Color(0.88741815, 0.49767113, 0.8530232, 1)
 energy = 0.7
 texture = SubResource("GradientTexture2D_1b7q3")
 height = 13.0
+
+[node name="Rail" parent="." instance=ExtResource("17_85htg")]
+position = Vector2(-101, -35)
+points = PackedVector2Array(-6, -2, 0, -2, 7, -10, 40, -14, 59, -31, 66, -34)
+MoveSpeed = 600

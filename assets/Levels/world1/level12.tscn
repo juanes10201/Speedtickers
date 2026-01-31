@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=4 uid="uid://cafn7pokf25fd"]
+[gd_scene load_steps=33 format=4 uid="uid://cafn7pokf25fd"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_enkfg"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_37lu5"]
 [ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_nkqi2"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="5_35hiv"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="5_108ef"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="5_gmd1f"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="6_mk621"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Levels/flag.tscn" id="7_i80le"]
@@ -198,6 +199,11 @@ libraries = {
 }
 
 [node name="CanvasLayer" parent="." instance=ExtResource("11_guge3")]
+
+[node name="Rail" parent="." instance=ExtResource("5_108ef")]
+position = Vector2(-279, 789)
+points = PackedVector2Array(-6, 6, 0, 2, -6, 146, -47, 173, -51, 270)
+EndWithSlam = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(-757.008, -831)

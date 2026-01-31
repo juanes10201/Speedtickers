@@ -120,6 +120,7 @@ Boss=""
 TimerSpawner=""
 ClockRigidBody=""
 Npc=""
+BossBomb=""
 
 [input]
 

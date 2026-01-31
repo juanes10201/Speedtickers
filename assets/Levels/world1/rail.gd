@@ -37,18 +37,21 @@ func _process(delta: float) -> void:
 			Player.global_position = MoveRef.global_position + PlayerMovOffset
 			Player.Sprite.rotation_degrees = PathFollow.rotation_degrees
 			if(Input.is_action_just_pressed("player_jump")):
-				EndPlayerRail(EndWithSlam, Player.jump_velocity * Player.GravityDirection)
+				EndPlayerRail(EndWithSlam, Player.jump_velocity * Player.GravityDirection, false)
 			if(PathFollow.progress_ratio >= 1.0):
 				EndPlayerRail(EndWithSlam)
 			FallCooldown.start()
 
-func EndPlayerRail(EndSlam : bool = false, VelY : float = 10.0) -> void:
+func EndPlayerRail(EndSlam : bool = false, VelY : float = 10.0, MoveX : bool = true) -> void:
 	Player.Reset_Slide()
+	Player._fade_sound(Player.AudioRail)
 	if(!EndSlam):
-		Player.Reset_Groundsmash()
+		Player.Reset_Groundsmash(false)
 		Player.velocity.y = VelY
 		Player.KickTimer.start()
-		Player.KickSpeed.x = MoveSpeed*30
+		if(MoveX):
+			Player.KickSpeed.x = MoveSpeed*30
+			if(PathFollow.rotation_degrees >= 100.0): Player.KickSpeed.x *= -1
 	else:
 		Player.GroundSmash = true
 		Player.PressingGroundSmash = true

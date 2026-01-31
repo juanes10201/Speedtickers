@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://xso5fmuvkiea"]
+[gd_scene load_steps=25 format=4 uid="uid://xso5fmuvkiea"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_wspew"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_uhmqi"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="11_djstd"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Levels/enemie.tscn" id="12_46umu"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="14_qsey6"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="15_hx4cf"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -383,6 +384,10 @@ energy = 0.77
 texture = SubResource("GradientTexture2D_hx4cf")
 texture_scale = 1.72
 height = 13.0
+
+[node name="Rail" parent="." instance=ExtResource("15_hx4cf")]
+position = Vector2(-266, -296)
+points = PackedVector2Array(-6, 6, 0, 2, 55, 8, 60, 76, 34, 81)
 
 [connection signal="body_entered" from="SlideRampArea2D3" to="SlideRampArea2D3" method="_on_body_entered"]
 [connection signal="body_exited" from="SlideRampArea2D3" to="SlideRampArea2D3" method="_on_body_exited"]

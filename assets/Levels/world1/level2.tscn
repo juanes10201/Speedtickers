@@ -380,7 +380,7 @@ sprite_frames = SubResource("SpriteFrames_h5v7n")
 script = ExtResource("10_hm2hf")
 ButtonToPress = "player_dash"
 
-[node name="Text" type="RichTextLabel" parent="TimeStop/Tutorial" node_paths=PackedStringArray("TextDelay", "Voice")]
+[node name="Text" type="RichTextLabel" parent="TimeStop/Tutorial" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_4lrkd")
 offset_left = -45.0
 offset_top = -14.0
@@ -391,10 +391,15 @@ text = "Do a dash with
 "
 script = ExtResource("19_t10xc")
 TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
 Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextDelay" type="Timer" parent="TimeStop/Tutorial/Text"]
+wait_time = 0.02
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TimeStop/Tutorial/Text"]
 wait_time = 0.05
 one_shot = true
 

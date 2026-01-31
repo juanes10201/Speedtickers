@@ -84,7 +84,11 @@ func AddStyle(Qt : int, Moto : String = "", Mult : float = 1.0):
 			#PointsLeftMult = 5
 			if(ScoreMult == 3):
 				#SaveGame.get_player().FrameFreeze(.3, .2)
-				if(SaveGame.get_player().Camera): SaveGame.get_player().Camera.Shake(12.0, 12.0, true)
+				var Player = SaveGame.get_player()
+				if(Player):
+					#Player._play_sound(Player.AudioUpgrade)
+					if(Player.Camera):
+						Player.Camera.Shake(12.0, 12.0, true)
 	StyloMetter += StyleAmounts[Qt] * ScoreMult * Mult
 	StyleMoto = Moto
 	if(StyloMetter < 0): StyloMetter = 0

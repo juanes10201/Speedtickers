@@ -898,6 +898,7 @@ texture = SubResource("CanvasTexture_exs0l")
 11:18/0 = 0
 11:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:18/0 = 0
+12:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
 19:17/0 = 0
 19:16/0 = 0
 20:16/0 = 0

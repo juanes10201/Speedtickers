@@ -39,6 +39,7 @@ func _on_body_entered(body):
 			StyleRatio = LevelManager.get_level_time().time_left/LevelManager.get_level_time().wait_time
 		#print(StyleRatio)
 		LevelManager.AddStyle(3, "Finished level", 1/3+StyleRatio*2/3)
+		body._play_sound(SongPlayer.AudioCompleteLevel, true, true, 1, 1, .9, 0.0, 1.2)
 		var _lvl = LevelManager.get_level()
 		if(_lvl <= 0): _lvl = 0
 		#region Save level

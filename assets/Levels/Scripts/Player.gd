@@ -109,6 +109,7 @@ var direction = get_axis()
 @onready var ParticlesDeathAir : GPUParticles2D = $ParticlesDeathAir
 @onready var SlidingOnRamp : bool = false
 
+@onready var AudioRail : AudioStreamPlayer = $AudioRail
 @onready var AudioDash : AudioStreamPlayer = $AudioDash
 @onready var AudioWalk : AudioStreamPlayer = $AudioWalk
 @onready var AudioSlide : AudioStreamPlayer = $AudioSlide
@@ -121,6 +122,7 @@ var direction = get_axis()
 @onready var AudioDeath : AudioStreamPlayer = SongPlayer.AudioDeath
 @onready var AudioOrbGravity : AudioStreamPlayer = $AudioOrbGravity
 @onready var AudioSandFall : AudioStreamPlayer = $AudioSandFall
+@onready var AudioUpgrade : AudioStreamPlayer = $AudioUpgrade
 
 @onready var AudioClockBreak : AudioStreamPlayer = $AudioClockBreak
 
@@ -447,6 +449,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		#endregion
 	elif(SnappedOnRail):
+		_play_sound(AudioRail, false, true, .3)
 		Sprite.play("Rail")
 		_Destroy_Tiles_Slide()
 		_Destroy_Tiles_Rail()
@@ -456,14 +459,14 @@ func _physics_process(delta: float) -> void:
 #endregion
 
 #region Walking sound
-func _play_sound(body, override, pitch_scale: bool = true, gain : float = 1, pitch : float = 1, min_pitch : float = .8, min_time_change : float = 0.0):
+func _play_sound(body, override : bool = true, pitch_scale: bool = true, gain : float = 1, pitch : float = 1, min_pitch : float = .8, min_time_change : float = 0.0, max_pitch : float = 1.0):
 	if(body):
 		if(override && body.playing && body.get_playback_position() >= min_time_change):
 			body.stop()
 		if(!body.playing):
 			if(body == AudioSlide): body.volume_db = -10
 			body.volume_db = gain
-			if(pitch_scale): body.pitch_scale = randf_range(min_pitch, 1)*pitch
+			if(pitch_scale): body.pitch_scale = randf_range(min_pitch, max_pitch)*pitch
 			body.play()
 func _stop_sound(body):
 	if(body.playing):
@@ -891,7 +894,7 @@ func get_axis():
 		if(Replay.ReplayActions["ui_right"]): return 1
 		else: return 0
 
-func Reset_Groundsmash() -> void:
+func Reset_Groundsmash(ThrowEnemies : bool = true) -> void:
 	PressingGroundSmash = false
 	ParticlesLanding.position = self.position
 	ParticlesLanding.position.y -= 10
@@ -905,8 +908,9 @@ func Reset_Groundsmash() -> void:
 	GroundSmashMultiplier = 1
 	JumpGroundsmashMultiplier.start()
 	if(Camera): Camera.Shake(10.0, 10.0)
-	enemy_jump()
-	EnemyGroundSlamTimer.start()
+	if(ThrowEnemies):
+		enemy_jump()
+		EnemyGroundSlamTimer.start()
 	velocity.y = 0
 
 

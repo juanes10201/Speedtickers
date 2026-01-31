@@ -452,7 +452,7 @@ offset_right = 159.0
 offset_bottom = -108.0
 theme_override_fonts/normal_font = ExtResource("16_amwd2")
 text = "
-Let's see if you had forgoten dashing"
+Let's see kid if you still remember dashing"
 fit_content = true
 script = ExtResource("17_v35s5")
 TextDelay = NodePath("TextDelay")
@@ -468,7 +468,7 @@ stream = ExtResource("18_oc802")
 volume_db = -20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea"]
-position = Vector2(61, -65)
+position = Vector2(55, -66)
 shape = SubResource("RectangleShape2D_d2a1w")
 
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]

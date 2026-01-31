@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://b5v0scru643ls"]
+[gd_scene load_steps=27 format=4 uid="uid://b5v0scru643ls"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_whp7s"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_6ojf8"]
@@ -10,12 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="6_vghth"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="11_868bk"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Levels/kill_box.tscn" id="11_q5bbx"]
-[ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="12_4x433"]
-[ext_resource type="Material" uid="uid://cjr5dj81gf86x" path="res://assets/Levels/Shader/tutorial_button_shader_config.tres" id="12_lhi1r"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="12_p6vs0"]
-[ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="13_lhi1r"]
-[ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Levels/Scripts/animated_button.gd" id="14_4vmve"]
-[ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="15_s6a7i"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -107,60 +102,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_8vuuc")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbb0o"]
-atlas = ExtResource("13_lhi1r")
-region = Rect2(80, 224, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jx7m1"]
-atlas = ExtResource("13_lhi1r")
-region = Rect2(96, 224, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_v7f10"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tbb0o")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jx7m1")
-}],
-"loop": true,
-"name": &"pressed",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jr0n"]
-atlas = ExtResource("15_s6a7i")
-region = Rect2(0, 64, 48, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_usbao"]
-atlas = ExtResource("15_s6a7i")
-region = Rect2(0, 160, 48, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t1072"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1jr0n")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_usbao")
-}],
-"loop": true,
-"name": &"pressed",
-"speed": 5.0
-}]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -1)
@@ -347,30 +288,3 @@ position = Vector2(-155, -178)
 
 [node name="AmbientParticles2" parent="." instance=ExtResource("12_p6vs0")]
 position = Vector2(73, -193.00002)
-
-[node name="Tutorial" type="Node2D" parent="."]
-material = ExtResource("12_lhi1r")
-position = Vector2(-273, -42)
-
-[node name="DashTutorial" type="RichTextLabel" parent="Tutorial"]
-offset_left = -46.0
-offset_top = -14.0
-offset_right = 33.0
-offset_bottom = 15.0
-theme_override_fonts/normal_font = ExtResource("12_4x433")
-text = "Dash con:"
-metadata/_edit_use_anchors_ = true
-
-[node name="DashButton" type="AnimatedSprite2D" parent="Tutorial"]
-use_parent_material = true
-position = Vector2(-38, 3)
-sprite_frames = SubResource("SpriteFrames_v7f10")
-script = ExtResource("14_4vmve")
-ButtonToPress = "player_dash"
-
-[node name="DashButtonKeyboard" type="AnimatedSprite2D" parent="Tutorial"]
-use_parent_material = true
-position = Vector2(2, 4)
-sprite_frames = SubResource("SpriteFrames_t1072")
-script = ExtResource("14_4vmve")
-ButtonToPress = "player_dash"

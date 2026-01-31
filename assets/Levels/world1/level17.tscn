@@ -150,6 +150,87 @@ libraries = {
 &"": SubResource("AnimationLibrary_klj0i")
 }
 
+[node name="PointLight2D14" type="PointLight2D" parent="."]
+position = Vector2(-88, 81)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.88741815, 0.49767113, 0.8530232, 1)
+energy = 0.35
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 1.75
+height = 13.0
+
+[node name="PointLight2D15" type="PointLight2D" parent="."]
+position = Vector2(-88, -23)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.88741815, 0.49767113, 0.8530232, 1)
+energy = 0.75
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 1.75
+height = 13.0
+
+[node name="PointLight2D16" type="PointLight2D" parent="."]
+position = Vector2(-48, 17.000002)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.88749486, 0.5947211, 0, 1)
+energy = 0.55
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 1.75
+height = 13.0
+
+[node name="PointLight2D17" type="PointLight2D" parent="."]
+position = Vector2(-83, -131)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.88749486, 0.5947211, 0, 1)
+energy = 0.6
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 1.75
+height = 13.0
+
+[node name="PointLight2D18" type="PointLight2D" parent="."]
+position = Vector2(-141, -228)
+scale = Vector2(1.453125, 1.453125)
+color = Color(1, 0.36508787, 0.8988782, 1)
+energy = 0.7
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 1.75
+height = 13.0
+
+[node name="PointLight2D19" type="PointLight2D" parent="."]
+position = Vector2(84, -143)
+scale = Vector2(1.453125, 1.453125)
+color = Color(1, 0.36508787, 0.8988782, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 2.25
+height = 13.0
+
+[node name="PointLight2D20" type="PointLight2D" parent="."]
+position = Vector2(75, 12)
+scale = Vector2(1.453125, 1.453125)
+color = Color(1, 0.36508787, 0.8988782, 1)
+energy = 0.45
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 2.55
+height = 13.0
+
+[node name="PointLight2D21" type="PointLight2D" parent="."]
+position = Vector2(-112, 109.00001)
+scale = Vector2(1.453125, 1.453125)
+color = Color(1, 0.36508787, 0.8988782, 1)
+energy = 0.35
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 2.55
+height = 13.0
+
+[node name="PointLight2D22" type="PointLight2D" parent="."]
+position = Vector2(-107, 168.00002)
+scale = Vector2(1.453125, 1.453125)
+color = Color(1, 0.36508787, 0.8988782, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_8qno2")
+texture_scale = 2.55
+height = 13.0
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(181.99998, -200)
 scale = Vector2(1.00384, 1)
@@ -275,86 +356,5 @@ position = Vector2(-168, 17)
 scale = Vector2(1.775, 1)
 script = ExtResource("13_8qno2")
 StyleTypeAdd = 5
-
-[node name="PointLight2D14" type="PointLight2D" parent="."]
-position = Vector2(-88, 81)
-scale = Vector2(1.453125, 1.453125)
-color = Color(0.88741815, 0.49767113, 0.8530232, 1)
-energy = 0.35
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 1.75
-height = 13.0
-
-[node name="PointLight2D15" type="PointLight2D" parent="."]
-position = Vector2(-88, -23)
-scale = Vector2(1.453125, 1.453125)
-color = Color(0.88741815, 0.49767113, 0.8530232, 1)
-energy = 0.75
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 1.75
-height = 13.0
-
-[node name="PointLight2D16" type="PointLight2D" parent="."]
-position = Vector2(-48, 17.000002)
-scale = Vector2(1.453125, 1.453125)
-color = Color(0.88749486, 0.5947211, 0, 1)
-energy = 0.55
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 1.75
-height = 13.0
-
-[node name="PointLight2D17" type="PointLight2D" parent="."]
-position = Vector2(-83, -131)
-scale = Vector2(1.453125, 1.453125)
-color = Color(0.88749486, 0.5947211, 0, 1)
-energy = 0.6
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 1.75
-height = 13.0
-
-[node name="PointLight2D18" type="PointLight2D" parent="."]
-position = Vector2(-141, -228)
-scale = Vector2(1.453125, 1.453125)
-color = Color(1, 0.36508787, 0.8988782, 1)
-energy = 0.7
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 1.75
-height = 13.0
-
-[node name="PointLight2D19" type="PointLight2D" parent="."]
-position = Vector2(84, -143)
-scale = Vector2(1.453125, 1.453125)
-color = Color(1, 0.36508787, 0.8988782, 1)
-energy = 0.9
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 2.25
-height = 13.0
-
-[node name="PointLight2D20" type="PointLight2D" parent="."]
-position = Vector2(75, 12)
-scale = Vector2(1.453125, 1.453125)
-color = Color(1, 0.36508787, 0.8988782, 1)
-energy = 0.45
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 2.55
-height = 13.0
-
-[node name="PointLight2D21" type="PointLight2D" parent="."]
-position = Vector2(-112, 109.00001)
-scale = Vector2(1.453125, 1.453125)
-color = Color(1, 0.36508787, 0.8988782, 1)
-energy = 0.35
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 2.55
-height = 13.0
-
-[node name="PointLight2D22" type="PointLight2D" parent="."]
-position = Vector2(-107, 168.00002)
-scale = Vector2(1.453125, 1.453125)
-color = Color(1, 0.36508787, 0.8988782, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_8qno2")
-texture_scale = 2.55
-height = 13.0
 
 [connection signal="body_entered" from="StyleAddBox" to="StyleAddBox" method="_on_body_entered"]

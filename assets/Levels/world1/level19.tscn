@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cmoi1akylmxsx"]
+[gd_scene load_steps=33 format=4 uid="uid://cmoi1akylmxsx"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_wspew"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_uhmqi"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bygxx5ppwysc3" path="res://assets/Levels/enemie_special.tscn" id="15_7h57r"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Levels/Particles/ambientparticles.tscn" id="16_a6nlu"]
 [ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Levels/world1/style_add_box.gd" id="17_lbwgj"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="18_t70fv"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -174,6 +175,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_klj0i")
 }
 
+[node name="Rail" parent="." instance=ExtResource("18_t70fv")]
+position = Vector2(-225, -291)
+points = PackedVector2Array(-27, 1, -25, -7, 112, 63, 124, 57)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
 position = Vector2(242, -206)
 scale = Vector2(1.00384, 1)
@@ -238,7 +243,7 @@ script = ExtResource("11_48axd")
 shape = SubResource("SegmentShape2D_b1tps")
 
 [node name="Enemie4" parent="." instance=ExtResource("12_46umu")]
-position = Vector2(-207, -284)
+position = Vector2(-207, -281)
 floor_max_angle = 1.39626
 EnemyDirection = 2
 
@@ -247,12 +252,12 @@ position = Vector2(-71, -192)
 scale = Vector2(3.01152, 2)
 
 [node name="Enemie5" parent="." instance=ExtResource("12_46umu")]
-position = Vector2(-189, -276)
+position = Vector2(-189, -273)
 floor_max_angle = 1.39626
 EnemyDirection = 2
 
 [node name="Enemie6" parent="." instance=ExtResource("12_46umu")]
-position = Vector2(-170, -269)
+position = Vector2(-172, -264)
 floor_max_angle = 1.39626
 EnemyDirection = 2
 

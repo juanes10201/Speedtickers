@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://chat6jxc63bfj"]
+[gd_scene load_steps=113 format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
 [ext_resource type="Texture2D" uid="uid://bcv820hqp60jd" path="res://assets/Sprites/knightdash-Sheet.png" id="2_6abi3"]
@@ -33,6 +33,8 @@
 [ext_resource type="AudioStream" uid="uid://cgvt4j0ojlh60" path="res://assets/Sounds/switch.wav" id="19_uvkhq"]
 [ext_resource type="AudioStream" uid="uid://cqau2g0edyke0" path="res://assets/Sounds/key.wav" id="20_2xca2"]
 [ext_resource type="AudioStream" uid="uid://bh23td2y13ecc" path="res://assets/Sounds/orb_gravity.wav" id="22_1ia1n"]
+[ext_resource type="AudioStream" uid="uid://xns532oekjvk" path="res://assets/Sounds/skate-rail.wav" id="26_g5ylh"]
+[ext_resource type="AudioStream" uid="uid://chesfmv4s1cm8" path="res://assets/Sounds/Upgrade.mp3" id="27_gu8yx"]
 [ext_resource type="Script" uid="uid://br2udgydnxtcm" path="res://assets/Levels/Shadow.gd" id="31_ivnav"]
 [ext_resource type="Texture2D" uid="uid://xxpg8y3lwraj" path="res://assets/Sprites/shadow.png" id="32_sc7ng"]
 [ext_resource type="Script" uid="uid://6tsgj1qxp6y2" path="res://assets/Levels/Player_hitbox.gd" id="33_isg5t"]
@@ -831,8 +833,16 @@ collision_mask = 2334
 stream = SubResource("AudioStreamRandomizer_4mswk")
 bus = &"Sfx"
 
+[node name="AudioRail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_g5ylh")
+bus = &"Sfx"
+
 [node name="AudioJump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_f6d5f")
+bus = &"Sfx"
+
+[node name="AudioUpgrade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_gu8yx")
 bus = &"Sfx"
 
 [node name="AudioWalk" type="AudioStreamPlayer" parent="."]

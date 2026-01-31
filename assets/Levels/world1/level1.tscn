@@ -712,7 +712,7 @@ CountTime = false
 position = Vector2(38.339302, 65.79509)
 offset = Vector2(-28.055, 23.85)
 zoom = Vector2(2.12, 2.12)
-limit_left = -668
+limit_left = -383
 limit_top = -1301
 limit_right = 213
 limit_bottom = 7
@@ -787,7 +787,7 @@ sprite_frames = SubResource("SpriteFrames_suqse")
 animation = &"disabled"
 script = ExtResource("18_suqse")
 
-[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "Voice")]
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_suqse")
 offset_left = 7.0
 offset_top = -4.0
@@ -795,15 +795,20 @@ offset_right = 149.0
 offset_bottom = 50.0
 theme_override_fonts/normal_font = ExtResource("16_uug2w")
 text = "
-So you're here for Speedtest 3037z
-Name's Holow, and i'll be teaching you in this test course"
+So you're here for Speedtest 3037, huh?
+Name's Holow, and let me show the way of this game"
 fit_content = true
 script = ExtResource("17_3oydu")
 TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
 Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2"]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea/DashTutorial2"]
 wait_time = 0.05
 one_shot = true
 

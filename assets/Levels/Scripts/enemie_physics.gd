@@ -104,7 +104,9 @@ func _on_player_slide_signal() -> void:
 		#Player.FrameFreeze(0.05, 0.4)
 		_jump(-400)
 		Player.Camera.Shake(1.0, 5.0)
-		velocity.x = Enemy_burst_speed if  Player.Sliding == Player.Sides.RIGHT else Enemy_burst_speed*-1
+		velocity.x = Enemy_burst_speed
+		if(Player.Sliding == Player.Sides.LEFT): velocity.x *= -1
+		if(Player.SnappedOnRail): velocity.x *= -1
 		Player.Controller_Vibrate_Player_Movement(1)
 		Move = false
 		_killed_by_player_sound()
