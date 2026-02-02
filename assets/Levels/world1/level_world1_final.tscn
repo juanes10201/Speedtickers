@@ -479,6 +479,7 @@ collision_mask = 2432
 BossSpawner = NodePath("../BossSpawner")
 Activate_on_color = 3
 DistanceWallJump = 140.0
+SpawnBombTimePhase2 = 2.0
 SPEED = 320.0
 JUMP_VELOCITY = -500.0
 SlamTime = 0.9

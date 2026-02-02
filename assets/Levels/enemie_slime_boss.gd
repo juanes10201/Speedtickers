@@ -129,6 +129,11 @@ func _on_player_ground_smash_signal() -> void:
 				_groundsmash_player_sound()
 #endregion
 
+func start_cooldown_timer() -> void:
+	CooldownHitTimer.start()
+	Move = false
+	Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
+
 #region Player Slide 
 func _on_player_slide_signal() -> void:
 	if(_is_on_floor() && Can_BeGroundSmash && Player.GravityDirection == GravityDirection):
@@ -192,6 +197,7 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 var SlamJump : bool = false
 
 func _process(delta: float) -> void:
+	#print($SpawnBomb.time_left)
 	if(Slam && SlamNearPlayer):
 		Player._play_sound($AudioNear, true, true, .6, 1, .7, .15, 1.2)
 	if(EnemyLife <= LifeThrowbombs):
@@ -317,11 +323,13 @@ func _process(delta: float) -> void:
 					else:
 						strech_size(1.7, 0.5)
 						MoveTimer.start()
+						Player._play_sound($AudioMove, true, true, 1, 1, .7, .15, 1.2)
 						Player._play_sound(AudioMove, false)
 						CountSpecialAttack += 1
 						#Special Attack and Groundsmash
 						_update_direction()
 						if(CountSpecialAttack % 3 == 0):
+							Player._play_sound($AudioMoveJump, true, true, 1, 1, .7, .15, 1.2)
 							_jump(JUMP_VELOCITY)
 							if(!Slide): velocity.x = direction * SPEED
 						else:
@@ -482,6 +490,7 @@ func _on_wall_jump_timer_timeout() -> void:
 func _on_damage_boss_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
 		Player.DashTime.stop()
+		Player._stop_sound($AudioSnooring)
 		Player.GroundSmash = false
 		Player.Reset_Groundsmash()
 		Player.velocity.y = -200
@@ -506,6 +515,7 @@ func _on_cooldown_hit_timer_timeout() -> void:
 
 func UpdateLife() -> void:
 	Player._play_sound($AudioHit, true, true, .6, 1, .7, .15, 1.2)
+	if(!CooldownHitTimer.is_stopped()): Player._play_sound($AudioPop, true, true, .6, 1, .7, .15, 1.2)
 	if(EnemyLife <= Phase2Life):
 		print("Entered phase 2")
 		MoveTimer.wait_time = Phase2MoveTime

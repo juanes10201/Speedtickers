@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://fswjgnqueri7"]
+[gd_scene load_steps=40 format=3 uid="uid://fswjgnqueri7"]
 
 [ext_resource type="Script" uid="uid://cgi2e0x746x3q" path="res://assets/Levels/enemie_slime_boss.gd" id="1_kgh3g"]
 [ext_resource type="Texture2D" uid="uid://bvoudjtf4fdrs" path="res://assets/Sprites/particles/slime-move-particles.png" id="2_qnnf1"]
@@ -15,6 +15,10 @@
 [ext_resource type="AudioStream" uid="uid://b16xfpsc1o3vn" path="res://assets/Sounds/Boss/slime-crash.wav" id="12_r2ija"]
 [ext_resource type="AudioStream" uid="uid://cwfn8nwf064ex" path="res://assets/Sounds/Boss/slime-slam.wav" id="13_j4up4"]
 [ext_resource type="AudioStream" uid="uid://c66r8usrr1yuw" path="res://assets/Sounds/Boss/slime-walljump.wav" id="14_pvmxm"]
+[ext_resource type="AudioStream" uid="uid://2nl231cl084x" path="res://assets/Sounds/Boss/slime-snoring.wav" id="16_x8fi8"]
+[ext_resource type="AudioStream" uid="uid://njt7cdnp4ele" path="res://assets/Sounds/Boss/pop.wav" id="17_dmlhc"]
+[ext_resource type="AudioStream" uid="uid://y2brddk3lukc" path="res://assets/Sounds/Boss/SlimeMove.wav" id="18_wg0y6"]
+[ext_resource type="AudioStream" uid="uid://b23ng25lx46oy" path="res://assets/Sounds/Boss/SlimeMove_Jump.wav" id="19_m8i7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o00k"]
 size = Vector2(84.00001, 17.333334)
@@ -315,8 +319,20 @@ stream = ExtResource("14_pvmxm")
 [node name="AudioNear" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qnnf1")
 
+[node name="AudioSnooring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_x8fi8")
+
+[node name="AudioPop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_dmlhc")
+
+[node name="AudioMove" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_wg0y6")
+
+[node name="AudioMoveJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_m8i7l")
+
 [node name="SpawnBomb" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 
 [node name="AreaNear" type="Area2D" parent="."]
 
