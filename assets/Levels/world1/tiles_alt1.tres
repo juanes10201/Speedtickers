@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d2pgcpmg250nu"]
+[gd_resource type="TileSet" format=3 uid="uid://d2pgcpmg250nu"]
 
 [ext_resource type="Texture2D" uid="uid://b4s0u5ljiif7i" path="res://assets/Sprites/tiles_protype1.png" id="1_vpr7v"]
 

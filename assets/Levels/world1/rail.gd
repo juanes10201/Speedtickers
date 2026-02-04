@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	PathFollow.progress += MoveSpeed * delta
+	print(Player.velocity.x)
 	if(Player):
 		PlayerDistance = Path.curve.get_closest_point(to_local(Player.global_position))
 		#if(PlayerDistance.distance_to(to_local(Player.global_position)) <= DistanceCollide):
@@ -43,19 +44,21 @@ func _process(delta: float) -> void:
 			FallCooldown.start()
 
 func EndPlayerRail(EndSlam : bool = false, VelY : float = 10.0, MoveX : bool = true) -> void:
+	Player.global_position = MoveRef.global_position + PlayerMovOffset
+	Player.SnappedOnRail = false
+	PlayerSnapped = false
+	Player.Sprite.rotation = 0.0
 	Player.Reset_Slide()
 	Player._fade_sound(Player.AudioRail)
 	if(!EndSlam):
 		Player.Reset_Groundsmash(false)
 		Player.velocity.y = VelY
-		Player.KickTimer.start()
 		if(MoveX):
+			Player.KickTimer.start()
 			Player.KickSpeed.x = MoveSpeed*30
 			if(PathFollow.rotation_degrees >= 100.0): Player.KickSpeed.x *= -1
+		else:
+			Player.Speed.x = 0
 	else:
 		Player.GroundSmash = true
 		Player.PressingGroundSmash = true
-	Player.global_position = MoveRef.global_position + PlayerMovOffset
-	Player.SnappedOnRail = false
-	PlayerSnapped = false
-	Player.Sprite.rotation = 0.0

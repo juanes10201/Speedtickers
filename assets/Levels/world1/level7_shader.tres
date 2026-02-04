@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://6h705pgtj7bn"]
+[gd_resource type="VisualShader" format=3 uid="uid://6h705pgtj7bn"]
 
 [ext_resource type="Script" uid="uid://crvn733r6kq6d" path="res://addons/shaderV/rgba/turnGBPalette.gd" id="1_h8tqo"]
 [ext_resource type="Script" uid="uid://ci580rvwexuhh" path="res://addons/shaderV/rgba/turnCGA4Palette.gd" id="2_w6san"]
@@ -22,35 +22,6 @@ initialized = true
 script = ExtResource("2_w6san")
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform sampler2D screen_tex_frg_2 : hint_screen_texture;
-
-
-// TurnGameBoyPalette
-#include \"res://addons/shaderV/rgba/turnGBPalette.gdshaderinc\"
-
-void fragment() {
-	vec4 n_out2p0;
-// Texture2D:2
-	n_out2p0 = texture(screen_tex_frg_2, SCREEN_UV);
-
-
-	vec3 n_out3p0;
-// TurnGameBoyPalette:3
-	float n_in3p1 = 0.80500;
-	{
-		n_out3p0 = _gameboyPaletteFunc(vec3(n_out2p0.xyz), n_in3p1);
-	}
-
-
-// Output:0
-	COLOR.rgb = n_out3p0;
-
-
-}
-"
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(500, 160)

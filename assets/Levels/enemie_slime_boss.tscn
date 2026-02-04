@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://fswjgnqueri7"]
+[gd_scene format=3 uid="uid://fswjgnqueri7"]
 
 [ext_resource type="Script" uid="uid://cgi2e0x746x3q" path="res://assets/Levels/enemie_slime_boss.gd" id="1_kgh3g"]
 [ext_resource type="Texture2D" uid="uid://bvoudjtf4fdrs" path="res://assets/Sprites/particles/slime-move-particles.png" id="2_qnnf1"]
@@ -190,7 +190,7 @@ stream_1/stream = ExtResource("9_kgh3g")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnnf1"]
 size = Vector2(118.66667, 122.666664)
 
-[node name="Enemie" type="CharacterBody2D" groups=["Boss", "Enemie"]]
+[node name="Enemie" type="CharacterBody2D" unique_id=333672589 groups=["Boss", "Enemie"]]
 position = Vector2(-1, -3)
 scale = Vector2(1.5, 1.5)
 collision_layer = 512
@@ -199,22 +199,22 @@ script = ExtResource("1_kgh3g")
 SPEED = 220.0
 Can_BeGroundSmash = false
 
-[node name="AttackLight" type="PointLight2D" parent="."]
+[node name="AttackLight" type="PointLight2D" parent="." unique_id=494033972]
 enabled = false
 color = Color(1, 1, 1, 0.12941177)
 energy = 7.79
 texture = ExtResource("7_k3wkr")
 
-[node name="StopSlideArea2D" type="Area2D" parent="."]
+[node name="StopSlideArea2D" type="Area2D" parent="." unique_id=5595261]
 collision_layer = 0
 collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StopSlideArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopSlideArea2D" unique_id=718077016]
 position = Vector2(1.333334, 0.666667)
 shape = SubResource("RectangleShape2D_5o00k")
 debug_color = Color(0.6305382, 0.5291067, 0, 0.1882353)
 
-[node name="Moveparticles" type="GPUParticles2D" parent="."]
+[node name="Moveparticles" type="GPUParticles2D" parent="." unique_id=1626614537]
 emitting = false
 texture = ExtResource("2_qnnf1")
 trail_lifetime = 0.13
@@ -222,10 +222,10 @@ trail_sections = 7
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_k3wkr")
 
-[node name="MoveTimer" type="Timer" parent="."]
+[node name="MoveTimer" type="Timer" parent="." unique_id=449859382]
 one_shot = true
 
-[node name="HitParticles" type="GPUParticles2D" parent="."]
+[node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1936669843]
 emitting = false
 amount = 55
 texture = ExtResource("3_pu110")
@@ -238,7 +238,7 @@ trail_sections = 3
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_5o00k")
 
-[node name="HitFlyParticles" type="GPUParticles2D" parent="."]
+[node name="HitFlyParticles" type="GPUParticles2D" parent="." unique_id=189175111]
 emitting = false
 amount = 53
 texture = ExtResource("4_oe3ev")
@@ -248,95 +248,105 @@ trail_enabled = true
 trail_lifetime = 0.08
 process_material = SubResource("ParticleProcessMaterial_kgh3g")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=564933289]
 position = Vector2(1.5199993, 31.826668)
 sprite_frames = SubResource("SpriteFrames_2fkqx")
-animation = &"Idle"
+animation = &"Phase2_Laser"
 offset = Vector2(-0.28, -34.75)
 
-[node name="DamageBoss" type="Area2D" parent="." groups=["Enemie"]]
+[node name="DamageBoss" type="Area2D" parent="." unique_id=1803570846 groups=["Enemie"]]
 collision_layer = 2
 collision_mask = 129
 script = ExtResource("5_e2swo")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageBoss" groups=["Enemie"]]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageBoss" unique_id=1466138297 groups=["Enemie"]]
 position = Vector2(2.0000005, -8.000001)
 rotation = -1.5707964
 scale = Vector2(1.44, 1.634)
 shape = SubResource("CapsuleShape2D_5o00k")
 debug_color = Color(0, 0.59545445, 0.72595024, 0.41960785)
 
-[node name="DamagePlayer" type="Area2D" parent="." groups=["Enemie"]]
+[node name="DamagePlayer" type="Area2D" parent="." unique_id=1151740750 groups=["Enemie"]]
 collision_layer = 2
 collision_mask = 1152
 script = ExtResource("5_e2swo")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamagePlayer" groups=["Enemie"]]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamagePlayer" unique_id=1439806164 groups=["Enemie"]]
 position = Vector2(1.4266698, 11.913333)
 scale = Vector2(1.2250001, 1.3900001)
 shape = SubResource("RectangleShape2D_kgh3g")
 debug_color = Color(0.846084, 0.377331, 0, 0.42)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemie"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591031911 groups=["Enemie"]]
 position = Vector2(1.333334, 13.203334)
 scale = Vector2(0.61, 0.6)
 shape = SubResource("RectangleShape2D_4y4c6")
 
-[node name="WallJumpTimer" type="Timer" parent="."]
+[node name="WallJumpTimer" type="Timer" parent="." unique_id=957873341]
 wait_time = 0.2
 one_shot = true
 
-[node name="SlamTimer" type="Timer" parent="."]
+[node name="SlamTimer" type="Timer" parent="." unique_id=1400580683]
 wait_time = 0.7
 one_shot = true
 
-[node name="DamagePlayerMarker" type="Marker2D" parent="."]
+[node name="DamagePlayerMarker" type="Marker2D" parent="." unique_id=444569908]
 position = Vector2(0.6666667, -24)
 
-[node name="CooldownFastTimer" type="Timer" parent="."]
+[node name="CooldownFastTimer" type="Timer" parent="." unique_id=876370765]
 wait_time = 0.5
 one_shot = true
 
-[node name="CooldownHitTimer" type="Timer" parent="."]
+[node name="CooldownHitTimer" type="Timer" parent="." unique_id=2069239175]
 wait_time = 4.0
 one_shot = true
 
-[node name="AudioHit" type="AudioStreamPlayer" parent="."]
+[node name="AudioHit" type="AudioStreamPlayer" parent="." unique_id=232695133]
 stream = SubResource("AudioStreamRandomizer_oe3ev")
+bus = &"Sfx"
 
-[node name="AudioIntroBomb" type="AudioStreamPlayer" parent="."]
+[node name="AudioIntroBomb" type="AudioStreamPlayer" parent="." unique_id=1408859115]
 stream = ExtResource("11_oe3ev")
+bus = &"Sfx"
 
-[node name="AudioCrashWall" type="AudioStreamPlayer" parent="."]
+[node name="AudioCrashWall" type="AudioStreamPlayer" parent="." unique_id=1249174247]
 stream = ExtResource("12_r2ija")
+bus = &"Sfx"
 
-[node name="AudioCrashSlam" type="AudioStreamPlayer" parent="."]
+[node name="AudioCrashSlam" type="AudioStreamPlayer" parent="." unique_id=1130263047]
 stream = ExtResource("13_j4up4")
+bus = &"Sfx"
 
-[node name="AudioWalljump" type="AudioStreamPlayer" parent="."]
+[node name="AudioWalljump" type="AudioStreamPlayer" parent="." unique_id=763870655]
 stream = ExtResource("14_pvmxm")
+bus = &"Sfx"
 
-[node name="AudioNear" type="AudioStreamPlayer" parent="."]
+[node name="AudioNear" type="AudioStreamPlayer" parent="." unique_id=248465413]
 stream = ExtResource("10_qnnf1")
+bus = &"Sfx"
 
-[node name="AudioSnooring" type="AudioStreamPlayer" parent="."]
+[node name="AudioSnooring" type="AudioStreamPlayer" parent="." unique_id=758976504]
 stream = ExtResource("16_x8fi8")
+bus = &"Sfx"
 
-[node name="AudioPop" type="AudioStreamPlayer" parent="."]
+[node name="AudioPop" type="AudioStreamPlayer" parent="." unique_id=673892351]
 stream = ExtResource("17_dmlhc")
+bus = &"Sfx"
 
-[node name="AudioMove" type="AudioStreamPlayer" parent="."]
+[node name="AudioMove" type="AudioStreamPlayer" parent="." unique_id=1887728521]
 stream = ExtResource("18_wg0y6")
+bus = &"Sfx"
 
-[node name="AudioMoveJump" type="AudioStreamPlayer" parent="."]
+[node name="AudioMoveJump" type="AudioStreamPlayer" parent="." unique_id=1580064661]
 stream = ExtResource("19_m8i7l")
+bus = &"Sfx"
 
-[node name="SpawnBomb" type="Timer" parent="."]
+[node name="SpawnBomb" type="Timer" parent="." unique_id=1751679294]
 wait_time = 4.0
 
-[node name="AreaNear" type="Area2D" parent="."]
+[node name="AreaNear" type="Area2D" parent="." unique_id=952768985]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaNear"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaNear" unique_id=1527041862]
 position = Vector2(4.6666665, 94.66667)
 shape = SubResource("RectangleShape2D_qnnf1")
 
