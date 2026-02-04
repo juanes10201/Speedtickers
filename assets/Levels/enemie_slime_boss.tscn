@@ -5,8 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="3_pu110"]
 [ext_resource type="Texture2D" uid="uid://b145nvnbk486f" path="res://assets/Sprites/particles/slime-particles.png" id="4_oe3ev"]
 [ext_resource type="Script" uid="uid://bxajmd1fdab0t" path="res://assets/Levels/Enemie_slime_boss_area_2d.gd" id="5_e2swo"]
-[ext_resource type="Texture2D" uid="uid://cuik7yyewvpj3" path="res://assets/Sprites/Bosses/Untitled_idle-export.png" id="6_m8i7l"]
-[ext_resource type="Texture2D" uid="uid://dncsq5etb3yn2" path="res://assets/Sprites/Bosses/Untitled1.png" id="6_wg0y6"]
+[ext_resource type="Texture2D" uid="uid://b5k5g7monlpdj" path="res://assets/Sprites/Bosses/test-export.png" id="6_wg0y6"]
 [ext_resource type="Texture2D" uid="uid://omysgch8q758" path="res://assets/Sprites/particles/enemy-boss-light.png" id="7_k3wkr"]
 [ext_resource type="AudioStream" uid="uid://smmu0pjhmn7e" path="res://assets/Sounds/Crowd/Cheers1_alt.wav" id="9_kgh3g"]
 [ext_resource type="AudioStream" uid="uid://bc0veqgcdq2cm" path="res://assets/Sounds/Crowd/Cheers1_alt2.wav" id="9_pu110"]
@@ -117,7 +116,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_m8i7l")
+"texture": ExtResource("6_wg0y6")
 }],
 "loop": true,
 "name": &"Idle",
@@ -125,7 +124,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_m8i7l")
+"texture": ExtResource("6_wg0y6")
 }],
 "loop": true,
 "name": &"Laser",
@@ -165,7 +164,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_m8i7l")
+"texture": ExtResource("6_wg0y6")
 }],
 "loop": true,
 "name": &"Walking",
@@ -251,7 +250,7 @@ process_material = SubResource("ParticleProcessMaterial_kgh3g")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=564933289]
 position = Vector2(1.5199993, 31.826668)
 sprite_frames = SubResource("SpriteFrames_2fkqx")
-animation = &"Walking"
+animation = &"Phase2_Walking"
 offset = Vector2(-0.28, -34.75)
 
 [node name="DamageBoss" type="Area2D" parent="." unique_id=1803570846 groups=["Enemie"]]
