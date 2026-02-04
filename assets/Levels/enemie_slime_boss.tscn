@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="3_pu110"]
 [ext_resource type="Texture2D" uid="uid://b145nvnbk486f" path="res://assets/Sprites/particles/slime-particles.png" id="4_oe3ev"]
 [ext_resource type="Script" uid="uid://bxajmd1fdab0t" path="res://assets/Levels/Enemie_slime_boss_area_2d.gd" id="5_e2swo"]
-[ext_resource type="Texture2D" uid="uid://cp3kt7qp3n0rx" path="res://assets/Sprites/Bosses/placeholder-slime-phase2.png" id="6_5o00k"]
-[ext_resource type="Texture2D" uid="uid://gf7k4l1cys8w" path="res://assets/Sprites/Bosses/placeholder-slime.png" id="6_e2swo"]
+[ext_resource type="Texture2D" uid="uid://cuik7yyewvpj3" path="res://assets/Sprites/Bosses/Untitled_idle-export.png" id="6_m8i7l"]
+[ext_resource type="Texture2D" uid="uid://dncsq5etb3yn2" path="res://assets/Sprites/Bosses/Untitled1.png" id="6_wg0y6"]
 [ext_resource type="Texture2D" uid="uid://omysgch8q758" path="res://assets/Sprites/particles/enemy-boss-light.png" id="7_k3wkr"]
 [ext_resource type="AudioStream" uid="uid://smmu0pjhmn7e" path="res://assets/Sounds/Crowd/Cheers1_alt.wav" id="9_kgh3g"]
 [ext_resource type="AudioStream" uid="uid://bc0veqgcdq2cm" path="res://assets/Sounds/Crowd/Cheers1_alt2.wav" id="9_pu110"]
@@ -109,7 +109,7 @@ hue_variation_max = 0.03
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_e2swo")
+"texture": ExtResource("6_wg0y6")
 }],
 "loop": true,
 "name": &"Air",
@@ -117,7 +117,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_e2swo")
+"texture": ExtResource("6_m8i7l")
 }],
 "loop": true,
 "name": &"Idle",
@@ -125,7 +125,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_e2swo")
+"texture": ExtResource("6_m8i7l")
 }],
 "loop": true,
 "name": &"Laser",
@@ -133,7 +133,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_5o00k")
+"texture": ExtResource("6_wg0y6")
 }],
 "loop": true,
 "name": &"Phase2_Air",
@@ -141,7 +141,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_5o00k")
+"texture": ExtResource("6_wg0y6")
 }],
 "loop": true,
 "name": &"Phase2_Idle",
@@ -149,7 +149,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_5o00k")
+"texture": ExtResource("6_wg0y6")
 }],
 "loop": true,
 "name": &"Phase2_Laser",
@@ -157,7 +157,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_5o00k")
+"texture": ExtResource("6_wg0y6")
 }],
 "loop": true,
 "name": &"Phase2_Walking",
@@ -165,7 +165,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_e2swo")
+"texture": ExtResource("6_m8i7l")
 }],
 "loop": true,
 "name": &"Walking",
@@ -173,14 +173,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5o00k"]
-radius = 24.07407
-height = 48.14814
+radius = 27.777773
+height = 61.111103
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgh3g"]
-size = Vector2(47.738766, 28.652275)
+size = Vector2(76.696594, 38.786568)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4y4c6"]
-size = Vector2(74.31693, 61.788883)
+size = Vector2(121.31146, 109.783325)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oe3ev"]
 streams_count = 2
@@ -251,7 +251,7 @@ process_material = SubResource("ParticleProcessMaterial_kgh3g")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=564933289]
 position = Vector2(1.5199993, 31.826668)
 sprite_frames = SubResource("SpriteFrames_2fkqx")
-animation = &"Phase2_Laser"
+animation = &"Walking"
 offset = Vector2(-0.28, -34.75)
 
 [node name="DamageBoss" type="Area2D" parent="." unique_id=1803570846 groups=["Enemie"]]
@@ -272,13 +272,13 @@ collision_mask = 1152
 script = ExtResource("5_e2swo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamagePlayer" unique_id=1439806164 groups=["Enemie"]]
-position = Vector2(1.4266698, 11.913333)
+position = Vector2(3.023333, 27.333334)
 scale = Vector2(1.2250001, 1.3900001)
 shape = SubResource("RectangleShape2D_kgh3g")
 debug_color = Color(0.846084, 0.377331, 0, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591031911 groups=["Enemie"]]
-position = Vector2(1.333334, 13.203334)
+position = Vector2(3.6666656, 18.398335)
 scale = Vector2(0.61, 0.6)
 shape = SubResource("RectangleShape2D_4y4c6")
 

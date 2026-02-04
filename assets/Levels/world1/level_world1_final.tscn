@@ -461,8 +461,8 @@ script = ExtResource("22_v8p1a")
 SpawnRange = 300.0
 
 [node name="Boss" parent="." unique_id=1466224037 node_paths=PackedStringArray("BossSpawner") instance=ExtResource("20_1rl84")]
-position = Vector2(5, -311)
-scale = Vector2(1.2, 1.2)
+position = Vector2(25, -331)
+scale = Vector2(1, 1)
 collision_layer = 4608
 collision_mask = 2432
 BossSpawner = NodePath("../BossSpawner")

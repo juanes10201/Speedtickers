@@ -310,7 +310,7 @@ func _process(delta: float) -> void:
 			if (!_is_on_floor() &&  velocity.y < MAX_FALL_SPEED):
 				velocity += get_gravity() * delta * GravityDirection*Player.GlobalGravityDirection
 			#endregion
-			if(direction): Sprite.flip_h = false if direction >= 0 else true
+			#if(direction): Sprite.flip_h = false if direction >= 0 else true
 			Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
 			#region Horizontal Movement
 			#Enemy Movement
