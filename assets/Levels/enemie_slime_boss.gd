@@ -36,6 +36,7 @@ var SlamNearPlayer : bool = false
 @export var Max_groundsmash_distance = 300.0
 @export var Can_BeGroundSmash : bool = true
 var CountSpecialAttack : int = 0
+var WasOnFloor : bool = false
 
 #For editor
 enum Directions{
@@ -218,7 +219,7 @@ func _process(delta: float) -> void:
 	if(Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
 		Enabled = true
 	
-	if(Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
+	if(Player && Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
 		PrevGravityDirection = Player.GlobalGravityDirection * GravityDirection
 		velocity.y = 100 * PrevGravityDirection*GravityDirection
 	
@@ -298,7 +299,9 @@ func _process(delta: float) -> void:
 			if(velocity.y < 0): strech_size(0.7, 1.4)
 			if(velocity.y >= MAX_FALL_SPEED): strech_size(0.4, 1.8)
 			
-			if(_is_on_floor() && was_on_floor == false): strech_size(1.8, 0.5)
+			if(_is_on_floor() && was_on_floor == false):
+				_Play_Animation("Fall", false, false)
+				strech_size(1.8, 0.5)
 			
 			_strech_tick(delta)
 			
@@ -515,6 +518,7 @@ func _on_cooldown_hit_timer_timeout() -> void:
 
 func UpdateLife() -> void:
 	Player._play_sound($AudioHit, true, true, .6, 1, .7, .15, 1.2)
+	_Play_Animation("Damage", false, false, true)
 	if(!CooldownHitTimer.is_stopped()): Player._play_sound($AudioPop, true, true, .6, 1, .7, .15, 1.2)
 	if(EnemyLife <= Phase2Life):
 		print("Entered phase 2")
@@ -523,7 +527,11 @@ func UpdateLife() -> void:
 	if(EnemyLife <= 0):
 		On_Death()
 
-func _Play_Animation(Anim : String, Phase : bool = true) -> void:
+var CurrentAnimBeOverrided : bool = true
+
+func _Play_Animation(Anim : String, Phase : bool = true, CanBeOverrided : bool = true, Override : bool = false) -> void:
+	if(!Override && !CurrentAnimBeOverrided && Sprite.is_playing()): return
+	CurrentAnimBeOverrided = CanBeOverrided
 	if(!Phase || EnemyLife > Phase2Life):
 		Sprite.play(Anim)
 	else:

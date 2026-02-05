@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	PathFollow.progress += MoveSpeed * delta
-	print(Player.velocity.x)
+	#print(Player.velocity.x)
 	if(Player):
 		PlayerDistance = Path.curve.get_closest_point(to_local(Player.global_position))
 		#if(PlayerDistance.distance_to(to_local(Player.global_position)) <= DistanceCollide):
