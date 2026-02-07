@@ -7,6 +7,8 @@ var CountClock : int = 0
 
 @onready var Player = SaveGame.get_player()
 
+var Phase2 : bool = false 
+
 func spawn_bomb() -> void:
 	#for child in get_children():
 	#	if child.is_in_group("BossBomb"):
@@ -14,6 +16,7 @@ func spawn_bomb() -> void:
 	if(clock):
 		var bomb_instance = bomb.instantiate()
 		add_child(bomb_instance)
+		bomb_instance.Phase2 = Phase2
 		bomb_instance.global_position = Player.global_position
 		#bomb_instance.global_position = global_position
 		#bomb_instance.global_position.x = get_tree().get_nodes_in_group("Boss")[0].global_position.x if get_tree().get_nodes_in_group("Boss").size() else Vector2(0.0,0.0)

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 #region Setup variables
 @export_group("Custom")
+@export var FinalAttackPlayerPos : Marker2D
+@export var FinalAttackPos : Marker2D
 @export var BossSpawner : Node2D
 @export var RetroStyle : bool = false
 @export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
@@ -20,6 +22,7 @@ extends CharacterBody2D
 @export var Phase2Life : int = 5
 @export var Phase2SlamTime : float = .7
 @export var Phase2MoveTime : float = .7
+@export var FinalAttackBombTime : float = .5
 var Slide : bool = false
 var WallJump : bool = false
 var WallJumped : bool = false
@@ -200,6 +203,7 @@ var SlamJump : bool = false
 
 func _process(delta: float) -> void:
 	if(!Physics):
+		move_and_slide()
 		return
 	#print($SpawnBomb.time_left)
 	if(Slam && SlamNearPlayer):
@@ -208,7 +212,8 @@ func _process(delta: float) -> void:
 		if($SpawnBomb.is_stopped()):
 			$SpawnBomb.start()
 			_Play_Animation("Button", false, false, true)
-		if(EnemyLife <= Phase2Life):
+		if(EnemyLife <= Phase2Life && !BossSpawner.Phase2):
+			BossSpawner.Phase2 = true
 			$SpawnBomb.wait_time = SpawnBombTimePhase2
 	if(!WallJumpTimer.is_stopped()):
 		velocity.x = lerpf(velocity.x, -600.0*direction, 5*delta)
@@ -519,11 +524,25 @@ func _on_damage_boss_body_entered(body: Node2D) -> void:
 			UpdateLife()
 			Player.InvencibilityTimer.start()
 
+func FinalAttack():
+	position = FinalAttackPos.position
+	Player.position = FinalAttackPlayerPos.position
+	Physics = false
+	velocity = Vector2(0.0, 0.0)
+	$SpawnBomb.wait_time = FinalAttackBombTime
+	$SpawnBomb.start()
+
 func _set_sleep(State: bool = true):
+	Sleep = State
 	$ZAnim1.emitting = State
 	$ZAnim2.emitting = State
-	if(State): Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
-	else: Player._stop_sound($AudioSnooring)
+	if(State):
+		CountSpecialAttack = 0
+		Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
+		_Play_Animation("Sleep", false, false, true, false)
+	else:
+		_Play_Animation("Idle", true, true, true, false)
+		Player._stop_sound($AudioSnooring)
 
 func _on_cooldown_hit_timer_timeout() -> void:
 	Move = true
@@ -538,6 +557,8 @@ func UpdateLife() -> void:
 		SlamTimer.wait_time = Phase2SlamTime
 	if(EnemyLife <= 0):
 		On_Death()
+	elif(EnemyLife <= 1):
+		FinalAttack()
 
 var CurrentAnimBeOverrided : bool = true
 
@@ -555,6 +576,7 @@ func _Play_Animation(Anim : String, Phase : bool = true, CanBeOverrided : bool =
 func _spawn_bomb() -> void:
 	Player._play_sound($AudioIntroBomb, true, true, .6, 1, .7, .15, 1.2)
 	BossSpawner.spawn_bomb()
+	$SpawnBomb.start()
 
 func _on_spawn_bomb_timeout() -> void:
 	_spawn_bomb()

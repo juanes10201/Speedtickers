@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://fswjgnqueri7" path="res://assets/Levels/enemie_slime_boss.tscn" id="20_1rl84"]
 [ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="22_sw0pm"]
 [ext_resource type="Script" uid="uid://dkc2dv8d2secv" path="res://assets/Levels/world1/timer_spawner.gd" id="22_v8p1a"]
+[ext_resource type="Texture2D" uid="uid://c51a5mg64cthq" path="res://assets/Sprites/Bosses/news.png" id="23_sw0pm"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -118,7 +119,7 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D" unique_id=547109456]
-position = Vector2(0, -1)
+position = Vector2(1, -1)
 
 [node name="Bg" type="Sprite2D" parent="." unique_id=417496992]
 visible = false
@@ -460,17 +461,28 @@ position = Vector2(256, -527)
 script = ExtResource("22_v8p1a")
 SpawnRange = 300.0
 
-[node name="Boss" parent="." unique_id=1466224037 node_paths=PackedStringArray("BossSpawner") instance=ExtResource("20_1rl84")]
+[node name="FinalAttackPos" type="Marker2D" parent="." unique_id=1088480351]
+top_level = true
+position = Vector2(408, -320)
+
+[node name="FinalAttackPlayerPos" type="Marker2D" parent="." unique_id=1405819066]
+top_level = true
+position = Vector2(1, -320)
+
+[node name="Boss" parent="." unique_id=1466224037 node_paths=PackedStringArray("FinalAttackPlayerPos", "FinalAttackPos", "BossSpawner") instance=ExtResource("20_1rl84")]
 position = Vector2(25, -331)
 scale = Vector2(1, 1)
 collision_layer = 4608
 collision_mask = 2432
+FinalAttackPlayerPos = NodePath("../FinalAttackPlayerPos")
+FinalAttackPos = NodePath("../FinalAttackPos")
 BossSpawner = NodePath("../BossSpawner")
 Activate_on_color = 3
 DistanceSlide = 250.0
 DistanceWallJump = 140.0
 LifeThrowbombs = 13
-SpawnBombTimePhase2 = 2.0
+SpawnBombTimePhase2 = 1.5
+FinalAttackBombTime = 0.2
 SPEED = 320.0
 JUMP_VELOCITY = -500.0
 SlamTime = 0.9
@@ -504,3 +516,10 @@ script = ExtResource("6_1rl84")
 [node name="Rail" parent="." unique_id=1528477802 instance=ExtResource("22_sw0pm")]
 position = Vector2(-343, 84)
 points = PackedVector2Array(-6, 6, 0, 2, 47, -6, 83, -41, 121, 6, 157, 35, 238, -29, 263, -31, 267, -37)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=321872929]
+layer = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer2" unique_id=946788137]
+position = Vector2(143, 609)
+texture = ExtResource("23_sw0pm")
