@@ -93,7 +93,8 @@ var StatePlaying : bool = false
 var Jumped : bool = false
 
 @onready var EnemyLife : int = InitialLife
-
+var Physics : bool = true
+var Sleep : bool = false
 #endregion
 
 #region Killed by Slide or Groundsmash Sound
@@ -133,7 +134,7 @@ func _on_player_ground_smash_signal() -> void:
 func start_cooldown_timer() -> void:
 	CooldownHitTimer.start()
 	Move = false
-	Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
+	_set_sleep(true)
 
 #region Player Slide 
 func _on_player_slide_signal() -> void:
@@ -198,11 +199,15 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 var SlamJump : bool = false
 
 func _process(delta: float) -> void:
+	if(!Physics):
+		return
 	#print($SpawnBomb.time_left)
 	if(Slam && SlamNearPlayer):
 		Player._play_sound($AudioNear, true, true, .6, 1, .7, .15, 1.2)
 	if(EnemyLife <= LifeThrowbombs):
-		if($SpawnBomb.is_stopped()): $SpawnBomb.start()
+		if($SpawnBomb.is_stopped()):
+			$SpawnBomb.start()
+			_Play_Animation("Button", false, false, true)
 		if(EnemyLife <= Phase2Life):
 			$SpawnBomb.wait_time = SpawnBombTimePhase2
 	if(!WallJumpTimer.is_stopped()):
@@ -323,6 +328,7 @@ func _process(delta: float) -> void:
 						velocity.x = direction * SPEED# * randf_range(1, 1.2)
 					if(abs(position.x-Player.position.x) >= DistanceSlide && !Jumped):
 						Slide = true
+						_Play_Animation("Roll", false, false)
 					else:
 						strech_size(1.7, 0.5)
 						MoveTimer.start()
@@ -480,6 +486,7 @@ func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
 		Player._play_sound($AudioCrashWall, true, true, .6, 1, .7, .15, 1.2)
 		_update_direction()
 		Slide = false
+		_Play_Animation("Air", false, true, true)
 		BossSpawner.spawn_clock()
 		_jump(JUMP_VELOCITY)
 		MoveTimer.start()
@@ -493,7 +500,7 @@ func _on_wall_jump_timer_timeout() -> void:
 func _on_damage_boss_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
 		Player.DashTime.stop()
-		Player._stop_sound($AudioSnooring)
+		_set_sleep(false)
 		Player.GroundSmash = false
 		Player.Reset_Groundsmash()
 		Player.velocity.y = -200
@@ -512,6 +519,11 @@ func _on_damage_boss_body_entered(body: Node2D) -> void:
 			UpdateLife()
 			Player.InvencibilityTimer.start()
 
+func _set_sleep(State: bool = true):
+	$ZAnim1.emitting = State
+	$ZAnim2.emitting = State
+	if(State): Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
+	else: Player._stop_sound($AudioSnooring)
 
 func _on_cooldown_hit_timer_timeout() -> void:
 	Move = true
@@ -529,7 +541,10 @@ func UpdateLife() -> void:
 
 var CurrentAnimBeOverrided : bool = true
 
-func _Play_Animation(Anim : String, Phase : bool = true, CanBeOverrided : bool = true, Override : bool = false) -> void:
+func _Play_Animation(Anim : String, Phase : bool = true, CanBeOverrided : bool = true, Override : bool = false, StopPlayer : bool = false) -> void:
+	if(StopPlayer):
+		Player.EnableMovement = !StopPlayer
+		Physics = false
 	if(!Override && !CurrentAnimBeOverrided && Sprite.is_playing()): return
 	CurrentAnimBeOverrided = CanBeOverrided
 	if(!Phase || EnemyLife > Phase2Life):
@@ -537,13 +552,23 @@ func _Play_Animation(Anim : String, Phase : bool = true, CanBeOverrided : bool =
 	else:
 		Sprite.play("Phase2_" + Anim)
 
-
-func _on_spawn_bomb_timeout() -> void:
+func _spawn_bomb() -> void:
 	Player._play_sound($AudioIntroBomb, true, true, .6, 1, .7, .15, 1.2)
 	BossSpawner.spawn_bomb()
+
+func _on_spawn_bomb_timeout() -> void:
+	_spawn_bomb()
 
 func _on_area_near_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")): SlamNearPlayer = true
 
 func _on_area_near_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Player")): SlamNearPlayer = false
+
+
+func _on_sprite_2d_animation_finished() -> void:
+	if(Sprite.animation == "Button"):
+		_spawn_bomb()
+		Player._play_sound($AudioSlimeButtonPress)
+		Player.EnableMovement = true
+		Physics = true

@@ -13,6 +13,7 @@ enum Sides{
 }
 
 var SlidingInAir : bool = false
+var EnableMovement : bool = true
 
 var MoveLava : bool = false
 
@@ -881,12 +882,14 @@ func is_near_wall() -> bool:
 #endregion
 
 func is_action_pressed(Action : String):
+	if(!EnableMovement): return
 	if(ReplayAction != Global.ReplayStates.REPLAY):
 		return Input.is_action_pressed(str(Action))
 	elif(Replay):
 		return Replay.ReplayActions[Action]
 
 func get_axis():
+	if(!EnableMovement): return 0
 	if(ReplayAction != Global.ReplayStates.REPLAY):
 		return Input.get_axis("ui_left", "ui_right")
 	elif(Replay):
