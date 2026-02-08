@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://b7j8834feho55"]
+[gd_scene format=4 uid="uid://b7j8834feho55"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_infck"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_up3lq"]
@@ -83,7 +83,6 @@ glow_levels/6 = 0.97
 glow_intensity = 0.21
 glow_strength = 1.27
 glow_bloom = 0.03
-glow_blend_mode = 1
 glow_hdr_threshold = 1.29
 adjustment_enabled = true
 adjustment_brightness = 1.05
@@ -182,10 +181,19 @@ gradient = SubResource("Gradient_lhkcl")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_jfyc5"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e44cq"]
+gradient = SubResource("Gradient_jfyc5")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[node name="Node2D" type="Node2D" unique_id=703607873]
 position = Vector2(0, -1)
 
-[node name="Bg" type="Sprite2D" parent="."]
+[node name="Bg" type="Sprite2D" parent="." unique_id=883655259]
 visible = false
 texture_repeat = 2
 position = Vector2(-755, -863)
@@ -195,12 +203,10 @@ region_enabled = true
 region_rect = Rect2(0.078, 0.149, 1000, 1000)
 script = ExtResource("2_up3lq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
-libraries = {
-&"": SubResource("AnimationLibrary_0i2pc")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg" unique_id=1986782855]
+libraries/ = SubResource("AnimationLibrary_0i2pc")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1362609334 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-2, 0)
@@ -209,32 +215,32 @@ tile_map_data = PackedByteArray("AADr/+//AQABAAEAAADr//D/AQABAAEAAADs/+//AQACAAE
 tile_set = ExtResource("3_2oxv3")
 script = ExtResource("4_diu55")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="TileMapLayer" groups=["Tileset"]]
+[node name="TileMapLayer2" type="TileMapLayer" parent="TileMapLayer" unique_id=932009532 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 tile_map_data = PackedByteArray("AAD5////AQAJABYAAAD6////AQAKABYAAAD7////AQALABYAAAD8////AQAMABYAAAABAPz/AQASABQAACAAAP7/AQAWABMAAAABAP3/AQASABMAAAABAP7/AQAWABQAAAA=")
 tile_set = ExtResource("3_2oxv3")
 script = ExtResource("4_diu55")
 
-[node name="TileMapLayer3" type="TileMapLayer" parent="TileMapLayer" groups=["Tileset"]]
+[node name="TileMapLayer3" type="TileMapLayer" parent="TileMapLayer" unique_id=152764432 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 tile_map_data = PackedByteArray("AAAEAPb/AQABAAYAABAEAPf/AQABAAcAABA=")
 tile_set = ExtResource("3_2oxv3")
 script = ExtResource("4_diu55")
 
-[node name="Player2" parent="." groups=["PlayerReplay"] instance=ExtResource("5_jfyc5")]
+[node name="Player2" parent="." unique_id=2118202318 groups=["PlayerReplay"] instance=ExtResource("5_jfyc5")]
 position = Vector2(-328, -66)
 CountTime = false
 ReplayAction = 0
 ReplayStyle = true
 
-[node name="Player" parent="." instance=ExtResource("5_cyxtg")]
+[node name="Player" parent="." unique_id=1019365591 instance=ExtResource("5_cyxtg")]
 position = Vector2(-317.00003, -65)
 CountTime = false
 jump_height = 65.0
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=473842809]
 position = Vector2(34.72986, -104.212326)
 offset = Vector2(-28.055, 23.85)
 zoom = Vector2(2.12, 2.12)
@@ -245,34 +251,34 @@ limit_bottom = 0
 limit_smoothed = true
 script = ExtResource("6_a5x1v")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("7_n014a")]
+[node name="CanvasLayer" parent="." unique_id=407845698 instance=ExtResource("7_n014a")]
 script = SubResource("GDScript_kdu5x")
 
-[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+[node name="Time_Left" type="Timer" parent="." unique_id=2147052346 groups=["GameTimer"]]
 wait_time = 15.0
 one_shot = true
 autostart = true
 
-[node name="Flag" parent="." instance=ExtResource("8_r8e1x")]
+[node name="Flag" parent="." unique_id=958854612 instance=ExtResource("8_r8e1x")]
 position = Vector2(59, -120)
 scale = Vector2(1.01682, 1)
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("9_6deub")]
+[node name="WorldEnvironment" parent="." unique_id=608638154 instance=ExtResource("9_6deub")]
 environment = SubResource("Environment_vmlh1")
 
-[node name="AmbientParticles" parent="." instance=ExtResource("10_rqqp7")]
+[node name="AmbientParticles" parent="." unique_id=315233368 instance=ExtResource("10_rqqp7")]
 position = Vector2(-103, -242)
 
-[node name="KillBox" parent="." instance=ExtResource("11_k2ily")]
+[node name="KillBox" parent="." unique_id=1273952108 instance=ExtResource("11_k2ily")]
 position = Vector2(-108, 34)
 scale = Vector2(58.64, 1)
 Visible = false
 
-[node name="Tutorial" type="Node2D" parent="."]
+[node name="Tutorial" type="Node2D" parent="." unique_id=898310837]
 material = ExtResource("12_oq6ls")
 position = Vector2(-188, -205)
 
-[node name="DashButton2" type="AnimatedSprite2D" parent="Tutorial"]
+[node name="DashButton2" type="AnimatedSprite2D" parent="Tutorial" unique_id=823325995]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
 position = Vector2(-29, -1)
@@ -281,7 +287,7 @@ script = ExtResource("14_oq6ls")
 ReadFromReplay = true
 ButtonToPress = "ui_right"
 
-[node name="DashButton" type="AnimatedSprite2D" parent="Tutorial"]
+[node name="DashButton" type="AnimatedSprite2D" parent="Tutorial" unique_id=169715356]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
 position = Vector2(-14.38501, -8.650604)
@@ -289,7 +295,7 @@ sprite_frames = SubResource("SpriteFrames_8fc2q")
 script = ExtResource("14_oq6ls")
 ReadFromReplay = true
 
-[node name="DashTutorial2" type="RichTextLabel" parent="Tutorial" node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+[node name="DashTutorial2" type="RichTextLabel" parent="Tutorial" unique_id=669944912 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_kdsa1")
 offset_left = -117.38501
 offset_top = -21.650604
@@ -309,35 +315,35 @@ VoiceDelay = NodePath("VoiceDelay")
 Voice = NodePath("Voice")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextDelay" type="Timer" parent="Tutorial/DashTutorial2"]
+[node name="TextDelay" type="Timer" parent="Tutorial/DashTutorial2" unique_id=1039926505]
 wait_time = 0.00999999999999999
 one_shot = true
 
-[node name="VoiceDelay" type="Timer" parent="Tutorial/DashTutorial2"]
+[node name="VoiceDelay" type="Timer" parent="Tutorial/DashTutorial2" unique_id=515393732]
 wait_time = 0.05
 one_shot = true
 
-[node name="Voice" type="AudioStreamPlayer" parent="Tutorial/DashTutorial2"]
+[node name="Voice" type="AudioStreamPlayer" parent="Tutorial/DashTutorial2" unique_id=1453773123]
 stream = ExtResource("17_jlc0c")
 volume_db = -20.0
 
-[node name="falling_sand" parent="." instance=ExtResource("16_oq6ls")]
+[node name="falling_sand" parent="." unique_id=280544768 instance=ExtResource("16_oq6ls")]
 position = Vector2(-42, -232)
 MAX_SPEED = 200.0
 
-[node name="falling_sand2" parent="." instance=ExtResource("16_oq6ls")]
+[node name="falling_sand2" parent="." unique_id=1226261545 instance=ExtResource("16_oq6ls")]
 position = Vector2(-26, -232)
 MAX_SPEED = 200.0
 
-[node name="falling_sand3" parent="." instance=ExtResource("16_oq6ls")]
+[node name="falling_sand3" parent="." unique_id=420639614 instance=ExtResource("16_oq6ls")]
 position = Vector2(-10, -232)
 MAX_SPEED = 200.0
 
-[node name="falling_sand4" parent="." instance=ExtResource("16_oq6ls")]
+[node name="falling_sand4" parent="." unique_id=888209280 instance=ExtResource("16_oq6ls")]
 position = Vector2(6, -232)
 MAX_SPEED = 200.0
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=257632380]
 position = Vector2(54.000015, -72)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.95631605, 0.47549087, 0.7099316, 1)
@@ -346,7 +352,7 @@ height = 13.0
 script = ExtResource("17_kdsa1")
 CurrentAnimation = 1
 
-[node name="PointLight2D3" type="PointLight2D" parent="."]
+[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=142070527]
 position = Vector2(-65, -167)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.7026668, 0.5993584, 0.9006834, 1)
@@ -354,7 +360,7 @@ energy = 1.4
 texture = SubResource("GradientTexture2D_kdsa1")
 height = 13.0
 
-[node name="PointLight2D7" type="PointLight2D" parent="."]
+[node name="PointLight2D7" type="PointLight2D" parent="." unique_id=443588445]
 position = Vector2(-175, -299)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.7026668, 0.5993584, 0.9006834, 1)
@@ -362,7 +368,7 @@ energy = 0.65
 texture = SubResource("GradientTexture2D_kdsa1")
 height = 13.0
 
-[node name="PointLight2D6" type="PointLight2D" parent="."]
+[node name="PointLight2D6" type="PointLight2D" parent="." unique_id=466395367]
 position = Vector2(-74, -117)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.9367394, 0.5510094, 0.2974418, 1)
@@ -370,7 +376,7 @@ energy = 0.65
 texture = SubResource("GradientTexture2D_kdsa1")
 height = 13.0
 
-[node name="PointLight2D5" type="PointLight2D" parent="."]
+[node name="PointLight2D5" type="PointLight2D" parent="." unique_id=1722709546]
 position = Vector2(61, -143)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.7026668, 0.5993584, 0.9006834, 1)
@@ -380,18 +386,18 @@ height = 13.0
 script = ExtResource("17_kdsa1")
 CurrentAnimation = 3
 
-[node name="PointLight2D4" type="PointLight2D" parent="."]
-position = Vector2(72, -110)
+[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=2008597852]
+position = Vector2(45, -108)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.8255318, 0.6290966, 0.018607348, 1)
-energy = 0.82
+energy = 1.22
 texture = SubResource("GradientTexture2D_8fc2q")
 texture_scale = 1.72
 height = 13.0
 script = ExtResource("17_kdsa1")
 CurrentAnimation = 3
 
-[node name="PointLight2D10" type="PointLight2D" parent="."]
+[node name="PointLight2D10" type="PointLight2D" parent="." unique_id=487033346]
 position = Vector2(-169, -159)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.7026668, 0.5993584, 0.9006834, 1)
@@ -399,3 +405,107 @@ energy = 0.6
 texture = SubResource("GradientTexture2D_jlc0c")
 texture_scale = 1.55
 height = 13.0
+
+[node name="PointLight2D51" type="PointLight2D" parent="." unique_id=663316443]
+position = Vector2(-253, -37)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
+
+[node name="PointLight2D54" type="PointLight2D" parent="." unique_id=190183874]
+position = Vector2(-171, -80)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0, 0.789555, 0.38148484, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 1.52
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
+
+[node name="PointLight2D55" type="PointLight2D" parent="." unique_id=599014343]
+position = Vector2(-178, -294)
+scale = Vector2(1.5259811, 1.4260539)
+editor_only = true
+color = Color(1, 0.44988322, 0.5851659, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
+
+[node name="PointLight2D58" type="PointLight2D" parent="." unique_id=1226663307]
+position = Vector2(-178, -294)
+scale = Vector2(1.5259811, 1.4260539)
+editor_only = true
+color = Color(1, 0.44988322, 0.5851659, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
+
+[node name="PointLight2D56" type="PointLight2D" parent="." unique_id=2099450801]
+position = Vector2(-67, -130)
+scale = Vector2(1.5259811, 1.4260539)
+editor_only = true
+color = Color(0.798413, 0.63896686, 3.85046e-07, 1)
+energy = 0.95
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
+
+[node name="PointLight2D52" type="PointLight2D" parent="." unique_id=159663923]
+position = Vector2(-60, -261)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
+
+[node name="PointLight2D59" type="PointLight2D" parent="." unique_id=1845546017]
+position = Vector2(-147, -201)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.55
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
+
+[node name="PointLight2D53" type="PointLight2D" parent="." unique_id=419190257]
+position = Vector2(-35, -66)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 1.3
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
+
+[node name="PointLight2D57" type="PointLight2D" parent="." unique_id=1067392221]
+position = Vector2(-97, 34)
+scale = Vector2(1.5259811, 1.4260539)
+editor_only = true
+color = Color(1, 0.44988322, 0.5851659, 1)
+energy = 0.95
+blend_mode = 1
+texture = SubResource("GradientTexture2D_e44cq")
+texture_scale = 2.02
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1
