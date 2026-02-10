@@ -783,6 +783,23 @@ stream_1/stream = ExtResource("9_kgh3g")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnnf1"]
 size = Vector2(118.66667, 122.666664)
 
+[sub_resource type="Animation" id="Animation_j3jnp"]
+resource_name = "FinalAttackIdle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5666666, 2.2, 5.0666666, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(12.667, 3.152), Vector2(-33.983, -81.828), Vector2(15.339, -76.735), Vector2(-87.335, -13.324), Vector2(12.667, 3.152)]
+}
+
 [sub_resource type="Animation" id="Animation_4awbj"]
 length = 0.001
 tracks/0/type = "value"
@@ -835,7 +852,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.23333333, 0.36666667, 0.56666666, 0.6666667, 0.96666664, 1.0656997, 1.6333333, 1.9192663, 2.0333333, 2.3, 2.5577576, 2.9333334, 3.2015696, 3.7333333, 3.993642, 4.366667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(28.666666, 37.333336), Vector2(56.680637, -16.589752), Vector2(70, -27.267), Vector2(78.464, 6.465), Vector2(84.7918, 57.59214), Vector2(112.013, 318.77), Vector2(112.013, 318.77), Vector2(76.82384, 208.40652), Vector2(53.403038, 134.95207), Vector2(53.403038, 134.95207), Vector2(39.95642, 92.779564), Vector2(39.95642, 92.779564), Vector2(26.627804, 50.977146), Vector2(26.627804, 50.977146), Vector2(19.260107, 27.869902), Vector2(19.260107, 27.869902), Vector2(12.667, 7.192)]
+"values": [Vector2(28.666666, 37.333336), Vector2(56.680637, -16.589752), Vector2(70, -27.267), Vector2(78.464, 6.465), Vector2(84.7918, 57.59214), Vector2(112.013, 318.77), Vector2(112.013, 318.77), Vector2(76.82384, 208.40652), Vector2(53.403038, 134.95207), Vector2(53.403038, 134.95207), Vector2(39.95642, 92.779564), Vector2(39.95642, 92.779564), Vector2(26.627804, 50.977146), Vector2(26.627804, 50.977146), Vector2(19.260107, 27.869902), Vector2(19.260107, 27.869902), Vector2(12.667, 3.152)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -864,6 +881,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_idfvk"]
 _data = {
+&"FinalAttackIdle": SubResource("Animation_j3jnp"),
 &"RESET": SubResource("Animation_4awbj"),
 &"ScapeFinalAttack": SubResource("Animation_t5hsy")
 }
@@ -1067,4 +1085,5 @@ wait_time = 2.0
 [connection signal="timeout" from="SpawnBomb" to="." method="_on_spawn_bomb_timeout"]
 [connection signal="body_entered" from="AreaNear" to="." method="_on_area_near_body_entered"]
 [connection signal="body_exited" from="AreaNear" to="." method="_on_area_near_body_exited"]
+[connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
 [connection signal="timeout" from="FinalAttackTimer" to="." method="_on_final_attack_timer_timeout"]

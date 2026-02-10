@@ -313,6 +313,7 @@ func _physics_process(delta: float) -> void:
 	if(ReplayStyle):
 		Sprite.modulate.a = 0.7
 		Particles = false
+		
 	#if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
 	#	print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
 	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb && LevelManager.ExpoMoveTimeout.is_stopped()):

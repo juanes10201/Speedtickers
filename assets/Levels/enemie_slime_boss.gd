@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var Collar = preload("res://assets/Levels/world1/SlimeBossCollar.tscn")
 #region Setup variables
 @export_group("Custom")
+var InFinalAttack : bool = false
 @export var FinalAttackMarkers : Array[Node2D]
 var FinalAttackNumber : int = 0
 @export var FinalAttackPlayerPos : Marker2D
@@ -394,11 +395,15 @@ func _process(delta: float) -> void:
 #region Scaling
 @onready var original_scale = Sprite.scale
 func strech_size(X, Y, Override : bool = true):
+	if(InFinalAttack):
+		Sprite.scale = original_scale
+		return
 	if(Override || (Sprite.scale.x == original_scale.x && Sprite.scale.y == original_scale.y) ):
 		Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
 		Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
 
 func _strech_tick(delta : float):
+	if(InFinalAttack): Sprite.scale = original_scale
 	Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 15 * delta
 	Sprite.scale.y += (original_scale.y*GravityDirection*Player.GlobalGravityDirection - Sprite.scale.y) * 15 * delta
 #endregion
@@ -503,6 +508,7 @@ func _on_slam_timer_timeout() -> void:
 
 
 func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
+	if(Sleep): return
 	if(Jumped):
 		_update_direction()
 		velocity.x = direction * SPEED * 1.2
@@ -562,10 +568,12 @@ func _on_damage_boss_body_entered(body: Node2D) -> void:
 			Player.InvencibilityTimer.start()
 
 func FinalAttack():
+	InFinalAttack = true
 	_set_sleep(false)
 	if(FinalAttackPos):
 		position = FinalAttackPos.position
 	#Player.position = FinalAttackPlayerPos.position
+	strech_size(1.0, 1.0, true)
 	BossSpawner.Phase2 = true
 	$SpawnBomb.stop()
 	Physics = false
@@ -583,6 +591,7 @@ func FinalAttack():
 	#$SpawnBomb.start()
 
 func _set_sleep(State: bool = true):
+	if(State && InFinalAttack): return
 	Sleep = State
 	$ZAnim1.emitting = State
 	$ZAnim2.emitting = State
@@ -667,3 +676,8 @@ func _spawn_final_attack_bomb() -> void:
 
 func _on_final_attack_timer_timeout() -> void:
 	_spawn_final_attack_bomb()
+
+
+func _on_anim_animation_finished(anim_name: StringName) -> void:
+	if(InFinalAttack):
+		$Anim.play("FinalAttackIdle")
