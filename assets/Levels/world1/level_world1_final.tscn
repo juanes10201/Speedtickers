@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Levels/Scripts/grid_bg.gd" id="2_7j8ub"]
 [ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_0udak"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Levels/world1/tiles.tres" id="4_xdos2"]
+[ext_resource type="Texture2D" uid="uid://cgoklwag82yn1" path="res://assets/Sprites/Bosses/Stage-placeholder.png" id="5_kpfiv"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Levels/player.tscn" id="5_kr6ob"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Levels/Scripts/Player_camera.gd" id="6_1rl84"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Levels/canvas_layer.tscn" id="7_tsapb"]
@@ -160,6 +161,10 @@ tile_set = ExtResource("4_xdos2")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="TileMapLayer" unique_id=1349089729 groups=["Tileset"]]
 tile_set = ExtResource("4_xdos2")
+
+[node name="StagePlaceholder" type="Sprite2D" parent="." unique_id=1847214969]
+position = Vector2(200, -360)
+texture = ExtResource("5_kpfiv")
 
 [node name="Time_Left" type="Timer" parent="." unique_id=1394290849 groups=["GameTimer"]]
 wait_time = 11.0
