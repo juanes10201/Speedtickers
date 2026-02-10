@@ -462,6 +462,7 @@ func On_Death():
 	Dead = true
 	#region Create destroy particles
 	_Play_Animation("Explode", false, false, true, false)
+	$Anim.play("Explode")
 	await get_tree().create_timer(3.0).timeout
 	_Spawn_Collar()
 	#if(Particles):
@@ -616,7 +617,7 @@ func UpdateLife() -> void:
 		SlamTimer.wait_time = Phase2SlamTime
 	#if(EnemyLife <= 0):
 	#	On_Death()
-	if(EnemyLife <= 1):
+	if(EnemyLife <= 100):
 		FinalAttack()
 
 var CurrentAnimBeOverrided : bool = true
