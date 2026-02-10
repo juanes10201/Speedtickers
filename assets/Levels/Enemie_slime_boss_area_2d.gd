@@ -6,6 +6,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_area_entered(area: Area2D) -> void:
+	if(!get_parent().InteractPlayer): return
 	var playerbody = area.get_parent()
 	if(get_parent().Enabled):
 		if(playerbody.is_in_group("Player")):

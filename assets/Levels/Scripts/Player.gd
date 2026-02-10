@@ -620,6 +620,15 @@ func DoJump() -> void:
 		Speed.x = WallJumpVelocity*-1 if WallJumpPreviousSide == Sides.RIGHT else WallJumpVelocity
 		PreWallJumpTimer.stop()
 		velocity.y -= 50 * GravityDirection
+		if($ParticleWalljump && !$ParticleWalljump/ParticleWallJumpAnim.is_playing()):
+			#print(WallJumpSide)
+			$ParticleWalljump.position = position
+			$ParticleWalljump.position.x -= 6.0
+			#if(WallJumpSide == 1):
+			#	$ParticleWalljump.position.x -= 8.0
+			$ParticleWalljump/ParticleWallJumpAnim.play("Walljump")
+			$ParticleWalljump/ParticleWalljump1.play("default")
+			$ParticleWalljump/ParticleWalljump2.play("default")
 	#endregion
 
 #region Horizontal movement

@@ -262,19 +262,19 @@ texture_scale = 1.6
 height = 13.0
 
 [node name="PointLight2D18" type="PointLight2D" parent="." unique_id=370838133]
-position = Vector2(-165, 24)
+position = Vector2(-157.6, 25.400002)
 scale = Vector2(1.453125, 1.453125)
 color = Color(1, 0.49000555, 0.3926641, 1)
-energy = 1.65
+energy = 0.9
 texture = SubResource("GradientTexture2D_quebr")
 texture_scale = 1.6
 height = 13.0
 
 [node name="PointLight2D19" type="PointLight2D" parent="." unique_id=629897886]
-position = Vector2(-133, -23)
+position = Vector2(-125.600006, -21.599998)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.71678287, 0.68312114, 0, 1)
-energy = 0.75
+energy = 0.9
 texture = SubResource("GradientTexture2D_quebr")
 texture_scale = 1.6
 height = 13.0
@@ -283,7 +283,7 @@ height = 13.0
 position = Vector2(-117, -177)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.71678287, 0.68312114, 0, 1)
-energy = 1.25
+energy = 1.1
 texture = SubResource("GradientTexture2D_quebr")
 texture_scale = 1.6
 height = 13.0

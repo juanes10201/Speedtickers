@@ -677,6 +677,16 @@ texture = SubResource("GradientTexture2D_vmlh1")
 texture_scale = 1.72
 height = 13.0
 script = ExtResource("10_qs57u")
+
+[node name="PointLight2D52" type="PointLight2D" parent="." unique_id=980603510]
+position = Vector2(-273, -337)
+scale = Vector2(1.453125, 1.453125)
+color = Color(3.3691526e-07, 0.7935671, 0.34662613, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_vmlh1")
+texture_scale = 1.72
+height = 13.0
+script = ExtResource("10_qs57u")
 CurrentAnimation = 1
 
 [node name="PointLight2D45" type="PointLight2D" parent="." unique_id=198492269]

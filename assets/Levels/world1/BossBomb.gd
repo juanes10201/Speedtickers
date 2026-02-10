@@ -9,15 +9,29 @@ func _play_anim(Anim : String):
 
 func _ready() -> void:
 	_play_anim("Intro")
+	await get_tree().create_timer(0.05).timeout
+	if(Phase2):
+		$ExplosionTimerPhase2.start()
+	else:
+		$ExplosionTimer.start()
 
 func _process(delta: float) -> void:
 	if($Sprite.animation == "Intro" && Phase2): _play_anim("Intro")
-	$SpriteDamageArea.material.set_shader_parameter("progress", 1-($ExplosionTimer.time_left/$ExplosionTimer.wait_time))
+	if(Phase2):
+		$SpriteDamageArea.material.set_shader_parameter("progress", 1-($ExplosionTimerPhase2.time_left/$ExplosionTimerPhase2.wait_time))
+	else:
+		$SpriteDamageArea.material.set_shader_parameter("progress", 1-($ExplosionTimer.time_left/$ExplosionTimer.wait_time))
 	#print($Sprite.speed_scale)
-	if($Sprite.animation != "Intro"): $Sprite.speed_scale = .3+$ExplosionTimer.time_left/$ExplosionTimer.wait_time
+	if($Sprite.animation == "Default" || $Sprite.animation == "Default-Phase2"): $Sprite.speed_scale = .3+$ExplosionTimer.time_left/$ExplosionTimer.wait_time
 
 func _on_explosion_timer_timeout() -> void:
+	$Sprite.speed_scale = 1.0
 	if(PlayerColliding): SaveGame.get_player().On_Death()
+	_play_anim("Explode")
+	$SpriteDamageArea.hide()
+	$Sprite.z_index += 2
+	SaveGame.get_player()._play_sound($AudioExplode)
+	await get_tree().create_timer(1.0).timeout
 	queue_free()
 
 

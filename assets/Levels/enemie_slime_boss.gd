@@ -1,9 +1,15 @@
 extends CharacterBody2D
 
+
+@onready var Collar = preload("res://assets/Levels/world1/SlimeBossCollar.tscn")
 #region Setup variables
 @export_group("Custom")
+@export var FinalAttackMarkers : Array[Node2D]
+var FinalAttackNumber : int = 0
 @export var FinalAttackPlayerPos : Marker2D
 @export var FinalAttackPos : Marker2D
+@export var FinalAttackFastBombTime : float = 1.0
+@export var FinalAttackFastBombQuantity : float = 4.0
 @export var BossSpawner : Node2D
 @export var RetroStyle : bool = false
 @export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
@@ -27,6 +33,7 @@ var Slide : bool = false
 var WallJump : bool = false
 var WallJumped : bool = false
 var SlamNearPlayer : bool = false
+var Dead : bool = false
 
 @export_group("Physics")
 @export var Enemy_burst_speed : float = 300.0
@@ -95,9 +102,13 @@ var StatePlaying : bool = false
 
 var Jumped : bool = false
 
+var InteractPlayer : bool = true
+
 @onready var EnemyLife : int = InitialLife
 var Physics : bool = true
 var Sleep : bool = false
+
+var SpawnedCollar : bool = false
 #endregion
 
 #region Killed by Slide or Groundsmash Sound
@@ -202,8 +213,17 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 var SlamJump : bool = false
 
 func _process(delta: float) -> void:
+	if($DebugText):
+		$DebugText.text = "life: " + str(EnemyLife)
+	if(Sprite.animation == "Big"):
+		strech_size(1.0, 1.0)
+		#print(round(position.distance_to(Player.position)/60))
+		Sprite.frame = position.distance_to(Player.position)/60
+		if(position.x < Player.position.x):
+			Sprite.frame += 5
+		else:
+			Sprite.frame = 5-Sprite.frame
 	if(!Physics):
-		move_and_slide()
 		return
 	#print($SpawnBomb.time_left)
 	if(Slam && SlamNearPlayer):
@@ -421,18 +441,33 @@ func check_collision() -> bool:
 	if(get_collision_mask_value(1)): return true
 	else: return false
 #endregion
+
+func _Spawn_Collar():
+	if(Collar && !SpawnedCollar):
+		SpawnedCollar = true
+		var Collar_instance = Collar.instantiate()
+		add_sibling(Collar_instance)
+		print($CollarPositionSpawn.position)
+		Collar_instance.position = $CollarPositionSpawn.position
+		print(Collar_instance.position)
+
 #region Enemie Death
 func On_Death():
+	if(Dead): return
+	Dead = true
 	#region Create destroy particles
-	if(Particles):
-		var DestroyParticles = preload("res://assets/Levels/Particles/destroy_enemy.tscn")
-		var InstanceParticles = DestroyParticles.instantiate()
-		get_tree().current_scene.add_child(InstanceParticles)
-		InstanceParticles.position = self.position
-		if(RetroStyle):
-			InstanceParticles.RetroStyle()
+	_Play_Animation("Explode", false, false, true, false)
+	await get_tree().create_timer(3.0).timeout
+	_Spawn_Collar()
+	#if(Particles):
+	#	var DestroyParticles = preload("res://assets/Levels/Particles/destroy_enemy.tscn")
+	#	var InstanceParticles = DestroyParticles.instantiate()
+	#	get_tree().current_scene.add_child(InstanceParticles)
+	#	InstanceParticles.position = self.position
+	#	if(RetroStyle):
+	#		InstanceParticles.RetroStyle()
 	#endregion
-	self.queue_free()
+	#self.queue_free()
 #endregion
 
 #Diferencia maxima para considerar que no se mueva
@@ -453,6 +488,7 @@ func _is_on_floor() -> bool:
 
 
 func _on_damage_jump_body_entered(body: Node2D) -> void:
+	if(!InteractPlayer): return
 	if(body.is_in_group("Player") && Player.GroundSmash):
 		Player.Reset_Groundsmash()
 		Player.velocity.y = -50
@@ -503,6 +539,7 @@ func _on_wall_jump_timer_timeout() -> void:
 
 
 func _on_damage_boss_body_entered(body: Node2D) -> void:
+	if(!InteractPlayer): return
 	if(body.is_in_group("Player")):
 		Player.DashTime.stop()
 		_set_sleep(false)
@@ -525,12 +562,25 @@ func _on_damage_boss_body_entered(body: Node2D) -> void:
 			Player.InvencibilityTimer.start()
 
 func FinalAttack():
-	position = FinalAttackPos.position
-	Player.position = FinalAttackPlayerPos.position
+	_set_sleep(false)
+	if(FinalAttackPos):
+		position = FinalAttackPos.position
+	#Player.position = FinalAttackPlayerPos.position
+	BossSpawner.Phase2 = true
+	$SpawnBomb.stop()
 	Physics = false
 	velocity = Vector2(0.0, 0.0)
-	$SpawnBomb.wait_time = FinalAttackBombTime
-	$SpawnBomb.start()
+	$Anim.play("ScapeFinalAttack")
+	Sprite.play("Air")
+	InteractPlayer = false
+	$Moveparticles.emitting = false
+	$HitFlyParticles.emitting = false
+	$HitParticles.emitting = false
+	$FinalAttackTimer.start()
+	Player.Time_Left.wait_time = 30.0
+	Player.Time_Left.start()
+	#$SpawnBomb.wait_time = FinalAttackBombTime
+	#$SpawnBomb.start()
 
 func _set_sleep(State: bool = true):
 	Sleep = State
@@ -555,9 +605,9 @@ func UpdateLife() -> void:
 		print("Entered phase 2")
 		MoveTimer.wait_time = Phase2MoveTime
 		SlamTimer.wait_time = Phase2SlamTime
-	if(EnemyLife <= 0):
-		On_Death()
-	elif(EnemyLife <= 1):
+	#if(EnemyLife <= 0):
+	#	On_Death()
+	if(EnemyLife <= 1):
 		FinalAttack()
 
 var CurrentAnimBeOverrided : bool = true
@@ -573,10 +623,10 @@ func _Play_Animation(Anim : String, Phase : bool = true, CanBeOverrided : bool =
 	else:
 		Sprite.play("Phase2_" + Anim)
 
-func _spawn_bomb() -> void:
+func _spawn_bomb(MoveToPlayer : bool = true, Pos : Vector2  = Vector2(0.0,0.0), KeepTimer : bool = true) -> void:
 	Player._play_sound($AudioIntroBomb, true, true, .6, 1, .7, .15, 1.2)
-	BossSpawner.spawn_bomb()
-	$SpawnBomb.start()
+	BossSpawner.spawn_bomb(MoveToPlayer, Pos)
+	if(KeepTimer): $SpawnBomb.start()
 
 func _on_spawn_bomb_timeout() -> void:
 	_spawn_bomb()
@@ -594,3 +644,26 @@ func _on_sprite_2d_animation_finished() -> void:
 		Player._play_sound($AudioSlimeButtonPress)
 		Player.EnableMovement = true
 		Physics = true
+
+func _spawn_final_attack_bomb() -> void:
+	if(FinalAttackNumber >= FinalAttackMarkers.size()):
+		On_Death()
+		return
+		#FinalAttackNumber = FinalAttackMarkers.size()-1
+	if(FinalAttackNumber >= FinalAttackFastBombQuantity):
+		$FinalAttackTimer.wait_time = FinalAttackBombTime
+		$FinalAttackTimer.start()
+	if(FinalAttackMarkers[FinalAttackNumber].get_children().size() <= 0):
+		$FinalAttackTimer.wait_time =  2.0
+		$FinalAttackTimer.start()
+		FinalAttackNumber += 1
+		return
+	for Mark in FinalAttackMarkers[FinalAttackNumber].get_children():
+		if(Mark is Marker2D):
+			_spawn_bomb(false, Mark.global_position, false)
+	FinalAttackNumber += 1
+	await get_tree().create_timer(1.0).timeout
+	Player._play_sound($AudioHit)
+
+func _on_final_attack_timer_timeout() -> void:
+	_spawn_final_attack_bomb()

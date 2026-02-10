@@ -565,12 +565,23 @@ height = 13.0
 script = ExtResource("5_a4wmf")
 
 [node name="PointLight2D50" type="PointLight2D" parent="." unique_id=7563849]
-position = Vector2(122, -57)
+position = Vector2(114, -40)
 scale = Vector2(1.5259811, 1.4260539)
 color = Color(0.95429975, 0.54115075, 0, 1)
-energy = 1.6
+energy = 1.05
 texture = SubResource("GradientTexture2D_y6xr4")
 texture_scale = 2.02
+height = 13.0
+script = ExtResource("5_a4wmf")
+CurrentAnimation = 1
+
+[node name="PointLight2D52" type="PointLight2D" parent="." unique_id=2048165175]
+position = Vector2(135, -89)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.97660345, 0.4084335, 0.83408976, 1)
+energy = 1.1
+texture = SubResource("GradientTexture2D_y6xr4")
+texture_scale = 0.87
 height = 13.0
 script = ExtResource("5_a4wmf")
 CurrentAnimation = 1

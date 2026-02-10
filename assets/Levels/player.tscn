@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=4 uid="uid://chat6jxc63bfj"]
+[gd_scene format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
 [ext_resource type="Texture2D" uid="uid://bcv820hqp60jd" path="res://assets/Sprites/knightdash-Sheet.png" id="2_6abi3"]
@@ -56,6 +56,7 @@
 [ext_resource type="AudioStream" uid="uid://d2ywijlghjo8x" path="res://assets/Sounds/SandFall/SandFall5.wav" id="48_g5ylh"]
 [ext_resource type="AudioStream" uid="uid://d1svx1lrsq414" path="res://assets/Sounds/SandFall/SandFall6.wav" id="49_vfcmg"]
 [ext_resource type="AudioStream" uid="uid://bluoycwhp4kr6" path="res://assets/Sounds/SandFall/SandFall7.wav" id="50_mxrx7"]
+[ext_resource type="Texture2D" uid="uid://c60f22s8hbxqm" path="res://assets/Sprites/particles/Particle-WallJump.png" id="57_vfcmg"]
 
 [sub_resource type="Curve" id="Curve_ivnav"]
 _data = [Vector2(0.742647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -625,22 +626,160 @@ size = Vector2(7, 8.000015)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5171x"]
 size = Vector2(65.9374, 13.242227)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(8, 19)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hfwl"]
+atlas = ExtResource("57_vfcmg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ritr"]
+atlas = ExtResource("57_vfcmg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpoh8"]
+atlas = ExtResource("57_vfcmg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i03vl"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_0hfwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ritr")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_kpoh8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="Animation" id="Animation_mxrx7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ParticleWalljump2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ParticleWalljump2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b0a62"]
+resource_name = "Walljump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4, 0.43333334, 0.43343332),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(7, 7), Vector2(7, -2.9683952), Vector2(7, -6.032486), Vector2(7, -6), Vector2(7, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ParticleWalljump2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(7, 15), Vector2(7, 27.268795), Vector2(7, 31.039982), Vector2(7, 31)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26666668, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ParticleWalljump2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6fi2"]
+_data = {
+&"RESET": SubResource("Animation_mxrx7"),
+&"Walljump": SubResource("Animation_b0a62")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=173086588 groups=["Player"]]
+position = Vector2(8, 18)
 collision_mask = 2332
 script = ExtResource("1_uhpgg")
 TimeDeath = 0.4
 
-[node name="Shadow" type="Node2D" parent="."]
+[node name="Shadow" type="Node2D" parent="." unique_id=159249124]
 script = ExtResource("31_ivnav")
 
-[node name="ShadowSprite" type="Sprite2D" parent="Shadow"]
+[node name="ShadowSprite" type="Sprite2D" parent="Shadow" unique_id=1349234382]
 modulate = Color(1, 1, 1, 0.866667)
 top_level = true
 position = Vector2(7, 20)
 texture = ExtResource("32_sc7ng")
 
-[node name="ShadowRaycast" type="RayCast2D" parent="Shadow"]
+[node name="ShadowRaycast" type="RayCast2D" parent="Shadow" unique_id=2056106228]
 position = Vector2(0.45497704, 9.061958)
 exclude_parent = false
 target_position = Vector2(-0.45497704, 149.93805)
@@ -648,7 +787,7 @@ collision_mask = 272
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="ShadowRaycastInvertedGravity" type="RayCast2D" parent="Shadow"]
+[node name="ShadowRaycastInvertedGravity" type="RayCast2D" parent="Shadow" unique_id=1092302103]
 position = Vector2(0.606635, -28.3186)
 enabled = false
 exclude_parent = false
@@ -657,7 +796,7 @@ collision_mask = 272
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="GroundRaycast" type="RayCast2D" parent="."]
+[node name="GroundRaycast" type="RayCast2D" parent="." unique_id=1173621171]
 position = Vector2(2.9802322e-08, -4.5309706)
 scale = Vector2(0.085, 1)
 target_position = Vector2(0, 14.725658)
@@ -665,12 +804,12 @@ collision_mask = 2398
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="ParticlesJump" type="GPUParticles2D" parent="."]
+[node name="ParticlesJump" type="GPUParticles2D" parent="." unique_id=1633542947]
 emitting = false
 amount = 18
 process_material = SubResource("ParticleProcessMaterial_6sg21")
 
-[node name="ParticlesSlide" type="GPUParticles2D" parent="."]
+[node name="ParticlesSlide" type="GPUParticles2D" parent="." unique_id=1663798034]
 position = Vector2(0, -1.1327429)
 emitting = false
 amount = 18
@@ -680,7 +819,7 @@ trail_sections = 6
 trail_section_subdivisions = 7
 process_material = SubResource("ParticleProcessMaterial_t3qgo")
 
-[node name="ParticlesOrb" type="GPUParticles2D" parent="."]
+[node name="ParticlesOrb" type="GPUParticles2D" parent="." unique_id=1408746746]
 position = Vector2(0, -6.66371)
 emitting = false
 amount = 35
@@ -691,7 +830,7 @@ speed_scale = 2.0
 explosiveness = 0.14
 process_material = SubResource("ParticleProcessMaterial_io8kl")
 
-[node name="ParticlesDeathAir" type="GPUParticles2D" parent="."]
+[node name="ParticlesDeathAir" type="GPUParticles2D" parent="." unique_id=1405132807]
 z_index = 10
 position = Vector2(0, -5.66371)
 emitting = false
@@ -706,7 +845,7 @@ trail_sections = 7
 trail_section_subdivisions = 6
 process_material = SubResource("ParticleProcessMaterial_a8flc")
 
-[node name="DashParticles1" type="GPUParticles2D" parent="."]
+[node name="DashParticles1" type="GPUParticles2D" parent="." unique_id=798313415]
 position = Vector2(0, -10.194685)
 emitting = false
 amount = 160
@@ -718,7 +857,7 @@ trail_sections = 4
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_5sgfr")
 
-[node name="SlamParticles1" type="GPUParticles2D" parent="."]
+[node name="SlamParticles1" type="GPUParticles2D" parent="." unique_id=1893356412]
 position = Vector2(4.7683716e-07, 0)
 scale = Vector2(0.9999998, 0.99999964)
 emitting = false
@@ -729,7 +868,7 @@ trail_enabled = true
 trail_lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_t8k5k")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=923411027]
 z_index = 1
 material = SubResource("CanvasItemMaterial_sc7ng")
 position = Vector2(0.454976, -9.06194)
@@ -749,7 +888,7 @@ positions = Dictionary[String, Vector2]({
 "Wall_jump": Vector2(0, 0.265)
 })
 
-[node name="shadow" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="shadow" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1820450387]
 z_as_relative = false
 material = SubResource("ShaderMaterial_ckcmk")
 position = Vector2(-2.9932632, -0.99977493)
@@ -759,13 +898,13 @@ animation = &"Idle"
 offset = Vector2(0, -0.58)
 script = ExtResource("14_2dlrs")
 
-[node name="ParticlesLanding" type="AnimatedSprite2D" parent="."]
+[node name="ParticlesLanding" type="AnimatedSprite2D" parent="." unique_id=1809105451]
 visible = false
 top_level = true
 position = Vector2(10, 12)
 sprite_frames = SubResource("SpriteFrames_dbk5q")
 
-[node name="ParticlesDeathFloor" type="GPUParticles2D" parent="."]
+[node name="ParticlesDeathFloor" type="GPUParticles2D" parent="." unique_id=1988272038]
 z_index = 10
 position = Vector2(9.298325e-06, -2.265479)
 scale = Vector2(0.99999994, 0.9999999)
@@ -781,213 +920,236 @@ trail_sections = 3
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_lgtto")
 
-[node name="DashCooldownTimer" type="Timer" parent="."]
+[node name="DashCooldownTimer" type="Timer" parent="." unique_id=305237702]
 wait_time = 0.1
 one_shot = true
 
-[node name="SlideRampTimer" type="Timer" parent="."]
+[node name="SlideRampTimer" type="Timer" parent="." unique_id=402735849]
 wait_time = 0.1
 
-[node name="CoyoteTimer" type="Timer" parent="."]
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1952150004]
 wait_time = 0.15
 one_shot = true
 
-[node name="PreJumpTime" type="Timer" parent="."]
+[node name="PreJumpTime" type="Timer" parent="." unique_id=830247527]
 wait_time = 0.1
 one_shot = true
 
-[node name="DashTime" type="Timer" parent="."]
+[node name="DashTime" type="Timer" parent="." unique_id=195947597]
 wait_time = 0.15
 one_shot = true
 
-[node name="EnemyGroundSlamTimer" type="Timer" parent="."]
+[node name="EnemyGroundSlamTimer" type="Timer" parent="." unique_id=478045303]
 wait_time = 0.05
 one_shot = true
 
-[node name="PreWallJumpTimer" type="Timer" parent="."]
+[node name="PreWallJumpTimer" type="Timer" parent="." unique_id=490497932]
 wait_time = 0.5
 one_shot = true
 
-[node name="WallJumpTimer" type="Timer" parent="."]
+[node name="WallJumpTimer" type="Timer" parent="." unique_id=146256395]
 one_shot = true
 
-[node name="ReturnToGameTime" type="Timer" parent="."]
+[node name="ReturnToGameTime" type="Timer" parent="." unique_id=2011958649]
 wait_time = 1.8
 one_shot = true
 
-[node name="JumpGroundsmashMultiplier" type="Timer" parent="."]
+[node name="JumpGroundsmashMultiplier" type="Timer" parent="." unique_id=1210768999]
 wait_time = 0.15
 one_shot = true
 
-[node name="CeilingMovementMultiplierTimer" type="Timer" parent="."]
+[node name="CeilingMovementMultiplierTimer" type="Timer" parent="." unique_id=802343148]
 wait_time = 0.1
 one_shot = true
 
-[node name="Wallchecker" type="RayCast2D" parent="."]
+[node name="Wallchecker" type="RayCast2D" parent="." unique_id=941754128]
 position = Vector2(0.151668, -7.9292)
 rotation = -1.5708
 target_position = Vector2(0.07077122, 7.8483324)
 collision_mask = 2334
 
-[node name="AudioDash" type="AudioStreamPlayer" parent="."]
+[node name="AudioDash" type="AudioStreamPlayer" parent="." unique_id=1026594763]
 stream = SubResource("AudioStreamRandomizer_4mswk")
 bus = &"Sfx"
 
-[node name="AudioRail" type="AudioStreamPlayer" parent="."]
+[node name="AudioRail" type="AudioStreamPlayer" parent="." unique_id=1263348486]
 stream = ExtResource("26_g5ylh")
 bus = &"Sfx"
 
-[node name="AudioJump" type="AudioStreamPlayer" parent="."]
+[node name="AudioJump" type="AudioStreamPlayer" parent="." unique_id=1806471238]
 stream = ExtResource("11_f6d5f")
 bus = &"Sfx"
 
-[node name="AudioUpgrade" type="AudioStreamPlayer" parent="."]
+[node name="AudioUpgrade" type="AudioStreamPlayer" parent="." unique_id=1332394702]
 stream = ExtResource("27_gu8yx")
 bus = &"Sfx"
 
-[node name="AudioWalk" type="AudioStreamPlayer" parent="."]
+[node name="AudioWalk" type="AudioStreamPlayer" parent="." unique_id=202943931]
 stream = ExtResource("11_dfg8f")
 bus = &"Sfx"
 
-[node name="AudioWalkSand" type="AudioStreamPlayer" parent="."]
+[node name="AudioWalkSand" type="AudioStreamPlayer" parent="." unique_id=1123631990]
 stream = ExtResource("13_ltsn2")
 bus = &"Sfx"
 
-[node name="AudioSlide" type="AudioStreamPlayer" parent="."]
+[node name="AudioSlide" type="AudioStreamPlayer" parent="." unique_id=1333645394]
 stream = ExtResource("12_mayjg")
 volume_db = -10.0
 bus = &"Sfx"
 
-[node name="AudioGroundsmash" type="AudioStreamPlayer" parent="."]
+[node name="AudioGroundsmash" type="AudioStreamPlayer" parent="." unique_id=297360823]
 stream = ExtResource("13_6xtp5")
 bus = &"Sfx"
 
-[node name="AudioSlimeKill" type="AudioStreamPlayer" parent="."]
+[node name="AudioSlimeKill" type="AudioStreamPlayer" parent="." unique_id=515527747]
 stream = ExtResource("14_8u734")
 bus = &"Sfx"
 
-[node name="AudioWind" type="AudioStreamPlayer" parent="."]
+[node name="AudioWind" type="AudioStreamPlayer" parent="." unique_id=2139986884]
 stream = ExtResource("15_ehprd")
 volume_db = -5.0
 bus = &"Sfx"
 
-[node name="AudioSlimeMove" type="AudioStreamPlayer" parent="."]
+[node name="AudioSlimeMove" type="AudioStreamPlayer" parent="." unique_id=619683749]
 stream = ExtResource("15_4ir8m")
 volume_db = -10.74
 bus = &"Sfx"
 
-[node name="AudioSlimeGroundsmash" type="AudioStreamPlayer" parent="."]
+[node name="AudioSlimeGroundsmash" type="AudioStreamPlayer" parent="." unique_id=871196336]
 stream = SubResource("AudioStreamWAV_ppcfx")
 bus = &"Sfx"
 
-[node name="AudioSwitch" type="AudioStreamPlayer" parent="."]
+[node name="AudioSwitch" type="AudioStreamPlayer" parent="." unique_id=1473670083]
 stream = ExtResource("19_uvkhq")
 bus = &"Sfx"
 
-[node name="AudioKey" type="AudioStreamPlayer" parent="."]
+[node name="AudioKey" type="AudioStreamPlayer" parent="." unique_id=1776345188]
 stream = ExtResource("20_2xca2")
 bus = &"Sfx"
 
-[node name="AudioOrbGravity" type="AudioStreamPlayer" parent="."]
+[node name="AudioOrbGravity" type="AudioStreamPlayer" parent="." unique_id=2131549771]
 stream = ExtResource("22_1ia1n")
 bus = &"Sfx"
 
-[node name="AudioClockBreak" type="AudioStreamPlayer" parent="."]
+[node name="AudioClockBreak" type="AudioStreamPlayer" parent="." unique_id=227379131]
 stream = ExtResource("34_t8k5k")
 bus = &"Sfx"
 
-[node name="AudioGlassBreak_part1" type="AudioStreamPlayer" parent="."]
+[node name="AudioGlassBreak_part1" type="AudioStreamPlayer" parent="." unique_id=465051247]
 stream = SubResource("AudioStreamRandomizer_3c4ps")
 bus = &"Sfx"
 
-[node name="AudioGlassBreak_part2" type="AudioStreamPlayer" parent="."]
+[node name="AudioGlassBreak_part2" type="AudioStreamPlayer" parent="." unique_id=1537565512]
 stream = SubResource("AudioStreamRandomizer_ckcmk")
 bus = &"Sfx"
 
-[node name="AudioGlassBreak_part3" type="AudioStreamPlayer" parent="."]
+[node name="AudioGlassBreak_part3" type="AudioStreamPlayer" parent="." unique_id=694986575]
 stream = SubResource("AudioStreamRandomizer_gu8yx")
 bus = &"Sfx"
 
-[node name="AudioGlassBreak_part4" type="AudioStreamPlayer" parent="."]
+[node name="AudioGlassBreak_part4" type="AudioStreamPlayer" parent="." unique_id=514583016]
 stream = ExtResource("42_0s4h5")
 bus = &"Sfx"
 
-[node name="AudioGlassBreak_part5" type="AudioStreamPlayer" parent="."]
+[node name="AudioGlassBreak_part5" type="AudioStreamPlayer" parent="." unique_id=943731323]
 stream = ExtResource("43_2dlrs")
 bus = &"Sfx"
 
-[node name="AudioSandFall" type="AudioStreamPlayer" parent="."]
+[node name="AudioSandFall" type="AudioStreamPlayer" parent="." unique_id=296994434]
 stream = SubResource("AudioStreamRandomizer_b0a62")
 
-[node name="SlamStorageTimer" type="Timer" parent="."]
+[node name="SlamStorageTimer" type="Timer" parent="." unique_id=1553088189]
 one_shot = true
 
-[node name="PlayerHitboxArea" type="Area2D" parent="." groups=["Player", "PlayerHitBox"]]
+[node name="PlayerHitboxArea" type="Area2D" parent="." unique_id=483688346 groups=["Player", "PlayerHitBox"]]
 position = Vector2(9.05991e-06, -7.9292)
 collision_layer = 128
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitboxArea" groups=["PlayerHitBox"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitboxArea" unique_id=1288373894 groups=["PlayerHitBox"]]
 position = Vector2(-2.0000095, 0.42920017)
 shape = SubResource("RectangleShape2D_ivnav")
 debug_color = Color(1.54018e-06, 0.777631, 0.637363, 0.42)
 
-[node name="EnemyHitArea" type="Area2D" parent="." groups=["Player", "PlayerEnemiesCollision"]]
+[node name="EnemyHitArea" type="Area2D" parent="." unique_id=592731021 groups=["Player", "PlayerEnemiesCollision"]]
 position = Vector2(9.05991e-06, -7.9292)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("33_isg5t")
 
-[node name="CollisionShapeMain" type="CollisionShape2D" parent="EnemyHitArea" groups=["PlayerEnemiesCollision"]]
+[node name="CollisionShapeMain" type="CollisionShape2D" parent="EnemyHitArea" unique_id=743082213 groups=["PlayerEnemiesCollision"]]
 position = Vector2(-2.0000095, 0.9292002)
 scale = Vector2(1, 0.999999)
 shape = SubResource("RectangleShape2D_ckcmk")
 debug_color = Color(0.945098, 0, 0.596078, 0.309804)
 
-[node name="CollisionShapeDash" type="CollisionShape2D" parent="EnemyHitArea" groups=["PlayerEnemiesCollision"]]
+[node name="CollisionShapeDash" type="CollisionShape2D" parent="EnemyHitArea" unique_id=1255286655 groups=["PlayerEnemiesCollision"]]
 position = Vector2(-2.5000095, -0.07079983)
 scale = Vector2(1, 0.999998)
 shape = SubResource("RectangleShape2D_xowug")
 disabled = true
 debug_color = Color(0.760784, 0.517647, 0.0745098, 0.639216)
 
-[node name="CollisionShape" type="CollisionShape2D" parent="." groups=["Player"]]
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1687905278 groups=["Player"]]
 position = Vector2(-2, -7.500001)
 scale = Vector2(0.151659, 1.13274)
 shape = SubResource("RectangleShape2D_5171x")
 debug_color = Color(0, 0.6, 0.701961, 0.14902)
 
-[node name="System_replay" type="Node2D" parent="."]
+[node name="System_replay" type="Node2D" parent="." unique_id=1580123969]
 script = ExtResource("33_t4ba7")
 
-[node name="KickTimer" type="Timer" parent="."]
+[node name="KickTimer" type="Timer" parent="." unique_id=653340539]
 wait_time = 0.2
 one_shot = true
 
-[node name="InvencibilityTimer" type="Timer" parent="."]
+[node name="InvencibilityTimer" type="Timer" parent="." unique_id=1434489450]
 wait_time = 0.3
 one_shot = true
 
-[node name="SlideDestroyTiles" type="RayCast2D" parent="."]
+[node name="SlideDestroyTiles" type="RayCast2D" parent="." unique_id=1459664986]
 position = Vector2(0, -9.061937)
 scale = Vector2(1, 2.205)
 target_position = Vector2(12, 0.12290943)
 collision_mask = 4
 
-[node name="RailDestroyTiles" type="RayCast2D" parent="."]
+[node name="RailDestroyTiles" type="RayCast2D" parent="." unique_id=1851407121]
 position = Vector2(0, 1.1327477)
 scale = Vector2(5.61, 8.64)
 target_position = Vector2(2.2748814, -4.7683716e-06)
 collision_mask = 4
 
-[node name="TimerIntroSlam" type="Timer" parent="."]
+[node name="TimerIntroSlam" type="Timer" parent="." unique_id=1477449072]
 wait_time = 9.0
 one_shot = true
 
-[node name="SlamDestroyTiles" type="RayCast2D" parent="."]
+[node name="SlamDestroyTiles" type="RayCast2D" parent="." unique_id=2079789967]
 position = Vector2(-1.0000002, -9.061937)
 scale = Vector2(2.675, 1)
 target_position = Vector2(0, 18.12388)
 collision_mask = 8
+
+[node name="ParticleWalljump" type="Node2D" parent="." unique_id=1594068996]
+top_level = true
+position = Vector2(-6, 0)
+
+[node name="ParticleWalljump1" type="AnimatedSprite2D" parent="ParticleWalljump" unique_id=1440494965]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_i03vl")
+frame = 2
+frame_progress = 1.0
+
+[node name="ParticleWalljump2" type="AnimatedSprite2D" parent="ParticleWalljump" unique_id=1979304661]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(7, 15)
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_i03vl")
+frame = 2
+frame_progress = 1.0
+
+[node name="ParticleWallJumpAnim" type="AnimationPlayer" parent="ParticleWalljump" unique_id=190043104]
+root_node = NodePath("../ParticleWalljump1")
+libraries/ = SubResource("AnimationLibrary_f6fi2")
 
 [connection signal="timeout" from="TimerIntroSlam" to="." method="_on_timer_intro_slam_timeout"]

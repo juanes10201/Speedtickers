@@ -350,7 +350,7 @@ gradient = SubResource("Gradient_25fng")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
 
-[node name="Node2D" type="Node2D" unique_id=84872882]
+[node name="Node2D2" type="Node2D" unique_id=84872882]
 position = Vector2(0, -1)
 
 [node name="CanvasLayer" parent="." unique_id=1477730018 instance=ExtResource("1_0pcor")]
@@ -731,6 +731,16 @@ color = Color(0.9766763, 0.33209845, 0.99999994, 1)
 energy = 0.9
 texture = SubResource("GradientTexture2D_e34pc")
 texture_scale = 2.57
+height = 13.0
+script = ExtResource("23_2utor")
+
+[node name="PointLight2D59" type="PointLight2D" parent="." unique_id=1416894719]
+position = Vector2(-249, -95.99999)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 1.02
 height = 13.0
 script = ExtResource("23_2utor")
 
