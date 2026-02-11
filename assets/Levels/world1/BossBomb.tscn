@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4qc6p8wu02yx" path="res://assets/Levels/world1/BossBomb.gd" id="1_bmav0"]
 [ext_resource type="Texture2D" uid="uid://crculis17cciv" path="res://assets/Sprites/Bosses/bomb.png" id="2_bmav0"]
-[ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Levels/Shader/enemie_skeleton.gdshader" id="2_x255c"]
+[ext_resource type="Shader" uid="uid://iw5feb5imghw" path="res://assets/Levels/world1/BossBombClockShape.gdshader" id="2_c0442"]
 [ext_resource type="Texture2D" uid="uid://bumhnvl6cb7tk" path="res://assets/Sprites/Bosses/ExplosionRadius.png" id="3_hra8k"]
 [ext_resource type="Texture2D" uid="uid://c2rbkkhcnpsjw" path="res://assets/Sprites/Bosses/bomb-slimey.png" id="5_x255c"]
 [ext_resource type="Texture2D" uid="uid://b5f287rcpp5i8" path="res://assets/Sprites/Bosses/bomb-explode.png" id="6_fmyot"]
@@ -10,11 +10,15 @@
 [ext_resource type="AudioStream" uid="uid://dif4bm1xcwvh2" path="res://assets/Sounds/Boss/ExplosionBomb.wav" id="8_c0442"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o6gnl"]
-shader = ExtResource("2_x255c")
-shader_parameter/progress = 0.0
-shader_parameter/overlay_color = Color(0.9411765, 0, 0.1764706, 0.67058825)
-shader_parameter/fill_dir = Vector2(1, 0)
-shader_parameter/alpha_cutoff = 0.01
+shader = ExtResource("2_c0442")
+shader_parameter/outline_color = Color(0.8695254, 0, 0.27923858, 1)
+shader_parameter/fade_minimum_alpha = 1.0
+shader_parameter/outline_size = 12
+shader_parameter/inner_outline = true
+shader_parameter/progress = 0.7200000342
+shader_parameter/rotation = 0.0
+shader_parameter/draw_border = false
+shader_parameter/fill_style = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8p1a"]
 radius = 58.0

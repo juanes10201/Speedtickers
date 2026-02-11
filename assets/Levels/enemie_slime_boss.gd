@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var Collar = preload("res://assets/Levels/world1/SlimeBossCollar.tscn")
 #region Setup variables
 @export_group("Custom")
+@export var AudienceSprite : Sprite2D
 var InFinalAttack : bool = false
 @export var FinalAttackMarkers : Array[Node2D]
 var FinalAttackNumber : int = 0
@@ -612,6 +613,7 @@ func _on_cooldown_hit_timer_timeout() -> void:
 
 func UpdateLife() -> void:
 	Player._play_sound($AudioHit, true, true, .6, 1, .7, .15, 1.2)
+	AudienceSprite.strech_size(.9, 1.2, true)
 	_Play_Animation("Damage", false, false, true)
 	if(!CooldownHitTimer.is_stopped()): Player._play_sound($AudioPop, true, true, .6, 1, .7, .15, 1.2)
 	if(EnemyLife <= Phase2Life):
