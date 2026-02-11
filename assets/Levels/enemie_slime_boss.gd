@@ -25,6 +25,7 @@ var FinalAttackNumber : int = 0
 @export var VelSlideX : float = 500.0
 @export var InitialLife : int = 15
 @export var LifeThrowbombs : int = 10
+var Phase2 : bool = false
 @export var SpawnBombTimePhase2 : float = 4.0
 @export var Phase2Life : int = 5
 @export var Phase2SlamTime : float = .7
@@ -235,6 +236,7 @@ func _process(delta: float) -> void:
 			_Play_Animation("Button", false, false, true)
 		if(EnemyLife <= Phase2Life && !BossSpawner.Phase2):
 			BossSpawner.Phase2 = true
+			Phase2 = true
 			$SpawnBomb.wait_time = SpawnBombTimePhase2
 	if(!WallJumpTimer.is_stopped()):
 		velocity.x = lerpf(velocity.x, -600.0*direction, 5*delta)
@@ -575,6 +577,7 @@ func FinalAttack():
 		position = FinalAttackPos.position
 	#Player.position = FinalAttackPlayerPos.position
 	strech_size(1.0, 1.0, true)
+	Phase2 = true
 	BossSpawner.Phase2 = true
 	$SpawnBomb.stop()
 	Physics = false
@@ -617,7 +620,7 @@ func UpdateLife() -> void:
 		SlamTimer.wait_time = Phase2SlamTime
 	#if(EnemyLife <= 0):
 	#	On_Death()
-	if(EnemyLife <= 100):
+	if(EnemyLife <= 1):
 		FinalAttack()
 
 var CurrentAnimBeOverrided : bool = true

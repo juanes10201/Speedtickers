@@ -6,38 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3stx"]
 size = Vector2(120, 73)
 
-[node name="Collar" type="RigidBody2D" unique_id=769472254]
+[node name="Collar" type="RigidBody2D" unique_id=769472254 node_paths=PackedStringArray("CollisionShape")]
 collision_layer = 256
 collision_mask = 2398
 script = ExtResource("1_t3stx")
+CollisionShape = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1204114630]
-position = Vector2(26, 8)
 texture = ExtResource("1_jnnl7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335653565]
-position = Vector2(30, 9.5)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1385737962]
 shape = SubResource("RectangleShape2D_t3stx")
-
-[node name="Raycast" type="RayCast2D" parent="." unique_id=1765048949]
-position = Vector2(-28, 51)
-target_position = Vector2(118, 0)
-collision_mask = 270
-
-[node name="Raycast3" type="RayCast2D" parent="." unique_id=818201433]
-position = Vector2(-28, 64)
-target_position = Vector2(118, 0)
-collision_mask = 270
-
-[node name="Raycast2" type="RayCast2D" parent="." unique_id=253202695]
-position = Vector2(88, 57)
-target_position = Vector2(-116, 0)
-collision_mask = 270
-
-[node name="Raycast4" type="RayCast2D" parent="." unique_id=1911956269]
-position = Vector2(88, 72)
-target_position = Vector2(-116, 0)
-collision_mask = 270
 
 [node name="DestroyTilesTimer" type="Timer" parent="." unique_id=639872885]
 wait_time = 3.0

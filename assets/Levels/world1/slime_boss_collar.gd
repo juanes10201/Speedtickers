@@ -2,19 +2,19 @@ extends RigidBody2D
 
 var Destroy : bool = true
 
+var linear_jump_y : float = -100.0
+@export var CollisionShape : CollisionShape2D 
+@onready var Player = SaveGame.get_player()
+
 func _process(delta: float) -> void:
-	#if(!Destroy): return
-	for Ray in get_children():
-		if(Ray is RayCast2D):
-			Ray.enabled = true
-			if(Ray.is_colliding()):
-				var hit_collider = Ray.get_collider()
-				if hit_collider.get_class() == "TileMapLayer":
-					var hit_pos = Ray.get_collision_point()
-					var cell = hit_collider.local_to_map(hit_collider.to_local(hit_pos))
-					hit_collider.erase_cell(cell)
-					hit_collider.erase_cell(cell-Vector2i(0, 1))
+#	print("Distance y: " + str(Player.global_position.y - global_position.y))
+#	print("Distance y: " + str(Player.global_position.x - global_position.x))
+	set_collision_layer_value(9, Player.global_position.y < global_position.y-20)# || abs(Player.global_position.x - global_position.x) > 120)
+	if(abs(linear_jump_y) > 10):
+		linear_jump_y = lerp(linear_jump_y, 0.0, 5*delta)
 
-
-#func _on_destroy_tiles_timer_timeout() -> void:
-#	Destroy = false
+func _integrate_forces(state):
+	var velocity = state.linear_velocity
+	var speed = velocity.length()
+	if(abs(linear_jump_y) > 10):
+		state.linear_velocity.y = linear_jump_y

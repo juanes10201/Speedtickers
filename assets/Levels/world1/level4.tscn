@@ -846,6 +846,16 @@ texture_scale = 1.37
 height = 13.0
 script = ExtResource("23_2utor")
 
+[node name="PointLight2D60" type="PointLight2D" parent="." unique_id=1779953599]
+position = Vector2(69, 145)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("23_2utor")
+
 [connection signal="body_entered" from="TimeStop" to="TimeStop" method="_on_body_entered"]
 [connection signal="body_entered" from="TimeStop/StopRemover" to="TimeStop" method="_on_stop_remover_body_entered"]
 [connection signal="body_entered" from="TimeStop2" to="TimeStop2" method="_on_body_entered"]

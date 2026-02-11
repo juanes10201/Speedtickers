@@ -190,6 +190,15 @@ gradient = SubResource("Gradient_jfyc5")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
 
+[sub_resource type="Gradient" id="Gradient_y6xr4"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jfyc5"]
+gradient = SubResource("Gradient_y6xr4")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
 [node name="Node2D" type="Node2D" unique_id=703607873]
 position = Vector2(0, -1)
 
@@ -506,3 +515,14 @@ texture = SubResource("GradientTexture2D_e44cq")
 texture_scale = 2.02
 height = 13.0
 script = ExtResource("17_kdsa1")
+
+[node name="PointLight2D47" type="PointLight2D" parent="." unique_id=1150592089]
+position = Vector2(15, -188)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(1, 0.46367753, 0.5254733, 1)
+energy = 0.95
+texture = SubResource("GradientTexture2D_jfyc5")
+texture_scale = 1.62
+height = 13.0
+script = ExtResource("17_kdsa1")
+CurrentAnimation = 1

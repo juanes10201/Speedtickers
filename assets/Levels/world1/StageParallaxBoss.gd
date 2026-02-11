@@ -1,14 +1,22 @@
 extends Sprite2D
 @onready var Player = SaveGame.get_player()
-@onready var OriginalX = position.x
 @export var DistanceMove : float = 300.0
 @export var ReferencePlayer : Marker2D
+@export var Boss : Node2D
+@export var ExtraSprite : Sprite2D
 
 func _ready() -> void:
 	$AnimationPlayer.play("Idle")
+	$AnimationPlayer2.play("Idle")
 
 func _process(delta: float) -> void:
-	position.x = lerp(OriginalX, ReferencePlayer.position.x-Player.position.x, .15)
+	offset.x = lerp(0.0, ReferencePlayer.position.x-Player.position.x, .10)
+	offset.y = lerp(0.0, ReferencePlayer.position.y-Player.position.y, .05)
+	if(ExtraSprite):
+		ExtraSprite.offset = offset
+	_strech_tick(delta)
+	if(Boss.InFinalAttack): $AnimationPlayer2.play("FinalAttack")
+	elif(Boss.Phase2): $AnimationPlayer2.play("Move")
 	_strech_tick(delta)
 
 #region Streching and scaling

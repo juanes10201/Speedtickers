@@ -165,6 +165,54 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-40.584473, 44.299072), Vector2(79.261, -64.376), Vector2(-5.655, -58.196), Vector2(125.742, -55.058), Vector2(112.084, -68.111), Vector2(-61.773, -43.546), Vector2(-120.157, 43.115)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D4:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.0869994, 5.920333, 6.733333, 9.220333, 9.847742, 10.527741, 12.841404, 13.654406, 17.253666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(254, 120), Vector2(-60.57, 93.435), Vector2(-60.57, 93.435), Vector2(-142.87, 168.905), Vector2(-300.54, 168.905), Vector2(-142.87, 168.905), Vector2(-60.57, 93.435), Vector2(-60.57, 93.435), Vector2(254, 120)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PointLight2D5:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.4, 4.833333, 9.333333, 12.393453, 21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(361.969, 2.752), Vector2(568.70374, 2.8877902), Vector2(739.51697, 2.999986), Vector2(739.51697, 2.999986), Vector2(361.969, 2.752)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointLight2D6:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.100000024, 1.7333333, 5.059131, 6.9, 9.166667, 21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(472.51697, 175), Vector2(560.362, 37.65), Vector2(535.467, 18.12), Vector2(618.026, 92.483), Vector2(565.485, 123.999), Vector2(472.51697, 175)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PointLight2D7:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.03333336, 1.6, 4.2, 6.633333, 10.533334, 16.733334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(859.51697, 162), Vector2(863.2044, 24.334625), Vector2(865.51697, -62), Vector2(677.48914, -35.08156), Vector2(545.942, -16.249), Vector2(788.938, 85.062)]
+}
 
 [sub_resource type="Animation" id="Animation_xcexp"]
 length = 0.001
@@ -204,11 +252,132 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-40.584473, 44.299072)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(254, 120)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PointLight2D5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(361.969, 2.752)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointLight2D6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(472.51697, 175)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PointLight2D7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(859.51697, 162)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0dkde"]
 _data = {
 &"Idle": SubResource("Animation_wig4w"),
 &"RESET": SubResource("Animation_xcexp")
+}
+
+[sub_resource type="Animation" id="Animation_lxrh3"]
+resource_name = "FinalAttack"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333336, 7.3, 14.733334, 25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(205.00177, -345), Vector2(-280.998, -466.83), Vector2(3.812, -512.58), Vector2(205.00177, -345)]
+}
+
+[sub_resource type="Animation" id="Animation_rcitd"]
+resource_name = "Idle"
+length = 20.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 19.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(205, -345), Vector2(-421.74, -345)]
+}
+
+[sub_resource type="Animation" id="Animation_0dkde"]
+resource_name = "Idle"
+length = 45.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 4.1666665, 7.0333333, 11.933333, 13.833333, 20, 21.599478, 31.466667, 34.20065, 38.3, 45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(205, -345), Vector2(205, -509.30188), Vector2(205, -604.895), Vector2(205, -473.45508), Vector2(205, -345), Vector2(205, -385.155), Vector2(205, -345), Vector2(205, -345), Vector2(-328.025, -563.982), Vector2(-328.025, -563.982), Vector2(39.392, -454.477), Vector2(205, -345)]
+}
+
+[sub_resource type="Animation" id="Animation_px2v3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(205, -345)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcitd"]
+_data = {
+&"FinalAttack": SubResource("Animation_lxrh3"),
+&"Idle": SubResource("Animation_rcitd"),
+&"Move": SubResource("Animation_0dkde"),
+&"RESET": SubResource("Animation_px2v3")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xcexp"]
@@ -259,12 +428,18 @@ tile_set = ExtResource("4_xdos2")
 [node name="TileMapLayer2" type="TileMapLayer" parent="TileMapLayer" unique_id=1349089729 groups=["Tileset"]]
 tile_set = ExtResource("4_xdos2")
 
-[node name="StageParallaxBoss" type="Sprite2D" parent="." unique_id=981206920 node_paths=PackedStringArray("ReferencePlayer")]
+[node name="StageParallaxBoss" type="Sprite2D" parent="." unique_id=981206920 node_paths=PackedStringArray("ReferencePlayer", "Boss", "ExtraSprite")]
 z_index = -1
 position = Vector2(205, -345)
 texture = ExtResource("5_3k3gd")
 script = ExtResource("7_o6gnl")
 ReferencePlayer = NodePath("ReferencePlayer")
+Boss = NodePath("../Boss")
+ExtraSprite = NodePath("Parallax1")
+
+[node name="Parallax1" type="Sprite2D" parent="StageParallaxBoss" unique_id=332561718]
+position = Vector2(620, -1.183258)
+texture = ExtResource("5_3k3gd")
 
 [node name="ReferencePlayer" type="Marker2D" parent="StageParallaxBoss" unique_id=1680375150]
 top_level = true
@@ -285,8 +460,33 @@ position = Vector2(-40.584473, 44.299072)
 range_z_max = -1
 texture = ExtResource("9_wig4w")
 
+[node name="PointLight2D4" type="PointLight2D" parent="StageParallaxBoss" unique_id=275887156]
+position = Vector2(254, 120)
+range_z_max = -1
+texture = ExtResource("7_f6viy")
+
+[node name="PointLight2D5" type="PointLight2D" parent="StageParallaxBoss" unique_id=776504445]
+position = Vector2(361.969, 2.752)
+range_z_max = -1
+texture = ExtResource("7_1nboc")
+
+[node name="PointLight2D6" type="PointLight2D" parent="StageParallaxBoss" unique_id=1470293800]
+position = Vector2(472.51697, 175)
+range_z_max = -1
+texture = ExtResource("7_f6viy")
+
+[node name="PointLight2D7" type="PointLight2D" parent="StageParallaxBoss" unique_id=1074803719]
+position = Vector2(859.51697, 162)
+range_z_max = -1
+texture = ExtResource("9_wig4w")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StageParallaxBoss" unique_id=128827958]
 libraries/ = SubResource("AnimationLibrary_0dkde")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="StageParallaxBoss" unique_id=1367594742]
+libraries/ = SubResource("AnimationLibrary_rcitd")
+
+[node name="Node2D" type="Node2D" parent="StageParallaxBoss" unique_id=1088083944]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=543915779]
 material = SubResource("ShaderMaterial_xcexp")
@@ -1008,7 +1208,7 @@ position = Vector2(25, -305)
 
 [node name="CollarPositionSpawn" type="Marker2D" parent="Boss" unique_id=1901290183]
 top_level = true
-position = Vector2(346, -408)
+position = Vector2(194, -372)
 
 [node name="DebugText" type="RichTextLabel" parent="Boss" unique_id=1418243071]
 visible = false
