@@ -502,14 +502,18 @@ func _pause_game() -> void:
 	if(!Paused):
 		_spawn_pause_menu()
 		#Get timer and pause
-		Time_Left.paused = true	
-		#Stop player movement
-		Physics = false
-		#Stop enemie movement
-		EnemiesPhysics = false
-		Paused = !Paused
+		_pause_game_no_menu()
 	else:
 		_unpause_game()
+
+func _pause_game_no_menu(State : bool = true) -> void:
+	print("Pause: " + str(State))
+	Time_Left.paused = State
+	#Stop player movement
+	Physics = !State
+	#Stop enemie movement
+	EnemiesPhysics = !State
+	Paused = State
 
 func _unpause_game() -> void:
 	pause_menu_instance.Transition.Anim.play("fade_movement")

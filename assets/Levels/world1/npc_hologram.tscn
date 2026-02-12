@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://crh3b4f4fxecd"]
+
+[ext_resource type="Script" uid="uid://i5uabkc2skjd" path="res://assets/Levels/world1/npc_moveto.gd" id="1_yi6w4"]
+[ext_resource type="Script" uid="uid://f857f6q36vlf" path="res://assets/Levels/world1/dialogue_trigger.gd" id="2_gy8g8"]
+[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="3_w0jks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v437"]
+size = Vector2(95.63277, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utf66"]
+size = Vector2(16.934977, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhevf"]
+atlas = ExtResource("3_w0jks")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u01wk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhevf")
+}],
+"loop": false,
+"name": &"interact",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D2" type="CharacterBody2D" unique_id=1945689064 groups=["Npc"]]
+scale = Vector2(-1, 1)
+collision_layer = 16384
+collision_mask = 2398
+script = ExtResource("1_yi6w4")
+PauseGame = true
+OnlyOnce = true
+
+[node name="DialogueTrigger" type="Area2D" parent="." unique_id=1587177711]
+position = Vector2(0, 7)
+script = ExtResource("2_gy8g8")
+Action = "npc_lobby1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=1539075890]
+position = Vector2(-1.9000524e-06, -11.5)
+shape = SubResource("RectangleShape2D_4v437")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1554136493]
+position = Vector2(-0.9961699, 11.5)
+shape = SubResource("RectangleShape2D_utf66")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=723302649]
+position = Vector2(-1.9923495, 12)
+sprite_frames = SubResource("SpriteFrames_u01wk")
+animation = &"interact"
+
+[connection signal="body_entered" from="DialogueTrigger" to="DialogueTrigger" method="_on_body_entered"]
+[connection signal="body_exited" from="DialogueTrigger" to="DialogueTrigger" method="_on_body_exited"]

@@ -203,6 +203,8 @@ func _process(delta: float) -> void:
 				Sprite.play("Shoot")
 		#endregion
 		
+		if(Player && !Player.EnemiesPhysics):
+			strech_size(1.0, 1.0)
 		if(Player && Player.EnemiesPhysics):
 			_update_sprite()
 			

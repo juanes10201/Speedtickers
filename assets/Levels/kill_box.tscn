@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmnyy0uuvc0jk"]
+[gd_scene format=3 uid="uid://dmnyy0uuvc0jk"]
 
 [ext_resource type="Script" uid="uid://2diu13v1buwj" path="res://assets/Levels/Scripts/kill_box.gd" id="1_rifmj"]
 [ext_resource type="Shader" uid="uid://c51qpj4mwtaba" path="res://assets/Levels/Shader/kill_box.gdshader" id="2_ujujn"]
@@ -32,23 +32,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="KillBox" type="Area2D"]
+[node name="KillBox" type="Area2D" unique_id=1386857898]
 texture_repeat = 2
 collision_layer = 1025
 collision_mask = 1029
 script = ExtResource("1_rifmj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1341047252]
 scale = Vector2(1.105, 1.095)
 shape = SubResource("RectangleShape2D_3qvlp")
 debug_color = Color(0, 0.6, 0.701961, 0.235294)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1921033210]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_eos1v")
 sprite_frames = SubResource("SpriteFrames_y6adf")
 
-[node name="LavaTimer" type="Timer" parent="."]
+[node name="LavaTimer" type="Timer" parent="." unique_id=411665597]
 wait_time = 0.7
 one_shot = true
 

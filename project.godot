@@ -42,6 +42,9 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "lobby_initial": "res://assets/Timeline/lobby_initial.dtl",
+"npc_boss1_holo1": "res://assets/Timeline/Boss/npc_boss1_holo1.dtl",
+"npc_boss1_holo2": "res://assets/Timeline/Boss/npc_boss1_holo2.dtl",
+"npc_boss2_holo1": "res://assets/Timeline/Boss/npc_boss2_holo1.dtl",
 "npc_lobby1": "res://assets/Timeline/npc_lobby1.dtl",
 "npc_lobby10": "res://assets/Timeline/npc_lobby10.dtl",
 "npc_lobby2": "res://assets/Timeline/npc_lobby2.dtl",

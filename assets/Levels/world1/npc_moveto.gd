@@ -9,16 +9,22 @@ var Direction = Directions.Go
 @export var SPEED = 50.0
 const JUMP_VELOCITY = -400.0
 @export var AccX : float = 30.0
+@export var NeedToInteract : bool = true
+@export var PauseGame : bool = false
 @export var PointTo : Marker2D
 @onready var InitialX : float = self.position.x
 @onready var GoToX : float = PointTo.position.x if PointTo else 0.0
 @onready var Sprite = $Sprite
 var Move : bool = true
 @export var Dialogue_Action : String = "npc_lobby1"
+@export var OnlyOnce : bool = false
 @onready var Player = SaveGame.get_player()
 
 func _ready() -> void:
 	$DialogueTrigger.Action = Dialogue_Action
+	$DialogueTrigger.NeedAction = NeedToInteract
+	$DialogueTrigger.PauseGame = PauseGame
+	$DialogueTrigger.OnlyOnce = OnlyOnce
 
 func _physics_process(delta: float) -> void:
 	if(!Move && Player && self.global_position.distance_to(Player.global_position) > 250):
@@ -48,5 +54,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_timeline_ended():
-	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	Player._pause_game_no_menu(false)
 	Move = true
+	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

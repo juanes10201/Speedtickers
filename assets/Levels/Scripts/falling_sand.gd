@@ -43,6 +43,7 @@ var StatePlaying : bool = false
 @export var MAX_SPEED : float = 300.0
 @onready var RetroTimer = $RetroTimer
 @onready var RetroTimerMove = $RetroTimerMove
+var paused : bool = false
 
 func _input(event):
 	if(Edition.Is_in_editor && CanHover):
@@ -84,11 +85,13 @@ func _process(delta: float) -> void:
 	#	set_falling(false)
 	#	self.position = OriginalPos
 	if(!Edition.Is_in_editor && Player):
-		if(Player.Paused):
+		if(Player.Paused && !paused):
 			was_falling = is_falling
-			set_deferred("freeze", false)
-			self.set_deferred("sleeping", false)
-			is_falling = false
+			paused = true
+			set_falling(false)
+		elif(!Player.Paused && paused):
+			paused = false
+			set_falling(was_falling)
 		#else:
 			#if(was_falling && !is_falling):
 			#	set_falling(true)

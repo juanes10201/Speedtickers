@@ -665,6 +665,7 @@ func _spawn_final_attack_bomb() -> void:
 		On_Death()
 		return
 		#FinalAttackNumber = FinalAttackMarkers.size()-1
+	if(!FinalAttackMarkers): return
 	if(FinalAttackNumber >= FinalAttackFastBombQuantity):
 		$FinalAttackTimer.wait_time = FinalAttackBombTime
 		$FinalAttackTimer.start()
