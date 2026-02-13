@@ -625,11 +625,12 @@ texture = SubResource("GradientTexture2D_wjktn")
 height = 13.0
 
 [node name="PointLight2D35" type="PointLight2D" parent="." unique_id=1770040025]
-position = Vector2(-364, -758)
+position = Vector2(-338, -760)
 scale = Vector2(1.453125, 1.453125)
 color = Color(1, 0.42744204, 0.72388077, 1)
-energy = 1.06
+energy = 2.51
 texture = SubResource("GradientTexture2D_wjktn")
+texture_scale = 2.0
 height = 13.0
 
 [node name="PointLight2D9" type="PointLight2D" parent="." unique_id=1615967187]
@@ -713,6 +714,50 @@ CurrentAnimation = 1
 
 [node name="PointLight2D45" type="PointLight2D" parent="." unique_id=198492269]
 position = Vector2(-324, -274)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.89405394, 0.43319535, 1, 1)
+energy = 1.15
+texture = SubResource("GradientTexture2D_vmlh1")
+texture_scale = 1.72
+height = 13.0
+script = ExtResource("10_qs57u")
+CurrentAnimation = 1
+
+[node name="PointLight2D61" type="PointLight2D" parent="." unique_id=1101728330]
+position = Vector2(-61, -342)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.89405394, 0.43319535, 1, 1)
+energy = 1.15
+texture = SubResource("GradientTexture2D_vmlh1")
+texture_scale = 1.72
+height = 13.0
+script = ExtResource("10_qs57u")
+CurrentAnimation = 1
+
+[node name="PointLight2D62" type="PointLight2D" parent="." unique_id=1742645663]
+position = Vector2(-221.99998, -344)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.89405394, 0.43319535, 1, 1)
+energy = 1.15
+texture = SubResource("GradientTexture2D_vmlh1")
+texture_scale = 1.72
+height = 13.0
+script = ExtResource("10_qs57u")
+CurrentAnimation = 1
+
+[node name="PointLight2D63" type="PointLight2D" parent="." unique_id=566174604]
+position = Vector2(138, -386)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.89405394, 0.43319535, 1, 1)
+energy = 1.15
+texture = SubResource("GradientTexture2D_vmlh1")
+texture_scale = 1.72
+height = 13.0
+script = ExtResource("10_qs57u")
+CurrentAnimation = 1
+
+[node name="PointLight2D64" type="PointLight2D" parent="." unique_id=255752856]
+position = Vector2(138, -386)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.89405394, 0.43319535, 1, 1)
 energy = 1.15
@@ -937,7 +982,7 @@ script = ExtResource("10_qs57u")
 CurrentAnimation = 1
 
 [node name="PointLight2D54" type="PointLight2D" parent="." unique_id=22838875]
-position = Vector2(113, -406)
+position = Vector2(-7, -407)
 scale = Vector2(1.453125, 1.453125)
 color = Color(0.9999998, 0.5040591, 0.20226169, 1)
 energy = 0.86

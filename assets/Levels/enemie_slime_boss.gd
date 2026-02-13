@@ -250,8 +250,9 @@ func _process(delta: float) -> void:
 		position.x /= 8
 		position.x = round(global_position.x)
 		position.x *= 8
-	if(Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
+	if(!Enabled && Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
 		Enabled = true
+		Player._set_time_state(true)
 	
 	if(Player && Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
 		PrevGravityDirection = Player.GlobalGravityDirection * GravityDirection
@@ -334,7 +335,7 @@ func _process(delta: float) -> void:
 			if(velocity.y >= MAX_FALL_SPEED): strech_size(0.4, 1.8)
 			
 			if(_is_on_floor() && was_on_floor == false):
-				_Play_Animation("Fall", false, false)
+				_Play_Animation("Fall", true, false)
 				strech_size(1.8, 0.5)
 			
 			_strech_tick(delta)
@@ -357,7 +358,7 @@ func _process(delta: float) -> void:
 						velocity.x = direction * SPEED# * randf_range(1, 1.2)
 					if(abs(position.x-Player.position.x) >= DistanceSlide && !Jumped):
 						Slide = true
-						_Play_Animation("Roll", false, false)
+						_Play_Animation("Roll", true, false)
 					else:
 						strech_size(1.7, 0.5)
 						MoveTimer.start()
@@ -467,6 +468,7 @@ func On_Death():
 	_Play_Animation("Explode", false, false, true, false)
 	$Anim.play("Explode")
 	await get_tree().create_timer(3.0).timeout
+	AudienceSprite._play_stage_anim("explode")
 	_Spawn_Collar()
 	#if(Particles):
 	#	var DestroyParticles = preload("res://assets/Levels/Particles/destroy_enemy.tscn")
@@ -537,7 +539,7 @@ func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
 		Player._play_sound($AudioCrashWall, true, true, .6, 1, .7, .15, 1.2)
 		_update_direction()
 		Slide = false
-		_Play_Animation("Air", false, true, true)
+		_Play_Animation("Air", true, true, true)
 		BossSpawner.spawn_clock()
 		_jump(JUMP_VELOCITY)
 		MoveTimer.start()
@@ -614,7 +616,7 @@ func _on_cooldown_hit_timer_timeout() -> void:
 func UpdateLife() -> void:
 	Player._play_sound($AudioHit, true, true, .6, 1, .7, .15, 1.2)
 	AudienceSprite.strech_size(.9, 1.2, true)
-	_Play_Animation("Damage", false, false, true)
+	_Play_Animation("Damage", true, false, true)
 	if(!CooldownHitTimer.is_stopped()): Player._play_sound($AudioPop, true, true, .6, 1, .7, .15, 1.2)
 	if(EnemyLife <= Phase2Life):
 		print("Entered phase 2")

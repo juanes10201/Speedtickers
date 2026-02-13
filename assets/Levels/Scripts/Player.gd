@@ -479,6 +479,12 @@ func _fade_sound(body):
 	tween_fade_sound.tween_callback(body.stop)
 #endregion
 
+func _set_time_state(State : bool):
+	if(State):
+		Time_Left.paused = false
+	else:
+		Time_Left.paused = true
+
 #region Pause and menu
 func _pause_menu_end_tick() -> void:
 	if(Pause_fadeout && ReturnToGameTime.is_stopped()):

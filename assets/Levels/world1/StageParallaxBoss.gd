@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 	PreviousX = position.x
 
 func _play_stage_anim(anim : String):
+	if(Stage.animation == "explode"): return
 	if(Stage.animation != anim):
 		Stage.play(anim)
 

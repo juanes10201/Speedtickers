@@ -4,6 +4,8 @@ var config = ConfigFile.new()
 const SAVE_GAME_PATH = "user://savegame.save"
 
 var PlayedIntroBool : bool = false
+var CurrentRespawnId : int = 0
+var RespawnLevelId : int = 0
 
 func PlayedIntro() -> bool:
 	return PlayedIntroBool
@@ -85,3 +87,10 @@ func loadgamedata() -> void:
 		pass
 	setup_default_values()
 	print("loaded game saved data!")
+
+func SetRespawn(Id : int, Level : int = LevelManager.get_level()) -> void:
+	CurrentRespawnId = Id
+	RespawnLevelId = Level
+
+func GetRespawn(Id : int) -> bool:
+	return RespawnLevelId == LevelManager.get_level() && CurrentRespawnId == Id

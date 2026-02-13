@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://kn27ogqnt70t"]
+
+[ext_resource type="Script" uid="uid://cnfbq6r7ihlfk" path="res://assets/Levels/world1/respawn_point.gd" id="1_18a0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4b3u"]
+size = Vector2(38, 38)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uxdvm"]
+size = Vector2(16, 16)
+
+[node name="RespawnPoint" type="Area2D" unique_id=994135283]
+script = ExtResource("1_18a0e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=833249986]
+shape = SubResource("RectangleShape2D_n4b3u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1584929414]
+texture = SubResource("PlaceholderTexture2D_uxdvm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
