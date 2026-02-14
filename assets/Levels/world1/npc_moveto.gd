@@ -18,6 +18,8 @@ const JUMP_VELOCITY = -400.0
 var Move : bool = true
 @export var Dialogue_Action : String = "npc_lobby1"
 @export var OnlyOnce : bool = false
+@export var RecordDialogueId : int = 0
+@export var RecordOnlyOnce : bool = false
 @onready var Player = SaveGame.get_player()
 
 func _ready() -> void:
@@ -25,6 +27,8 @@ func _ready() -> void:
 	$DialogueTrigger.NeedAction = NeedToInteract
 	$DialogueTrigger.PauseGame = PauseGame
 	$DialogueTrigger.OnlyOnce = OnlyOnce
+	$DialogueTrigger.RecordDialogueId = RecordDialogueId
+	$DialogueTrigger.RecordOnlyOnce = RecordOnlyOnce
 
 func _physics_process(delta: float) -> void:
 	if(!Move && Player && self.global_position.distance_to(Player.global_position) > 250):

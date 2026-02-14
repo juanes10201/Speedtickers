@@ -247,7 +247,6 @@ ReplayStyle = true
 [node name="Player" parent="." unique_id=1019365591 instance=ExtResource("5_cyxtg")]
 position = Vector2(-317.00003, -65)
 CountTime = false
-jump_height = 65.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=473842809]
 position = Vector2(34.72986, -104.212326)

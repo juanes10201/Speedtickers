@@ -41,7 +41,12 @@ OnlyOnce = true
 [node name="DialogueTrigger" type="Area2D" parent="." unique_id=1587177711]
 position = Vector2(0, 7)
 script = ExtResource("2_gy8g8")
+NeedAction = null
 Action = "npc_lobby1"
+PauseGame = null
+OnlyOnce = null
+RecordOnlyOnce = null
+RecordDialogueId = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=1539075890]
 position = Vector2(-1.9000524e-06, -11.5)

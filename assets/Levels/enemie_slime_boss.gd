@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var Collar = preload("res://assets/Levels/world1/SlimeBossCollar.tscn")
 #region Setup variables
 @export_group("Custom")
+@export var DestroyTile : TileMapLayer
+@export var CameraPlayer : Camera2D
 @export var AudienceSprite : Sprite2D
 var InFinalAttack : bool = false
 @export var FinalAttackMarkers : Array[Node2D]
@@ -136,7 +138,7 @@ func _jump(_jump_velocity, ignore : bool = false, Reg : bool = true, Replace : b
 #region Player GroundSmash 
 func _on_player_ground_smash_signal() -> void:
 	if(Player):
-		if(_is_on_floor() && Player.GravityDirection == GravityDirection && global_position.distance_to(Player.position) <= Max_groundsmash_distance):
+		if(_is_on_floor() && Player.GravityDirection == GravityDirection && global_position && global_position && Player.position && Max_groundsmash_distance && global_position.distance_to(Player.position) <= Max_groundsmash_distance):
 			_jump(JUMP_VELOCITY if Can_BeGroundSmash else SPECIAL_ENEMY_JUMP_VELOCITY)
 			if(Can_BeGroundSmash):
 				LevelManager.AddStyle(0, "GroundSmash enemy")
@@ -216,6 +218,9 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 var SlamJump : bool = false
 
 func _process(delta: float) -> void:
+	#print(velocity.x)
+	if(Dead):
+		CameraPlayer.offset.x = lerpf(CameraPlayer.offset.x, 100.0, 5*delta)
 	if($DebugText):
 		$DebugText.text = "life: " + str(EnemyLife)
 	if(Sprite.animation == "Big"):
@@ -234,7 +239,7 @@ func _process(delta: float) -> void:
 	if(EnemyLife <= LifeThrowbombs):
 		if($SpawnBomb.is_stopped()):
 			$SpawnBomb.start()
-			_Play_Animation("Button", false, false, true)
+			_Play_Animation("Button", false, false, false, true)
 		if(EnemyLife <= Phase2Life && !BossSpawner.Phase2):
 			BossSpawner.Phase2 = true
 			Phase2 = true
@@ -285,6 +290,7 @@ func _process(delta: float) -> void:
 		if(Jumped && !Slam && !WallJump && Move):
 			if(!SlamJump && abs(position.x-Player.position.x) <= DistanceSlam && SlamTimer.is_stopped()):
 				SlamTimer.start()
+				Player._play_sound($AudioSlamWait)
 			if(velocity.y > 0 && !SlamTimer.is_stopped()):
 				if(abs(position.x-Player.position.x) <= DistanceStopMovSlam):
 					velocity.x = 0
@@ -348,7 +354,10 @@ func _process(delta: float) -> void:
 			if (!_is_on_floor() &&  velocity.y < MAX_FALL_SPEED):
 				velocity += get_gravity() * delta * GravityDirection*Player.GlobalGravityDirection
 			#endregion
-			#if(direction): Sprite.flip_h = false if direction >= 0 else true
+			if(direction && ChangeDir):
+				Sprite.flip_h = false if direction >= 0 else true
+				print(Sprite.flip_h)
+			else: Sprite.flip_h = false
 			Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
 			#region Horizontal Movement
 			#Enemy Movement
@@ -358,7 +367,7 @@ func _process(delta: float) -> void:
 						velocity.x = direction * SPEED# * randf_range(1, 1.2)
 					if(abs(position.x-Player.position.x) >= DistanceSlide && !Jumped):
 						Slide = true
-						_Play_Animation("Roll", true, false)
+						_Play_Animation("Roll", true, true, false)
 					else:
 						strech_size(1.7, 0.5)
 						MoveTimer.start()
@@ -465,11 +474,14 @@ func On_Death():
 	if(Dead): return
 	Dead = true
 	#region Create destroy particles
-	_Play_Animation("Explode", false, false, true, false)
+	_Play_Animation("Explode", false, false, false, true, false)
 	$Anim.play("Explode")
 	await get_tree().create_timer(3.0).timeout
 	AudienceSprite._play_stage_anim("explode")
 	_Spawn_Collar()
+	Player._set_time_state(false)
+	DestroyTile.queue_free()
+	CameraPlayer.limit_right += 10000
 	#if(Particles):
 	#	var DestroyParticles = preload("res://assets/Levels/Particles/destroy_enemy.tscn")
 	#	var InstanceParticles = DestroyParticles.instantiate()
@@ -539,7 +551,7 @@ func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
 		Player._play_sound($AudioCrashWall, true, true, .6, 1, .7, .15, 1.2)
 		_update_direction()
 		Slide = false
-		_Play_Animation("Air", true, true, true)
+		_Play_Animation("Air", true, true, true, true)
 		BossSpawner.spawn_clock()
 		_jump(JUMP_VELOCITY)
 		MoveTimer.start()
@@ -605,9 +617,9 @@ func _set_sleep(State: bool = true):
 	if(State):
 		CountSpecialAttack = 0
 		Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
-		_Play_Animation("Sleep", false, false, true, false)
+		_Play_Animation("Sleep", false, false, false, true, false)
 	else:
-		_Play_Animation("Idle", true, true, true, false)
+		_Play_Animation("Idle", false, true, true, true, false)
 		Player._stop_sound($AudioSnooring)
 
 func _on_cooldown_hit_timer_timeout() -> void:
@@ -616,7 +628,7 @@ func _on_cooldown_hit_timer_timeout() -> void:
 func UpdateLife() -> void:
 	Player._play_sound($AudioHit, true, true, .6, 1, .7, .15, 1.2)
 	AudienceSprite.strech_size(.9, 1.2, true)
-	_Play_Animation("Damage", true, false, true)
+	_Play_Animation("Damage", false, true, false, true)
 	if(!CooldownHitTimer.is_stopped()): Player._play_sound($AudioPop, true, true, .6, 1, .7, .15, 1.2)
 	if(EnemyLife <= Phase2Life):
 		print("Entered phase 2")
@@ -629,7 +641,9 @@ func UpdateLife() -> void:
 
 var CurrentAnimBeOverrided : bool = true
 
-func _Play_Animation(Anim : String, Phase : bool = true, CanBeOverrided : bool = true, Override : bool = false, StopPlayer : bool = false) -> void:
+var ChangeDir : bool = false
+func _Play_Animation(Anim : String, ChangeDirection : bool = false, Phase : bool = true, CanBeOverrided : bool = true, Override : bool = false, StopPlayer : bool = false) -> void:
+	ChangeDir = ChangeDirection
 	if(StopPlayer):
 		Player.EnableMovement = !StopPlayer
 		Physics = false

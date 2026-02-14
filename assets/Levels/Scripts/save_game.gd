@@ -4,8 +4,12 @@ var config = ConfigFile.new()
 const SAVE_GAME_PATH = "user://savegame.save"
 
 var PlayedIntroBool : bool = false
+
 var CurrentRespawnId : int = 0
 var RespawnLevelId : int = 0
+
+var DialoguesIdEnabled : Array[bool] = []
+var DialogueLevelId : int = 0
 
 func PlayedIntro() -> bool:
 	return PlayedIntroBool
@@ -88,9 +92,22 @@ func loadgamedata() -> void:
 	setup_default_values()
 	print("loaded game saved data!")
 
+func SetDialogue(Id : int, Level : int = LevelManager.get_level()) -> void:
+	print("Set respawn")
+	if(Level != DialogueLevelId):
+		DialoguesIdEnabled = []
+		DialogueLevelId = Level
+	if(DialoguesIdEnabled.size() < Id): DialoguesIdEnabled.resize(Id+1)
+	DialoguesIdEnabled[Id] = true
+
+func GetRespawn(Id : int) -> bool:
+	print("Get respawn")
+	return RespawnLevelId == LevelManager.get_level() && CurrentRespawnId == Id
+
+func GetDialogue(Id : int) -> bool:
+	#print("Get dialogue Id: " + str(Id) + " to " + str(DialoguesIdEnabled[Id]))
+	return (DialogueLevelId == LevelManager.get_level() && DialoguesIdEnabled.size() >= Id && DialoguesIdEnabled[Id] == true)
+
 func SetRespawn(Id : int, Level : int = LevelManager.get_level()) -> void:
 	CurrentRespawnId = Id
 	RespawnLevelId = Level
-
-func GetRespawn(Id : int) -> bool:
-	return RespawnLevelId == LevelManager.get_level() && CurrentRespawnId == Id

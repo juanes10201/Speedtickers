@@ -5,6 +5,8 @@ var PlayerEntered : bool = false
 @export var PauseGame : bool = false
 @onready var Player = SaveGame.get_player()
 @export var OnlyOnce : bool = false
+@export var RecordOnlyOnce : bool = false
+@export var RecordDialogueId : int = 0
 var TimeDone : int = 0
 
 func _on_body_entered(body: Node2D) -> void:
@@ -20,7 +22,9 @@ func _on_body_entered(body: Node2D) -> void:
 func _process(delta: float) -> void:
 	if((!NeedAction || Input.is_action_just_pressed("player_dialog_confirm")) && PlayerEntered && Dialogic.current_timeline == null):
 		if(TimeDone > 0 && OnlyOnce): return
+		if(RecordOnlyOnce && SaveGame.GetDialogue(RecordDialogueId)): return
 		TimeDone += 1
+		SaveGame.SetDialogue(RecordDialogueId)
 		if(PauseGame):
 			Player._pause_game_no_menu()
 		Dialogic.start(Action)
