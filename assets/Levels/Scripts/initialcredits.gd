@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 		#if(Edition.Mobile):
 		#	Global.Level = 1
 		#	_scene_string = "res://assets/Levels/world1/level2.tscn"
-		if(Edition.GAME_STATUS != Edition.ALL_GAME_STATUS.expo_cbb && (!FirstTimePlayed || Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_shangai)):
-			_scene_string = "res://assets/Levels/world1/" + level_to_change + ".tscn"
-		else:
-			_scene_string= "res://assets/Levels/world1/" + main_menu_scene + ".tscn"
+		#if(Edition.GAME_STATUS != Edition.ALL_GAME_STATUS.expo_cbb && (!FirstTimePlayed || Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_shangai)):
+		#	_scene_string = "res://assets/Levels/world1/" + level_to_change + ".tscn"
+		#else:
+		_scene_string= "res://assets/Levels/world1/" + main_menu_scene + ".tscn"
 		get_tree().change_scene_to_file(_scene_string)

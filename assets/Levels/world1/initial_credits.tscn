@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://br41id2pk0r3l"]
+[gd_scene format=3 uid="uid://br41id2pk0r3l"]
 
 [ext_resource type="Texture2D" uid="uid://cwbydrtmfhb5" path="res://assets/Sprites/creditsby.png" id="1_112yo"]
 [ext_resource type="Texture2D" uid="uid://djdqm5mvbclor" path="res://assets/Sprites/credits.png" id="2_e37kk"]
@@ -19,9 +19,9 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="InitialCredits" type="Node2D"]
+[node name="InitialCredits" type="Node2D" unique_id=2020317195]
 
-[node name="intro" type="AnimatedSprite2D" parent="."]
+[node name="intro" type="AnimatedSprite2D" parent="." unique_id=116453354]
 position = Vector2(595, 312)
 scale = Vector2(0.496, 0.496)
 sprite_frames = SubResource("SpriteFrames_s7kdu")
@@ -29,9 +29,9 @@ frame_progress = 0.333711
 script = ExtResource("3_ywqdo")
 main_menu_scene = "main_menu_w_level_preview"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=563325662]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("4_0qd8d")]
+[node name="WorldEnvironment" parent="." unique_id=759709085 instance=ExtResource("4_0qd8d")]

@@ -27,6 +27,13 @@
 [ext_resource type="AudioStream" uid="uid://x32l3srqdwme" path="res://assets/Sounds/Boss/Slime-Slam-Wait.wav" id="20_wehr2"]
 [ext_resource type="Texture2D" uid="uid://dthevcxjs0m5v" path="res://assets/Sprites/Bosses/Z-min.png" id="21_1yjqm"]
 [ext_resource type="Texture2D" uid="uid://c2c4dye6hahly" path="res://assets/Sprites/Bosses/Z.png" id="21_a8kwp"]
+[ext_resource type="Texture2D" uid="uid://imh7cnl224ia" path="res://assets/Sprites/Bosses/Boss-Left.png" id="25_k5rj8"]
+[ext_resource type="Texture2D" uid="uid://bmuan8in5g2b5" path="res://assets/Sprites/Bosses/SlamWait.png" id="26_vwu67"]
+[ext_resource type="Texture2D" uid="uid://d3tamkkh2tk3d" path="res://assets/Sprites/Bosses/Boss-Right.png" id="27_dj64n"]
+[ext_resource type="Texture2D" uid="uid://cp6pglp02vji3" path="res://assets/Sprites/Bosses/tired-left.png" id="27_y8hrs"]
+[ext_resource type="Texture2D" uid="uid://c3r5ks6g488kg" path="res://assets/Sprites/Bosses/tired-right.png" id="28_4pbtf"]
+[ext_resource type="Texture2D" uid="uid://bofnuxpw1cwxq" path="res://assets/Sprites/Bosses/BossSlam.png" id="28_dj64n"]
+[ext_resource type="Texture2D" uid="uid://bl4xl2dthr35j" path="res://assets/Sprites/Bosses/tired-slamWait.png" id="29_ee8ou"]
 
 [sub_resource type="Curve" id="Curve_1yjqm"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.14254045, 1), 0.0, 0.0, 0, 0, Vector2(0.5893647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -521,10 +528,6 @@ region = Rect2(5800, 0, 200, 158)
 atlas = ExtResource("12_wehr2")
 region = Rect2(6000, 0, 200, 158)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pkq08"]
-atlas = ExtResource("12_wehr2")
-region = Rect2(0, 0, 200, 158)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_3d64p"]
 atlas = ExtResource("6_wg0y6")
 region = Rect2(0, 790, 200, 158)
@@ -830,6 +833,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("25_k5rj8")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1hcrr")
 }, {
 "duration": 1.0,
@@ -915,6 +926,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("27_y8hrs")
+}],
+"loop": true,
+"name": &"Phase2_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_4pbtf")
+}],
+"loop": true,
+"name": &"Phase2_Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_25s47")
 }, {
 "duration": 1.0,
@@ -965,10 +992,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pkq08")
+"texture": ExtResource("29_ee8ou")
 }],
 "loop": true,
-"name": &"Phase2_Walking",
+"name": &"Phase2_Slam_wait",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_dj64n")
+}],
+"loop": true,
+"name": &"Right",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1023,19 +1058,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("28_dj64n")
+}],
+"loop": true,
+"name": &"Slam",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_vwu67")
+}],
+"loop": true,
+"name": &"Slam_Wait",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("10_4awbj")
 }],
 "loop": true,
 "name": &"Sleep",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wmecj")
-}],
-"loop": true,
-"name": &"Walking",
-"speed": 6.0
 }]
 
 [sub_resource type="Animation" id="Animation_wehr2"]

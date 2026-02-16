@@ -22,15 +22,19 @@ func _on_body_entered(body: Node2D) -> void:
 func _process(delta: float) -> void:
 	if((!NeedAction || Input.is_action_just_pressed("player_dialog_confirm")) && PlayerEntered && Dialogic.current_timeline == null):
 		if(TimeDone > 0 && OnlyOnce): return
-		if(RecordOnlyOnce && SaveGame.GetDialogue(RecordDialogueId)): return
+		if(RecordOnlyOnce && SaveGame.GetDialogue(RecordDialogueId)):
+			TimeDone += 1
+			OnlyOnce = true
+			return
 		TimeDone += 1
-		SaveGame.SetDialogue(RecordDialogueId)
+		if(RecordOnlyOnce): SaveGame.SetDialogue(RecordDialogueId)
 		if(PauseGame):
 			Player._pause_game_no_menu()
 		Dialogic.start(Action)
 		if(get_parent().is_in_group("Npc")):
 			Dialogic.timeline_ended.connect(get_parent()._on_timeline_ended)
 			get_parent().Move = false
+			get_parent().InDialogue = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Player")):

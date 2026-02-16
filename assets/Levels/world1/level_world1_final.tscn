@@ -668,7 +668,7 @@ size = Vector2(70, 22)
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("../Player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -966,10 +966,10 @@ tracks/1/path = NodePath("../Player/Sprite2D:animation")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5333333, 1.6, 1.6666669, 1.7473253),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.13333334, 1.5333333, 1.6, 1.6666669, 1.7473253),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"Rail", &"Groundsmash", &"Dash", &"Walking", &"Idle"]
+"values": [&"Dash", &"Rail", &"Groundsmash", &"Dash", &"Walking", &"Idle"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1943,7 +1943,7 @@ position = Vector2(845, -356)
 texture = ExtResource("31_uxdvm")
 
 [node name="Player" parent="." unique_id=165322871 instance=ExtResource("5_kr6ob")]
-position = Vector2(86.36, 50.545)
+position = Vector2(-663, -290)
 
 [node name="shadow" parent="Player/Sprite2D" parent_id_path=PackedInt32Array(165322871, 923411027) index="0" unique_id=1820450387]
 frame_progress = 0.2079959
@@ -2108,15 +2108,17 @@ position = Vector2(-217, 284)
 position = Vector2(-645, 69)
 
 [node name="CharacterBody2D2" parent="." unique_id=1645044191 instance=ExtResource("34_lxrh3")]
-position = Vector2(-615, -310)
+position = Vector2(-626, -310)
 NeedToInteract = false
 Dialogue_Action = "npc_boss1_holo2"
+RecordDialogueId = 1
+RecordOnlyOnce = true
 
 [node name="CharacterBody2D3" parent="." unique_id=1945689064 instance=ExtResource("34_lxrh3")]
-position = Vector2(391, -302)
+position = Vector2(387, -309)
 NeedToInteract = false
 Dialogue_Action = "npc_boss1_holo3"
-RecordDialogueId = 1
+RecordDialogueId = 2
 RecordOnlyOnce = true
 
 [node name="KillBox" parent="." unique_id=96789255 instance=ExtResource("11_3k3gd")]

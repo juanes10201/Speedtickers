@@ -10,12 +10,52 @@ size = Vector2(95.63277, 59)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utf66"]
 size = Vector2(16.934977, 21)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0jks"]
+atlas = ExtResource("3_w0jks")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi6w4"]
+atlas = ExtResource("3_w0jks")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy8g8"]
+atlas = ExtResource("3_w0jks")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s2wo"]
+atlas = ExtResource("3_w0jks")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxey8"]
+atlas = ExtResource("3_w0jks")
+region = Rect2(0, 0, 20, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhevf"]
 atlas = ExtResource("3_w0jks")
 region = Rect2(80, 0, 20, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u01wk"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0jks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi6w4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy8g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s2wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxey8")
+}],
+"loop": false,
+"name": &"hide",
+"speed": 7.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dhevf")
@@ -37,16 +77,12 @@ collision_mask = 2398
 script = ExtResource("1_yi6w4")
 PauseGame = true
 OnlyOnce = true
+HideAnim = true
 
 [node name="DialogueTrigger" type="Area2D" parent="." unique_id=1587177711]
 position = Vector2(0, 7)
 script = ExtResource("2_gy8g8")
-NeedAction = null
 Action = "npc_lobby1"
-PauseGame = null
-OnlyOnce = null
-RecordOnlyOnce = null
-RecordDialogueId = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueTrigger" unique_id=1539075890]
 position = Vector2(-1.9000524e-06, -11.5)

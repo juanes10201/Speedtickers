@@ -21,6 +21,9 @@ var Move : bool = true
 @export var RecordDialogueId : int = 0
 @export var RecordOnlyOnce : bool = false
 @onready var Player = SaveGame.get_player()
+@export var HideAnim : bool = false
+var Done : bool = false
+var InDialogue : bool = false
 
 func _ready() -> void:
 	$DialogueTrigger.Action = Dialogue_Action
@@ -31,12 +34,16 @@ func _ready() -> void:
 	$DialogueTrigger.RecordOnlyOnce = RecordOnlyOnce
 
 func _physics_process(delta: float) -> void:
+	if(Done || (!InDialogue && RecordOnlyOnce && SaveGame.GetDialogue(RecordDialogueId))):
+		Done = true
+		if(Sprite.animation != "hide"): Sprite.play("hide")
+		return
 	if(!Move && Player && self.global_position.distance_to(Player.global_position) > 250):
 		Dialogic.end_timeline()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if(PointTo && Move):
-		Sprite.play("move")
+	if(PointTo && Move && !HideAnim):
+		if(Sprite.animation != "hide"): Sprite.play("move")
 		Sprite.speed_scale = velocity.x/SPEED
 		$Sprite.scale.x = abs($Sprite.scale.x) if self.global_position.x-GoToX > 0 else abs($Sprite.scale.x)*-1
 		if(Direction == Directions.Go): GoToX = PointTo.position.x
@@ -53,11 +60,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = lerp(velocity.x, 0.0, 8*delta)
 		if(Player): Sprite.scale.x = abs(Sprite.scale.x) if Player.global_position < Sprite.global_position else abs(Sprite.scale.x)*-1 
-		Sprite.play("interact")
+		if(Sprite.animation != "hide"): Sprite.play("interact")
 
 	move_and_slide()
 
 func _on_timeline_ended():
+	if(OnlyOnce && HideAnim):
+		Done = true
 	Player._pause_game_no_menu(false)
 	Move = true
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)
+	InDialogue = false

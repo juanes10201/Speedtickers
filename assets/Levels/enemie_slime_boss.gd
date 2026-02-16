@@ -218,6 +218,8 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 var SlamJump : bool = false
 
 func _process(delta: float) -> void:
+	if(Sleep):
+		_Play_Animation("Sleep", false, false, false, true, false)
 	#print(velocity.x)
 	if(Dead):
 		CameraPlayer.offset.x = lerpf(CameraPlayer.offset.x, 100.0, 5*delta)
@@ -295,6 +297,7 @@ func _process(delta: float) -> void:
 				if(abs(position.x-Player.position.x) <= DistanceStopMovSlam):
 					velocity.x = 0
 					velocity.y = 0
+					_Play_Animation("Slam_Wait", false, true, true, true)
 		if(Slam || (WallJump && WallJumpTimer.is_stopped())):
 			if(Move):
 				if(!WallJump && Slam):
@@ -327,6 +330,8 @@ func _process(delta: float) -> void:
 		#	$HitFlyParticles.emitting = false
 		
 		if(Player && Player.EnemiesPhysics):
+			#if(Slam):
+			#	_Play_Animation("Slam", false, true, true, true) 
 			_update_sprite()
 			
 			#if(is_on_wall() && !was_on_wall): direction *= -1
@@ -338,10 +343,10 @@ func _process(delta: float) -> void:
 			#strech_size(_def_x, _def_y)
 			
 			if(velocity.y < 0): strech_size(0.7, 1.4)
-			if(velocity.y >= MAX_FALL_SPEED): strech_size(0.4, 1.8)
+			#if(velocity.y >= MAX_FALL_SPEED): strech_size(0.4, 1.8)
 			
 			if(_is_on_floor() && was_on_floor == false):
-				_Play_Animation("Fall", true, false)
+				_Play_Animation("Fall", true, true)
 				strech_size(1.8, 0.5)
 			
 			_strech_tick(delta)
@@ -500,8 +505,8 @@ func _update_sprite() -> void:
 	#If moving horizontally Walking
 	#Else idle
 	if(velocity.y != 0): _Play_Animation("Air")
-	elif( abs(velocity.x-dif_max_move) > 0 && !is_on_wall() ): _Play_Animation("Walking")
-	else: _Play_Animation("Idle")
+	elif( abs(velocity.x-dif_max_move) > 0 && !is_on_wall() ): _Play_Animation("Right") if direction > 0.0 else _Play_Animation("Left") 
+	elif(Sprite.animation != "Slam_Wait" && Sprite.animation != "Slam"): _Play_Animation("Idle")
 
 func _is_on_floor() -> bool:
 	if(GravityDirection*Player.GlobalGravityDirection == 1):
@@ -615,9 +620,9 @@ func _set_sleep(State: bool = true):
 	$ZAnim1.emitting = State
 	$ZAnim2.emitting = State
 	if(State):
+		_Play_Animation("Sleep", false, false, false, true, false)
 		CountSpecialAttack = 0
 		Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
-		_Play_Animation("Sleep", false, false, false, true, false)
 	else:
 		_Play_Animation("Idle", false, true, true, true, false)
 		Player._stop_sound($AudioSnooring)

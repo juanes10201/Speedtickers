@@ -277,6 +277,89 @@ gradient = SubResource("Gradient_rebgq")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rebgq"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt7kr"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlc2f"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orcjn"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71i5c"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd7jk"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m4oy"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h32"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_joe7h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rebgq")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_xt7kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlc2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rebgq")
+}],
+"loop": false,
+"name": &"hide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orcjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71i5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd7jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m4oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h32")
+}],
+"loop": false,
+"name": &"show",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d6wll"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu52k"]
+size = Vector2(249, 61.25)
+
 [node name="Node2D" type="Node2D" unique_id=624614125]
 position = Vector2(0, -1)
 
@@ -627,4 +710,49 @@ texture_scale = 0.8
 height = 13.0
 script = ExtResource("16_jt4jm")
 
+[node name="TextArea2" type="Area2D" parent="." unique_id=1267790026 node_paths=PackedStringArray("Text")]
+position = Vector2(-116, -28)
+script = ExtResource("17_ehuiy")
+Text = NodePath("DashTutorial2")
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TextArea2" unique_id=653802877]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-19, -75)
+sprite_frames = SubResource("SpriteFrames_joe7h")
+animation = &"disabled"
+script = ExtResource("19_gn07k")
+
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea2" unique_id=1468308842 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_d6wll")
+offset_left = -56.0
+offset_top = -123.0
+offset_right = 86.0
+offset_bottom = -69.0
+theme_override_fonts/normal_font = ExtResource("20_3va60")
+text = "
+Perform a Slide or Slam to use a rail"
+fit_content = true
+script = ExtResource("21_h6i6q")
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TextArea2/DashTutorial2" unique_id=1665001120]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea2/DashTutorial2" unique_id=1097282402]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TextArea2/DashTutorial2" unique_id=1939711777]
+stream = ExtResource("22_jkn52")
+volume_db = -20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea2" unique_id=403483908]
+position = Vector2(-17.5, -96.375)
+shape = SubResource("RectangleShape2D_tu52k")
+
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TextArea2" to="TextArea2" method="_on_body_entered"]

@@ -38,6 +38,7 @@ file_logging/enable_file_logging=true
 [dialogic]
 
 directories/dch_directory={
+"Holo": "res://assets/Dialogic/Charactesr/Holo.dch",
 "Npc1": "res://assets/Dialogic/Charactesr/Npc1.dch"
 }
 directories/dtl_directory={

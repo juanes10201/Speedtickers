@@ -93,11 +93,11 @@ func loadgamedata() -> void:
 	print("loaded game saved data!")
 
 func SetDialogue(Id : int, Level : int = LevelManager.get_level()) -> void:
-	print("Set respawn")
+	print("Set Dialogue")
 	if(Level != DialogueLevelId):
 		DialoguesIdEnabled = []
 		DialogueLevelId = Level
-	if(DialoguesIdEnabled.size() < Id): DialoguesIdEnabled.resize(Id+1)
+	if(Id > DialoguesIdEnabled.size()-1): DialoguesIdEnabled.resize(Id+1)
 	DialoguesIdEnabled[Id] = true
 
 func GetRespawn(Id : int) -> bool:
@@ -106,7 +106,7 @@ func GetRespawn(Id : int) -> bool:
 
 func GetDialogue(Id : int) -> bool:
 	#print("Get dialogue Id: " + str(Id) + " to " + str(DialoguesIdEnabled[Id]))
-	return (DialogueLevelId == LevelManager.get_level() && DialoguesIdEnabled.size() >= Id && DialoguesIdEnabled[Id] == true)
+	return (DialogueLevelId == LevelManager.get_level() && DialoguesIdEnabled.size()-1 >= Id && DialoguesIdEnabled[Id] == true)
 
 func SetRespawn(Id : int, Level : int = LevelManager.get_level()) -> void:
 	CurrentRespawnId = Id

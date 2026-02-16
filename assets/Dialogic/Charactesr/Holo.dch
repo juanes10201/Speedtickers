@@ -1,0 +1,32 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "Regular",
+"sound_moods": {
+"Regular": {
+"mode": 0,
+"name": "Regular",
+"pitch_base": 1.0,
+"pitch_variance": -0.1,
+"skip_characters": 6.0,
+"sound_path": "res://assets/Sounds/Voices/Tutorial/1.wav",
+"volume_base": 20.0,
+"volume_variance": 0.0
+}
+},
+"style": "",
+"suffix": ""
+},
+&"default_portrait": "",
+&"description": "",
+&"display_name": "Holo",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {},
+&"scale": 1.0
+}
