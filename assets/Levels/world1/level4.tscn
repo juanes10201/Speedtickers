@@ -341,14 +341,15 @@ light_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afpxl"]
 size = Vector2(62.75, 33.25)
 
-[sub_resource type="Gradient" id="Gradient_25fng"]
+[sub_resource type="Gradient" id="Gradient_2utor"]
 offsets = PackedFloat32Array(0, 0.65238094)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_e34pc"]
-gradient = SubResource("Gradient_25fng")
+gradient = SubResource("Gradient_2utor")
 fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
+fill_from = Vector2(0.5144382, 0.5037434)
+fill_to = Vector2(0.53048104, 0.53582895)
 
 [node name="Node2D2" type="Node2D" unique_id=84872882]
 position = Vector2(0, -1)

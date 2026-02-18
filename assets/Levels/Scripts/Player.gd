@@ -323,6 +323,9 @@ func _physics_process(delta: float) -> void:
 		get_tree().change_scene_to_file(_scene_string)
 	
 	if(_is_on_floor()):
+		if(!KickTimer.is_stopped()):
+			KickSpeed = Vector2(0.0, 0.0)
+			KickTimer.stop()
 		DashedWithJump = false
 		SlidingInAir = false
 		SwitchedGravity = false

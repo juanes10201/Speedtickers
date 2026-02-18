@@ -218,8 +218,9 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 var SlamJump : bool = false
 
 func _process(delta: float) -> void:
-	if(Sleep):
+	if(Sleep && !Sprite.is_playing()):
 		_Play_Animation("Sleep", false, false, false, true, false)
+	
 	#print(velocity.x)
 	if(Dead):
 		CameraPlayer.offset.x = lerpf(CameraPlayer.offset.x, 100.0, 5*delta)
@@ -480,11 +481,11 @@ func On_Death():
 	Dead = true
 	#region Create destroy particles
 	_Play_Animation("Explode", false, false, false, true, false)
+	Player._set_time_state(false)
 	$Anim.play("Explode")
 	await get_tree().create_timer(3.0).timeout
 	AudienceSprite._play_stage_anim("explode")
 	_Spawn_Collar()
-	Player._set_time_state(false)
 	DestroyTile.queue_free()
 	CameraPlayer.limit_right += 10000
 	#if(Particles):
@@ -609,7 +610,7 @@ func FinalAttack():
 	$HitFlyParticles.emitting = false
 	$HitParticles.emitting = false
 	$FinalAttackTimer.start()
-	Player.Time_Left.wait_time = 30.0
+	Player.Time_Left.wait_time = 20.0
 	Player.Time_Left.start()
 	#$SpawnBomb.wait_time = FinalAttackBombTime
 	#$SpawnBomb.start()
@@ -620,7 +621,10 @@ func _set_sleep(State: bool = true):
 	$ZAnim1.emitting = State
 	$ZAnim2.emitting = State
 	if(State):
-		_Play_Animation("Sleep", false, false, false, true, false)
+		if(Sprite.animation != "Sleep" && Sprite.animation != "Sleep-Initial"):
+			_Play_Animation("Sleep-Initial", false, false, false, true, false)
+		if(Sprite.animation == "Sleep-Initial" && !Sprite.is_playing()):
+			_Play_Animation("Sleep", false, false, false, true, false)
 		CountSpecialAttack = 0
 		Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
 	else:

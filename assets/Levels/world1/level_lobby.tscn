@@ -642,7 +642,7 @@ Dialogue_Action = "npc_lobby8"
 
 [node name="CharacterBody2D11" parent="." unique_id=846097938 instance=ExtResource("13_wsgti")]
 position = Vector2(649, -796)
-Dialogue_Action = "npc_lobby9"
+Dialogue_Action = "npc_lobby11"
 
 [node name="CharacterBody2D6" parent="." unique_id=677647221 node_paths=PackedStringArray("PointTo") instance=ExtResource("13_wsgti")]
 position = Vector2(-94, -665)
