@@ -10,6 +10,9 @@ size = Vector2(95.63277, 59)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utf66"]
 size = Vector2(16.934977, 21)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w0jks"]
+light_mode = 1
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0jks"]
 atlas = ExtResource("3_w0jks")
 region = Rect2(80, 0, 20, 20)
@@ -93,6 +96,7 @@ position = Vector2(-0.9961699, 11.5)
 shape = SubResource("RectangleShape2D_utf66")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=723302649]
+material = SubResource("CanvasItemMaterial_w0jks")
 position = Vector2(-1.9923495, 12)
 sprite_frames = SubResource("SpriteFrames_u01wk")
 animation = &"interact"
