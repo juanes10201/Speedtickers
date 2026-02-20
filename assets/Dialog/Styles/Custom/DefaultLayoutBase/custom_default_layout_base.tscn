@@ -1,15 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjdppm5j5j4c"]
+[gd_scene format=3 uid="uid://cjdppm5j5j4c"]
 
 [ext_resource type="Script" uid="uid://yivwmkfwrvfr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.gd" id="1_ifsho"]
-[ext_resource type="Texture2D" uid="uid://brkoem266rd7a" path="res://assets/Sprites/menus/Dialogue/Player_export.png" id="2_cv55d"]
 
-[node name="DefaultLayoutBase" type="CanvasLayer"]
+[node name="DefaultLayoutBase" type="CanvasLayer" unique_id=1609809217]
 script = ExtResource("1_ifsho")
 global_bg_color = Color(0, 0, 0, 0)
 global_font_color = Color(0, 0, 0, 1)
-
-[node name="PlayerExport" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(533, 539)
-scale = Vector2(0.28737873, 0.28737864)
-texture = ExtResource("2_cv55d")

@@ -31,16 +31,16 @@
 [ext_resource type="PackedScene" uid="uid://fswjgnqueri7" path="res://assets/Levels/enemie_slime_boss.tscn" id="20_1rl84"]
 [ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="22_sw0pm"]
 [ext_resource type="Script" uid="uid://dkc2dv8d2secv" path="res://assets/Levels/world1/timer_spawner.gd" id="22_v8p1a"]
-[ext_resource type="Texture2D" uid="uid://chd0c8qc6xju4" path="res://assets/Sprites/Bosses/Stage/1.png" id="25_wig4w"]
 [ext_resource type="Texture2D" uid="uid://jai2a8iwux2v" path="res://assets/Sprites/Bosses/Stage/3.png" id="27_px2v3"]
 [ext_resource type="Texture2D" uid="uid://d3xiljyf7nhbo" path="res://assets/Sprites/Bosses/Stage/2.png" id="31_0dkde"]
-[ext_resource type="Texture2D" uid="uid://de4noj4lldtd" path="res://assets/Sprites/Bosses/Stage/end.png" id="31_uxdvm"]
 [ext_resource type="Texture2D" uid="uid://ckm1q1ahpebml" path="res://assets/Sprites/Bosses/Frame/Frame1.png" id="31_ytcgp"]
 [ext_resource type="Texture2D" uid="uid://c86t24qo81mbb" path="res://assets/Sprites/Bosses/Frame/Frame2.png" id="32_aeb8i"]
+[ext_resource type="Texture2D" uid="uid://ctyflmjge8it4" path="res://assets/Sprites/Bosses/Stage/Casino/4-alt-alt.png" id="32_jqcgy"]
 [ext_resource type="Texture2D" uid="uid://1l5lcx6nqbnr" path="res://assets/Sprites/Bosses/Frame/Frame.png" id="33_bhiel"]
-[ext_resource type="Texture2D" uid="uid://dy0a8r28qc5q2" path="res://assets/Sprites/Bosses/Stage/Casino/4-alt.png" id="34_jqcgy"]
+[ext_resource type="Texture2D" uid="uid://c6gn5akmh264v" path="res://assets/Sprites/Bosses/Stage/Casino/1-alt-alt.png" id="33_jqcgy"]
 [ext_resource type="PackedScene" uid="uid://crh3b4f4fxecd" path="res://assets/Levels/world1/npc_hologram.tscn" id="34_lxrh3"]
 [ext_resource type="Script" uid="uid://wx61nlyy7ufe" path="res://assets/Levels/world1/slime_ring_intro.gd" id="35_fyk5b"]
+[ext_resource type="Texture2D" uid="uid://bn4vgrmgvrs5d" path="res://assets/Sprites/Bosses/Stage/Casino/final.png" id="36_jqcgy"]
 [ext_resource type="PackedScene" uid="uid://kn27ogqnt70t" path="res://assets/Levels/world1/respawn_point.tscn" id="37_e4war"]
 [ext_resource type="Script" uid="uid://dlvjqg4qxquwf" path="res://assets/Levels/world1/disable_time_area2d.gd" id="38_n4b3u"]
 [ext_resource type="Texture2D" uid="uid://ucc0ny4i8yju" path="res://assets/Sprites/Bosses/Statue/Anim.png" id="41_vef5d"]
@@ -48,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://biaxt11oianj" path="res://assets/Sprites/Bosses/Statue/Statue1.png" id="42_vef5d"]
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Levels/Scripts/DynamicLightAnimation.gd" id="47_adys0"]
 [ext_resource type="Texture2D" uid="uid://bkpeeq4uqgy4" path="res://assets/Sprites/particles/LightFocus.png" id="47_jqcgy"]
+[ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Levels/kill_box_blue.tscn" id="49_orvnp"]
 
 [sub_resource type="Animation" id="Animation_fyk5b"]
 resource_name = "Idle"
@@ -482,19 +483,19 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Frame5:position")
 tracks/2/interp = 1
-tracks/2/loop_wrap = true
+tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(2.6333332, 5.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.6333332, 5.6, 45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(311, -918), Vector2(360.195, -44)]
+"values": [Vector2(311, -918), Vector2(311, -918), Vector2(360.195, -44), Vector2(360.195, -44)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("Frame6:position")
 tracks/3/interp = 1
-tracks/3/loop_wrap = true
+tracks/3/loop_wrap = false
 tracks/3/keys = {
 "times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
@@ -506,19 +507,19 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/path = NodePath("Frame7:position")
 tracks/4/interp = 1
-tracks/4/loop_wrap = true
+tracks/4/loop_wrap = false
 tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 3.7666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.1, 3.7666667, 45),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(114, -921), Vector2(90, -80)]
+"values": [Vector2(114, -921), Vector2(90, -80), Vector2(90, -80)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/path = NodePath("AnimatedSprite2D7:position")
 tracks/5/interp = 1
-tracks/5/loop_wrap = true
+tracks/5/loop_wrap = false
 tracks/5/keys = {
 "times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
@@ -530,43 +531,43 @@ tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/path = NodePath("AnimatedSprite2D8:position")
 tracks/6/interp = 1
-tracks/6/loop_wrap = true
+tracks/6/loop_wrap = false
 tracks/6/keys = {
-"times": PackedFloat32Array(0.06666667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 26.166666, 29.4, 45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(213, -1013)]
+"values": [Vector2(213, -1013), Vector2(213, -1013), Vector2(213, -149.32), Vector2(213, -149.32)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/path = NodePath("AnimatedSprite2D9:position")
 tracks/7/interp = 1
-tracks/7/loop_wrap = true
+tracks/7/loop_wrap = false
 tracks/7/keys = {
-"times": PackedFloat32Array(0.06666667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 12.766666, 15.566667, 45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(361, -1006)]
+"values": [Vector2(361, -1006), Vector2(361, -1006), Vector2(361, -76.155), Vector2(361, -76.155)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/path = NodePath("Frame5:rotation")
 tracks/8/interp = 1
-tracks/8/loop_wrap = true
+tracks/8/loop_wrap = false
 tracks/8/keys = {
-"times": PackedFloat32Array(2.5666666, 5.4666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.5666666, 5.4666667, 45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 1.5446163880149817]
+"values": [0.0, 0.0, 1.5446163880149817, 1.5446163880149817]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/path = NodePath("Frame6:rotation")
 tracks/9/interp = 1
-tracks/9/loop_wrap = true
+tracks/9/loop_wrap = false
 tracks/9/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
@@ -578,19 +579,19 @@ tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/path = NodePath("Frame7:rotation")
 tracks/10/interp = 1
-tracks/10/loop_wrap = true
+tracks/10/loop_wrap = false
 tracks/10/keys = {
-"times": PackedFloat32Array(0.3, 3.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 3.8, 45),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 4.159119607502486]
+"values": [0.0, 4.159119607502486, 4.159119607502486]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/path = NodePath("AnimatedSprite2D7:rotation")
 tracks/11/interp = 1
-tracks/11/loop_wrap = true
+tracks/11/loop_wrap = false
 tracks/11/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
@@ -602,20 +603,56 @@ tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/path = NodePath("AnimatedSprite2D8:rotation")
 tracks/12/interp = 1
-tracks/12/loop_wrap = true
+tracks/12/loop_wrap = false
 tracks/12/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(28.133333, 29.866667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": []
+"values": [0.0, 0.4642575810304921]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/path = NodePath("AnimatedSprite2D9:rotation")
 tracks/13/interp = 1
-tracks/13/loop_wrap = true
+tracks/13/loop_wrap = false
 tracks/13/keys = {
+"times": PackedFloat32Array(12.6),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.2219514605742825]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AnimatedSprite2D7:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = false
+tracks/14/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("AnimatedSprite2D8:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = false
+tracks/15/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("AnimatedSprite2D7:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = false
+tracks/16/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "update": 0,
@@ -711,19 +748,19 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("AnimatedSprite2D9:position")
+tracks/7/path = NodePath("Frame7:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(361, -1006)]
+"values": [0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Frame7:rotation")
+tracks/8/path = NodePath("Frame5:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -735,10 +772,22 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Frame5:rotation")
+tracks/9/path = NodePath("AnimatedSprite2D9:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimatedSprite2D8:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1533,8 +1582,137 @@ z_index = 1
 z_as_relative = false
 position = Vector2(-2, 32)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AADk/+3/AQAYAAoAAADl/+3/AQAYAAoAAADm/+3/AQAZAAoAAADn/+3/AQAZAAoAAADe//T/AQAZAAoAAADf//T/AQAZAAoAAADg//T/AQAZAAoAAADj/xEAAQAFAAYAAAA=")
+tile_map_data = PackedByteArray("AADk/+3/AQAYAAoAAADl/+3/AQAYAAoAAADm/+3/AQAZAAoAAADn/+3/AQAZAAoAAADe//T/AQAZAAoAAADf//T/AQAZAAoAAADg//T/AQAZAAoAAADj/xEAAQAFAAYAAADU/w8AAQABAA4AAADU/xAAAQABAA8AAADV/w8AAQACAA4AAADV/xAAAQACAA8AAADW/w8AAQADAA4AAADW/xAAAQADAA8AAADR//D/AQABAA8AAFDR//H/AQACAA8AAFDR//L/AQADAA8AAFDS//D/AQABAA4AAFDS//H/AQACAA4AAFDS//L/AQADAA4AAFDR//3/AQABAA8AAFDR//7/AQACAA8AAFDR////AQADAA8AAFDS//3/AQABAA4AAFDS//7/AQACAA4AAFDS////AQADAA4AAFA=")
 tile_set = ExtResource("4_xdos2")
+
+[node name="PointLight2D51" type="PointLight2D" parent="." unique_id=570804372]
+position = Vector2(-624, -362)
+scale = Vector2(1.5259811, 0.28328124)
+color = Color(0.99999994, 0.49743295, 0.19575131, 1)
+energy = 0.55
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 1
+
+[node name="PointLight2D52" type="PointLight2D" parent="." unique_id=1657883798]
+position = Vector2(-676, 233)
+scale = Vector2(1.34867, 1.1405108)
+color = Color(0.99999994, 0.49743295, 0.19575131, 1)
+energy = 0.95
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 1
+
+[node name="PointLight2D53" type="PointLight2D" parent="." unique_id=1016833660]
+position = Vector2(-291, 290)
+scale = Vector2(1.7526362, 0.25732097)
+color = Color(1, 0.48001558, 0.41679892, 1)
+energy = 0.95
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 3
+
+[node name="PointLight2D62" type="PointLight2D" parent="." unique_id=58272863]
+position = Vector2(-275, 115)
+scale = Vector2(1.2329869, 0.25732097)
+color = Color(1, 0.48001558, 0.41679892, 1)
+energy = 0.4
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+
+[node name="PointLight2D54" type="PointLight2D" parent="." unique_id=943467457]
+position = Vector2(-142, 282)
+scale = Vector2(1.7526362, 0.25732097)
+color = Color(0.73784393, 0.65490353, 0.37152797, 1)
+energy = 0.55
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 1
+
+[node name="PointLight2D59" type="PointLight2D" parent="." unique_id=288580279]
+position = Vector2(52.83112, 204)
+scale = Vector2(1.1916243, 0.4640793)
+color = Color(0.7903501, 0.60681766, 0.5877549, 1)
+energy = 0.3
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 3
+
+[node name="PointLight2D60" type="PointLight2D" parent="." unique_id=454996272]
+position = Vector2(-67, 112.99999)
+scale = Vector2(1.1916243, 0.2772256)
+color = Color(0.8798147, 0.5936456, 7.70092e-07, 1)
+energy = 0.65
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 3
+
+[node name="PointLight2D61" type="PointLight2D" parent="." unique_id=306728845]
+position = Vector2(-395.00003, 115.99999)
+scale = Vector2(1.1916243, 0.2772256)
+color = Color(0.8798147, 0.5936456, 7.70092e-07, 1)
+energy = 0.65
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 3
+
+[node name="PointLight2D56" type="PointLight2D" parent="." unique_id=1324592683]
+position = Vector2(172, 184.00002)
+scale = Vector2(1.1058763, 0.5961613)
+color = Color(0.9463785, 0.5450524, 3.85046e-07, 1)
+energy = 0.55
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 1
+
+[node name="PointLight2D57" type="PointLight2D" parent="." unique_id=780000541]
+position = Vector2(29, 52)
+scale = Vector2(0.87642854, 0.4319006)
+color = Color(0.9463785, 0.5450524, 3.85046e-07, 1)
+energy = 0.5
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+
+[node name="PointLight2D58" type="PointLight2D" parent="." unique_id=91943749]
+position = Vector2(-442, 102)
+scale = Vector2(0.87642854, 0.33412898)
+color = Color(0.9463785, 0.5450524, 3.85046e-07, 1)
+energy = 0.3
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+
+[node name="PointLight2D55" type="PointLight2D" parent="." unique_id=1960772518]
+position = Vector2(-454, 267)
+scale = Vector2(1.7526362, 0.25732097)
+color = Color(1, 0.48217595, 0.39850605, 1)
+energy = 0.95
+texture = ExtResource("47_jqcgy")
+texture_scale = 1.37
+height = 13.0
+script = ExtResource("47_adys0")
+CurrentAnimation = 3
 
 [node name="StageParallaxBoss" type="Sprite2D" parent="." unique_id=981206920 node_paths=PackedStringArray("ReferencePlayer", "Boss", "ExtraSprite", "Stage")]
 visible = false
@@ -1651,6 +1829,7 @@ libraries/ = SubResource("AnimationLibrary_0dkde")
 libraries/ = SubResource("AnimationLibrary_rcitd")
 
 [node name="Node2D" type="Node2D" parent="StageParallaxBoss" unique_id=1088083944]
+visible = false
 
 [node name="Stage" type="AnimatedSprite2D" parent="." unique_id=1857929058]
 visible = false
@@ -2193,12 +2372,12 @@ position = Vector2(746, -467)
 
 [node name="4" type="Sprite2D" parent="." unique_id=1251857164]
 position = Vector2(-81, 213)
-texture = ExtResource("34_jqcgy")
+texture = ExtResource("32_jqcgy")
 
 [node name="Sprite2D6" type="Sprite2D" parent="." unique_id=347957079]
 material = SubResource("ShaderMaterial_rcitd")
 position = Vector2(-573, -318)
-texture = ExtResource("25_wig4w")
+texture = ExtResource("33_jqcgy")
 
 [node name="Sprite2D7" type="Sprite2D" parent="." unique_id=269123640]
 material = SubResource("ShaderMaterial_rcitd")
@@ -2233,12 +2412,12 @@ texture = ExtResource("32_aeb8i")
 
 [node name="Frame6" type="Sprite2D" parent="." unique_id=1647362563]
 self_modulate = Color(1, 1, 1, 0.76862746)
-position = Vector2(274, 190)
+position = Vector2(284, 234)
 texture = ExtResource("33_bhiel")
 
 [node name="Frame7" type="Sprite2D" parent="." unique_id=1237230891]
 self_modulate = Color(1, 1, 1, 0.76862746)
-position = Vector2(240, 124)
+position = Vector2(277, 115)
 texture = ExtResource("31_ytcgp")
 
 [node name="Frame2" type="Sprite2D" parent="." unique_id=1536071540]
@@ -2249,8 +2428,8 @@ position = Vector2(920, -372)
 texture = ExtResource("33_bhiel")
 
 [node name="End" type="Sprite2D" parent="." unique_id=1514064253]
-position = Vector2(845, -356)
-texture = ExtResource("31_uxdvm")
+position = Vector2(846, -356)
+texture = ExtResource("36_jqcgy")
 
 [node name="Player" parent="." unique_id=165322871 instance=ExtResource("5_kr6ob")]
 position = Vector2(-663, -290)
@@ -2276,7 +2455,7 @@ zoom = Vector2(2.08, 2.08)
 limit_left = -766
 limit_top = -9999990
 limit_right = 507
-limit_bottom = 10000010
+limit_bottom = 400
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("6_1rl84")
@@ -2439,7 +2618,7 @@ CanChange = false
 
 [node name="KillBox2" parent="." unique_id=1719419657 instance=ExtResource("11_3k3gd")]
 z_index = 1
-position = Vector2(-355, -188)
+position = Vector2(-354, -188.00002)
 scale = Vector2(4, 32.615)
 
 [node name="KillBox24" parent="." unique_id=386725269 instance=ExtResource("11_3k3gd")]
@@ -2511,20 +2690,24 @@ z_index = 1
 position = Vector2(-597, 365.05)
 scale = Vector2(6.115, 1)
 
+[node name="KillBox27" parent="." unique_id=629812472 instance=ExtResource("11_3k3gd")]
+z_index = 1
+position = Vector2(-120, 586)
+scale = Vector2(206.755, 1)
+Visible = false
+CanChange = false
+
+[node name="KillBox28" parent="." unique_id=2042789031 instance=ExtResource("11_3k3gd")]
+z_index = 1
+position = Vector2(1851, -108)
+scale = Vector2(206.755, 1)
+Visible = false
+CanChange = false
+
 [node name="KillBox11" parent="." unique_id=512938751 instance=ExtResource("11_3k3gd")]
 z_index = 1
 position = Vector2(-662, 24.000008)
 scale = Vector2(2.765, 1.665)
-
-[node name="KillBox20" parent="." unique_id=576841020 instance=ExtResource("11_3k3gd")]
-z_index = 1
-position = Vector2(76, 221)
-scale = Vector2(1.855, 1.665)
-
-[node name="KillBox21" parent="." unique_id=741745887 instance=ExtResource("11_3k3gd")]
-z_index = 1
-position = Vector2(139.00003, 118)
-scale = Vector2(2.52, 1.665)
 
 [node name="KillBox13" parent="." unique_id=1717671901 instance=ExtResource("11_3k3gd")]
 z_index = 1
@@ -2608,9 +2791,9 @@ script = ExtResource("42_ieoue")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1714919955]
 z_index = -1
-position = Vector2(-434, -308)
+position = Vector2(-423, -308)
 sprite_frames = SubResource("SpriteFrames_cmygl")
-frame_progress = 0.9755654
+animation = &"left"
 script = ExtResource("42_ieoue")
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=1401239970]
@@ -2619,139 +2802,30 @@ sprite_frames = SubResource("SpriteFrames_cmygl")
 animation = &"left"
 script = ExtResource("42_ieoue")
 
-[node name="PointLight2D51" type="PointLight2D" parent="." unique_id=570804372]
-position = Vector2(-624, -362)
-scale = Vector2(1.5259811, 0.28328124)
-color = Color(0.99999994, 0.49743295, 0.19575131, 1)
-energy = 0.55
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 1
-
-[node name="PointLight2D52" type="PointLight2D" parent="." unique_id=1657883798]
-position = Vector2(-676, 233)
-scale = Vector2(1.34867, 1.1405108)
-color = Color(0.99999994, 0.49743295, 0.19575131, 1)
-energy = 0.95
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 1
-
-[node name="PointLight2D53" type="PointLight2D" parent="." unique_id=1016833660]
-position = Vector2(-299.00003, 303)
-scale = Vector2(1.7526362, 0.25732097)
-color = Color(1, 0.48001558, 0.41679892, 1)
-energy = 0.95
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 3
-
-[node name="PointLight2D62" type="PointLight2D" parent="." unique_id=58272863]
-position = Vector2(-275, 115)
-scale = Vector2(1.2329869, 0.25732097)
-color = Color(1, 0.48001558, 0.41679892, 1)
-energy = 0.4
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-
-[node name="PointLight2D54" type="PointLight2D" parent="." unique_id=943467457]
-position = Vector2(-143, 277)
-scale = Vector2(1.7526362, 0.25732097)
-color = Color(0.73784393, 0.65490353, 0.37152797, 1)
-energy = 0.45
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 3
-
-[node name="PointLight2D59" type="PointLight2D" parent="." unique_id=288580279]
-position = Vector2(52.83112, 204)
-scale = Vector2(1.1916243, 0.4640793)
-color = Color(0.7903501, 0.60681766, 0.5877549, 1)
-energy = 0.3
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 3
-
-[node name="PointLight2D60" type="PointLight2D" parent="." unique_id=454996272]
-position = Vector2(-67, 112.99999)
-scale = Vector2(1.1916243, 0.2772256)
-color = Color(0.8798147, 0.5936456, 7.70092e-07, 1)
-energy = 0.65
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 3
-
-[node name="PointLight2D61" type="PointLight2D" parent="." unique_id=306728845]
-position = Vector2(-395.00003, 115.99999)
-scale = Vector2(1.1916243, 0.2772256)
-color = Color(0.8798147, 0.5936456, 7.70092e-07, 1)
-energy = 0.65
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 3
-
-[node name="PointLight2D56" type="PointLight2D" parent="." unique_id=1324592683]
-position = Vector2(172, 184.00002)
-scale = Vector2(1.1058763, 0.5961613)
-color = Color(0.9463785, 0.5450524, 3.85046e-07, 1)
-energy = 0.55
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 1
-
-[node name="PointLight2D57" type="PointLight2D" parent="." unique_id=780000541]
-position = Vector2(29, 52)
-scale = Vector2(0.87642854, 0.4319006)
-color = Color(0.9463785, 0.5450524, 3.85046e-07, 1)
-energy = 0.5
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-
-[node name="PointLight2D58" type="PointLight2D" parent="." unique_id=91943749]
-position = Vector2(-442, 102)
-scale = Vector2(0.87642854, 0.33412898)
-color = Color(0.9463785, 0.5450524, 3.85046e-07, 1)
-energy = 0.3
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-
-[node name="PointLight2D55" type="PointLight2D" parent="." unique_id=1960772518]
-position = Vector2(-454, 267)
-scale = Vector2(1.7526362, 0.25732097)
-color = Color(1, 0.48217595, 0.39850605, 1)
-energy = 0.95
-texture = ExtResource("47_jqcgy")
-texture_scale = 1.37
-height = 13.0
-script = ExtResource("47_adys0")
-CurrentAnimation = 3
-
 [node name="Sprite2D9" type="Sprite2D" parent="." unique_id=197044843]
 z_index = 1
-position = Vector2(1064, -336)
+position = Vector2(1085, -331)
 texture = ExtResource("42_vef5d")
+
+[node name="KillBox18" parent="." unique_id=730018019 instance=ExtResource("49_orvnp")]
+position = Vector2(87, 222)
+scale = Vector2(2.61, 1.88)
+
+[node name="KillBox21" parent="." unique_id=1893542193 instance=ExtResource("49_orvnp")]
+position = Vector2(-509, 366)
+scale = Vector2(4.495, 0.65)
+
+[node name="KillBox26" parent="." unique_id=964834237 instance=ExtResource("49_orvnp")]
+position = Vector2(-519, 181.99997)
+scale = Vector2(3.25, 0.65)
+
+[node name="KillBox20" parent="." unique_id=1478938683 instance=ExtResource("49_orvnp")]
+position = Vector2(127, 123.00001)
+scale = Vector2(2.82, 1.55)
+
+[node name="Key7" parent="." unique_id=1906301517 instance=ExtResource("13_f6viy")]
+position = Vector2(-552, 270)
+AditionalAction = 1
 
 [connection signal="body_entered" from="SlimeRingIntro" to="SlimeRingIntro" method="_on_body_entered"]
 [connection signal="body_entered" from="DisableTime" to="DisableTime" method="_on_body_entered"]

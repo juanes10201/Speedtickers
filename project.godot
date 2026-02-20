@@ -38,8 +38,10 @@ file_logging/enable_file_logging=true
 [dialogic]
 
 directories/dch_directory={
+"Boss1": "res://assets/Dialogic/Charactesr/Boss1.dch",
 "Holo": "res://assets/Dialogic/Charactesr/Holo.dch",
-"Npc1": "res://assets/Dialogic/Charactesr/Npc1.dch"
+"Npc1": "res://assets/Dialogic/Charactesr/Npc1.dch",
+"Player": "res://assets/Dialogic/Charactesr/Player.dch"
 }
 directories/dtl_directory={
 "lobby_initial": "res://assets/Timeline/lobby_initial.dtl",
