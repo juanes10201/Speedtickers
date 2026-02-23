@@ -3,10 +3,12 @@ extends Node2D
 @export var PlayMusic : bool = true
 enum MusicStates{
 	ingame,
-	menu
+	menu,
+	boss1
 }
 var MusicState = MusicStates.ingame
 
+@onready var SongBoss1 = $SongBoss1
 @onready var SongInGame = $SongInGame
 @onready var SongMenu = $SongMenu
 @onready var AudioDeath = $AudioDeathPlayer
@@ -24,8 +26,9 @@ func _process(delta: float) -> void:
 #region Play song
 func _play_song(Song):
 	if(Song && !Song.playing):
-		SongInGame.stop()
-		SongMenu.stop()
+		for Child in get_children():
+			if(Child != Song && Child is AudioStreamPlayer || Child is AudioStreamPlayer2D || Child is AudioStreamPlayer3D):
+				Child.stop()
 		Song.play()
 #endregion
 
@@ -43,6 +46,8 @@ func _play_global_sound(Sound):
 func _song_tick() -> void:
 	if(PlayMusic):
 		match MusicState:
+			MusicStates.boss1:
+				_play_song(SongBoss1)
 			MusicStates.ingame:
 				_play_song(SongInGame)
 			MusicStates.menu:

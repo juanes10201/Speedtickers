@@ -302,7 +302,7 @@ func _ready() -> void:
 		FrameFreeze(.4, 2)
 	
 	#region Change music style to ingame
-	if(PlayMusic):
+	if(PlayMusic && SongPlayer.MusicState != SongPlayer.MusicStates.boss1):
 		SongPlayer.MusicState = SongPlayer.MusicStates.ingame
 	#endregion
 	

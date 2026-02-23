@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://x32l3srqdwme" path="res://assets/Sounds/Boss/Slime-Slam-Wait.wav" id="20_wehr2"]
 [ext_resource type="Texture2D" uid="uid://dthevcxjs0m5v" path="res://assets/Sprites/Bosses/Z-min.png" id="21_1yjqm"]
 [ext_resource type="Texture2D" uid="uid://c2c4dye6hahly" path="res://assets/Sprites/Bosses/Z.png" id="21_a8kwp"]
+[ext_resource type="Texture2D" uid="uid://s0ospqm5foo" path="res://original_assets/Art/3dModels/designsparaquenoparezcaunaglande/8-export.png" id="25_4pbtf"]
 [ext_resource type="Texture2D" uid="uid://imh7cnl224ia" path="res://assets/Sprites/Bosses/Boss-Left.png" id="25_k5rj8"]
 [ext_resource type="Texture2D" uid="uid://bmuan8in5g2b5" path="res://assets/Sprites/Bosses/SlamWait.png" id="26_vwu67"]
 [ext_resource type="Texture2D" uid="uid://d3tamkkh2tk3d" path="res://assets/Sprites/Bosses/Boss-Right.png" id="27_dj64n"]
@@ -889,7 +890,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wmecj")
+"texture": ExtResource("25_4pbtf")
 }],
 "loop": true,
 "name": &"Idle",

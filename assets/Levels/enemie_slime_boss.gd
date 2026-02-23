@@ -170,6 +170,7 @@ func _on_player_slide_signal() -> void:
 #endregion
 
 func _ready():
+	SongPlayer.MusicState = SongPlayer.MusicStates.boss1
 	if(RetroStyle):
 		$Moveparticles.fixed_fps = 10
 		$Moveparticles.interpolate = false
