@@ -1,2 +1,6 @@
-Npc1: [mood=Happy]How does it feel to be a racer?
-Npc1: [mood=Sappy]Just hoping you won't regret that
+Npc1: [mood=Happy]Como se siente ser un corredor?
+Player: Mmm, tipo, igual que como lo ves maso menos
+Npc1: Emmph
+Npc1: [mood=Sappy]No te marea la velocidad?
+Player: Ehh, no
+Npc1: Cada vez que fui a una seson de practica termine vomitando

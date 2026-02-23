@@ -17,9 +17,36 @@
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
+"Angry": {
+"export_overrides": {
+"image": "\"res://assets/Sprites/menus/Dialogues/Angry.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
 "Idle": {
 "export_overrides": {
 "image": "\"res://assets/Sprites/menus/Dialogues/Player.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Sad": {
+"export_overrides": {
+"image": "\"res://assets/Sprites/menus/Dialogues/Sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Surprised": {
+"export_overrides": {
+"image": "\"res://assets/Sprites/menus/Dialogues/Surprised.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
