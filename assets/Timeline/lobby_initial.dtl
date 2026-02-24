@@ -1,6 +1,7 @@
 Npc1: [mood=Happy]Como se siente ser un corredor?
-Player: Mmm, tipo, igual que como lo ves maso menos
+Player (Mmm): Mmm, tipo, igual que como lo ves maso menos
 Npc1: Emmph
 Npc1: [mood=Sappy]No te marea la velocidad?
-Player: Ehh, no
+Player (Idle): Ehh, no
 Npc1: Cada vez que fui a una seson de practica termine vomitando
+Player (Sad): ...

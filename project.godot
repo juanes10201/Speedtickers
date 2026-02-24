@@ -59,7 +59,9 @@ directories/dtl_directory={
 "npc_lobby6": "res://assets/Timeline/npc_lobby6.dtl",
 "npc_lobby7": "res://assets/Timeline/npc_lobby7.dtl",
 "npc_lobby8": "res://assets/Timeline/npc_lobby8.dtl",
-"npc_lobby9": "res://assets/Timeline/npc_lobby9.dtl"
+"npc_lobby9": "res://assets/Timeline/npc_lobby9.dtl",
+"npc_lobby_tv1": "res://assets/Timeline/Tvs/npc_lobby_tv1.dtl",
+"npc_lobby_tv2": "res://assets/Timeline/Tvs/npc_lobby_tv2.dtl"
 }
 layout/style_directory={
 "": "res://assets/Dialog/Styles/FaceShow.tres",
