@@ -1,6 +1,6 @@
-Npc1: [mood=Regular]Ya van 2 dias que estoy intentando reponer estos cristales
-Npc1: [mood=Regular]Te podes creer que uno de los suyos lo rompio?
+Npc1 (Earing): [mood=Regular]Ya van 2 dias que estoy intentando reponer estos cristales
+Npc1 (Depresed): [mood=Regular]Te podes creer que uno de los suyos lo rompio?
 Player: [mood=Regular]La verdad que no jsjs
-Npc1: [mood=Sad]Y ademas no te pagan hasta terminar esto
-Npc1: [mood=Regular]Hmph
-Npc1: [mood=Sad]Bueno te corto que tengo que toca laburar
+Npc1 (Depresed): [mood=Sad]Y ademas no te pagan hasta terminar esto
+Npc1 (Earing): [mood=Regular]Hmph
+Npc1 (Chad1): [mood=Sad]Bueno te corto que tengo que toca laburar

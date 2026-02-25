@@ -1,7 +1,7 @@
-Npc1: [mood=Happy]Cada tanto me gusta venir aca
-Npc1: Me ayuda a recordar como era todo antes...
-Npc1: Era tipo... ehhhh...
-Npc1: ...exactamente lo mismo
-Npc1: Pero bueno al menos habia un par de arboles naturales... creo
-Npc1: [mood=Happy]Creeria que son los que ahora estan en los museos
+Npc1 (Confused): [mood=Happy]Cada tanto me gusta venir aca
+Npc1 (Depresed): Me ayuda a recordar como era todo antes...
+Npc1 (Confused): Era tipo... ehhhh...
+Npc1 (Cry): ...exactamente lo mismo
+Npc1 (Confused): Pero bueno al menos habia un par de arboles naturales... creo
+Npc1 (Earing): [mood=Happy]Creeria que son los que ahora estan en los museos
 Player (Mmm): Habria que visitarlos no?
