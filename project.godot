@@ -52,6 +52,7 @@ directories/dtl_directory={
 "npc_lobby1": "res://assets/Timeline/npc_lobby1.dtl",
 "npc_lobby10": "res://assets/Timeline/npc_lobby10.dtl",
 "npc_lobby11": "res://assets/Timeline/npc_lobby11.dtl",
+"npc_lobby12": "res://assets/Timeline/npc_lobby12.dtl",
 "npc_lobby2": "res://assets/Timeline/npc_lobby2.dtl",
 "npc_lobby3": "res://assets/Timeline/npc_lobby3.dtl",
 "npc_lobby4": "res://assets/Timeline/npc_lobby4.dtl",

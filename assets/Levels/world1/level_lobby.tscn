@@ -632,6 +632,11 @@ Dialogue_Action = "lobby_initial"
 top_level = true
 position = Vector2(-157, -45)
 
+[node name="CharacterBody2D14" parent="." unique_id=704929324 node_paths=PackedStringArray("PointTo") instance=ExtResource("13_wsgti")]
+position = Vector2(-679, -827)
+PointTo = NodePath("")
+Dialogue_Action = "npc_lobby12"
+
 [node name="CharacterBody2D5" parent="." unique_id=287466201 instance=ExtResource("13_wsgti")]
 position = Vector2(356, -648)
 Dialogue_Action = "npc_lobby3"
