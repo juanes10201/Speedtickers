@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://c2rbkkhcnpsjw" path="res://assets/Sprites/Bosses/bomb-slimey.png" id="5_x255c"]
 [ext_resource type="Texture2D" uid="uid://b5f287rcpp5i8" path="res://assets/Sprites/Bosses/bomb-explode.png" id="6_fmyot"]
 [ext_resource type="Texture2D" uid="uid://k41hdeu3lifo" path="res://assets/Sprites/Bosses/bomb-slimey-explode.png" id="7_c0442"]
-[ext_resource type="AudioStream" uid="uid://dif4bm1xcwvh2" path="res://assets/Sounds/Boss/ExplosionBomb.wav" id="8_c0442"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o6gnl"]
 shader = ExtResource("2_c0442")
@@ -851,9 +850,6 @@ shape = SubResource("CircleShape2D_v8p1a")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=210775077]
 sprite_frames = SubResource("SpriteFrames_o17r5")
 animation = &"Default"
-
-[node name="AudioExplode" type="AudioStreamPlayer" parent="." unique_id=1474149252]
-stream = ExtResource("8_c0442")
 
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
 [connection signal="timeout" from="ExplosionTimerPhase2" to="." method="_on_explosion_timer_timeout"]

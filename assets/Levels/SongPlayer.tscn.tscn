@@ -21,8 +21,6 @@ bus = &"Music"
 
 [node name="SongBoss1" type="AudioStreamPlayer" parent="." unique_id=713378684]
 stream = ExtResource("4_i05w6")
-volume_db = 10.0
-bus = &"Music"
 
 [node name="AudioDeathPlayer" type="AudioStreamPlayer" parent="." unique_id=2112281634]
 stream = ExtResource("5_7olny")

@@ -114,6 +114,7 @@ var Physics : bool = true
 var Sleep : bool = false
 
 var SpawnedCollar : bool = false
+@onready var ExplodeBombExplode = $ExplodeBombExplode
 #endregion
 
 #region Killed by Slide or Groundsmash Sound
@@ -155,6 +156,9 @@ func start_cooldown_timer() -> void:
 	Move = false
 	_set_sleep(true)
 
+func play_anim(anim : String) -> void:
+	$Anim.play(anim)
+
 #region Player Slide 
 func _on_player_slide_signal() -> void:
 	if(_is_on_floor() && Can_BeGroundSmash && Player.GravityDirection == GravityDirection):
@@ -169,6 +173,10 @@ func _on_player_slide_signal() -> void:
 		_killed_by_player_sound()
 #endregion
 
+func set_dialogue_portrait(Portrait : String) -> void:
+	_Play_Animation(Portrait, false, false, false, true, false)
+	print("Changed boss portrait to " + Portrait)
+ 
 func _ready():
 	SongPlayer.MusicState = SongPlayer.MusicStates.boss1
 	if(RetroStyle):
@@ -663,6 +671,7 @@ func _Play_Animation(Anim : String, ChangeDirection : bool = false, Phase : bool
 		Sprite.play(Anim)
 	else:
 		Sprite.play("Phase2_" + Anim)
+	print("Played boss anim: " + Anim)
 
 func _spawn_bomb(MoveToPlayer : bool = true, Pos : Vector2  = Vector2(0.0,0.0), KeepTimer : bool = true) -> void:
 	Player._play_sound($AudioIntroBomb, true, true, .6, 1, .7, .15, 1.2)

@@ -30,9 +30,12 @@ func _on_explosion_timer_timeout() -> void:
 	_play_anim("Explode")
 	$SpriteDamageArea.hide()
 	$Sprite.z_index += 2
-	SaveGame.get_player()._play_sound($AudioExplode)
-	await get_tree().create_timer(1.0).timeout
-	queue_free()
+	var Boss = SaveGame.get_boss()
+	var Player = SaveGame.get_player()
+	if(Boss && Player):
+		Player._play_sound(Boss.ExplodeBombExplode)
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
 
 
 func _on_explosion_area_body_entered(body: Node2D) -> void:

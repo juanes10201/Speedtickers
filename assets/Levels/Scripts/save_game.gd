@@ -70,6 +70,16 @@ func savelevelrecord(Level : float = 1, RealTime : float = 0) -> void:
 	print("Saved data of level!")
 	writegamedata()
 
+func boss_slime_play_anim(anim : String) -> void:
+	get_boss().play_anim(anim)
+
+func boss_slime_change_portrait(portrait : String) -> void:
+	get_boss().set_dialogue_portrait(portrait)
+	
+func get_boss():
+	var Boss = get_tree().get_nodes_in_group("Boss")[0] if get_tree().get_nodes_in_group("Boss").size() else null
+	return Boss
+
 func get_player():
 	var Player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() else null
 	return Player
