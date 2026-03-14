@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b3jlq8xohxw3c"]
+
+[ext_resource type="Script" uid="uid://dlqh5wqv3u6m1" path="res://assets/Levels/world1/moving_platform.gd" id="1_ab024"]
+[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="2_3jr1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6cpg"]
+size = Vector2(21, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7d8l"]
+size = Vector2(21, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6cpg"]
+atlas = ExtResource("2_3jr1d")
+region = Rect2(382.99948, -0.0108428, 26.16452, 48.140522)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igmjh"]
+size = Vector2(8, 48)
+
+[node name="MovingPlatform" type="StaticBody2D" unique_id=2070563805]
+collision_layer = 65536
+script = ExtResource("1_ab024")
+
+[node name="PlayerArea" type="Area2D" parent="." unique_id=61715959]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" unique_id=823374231]
+position = Vector2(-13.5, 0)
+shape = SubResource("RectangleShape2D_o6cpg")
+debug_color = Color(0.6656458, 0.31472796, 1, 0.41960785)
+
+[node name="DestroyArea" type="Area2D" parent="." unique_id=1772002325]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyArea" unique_id=1607233841]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_t7d8l")
+debug_color = Color(0.9395225, 0.2478261, 0, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=725913417]
+texture = SubResource("AtlasTexture_o6cpg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=297026457]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_igmjh")
+debug_color = Color(0.52860063, 0.5367133, 0.5482226, 0.41960785)
+
+[connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
+[connection signal="body_exited" from="PlayerArea" to="." method="_on_player_area_body_exited"]
+[connection signal="body_entered" from="DestroyArea" to="." method="_on_destroy_area_body_entered"]

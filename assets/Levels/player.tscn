@@ -794,7 +794,7 @@ region = Rect2(245.81227, 357.8401, 4.423416, 4.180359)
 
 [node name="Player" type="CharacterBody2D" unique_id=173086588 groups=["Player"]]
 position = Vector2(8, 18)
-collision_mask = 2332
+collision_mask = 67868
 script = ExtResource("1_uhpgg")
 TimeDeath = 0.4
 
@@ -999,11 +999,18 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="MovingPlatformRay" type="RayCast2D" parent="." unique_id=2014261116]
+position = Vector2(0.1516676, -7.9292)
+rotation = -1.5708
+enabled = false
+target_position = Vector2(0, 28)
+collision_mask = 65536
+
 [node name="Wallchecker" type="RayCast2D" parent="." unique_id=941754128]
 position = Vector2(0.151668, -7.9292)
 rotation = -1.5708
 target_position = Vector2(0.07077122, 7.8483324)
-collision_mask = 2334
+collision_mask = 67870
 
 [node name="AudioDash" type="AudioStreamPlayer" parent="." unique_id=1026594763]
 stream = SubResource("AudioStreamRandomizer_4mswk")

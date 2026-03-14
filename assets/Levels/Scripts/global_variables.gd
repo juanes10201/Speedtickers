@@ -30,7 +30,9 @@ enum OBJECT_ACTIONS{
 	MoveLava,
 	Switch_Player_Gravity,
 	Switch_Gravity_Remix,
-	Restart_Time
+	Restart_Time,
+	Move_Water_level,
+	Set_Water_Level
 }
 enum GravityDirections{
 	INVERTED = -1,
@@ -62,7 +64,7 @@ func change_to_level(Lvl : int) -> void:
 func _ready():
 	var Player = SaveGame.get_player()
 
-func Play_Global_Action(Action : OBJECT_ACTIONS):
+func Play_Global_Action(Action : OBJECT_ACTIONS, AdditionalParam : float = 0.0):
 	Player = SaveGame.get_player() 
 	if(!Player): return
 	if(Action == Global.OBJECT_ACTIONS.switch_killbox_type):
@@ -80,3 +82,12 @@ func Play_Global_Action(Action : OBJECT_ACTIONS):
 		Player.CountTime = true
 		Player.Time_Left.start()
 		Player.Dashed = false
+	elif(Action == OBJECT_ACTIONS.Move_Water_level):
+		var WaterTileset = SaveGame.get_group_node("WaterTileset")
+		if(WaterTileset):
+			WaterTileset.WaterLevelGoTo = AdditionalParam
+	elif(Action == OBJECT_ACTIONS.Set_Water_Level):
+		var WaterTileset = SaveGame.get_group_node("WaterTileset")
+		if(WaterTileset):
+			WaterTileset.WaterLevel = AdditionalParam
+			WaterTileset.WaterLevelGoTo = AdditionalParam

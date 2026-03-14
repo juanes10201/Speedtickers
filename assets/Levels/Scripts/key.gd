@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var Player : ClassPlayer = SaveGame.get_player()
 @export var AditionalAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
+@export var AditionalActionArgument : float
 @export var AnotherAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
 
 @onready var Sprite : AnimatedSprite2D = $"AnimatedSprite2D"
@@ -97,7 +98,7 @@ func set_key_state(state : bool, PlayAction : bool):
 			$AnimatedSprite2D.play("get_orb")
 		if(Respawn):
 			TimerRespawn.start() 
-		Global.Play_Global_Action(AditionalAction)
+		Global.Play_Global_Action(AditionalAction, AditionalActionArgument)
 		Global.Play_Global_Action(AnotherAction)
 	if(state && Despawn):
 		var Boss = get_tree().get_nodes_in_group("Boss")[0] if get_tree().get_nodes_in_group("Boss").size() else null

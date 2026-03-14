@@ -87,6 +87,13 @@ func get_player():
 	else:
 		print("WARNING: Tried loading Player before the scene is loaded.")
 
+func get_group_node(Group : String):
+	if(get_tree()):
+		var GroupTile = get_tree().get_nodes_in_group(Group)[0] if get_tree().get_nodes_in_group(Group).size() else null
+		return GroupTile
+	else:
+		print("WARNING: Tried loading Group Node '" + Group + "' before the scene is loaded.")
+
 func get_player_replay():
 	var Player = get_tree().get_nodes_in_group("PlayerReplay")[0] if get_tree().get_nodes_in_group("PlayerReplay").size() else null
 	return Player
