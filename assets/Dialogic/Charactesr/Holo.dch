@@ -14,7 +14,7 @@
 "pitch_variance": -0.1,
 "skip_characters": 6.0,
 "sound_path": "res://assets/Sounds/Voices/Tutorial/1.wav",
-"volume_base": 20.0,
+"volume_base": 5.0,
 "volume_variance": 0.0
 }
 },

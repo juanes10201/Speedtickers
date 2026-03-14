@@ -129,6 +129,7 @@ func _groundsmash_player_sound() -> void:
 
 #region Jumping
 func _jump(_jump_velocity, ignore : bool = false, Reg : bool = true, Replace : bool = true) -> void:
+	Player._play_sound($AudioGrunt1, true)
 	#The idea is for the enemies to jump when the player does a ground-smash
 	if(velocity.y != 0 && !Replace): return
 	if(_is_on_floor() || ignore):
@@ -247,7 +248,7 @@ func _process(delta: float) -> void:
 		return
 	#print($SpawnBomb.time_left)
 	if(Slam && SlamNearPlayer):
-		Player._play_sound($AudioNear, true, true, .6, 1, .7, .15, 1.2)
+		Player._play_sound($AudioNear, true, true, -10, 1, .7, .15, 1.2)
 	if(EnemyLife <= LifeThrowbombs):
 		if($SpawnBomb.is_stopped()):
 			$SpawnBomb.start()
@@ -303,6 +304,7 @@ func _process(delta: float) -> void:
 			if(!SlamJump && abs(position.x-Player.position.x) <= DistanceSlam && SlamTimer.is_stopped()):
 				SlamTimer.start()
 				Player._play_sound($AudioSlamWait)
+				Player._play_sound($AudioGrunt2, true)
 			if(velocity.y > 0 && !SlamTimer.is_stopped()):
 				if(abs(position.x-Player.position.x) <= DistanceStopMovSlam):
 					velocity.x = 0
@@ -314,10 +316,12 @@ func _process(delta: float) -> void:
 					velocity.y = GroundSmashVelocity
 					velocity.x = 0
 					if(is_on_floor()):
+						if(Jumped):
+							Player._play_sound($AudioGrunt2, true)
 						if(WallJump && WallJumpTimer.is_stopped()): WallJump = false
 						if(Slam && !SlamJump):
 							Slam = false
-							Player._play_sound($AudioCrashSlam, true, true, .6, 1, .7, .15, 1.2)
+							Player._play_sound($AudioCrashSlam, true, true, -5, 1, .7, .15, 1.2)
 							BossSpawner.spawn_clock()
 							Player.Camera.Shake(20.0, 20.0)
 							if(WallJumped):
@@ -535,6 +539,8 @@ func _on_damage_jump_body_entered(body: Node2D) -> void:
 
 func _on_slam_timer_timeout() -> void:
 	print("Done Slam")
+	if(!Slam):
+		Player._play_sound($AudioGrunt4, true)
 	Slam = true
 	Player._play_sound(AudioGroundsmash, true, true, 20, .7)
 	Player.Camera.Shake(7.0, 7.0)
@@ -563,7 +569,7 @@ func _on_stop_slide_area_2d_body_entered(body: Node2D) -> void:
 		WallJump = true
 	if(Slide):
 		#Done Slide and touched wall
-		Player._play_sound($AudioCrashWall, true, true, .6, 1, .7, .15, 1.2)
+		Player._play_sound($AudioCrashWall, true, true, -5, 1, .7, .15, 1.2)
 		_update_direction()
 		Slide = false
 		_Play_Animation("Air", true, true, true, true)
@@ -601,6 +607,7 @@ func _on_damage_boss_body_entered(body: Node2D) -> void:
 			Player.InvencibilityTimer.start()
 
 func FinalAttack():
+	Player._play_sound($AudioScream, true, false, 8.0)
 	InFinalAttack = true
 	_set_sleep(false)
 	if(FinalAttackPos):
@@ -635,7 +642,7 @@ func _set_sleep(State: bool = true):
 		if(Sprite.animation == "Sleep-Initial" && !Sprite.is_playing()):
 			_Play_Animation("Sleep", false, false, false, true, false)
 		CountSpecialAttack = 0
-		Player._play_sound($AudioSnooring, true, true, .6, 1, .9, .15, 1.1)
+		Player._play_sound($AudioSnooring, true, true, -5, 1, .9, .15, 1.1)
 	else:
 		_Play_Animation("Idle", false, true, true, true, false)
 		Player._stop_sound($AudioSnooring)
@@ -644,7 +651,7 @@ func _on_cooldown_hit_timer_timeout() -> void:
 	Move = true
 
 func UpdateLife() -> void:
-	Player._play_sound($AudioHit, true, true, .6, 1, .7, .15, 1.2)
+	Player._play_sound($AudioHit, true, true, -10, 1, .7, .15, 1.2)
 	AudienceSprite.strech_size(.9, 1.2, true)
 	_Play_Animation("Damage", false, true, false, true)
 	if(!CooldownHitTimer.is_stopped()): Player._play_sound($AudioPop, true, true, .6, 1, .7, .15, 1.2)
@@ -674,7 +681,7 @@ func _Play_Animation(Anim : String, ChangeDirection : bool = false, Phase : bool
 	print("Played boss anim: " + Anim)
 
 func _spawn_bomb(MoveToPlayer : bool = true, Pos : Vector2  = Vector2(0.0,0.0), KeepTimer : bool = true) -> void:
-	Player._play_sound($AudioIntroBomb, true, true, .6, 1, .7, .15, 1.2)
+	Player._play_sound($AudioIntroBomb, true, true, -5, 1, .7, .15, 1.2)
 	BossSpawner.spawn_bomb(MoveToPlayer, Pos)
 	if(KeepTimer): $SpawnBomb.start()
 
@@ -691,7 +698,7 @@ func _on_area_near_body_exited(body: Node2D) -> void:
 func _on_sprite_2d_animation_finished() -> void:
 	if(Sprite.animation == "Button"):
 		_spawn_bomb()
-		Player._play_sound($AudioSlimeButtonPress)
+		Player._play_sound($AudioSlimeButtonPress, true, true, -5)
 		Player.EnableMovement = true
 		Physics = true
 

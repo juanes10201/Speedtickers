@@ -1,14 +1,16 @@
-do SaveGame.boss_slime_change_portrait("Right")
 Holo: Y ACA llegamos! Ehemm
+do SaveGame.boss_slime_change_portrait("Right")
 Holo: Den TODOS una RONDA de APLAUSOS al Gran slimo
 do SaveGame.boss_slime_play_anim("intro-flowers")
 do SaveGame.boss_slime_change_portrait("Look-Up")
 Boss1: ehehe GRACIAS GRACIAS
-Boss1: ESPERO LOGRAR INSPIRARLOS LUEGO DE ESTO
+Boss1: [mood=Tired]EZPERO LOGRARR INZPIRARLOS LUEGO DE EZTO
+do SaveGame.boss_slime_change_portrait("Dialogue_Right")
+Boss1: [mood=Angry](y vos pendejo no te pasez de picante)
 do SaveGame.boss_slime_change_portrait("Dialogue_Confused")
 Holo: Bueno bueno...
 do SaveGame.boss_slime_play_anim("end-flowers")
-Boss1: Mhm
+Boss1: [mood=Tired]Mhm
 do SaveGame.boss_slime_change_portrait("Dialogue_Right")
 Holo: Y ahora todos aplaudamos al nene aca al lado
 Holo: Bueno bueno no tan fuerte che...

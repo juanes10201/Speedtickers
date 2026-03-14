@@ -170,7 +170,7 @@ animations = [{
 light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gt17r"]
-size = Vector2(24.75, 58.25)
+size = Vector2(168, 214)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7htf"]
 size = Vector2(114.00001, 67.5)
@@ -234,8 +234,8 @@ autostart = true
 position = Vector2(728, -87)
 
 [node name="KillBox" parent="." unique_id=1865261448 instance=ExtResource("5_s7htf")]
-position = Vector2(-194, 176)
-scale = Vector2(99.32, 1)
+position = Vector2(-12, 184)
+scale = Vector2(999, 1)
 Visible = false
 CanChange = false
 
@@ -632,9 +632,8 @@ Dialogue_Action = "lobby_initial"
 top_level = true
 position = Vector2(-157, -45)
 
-[node name="CharacterBody2D14" parent="." unique_id=704929324 node_paths=PackedStringArray("PointTo") instance=ExtResource("13_wsgti")]
+[node name="CharacterBody2D14" parent="." unique_id=704929324 instance=ExtResource("13_wsgti")]
 position = Vector2(-679, -827)
-PointTo = NodePath("")
 Dialogue_Action = "npc_lobby12"
 
 [node name="CharacterBody2D5" parent="." unique_id=287466201 instance=ExtResource("13_wsgti")]
@@ -687,8 +686,7 @@ offset_right = 140.0
 offset_bottom = 19.0
 theme_override_fonts/normal_font = ExtResource("19_p1iso")
 text = "
-Not too shabby kid, you have some future ahead of you.
-Take some rest, you'll need it. When ready go back to the portal following the arrows"
+No esta mal, tampoco te creas igual. Date un tiempo para descanzar por aca, cuando estes listo cruza el portal al fondo a la derecha"
 fit_content = true
 script = ExtResource("20_u01wk")
 TextDelay = NodePath("TextDelay")
@@ -710,6 +708,50 @@ volume_db = -20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea" unique_id=1746264170]
 position = Vector2(-24.375, 37.875)
+shape = SubResource("RectangleShape2D_gt17r")
+
+[node name="TextArea2" type="Area2D" parent="." unique_id=123857312 node_paths=PackedStringArray("Text")]
+position = Vector2(517, -100)
+script = ExtResource("16_7hf1d")
+Text = NodePath("DashTutorial2")
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TextArea2" unique_id=1646017298]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(97, 42)
+sprite_frames = SubResource("SpriteFrames_h6g38")
+animation = &"disabled"
+script = ExtResource("18_7uw4i")
+
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea2" unique_id=1310663481 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_ci07g")
+offset_left = 9.0
+offset_top = -43.0
+offset_right = 151.0
+offset_bottom = 29.0
+theme_override_fonts/normal_font = ExtResource("19_p1iso")
+text = "
+Cuando cruzes el portal vas a enfrentarte, al Gran Slimo. Descanza si lo necesitas"
+fit_content = true
+script = ExtResource("20_u01wk")
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TextArea2/DashTutorial2" unique_id=1094471393]
+wait_time = 0.05
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea2/DashTutorial2" unique_id=61210070]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TextArea2/DashTutorial2" unique_id=1513598034]
+stream = ExtResource("21_25w60")
+volume_db = -20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea2" unique_id=22101615]
+position = Vector2(18, -1)
 shape = SubResource("RectangleShape2D_gt17r")
 
 [node name="CharacterBody2D7" parent="." unique_id=2054389953 instance=ExtResource("13_wsgti")]
@@ -750,6 +792,7 @@ shape = SubResource("RectangleShape2D_s7htf")
 [connection signal="body_entered" from="TimeStop" to="TimeStop" method="_on_body_entered"]
 [connection signal="body_entered" from="TimeStop/StopRemover" to="TimeStop" method="_on_stop_remover_body_entered"]
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TextArea2" to="TextArea2" method="_on_body_entered"]
 [connection signal="body_entered" from="DialogueTrigger" to="DialogueTrigger" method="_on_body_entered"]
 [connection signal="body_exited" from="DialogueTrigger" to="DialogueTrigger" method="_on_body_exited"]
 [connection signal="body_entered" from="DialogueTrigger2" to="DialogueTrigger2" method="_on_body_entered"]

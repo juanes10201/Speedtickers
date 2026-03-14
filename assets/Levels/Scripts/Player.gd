@@ -48,6 +48,14 @@ var HaveKey : bool = false
 
 var SnappedOnRail : bool = false
 
+var OnWater : bool = false
+var OnWaterClampMax : float = 120
+var OnWaterClampMin : float = -500
+var OnWaterJumpMult : float = 1.1
+var OnWaterMultX : float = .7
+var OnWaterSlamMult : float = .7
+var OnWaterInitialSlide : bool = false
+
 #region Export variables
 @export var EnableParticles : bool = true
 @export var RetroStyle : bool = false
@@ -313,7 +321,8 @@ func _physics_process(delta: float) -> void:
 	if(ReplayStyle):
 		Sprite.modulate.a = 0.7
 		Particles = false
-		
+	$WaterParticles.emitting = OnWater
+	$WaterParticles2.emitting = OnWater
 	#if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
 	#	print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
 	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb && LevelManager.ExpoMoveTimeout.is_stopped()):
@@ -425,7 +434,10 @@ func _physics_process(delta: float) -> void:
 		#endregion
 		
 		#region Prevent overflow
-		if(Acc.x * GravityDirection > MaxAcc.x): Acc.x = MaxAcc.x * GravityDirection * GravitySandFallDirection
+		if(OnWater):
+			if(Acc.x * GravityDirection > MaxAcc.x*OnWaterMultX): Acc.x = MaxAcc.x * GravityDirection * GravitySandFallDirection * OnWaterMultX
+		else:
+			if(Acc.x * GravityDirection > MaxAcc.x): Acc.x = MaxAcc.x * GravityDirection * GravitySandFallDirection
 		if(velocity.y * GravityDirection > MaxAcc.y && !GroundSmash): velocity.y = MaxAcc.y * GravityDirection * GravitySandFallDirection
 		#endregion
 		
@@ -540,6 +552,10 @@ func _spawn_pause_menu() -> void:
 #region Gravity
 func _physics_apply_gravity(delta: float) -> void:
 	if (!_is_on_floor()):
+		if(OnWaterInitialSlide):
+			velocity.y = 0.0
+		if(OnWater):
+			velocity.y = clamp(velocity.y, OnWaterClampMin, OnWaterClampMax)
 		if(was_on_floor): CoyoteTimer.start()
 		if(!WallJump && DashTime.is_stopped()):
 			velocity.y += get_gravity_player() * Acc.y * delta * GravityDirection * GravitySandFallDirection
@@ -586,7 +602,7 @@ func _invert_gravity_remix() -> void:
 func _physics_jump(delta: float) -> void:
 	# Handle jump.
 	DashWithJump = false
-	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped()) ) || (!PreWallJumpTimer.is_stopped() && is_action_pressed("player_jump")) ):
+	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped() || OnWaterInitialSlide) ) || (!PreWallJumpTimer.is_stopped() && is_action_pressed("player_jump")) ):
 		SnappedOnRail = false
 		DoJump()
 		LevelManager.ExpoMoveTimeout.start()
@@ -608,6 +624,7 @@ func DoJump() -> void:
 		SlidingInAir = true
 		Speed.x = Acc.x*3 * ceil(LastDirection)
 	velocity.y = jump_velocity * GravityDirection
+	if(OnWater): velocity.y *= OnWaterJumpMult
 	if(!DashTime.is_stopped() || DashWithJump):
 		DashWithJump = true
 		if(!DashedWithJump):
@@ -684,6 +701,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 		if(!_is_on_floor_raycast() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			velocity.y = GroundSmashVelocity * GravityDirection
+			if(OnWater): velocity *= OnWaterSlamMult
 			#Slam Storage
 			if(!SlamStorageTimer.is_stopped()):
 				if(!DidSlamStorage):
@@ -733,6 +751,7 @@ func Reset_Slide():
 	Sliding = Sides.NONE
 	ParticlesSlide.emitting = false
 	Slide = false
+	OnWaterInitialSlide = false
 	#if(!SlidingInAir):
 		#Speed.x = 0
 	SlideVelocity = 0
@@ -753,6 +772,8 @@ func _physics_dash(delta: float) -> void:
 		strech_size(2.5, 0.5)
 		DashTime.start()
 		DashMove = DashAcc * ceil(LastDirection)
+		if(OnWater):
+			DashMove *= OnWaterMultX
 		Controller_Vibrate_Player_Movement(0.7)
 	#Dash movement
 	if(DashWithJump): DashMove = DashAcc * LastDirection
@@ -946,3 +967,27 @@ func _on_timer_intro_slam_timeout() -> void:
 	Input.action_press("player_slide")
 	await get_tree().create_timer(.5).timeout
 	Input.action_release("player_slide")
+
+
+func _on_water_area_area_entered(area: Area2D) -> void:
+	OnWater = true
+	if(Slide):
+		CoyoteTimer.start()
+		OnWaterInitialSlide = true
+
+
+func _on_water_area_area_exited(area: Area2D) -> void:
+	OnWater = false
+	OnWaterInitialSlide = false
+
+
+func _on_water_area_body_entered(body: Node2D) -> void:
+	OnWater = true
+	if(Slide):
+		CoyoteTimer.start()
+		OnWaterInitialSlide = true
+
+
+func _on_water_area_body_exited(body: Node2D) -> void:
+	OnWater = false
+	OnWaterInitialSlide = false

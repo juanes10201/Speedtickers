@@ -81,8 +81,11 @@ func get_boss():
 	return Boss
 
 func get_player():
-	var Player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() else null
-	return Player
+	if(get_tree()):
+		var Player = get_tree().get_nodes_in_group("Player")[0] if get_tree().get_nodes_in_group("Player").size() else null
+		return Player
+	else:
+		print("WARNING: Tried loading Player before the scene is loaded.")
 
 func get_player_replay():
 	var Player = get_tree().get_nodes_in_group("PlayerReplay")[0] if get_tree().get_nodes_in_group("PlayerReplay").size() else null

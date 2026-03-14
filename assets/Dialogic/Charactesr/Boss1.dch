@@ -5,8 +5,39 @@
 &"color": Color(1, 1, 1, 1),
 &"custom_info": {
 "prefix": "",
-"sound_mood_default": "",
-"sound_moods": {},
+"sound_mood_default": "Main",
+"sound_moods": {
+"Angry": {
+"mode": 0,
+"name": "Angry",
+"pitch_base": 1.0,
+"pitch_variance": 0.1,
+"skip_characters": 6.0,
+"sound_path": "res://assets/Sounds/Voices/Boss/Angry.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+},
+"Main": {
+"mode": 0,
+"name": "Main",
+"pitch_base": 1.0,
+"pitch_variance": 0.1,
+"skip_characters": 7.0,
+"sound_path": "res://assets/Sounds/Voices/Boss/Idle.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+},
+"Tired": {
+"mode": 0,
+"name": "Tired",
+"pitch_base": 1.0,
+"pitch_variance": 0.1,
+"skip_characters": 6.0,
+"sound_path": "res://assets/Sounds/Voices/Boss/Tired.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
 "style": "",
 "suffix": ""
 },

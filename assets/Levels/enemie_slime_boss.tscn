@@ -26,8 +26,13 @@
 [ext_resource type="AudioStream" uid="uid://x32l3srqdwme" path="res://assets/Sounds/Boss/Slime-Slam-Wait.wav" id="20_wehr2"]
 [ext_resource type="Texture2D" uid="uid://dthevcxjs0m5v" path="res://assets/Sprites/Bosses/Z-min.png" id="21_1yjqm"]
 [ext_resource type="Texture2D" uid="uid://c2c4dye6hahly" path="res://assets/Sprites/Bosses/Z.png" id="21_a8kwp"]
-[ext_resource type="Texture2D" uid="uid://d2ss0fuqh1fmc" path="res://assets/Sprites/Bosses/Dialogue/Right.png" id="23_vwu67"]
-[ext_resource type="Texture2D" uid="uid://b3yljo424b61s" path="res://assets/Sprites/Bosses/Dialogue/Confused.png" id="23_y8hrs"]
+[ext_resource type="AudioStream" uid="uid://cqshqb46qaudg" path="res://assets/Sounds/Boss/Grunt/grunt1.wav" id="21_y1qok"]
+[ext_resource type="AudioStream" uid="uid://b1opukkuxkyuq" path="res://assets/Sounds/Boss/Grunt/grunt2.wav" id="22_m2rj6"]
+[ext_resource type="AudioStream" uid="uid://beqcfrul4b8mb" path="res://assets/Sounds/Boss/Grunt/grunt3.wav" id="23_ocfsp"]
+[ext_resource type="Texture2D" uid="uid://cmlu1lh0iggkh" path="res://assets/Sprites/Bosses/Dialogue/Dialogue-sheet.png" id="23_y8hrs"]
+[ext_resource type="AudioStream" uid="uid://dhhhsgrgyxhl" path="res://assets/Sounds/Boss/Grunt/grunt4.wav" id="24_g4ogn"]
+[ext_resource type="AudioStream" uid="uid://ch4uc3cxisk5a" path="res://assets/Sounds/Boss/Grunt/ahhh.wav" id="25_m2rj6"]
+[ext_resource type="Texture2D" uid="uid://b0loy3sli0iie" path="res://assets/Sprites/Bosses/Dialogue/LookUp.png" id="26_4pbtf"]
 [ext_resource type="Texture2D" uid="uid://cbrh4huxtg1me" path="res://assets/Sprites/Bosses/Stage/Deco/flower1.png" id="29_5dib2"]
 [ext_resource type="Texture2D" uid="uid://l3q6hp4n7hoj" path="res://assets/Sprites/Bosses/Stage/Deco/flower-2.png" id="30_7s4yq"]
 [ext_resource type="Texture2D" uid="uid://c4lfd7ogh4n5g" path="res://assets/Sprites/Bosses/Stage/Deco/flower-3.png" id="31_y8hrs"]
@@ -268,41 +273,45 @@ region = Rect2(800, 790, 200, 158)
 atlas = ExtResource("6_wg0y6")
 region = Rect2(1000, 790, 200, 158)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_elakn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pynkh"]
+atlas = ExtResource("23_y8hrs")
+region = Rect2(1000, 0, 200, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv1ld"]
+atlas = ExtResource("23_y8hrs")
+region = Rect2(1200, 0, 200, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3apq"]
+atlas = ExtResource("23_y8hrs")
+region = Rect2(1400, 0, 200, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biveu"]
+atlas = ExtResource("23_y8hrs")
+region = Rect2(1600, 0, 200, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpeub"]
+atlas = ExtResource("23_y8hrs")
+region = Rect2(1800, 0, 200, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bypf1"]
 atlas = ExtResource("23_y8hrs")
 region = Rect2(0, 0, 200, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06qhm"]
+atlas = ExtResource("23_y8hrs")
+region = Rect2(200, 0, 200, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfd8i"]
+atlas = ExtResource("23_y8hrs")
+region = Rect2(400, 0, 200, 158)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elakn"]
+atlas = ExtResource("23_y8hrs")
+region = Rect2(600, 0, 200, 158)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55yem"]
 atlas = ExtResource("23_y8hrs")
-region = Rect2(200, 0, 200, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_guxvv"]
-atlas = ExtResource("23_y8hrs")
-region = Rect2(400, 0, 200, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkfms"]
-atlas = ExtResource("23_y8hrs")
-region = Rect2(600, 0, 200, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3sm4g"]
-atlas = ExtResource("23_y8hrs")
 region = Rect2(800, 0, 200, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pynkh"]
-atlas = ExtResource("23_vwu67")
-region = Rect2(0, 0, 200, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tv1ld"]
-atlas = ExtResource("23_vwu67")
-region = Rect2(200, 0, 200, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3apq"]
-atlas = ExtResource("23_vwu67")
-region = Rect2(400, 0, 200, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_biveu"]
-atlas = ExtResource("23_vwu67")
-region = Rect2(600, 0, 200, 158)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qgjfr"]
 atlas = ExtResource("10_idfvk")
@@ -444,21 +453,21 @@ region = Rect2(200, 158, 200, 158)
 atlas = ExtResource("6_wg0y6")
 region = Rect2(200, 316, 200, 158)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpeub"]
-atlas = ExtResource("6_wg0y6")
-region = Rect2(800, 316, 200, 158)
+[sub_resource type="AtlasTexture" id="AtlasTexture_guxvv"]
+atlas = ExtResource("26_4pbtf")
+region = Rect2(0, 0, 200, 158)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bypf1"]
-atlas = ExtResource("6_wg0y6")
-region = Rect2(1000, 316, 200, 158)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkfms"]
+atlas = ExtResource("26_4pbtf")
+region = Rect2(200, 0, 200, 158)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_06qhm"]
-atlas = ExtResource("6_wg0y6")
-region = Rect2(1200, 316, 200, 158)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sm4g"]
+atlas = ExtResource("26_4pbtf")
+region = Rect2(400, 0, 200, 158)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sfd8i"]
-atlas = ExtResource("6_wg0y6")
-region = Rect2(0, 474, 200, 158)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp1nl"]
+atlas = ExtResource("26_4pbtf")
+region = Rect2(600, 0, 200, 158)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wehr2"]
 atlas = ExtResource("12_wehr2")
@@ -856,26 +865,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_elakn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_55yem")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_guxvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jkfms")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3sm4g")
-}],
-"loop": false,
-"name": &"Dialogue_Confused",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_pynkh")
 }, {
 "duration": 1.0,
@@ -886,6 +875,29 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_biveu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpeub")
+}],
+"loop": false,
+"name": &"Dialogue_Confused",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bypf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06qhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfd8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elakn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55yem")
 }],
 "loop": false,
 "name": &"Dialogue_Right",
@@ -1047,16 +1059,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cpeub")
+"texture": SubResource("AtlasTexture_guxvv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bypf1")
+"texture": SubResource("AtlasTexture_jkfms")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_06qhm")
+"texture": SubResource("AtlasTexture_3sm4g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sfd8i")
+"texture": SubResource("AtlasTexture_gp1nl")
 }],
 "loop": false,
 "name": &"Look-Up",
@@ -2187,6 +2199,31 @@ stream = ExtResource("20_wehr2")
 volume_db = 5.0
 bus = &"Sfx"
 
+[node name="AudioGrunt1" type="AudioStreamPlayer" parent="." unique_id=752149906]
+stream = ExtResource("21_y1qok")
+volume_db = 20.0
+bus = &"Sfx"
+
+[node name="AudioGrunt2" type="AudioStreamPlayer" parent="." unique_id=1083033287]
+stream = ExtResource("22_m2rj6")
+volume_db = 20.0
+bus = &"Sfx"
+
+[node name="AudioGrunt3" type="AudioStreamPlayer" parent="." unique_id=1198203233]
+stream = ExtResource("23_ocfsp")
+volume_db = 20.0
+bus = &"Sfx"
+
+[node name="AudioGrunt4" type="AudioStreamPlayer" parent="." unique_id=586500298]
+stream = ExtResource("24_g4ogn")
+volume_db = 20.0
+bus = &"Sfx"
+
+[node name="AudioScream" type="AudioStreamPlayer" parent="." unique_id=1574649446]
+stream = ExtResource("25_m2rj6")
+volume_db = 20.0
+bus = &"Sfx"
+
 [node name="SpawnBomb" type="Timer" parent="." unique_id=1751679294]
 wait_time = 2.5
 
@@ -2242,6 +2279,7 @@ texture = ExtResource("32_4pbtf")
 
 [node name="ExplodeBombExplode" type="AudioStreamPlayer" parent="." unique_id=1444550161]
 stream = ExtResource("33_7s4yq")
+volume_db = -5.0
 
 [connection signal="body_entered" from="StopSlideArea2D" to="." method="_on_stop_slide_area_2d_body_entered"]
 [connection signal="body_entered" from="DamageBoss" to="." method="_on_damage_boss_body_entered"]

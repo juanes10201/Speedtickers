@@ -57,6 +57,10 @@
 [ext_resource type="AudioStream" uid="uid://d1svx1lrsq414" path="res://assets/Sounds/SandFall/SandFall6.wav" id="49_vfcmg"]
 [ext_resource type="AudioStream" uid="uid://bluoycwhp4kr6" path="res://assets/Sounds/SandFall/SandFall7.wav" id="50_mxrx7"]
 [ext_resource type="Texture2D" uid="uid://c60f22s8hbxqm" path="res://assets/Sprites/particles/Particle-WallJump.png" id="57_vfcmg"]
+[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="58_mxrx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfcmg"]
+size = Vector2(21, 23)
 
 [sub_resource type="Curve" id="Curve_ivnav"]
 _data = [Vector2(0.742647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -764,11 +768,44 @@ _data = {
 &"Walljump": SubResource("Animation_b0a62")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i03vl"]
+atlas = ExtResource("58_mxrx7")
+region = Rect2(243.74641, 339.70483, 7.631592, 7.534363)
+
+[sub_resource type="Curve" id="Curve_mxrx7"]
+_data = [Vector2(0.8230883, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b0a62"]
+curve = SubResource("Curve_mxrx7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0hfwl"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(11.725, 2.805, 1)
+inherit_velocity_ratio = 0.125
+gravity = Vector3(0, -28.455, 0)
+alpha_curve = SubResource("CurveTexture_b0a62")
+turbulence_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6fi2"]
+atlas = ExtResource("58_mxrx7")
+region = Rect2(245.81227, 357.8401, 4.423416, 4.180359)
+
 [node name="Player" type="CharacterBody2D" unique_id=173086588 groups=["Player"]]
 position = Vector2(8, 18)
 collision_mask = 2332
 script = ExtResource("1_uhpgg")
 TimeDeath = 0.4
+
+[node name="WaterArea" type="Area2D" parent="." unique_id=1182992665]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea" unique_id=1332542454]
+position = Vector2(-0.5, -9.5)
+shape = SubResource("RectangleShape2D_vfcmg")
+debug_color = Color(0.48883373, 0.4340849, 1, 0.41960785)
 
 [node name="Shadow" type="Node2D" parent="." unique_id=159249124]
 script = ExtResource("31_ivnav")
@@ -1152,4 +1189,24 @@ frame_progress = 1.0
 root_node = NodePath("../ParticleWalljump1")
 libraries/ = SubResource("AnimationLibrary_f6fi2")
 
+[node name="WaterParticles" type="GPUParticles2D" parent="." unique_id=594395271]
+position = Vector2(-2, -13)
+emitting = false
+amount = 2
+texture = SubResource("AtlasTexture_i03vl")
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_0hfwl")
+
+[node name="WaterParticles2" type="GPUParticles2D" parent="." unique_id=1582125679]
+position = Vector2(-2, -13)
+emitting = false
+amount = 2
+texture = SubResource("AtlasTexture_f6fi2")
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_0hfwl")
+
+[connection signal="area_entered" from="WaterArea" to="." method="_on_water_area_area_entered"]
+[connection signal="area_exited" from="WaterArea" to="." method="_on_water_area_area_exited"]
+[connection signal="body_entered" from="WaterArea" to="." method="_on_water_area_body_entered"]
+[connection signal="body_exited" from="WaterArea" to="." method="_on_water_area_body_exited"]
 [connection signal="timeout" from="TimerIntroSlam" to="." method="_on_timer_intro_slam_timeout"]

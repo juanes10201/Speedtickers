@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://5wgsndvnte8"]
+
+[ext_resource type="Script" uid="uid://cuo85uam6d03p" path="res://assets/Levels/world1/float.gd" id="1_meotq"]
+[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="1_wb8lm"]
+[ext_resource type="AudioStream" uid="uid://kyhbhitly8g" path="res://assets/Sounds/popballoon_proccessed.wav" id="3_lugg0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw1xd"]
+atlas = ExtResource("1_wb8lm")
+region = Rect2(288.00186, 360.9507, 48.783783, 7.0937195)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8d21"]
+size = Vector2(48, 16)
+
+[sub_resource type="Animation" id="Animation_wb8lm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D2/Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_meotq"]
+resource_name = "interact"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D2/Sprite2D:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.7, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 3.4), Vector2(0, 3.4), Vector2(0, 2.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lugg0"]
+_data = {
+&"RESET": SubResource("Animation_wb8lm"),
+&"interact": SubResource("Animation_meotq")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8d21"]
+radius = 3.0
+height = 48.0
+
+[node name="float" type="AnimatableBody2D" unique_id=1298722529 node_paths=PackedStringArray("TimerExplode", "TimerRespawn")]
+collision_layer = 256
+script = ExtResource("1_meotq")
+TimerExplode = NodePath("TimerExplode")
+TimerRespawn = NodePath("TimerRespawn")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=88261200]
+position = Vector2(0, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2" unique_id=604759268]
+position = Vector2(0, -1)
+texture = SubResource("AtlasTexture_hw1xd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=334808039]
+visible = false
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_g8d21")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2125039926]
+libraries/ = SubResource("AnimationLibrary_lugg0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=735099106]
+position = Vector2(0, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_g8d21")
+debug_color = Color(0.6866401, 0.29541618, 1, 0.41960785)
+
+[node name="TimerRespawn" type="Timer" parent="." unique_id=598934105]
+wait_time = 2.0
+one_shot = true
+
+[node name="TimerExplode" type="Timer" parent="." unique_id=1850366461]
+wait_time = 0.7
+one_shot = true
+
+[node name="AudioPop" type="AudioStreamPlayer" parent="." unique_id=1365773120]
+stream = ExtResource("3_lugg0")
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="timeout" from="TimerRespawn" to="." method="_on_timer_respawn_timeout"]
+[connection signal="timeout" from="TimerExplode" to="." method="_on_timer_explode_timeout"]

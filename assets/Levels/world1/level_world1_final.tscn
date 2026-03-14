@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Levels/falling_sand.tscn" id="16_7j8ub"]
 [ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Levels/laser.tscn" id="18_xdos2"]
 [ext_resource type="PackedScene" uid="uid://fswjgnqueri7" path="res://assets/Levels/enemie_slime_boss.tscn" id="20_1rl84"]
+[ext_resource type="Shader" uid="uid://dkqraf03jdkib" path="res://assets/Levels/world1/HighBloom.gdshader" id="22_stess"]
 [ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Levels/world1/rail.tscn" id="22_sw0pm"]
 [ext_resource type="Script" uid="uid://dkc2dv8d2secv" path="res://assets/Levels/world1/timer_spawner.gd" id="22_v8p1a"]
 [ext_resource type="Texture2D" uid="uid://jai2a8iwux2v" path="res://assets/Sprites/Bosses/Stage/3.png" id="27_px2v3"]
@@ -1082,7 +1083,7 @@ shader = ExtResource("5_xcexp")
 shader_parameter/strength = 0.07200000342
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxrh3"]
-size = Vector2(70, 22)
+size = Vector2(202, 22)
 
 [sub_resource type="Animation" id="Animation_e4war"]
 length = 0.001
@@ -1530,8 +1531,230 @@ _data = {
 &"RingIntro": SubResource("Animation_n4b3u")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4pby"]
+shader = ExtResource("22_stess")
+shader_parameter/bloom_spread = -11.26
+shader_parameter/bloom_intensity = 0.215
+
+[sub_resource type="Animation" id="Animation_stess"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player/Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/TransitionIn:MoveAmount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Parallax2D:scroll_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-340, -173)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HighBloom:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HighBloom:material")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_w4pby")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../HighBloom:material:shader_parameter/bloom_spread")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-11.26]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../HighBloom:material:shader_parameter/bloom_intensity")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.215]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("../HighBloom:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_orvnp"]
+resource_name = "RingIntro"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player/Camera2D:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 4.0666666, 4.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-595.76, 0), Vector2(-315.74326, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/TransitionIn:MoveAmount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.03333333, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 6.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Parallax2D:scroll_offset")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333336, 0.53333336, 1.3666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-498.695, -173), Vector2(-370.175, -173), Vector2(-340, -173)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HighBloom:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.06666667, 3.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../HighBloom:material")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_w4pby")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../HighBloom:material:shader_parameter/bloom_spread")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.9666667, 3.3333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../HighBloom:material:shader_parameter/bloom_intensity")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.73333335, 1.7666667, 3.5666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.85, 0.215, -0.685]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../HighBloom:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.5666666, 3.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stess"]
+_data = {
+&"RESET": SubResource("Animation_stess"),
+&"RingIntro": SubResource("Animation_orvnp")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxdvm"]
-size = Vector2(110, 86)
+size = Vector2(142, 86)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n4b3u"]
 size = Vector2(102.999985, 167)
@@ -1572,6 +1795,7 @@ tile_map_data = PackedByteArray("AADU/+3/AQABAAEAAADU/+z/AQABAAEAAADU/+P/AQABAAE
 tile_set = ExtResource("4_xdos2")
 
 [node name="DestroyTile" type="TileMapLayer" parent="TileMapLayer" unique_id=1551484738 groups=["Tileset"]]
+visible = false
 z_index = 1
 z_as_relative = false
 tile_map_data = PackedByteArray("AAAfAOz/AQAAAAIAAAAfAOv/AQAAAAEAAAAfAOr/AQAAAAEAAAAfAOn/AQAAAAEAAAAfAOj/AQAAAAEAAAAfAOf/AQAAAAEAAAAfAOb/AQAAAAEAAAAfAOX/AQAAAAEAAAAfAOT/AQAAAAEAAAAfAOP/AQAAAAEAAAAfAOL/AQAAAAEAAAAfAOH/AQAAAAEAAAAfAOD/AQAAAAEAAAAfAN//AQAAAAAAAAAjAOz/AQACAAIAAAAjAOv/AQACAAEAAAAjAOr/AQACAAEAAAAjAOn/AQACAAEAAAAjAOj/AQACAAEAAAAjAOf/AQACAAEAAAAjAOb/AQACAAEAAAAjAOX/AQACAAEAAAAjAOT/AQACAAEAAAAjAOP/AQACAAEAAAAjAOL/AQACAAEAAAAjAOH/AQACAAEAAAAjAOD/AQACAAEAAAAjAN//AQACAAAAAAAiAOz/AQABAAIAAAAiAOv/AQABAAEAAAAiAOr/AQABAAEAAAAiAOn/AQABAAEAAAAiAOj/AQABAAEAAAAiAOf/AQABAAEAAAAiAOb/AQABAAEAAAAiAOX/AQABAAEAAAAiAOT/AQABAAEAAAAiAOP/AQABAAEAAAAiAOL/AQABAAEAAAAiAOH/AQABAAEAAAAiAOD/AQABAAEAAAAiAN//AQABAAAAAAAhAOz/AQABAAIAAAAhAOv/AQABAAEAAAAhAOr/AQABAAEAAAAhAOn/AQABAAEAAAAhAOj/AQABAAEAAAAhAOf/AQABAAEAAAAhAOb/AQABAAEAAAAhAOX/AQABAAEAAAAhAOT/AQABAAEAAAAhAOP/AQABAAEAAAAhAOL/AQABAAEAAAAhAOH/AQABAAEAAAAhAOD/AQABAAEAAAAhAN//AQABAAAAAAAgAOz/AQABAAIAAAAgAOv/AQABAAEAAAAgAOr/AQABAAEAAAAgAOn/AQABAAEAAAAgAOj/AQABAAEAAAAgAOf/AQABAAEAAAAgAOb/AQABAAEAAAAgAOX/AQABAAEAAAAgAOT/AQABAAEAAAAgAOP/AQABAAEAAAAgAOL/AQABAAEAAAAgAOH/AQABAAEAAAAgAOD/AQABAAEAAAAgAN//AQABAAAAAAA=")
@@ -1852,41 +2076,47 @@ autostart = true
 
 [node name="CanvasLayer" parent="." unique_id=1266083840 instance=ExtResource("7_tsapb")]
 
+[node name="TransitionOut" parent="CanvasLayer" index="0" unique_id=311747729]
+DefaultStart = true
+
+[node name="TransitionIn" parent="CanvasLayer" index="1" unique_id=1620048563]
+visible = true
+
 [node name="Sprite2D9" type="Sprite2D" parent="CanvasLayer" unique_id=249441387]
 position = Vector2(133, 33)
 texture = ExtResource("14_d73ef")
 
 [node name="Flag" parent="." unique_id=1733067808 instance=ExtResource("9_sw0pm")]
-position = Vector2(-312, -667)
+position = Vector2(-667, -1105)
 
 [node name="WorldEnvironment" parent="." unique_id=827120208 instance=ExtResource("10_kpfiv")]
 
 [node name="Enemie5" parent="." unique_id=2110873122 instance=ExtResource("12_o6gnl")]
-position = Vector2(-875, -386)
+position = Vector2(-873, -1124)
 EnemyDirection = 2
 
 [node name="KillBox5" parent="." unique_id=625132102 instance=ExtResource("11_3k3gd")]
-position = Vector2(-877, -352)
+position = Vector2(-875, -1090)
 scale = Vector2(2, 1)
 
 [node name="Key" parent="." unique_id=2116344576 instance=ExtResource("13_f6viy")]
-position = Vector2(-844, -331)
+position = Vector2(-842, -1069)
 
 [node name="StaticBody2D" parent="." unique_id=2086010307 instance=ExtResource("14_1nboc")]
-position = Vector2(-898, -311)
+position = Vector2(-896, -1049)
 scale = Vector2(3.175, 1.815)
 
 [node name="AmbientParticles" parent="." unique_id=578140176 instance=ExtResource("15_wig4w")]
 position = Vector2(-325, 4)
 
 [node name="Key4" parent="." unique_id=714907811 instance=ExtResource("16_0udak")]
-position = Vector2(-988, -272)
+position = Vector2(-986, -1010)
 
 [node name="Key5" parent="." unique_id=411578814 instance=ExtResource("16_0udak")]
-position = Vector2(-988, -352)
+position = Vector2(-986, -1090)
 
 [node name="Key6" parent="." unique_id=364781957 instance=ExtResource("16_0udak")]
-position = Vector2(-1028, -314)
+position = Vector2(-1026, -1052)
 
 [node name="LaserBoss" parent="." unique_id=1131864393 instance=ExtResource("18_xdos2")]
 position = Vector2(302.63, -402)
@@ -1895,7 +2125,7 @@ collision_layer = 1024
 Laser_Color = 4
 
 [node name="Key10" parent="." unique_id=880550272 instance=ExtResource("13_f6viy")]
-position = Vector2(-424, -607)
+position = Vector2(-779, -1045)
 
 [node name="falling_sand53" parent="." unique_id=1885363149 instance=ExtResource("16_7j8ub")]
 position = Vector2(1088, -687)
@@ -2403,7 +2633,12 @@ texture = ExtResource("31_ytcgp")
 [node name="Frame4" type="Sprite2D" parent="." unique_id=432909566]
 self_modulate = Color(1, 1, 1, 0.76862746)
 position = Vector2(-682, -20)
-texture = ExtResource("33_bhiel")
+texture = ExtResource("32_aeb8i")
+
+[node name="Frame8" type="Sprite2D" parent="." unique_id=886084029]
+self_modulate = Color(1, 1, 1, 0.76862746)
+position = Vector2(19, 223)
+texture = ExtResource("31_ytcgp")
 
 [node name="Frame5" type="Sprite2D" parent="." unique_id=1364645857]
 self_modulate = Color(1, 1, 1, 0.76862746)
@@ -2719,10 +2954,34 @@ position = Vector2(100, 51)
 script = ExtResource("35_fyk5b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeRingIntro" unique_id=527762730]
+position = Vector2(66, 0)
 shape = SubResource("RectangleShape2D_lxrh3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SlimeRingIntro" unique_id=495616940]
 libraries/ = SubResource("AnimationLibrary_uxdvm")
+
+[node name="SlimeRingIntro2" type="Area2D" parent="." unique_id=1115626774]
+position = Vector2(-712, -299)
+script = ExtResource("35_fyk5b")
+CutOnDistance = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeRingIntro2" unique_id=811379697]
+position = Vector2(66, 0)
+shape = SubResource("RectangleShape2D_lxrh3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SlimeRingIntro2" unique_id=451857265]
+libraries/ = SubResource("AnimationLibrary_stess")
+
+[node name="HighBloom" type="ColorRect" parent="." unique_id=1341926216]
+visible = false
+z_index = 2
+material = SubResource("ShaderMaterial_w4pby")
+offset_left = -3490.0
+offset_top = -941.0
+offset_right = 2287.0
+offset_bottom = 1537.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Rail2" parent="." unique_id=471120042 instance=ExtResource("22_sw0pm")]
 position = Vector2(76, 58)
@@ -2730,14 +2989,13 @@ points = PackedVector2Array(-6, 6, 0, 2, 43, -89, 59, -66, 0, -90, 41, -31, 12, 
 
 [node name="RespawnPoint" parent="." unique_id=994135283 instance=ExtResource("37_e4war")]
 position = Vector2(103, 65)
-Enabled = true
 
 [node name="DisableTime" type="Area2D" parent="." unique_id=1400564032]
 position = Vector2(104.605, 29)
 script = ExtResource("38_n4b3u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DisableTime" unique_id=2100273178]
-position = Vector2(8.394997, 0)
+position = Vector2(24.394997, 0)
 shape = SubResource("RectangleShape2D_uxdvm")
 
 [node name="DisableTime2" type="Area2D" parent="." unique_id=1382298687]
@@ -2829,9 +3087,11 @@ position = Vector2(-552, 270)
 AditionalAction = 1
 
 [connection signal="body_entered" from="SlimeRingIntro" to="SlimeRingIntro" method="_on_body_entered"]
+[connection signal="body_entered" from="SlimeRingIntro2" to="SlimeRingIntro2" method="_on_body_entered"]
 [connection signal="body_entered" from="DisableTime" to="DisableTime" method="_on_body_entered"]
 [connection signal="body_entered" from="DisableTime2" to="DisableTime2" method="_on_body_entered"]
 [connection signal="body_entered" from="DisableTime3" to="DisableTime3" method="_on_body_entered"]
 
+[editable path="CanvasLayer"]
 [editable path="Boss"]
 [editable path="Player"]
