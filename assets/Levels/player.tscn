@@ -1,15 +1,18 @@
 [gd_scene format=4 uid="uid://chat6jxc63bfj"]
 
 [ext_resource type="Script" uid="uid://cugk87nk65pxn" path="res://assets/Levels/Scripts/Player.gd" id="1_uhpgg"]
-[ext_resource type="Texture2D" uid="uid://bcv820hqp60jd" path="res://assets/Sprites/knightdash-Sheet.png" id="2_6abi3"]
 [ext_resource type="Texture2D" uid="uid://d2hw4c4hq34qe" path="res://assets/Sprites/particles/particles-Sheet.png" id="4_8hwr6"]
 [ext_resource type="Texture2D" uid="uid://cyuigf5d2u1qd" path="res://assets/Sprites/Player/dash.png" id="5_8giq1"]
+[ext_resource type="Texture2D" uid="uid://tp51xjtyhmh5" path="res://assets/Sprites/Player/Stop-Walk.png" id="5_b0a62"]
 [ext_resource type="AudioStream" uid="uid://bfqk2r6n43smr" path="res://assets/Sounds/dash1.wav" id="5_pfel7"]
 [ext_resource type="Texture2D" uid="uid://cnosef6e73jou" path="res://assets/Sprites/Player/slam.png" id="6_0s4h5"]
 [ext_resource type="AudioStream" uid="uid://by8wq0dg0h5ks" path="res://assets/Sounds/dash2.wav" id="6_k7csp"]
+[ext_resource type="Texture2D" uid="uid://c28ps7ruerkud" path="res://assets/Sprites/Player/float-left2.png" id="7_0hfwl"]
 [ext_resource type="Texture2D" uid="uid://c31cfgkgkeuyw" path="res://assets/Sprites/Player/player.png" id="7_2dlrs"]
 [ext_resource type="AudioStream" uid="uid://bgkh2ktpjw7di" path="res://assets/Sounds/dash3.wav" id="7_a27l2"]
+[ext_resource type="Texture2D" uid="uid://olqoumuursc6" path="res://assets/Sprites/Player/Float-Right.png" id="8_2ritr"]
 [ext_resource type="Texture2D" uid="uid://da2a3o3gvsn3j" path="res://assets/Sprites/Player/jump.png" id="8_3c4ps"]
+[ext_resource type="Texture2D" uid="uid://bqmstua3pshg1" path="res://assets/Sprites/Player/landinghero.png" id="8_f6fi2"]
 [ext_resource type="AudioStream" uid="uid://bp0r66nyk5ajk" path="res://assets/Sounds/dash4.wav" id="8_ndawj"]
 [ext_resource type="Texture2D" uid="uid://wcmkhx0w1ghi" path="res://assets/Sprites/Player/slide.png" id="9_ckcmk"]
 [ext_resource type="Texture2D" uid="uid://b1pqjeytvkeo5" path="res://assets/Sprites/Player/skate-rail.png" id="9_gu8yx"]
@@ -26,9 +29,13 @@
 [ext_resource type="Script" uid="uid://d23fnhxwc5cxw" path="res://assets/Levels/ShadowSprite.gd" id="14_2dlrs"]
 [ext_resource type="Shader" uid="uid://vf7wbaxmykte" path="res://assets/Levels/blur.gdshader" id="14_3c4ps"]
 [ext_resource type="AudioStream" uid="uid://wvfyegwnf1q4" path="res://assets/Sounds/slime_slide.wav" id="14_8u734"]
+[ext_resource type="Texture2D" uid="uid://doa5rsixym3xs" path="res://assets/Sprites/Player/float-alt.png" id="15_2ritr"]
 [ext_resource type="AudioStream" uid="uid://c2jyf1ulqt0qj" path="res://assets/Sounds/slime_move.wav" id="15_4ir8m"]
+[ext_resource type="Texture2D" uid="uid://xrqh8ne18njr" path="res://assets/Sprites/Player/Float.png" id="15_8e53b"]
 [ext_resource type="AudioStream" uid="uid://baawx3chmik64" path="res://assets/Sounds/PlayerWind.wav" id="15_ehprd"]
+[ext_resource type="Texture2D" uid="uid://ja430xm1748k" path="res://assets/Sprites/Player/float-alt-left.png" id="16_kpoh8"]
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="16_t3qgo"]
+[ext_resource type="Texture2D" uid="uid://b1olx04tuj0as" path="res://assets/Sprites/Player/float-alt-right.png" id="17_i03vl"]
 [ext_resource type="Texture2D" uid="uid://d233ru5plyksw" path="res://assets/Sprites/particles/particlesfall-Sheet.png" id="19_8erp2"]
 [ext_resource type="AudioStream" uid="uid://cgvt4j0ojlh60" path="res://assets/Sounds/switch.wav" id="19_uvkhq"]
 [ext_resource type="AudioStream" uid="uid://cqau2g0edyke0" path="res://assets/Sounds/key.wav" id="20_2xca2"]
@@ -296,34 +303,6 @@ region = Rect2(0, 0, 23, 29)
 atlas = ExtResource("8_3c4ps")
 region = Rect2(23, 0, 23, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cd78l"]
-atlas = ExtResource("2_6abi3")
-region = Rect2(108, 0, 18, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a623h"]
-atlas = ExtResource("2_6abi3")
-region = Rect2(90, 0, 18, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vu82g"]
-atlas = ExtResource("2_6abi3")
-region = Rect2(72, 0, 18, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5r6fr"]
-atlas = ExtResource("2_6abi3")
-region = Rect2(54, 0, 18, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eacy5"]
-atlas = ExtResource("2_6abi3")
-region = Rect2(36, 0, 18, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4gu1"]
-atlas = ExtResource("2_6abi3")
-region = Rect2(18, 0, 18, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8flc"]
-atlas = ExtResource("2_6abi3")
-region = Rect2(0, 0, 18, 22)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0s4h5"]
 atlas = ExtResource("11_0s4h5")
 region = Rect2(0, 0, 18, 22)
@@ -344,6 +323,14 @@ region = Rect2(54, 0, 18, 22)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_b0a62")
+}],
+"loop": true,
+"name": &"Change_Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_8giq1")
 }],
 "loop": true,
@@ -356,6 +343,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Groundsmash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_f6fi2")
+}],
+"loop": true,
+"name": &"Herofall",
 "speed": 5.0
 }, {
 "frames": [{
@@ -405,32 +400,6 @@ animations = [{
 "speed": 2.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cd78l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a623h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vu82g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5r6fr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eacy5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w4gu1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8flc")
-}],
-"loop": false,
-"name": &"Switch_gravity",
-"speed": 25.0
-}, {
-"frames": [{
 "duration": 1.5,
 "texture": SubResource("AtlasTexture_0s4h5")
 }, {
@@ -453,6 +422,54 @@ animations = [{
 }],
 "loop": true,
 "name": &"Wall_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_8e53b")
+}],
+"loop": true,
+"name": &"Water",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_2ritr")
+}],
+"loop": true,
+"name": &"Water_Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_kpoh8")
+}],
+"loop": true,
+"name": &"Water_Fall_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_i03vl")
+}],
+"loop": true,
+"name": &"Water_Fall_Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0hfwl")
+}],
+"loop": true,
+"name": &"Water_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2ritr")
+}],
+"loop": true,
+"name": &"Water_Right",
 "speed": 5.0
 }]
 
@@ -1211,6 +1228,10 @@ amount = 2
 texture = SubResource("AtlasTexture_f6fi2")
 lifetime = 2.5
 process_material = SubResource("ParticleProcessMaterial_0hfwl")
+
+[node name="DoubleJumpCooldownTimer" type="Timer" parent="." unique_id=703857266]
+wait_time = 0.3
+one_shot = true
 
 [connection signal="area_entered" from="WaterArea" to="." method="_on_water_area_area_entered"]
 [connection signal="area_exited" from="WaterArea" to="." method="_on_water_area_area_exited"]

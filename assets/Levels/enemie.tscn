@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://djqwajvc8m3td"]
+[gd_scene format=3 uid="uid://djqwajvc8m3td"]
 
 [ext_resource type="Script" uid="uid://cw42kfrmafcwu" path="res://assets/Levels/Scripts/enemie_physics.gd" id="1_ny8g4"]
 [ext_resource type="Texture2D" uid="uid://bvoudjtf4fdrs" path="res://assets/Sprites/particles/slime-move-particles.png" id="2_o3y1q"]
@@ -653,14 +653,14 @@ _data = {
 &"Walking": SubResource("Animation_nnhfd")
 }
 
-[node name="Enemie" type="CharacterBody2D" groups=["Enemie"]]
+[node name="Enemie" type="CharacterBody2D" unique_id=1044905873 groups=["Enemie"]]
 position = Vector2(115.72, -23.74)
 collision_layer = 512
 collision_mask = 2448
 script = ExtResource("1_ny8g4")
 Max_groundsmash_distance = 200.0
 
-[node name="Moveparticles" type="GPUParticles2D" parent="."]
+[node name="Moveparticles" type="GPUParticles2D" parent="." unique_id=322771655]
 emitting = false
 texture = ExtResource("2_o3y1q")
 trail_lifetime = 0.13
@@ -668,15 +668,15 @@ trail_sections = 7
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_boibh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemie"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179796938 groups=["Enemie"]]
 position = Vector2(0.14, 4.138)
 scale = Vector2(0.61, 0.6)
 shape = SubResource("RectangleShape2D_4y4c6")
 
-[node name="MoveTimer" type="Timer" parent="."]
+[node name="MoveTimer" type="Timer" parent="." unique_id=1277203347]
 one_shot = true
 
-[node name="HitParticles" type="GPUParticles2D" parent="."]
+[node name="HitParticles" type="GPUParticles2D" parent="." unique_id=948171337]
 emitting = false
 amount = 10
 texture = ExtResource("6_20qa8")
@@ -689,7 +689,7 @@ trail_sections = 3
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_o3y1q")
 
-[node name="HitFlyParticles" type="GPUParticles2D" parent="."]
+[node name="HitFlyParticles" type="GPUParticles2D" parent="." unique_id=165347881]
 emitting = false
 texture = ExtResource("4_caayp")
 lifetime = 1.5
@@ -697,21 +697,21 @@ trail_enabled = true
 trail_lifetime = 0.08
 process_material = SubResource("ParticleProcessMaterial_xxbrk")
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemie"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=698828681 groups=["Enemie"]]
 collision_layer = 2
 collision_mask = 1152
 script = ExtResource("2_x2l0f")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" groups=["Enemie"]]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1724139890 groups=["Enemie"]]
 position = Vector2(0.215, 1.825)
 scale = Vector2(1.225, 1.39)
 shape = SubResource("RectangleShape2D_4y4c6")
 debug_color = Color(0.846084, 0.377331, 0, 0.42)
 
-[node name="Sprite2D" type="Node2D" parent="."]
+[node name="Sprite2D" type="Node2D" parent="." unique_id=472253450]
 script = ExtResource("6_mxkeg")
 
-[node name="shadow" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="shadow" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1596290727]
 material = SubResource("ShaderMaterial_8txah")
 position = Vector2(-1.7200012, 4.629999)
 sprite_frames = SubResource("SpriteFrames_2fkqx")
@@ -719,33 +719,31 @@ animation = &"Idle"
 offset = Vector2(-0.28, -6.525)
 script = ExtResource("13_5ruuh")
 
-[node name="IdleAnim" type="Sprite2D" parent="Sprite2D"]
+[node name="IdleAnim" type="Sprite2D" parent="Sprite2D" unique_id=432012126]
 position = Vector2(-0.7200012, -1.3700008)
 texture = SubResource("CanvasTexture_mxkeg")
 hframes = 3
 
-[node name="AirAnim" type="Sprite2D" parent="Sprite2D"]
+[node name="AirAnim" type="Sprite2D" parent="Sprite2D" unique_id=1282070827]
 visible = false
 position = Vector2(-0.7200012, -1.3700008)
 texture = SubResource("CanvasTexture_nnhfd")
 hframes = 7
 
-[node name="LaserAnim" type="Sprite2D" parent="Sprite2D"]
+[node name="LaserAnim" type="Sprite2D" parent="Sprite2D" unique_id=353093110]
 visible = false
 position = Vector2(-0.7200012, -1.3700008)
 texture = ExtResource("4_k4yf5")
 hframes = 3
 
-[node name="WalkingAnim" type="Sprite2D" parent="Sprite2D"]
+[node name="WalkingAnim" type="Sprite2D" parent="Sprite2D" unique_id=610641878]
 visible = false
 position = Vector2(-0.7200012, -1.3700008)
 texture = SubResource("CanvasTexture_5ruuh")
 hframes = 6
 
-[node name="Anim" type="AnimationPlayer" parent="Sprite2D"]
+[node name="Anim" type="AnimationPlayer" parent="Sprite2D" unique_id=2146337338]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_5ruuh")
-}
+libraries/ = SubResource("AnimationLibrary_5ruuh")
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

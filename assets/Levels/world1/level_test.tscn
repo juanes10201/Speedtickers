@@ -219,7 +219,7 @@ position = Vector2(-274, -345)
 EnemyDirection = 2
 
 [node name="Key" parent="." unique_id=1497829993 instance=ExtResource("13_i8cjj")]
-position = Vector2(-288, -272)
+position = Vector2(-157, -433)
 AditionalAction = 6
 AditionalActionArgument = -381.45
 
@@ -229,12 +229,12 @@ AditionalAction = 6
 AditionalActionArgument = -583.19
 
 [node name="Key3" parent="." unique_id=190089876 instance=ExtResource("13_i8cjj")]
-position = Vector2(-333, -413)
+position = Vector2(-290, -263)
 AditionalAction = 6
 AditionalActionArgument = -287.2
 
 [node name="Umbrella" parent="." unique_id=791046513 instance=ExtResource("19_i7kmg")]
-position = Vector2(-404, -396)
+position = Vector2(-463, -623)
 
 [node name="Player" parent="." unique_id=1683755303 instance=ExtResource("5_ljyct")]
 position = Vector2(-361, -405)
@@ -244,11 +244,17 @@ CountTime = false
 position = Vector2(31.545025, -62.300858)
 offset = Vector2(-28.055, 23.85)
 zoom = Vector2(2.49, 2.49)
-limit_top = -757
+limit_left = -414
+limit_top = -607
 limit_right = 410
-limit_bottom = 1000
+limit_bottom = -225
 limit_smoothed = true
 script = ExtResource("6_u6rfp")
 
 [node name="MovingPlatform" parent="." unique_id=2070563805 instance=ExtResource("20_igmjh")]
-position = Vector2(-166, -626)
+position = Vector2(-341, -775)
+XSpeed = 500.0
+
+[node name="Rail2" parent="." unique_id=1020545274 instance=ExtResource("14_me14y")]
+position = Vector2(-108, -732)
+points = PackedVector2Array(-6, 6, 0, 2, 56, 11, 64, 108, 360, 102, 345, 25, 353, 22)

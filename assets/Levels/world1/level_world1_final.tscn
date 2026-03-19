@@ -1076,6 +1076,11 @@ shader = ExtResource("12_0dkde")
 shader_parameter/blur_size = 2.3750001128125
 shader_parameter/max_alpha = 0.3950000187625
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stess"]
+shader = ExtResource("12_0dkde")
+shader_parameter/blur_size = 4.0
+shader_parameter/max_alpha = 0.6
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rcitd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xcexp"]
@@ -1624,7 +1629,7 @@ tracks/6/keys = {
 }
 tracks/7/type = "value"
 tracks/7/imported = false
-tracks/7/enabled = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("../HighBloom:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
@@ -1632,7 +1637,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_orvnp"]
@@ -2079,8 +2084,10 @@ autostart = true
 [node name="TransitionOut" parent="CanvasLayer" index="0" unique_id=311747729]
 DefaultStart = true
 
-[node name="TransitionIn" parent="CanvasLayer" index="1" unique_id=1620048563]
-visible = true
+[node name="Sprite2D10" type="Sprite2D" parent="CanvasLayer" unique_id=1631934277]
+material = SubResource("ShaderMaterial_stess")
+position = Vector2(138, 38)
+texture = ExtResource("14_d73ef")
 
 [node name="Sprite2D9" type="Sprite2D" parent="CanvasLayer" unique_id=249441387]
 position = Vector2(133, 33)
@@ -2964,6 +2971,7 @@ libraries/ = SubResource("AnimationLibrary_uxdvm")
 position = Vector2(-712, -299)
 script = ExtResource("35_fyk5b")
 CutOnDistance = true
+OnlyOnce = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeRingIntro2" unique_id=811379697]
 position = Vector2(66, 0)
@@ -2974,6 +2982,7 @@ libraries/ = SubResource("AnimationLibrary_stess")
 
 [node name="HighBloom" type="ColorRect" parent="." unique_id=1341926216]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 material = SubResource("ShaderMaterial_w4pby")
 offset_left = -3490.0
@@ -2989,6 +2998,7 @@ points = PackedVector2Array(-6, 6, 0, 2, 43, -89, 59, -66, 0, -90, 41, -31, 12, 
 
 [node name="RespawnPoint" parent="." unique_id=994135283 instance=ExtResource("37_e4war")]
 position = Vector2(103, 65)
+Enabled = true
 
 [node name="DisableTime" type="Area2D" parent="." unique_id=1400564032]
 position = Vector2(104.605, 29)

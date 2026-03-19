@@ -21,17 +21,6 @@ var is_playing : bool = false
 
 var OriginalPos = Vector2(0, 0)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	if(RetroStyle):
-		linear_damp = 6.0
-		angular_damp = 10.0
-	if(!is_falling):
-		set_deferred("freeze", true)
-	else:
-		set_deferred("freeze", false)
-	SandTimer.wait_time = wait_time
-
 var editable = preload("res://assets/Levels/Scripts/default_object.gd").new()
 var Hovering : bool = false
 var StatePlaying : bool = false
@@ -44,6 +33,20 @@ var StatePlaying : bool = false
 @onready var RetroTimer = $RetroTimer
 @onready var RetroTimerMove = $RetroTimerMove
 var paused : bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if(RetroStyle):
+		linear_damp = 6.0
+		angular_damp = 10.0
+	if(!is_falling):
+		set_deferred("freeze", true)
+	else:
+		set_deferred("freeze", false)
+	SandTimer.wait_time = wait_time
+	if(RetroStyle):
+		$Sprite2D2.hide()
+		$SpriteRetro.show()
 
 func _input(event):
 	if(Edition.Is_in_editor && CanHover):

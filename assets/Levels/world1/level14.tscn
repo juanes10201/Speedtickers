@@ -289,13 +289,13 @@ autostart = true
 [node name="CanvasLayer" parent="." unique_id=1137578052 instance=ExtResource("7_wxvqd")]
 
 [node name="Enemie2" parent="." unique_id=884499226 instance=ExtResource("8_15uhc")]
-position = Vector2(-295, -24)
-EnemyDirection = 1
+position = Vector2(-313, -24)
+EnemyDirection = 2
 Enemy_burst_speed = 400.0
 
 [node name="Enemie" parent="." unique_id=1537696492 instance=ExtResource("8_15uhc")]
-position = Vector2(-279, -24)
-EnemyDirection = 1
+position = Vector2(-297, -24)
+EnemyDirection = 2
 Enemy_burst_speed = 400.0
 
 [node name="Enemie3" parent="." unique_id=382752969 instance=ExtResource("8_15uhc")]
@@ -304,7 +304,7 @@ EnemyDirection = 2
 Enemy_burst_speed = 400.0
 Enabled = false
 
-[node name="Sprite2D" parent="Enemie3" index="6"]
+[node name="Sprite2D" parent="Enemie3" index="6" unique_id=472253450]
 position = Vector2(1, 8.000002)
 
 [node name="Flag" parent="." unique_id=1892207015 instance=ExtResource("9_pssnl")]

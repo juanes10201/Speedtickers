@@ -58,6 +58,9 @@ var OnWaterSlamMult : float = .7
 var OnWaterInitialSlide : bool = false
 var OnWaterInitialSlideTile : bool = false
 
+var DoubleJumpEnabled : bool = false
+var DoubleJumped : bool = false
+
 #region Export variables
 @export var EnableParticles : bool = true
 @export var RetroStyle : bool = false
@@ -166,6 +169,8 @@ var OnSand : bool = false
 var was_on_floor : bool = true
 var was_on_floor_raycast : bool = true
 var Dead : bool = false
+
+var VelXChangingSide : bool = false
 
 var CanJump : bool = true
 
@@ -285,7 +290,7 @@ func _ready() -> void:
 		_load_replay(RecordedLocation)
 	if(SaveGame.get_config_value("Particles") != null):
 		Particles = SaveGame.get_config_value("Particles")
-	if(SaveGame.get_config_value("Juice") != null):
+	if(juice && SaveGame.get_config_value("Juice") != null):
 		juice = SaveGame.get_config_value("Juice")
 	Engine.time_scale = 1
 	if(LevelManager.StyleTimer.is_stopped()): 
@@ -322,17 +327,19 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
-	print(OnWaterInitialSlideTile)
-	$MovingPlatformRay.enabled = StickOnPlatform
-	if($MovingPlatformRay.is_colliding()):
-		position.x = $MovingPlatformRay.get_collision_point().x
+	#print(OnWaterInitialSlideTile)
+	if($MovingPlatformRay):
+		$MovingPlatformRay.enabled = StickOnPlatform
+		if($MovingPlatformRay.is_colliding()):
+			position.x = $MovingPlatformRay.get_collision_point().x
 	SlideDestroyTiles.target_position.x = abs(SlideDestroyTiles.target_position.x)
 	if(LastDirection < 0): SlideDestroyTiles.target_position.x *= -1
 	if(ReplayStyle):
 		Sprite.modulate.a = 0.7
 		Particles = false
-	$WaterParticles.emitting = OnWater
-	$WaterParticles2.emitting = OnWater
+	if($WaterParticles):
+		$WaterParticles.emitting = OnWater
+		$WaterParticles2.emitting = OnWater
 	#if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
 	#	print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
 	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb && LevelManager.ExpoMoveTimeout.is_stopped()):
@@ -351,7 +358,9 @@ func _physics_process(delta: float) -> void:
 		PlayedSwitchedGravityAnimation = false
 	#region Set direction
 	#Sprite direction
-	Sprite.flip_h = false if LastDirection >= 0 else true
+	if(Sprite.FlipHAnim): Sprite.flip_h = false if LastDirection >= 0 else true
+	else:
+		Sprite.flip_h = false
 	$Wallchecker.rotation_degrees = 90 if LastDirection < 0 else -90
 	_pause_menu_end_tick()
 	#endregion
@@ -394,12 +403,30 @@ func _physics_process(delta: float) -> void:
 		elif(GroundSmash):
 			Sprite.offset_play("Groundsmash")
 		elif(AirState == AirSides.Falling && !_is_on_floor_raycast()):
-			if(!Sprite.animation == "Jump"):
+			if(OnWater):
+				if(direction>0):
+					Sprite.offset_play("Water_Fall_Right",false)
+				elif(direction<0):
+					Sprite.offset_play("Water_Fall_Left",false)
+				else:
+					Sprite.offset_play("Water_Fall")
+			elif(!Sprite.animation == "Jump"):
 				Sprite.offset_play("Jump")
 		elif(AirState == AirSides.Jumping && !_is_on_floor_raycast()):
+			if(OnWater):
+				if(direction>0):
+					Sprite.offset_play("Water_Right",false)
+				elif(direction<0):
+					Sprite.offset_play("Water_Left",false)
+				else:
+					Sprite.offset_play("Water")
 			if(!Sprite.animation == "Jump_start"):
 				Sprite.offset_play("Jump_start")
 		elif(!Slide):
+			#if(OnWater):
+			#	Sprite.offset_play("Water")
+			#elif(VelXChangingSide):
+			#	Sprite.offset_play("Change_Walk")
 			if(direction):
 				Sprite.offset.y = -1.605
 				Sprite.offset_play("Walking")
@@ -477,6 +504,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		#endregion
 	elif(SnappedOnRail):
+		_physics_water(delta)
 		_play_sound(AudioRail, false, true, .3)
 		Sprite.play("Rail")
 		_Destroy_Tiles_Slide()
@@ -564,13 +592,16 @@ func _spawn_pause_menu() -> void:
 #region Water
 func _physics_water(delta: float) -> void:
 	#print(OnWaterInitialSlideTile)
+	
 	if(OnWaterTile && WaterTileset && position.y >= WaterTileset.WaterLevel):
 		if(Slide): OnWaterInitialSlideTile = true
 		OnWaterInitialSlide = OnWaterInitialSlideTile
 		OnWater = true
+		DoubleJumpEnabled = true
 	else:
 		OnWaterInitialSlide = false
 		OnWater = false
+		DoubleJumpEnabled = false
 #endregion
 
 #region Gravity
@@ -591,6 +622,7 @@ func _physics_apply_gravity(delta: float) -> void:
 					#_play_sound(AudioWind, false)
 		#else: velocity.y += Speed.y * delta
 	if (_is_on_floor()):
+		DoubleJumped = false
 		Dashed = false
 		_stop_sound(AudioWind)
 		#DashWithJump = false
@@ -628,7 +660,11 @@ func _physics_jump(delta: float) -> void:
 	DashWithJump = false
 	if(is_on_floor()):
 		CanJump = true
-	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped() || OnWaterInitialSlide) ) || (!PreWallJumpTimer.is_stopped() && is_action_pressed("player_jump")) ):
+	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped() || OnWaterInitialSlide || (!DoubleJumped && DoubleJumpEnabled && $DoubleJumpCooldownTimer.is_stopped())) ) || (!PreWallJumpTimer.is_stopped() && is_action_pressed("player_jump")) ):
+		if($DoubleJumpCooldownTimer):
+			if($DoubleJumpCooldownTimer.is_stopped() && !_is_on_floor() && !DoubleJumped && DoubleJumpEnabled):
+				DoubleJumped = true
+			if($DoubleJumpCooldownTimer.is_stopped()): $DoubleJumpCooldownTimer.start()
 		if(CanJump):
 			SnappedOnRail = false
 			DoJump()
@@ -703,12 +739,19 @@ func _physics_h_movement(delta: float) -> void:
 		#_play_sound(AudioWalk, false)
 		if((direction > 0 && Speed.x < 0) || (direction < 0 && Speed.x > 0)): Speed.x += Acc.x * direction
 		#Move faster if coming from Walljump
-		if((WallJumpPreviousSide == Sides.LEFT && direction < 0) || (WallJumpPreviousSide == Sides.RIGHT && direction > 0) && !PreWallJumpTimer.is_stopped()): Speed.x += Acc.x * direction *2
+		if((WallJumpPreviousSide == Sides.LEFT && direction < 0) || (WallJumpPreviousSide == Sides.RIGHT && direction > 0) && !PreWallJumpTimer.is_stopped()):
+			Speed.x += Acc.x * direction *2
 		
 		Speed.x += Acc.x * direction * Acc_Multiplier  # Adjust speed based on input direction
 	else:
-		if(Speed.x > 0): Speed.x -= Acc.x
-		if(Speed.x < 0): Speed.x += Acc.x
+		if(Speed.x > 0):
+			#VelXChangingSide = true
+			Speed.x -= Acc.x
+		elif(Speed.x < 0):
+			#VelXChangingSide = true
+			Speed.x += Acc.x
+		#else:
+			#VelXChangingSide = false
 		#_stop_sound(AudioWalk)
 #endregion
 
@@ -836,6 +879,7 @@ func _physics_walljump(delta: float) -> void:
 	else:
 		if(WallJump):
 			PreWallJumpTimer.start()
+			DoubleJumped = false
 		if(PreWallJumpTimer.is_stopped()): WallJumpPreviousSide = Sides.NONE
 		WallJump = false
 	#endregion

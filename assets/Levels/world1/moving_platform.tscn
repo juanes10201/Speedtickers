@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="2_3jr1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6cpg"]
-size = Vector2(21, 48)
+size = Vector2(33, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7d8l"]
 size = Vector2(21, 48)
@@ -23,7 +23,7 @@ script = ExtResource("1_ab024")
 [node name="PlayerArea" type="Area2D" parent="." unique_id=61715959]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" unique_id=823374231]
-position = Vector2(-13.5, 0)
+position = Vector2(-19.5, 0)
 shape = SubResource("RectangleShape2D_o6cpg")
 debug_color = Color(0.6656458, 0.31472796, 1, 0.41960785)
 
