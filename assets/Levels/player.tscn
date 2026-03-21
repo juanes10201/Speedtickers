@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="16_t3qgo"]
 [ext_resource type="Texture2D" uid="uid://b1olx04tuj0as" path="res://assets/Sprites/Player/float-alt-right.png" id="17_i03vl"]
 [ext_resource type="Texture2D" uid="uid://d233ru5plyksw" path="res://assets/Sprites/particles/particlesfall-Sheet.png" id="19_8erp2"]
+[ext_resource type="Texture2D" uid="uid://csamruw4q4yxc" path="res://assets/Sprites/Player/float-alt-start.png" id="19_d6bap"]
 [ext_resource type="AudioStream" uid="uid://cgvt4j0ojlh60" path="res://assets/Sounds/switch.wav" id="19_uvkhq"]
 [ext_resource type="AudioStream" uid="uid://cqau2g0edyke0" path="res://assets/Sounds/key.wav" id="20_2xca2"]
 [ext_resource type="AudioStream" uid="uid://bh23td2y13ecc" path="res://assets/Sounds/orb_gravity.wav" id="22_1ia1n"]
@@ -434,11 +435,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("19_d6bap")
+}, {
+"duration": 1.0,
 "texture": ExtResource("15_2ritr")
 }],
-"loop": true,
+"loop": false,
 "name": &"Water_Fall",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -455,6 +459,17 @@ animations = [{
 "loop": true,
 "name": &"Water_Fall_Right",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_d6bap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2ritr")
+}],
+"loop": false,
+"name": &"Water_Fall_Start",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,

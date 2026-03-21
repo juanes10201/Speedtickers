@@ -1,6 +1,7 @@
 extends AnimatableBody2D
 @export var TimerExplode : Timer
 @export var TimerRespawn : Timer
+@export var TimeRespawn : float = 2.0
 @export var OnWaterRay : RayCast2D
 @export var NotOnWaterRay : RayCast2D
 @export var AccEscapeWater : float = -5.0
@@ -13,6 +14,14 @@ var SlamDisabledCollision : bool = false
 @onready var WaterTileset = SaveGame.get_group_node("WaterTileset")
 
 @onready var Sprite = $Sprite
+@export var WaterFloatLogic : Node2D
+
+func _ready() -> void:
+	if(TimerRespawn):
+		TimerRespawn.wait_time = TimeRespawn
+	if(WaterFloatLogic):
+		WaterFloatLogic.VelJumpWater = VelJumpWater
+		WaterFloatLogic.AccEscapeWater = AccEscapeWater
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,28 +30,14 @@ func _process(delta: float) -> void:
 		var StretchDif : float = 1-TimerExplode.time_left/TimerExplode.wait_time
 		print(StretchDif)
 		strech_size(1.0+.3*StretchDif, 1.0-.3*StretchDif, true)
+	
 	if(TimerRespawn.is_stopped()):
-		#region Float On Water
-		OnWaterRay.enabled = true
-		if(OnWaterRay.is_colliding() && position.y >= WaterTileset.WaterLevel):
-			print("OnWater")
-			print(constant_linear_velocity)
-			constant_linear_velocity.y = VelJumpWater
-			Velocity.y += AccEscapeWater
-			position.y += delta*Velocity.y
-		else:
-			constant_linear_velocity.y = 0.0
-			#region Gravity
-			if(!NotOnWaterRay.is_colliding() || NotOnWaterRay.global_position.y+NotOnWaterRay.target_position.y < WaterTileset.WaterLevel):
-				Velocity.y -= AccEscapeWater
-				position.y += delta*Velocity.y
-			#endregion
-			else:
-				Velocity.y = 0.0
-		#endregion
+		WaterFloatLogic.Enabled = true
+		WaterFloatLogic.float_logic(delta)
 	else:
 		OnWaterRay.enabled = false
 		Velocity.y = 0.0
+		WaterFloatLogic.Enabled = false
 
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:

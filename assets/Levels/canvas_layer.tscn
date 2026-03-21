@@ -5,7 +5,9 @@
 [ext_resource type="FontFile" uid="uid://d3ebca3t4i171" path="res://assets/Fonts/Ace Futurism.ttf" id="2_7riok"]
 [ext_resource type="FontFile" uid="uid://brwm536qpt5yh" path="res://assets/Fonts/Big Old Boldy.otf" id="2_71664"]
 [ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="2_g187p"]
+[ext_resource type="Shader" uid="uid://vf7wbaxmykte" path="res://assets/Levels/blur.gdshader" id="3_brorv"]
 [ext_resource type="Script" uid="uid://bf5slbvnwjten" path="res://assets/Levels/Scripts/ray_time_sprite.gd" id="4_b68jw"]
+[ext_resource type="Texture2D" uid="uid://typmhnobt82y" path="res://assets/Sprites/menus/LevelSelect/Background.png" id="5_261mj"]
 [ext_resource type="Shader" uid="uid://ydhmjy5irb16" path="res://assets/Levels/Pixelate.gdshader" id="5_rc8bi"]
 [ext_resource type="Script" uid="uid://c0p85smca14in" path="res://assets/Levels/Scripts/time_progress_bar.gd" id="9_5m8db"]
 [ext_resource type="Texture2D" uid="uid://cabdni6k13vwg" path="res://assets/Sprites/codebar.png" id="10_xfbqc"]
@@ -68,6 +70,11 @@ func fade_out():
 	show()
 	FadeOut = true
 "
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8w0x"]
+shader = ExtResource("3_brorv")
+shader_parameter/blur_size = 1.48800007068
+shader_parameter/max_alpha = 0.3200000152
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_261mj"]
 shader = ExtResource("5_rc8bi")
@@ -845,11 +852,42 @@ theme_override_fonts/normal_font = ExtResource("2_7riok")
 theme_override_font_sizes/normal_font_size = 34
 text = "seg"
 
+[node name="ui_text_timeleft2" type="RichTextLabel" parent="." unique_id=1338042429]
+material = SubResource("ShaderMaterial_b8w0x")
+anchors_preset = -1
+anchor_left = 0.447
+anchor_top = 0.005
+anchor_right = 0.447
+anchor_bottom = 0.005
+offset_left = 17.05603
+offset_top = 0.76
+offset_right = 534.056
+offset_bottom = 238.76
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.619608, 0.478431, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.105882, 0.0431373, 0.298039, 0.776471)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/normal_font = ExtResource("2_71664")
+theme_override_font_sizes/normal_font_size = 85
+bbcode_enabled = true
+text = "0"
+scroll_active = false
+script = ExtResource("1_lu8t7")
+
 [node name="Ray-time" type="Sprite2D" parent="." unique_id=1887769370]
 position = Vector2(578, 99)
 scale = Vector2(2.0625, 2.0625)
 texture = ExtResource("1_g8qx6")
 script = ExtResource("4_b68jw")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=655376864]
+visible = false
+position = Vector2(424, -100)
+texture = ExtResource("5_261mj")
 
 [node name="ui_text_timeleft" type="RichTextLabel" parent="." unique_id=2102879422]
 material = SubResource("ShaderMaterial_261mj")
@@ -858,7 +896,7 @@ anchor_left = 0.447
 anchor_top = 0.005
 anchor_right = 0.447
 anchor_bottom = 0.005
-offset_left = 18.056
+offset_left = 18.05603
 offset_top = 2.76
 offset_right = 535.056
 offset_bottom = 240.76

@@ -155,8 +155,10 @@ func _process(delta: float) -> void:
 		position.x /= 8
 		position.x = round(global_position.x)
 		position.x *= 8
-	if(Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
+	if(!Enabled && Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
 		Enabled = true
+		if(ShootBulletTimer):
+			ShootBulletTimer.start()
 	
 	if(Player && Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
 		PrevGravityDirection = Player.GlobalGravityDirection * GravityDirection

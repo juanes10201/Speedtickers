@@ -3,7 +3,7 @@ extends TileMapLayer
 
 @onready var Player = $"../Player"
 
-@export var WaterLevel : float = -300.0
+@export var WaterLevel : float = 0.0
 @onready var WaterLevelGoTo : float = WaterLevel
 
 func _ready() -> void:

@@ -618,6 +618,7 @@ height = 13.0
 
 [node name="CharacterBody2D2" parent="." unique_id=137243909 instance=ExtResource("13_wsgti")]
 position = Vector2(-554, -87)
+Dialogue_Action = "npc_lobby1_english"
 
 [node name="CharacterBody2D9" parent="." unique_id=1884817764 instance=ExtResource("13_wsgti")]
 position = Vector2(-858, -152)

@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://5wgsndvnte8" path="res://assets/Levels/world1/float.tscn" id="17_g8d21"]
 [ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Levels/world1/umbrella.tscn" id="19_i7kmg"]
 [ext_resource type="PackedScene" uid="uid://b3jlq8xohxw3c" path="res://assets/Levels/world1/moving_platform.tscn" id="20_igmjh"]
+[ext_resource type="PackedScene" uid="uid://bpcyg6vqonftj" path="res://assets/Levels/world1/enemy_fish.tscn" id="21_o6cpg"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -237,7 +238,7 @@ AditionalActionArgument = -287.2
 position = Vector2(-463, -623)
 
 [node name="Player" parent="." unique_id=1683755303 instance=ExtResource("5_ljyct")]
-position = Vector2(-361, -405)
+position = Vector2(-335, -401)
 CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=292185324]
@@ -258,3 +259,20 @@ XSpeed = 500.0
 [node name="Rail2" parent="." unique_id=1020545274 instance=ExtResource("14_me14y")]
 position = Vector2(-108, -732)
 points = PackedVector2Array(-6, 6, 0, 2, 56, 11, 64, 108, 360, 102, 345, 25, 353, 22)
+
+[node name="Enemy_Fish" parent="." unique_id=455147022 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("21_o6cpg")]
+position = Vector2(-241, -316)
+InitialMarker = NodePath("InitialMarker2")
+EndMarker = NodePath("EndMarker2")
+
+[node name="InitialMarker2" type="Marker2D" parent="Enemy_Fish" unique_id=1926464102]
+position = Vector2(90, -29)
+
+[node name="EndMarker2" type="Marker2D" parent="Enemy_Fish" unique_id=370575707]
+position = Vector2(1, 69)
+
+[node name="Enemy_Fish2" parent="." unique_id=1365695038 instance=ExtResource("21_o6cpg")]
+position = Vector2(-21, -334)
+
+[node name="Enemy_Fish3" parent="." unique_id=1189107448 instance=ExtResource("21_o6cpg")]
+position = Vector2(156, -289)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://mwwwugaaoyiw"]
+[gd_scene format=3 uid="uid://mwwwugaaoyiw"]
 
 [ext_resource type="Script" uid="uid://yi71cshxkfnc" path="res://assets/Levels/Scripts/key.gd" id="1_ruxkn"]
 [ext_resource type="Texture2D" uid="uid://frgvamgpi0lw" path="res://assets/Sprites/key-Sheet.png" id="2_kxj2g"]
@@ -655,27 +655,27 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pfje"]
-size = Vector2(21, 21)
+size = Vector2(26, 26)
 
-[node name="Key" type="Area2D"]
+[node name="Key" type="Area2D" unique_id=2070008152]
 position = Vector2(-329, 134)
 collision_layer = 0
 script = ExtResource("1_ruxkn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1029026710]
 sprite_frames = SubResource("SpriteFrames_loqog")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1893467045]
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_2pfje")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=369355907]
 scale = Vector2(1.00384, 1)
 color = Color(0.589171, 0.316433, 0.0521555, 1)
 energy = 0.6
 texture = ExtResource("3_bajnl")
 
-[node name="TimerRespawn" type="Timer" parent="."]
+[node name="TimerRespawn" type="Timer" parent="." unique_id=667531981]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimerRespawn" to="." method="_on_timer_respawn_timeout"]

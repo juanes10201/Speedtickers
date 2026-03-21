@@ -53,7 +53,7 @@ var OnWater : bool = false
 var OnWaterClampMax : float = 100
 var OnWaterClampMin : float = -500
 var OnWaterJumpMult : float = 1.1
-var OnWaterMultX : float = .7
+var OnWaterMultX : float = 1.0
 var OnWaterSlamMult : float = .7
 var OnWaterInitialSlide : bool = false
 var OnWaterInitialSlideTile : bool = false
@@ -404,6 +404,7 @@ func _physics_process(delta: float) -> void:
 			Sprite.offset_play("Groundsmash")
 		elif(AirState == AirSides.Falling && !_is_on_floor_raycast()):
 			if(OnWater):
+				#if(Sprite.animation != Water_Fall)
 				if(direction>0):
 					Sprite.offset_play("Water_Fall_Right",false)
 				elif(direction<0):
@@ -595,6 +596,7 @@ func _physics_water(delta: float) -> void:
 	
 	if(OnWaterTile && WaterTileset && position.y >= WaterTileset.WaterLevel):
 		if(Slide): OnWaterInitialSlideTile = true
+		if(!OnWater): Dashed = false
 		OnWaterInitialSlide = OnWaterInitialSlideTile
 		OnWater = true
 		DoubleJumpEnabled = true
@@ -684,9 +686,9 @@ func _physics_jump(delta: float) -> void:
 
 func DoJump() -> void:
 	#Slide + Jump combo
-	if(Sliding != Sides.NONE):
-		SlidingInAir = true
-		Speed.x = Acc.x*3 * ceil(LastDirection)
+	#if(Sliding != Sides.NONE):
+	#	SlidingInAir = true
+	#	Speed.x = Acc.x*3 * ceil(LastDirection)
 	velocity.y = jump_velocity * GravityDirection
 	if(OnWater): velocity.y *= OnWaterJumpMult
 	if(!DashTime.is_stopped() || DashWithJump):
@@ -761,6 +763,8 @@ var DidDiagonalSlam : bool = false
 
 #region Slide and Ground Smash
 func _physics_slide_and_groundsmash(delta: float) -> void:
+	if(OnWater && Slide):
+		Reset_Slide()
 	if(GroundSmash):
 		_Destroy_Tiles_Slam()
 	if(!is_action_pressed("player_slide")):
@@ -769,7 +773,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	if((is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash/Slam
-		if(!_is_on_floor_raycast() && !Slide && !SlidingInAir && !PressedSlide):# || velocity.y < jump_height+10)):
+		if(!_is_on_floor_raycast() || (Slide && !SlidingInAir && !PressedSlide) ):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			if(GroundSmashVelocity && GravityDirection): velocity.y = GroundSmashVelocity * GravityDirection
 			if(OnWater): velocity *= OnWaterSlamMult
@@ -786,7 +790,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 			PressingGroundSmash = true
 			set_collision_mask_value(4, false)
 		#Slide
-		elif(!SlidingInAir && !PressingGroundSmash):
+		elif(!OnWater && !SlidingInAir && !PressingGroundSmash):
 			_Destroy_Tiles_Slide()
 			if(SlideVelocity == 0): SlideVelocity = SlideInitialVelocity
 			#SlideVelocity += SlideAcc * delta
@@ -802,8 +806,8 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 			strech_size(1, .9)
 			Sprite.play("Slide")
 			set_collision_mask_value(3, false)
-		elif(Slide && velocity.y < 0):
-			Speed.x = SlideVelocity * Sliding
+		#elif(Slide && velocity.y < 0):
+		#	Speed.x = SlideVelocity * Sliding
 	elif(Sliding != Sides.NONE):
 		Reset_Slide()
 		Speed.x = 0

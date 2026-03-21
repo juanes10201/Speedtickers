@@ -310,6 +310,7 @@ func _process(delta: float) -> void:
 					velocity.x = 0
 					velocity.y = 0
 					_Play_Animation("Slam_Wait", false, true, true, true)
+					print("ye")
 		if(Slam || (WallJump && WallJumpTimer.is_stopped())):
 			if(Move):
 				if(!WallJump && Slam):

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bpcyg6vqonftj"]
+
+[ext_resource type="Script" uid="uid://bbg14nxj3y840" path="res://assets/Levels/world1/Enemy_fish.gd" id="1_ag4a2"]
+[ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/enemies/fish/fish.png" id="2_n3rl0"]
+[ext_resource type="Script" uid="uid://dwdcgo564kwae" path="res://assets/Levels/world1/water_float_logic.gd" id="3_n3rl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7d8l"]
+size = Vector2(23, 12)
+
+[node name="Enemy_Fish" type="Area2D" unique_id=455147022 node_paths=PackedStringArray("InitialMarker", "EndMarker", "WaterFloatLogic")]
+script = ExtResource("1_ag4a2")
+InitialMarker = NodePath("")
+EndMarker = NodePath("")
+WaterFloatLogic = NodePath("WaterFloatLogic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1690673278]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_t7d8l")
+debug_color = Color(0.9128084, 0.29397675, 1.92523e-07, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1493686293]
+texture = ExtResource("2_n3rl0")
+
+[node name="CooldownDir" type="Timer" parent="." unique_id=1993057862]
+one_shot = true
+
+[node name="WaterFloatLogic" type="Node2D" parent="." unique_id=2090670624 node_paths=PackedStringArray("OnWaterRay", "NotOnWaterRay")]
+script = ExtResource("3_n3rl0")
+FloatOnWater = false
+OnWaterRay = NodePath("OnWaterRay")
+NotOnWaterRay = NodePath("NotOnWaterRay")
+
+[node name="NotOnWaterRay" type="RayCast2D" parent="WaterFloatLogic" unique_id=1647861174]
+target_position = Vector2(0, 6)
+collision_mask = 32768
+hit_from_inside = true
+
+[node name="OnWaterRay" type="RayCast2D" parent="WaterFloatLogic" unique_id=1637178817]
+target_position = Vector2(0, -15.24)
+collision_mask = 32768
+hit_from_inside = true
+collide_with_areas = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
