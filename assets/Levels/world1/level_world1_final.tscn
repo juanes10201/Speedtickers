@@ -2998,7 +2998,6 @@ points = PackedVector2Array(-6, 6, 0, 2, 43, -89, 59, -66, 0, -90, 41, -31, 12, 
 
 [node name="RespawnPoint" parent="." unique_id=994135283 instance=ExtResource("37_e4war")]
 position = Vector2(103, 65)
-Enabled = true
 
 [node name="DisableTime" type="Area2D" parent="." unique_id=1400564032]
 position = Vector2(104.605, 29)

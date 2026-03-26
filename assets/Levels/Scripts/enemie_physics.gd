@@ -81,10 +81,10 @@ func _jump(_jump_velocity) -> void:
 #endregion
 
 #region Player GroundSmash 
-func _on_player_ground_smash_signal(player_instance : CharacterBody2D = Player) -> void:
+func _on_player_ground_smash_signal(player_instance : CharacterBody2D = Player, NeedOnFloor : bool = true) -> void:
 	if(player_instance):
 		if(player_instance.ReplayStyle): return
-		if(Can_BeGroundSmash && _is_on_floor() && player_instance.GravityDirection == GravityDirection && global_position.distance_to(player_instance.position) <= Max_groundsmash_distance):
+		if(Can_BeGroundSmash && (_is_on_floor() || !NeedOnFloor) && player_instance.GravityDirection == GravityDirection && global_position.distance_to(player_instance.position) <= Max_groundsmash_distance):
 			_jump(JUMP_VELOCITY if enemy_type == 0 else SPECIAL_ENEMY_JUMP_VELOCITY)
 			if(enemy_type == 0):
 				LevelManager.AddStyle(0, "GroundSmash enemy")
@@ -225,7 +225,7 @@ func _process(delta: float) -> void:
 			#region Trigger Player GroundSmash
 			for child in get_parent().get_children():
 				if child.is_in_group("Player") && !child.EnemyGroundSlamTimer.is_stopped(): 
-					_on_player_ground_smash_signal(child)
+					_on_player_ground_smash_signal(child, child.GroundsmashNeedEnemiesOnGround)
 			#endregion
 			#region Gravity
 			if (!_is_on_floor() &&  velocity.y < MAX_FALL_SPEED):

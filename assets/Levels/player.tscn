@@ -43,6 +43,7 @@
 [ext_resource type="AudioStream" uid="uid://bh23td2y13ecc" path="res://assets/Sounds/orb_gravity.wav" id="22_1ia1n"]
 [ext_resource type="AudioStream" uid="uid://xns532oekjvk" path="res://assets/Sounds/skate-rail.wav" id="26_g5ylh"]
 [ext_resource type="AudioStream" uid="uid://chesfmv4s1cm8" path="res://assets/Sounds/Upgrade.mp3" id="27_gu8yx"]
+[ext_resource type="AudioStream" uid="uid://cudsgu0v7c88x" path="res://assets/Sounds/water_splash_proccesed.wav" id="28_ygib8"]
 [ext_resource type="Script" uid="uid://br2udgydnxtcm" path="res://assets/Levels/Shadow.gd" id="31_ivnav"]
 [ext_resource type="Texture2D" uid="uid://xxpg8y3lwraj" path="res://assets/Sprites/shadow.png" id="32_sc7ng"]
 [ext_resource type="Script" uid="uid://6tsgj1qxp6y2" path="res://assets/Levels/Player_hitbox.gd" id="33_isg5t"]
@@ -988,6 +989,9 @@ trail_lifetime = 0.21
 trail_sections = 3
 trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_lgtto")
+
+[node name="AudioWaterSplash" type="AudioStreamPlayer" parent="." unique_id=1650939420]
+stream = ExtResource("28_ygib8")
 
 [node name="DashCooldownTimer" type="Timer" parent="." unique_id=305237702]
 wait_time = 0.1

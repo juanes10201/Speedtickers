@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	_strech_tick(delta)
 	if(!TimerExplode.is_stopped()):
 		var StretchDif : float = 1-TimerExplode.time_left/TimerExplode.wait_time
-		print(StretchDif)
+		#print(StretchDif)
 		strech_size(1.0+.3*StretchDif, 1.0-.3*StretchDif, true)
 	
 	if(TimerRespawn.is_stopped()):
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
 		if(Player.GroundSmash || Player.Slide):
-			Player.throw_enemies()
+			Player.throw_enemies(false)
 			TimerRespawn.start()
 			print("Explode with Slam")
 			_explode(true)

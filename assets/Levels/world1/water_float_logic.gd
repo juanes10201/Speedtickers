@@ -14,6 +14,8 @@ extends Node2D
 var constant_linear_velocity : Vector2 = Vector2(0.0,0.0)
 var Velocity : Vector2 = Vector2(0.0, 0.0)
 
+@export var FallBelowWaterLevel : bool = true
+
 @onready var Parent = get_parent()
 
 
@@ -30,7 +32,9 @@ func float_logic(delta: float) -> void:
 			constant_linear_velocity.y = 0.0
 			#region Gravity
 			if(!NotOnWaterRay.is_colliding() || NotOnWaterRay.global_position.y+NotOnWaterRay.target_position.y < WaterTileset.WaterLevel):
-				if(FallWhenNoWater):
+				if(FallWhenNoWater && (FallBelowWaterLevel || Parent.global_position.y < WaterTileset.WaterLevel) ):
+					if(NotOnWaterRay.get_collider() is TileMapLayer):
+						return
 					Velocity.y -= AccEscapeWater
 					Parent.position.y += delta*Velocity.y
 			#endregion

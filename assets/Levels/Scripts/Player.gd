@@ -50,7 +50,8 @@ var SnappedOnRail : bool = false
 
 var OnWaterTile : bool = false
 var OnWater : bool = false
-var OnWaterClampMax : float = 100
+var OnWaterClampMax : float = 0
+var OnWaterClampMaxDown : float = 120
 var OnWaterClampMin : float = -500
 var OnWaterJumpMult : float = 1.1
 var OnWaterMultX : float = 1.0
@@ -137,6 +138,7 @@ var direction = get_axis()
 @onready var AudioOrbGravity : AudioStreamPlayer = $AudioOrbGravity
 @onready var AudioSandFall : AudioStreamPlayer = $AudioSandFall
 @onready var AudioUpgrade : AudioStreamPlayer = $AudioUpgrade
+@onready var AudioWaterSplash : AudioStreamPlayer = $AudioWaterSplash
 
 @onready var AudioClockBreak : AudioStreamPlayer = $AudioClockBreak
 
@@ -592,27 +594,34 @@ func _spawn_pause_menu() -> void:
 @onready var WaterTileset = SaveGame.get_group_node("WaterTileset")
 #region Water
 func _physics_water(delta: float) -> void:
-	#print(OnWaterInitialSlideTile)
-	
 	if(OnWaterTile && WaterTileset && position.y >= WaterTileset.WaterLevel):
 		if(Slide): OnWaterInitialSlideTile = true
 		if(!OnWater): Dashed = false
 		OnWaterInitialSlide = OnWaterInitialSlideTile
+		#if(!OnWater):
+			#_play_sound(AudioWaterSplash, true)
 		OnWater = true
-		DoubleJumpEnabled = true
+		#DoubleJumpEnabled = true
 	else:
 		OnWaterInitialSlide = false
 		OnWater = false
-		DoubleJumpEnabled = false
+		#DoubleJumpEnabled = false
 #endregion
 
 #region Gravity
 func _physics_apply_gravity(delta: float) -> void:
+	print(velocity.y)
 	if (!_is_on_floor()):
 		if(OnWaterInitialSlide):
 			velocity.y = 0.0
 		if(OnWater):
-			velocity.y = clamp(velocity.y, OnWaterClampMin, OnWaterClampMax)
+			#velocity.y = clamp(velocity.y, OnWaterClampMin, OnWaterClampMax)
+			if(is_action_pressed("player_down")):
+				velocity.y = lerpf(velocity.y, OnWaterClampMaxDown, 12*delta)
+			elif(velocity.y > OnWaterClampMax):
+				velocity.y = lerpf(velocity.y, OnWaterClampMax, 10*delta)
+			elif(velocity.y < OnWaterClampMin):
+				velocity.y = lerpf(velocity.y, OnWaterClampMin, 20*delta)
 		if(was_on_floor): CoyoteTimer.start()
 		if(!WallJump && DashTime.is_stopped()):
 			velocity.y += get_gravity_player() * Acc.y * delta * GravityDirection * GravitySandFallDirection
@@ -763,8 +772,8 @@ var DidDiagonalSlam : bool = false
 
 #region Slide and Ground Smash
 func _physics_slide_and_groundsmash(delta: float) -> void:
-	if(OnWater && Slide):
-		Reset_Slide()
+	#if(OnWater && Slide):
+	#	Reset_Slide()
 	if(GroundSmash):
 		_Destroy_Tiles_Slam()
 	if(!is_action_pressed("player_slide")):
@@ -773,7 +782,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	if((is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash/Slam
-		if(!_is_on_floor_raycast() || (Slide && !SlidingInAir && !PressedSlide) ):# || velocity.y < jump_height+10)):
+		if(!_is_on_floor_raycast() && (!Slide && !SlidingInAir && !PressedSlide) ):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			if(GroundSmashVelocity && GravityDirection): velocity.y = GroundSmashVelocity * GravityDirection
 			if(OnWater): velocity *= OnWaterSlamMult
@@ -790,7 +799,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 			PressingGroundSmash = true
 			set_collision_mask_value(4, false)
 		#Slide
-		elif(!OnWater && !SlidingInAir && !PressingGroundSmash):
+		elif(!SlidingInAir && !PressingGroundSmash):
 			_Destroy_Tiles_Slide()
 			if(SlideVelocity == 0): SlideVelocity = SlideInitialVelocity
 			#SlideVelocity += SlideAcc * delta
@@ -1039,7 +1048,9 @@ func Reset_Groundsmash(ThrowEnemies : bool = true, Visuals: bool = true, ResetVe
 		throw_enemies()
 	if(ResetVel): velocity.y = 0
 
-func throw_enemies():
+var GroundsmashNeedEnemiesOnGround = true
+func throw_enemies(NeedOnGround : bool = true):
+	GroundsmashNeedEnemiesOnGround = NeedOnGround
 	enemy_jump()
 	EnemyGroundSlamTimer.start()
 
