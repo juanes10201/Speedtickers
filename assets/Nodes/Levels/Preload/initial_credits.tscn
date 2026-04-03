@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://br41id2pk0r3l"]
+
+[ext_resource type="Texture2D" uid="uid://cuntmy7e3v84y" path="res://assets/Sprites/menus/Credits/By.png" id="1_2ivaq"]
+[ext_resource type="Texture2D" uid="uid://14dqr3pjqnph" path="res://assets/Sprites/menus/Credits/ByJuanes.png" id="1_5dl88"]
+[ext_resource type="Script" uid="uid://bmi82jvel5jb2" path="res://assets/Scripts/initialcredits.gd" id="3_ywqdo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s7kdu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2ivaq")
+}],
+"loop": false,
+"name": &"by",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5dl88")
+}],
+"loop": false,
+"name": &"juanes",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_vc5cq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.496, 0.496)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"by"]
+}
+
+[sub_resource type="Animation" id="Animation_0yyei"]
+resource_name = "default"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.93333334, 0.96666664, 1.0001, 1.2, 1.7333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.496, 0.496), Vector2(0.496, 0.496), Vector2(0.496, 0.496), Vector2(0.716, 0.716), Vector2(0.496, 0.496), Vector2(0.496, 0.496)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.93333334, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"by", &"juanes"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwu8x"]
+_data = {
+&"RESET": SubResource("Animation_vc5cq"),
+&"default": SubResource("Animation_0yyei")
+}
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5dl88"]
+color = Color(1, 1, 1, 1)
+thickness = 3
+
+[node name="InitialCredits" type="Node2D" unique_id=2020317195]
+
+[node name="intro" type="AnimatedSprite2D" parent="." unique_id=116453354 node_paths=PackedStringArray("NextTimer", "ProgressB")]
+position = Vector2(595, 312)
+scale = Vector2(0.496, 0.496)
+sprite_frames = SubResource("SpriteFrames_s7kdu")
+animation = &"by"
+script = ExtResource("3_ywqdo")
+NextTimer = NodePath("../Timer")
+ProgressB = NodePath("../Loading")
+
+[node name="Anim" type="AnimationPlayer" parent="intro" unique_id=516176588]
+libraries/ = SubResource("AnimationLibrary_qwu8x")
+
+[node name="Timer" type="Timer" parent="." unique_id=563325662]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Loading" type="ProgressBar" parent="." unique_id=509800828]
+offset_top = 644.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/fill = SubResource("StyleBoxLine_5dl88")
+value = 25.8
+show_percentage = false

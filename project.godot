@@ -15,20 +15,20 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="PlatformerGame"
-run/main_scene="res://assets/Levels/world1/initial_credits.tscn"
+run/main_scene="res://assets/Nodes/Levels/Preload/initial_credits.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
 
-InitialGameLoad="*res://assets/Levels/Scripts/initial_game_load.gd"
+InitialGameLoad="*res://assets/Scripts/initial_game_load.gd"
 GlobalSignal="*res://assets/global_signal/global_signal.gd"
-SaveGame="*res://assets/Levels/Scripts/save_game.gd"
-SongPlayer="*res://assets/Levels/SongPlayer.tscn.tscn"
-Edition="*res://assets/Levels/Scripts/game_editions.gd"
-LevelManager="*res://assets/Levels/world1/LevelManager.tscn"
-Global="*res://assets/Levels/Scripts/global_variables.gd"
+SaveGame="*res://assets/Scripts/save_game.gd"
+SongPlayer="*res://assets/Nodes/Levels/Preload/SongPlayer.tscn.tscn"
+Edition="*res://assets/Scripts/game_editions.gd"
+LevelManager="*res://assets/Nodes/Levels/Preload/LevelManager.tscn"
+Global="*res://assets/Scripts/global_variables.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [debug]
@@ -38,37 +38,34 @@ file_logging/enable_file_logging=true
 [dialogic]
 
 directories/dch_directory={
-"Boss1": "res://assets/Dialogic/Charactesr/Boss1.dch",
-"Holo": "res://assets/Dialogic/Charactesr/Holo.dch",
-"Npc1": "res://assets/Dialogic/Charactesr/Npc1.dch",
-"Player": "res://assets/Dialogic/Charactesr/Player.dch"
+"Boss1": "res://assets/Dialogic/Characters/Boss1.dch",
+"Holo": "res://assets/Dialogic/Characters/Holo.dch",
+"Npc1": "res://assets/Dialogic/Characters/Npc1.dch",
+"Player": "res://assets/Dialogic/Characters/Player.dch"
 }
 directories/dtl_directory={
-"lobby_initial": "res://assets/Timeline/lobby_initial.dtl",
-"npc_boss1_holo1": "res://assets/Timeline/Boss/npc_boss1_holo1.dtl",
-"npc_boss1_holo2": "res://assets/Timeline/Boss/npc_boss1_holo2.dtl",
-"npc_boss1_holo3": "res://assets/Timeline/Boss/npc_boss1_holo3.dtl",
-"npc_boss2_holo1": "res://assets/Timeline/Boss/npc_boss2_holo1.dtl",
-"npc_lobby1": "res://assets/Timeline/npc_lobby1.dtl",
-"npc_lobby10": "res://assets/Timeline/npc_lobby10.dtl",
-"npc_lobby11": "res://assets/Timeline/npc_lobby11.dtl",
-"npc_lobby12": "res://assets/Timeline/npc_lobby12.dtl",
-"npc_lobby1_english": "res://assets/Timeline/npc_lobby1_english.dtl",
-"npc_lobby2": "res://assets/Timeline/npc_lobby2.dtl",
-"npc_lobby3": "res://assets/Timeline/npc_lobby3.dtl",
-"npc_lobby4": "res://assets/Timeline/npc_lobby4.dtl",
-"npc_lobby5": "res://assets/Timeline/npc_lobby5.dtl",
-"npc_lobby6": "res://assets/Timeline/npc_lobby6.dtl",
-"npc_lobby7": "res://assets/Timeline/npc_lobby7.dtl",
-"npc_lobby8": "res://assets/Timeline/npc_lobby8.dtl",
-"npc_lobby9": "res://assets/Timeline/npc_lobby9.dtl",
-"npc_lobby_tv1": "res://assets/Timeline/Tvs/npc_lobby_tv1.dtl",
-"npc_lobby_tv2": "res://assets/Timeline/Tvs/npc_lobby_tv2.dtl"
+"lobby_initial": "res://assets/Dialogic/Timelines/lobby_initial.dtl",
+"npc_boss1_holo1": "res://assets/Dialogic/Timelines/Boss/npc_boss1_holo1.dtl",
+"npc_boss1_holo2": "res://assets/Dialogic/Timelines/Boss/npc_boss1_holo2.dtl",
+"npc_boss1_holo3": "res://assets/Dialogic/Timelines/Boss/npc_boss1_holo3.dtl",
+"npc_boss2_holo1": "res://assets/Dialogic/Timelines/Boss/npc_boss2_holo1.dtl",
+"npc_lobby1": "res://assets/Dialogic/Timelines/npc_lobby1.dtl",
+"npc_lobby10": "res://assets/Dialogic/Timelines/npc_lobby10.dtl",
+"npc_lobby11": "res://assets/Dialogic/Timelines/npc_lobby11.dtl",
+"npc_lobby12": "res://assets/Dialogic/Timelines/npc_lobby12.dtl",
+"npc_lobby1_english": "res://assets/Dialogic/Timelines/npc_lobby1_english.dtl",
+"npc_lobby2": "res://assets/Dialogic/Timelines/npc_lobby2.dtl",
+"npc_lobby3": "res://assets/Dialogic/Timelines/npc_lobby3.dtl",
+"npc_lobby4": "res://assets/Dialogic/Timelines/npc_lobby4.dtl",
+"npc_lobby5": "res://assets/Dialogic/Timelines/npc_lobby5.dtl",
+"npc_lobby6": "res://assets/Dialogic/Timelines/npc_lobby6.dtl",
+"npc_lobby7": "res://assets/Dialogic/Timelines/npc_lobby7.dtl",
+"npc_lobby8": "res://assets/Dialogic/Timelines/npc_lobby8.dtl",
+"npc_lobby9": "res://assets/Dialogic/Timelines/npc_lobby9.dtl",
+"npc_lobby_tv1": "res://assets/Dialogic/Timelines/Tvs/npc_lobby_tv1.dtl",
+"npc_lobby_tv2": "res://assets/Dialogic/Timelines/Tvs/npc_lobby_tv2.dtl"
 }
-layout/style_directory={
-"": "res://assets/Dialog/Styles/FaceShow.tres",
-"FaceShow": "res://assets/Dialog/Styles/FaceShow.tres"
-}
+layout/style_directory={}
 layout/style_list=["res://assets/Dialog/Styles/FaceShow.tres"]
 layout/default_style="res://assets/Dialog/Styles/FaceShow.tres"
 variables={}
@@ -138,6 +135,8 @@ ClockRigidBody=""
 Npc=""
 BossBomb=""
 WaterTileset=""
+YExpandEditor=""
+XExpandEditor=""
 
 [input]
 
@@ -264,19 +263,20 @@ editor_element10={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":48,"key_label":0,"unicode":48,"location":0,"echo":false,"script":null)
 ]
 }
-editor_save={
+ui_editor_save={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
 ]
 }
-editor_eraser={
+ui_editor_erase={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(127, 12),"global_position":Vector2(134, 51),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
-editor_pencil={
+ui_editor_place={
 "deadzone": 0.2,
-"events": []
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(54, 16),"global_position":Vector2(61, 55),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
 }
 editor_play={
 "deadzone": 0.2,
@@ -314,6 +314,52 @@ player_down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
 ]
 }
+ui_editor_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194319,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+ui_editor_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194321,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+ui_editor_up={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+ui_editor_down={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194322,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+ui_editor_move_slow={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+ui_editor_move_mouse={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":4,"position":Vector2(156, 14),"global_position":Vector2(163, 53),"factor":1.0,"button_index":3,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+ui_editor_zoom_out={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
+]
+}
+ui_editor_zoom_in={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+]
+}
 
 [input_devices]
 
@@ -339,6 +385,9 @@ pointing/emulate_mouse_from_touch=false
 2d_physics/layer_15="Npc"
 2d_physics/layer_16="Water"
 2d_physics/layer_17="Moving Platform"
+2d_physics/layer_18="Selectable In Editor"
+2d_physics/layer_19="Y Expandable in Editor"
+2d_physics/layer_20="X Expandable in Editor"
 
 [rendering]
 

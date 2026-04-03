@@ -1,0 +1,282 @@
+[gd_scene format=3 uid="uid://chypkjv5owwgo"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_cwcrc"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_kr8mg"]
+[ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_ac1uh"]
+[ext_resource type="TileSet" uid="uid://bgemxi3r71x1i" path="res://assets/Nodes/Obj/Tileset/tiles_alt_alt2.tres" id="4_cwcrc"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="5_qyhw2"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="6_xn5lh"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="7_13usn"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="9_w1f8c"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="10_mqckc"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="11_6pgra"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="12_scqan"]
+[ext_resource type="PackedScene" uid="uid://dvmo1pn0pi6nc" path="res://assets/Nodes/Obj/Gameplay/piston.tscn" id="13_e6fkq"]
+[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="14_3cj4e"]
+[ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Nodes/Obj/Ui/style_add_box.gd" id="14_kr8mg"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[sub_resource type="Animation" id="Animation_timnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_y3i1q"]
+resource_name = "move"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 19.9667, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_b10uo"]
+resource_name = "move2"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20.0333, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-493, -367), Vector2(-755, -863), Vector2(-493, -367)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_klj0i"]
+_data = {
+&"RESET": SubResource("Animation_timnu"),
+&"move": SubResource("Animation_y3i1q"),
+&"move2": SubResource("Animation_b10uo")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac1uh"]
+size = Vector2(30.7479, 28.6468)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-80, 136)
+
+[node name="Bg" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+scale = Vector2(1.00384, 1)
+texture = ExtResource("1_cwcrc")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1376.72, 1506.27)
+script = ExtResource("2_kr8mg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
+libraries = {
+&"": SubResource("AnimationLibrary_0i2pc")
+}
+
+[node name="Bg2" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+scale = Vector2(1.00769, 1)
+texture = ExtResource("3_ac1uh")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1200, 1762.79)
+script = ExtResource("2_kr8mg")
+PlayAnimation = "move2"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg2"]
+libraries = {
+&"": SubResource("AnimationLibrary_klj0i")
+}
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+position = Vector2(217, 104)
+scale = Vector2(1.00384, 1)
+tile_set = ExtResource("4_cwcrc")
+
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+wait_time = 12.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_qyhw2")]
+
+[node name="Flag" parent="." instance=ExtResource("6_xn5lh")]
+position = Vector2(32, 1120)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("7_13usn")]
+
+[node name="Player" parent="." instance=ExtResource("9_w1f8c")]
+position = Vector2(64, 200.00002)
+floor_stop_on_slope = false
+floor_max_angle = 1.39626
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-0.303, 115.338)
+offset = Vector2(0, -11.99)
+zoom = Vector2(2.08, 2.08)
+limit_left = -138
+limit_top = 122
+limit_right = 769
+limit_bottom = 10000002
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("10_mqckc")
+
+[node name="AmbientParticles" parent="." instance=ExtResource("11_6pgra")]
+position = Vector2(9, 108)
+
+[node name="KillBox" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(64, 1184)
+scale = Vector2(14.265, 2)
+AditionalAction = 1
+lavaMovDif = 20.0
+
+[node name="KillBox10" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(-39.999996, 88.00001)
+scale = Vector2(2, 200)
+
+[node name="KillBox20" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(184, 96.00001)
+scale = Vector2(2, 200)
+
+[node name="KillBox12" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(19, 416)
+scale = Vector2(8.94, 11.715)
+
+[node name="KillBox16" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(-8, 784)
+scale = Vector2(2.68, 6.71)
+
+[node name="KillBox15" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(128, 720)
+scale = Vector2(8.94, 6.745)
+
+[node name="KillBox19" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(46, 1040)
+scale = Vector2(8.94, 6.745)
+
+[node name="KillBox13" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(152, 360)
+scale = Vector2(3.37, 2)
+
+[node name="KillBox14" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(88, 494)
+scale = Vector2(3.37, 2)
+
+[node name="KillBox17" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(-3, 825)
+scale = Vector2(3.37, 2)
+
+[node name="KillBox21" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(116.99999, 1078)
+scale = Vector2(3.37, 2)
+
+[node name="KillBox18" parent="." instance=ExtResource("12_scqan")]
+position = Vector2(72, 738)
+scale = Vector2(3.37, 1)
+
+[node name="Piston32" parent="." instance=ExtResource("13_e6fkq")]
+position = Vector2(64, 240)
+mass = 3.0
+MAX_SPEED = 180.0
+Time_Start = 0.4
+WaitTime = 2.2
+StartSpeed = 180.0
+
+[node name="Piston33" parent="." instance=ExtResource("13_e6fkq")]
+position = Vector2(40, 624)
+mass = 3.0
+MAX_SPEED = 180.0
+Time_Start = 0.4
+WaitTime = 2.2
+StartSpeed = 180.0
+
+[node name="StyleAddBox" type="Area2D" parent="Piston33"]
+position = Vector2(2, -51)
+scale = Vector2(1.775, 1)
+script = ExtResource("14_kr8mg")
+StyleTypeAdd = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston33/StyleAddBox"]
+position = Vector2(-0.5633774, -1)
+scale = Vector2(0.93, 1.09)
+shape = SubResource("RectangleShape2D_ac1uh")
+
+[node name="falling_sand3" parent="." instance=ExtResource("14_3cj4e")]
+position = Vector2(160, 424)
+
+[node name="falling_sand6" parent="." instance=ExtResource("14_3cj4e")]
+position = Vector2(161, 408)
+
+[node name="falling_sand4" parent="." instance=ExtResource("14_3cj4e")]
+position = Vector2(160, 440)
+
+[node name="falling_sand5" parent="." instance=ExtResource("14_3cj4e")]
+position = Vector2(160, 456)
+
+[node name="falling_sand9" parent="." instance=ExtResource("14_3cj4e")]
+position = Vector2(626, 198)
+MAX_SPEED = 150.0
+
+[node name="falling_sand10" parent="." instance=ExtResource("14_3cj4e")]
+position = Vector2(610, 198)
+MAX_SPEED = 150.0
+
+[connection signal="body_entered" from="Piston33/StyleAddBox" to="Piston33/StyleAddBox" method="_on_body_entered"]

@@ -1,0 +1,386 @@
+[gd_scene format=4 uid="uid://c33sp2pt55ctp"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_cshvh"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_c5hqx"]
+[ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="3_3av5j"]
+[ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Scripts/tile_map_layer.gd" id="4_w44gu"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="5_884pn"]
+[ext_resource type="PackedScene" uid="uid://bxp63dfc0g300" path="res://assets/Nodes/Obj/Gameplay/Player/player_hologram.tscn" id="5_cshvh"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="6_7ulu0"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="7_s26qe"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="8_oghcr"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="9_2vnwu"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="10_c13u2"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="11_uxdt6"]
+[ext_resource type="Shader" uid="uid://bqv1myhf1mr1x" path="res://assets/Shader/SquiggleVision.gdshader" id="12_dyhps"]
+[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="13_cg276"]
+[ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Scripts/DynamicLightAnimation.gd" id="14_vn7l7"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[sub_resource type="GDScript" id="GDScript_kdu5x"]
+script/source = "extends CanvasLayer
+@export var ShowFadeIn : bool = true
+@export var ShowFadeOut : bool = false
+@export var ShowTimer : bool = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Environment" id="Environment_vmlh1"]
+background_mode = 3
+glow_enabled = true
+glow_levels/3 = 0.0
+glow_levels/6 = 0.97
+glow_intensity = 0.21
+glow_strength = 1.27
+glow_bloom = 0.03
+glow_hdr_threshold = 1.29
+adjustment_enabled = true
+adjustment_brightness = 1.05
+adjustment_saturation = 1.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oq6ls"]
+shader = ExtResource("12_dyhps")
+shader_parameter/jiggle = 0.515
+shader_parameter/speed = 2.21
+
+[sub_resource type="Gradient" id="Gradient_vmlh1"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cg276"]
+gradient = SubResource("Gradient_vmlh1")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_cg276"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vn7l7"]
+gradient = SubResource("Gradient_cg276")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_cshvh"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cshvh"]
+gradient = SubResource("Gradient_cshvh")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_vn7l7"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c5hqx"]
+gradient = SubResource("Gradient_vn7l7")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_c5hqx"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3av5j"]
+gradient = SubResource("Gradient_c5hqx")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_3av5j"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_884pn"]
+gradient = SubResource("Gradient_3av5j")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_jfyc5"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w44gu"]
+gradient = SubResource("Gradient_jfyc5")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[node name="Node2D" type="Node2D" unique_id=899246366]
+position = Vector2(0, -1)
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=327420432]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+texture = ExtResource("1_cshvh")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1000, 1000)
+script = ExtResource("2_c5hqx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg" unique_id=1915669492]
+libraries/ = SubResource("AnimationLibrary_0i2pc")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=230717552 groups=["Tileset"]]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-2, 0)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AADv//z/AQACAAAAAADu//z/AQABAAAAAADt//z/AQABAAAAAADs//z/AQABAAAAAADr//z/AQAAAAAAAADv/wEAAQACAAIAAADv/wAAAQACAAEAAADv////AQACAAEAAADv//7/AQACAAEAAADv//3/AQACAAEAAADu/wEAAQABAAIAAADu/wAAAQABAAEAAADu////AQABAAEAAADu//7/AQABAAEAAADu//3/AQABAAEAAADt/wEAAQABAAIAAADt/wAAAQABAAEAAADt////AQABAAEAAADt//7/AQABAAEAAADt//3/AQABAAEAAADs/wEAAQABAAIAAADs/wAAAQABAAEAAADs////AQABAAEAAADs//7/AQABAAEAAADs//3/AQABAAEAAADr/wEAAQAAAAIAAADr/wAAAQAAAAEAAADr////AQAAAAEAAADr//7/AQAAAAEAAADr//3/AQAAAAEAAADu//L/AQAAAAEAAADu//P/AQAAAAIAAADv//L/AQAEAAIAAFDv//P/AQAEAAIAAFD0//b/AQAEAAIAAGD0//f/AQAEAAIAAGD0//j/AQAEAAIAAGD0//n/AQAEAAIAAGD1//b/AQACAAEAAAD1//f/AQACAAEAAAD1//j/AQACAAEAAAD1//n/AQACAAEAAAD0//X/AQAAAAAAAAD1//X/AQACAAAAAAD9//D/AQAIAAMAAAD9/+//AQABAAAAAAD8//D/AQABAAIAAAD8/+//AQAGAAAAAAD7//D/AQABAAIAAAD7/+//AQAGAAAAAAD6//D/AQAAAAIAAAD6/+//AQAGAAAAAAD7/+7/AQAEAAoAAAD8/+7/AQAFAAoAAAD9/+7/AQAGAAoAAADu/+7/AQAAAAEAAADu/+//AQAAAAEAAADu//D/AQAAAAEAAADv/+7/AQACAAEAAADv/+//AQACAAEAAADv//D/AQACAAEAAADu/+3/AQAAAAEAAADv/+3/AQACAAEAAADu//H/AQAAAAEAAADv//H/AQAEAAIAAFDu//T/AQAHABAAAADu//X/AQAHABAAAADu//b/AQAHABAAAADu//f/AQAHABAAAADu//j/AQAHABAAAADu//n/AQAHABAAAADu//r/AQAHABAAAADu//v/AQAHABAAAADv//T/AQAHABEAAADv//X/AQAHABEAAADv//b/AQAHABEAAADv//f/AQAHABEAAADv//j/AQAHABEAAADv//n/AQAHABEAAADv//r/AQAHABEAAADv//v/AQAHABEAAAD0//r/AQAAAAEAAAD0//v/AQAAAAIAAAD0//z/AQAHABAAAAD0//3/AQAHABAAAAD0//7/AQAHABAAAAD0////AQAHABAAAAD0/wAAAQATAAoAAAD0/wEAAQATAAoAAAD0/wIAAQATAAoAAAD1//r/AQACAAEAAAD1//v/AQACAAIAAAD1//z/AQAHABEAAAD1//3/AQAHABEAAAD1//7/AQAHABEAAAD1////AQAHABEAAAD1/wAAAQAUAAoAAAD1/wEAAQAUAAoAAAD1/wIAAQAUAAoAAADv/+z/AQACAAEAAADv/+v/AQACAAEAAADv/+r/AQACAAEAAADv/+n/AQACAAAAAADu/+z/AQAAAAEAAADu/+v/AQAAAAEAAADu/+r/AQAAAAEAAADu/+n/AQAAAAAAAAD5/+7/AQAFAAYAAAABAPD/AQACAAEAAAABAO//AQACAAEAAAAAAPD/AQABAAEAAAAAAO//AQABAAEAAAD///D/AQABAAEAAAD//+//AQABAAEAAAD+//D/AQAAAAIAAAD+/+//AQAGAAAAAAABAAcAAQACAAIAAAABAAYAAQACAAEAAAABAAUAAQACAAEAAAABAAQAAQACAAEAAAABAAMAAQACAAEAAAABAAIAAQACAAEAAAABAAEAAQACAAEAAAABAAAAAQACAAEAAAABAP//AQACAAEAAAABAP7/AQACAAEAAAABAP3/AQACAAEAAAABAPz/AQACAAEAAAABAPv/AQACAAEAAAABAPr/AQACAAEAAAABAPn/AQACAAEAAAABAPj/AQACAAEAAAABAPf/AQACAAEAAAABAPb/AQACAAEAAAABAPX/AQACAAEAAAABAPT/AQACAAEAAAABAPP/AQACAAEAAAABAPL/AQACAAEAAAABAPH/AQACAAEAAAABAO7/AQACAAEAAAABAO3/AQACAAEAAAABAOz/AQACAAEAAAABAOv/AQACAAEAAAABAOr/AQACAAEAAAABAOn/AQACAAAAAAAAAAcAAQABAAIAAAAAAAYAAQABAAEAAAAAAAUAAQABAAEAAAAAAAQAAQABAAEAAAAAAAMAAQABAAEAAAAAAAIAAQABAAEAAAAAAAEAAQABAAEAAAAAAAAAAQABAAEAAAAAAP//AQABAAEAAAAAAP7/AQABAAEAAAAAAP3/AQABAAEAAAAAAPz/AQABAAEAAAAAAPv/AQABAAEAAAAAAPr/AQABAAEAAAAAAPn/AQABAAEAAAAAAPj/AQABAAEAAAAAAPf/AQABAAEAAAAAAPb/AQABAAEAAAAAAPX/AQABAAEAAAAAAPT/AQABAAEAAAAAAPP/AQABAAEAAAAAAPL/AQABAAEAAAAAAPH/AQABAAEAAAAAAO7/AQABAAEAAAAAAO3/AQABAAEAAAAAAOz/AQABAAEAAAAAAOv/AQABAAEAAAAAAOr/AQABAAEAAAAAAOn/AQABAAAAAAD//wcAAQAAAAIAAAD//wYAAQAAAAEAAAD//wUAAQAAAAEAAAD//wQAAQAAAAEAAAD//wMAAQAAAAEAAAD//wIAAQAAAAEAAAD//wEAAQAAAAEAAAD//wAAAQAAAAEAAAD/////AQAAAAEAAAD///7/AQAAAAEAAAD///3/AQAAAAEAAAD///z/AQAAAAEAAAD///v/AQAAAAEAAAD///r/AQAAAAEAAAD///n/AQAAAAEAAAD///j/AQAAAAEAAAD///f/AQAAAAEAAAD///b/AQAAAAEAAAD///X/AQAAAAEAAAD///T/AQAAAAEAAAD///P/AQAAAAEAAAD///L/AQAAAAEAAAD///H/AQAAAAEAAAD//+7/AQABAAEAAAD//+3/AQABAAEAAAD//+z/AQABAAEAAAD//+v/AQABAAEAAAD//+r/AQABAAEAAAD//+n/AQABAAAAAADw/+z/AQATABIAACDw/+v/AQATABMAACD+//H/AQATABMAAADw/wAAAQASAAoAAADw/wEAAQASAAoAAADx/wAAAQATAAoAAADx/wEAAQATAAoAAADy/wAAAQAUAAoAAADy/wEAAQAUAAoAAADz/wAAAQASAAoAAADz/wEAAQASAAoAAAD2/wAAAQASAAoAAAD2/wEAAQASAAoAAAD3/wAAAQATAAoAAAD3/wEAAQATAAoAAAD4/wAAAQAUAAoAAAD4/wEAAQAUAAoAAAD5/wAAAQASAAoAAAD5/wEAAQASAAoAAAD6/wAAAQATAAoAAAD6/wEAAQATAAoAAAD7/wAAAQAUAAoAAAD7/wEAAQAUAAoAAAD8/wAAAQASAAoAAAD8/wEAAQASAAoAAAD9/wAAAQATAAoAAAD9/wEAAQATAAoAAAD+/wAAAQAUAAoAAAD+/wEAAQAUAAoAAADw/wIAAQASAAoAAADx/wIAAQATAAoAAADy/wIAAQAUAAoAAADz/wIAAQASAAoAAAD2/wIAAQASAAoAAAD3/wIAAQATAAoAAAD4/wIAAQAUAAoAAAD5/wIAAQASAAoAAAD6/wIAAQATAAoAAAD7/wIAAQAUAAoAAAD8/wIAAQASAAoAAAD9/wIAAQATAAoAAAD+/wIAAQAUAAoAAADw/wMAAQASAAoAAAD0/wMAAQATAAoAAAD1/wMAAQAUAAoAAAD5/wMAAQATAAoAAAD6/wMAAQAUAAoAAAD+/wMAAQASAAoAAADy/wQAAQASAAoAAAD3/wQAAQASAAoAAAD8/wQAAQASAAoAAAD0//T/AQACAAcAAAD1//T/AQADAAcAAADw//L/AQAEAAoAAFDw//P/AQAGAAoAAFA=")
+tile_set = ExtResource("3_3av5j")
+script = ExtResource("4_w44gu")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="TileMapLayer" unique_id=1452264116 groups=["Tileset"]]
+texture_filter = 1
+texture_repeat = 2
+tile_map_data = PackedByteArray("AADw/+v/AQABAAsAAADu//n/AQAbABEAAADu//r/AQAbABIAAADu//v/AQAJABIAAADt//n/AQAaABEAAADt//r/AQAaABIAAADt//v/AQAIABIAAADy/+v/AQADAAsAAADy/+z/AQAJAAsAAADy/+3/AQAJAAwAAADy/+7/AQAJAA0AAADy/+//AQAJAA4AAADy//D/AQAJAA8AAADx/+v/AQACAAsAAADx/+z/AQAIAAsAAADx/+3/AQAIAAwAAADx/+7/AQAIAA0AAADx/+//AQAIAA4AAADx//D/AQAIAA8AAAA=")
+tile_set = ExtResource("3_3av5j")
+script = ExtResource("4_w44gu")
+
+[node name="Player3" parent="." unique_id=1669882041 groups=["PlayerReplay"] instance=ExtResource("5_cshvh")]
+position = Vector2(-317, -67)
+CountTime = false
+ReplayAction = 0
+ReplayStyle = true
+RecordedLocation = "res://assets/Replays/tutorial_level1_2.json"
+
+[node name="Player" parent="." unique_id=355966062 instance=ExtResource("5_884pn")]
+position = Vector2(-317, -67)
+CountTime = false
+jump_height = 65.0
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=996074277]
+position = Vector2(34.72986, -140.46005)
+offset = Vector2(-28.055, 23.85)
+zoom = Vector2(2.12, 2.12)
+limit_left = -383
+limit_top = -347
+limit_right = 153
+limit_bottom = 13
+limit_smoothed = true
+script = ExtResource("6_7ulu0")
+
+[node name="CanvasLayer" parent="." unique_id=1540651817 instance=ExtResource("7_s26qe")]
+script = SubResource("GDScript_kdu5x")
+
+[node name="Time_Left" type="Timer" parent="." unique_id=2101749522 groups=["GameTimer"]]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Flag" parent="." unique_id=2060433318 instance=ExtResource("8_oghcr")]
+position = Vector2(-66, -290)
+scale = Vector2(1.01682, 1)
+
+[node name="WorldEnvironment" parent="." unique_id=345709950 instance=ExtResource("9_2vnwu")]
+environment = SubResource("Environment_vmlh1")
+
+[node name="AmbientParticles" parent="." unique_id=764451699 instance=ExtResource("10_c13u2")]
+position = Vector2(-128, -319)
+
+[node name="KillBox" parent="." unique_id=9263047 instance=ExtResource("11_uxdt6")]
+position = Vector2(-108, 34)
+scale = Vector2(58.64, 1)
+Visible = false
+
+[node name="Tutorial" type="Node2D" parent="." unique_id=1976593334]
+material = SubResource("ShaderMaterial_oq6ls")
+position = Vector2(-187.61499, -148.3494)
+
+[node name="falling_sand" parent="." unique_id=754028737 instance=ExtResource("13_cg276")]
+position = Vector2(-108, -263)
+
+[node name="falling_sand2" parent="." unique_id=1656001228 instance=ExtResource("13_cg276")]
+position = Vector2(-124, -263)
+
+[node name="falling_sand3" parent="." unique_id=1629423260 instance=ExtResource("13_cg276")]
+position = Vector2(-140, -263)
+
+[node name="falling_sand4" parent="." unique_id=525754915 instance=ExtResource("13_cg276")]
+position = Vector2(-156, -263)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1524520985]
+position = Vector2(-240, -279)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.95631605, 0.47549087, 0.7099316, 1)
+texture = SubResource("GradientTexture2D_cg276")
+height = 13.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=1053697923]
+position = Vector2(-24.000008, -327)
+scale = Vector2(2.1115723, 2.1115723)
+color = Color(0.8255318, 0.6290966, 0.018607348, 1)
+energy = 0.77
+texture = SubResource("GradientTexture2D_vn7l7")
+texture_scale = 1.72
+height = 13.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=836934249]
+position = Vector2(-104, -311)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.95631605, 0.47549087, 0.7099316, 1)
+texture = SubResource("GradientTexture2D_cg276")
+height = 13.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=69964316]
+position = Vector2(-104, -247)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.7026668, 0.5993584, 0.9006834, 1)
+energy = 0.65
+texture = SubResource("GradientTexture2D_cshvh")
+height = 13.0
+
+[node name="PointLight2D7" type="PointLight2D" parent="." unique_id=1813769062]
+position = Vector2(-201.00002, -134)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.7026668, 0.5993584, 0.9006834, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_c5hqx")
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 3
+
+[node name="PointLight2D10" type="PointLight2D" parent="." unique_id=2036527121]
+position = Vector2(-248, -215)
+scale = Vector2(1.453125, 1.453125)
+color = Color(0.7026668, 0.5993584, 0.9006834, 1)
+energy = 1.4
+texture = SubResource("GradientTexture2D_3av5j")
+texture_scale = 1.55
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 3
+
+[node name="PointLight2D54" type="PointLight2D" parent="." unique_id=1384855487]
+position = Vector2(-206, -152)
+scale = Vector2(2.3286183, 2.0336297)
+color = Color(0, 0.789555, 0.38148484, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_884pn")
+texture_scale = 1.52
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 1
+
+[node name="PointLight2D55" type="PointLight2D" parent="." unique_id=997064929]
+position = Vector2(-42.000015, -255)
+scale = Vector2(2.3286183, 2.0336297)
+color = Color(1, 0.45046932, 0.58225656, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_884pn")
+texture_scale = 1.52
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 1
+
+[node name="PointLight2D56" type="PointLight2D" parent="." unique_id=1038874720]
+position = Vector2(-200, -68.999985)
+scale = Vector2(2.3286183, 2.0336297)
+color = Color(1, 0.45046932, 0.58225656, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_884pn")
+texture_scale = 1.52
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 1
+
+[node name="PointLight2D57" type="PointLight2D" parent="." unique_id=2089977960]
+position = Vector2(-277, -69)
+scale = Vector2(2.3286183, 2.0336297)
+color = Color(1, 0.45046932, 0.58225656, 1)
+energy = 1.45
+texture = SubResource("GradientTexture2D_884pn")
+texture_scale = 1.52
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 1
+
+[node name="PointLight2D58" type="PointLight2D" parent="." unique_id=546597483]
+position = Vector2(-330, -148)
+scale = Vector2(2.3286183, 2.0336297)
+color = Color(0.7039533, 0.56437665, 1, 1)
+energy = 1.45
+texture = SubResource("GradientTexture2D_884pn")
+texture_scale = 1.52
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 1
+
+[node name="PointLight2D59" type="PointLight2D" parent="." unique_id=1413418007]
+position = Vector2(-252, -269)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.55
+texture = SubResource("GradientTexture2D_w44gu")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 1
+
+[node name="PointLight2D60" type="PointLight2D" parent="." unique_id=84816956]
+position = Vector2(-184, -53)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.55
+texture = SubResource("GradientTexture2D_w44gu")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 1
+
+[node name="PointLight2D61" type="PointLight2D" parent="." unique_id=1780184535]
+position = Vector2(-27, -287)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.95
+texture = SubResource("GradientTexture2D_w44gu")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("14_vn7l7")
+CurrentAnimation = 1

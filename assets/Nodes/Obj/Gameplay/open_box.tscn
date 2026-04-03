@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c1ytdkacld0nb"]
+
+[ext_resource type="Script" uid="uid://bgk0oiktjml4b" path="res://assets/Scripts/open_box.gd" id="1_5cidy"]
+[ext_resource type="Shader" uid="uid://bdshb7ecjuhu2" path="res://assets/Shader/open_box.gdshader" id="2_1dae4"]
+[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="2_lrgft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g70l8"]
+size = Vector2(13.4529, 12.931)
+
+[sub_resource type="Gradient" id="Gradient_5xgts"]
+offsets = PackedFloat32Array(0, 0.803279, 1)
+colors = PackedColorArray(0.372549, 0.788235, 0.905882, 1, 0.368627, 0.992157, 0.968627, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_craap"]
+gradient = SubResource("Gradient_5xgts")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otnnh"]
+shader = ExtResource("2_1dae4")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_craap")
+shader_parameter/size_effect = 0.1
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = true
+shader_parameter/is_horizontal = false
+shader_parameter/pause_duration = 0.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lei70"]
+atlas = ExtResource("2_lrgft")
+region = Rect2(160.004, 0.00147152, 15.9422, 15.9943)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
+size = Vector2(15, 15)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=382029224]
+collision_layer = 131328
+collision_mask = 2817
+script = ExtResource("1_5cidy")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1013474896]
+collision_layer = 0
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=853554361]
+scale = Vector2(1.115, 1.16)
+shape = SubResource("RectangleShape2D_g70l8")
+debug_color = Color(0.826248, 0.397122, 3.85046e-07, 0.42)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=371739663]
+material = SubResource("ShaderMaterial_otnnh")
+position = Vector2(-1.19209e-07, -1.19209e-07)
+texture = SubResource("AtlasTexture_lei70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1562045118]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_qn4ou")
+debug_color = Color(0.697578, 0.493659, 0, 0.42)
+
+[node name="SandTimer" type="Timer" parent="." unique_id=661568654]
+wait_time = 0.2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

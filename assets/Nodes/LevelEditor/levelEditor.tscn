@@ -1,0 +1,198 @@
+[gd_scene format=4 uid="uid://bp0l7f2vdowqa"]
+
+[ext_resource type="Script" uid="uid://bjrnnw6mpbcd3" path="res://assets/Nodes/LevelEditor/level_editor.gd" id="1_qesh2"]
+[ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="2_iimnb"]
+[ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Scripts/tile_map_layer.gd" id="3_0r4ld"]
+[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="4_oksxi"]
+[ext_resource type="Script" uid="uid://c0slssdx0k325" path="res://assets/Nodes/LevelEditor/editor_camera.gd" id="5_0r4ld"]
+[ext_resource type="Script" uid="uid://3h7cduheh4tl" path="res://assets/Nodes/LevelEditor/editor_cursor.gd" id="5_oksxi"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="6_achxd"]
+[ext_resource type="Script" uid="uid://wlhx5djgulnk" path="res://assets/Nodes/LevelEditor/editor_place.gd" id="7_2gbe2"]
+[ext_resource type="Texture2D" uid="uid://ib3mucyvuvch" path="res://assets/Sprites/slime-Sheet-move.png" id="7_goktm"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="8_achxd"]
+[ext_resource type="Texture2D" uid="uid://fi3re2wdac6d" path="res://assets/Sprites/slime-Sheet-idle-normal-custom.png" id="8_w1obw"]
+[ext_resource type="Texture2D" uid="uid://frgvamgpi0lw" path="res://assets/Sprites/key-Sheet.png" id="9_1pr77"]
+[ext_resource type="Texture2D" uid="uid://ccvnmxojr4xgl" path="res://assets/Sprites/killbox.png" id="10_r7lbo"]
+[ext_resource type="Texture2D" uid="uid://bkqxujelg0y5" path="res://assets/Sprites/killbox-blue.png" id="11_3vt02"]
+[ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="12_w1obw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sq2j"]
+size = Vector2(14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goktm"]
+atlas = ExtResource("4_oksxi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0mup"]
+atlas = ExtResource("4_oksxi")
+region = Rect2(224, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwmk8"]
+atlas = ExtResource("7_goktm")
+region = Rect2(0, 0, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar0rt"]
+atlas = ExtResource("8_w1obw")
+region = Rect2(0, 0, 19, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gf0x"]
+atlas = ExtResource("9_1pr77")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3btd"]
+atlas = ExtResource("12_w1obw")
+region = Rect2(16, 272, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pr77"]
+atlas = ExtResource("12_w1obw")
+region = Rect2(80, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7lbo"]
+atlas = ExtResource("12_w1obw")
+region = Rect2(48, 272, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3sq2j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goktm")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0mup")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwmk8")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar0rt")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gf0x")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_r7lbo")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_3vt02")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3btd")
+}],
+"loop": true,
+"name": &"Select",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pr77")
+}],
+"loop": true,
+"name": &"SizeX",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7lbo")
+}],
+"loop": true,
+"name": &"SizeY",
+"speed": 5.0
+}]
+
+[node name="LevelEditorRework" type="Node2D" unique_id=1519603222]
+
+[node name="LevelEditor" type="Node2D" parent="." unique_id=1375215272 node_paths=PackedStringArray("Cursor", "TilesetLayers", "EditorCamera")]
+script = ExtResource("1_qesh2")
+Cursor = NodePath("EditorCursor")
+SelectableObjects = Array[String](["res://assets/Nodes/Obj/Gameplay/falling_sand.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_special.tscn", "res://assets/Nodes/Obj/Gameplay/key.tscn", "res://assets/Nodes/Obj/Gameplay/kill_box.tscn", "res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn", "res://assets/Nodes/Obj/Gameplay/laser.tscn", "res://assets/Nodes/Obj/Gameplay/orb.tscn", "res://assets/Nodes/Obj/Gameplay/open_box.tscn"])
+TilesetLayers = [NodePath("TileMapLayer0")]
+EditorCamera = NodePath("EditorCamera")
+
+[node name="TileMapLayer0" type="TileMapLayer" parent="LevelEditor" unique_id=393772500 groups=["Tileset"]]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(15.999998, -16)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AAAAAAMAAQACAAIAAAAAAAIAAQACAAEAAAAAAAEAAQACAAAAAAD//wMAAQAAAAIAAAD//wIAAQAAAAEAAAD//wEAAQAAAAAAAAA=")
+tile_set = ExtResource("2_iimnb")
+script = ExtResource("3_0r4ld")
+
+[node name="KillBox" parent="LevelEditor" unique_id=1386857898 instance=ExtResource("6_achxd")]
+position = Vector2(144, -8)
+
+[node name="EditorCursor" type="Area2D" parent="LevelEditor" unique_id=303845822 node_paths=PackedStringArray("EditorPlace")]
+self_modulate = Color(1, 1, 1, 0.8235294)
+collision_layer = 0
+collision_mask = 917504
+script = ExtResource("5_oksxi")
+EditorPlace = NodePath("../EditorPlace")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEditor/EditorCursor" unique_id=1650635620]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_3sq2j")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="LevelEditor/EditorCursor" unique_id=1758188670]
+self_modulate = Color(1, 1, 1, 0.654902)
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_3sq2j")
+animation = &"SizeY"
+centered = false
+
+[node name="EditorCamera" type="Camera2D" parent="LevelEditor" unique_id=687561907]
+zoom = Vector2(2.08, 2.08)
+limit_enabled = false
+limit_left = -403
+limit_right = 170
+position_smoothing_enabled = true
+script = ExtResource("5_0r4ld")
+
+[node name="EditorPlace" type="Node2D" parent="LevelEditor" unique_id=2086312139 node_paths=PackedStringArray("SelectedTilemap", "EditorCursor")]
+script = ExtResource("7_2gbe2")
+SelectedTilemap = NodePath("../TileMapLayer0")
+EditorCursor = NodePath("../EditorCursor")
+
+[node name="Player" parent="LevelEditor" unique_id=173086588 instance=ExtResource("8_achxd")]
+position = Vector2(18, 0)
+collision_layer = 9
+Physics = false
+EnemiesPhysics = false
+
+[connection signal="area_entered" from="LevelEditor/EditorCursor" to="LevelEditor/EditorPlace" method="_on_editor_cursor_area_entered"]
+[connection signal="area_exited" from="LevelEditor/EditorCursor" to="LevelEditor/EditorPlace" method="_on_editor_cursor_area_exited"]
+[connection signal="body_entered" from="LevelEditor/EditorCursor" to="LevelEditor/EditorPlace" method="_on_editor_cursor_body_entered"]
+[connection signal="body_exited" from="LevelEditor/EditorCursor" to="LevelEditor/EditorPlace" method="_on_editor_cursor_body_exited"]

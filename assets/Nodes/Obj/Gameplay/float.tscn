@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://5wgsndvnte8"]
+
+[ext_resource type="Script" uid="uid://cuo85uam6d03p" path="res://assets/Nodes/Obj/Gameplay/float.gd" id="1_meotq"]
+[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="1_wb8lm"]
+[ext_resource type="AudioStream" uid="uid://kyhbhitly8g" path="res://assets/Sounds/popballoon_proccessed.wav" id="3_lugg0"]
+[ext_resource type="AudioStream" uid="uid://ltupmd82lp5b" path="res://assets/Sounds/Balloon_Inflate_Proccesed.wav" id="4_nkcm8"]
+[ext_resource type="Script" uid="uid://dwdcgo564kwae" path="res://assets/Nodes/Obj/water_float_logic.gd" id="5_ujmy2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lugg0"]
+size = Vector2(82, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8d21"]
+size = Vector2(48, 9)
+
+[sub_resource type="Animation" id="Animation_wb8lm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_meotq"]
+resource_name = "interact"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.7, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 3.4), Vector2(0, 3.4), Vector2(0, 2.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lugg0"]
+_data = {
+&"RESET": SubResource("Animation_wb8lm"),
+&"interact": SubResource("Animation_meotq")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw1xd"]
+atlas = ExtResource("1_wb8lm")
+region = Rect2(288.00186, 360.9507, 48.783783, 7.0937195)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8d21"]
+radius = 3.0
+height = 48.0
+
+[node name="float" type="AnimatableBody2D" unique_id=1298722529 node_paths=PackedStringArray("TimerExplode", "TimerRespawn", "OnWaterRay", "NotOnWaterRay", "WaterFloatLogic")]
+collision_layer = 131328
+script = ExtResource("1_meotq")
+TimerExplode = NodePath("TimerExplode")
+TimerRespawn = NodePath("TimerRespawn")
+OnWaterRay = NodePath("WaterFloatLogic/OnWaterRay")
+NotOnWaterRay = NodePath("WaterFloatLogic/NotOnWaterRay")
+WaterFloatLogic = NodePath("WaterFloatLogic")
+
+[node name="AreaDisableSlam" type="Area2D" parent="." unique_id=1552457778]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDisableSlam" unique_id=1207200456]
+position = Vector2(1, -5.5)
+shape = SubResource("RectangleShape2D_lugg0")
+debug_color = Color(0.63702106, 0.5058541, 0.41196138, 0.41960785)
+
+[node name="AreaCollision" type="Area2D" parent="." unique_id=88261200]
+position = Vector2(0, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaCollision" unique_id=334808039]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_g8d21")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2125039926]
+libraries/ = SubResource("AnimationLibrary_lugg0")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=604759268]
+position = Vector2(0, 2)
+texture = SubResource("AtlasTexture_hw1xd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=735099106]
+position = Vector2(0, 5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_g8d21")
+debug_color = Color(0.6866401, 0.29541618, 1, 0.41960785)
+
+[node name="TimerRespawn" type="Timer" parent="." unique_id=598934105]
+wait_time = 2.0
+one_shot = true
+
+[node name="TimerExplode" type="Timer" parent="." unique_id=1850366461]
+wait_time = 0.7
+one_shot = true
+
+[node name="AudioPop" type="AudioStreamPlayer" parent="." unique_id=1365773120]
+stream = ExtResource("3_lugg0")
+
+[node name="AudioCharge" type="AudioStreamPlayer" parent="." unique_id=1340817463]
+stream = ExtResource("4_nkcm8")
+
+[node name="WaterFloatLogic" type="Node2D" parent="." unique_id=1372822809 node_paths=PackedStringArray("OnWaterRay", "NotOnWaterRay")]
+script = ExtResource("5_ujmy2")
+OnWaterRay = NodePath("OnWaterRay")
+NotOnWaterRay = NodePath("NotOnWaterRay")
+
+[node name="NotOnWaterRay" type="RayCast2D" parent="WaterFloatLogic" unique_id=750481891]
+target_position = Vector2(0, 6)
+collision_mask = 33024
+hit_from_inside = true
+
+[node name="OnWaterRay" type="RayCast2D" parent="WaterFloatLogic" unique_id=490005720]
+target_position = Vector2(0, -15.24)
+collision_mask = 32768
+hit_from_inside = true
+collide_with_areas = true
+
+[connection signal="body_entered" from="AreaDisableSlam" to="." method="_on_area_disable_slam_body_entered"]
+[connection signal="body_exited" from="AreaDisableSlam" to="." method="_on_area_disable_slam_body_exited"]
+[connection signal="body_entered" from="AreaCollision" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="timeout" from="TimerRespawn" to="." method="_on_timer_respawn_timeout"]
+[connection signal="timeout" from="TimerExplode" to="." method="_on_timer_explode_timeout"]

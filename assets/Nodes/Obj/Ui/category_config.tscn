@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bd1ucykhu7c50"]
+
+[ext_resource type="Script" uid="uid://c2etkbyaqin53" path="res://assets/Nodes/Obj/Ui/config_category.gd" id="1_pkt8r"]
+
+[node name="CategoryAudio" type="Node2D"]
+script = ExtResource("1_pkt8r")

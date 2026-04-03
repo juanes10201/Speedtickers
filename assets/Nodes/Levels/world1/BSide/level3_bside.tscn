@@ -1,0 +1,155 @@
+[gd_scene format=4 uid="uid://du2hxxfmivmta"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_6xi0i"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_kk2is"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="3_d0dhq"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_agap5"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_0h0vr"]
+[ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="5_6xi0i"]
+[ext_resource type="TileSet" uid="uid://bploughbnnh38" path="res://assets/Nodes/Obj/Tileset/tiles_alt_bside.tres" id="6_swrrl"]
+[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="7_l2elx"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="8_r1omg"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="9_ss01o"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="10_vfck5"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="11_7grua"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kk2is"]
+light_mode = 1
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="Bg" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+texture = ExtResource("1_6xi0i")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
+script = ExtResource("2_kk2is")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
+libraries = {
+&"": SubResource("AnimationLibrary_0i2pc")
+}
+
+[node name="Player" parent="." instance=ExtResource("3_d0dhq")]
+position = Vector2(-319, -22)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(30, 26.053)
+zoom = Vector2(2.08, 2.08)
+limit_left = -403
+limit_right = 338
+limit_bottom = 153
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("4_agap5")
+
+[node name="Time_Left" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="DashTutorial" type="RichTextLabel" parent="Time_Left"]
+material = SubResource("CanvasItemMaterial_kk2is")
+offset_left = -285.0
+offset_top = -53.0
+offset_right = -116.0
+offset_bottom = -10.0
+theme_override_fonts/normal_font = ExtResource("5_6xi0i")
+text = "Slam Diagonal + Dash al caer = Wavedash"
+
+[node name="Flag" parent="." instance=ExtResource("5_0h0vr")]
+position = Vector2(116, -153)
+BSide = true
+CanHover = null
+grab_grid = null
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+position = Vector2(-4, 32)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//j/AAAAAAEAAADo//n/AAAAAAEAAADo//r/AAAAAAEAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//j/AAABAAEAAADp//n/AAACAAEAAADp//r/AAACAAEAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAAD7////AAABAAIAAAD7//7/AAABAAEAAAD7//3/AAABAAEAAAD7//z/AAABAAEAAAD7//v/AAABAAEAAAD7//r/AAABAAEAAAD7//n/AAABAAEAAAD7//j/AAABAAEAAAD6////AAAAAAIAAAD6//7/AAAAAAEAAAD6//3/AAAAAAEAAAD6//z/AAAAAAEAAAD6//v/AAAAAAEAAAD6//r/AAAAAAEAAAD6//n/AAAAAAEAAAD6//j/AAABAAEAAAD8////AAACAAIAAAD8//7/AAACAAEAAAD8//3/AAACAAEAAAD8//z/AAACAAEAAAD8//v/AAACAAEAAAD8//r/AAACAAEAAAD8//n/AAACAAEAAAD8//j/AAABAAEAAAD5//j/AAABAAEAAAD4//j/AAABAAEAAAD3//j/AAABAAEAAAD2//j/AAABAAEAAAD1//j/AAABAAEAAAD0//j/AAABAAEAAADz//j/AAABAAEAAADy//j/AAABAAEAAADx//j/AAABAAEAAADw//j/AAABAAEAAADv//j/AAABAAEAAADu//j/AAABAAEAAADt//j/AAABAAEAAADs//j/AAABAAEAAADr//j/AAABAAEAAADq//j/AAABAAEAAAD8//f/AAABAAEAAAD7//f/AAABAAEAAAD6//f/AAABAAEAAAD5//f/AAABAAAAAAD4//f/AAABAAAAAAD3//f/AAABAAAAAAD2//f/AAABAAAAAAD1//f/AAABAAAAAAD0//f/AAABAAAAAADz//f/AAABAAAAAADy//f/AAABAAAAAADx//f/AAABAAAAAADw//f/AAABAAAAAADv//f/AAABAAAAAADu//f/AAABAAAAAADt//f/AAABAAAAAADs//f/AAABAAAAAADr//f/AAABAAAAAADq//f/AAABAAAAAADp//f/AAABAAAAAADo//f/AAAAAAAAAAACAPj/AAACAAIAAAACAPf/AAACAAEAAAACAPb/AAACAAEAAAACAPX/AAACAAEAAAACAPT/AAACAAEAAAACAPP/AAACAAEAAAACAPL/AAACAAEAAAACAPH/AAABAAEAAAABAPj/AAABAAIAAAABAPf/AAABAAEAAAABAPb/AAABAAEAAAABAPX/AAABAAEAAAABAPT/AAABAAEAAAABAPP/AAABAAEAAAABAPL/AAABAAEAAAABAPH/AAABAAEAAAAAAPj/AAABAAIAAAAAAPf/AAABAAEAAAAAAPb/AAABAAEAAAAAAPX/AAABAAEAAAAAAPT/AAABAAEAAAAAAPP/AAABAAEAAAAAAPL/AAABAAEAAAAAAPH/AAABAAEAAAD///j/AAABAAIAAAD///f/AAABAAEAAAD///b/AAABAAEAAAD///X/AAABAAEAAAD///T/AAABAAEAAAD///P/AAABAAEAAAD///L/AAABAAEAAAD///H/AAABAAEAAAD+//j/AAABAAIAAAD+//f/AAABAAEAAAD+//b/AAABAAEAAAD+//X/AAABAAEAAAD+//T/AAABAAEAAAD+//P/AAABAAEAAAD+//L/AAABAAEAAAD+//H/AAABAAEAAAD9//j/AAABAAIAAAD9//f/AAABAAEAAAD9//b/AAABAAEAAAD9//X/AAABAAEAAAD9//T/AAABAAEAAAD9//P/AAABAAEAAAD9//L/AAABAAEAAAD9//H/AAABAAEAAAD8//b/AAABAAEAAAD8//X/AAABAAEAAAD8//T/AAABAAEAAAD8//P/AAABAAEAAAD8//L/AAABAAEAAAD8//H/AAABAAEAAAD7//b/AAABAAEAAAD7//X/AAABAAEAAAD7//T/AAABAAEAAAD7//P/AAABAAEAAAD7//L/AAABAAEAAAD7//H/AAABAAEAAAD6//b/AAABAAEAAAD6//X/AAABAAEAAAD6//T/AAABAAEAAAD6//P/AAABAAEAAAD6//L/AAABAAEAAAD6//H/AAAAAAEAAAAKAPH/AAACAAIAAAAJAPH/AAABAAIAAAAIAPH/AAABAAIAAAAHAPH/AAABAAIAAAAGAPH/AAABAAIAAAAFAPH/AAABAAIAAAAEAPH/AAABAAIAAAADAPH/AAABAAIAAAAKAPD/AAACAAAAAAAJAPD/AAABAAAAAAAIAPD/AAABAAAAAAAHAPD/AAABAAAAAAAGAPD/AAABAAAAAAAFAPD/AAABAAAAAAAEAPD/AAABAAAAAAADAPD/AAABAAAAAAACAPD/AAABAAAAAAABAPD/AAABAAAAAAAAAPD/AAABAAAAAAD///D/AAABAAAAAAD+//D/AAABAAAAAAD9//D/AAABAAAAAAD8//D/AAABAAAAAAD7//D/AAABAAAAAAD6//D/AAAAAAAAAAA=")
+tile_set = ExtResource("6_swrrl")
+
+[node name="falling_sand5" parent="." instance=ExtResource("7_l2elx")]
+position = Vector2(-173, 90)
+
+[node name="falling_sand6" parent="." instance=ExtResource("7_l2elx")]
+position = Vector2(-157, 90)
+
+[node name="falling_sand7" parent="." instance=ExtResource("7_l2elx")]
+position = Vector2(-141, 90)
+
+[node name="falling_sand22" parent="." instance=ExtResource("7_l2elx")]
+position = Vector2(-125, 90)
+
+[node name="falling_sand8" parent="." instance=ExtResource("7_l2elx")]
+position = Vector2(94, -173)
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand9" parent="." instance=ExtResource("7_l2elx")]
+position = Vector2(110, -173)
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand10" parent="." instance=ExtResource("7_l2elx")]
+position = Vector2(126, -173)
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="falling_sand23" parent="." instance=ExtResource("7_l2elx")]
+position = Vector2(142, -173)
+is_falling = true
+MAX_SPEED = 80.0
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("8_r1omg")]
+
+[node name="KillBox" parent="." instance=ExtResource("9_ss01o")]
+position = Vector2(-196, 144)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="CanvasLayer" parent="." instance=ExtResource("10_vfck5")]
+
+[node name="AmbientParticles" parent="." instance=ExtResource("11_7grua")]
+position = Vector2(-62, -231)

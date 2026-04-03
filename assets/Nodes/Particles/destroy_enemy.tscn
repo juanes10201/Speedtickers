@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://b0s78hw1o0f1"]
+
+[ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="1_1ve5e"]
+[ext_resource type="Script" uid="uid://bc4vlr2ab6dgg" path="res://assets/Nodes/Particles/destroy_enemy.gd" id="1_g35va"]
+[ext_resource type="Script" uid="uid://cfsfgd2dxfth6" path="res://assets/Nodes/Particles/TempParticle.gd" id="2_uo4gt"]
+[ext_resource type="Texture2D" uid="uid://bsna244ytjal" path="res://assets/Sprites/particles/Slime-hit-particle1.png" id="3_s66xo"]
+[ext_resource type="Texture2D" uid="uid://bclniw1yo1m6k" path="res://assets/Sprites/particles/Slime-hit-particle2.png" id="4_g35va"]
+[ext_resource type="Texture2D" uid="uid://csav2pu8ibd4h" path="res://assets/Sprites/particles/Slime-hit-particle3.png" id="5_gx6ma"]
+[ext_resource type="Texture2D" uid="uid://bmgwdli71ydq4" path="res://assets/Sprites/particles/Slime-hit-particle4.png" id="6_uwfff"]
+
+[sub_resource type="Curve" id="Curve_ty0i1"]
+_data = [Vector2(0.742647, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.979695, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7o1u7"]
+curve = SubResource("Curve_ty0i1")
+
+[sub_resource type="Curve" id="Curve_2dvdp"]
+_data = [Vector2(0, 0.65856), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1re7s"]
+curve = SubResource("Curve_2dvdp")
+
+[sub_resource type="Curve" id="Curve_q7or0"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1vh86"]
+curve = SubResource("Curve_q7or0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2avgr"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_max = 113.19
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_1re7s")
+scale_over_velocity_curve = SubResource("CurveTexture_1vh86")
+alpha_curve = SubResource("CurveTexture_7o1u7")
+hue_variation_min = -0.16
+hue_variation_max = -2.23517e-08
+anim_speed_min = 8.25
+anim_speed_max = 8.25
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_g35va")
+
+[node name="Particle1" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("1_1ve5e")
+one_shot = true
+preprocess = 0.1
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")
+
+[node name="Particle2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("3_s66xo")
+one_shot = true
+preprocess = 0.1
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")
+
+[node name="Particle3" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("4_g35va")
+one_shot = true
+preprocess = 0.1
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")
+
+[node name="Particle4" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("5_gx6ma")
+one_shot = true
+preprocess = 0.1
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")
+
+[node name="Particle5" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource("6_uwfff")
+one_shot = true
+preprocess = 0.1
+explosiveness = 1.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_2avgr")
+script = ExtResource("2_uo4gt")

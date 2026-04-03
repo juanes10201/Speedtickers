@@ -1,0 +1,447 @@
+[gd_scene format=3 uid="uid://l4jvo6ayxlkp"]
+
+[ext_resource type="Script" uid="uid://b40hrfks2w7u6" path="res://assets/Scripts/PauseMenuLogic.gd" id="1_lmvks"]
+[ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://assets/Sprites/screenshot.png" id="2_p57sw"]
+[ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="3_rsgsr"]
+[ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Scripts/PauseMenuTransition.gd" id="4_37ts2"]
+[ext_resource type="FontFile" uid="uid://d3ebca3t4i171" path="res://assets/Fonts/Ace Futurism.ttf" id="5_rmh30"]
+[ext_resource type="Texture2D" uid="uid://b1ifl8spiqdmv" path="res://assets/Sprites/menus/buttonSelect2.png" id="6_7w7eu"]
+[ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="7_fg2bv"]
+[ext_resource type="Texture2D" uid="uid://84h5mqrn7esw" path="res://assets/Sprites/menus/Button/config.png" id="7_wn3ts"]
+[ext_resource type="StyleBox" uid="uid://dirm08jxjyusl" path="res://assets/Sprites/menus/selectStylebox.tres" id="9_cas78"]
+[ext_resource type="Texture2D" uid="uid://db23c3wlmi58l" path="res://assets/Sprites/menus/Button/play.png" id="10_mxywe"]
+[ext_resource type="Texture2D" uid="uid://cldi3f8m6wfqy" path="res://assets/Sprites/menus/Button/quit.png" id="11_16lqt"]
+
+[sub_resource type="Animation" id="Animation_xvgwm"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1750, 374.562)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RichTextLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(702.932, -6.43848)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RichTextLabel2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(541.932, 570.562)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1160, 584)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1170, 419)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../PauseMenuButton2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(605, 106)]
+}
+
+[sub_resource type="Animation" id="Animation_yq3rj"]
+resource_name = "fade_movement"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1220, 374.562), Vector2(2000, 374.562)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RichTextLabel:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(702.932, -6.43848), Vector2(823, -80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RichTextLabel2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0666667, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(541.932, 570.562), Vector2(645, 644)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PauseMenuButton2:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0334333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(605, 106), Vector2(1193, 195)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0001, 0.5001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(549, 310), Vector2(1203, 392)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0001, 0.566767),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(490, 459), Vector2(1203, 554)]
+}
+
+[sub_resource type="Animation" id="Animation_h07xo"]
+resource_name = "initial_movement"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1750, 374.562), Vector2(1220, 363)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RichTextLabel:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(823, -80), Vector2(702.932, -6.43848)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RichTextLabel2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(645, 644), Vector2(541.932, 570.562)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PauseMenuButton2:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1194, 170), Vector2(605, 106)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1170, 417), Vector2(549, 310)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0334333, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1160, 584), Vector2(490, 460)]
+}
+
+[sub_resource type="Animation" id="Animation_uc043"]
+resource_name = "main_movement"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1220, 363), Vector2(1183, 363), Vector2(1220, 363)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RichTextLabel:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(702.932, -6.43848), Vector2(663.932, -6.43848), Vector2(702.932, -6.43848)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RichTextLabel2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.53333, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(541.932, 570.562), Vector2(585.932, 570.562), Vector2(541.932, 570.562)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PauseMenuButton2:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.16667, 1.83333, 1.96667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(605, 106), Vector2(605, 106), Vector2(605, 84), Vector2(605, 106), Vector2(605, 106)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.63333, 1.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(549, 310), Vector2(549, 310), Vector2(549, 288), Vector2(549, 310), Vector2(549, 310)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.46667, 1.63333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(490, 460), Vector2(490, 460), Vector2(490, 438), Vector2(490, 460), Vector2(490, 460)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vy804"]
+_data = {
+&"RESET": SubResource("Animation_xvgwm"),
+&"fade_movement": SubResource("Animation_yq3rj"),
+&"initial_movement": SubResource("Animation_h07xo"),
+&"main_movement": SubResource("Animation_uc043")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ptwe"]
+texture = ExtResource("6_7w7eu")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yw3r3"]
+texture = ExtResource("6_7w7eu")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="pause_menu" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_lmvks")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(589, 323)
+scale = Vector2(0.635, 0.635)
+texture = ExtResource("2_p57sw")
+
+[node name="Transition" type="Sprite2D" parent="."]
+position = Vector2(1750, 374.562)
+rotation = -0.10821
+scale = Vector2(-0.888, 0.882)
+texture = ExtResource("3_rsgsr")
+script = ExtResource("4_37ts2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+&"": SubResource("AnimationLibrary_vy804")
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 702.932
+offset_top = -6.43848
+offset_right = 1152.9299
+offset_bottom = 86.56151
+theme_override_fonts/normal_font = ExtResource("5_rmh30")
+theme_override_font_sizes/normal_font_size = 87
+text = "Speed"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 541.932
+offset_top = 570.562
+offset_right = 991.93207
+offset_bottom = 663.562
+theme_override_fonts/normal_font = ExtResource("5_rmh30")
+theme_override_font_sizes/normal_font_size = 87
+text = "Tickers"
+
+[node name="PauseMenuConfigButton2" type="Button" parent="."]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 18.0
+offset_top = 419.0
+offset_right = 414.0
+offset_bottom = 538.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_0ptwe")
+icon = ExtResource("7_wn3ts")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_fg2bv")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "config_menu"
+ShowOnExpo = false
+
+[node name="PauseMenuButton2" type="Button" parent="."]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -547.0
+offset_top = 106.0
+offset_right = -206.00012
+offset_bottom = 302.0
+grow_horizontal = 0
+theme_override_styles/focus = ExtResource("9_cas78")
+icon = ExtResource("10_mxywe")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_fg2bv")
+BUTTON_ACTION = 1
+
+[node name="PauseMenuGoBackButton2" type="Button" parent="."]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 584.0
+offset_right = 414.0
+offset_bottom = 703.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_yw3r3")
+icon = ExtResource("11_16lqt")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("7_fg2bv")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "main_menu_w_level_preview"
+ShowOnExpo = false
+
+[node name="control_pause_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 2
+
+[connection signal="pressed" from="PauseMenuConfigButton2" to="PauseMenuConfigButton2" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenuButton2" to="PauseMenuButton2" method="_on_pressed"]
+[connection signal="pressed" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_pressed"]

@@ -1,0 +1,142 @@
+[gd_scene format=4 uid="uid://b4gnyo8qbsvlr"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_uldef"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_c8gr2"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="3_vqqfr"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_edmom"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_t2b1t"]
+[ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="6_c8gr2"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="7_p464e"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="8_aov1r"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="9_1k18v"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="10_yggid"]
+[ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="12_c8gr2"]
+[ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="12_vqqfr"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="Bg" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+texture = ExtResource("1_uldef")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
+script = ExtResource("2_c8gr2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
+libraries = {
+&"": SubResource("AnimationLibrary_0i2pc")
+}
+
+[node name="Player" parent="." instance=ExtResource("3_vqqfr")]
+position = Vector2(-319, -22)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(30, 26.053)
+zoom = Vector2(2.08, 2.08)
+limit_left = -403
+limit_right = 338
+limit_bottom = 153
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("4_edmom")
+
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="Flag" parent="." instance=ExtResource("5_t2b1t")]
+position = Vector2(-8, -135)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+position = Vector2(-4, 32)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAACAAAAAADo//f/AAAAAAEAAADo//j/AAAAAAEAAADo//n/AAAAAAEAAADo//r/AAAAAAEAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//f/AAABAAEAAADp//j/AAABAAEAAADp//n/AAABAAEAAADp//r/AAABAAEAAADp//v/AAABAAEAAADp//z/AAABAAEAAADp//3/AAABAAEAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAACAAEAAADs////AAACAAIAAADo//b/AAAAAAEAAADp//b/AAABAAEAAADo//P/AAAAAAAAAADo//T/AAAAAAEAAADo//X/AAAAAAEAAADp//P/AAABAAAAAADp//T/AAABAAEAAADp//X/AAABAAEAAAD0//v/AAACAAIAAAD0//r/AAACAAEAAAD0//n/AAACAAEAAAD0//j/AAACAAEAAAD0//f/AAACAAEAAAD0//b/AAACAAEAAAD0//X/AAACAAEAAAD0//T/AAACAAEAAAD0//P/AAACAAEAAAD0//L/AAACAAEAAAD0//H/AAACAAAAAADz//v/AAAAAAIAAADz//r/AAAAAAEAAADz//n/AAAAAAEAAADz//j/AAAAAAEAAADz//f/AAAAAAEAAADz//b/AAAAAAEAAADz//X/AAAAAAEAAADz//T/AAAAAAEAAADz//P/AAAAAAEAAADz//L/AAAAAAEAAADz//H/AAAAAAAAAAD5/wIAAAACAAIAAAD5/wEAAAACAAEAAAD5/wAAAAACAAEAAAD5////AAACAAEAAAD5//7/AAACAAEAAAD5//3/AAACAAEAAAD5//z/AAACAAEAAAD5//v/AAACAAEAAAD5//r/AAACAAEAAAD5//n/AAACAAEAAAD5//j/AAACAAEAAAD4/wIAAAAAAAIAAAD4/wEAAAAAAAEAAAD4/wAAAAAAAAEAAAD4////AAAAAAEAAAD4//7/AAAAAAEAAAD4//3/AAAAAAEAAAD4//z/AAAAAAEAAAD4//v/AAAAAAEAAAD4//r/AAAAAAEAAAD4//n/AAAAAAEAAAD4//j/AAAAAAEAAAD1//r/AAAAAAcAAAD2//r/AAABAAcAAAD3//r/AAACAAcAAAD1/wEAAAAAAAcAAAD2/wEAAAABAAcAAAD3/wEAAAACAAcAAAD0/wUAAAACAAEAAAD0/wQAAAACAAEAAAD0/wMAAAACAAEAAAD0/wIAAAACAAEAAAD0/wEAAAACAAEAAAD0/wAAAAACAAAAAADz/wUAAAABAAEAAADz/wQAAAABAAEAAADz/wMAAAABAAEAAADz/wIAAAABAAEAAADz/wEAAAABAAEAAADz/wAAAAABAAAAAADy/wUAAAAAAAEAAADy/wQAAAAAAAEAAADy/wMAAAAAAAEAAADy/wIAAAAAAAEAAADy/wEAAAAAAAEAAADy/wAAAAAAAAAAAAD0/wYAAAACAAIAAADz/wYAAAABAAIAAADy/wYAAAAAAAIAAAD9/wcAAAACAAIAAAD9/wYAAAACAAAAAAD8/wcAAAABAAIAAAD8/wYAAAABAAAAAAD7/wcAAAABAAIAAAD7/wYAAAABAAAAAAD6/wcAAAABAAIAAAD6/wYAAAABAAAAAAD5/wcAAAABAAIAAAD5/wYAAAABAAAAAAD4/wcAAAABAAIAAAD4/wYAAAABAAAAAAD3/wcAAAABAAIAAAD3/wYAAAABAAAAAAD2/wcAAAABAAIAAAD2/wYAAAABAAAAAAD1/wcAAAAAAAIAAAD1/wYAAAABAAAAAAD5//f/AAACAAEAAAD5//b/AAACAAEAAAD5//X/AAACAAEAAAD4//f/AAAAAAEAAAD4//b/AAAAAAEAAAD4//X/AAAAAAEAAAD7//H/AAABAAAAAAD8//H/AAABAAAAAAD9//H/AAABAAAAAAD+//H/AAABAAAAAAD///H/AAABAAAAAAAAAPH/AAABAAAAAAABAPH/AAABAAAAAAACAPH/AAABAAAAAAADAPH/AAABAAAAAAAEAPH/AAABAAAAAAAFAPH/AAABAAAAAAAGAPH/AAABAAAAAAAHAPH/AAABAAAAAAAIAPH/AAABAAAAAAAJAPH/AAABAAAAAAAKAPH/AAABAAAAAAALAPH/AAACAAAAAAD4//H/AAAAAAAAAAD5//H/AAABAAAAAAD6//H/AAABAAAAAAD4//L/AAAAAAEAAAD4//P/AAAAAAEAAAD4//T/AAAAAAEAAAD5//L/AAABAAEAAAD5//P/AAABAAEAAAD5//T/AAACAAEAAAD+//j/AAAAAAIAAAD///j/AAABAAIAAAAAAPj/AAABAAIAAAABAPj/AAABAAIAAAACAPj/AAABAAIAAAADAPj/AAABAAIAAAAEAPj/AAABAAIAAAAFAPj/AAABAAIAAAAGAPj/AAABAAIAAAAHAPj/AAABAAIAAAAIAPj/AAABAAIAAAAJAPj/AAABAAIAAAAKAPj/AAACAAIAAAD6//j/AAAAAAcAAAD7//j/AAABAAcAAAD8//j/AAABAAcAAAD9//j/AAACAAcAAAD+//f/AAAAAAAAAAD///f/AAABAAAAAAAAAPf/AAABAAAAAAABAPf/AAABAAAAAAACAPf/AAABAAAAAAADAPf/AAABAAAAAAAEAPf/AAABAAAAAAAFAPf/AAABAAAAAAAGAPf/AAABAAAAAAAHAPf/AAABAAAAAAAIAPf/AAABAAAAAAAJAPf/AAABAAAAAAAKAPf/AAACAAAAAAALAPP/AAACAAEAAAALAPL/AAACAAEAAAAKAPP/AAABAAEAAAAKAPL/AAABAAEAAAAJAPP/AAABAAEAAAAJAPL/AAABAAEAAAAIAPP/AAABAAEAAAAIAPL/AAABAAEAAAAHAPP/AAABAAEAAAAHAPL/AAABAAEAAAAGAPP/AAABAAEAAAAGAPL/AAABAAEAAAAFAPP/AAABAAEAAAAFAPL/AAABAAEAAAAEAPP/AAABAAEAAAAEAPL/AAABAAEAAAADAPP/AAABAAEAAAADAPL/AAABAAEAAAACAPP/AAABAAEAAAACAPL/AAABAAEAAAABAPP/AAABAAEAAAABAPL/AAABAAEAAAAAAPP/AAABAAEAAAAAAPL/AAABAAEAAAD///P/AAABAAEAAAD///L/AAABAAEAAAD+//P/AAABAAEAAAD+//L/AAABAAEAAAD9//P/AAABAAEAAAD9//L/AAABAAEAAAD8//P/AAABAAEAAAD8//L/AAABAAEAAAD7//P/AAABAAEAAAD7//L/AAABAAEAAAD6//P/AAABAAEAAAD6//L/AAABAAEAAAA=")
+tile_set = ExtResource("6_c8gr2")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("7_p464e")]
+
+[node name="KillBox" parent="." instance=ExtResource("8_aov1r")]
+position = Vector2(-192, 169)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="CanvasLayer" parent="." instance=ExtResource("9_1k18v")]
+
+[node name="AmbientParticles" parent="." instance=ExtResource("10_yggid")]
+position = Vector2(-62, -231)
+
+[node name="KillBox5" parent="." instance=ExtResource("8_aov1r")]
+position = Vector2(-224, -111)
+scale = Vector2(2, 11.3)
+
+[node name="KillBox6" parent="." instance=ExtResource("8_aov1r")]
+position = Vector2(-224, 113)
+scale = Vector2(2, 11.3)
+
+[node name="Enemie" parent="." instance=ExtResource("12_c8gr2")]
+position = Vector2(-96, 121)
+EnemyDirection = 2
+
+[node name="Enemie2" parent="." instance=ExtResource("12_c8gr2")]
+position = Vector2(-80, 121)
+EnemyDirection = 2
+
+[node name="Enemie3" parent="." instance=ExtResource("12_c8gr2")]
+position = Vector2(-64, 121)
+EnemyDirection = 2
+
+[node name="KillBox7" parent="." instance=ExtResource("8_aov1r")]
+position = Vector2(-184, -207)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="Key" parent="." instance=ExtResource("12_vqqfr")]
+position = Vector2(-225, 1)
+
+[node name="Key2" parent="." instance=ExtResource("12_vqqfr")]
+position = Vector2(-158, -109)
+
+[node name="Key3" parent="." instance=ExtResource("12_vqqfr")]
+position = Vector2(-72, 17)

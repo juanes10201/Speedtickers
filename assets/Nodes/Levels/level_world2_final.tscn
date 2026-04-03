@@ -1,0 +1,137 @@
+[gd_scene format=4 uid="uid://bciufgoxomof2"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_5qeud"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_yjtno"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="3_85itq"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_m2gtf"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_fn0rc"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="6_bl8dy"]
+[ext_resource type="Texture2D" uid="uid://cvdsaeuured5y" path="res://assets/Sprites/particles/bright_particles.png" id="7_3wcj4"]
+[ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="8_jcd3f"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="9_lj3t5"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="10_bgrqt"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="11_ormi7"]
+[ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="12_mx8nw"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="Bg" type="Sprite2D" parent="."]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+texture = ExtResource("1_5qeud")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
+script = ExtResource("2_yjtno")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
+libraries = {
+&"": SubResource("AnimationLibrary_0i2pc")
+}
+
+[node name="Player" parent="." instance=ExtResource("3_85itq")]
+position = Vector2(-319, -22)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(30, 26.053)
+zoom = Vector2(2.08, 2.08)
+limit_left = -403
+limit_right = 338
+limit_bottom = 153
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("4_m2gtf")
+
+[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="Flag" parent="." instance=ExtResource("5_fn0rc")]
+position = Vector2(116, -165)
+
+[node name="AmbientParticles2" parent="." instance=ExtResource("6_bl8dy")]
+position = Vector2(-96, -160)
+scale = Vector2(179.273, 1.805)
+texture = ExtResource("7_3wcj4")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+position = Vector2(-4, 32)
+scale = Vector2(1.01399, 1)
+tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//f/AAAAAAEAAADo//j/AAAAAAEAAADo//n/AAAAAAEAAADo//r/AAAAAAEAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//f/AAACAAEAAADp//j/AAACAAEAAADp//n/AAACAAEAAADp//r/AAACAAEAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAADo//b/AAAAAAEAAADp//b/AAACAAEAAADo//P/AAAAAAAAAADo//T/AAAAAAEAAADo//X/AAAAAAEAAADp//P/AAABAAAAAADp//T/AAAFAAMAAADp//X/AAACAAEAAADq//P/AAABAAAAAADq//T/AAABAAIAAADr//P/AAABAAAAAADr//T/AAABAAIAAADs//P/AAABAAAAAADs//T/AAABAAIAAADt//P/AAABAAAAAADt//T/AAABAAIAAADu//P/AAABAAAAAADu//T/AAABAAIAAADv//P/AAABAAAAAADv//T/AAABAAIAAADw//P/AAABAAAAAADw//T/AAABAAIAAADx//P/AAABAAAAAADx//T/AAABAAIAAADy//P/AAABAAAAAADy//T/AAABAAIAAADz//P/AAABAAAAAADz//T/AAABAAIAAAD0//P/AAABAAAAAAD0//T/AAABAAIAAAD1//P/AAABAAAAAAD1//T/AAABAAIAAAD2//P/AAABAAAAAAD2//T/AAABAAIAAAD3//P/AAABAAAAAAD3//T/AAABAAIAAAD4//P/AAABAAAAAAD4//T/AAABAAIAAAD5//P/AAABAAAAAAD5//T/AAABAAIAAAD6//P/AAABAAAAAAD6//T/AAABAAIAAAD7//P/AAABAAAAAAD7//T/AAABAAIAAAD8//P/AAABAAAAAAD8//T/AAABAAIAAAD9//P/AAACAAAAAAD9//T/AAACAAIAAAAFAPX/AAAAAAAAAAAGAPX/AAABAAAAAAAHAPX/AAABAAAAAAAIAPX/AAABAAAAAAAJAPX/AAABAAAAAAAFAPr/AAAAAAEAAAAFAPv/AAAAAAIAAAAGAPv/AAABAAIAAAAHAPv/AAABAAIAAAAIAPv/AAABAAIAAAAJAPv/AAABAAIAAAAGAPr/AAABAAEAAAAHAPr/AAABAAEAAAAIAPr/AAABAAEAAAAJAPr/AAABAAEAAAAFAPn/AAAAAAEAAAAGAPn/AAABAAEAAAAHAPn/AAABAAEAAAAIAPn/AAABAAEAAAAJAPn/AAABAAEAAAAFAPf/AAAAAAEAAAAGAPf/AAABAAEAAAAHAPf/AAABAAEAAAAIAPf/AAABAAEAAAAJAPf/AAABAAEAAAAFAPj/AAAAAAEAAAAGAPj/AAABAAEAAAAHAPj/AAABAAEAAAAIAPj/AAABAAEAAAAJAPj/AAABAAEAAAAFAPb/AAAAAAEAAAAGAPb/AAABAAEAAAAHAPb/AAABAAEAAAAIAPb/AAABAAEAAAAJAPb/AAABAAEAAAA=")
+tile_set = ExtResource("8_jcd3f")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("9_lj3t5")]
+
+[node name="KillBox" parent="." instance=ExtResource("10_bgrqt")]
+position = Vector2(-196, 144)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="KillBox6" parent="." instance=ExtResource("10_bgrqt")]
+position = Vector2(-204, -274)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="CanvasLayer" parent="." instance=ExtResource("11_ormi7")]
+
+[node name="KillBox2" parent="." instance=ExtResource("10_bgrqt")]
+position = Vector2(-158, -84)
+scale = Vector2(2, 7)
+
+[node name="KillBox3" parent="." instance=ExtResource("10_bgrqt")]
+position = Vector2(-158, 80.215)
+scale = Vector2(2, 7)
+
+[node name="KillBox4" parent="." instance=ExtResource("10_bgrqt")]
+position = Vector2(-6, -151.63)
+scale = Vector2(2, 3)
+
+[node name="KillBox5" parent="." instance=ExtResource("10_bgrqt")]
+position = Vector2(-6, 87.12)
+scale = Vector2(2, 20)
+
+[node name="Key3" parent="." instance=ExtResource("12_mx8nw")]
+position = Vector2(-159, -2)
+
+[node name="Key4" parent="." instance=ExtResource("12_mx8nw")]
+position = Vector2(-7, -100)

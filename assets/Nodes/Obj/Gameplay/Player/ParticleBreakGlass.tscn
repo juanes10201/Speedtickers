@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://kp7p42cxqos4"]
+
+[ext_resource type="Script" uid="uid://dkjcfy0ucmhuv" path="res://assets/Nodes/Obj/Gameplay/Player/particle_break_glass.gd" id="1_cs2hr"]
+[ext_resource type="Texture2D" uid="uid://dcv0nrv13dl8g" path="res://assets/Sprites/particles/break-glass1.png" id="1_k8ybe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs2hr"]
+atlas = ExtResource("1_k8ybe")
+region = Rect2(0, 0, 9.009895, 7.933794)
+
+[sub_resource type="Curve" id="Curve_ixvgb"]
+_data = [Vector2(0.85281384, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vq5fg"]
+curve = SubResource("Curve_ixvgb")
+
+[sub_resource type="Curve" id="Curve_surjw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7135417, 0.9662922), 0.0, 0.0, 0, 0, Vector2(0.9895833, 0.06741583), -5.465168, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hfkim"]
+curve = SubResource("Curve_surjw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cs2hr"]
+particle_flag_disable_z = true
+angle_min = -102.899994
+angle_max = 257.1
+spread = 157.154
+initial_velocity_min = 96.77
+initial_velocity_max = 182.8
+angular_velocity_min = -247.20001
+angular_velocity_max = 108.389984
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_hfkim")
+alpha_curve = SubResource("CurveTexture_vq5fg")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.08
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfkim"]
+atlas = ExtResource("1_k8ybe")
+region = Rect2(9.001272, 0.005752325, 7.989767, 9.9728155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j82an"]
+atlas = ExtResource("1_k8ybe")
+region = Rect2(0, 8.97885, 8.019902, 7.0211496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tequ8"]
+atlas = ExtResource("1_k8ybe")
+region = Rect2(8.998841, 9.009952, 8.959218, 6.9900484)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixvgb"]
+atlas = ExtResource("1_k8ybe")
+region = Rect2(33.986572, 0, 2.0134277, 2.0137253)
+
+[sub_resource type="Curve" id="Curve_cs2hr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7916667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ixvgb"]
+curve = SubResource("Curve_cs2hr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_surjw"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3.265, 3.305, 1)
+angle_min = -263.19998
+angle_max = 309.7
+spread = 180.0
+initial_velocity_min = 30.429998
+initial_velocity_max = 95.65
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_ixvgb")
+hue_variation_min = -0.030000022
+hue_variation_max = -2.2351742e-08
+
+[node name="ParticleBreakGlass" type="Node2D"]
+script = ExtResource("1_cs2hr")
+
+[node name="ParticleDestroy1" type="GPUParticles2D" parent="."]
+position = Vector2(-3, -3)
+emitting = false
+amount = 1
+texture = SubResource("AtlasTexture_cs2hr")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_cs2hr")
+
+[node name="ParticleDestroy2" type="GPUParticles2D" parent="."]
+position = Vector2(3, -3)
+emitting = false
+amount = 1
+texture = SubResource("AtlasTexture_hfkim")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_cs2hr")
+
+[node name="ParticleDestroy3" type="GPUParticles2D" parent="."]
+position = Vector2(-3, 4)
+emitting = false
+amount = 1
+texture = SubResource("AtlasTexture_j82an")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_cs2hr")
+
+[node name="ParticleDestroy4" type="GPUParticles2D" parent="."]
+position = Vector2(3, 3)
+emitting = false
+amount = 1
+texture = SubResource("AtlasTexture_tequ8")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_cs2hr")
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 15
+texture = SubResource("AtlasTexture_ixvgb")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_surjw")
+
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
