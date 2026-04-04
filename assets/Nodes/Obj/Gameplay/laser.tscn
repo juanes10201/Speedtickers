@@ -1,53 +1,45 @@
 [gd_scene format=3 uid="uid://cjwpb8ragihkh"]
 
 [ext_resource type="Script" uid="uid://dogi41e5pskqe" path="res://assets/Nodes/Obj/Gameplay/laser.gd" id="1_s4yu4"]
-[ext_resource type="Shader" uid="uid://c51qpj4mwtaba" path="res://assets/Shader/kill_box.gdshader" id="2_x5aex"]
-[ext_resource type="Texture2D" uid="uid://ccvnmxojr4xgl" path="res://assets/Sprites/killbox.png" id="3_b6m7p"]
-[ext_resource type="Texture2D" uid="uid://cudcpyp3nri4k" path="res://assets/Sprites/killbox-disabled.png" id="4_v53iw"]
+[ext_resource type="Shader" uid="uid://umfguwxuhae2" path="res://assets/Nodes/Obj/Gameplay/laser.gdshader" id="2_i8t52"]
+[ext_resource type="Texture2D" uid="uid://kfhspp2kmiyq" path="res://assets/Sprites/laser.png" id="3_u1kq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qvlp"]
-size = Vector2(14.5, 14.5)
+size = Vector2(14.5, 343.37897)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eos1v"]
-shader = ExtResource("2_x5aex")
-shader_parameter/tile_size = Vector2(1, 1)
-shader_parameter/speed = 0.3
+shader = ExtResource("2_i8t52")
+shader_parameter/color0 = Color(0, 0, 0, 1)
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/color3 = Color(0, 0, 0, 1)
+shader_parameter/color4 = Color(0, 0, 0, 1)
+shader_parameter/color5 = Color(0, 0, 0, 1)
+shader_parameter/color6 = Color(0, 0, 0, 1)
+shader_parameter/color7 = Color(0, 0, 0, 1)
+shader_parameter/color8 = Color(0, 0, 0, 1)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_y6adf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_b6m7p")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_v53iw")
-}],
-"loop": true,
-"name": &"disabled",
-"speed": 5.0
-}]
-
-[node name="KillBox" type="Area2D" unique_id=1255027827]
+[node name="KillBox" type="Area2D" unique_id=1255027827 groups=["Laser"]]
 texture_repeat = 2
-scale = Vector2(0.125, 27.755)
 collision_layer = 132097
 collision_mask = 1029
 script = ExtResource("1_s4yu4")
+Laser_Colors = Array[Array]([[Vector4(0.47, 0, 0, 0), Vector4(0.245, 0, 0, 0)], [Vector4(229, 0, 0.35, 0), Vector4(0.51, 0, 0.17, 0)], [Vector4(0.38, 0.18, 0.71, 0), Vector4(0, 0, 0.365, 0)], [Vector4(0.68, 0.17, 0, 0), Vector4(0.295, -0.04, 0, 0)], [Vector4(0, 0.615, 0.4, 0), Vector4(0, 0.115, 0.12, 0)], [Vector4(0.62, 0.49, -0.045, 0), Vector4(0.24, 0.185, 0.17, 0)]])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2114592805]
+position = Vector2(0, -1)
 scale = Vector2(1.105, 1.095)
 shape = SubResource("RectangleShape2D_3qvlp")
 debug_color = Color(0, 0.6, 0.701961, 0.235294)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=328416922]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1013275507]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_eos1v")
-sprite_frames = SubResource("SpriteFrames_y6adf")
+position = Vector2(-0.23999977, 0)
+scale = Vector2(0.455, 1)
+texture = ExtResource("3_u1kq6")
+region_enabled = true
+region_rect = Rect2(0, 2218.1426, 15.708, 377.403)
 
 [node name="LavaTimer" type="Timer" parent="." unique_id=975615749]
 wait_time = 0.7

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bgk0oiktjml4b" path="res://assets/Scripts/open_box.gd" id="1_5cidy"]
 [ext_resource type="Shader" uid="uid://bdshb7ecjuhu2" path="res://assets/Shader/open_box.gdshader" id="2_1dae4"]
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="2_lrgft"]
+[ext_resource type="Script" uid="uid://ci1e7hh0lpd48" path="res://assets/Nodes/Obj/Gameplay/expandable_collision_editor.gd" id="4_44lbd"]
+[ext_resource type="Texture2D" uid="uid://c8rrngho2ach4" path="res://assets/Sprites/Tileset/Editor/Expand-Upper.png" id="5_etubt"]
+[ext_resource type="Texture2D" uid="uid://cmcqc73vrfdeu" path="res://assets/Sprites/Tileset/Editor/Expand-Down.png" id="6_ebkwx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g70l8"]
 size = Vector2(13.4529, 12.931)
@@ -31,13 +34,19 @@ region = Rect2(160.004, 0.00147152, 15.9422, 15.9943)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn4ou"]
 size = Vector2(15, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjkci"]
+size = Vector2(16, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kxvm"]
+size = Vector2(7.75, 16.375)
+
 [node name="StaticBody2D" type="StaticBody2D" unique_id=382029224]
 collision_layer = 131328
 collision_mask = 2817
 script = ExtResource("1_5cidy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1013474896]
-collision_layer = 0
+collision_layer = 131072
 collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=853554361]
@@ -57,5 +66,65 @@ debug_color = Color(0.697578, 0.493659, 0, 0.42)
 
 [node name="SandTimer" type="Timer" parent="." unique_id=661568654]
 wait_time = 0.2
+
+[node name="YExpandableEditor" type="Area2D" parent="." unique_id=19637585 groups=["YExpandEditor"]]
+position = Vector2(0, -5)
+collision_layer = 262144
+collision_mask = 0
+script = ExtResource("4_44lbd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YExpandableEditor" unique_id=1509376482]
+self_modulate = Color(1, 1, 1, 0.18039216)
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_sjkci")
+disabled = true
+debug_color = Color(3.3210217e-06, 0.63359237, 0.442276, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YExpandableEditor" unique_id=1424980864]
+self_modulate = Color(1, 1, 1, 0.18039216)
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_sjkci")
+disabled = true
+debug_color = Color(0, 0.6396381, 0.36628267, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="YExpandableEditor" unique_id=2088251848]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("5_etubt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="YExpandableEditor" unique_id=1839160153]
+visible = false
+position = Vector2(0, 11)
+texture = ExtResource("6_ebkwx")
+
+[node name="XExpandableEditor" type="Area2D" parent="." unique_id=830611718 groups=["XExpandEditor"]]
+position = Vector2(0, -5)
+collision_layer = 524288
+collision_mask = 0
+script = ExtResource("4_44lbd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XExpandableEditor" unique_id=868099887]
+self_modulate = Color(1, 1, 1, 0.18039216)
+position = Vector2(-11.875, 4)
+shape = SubResource("RectangleShape2D_8kxvm")
+disabled = true
+debug_color = Color(0.95960194, 9.62615e-07, 0.52340174, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="XExpandableEditor" unique_id=1243965244]
+self_modulate = Color(1, 1, 1, 0.18039216)
+position = Vector2(12.25, 4)
+shape = SubResource("RectangleShape2D_8kxvm")
+disabled = true
+debug_color = Color(0.9431156, 6.545782e-06, 0.6053207, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="XExpandableEditor" unique_id=769099427]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("5_etubt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="XExpandableEditor" unique_id=384959725]
+visible = false
+position = Vector2(0, 11)
+texture = ExtResource("6_ebkwx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

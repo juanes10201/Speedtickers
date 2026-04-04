@@ -3,12 +3,22 @@ extends Area2D
 @onready var LevelEditor = get_parent()
 @export var EditorPlace : Node2D
 
-#0: Tileset
-#>= 1, any other loaded node
+var OnGrid : bool = false
+
 var SelectedNode : int = 0
+var SelectedSubNode : int =0
 
 #var OnGrid : bool = true
 var GridSize : int = 16
+var GridSizeSmall : int = 8
+
+@export var TooltipUi : Node2D
+
+enum TileTools{
+	Pencil = 0,
+	Rectangle = 1,
+	Slope = 2
+}
 
 #La idea es que haya 2 posibles comportamientos
 #Uno que funciona en base a un grid 16x16 que seria los de los diferentes tilemaps
@@ -18,6 +28,7 @@ var GridSize : int = 16
 func _tick_position(delta: float):
 	#Grid position
 	if(LevelEditor.IsTileMapSelected): position = floor(get_global_mouse_position()/GridSize)*GridSize
+	elif(OnGrid): position = floor(get_global_mouse_position()/GridSizeSmall)*GridSizeSmall
 	else: position = get_global_mouse_position()
 
 func _change_selected_node_next() -> void:
@@ -33,23 +44,52 @@ func _change_selected_node_prev() -> void:
 func _ready() -> void:
 	pass
 
+func _alt_element(Element : int):
+	if(Element > LevelEditor.SelectableObjects.size() && Element != 9): return
+	if(Element == 9):
+		SelectedNode = Element
+		TooltipUi._update_view()
+		return
+	if(Element != SelectedNode):
+		SelectedNode = Element
+		SelectedSubNode = 0
+		TooltipUi._update_view()
+		return
+	else:
+		if(SelectedNode == 0):
+			SelectedSubNode += 1
+			if(SelectedSubNode > TileTools.size()-1):
+				SelectedSubNode = 0
+		else:
+			SelectedSubNode += 1
+			if(SelectedSubNode > LevelEditor.SelectableObjects[Element-1].size()-1):
+				SelectedSubNode = 0
+	TooltipUi._update_view()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#print("Element: " + str(SelectedNode))
+	#print("Sub-Element: " + str(SelectedSubNode))
+	if(Input.is_action_just_pressed("ui_editor_alt_grid")):
+		OnGrid = !OnGrid
+	
 	if(EditorPlace.CollidingBody):
 		$Sprite.play("Select")
 	elif(EditorPlace.ExpandYSelected):
 		$Sprite.play("SizeY")
 	elif(EditorPlace.ExpandXSelected):
 		$Sprite.play("SizeX")
-	else: $Sprite.play(str(SelectedNode))
-	if(Input.is_action_pressed("editor_element1")): SelectedNode = 0
-	if(Input.is_action_pressed("editor_element2")): SelectedNode = 1
-	if(Input.is_action_pressed("editor_element3")): SelectedNode = 2
-	if(Input.is_action_pressed("editor_element4")): SelectedNode = 3
-	if(Input.is_action_pressed("editor_element5")): SelectedNode = 4
-	if(Input.is_action_pressed("editor_element6")): SelectedNode = 5
-	if(Input.is_action_pressed("editor_element7")): SelectedNode = 6
-	if(Input.is_action_pressed("editor_element8")): SelectedNode = 7
-	if(Input.is_action_pressed("editor_element9")): SelectedNode = 8
-	if(Input.is_action_pressed("editor_element10")): SelectedNode = 9
+	elif(SelectedNode == 0): $Sprite.play("0")
+	elif(SelectedNode == 9): $Sprite.play("9")
+	else: $Sprite.play(str(SelectedNode) + "_" + str(SelectedSubNode))
+	if(Input.is_action_just_pressed("editor_element1")): _alt_element(0)
+	if(Input.is_action_just_pressed("editor_element2")): _alt_element(1)
+	if(Input.is_action_just_pressed("editor_element3")): _alt_element(2)
+	if(Input.is_action_just_pressed("editor_element4")): _alt_element(3)
+	if(Input.is_action_just_pressed("editor_element5")): _alt_element(4)
+	if(Input.is_action_just_pressed("editor_element6")): _alt_element(5)
+	if(Input.is_action_just_pressed("editor_element7")): _alt_element(6)
+	if(Input.is_action_just_pressed("editor_element8")): _alt_element(7)
+	if(Input.is_action_just_pressed("editor_element9")): _alt_element(8)
+	if(Input.is_action_just_pressed("editor_element10")): _alt_element(9)
 	_tick_position(delta)

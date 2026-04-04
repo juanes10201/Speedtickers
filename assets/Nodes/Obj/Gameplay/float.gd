@@ -53,6 +53,7 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 			$AnimationPlayer.play("interact")
 
 func _explode(State : bool = true) -> void:
+	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
 	print("Exploded")
 	SlamDisabledCollision = false
 	$AreaCollision.set_collision_mask_value(1, !State)

@@ -34,6 +34,23 @@ var StatePlaying : bool = false
 @onready var RetroTimerMove = $RetroTimerMove
 var paused : bool = false
 
+#region Editor
+var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
+var EditorIsFalling : bool = false
+func cache_values_editor() -> void:
+	EditorInitialPos = position
+	_ready()
+	EditorIsFalling = is_falling
+	set_falling(EditorIsFalling)
+
+func editor_reset() -> void:
+	set_falling(false)
+	position = EditorInitialPos
+	MoveParticles.emitting = false
+	is_falling = EditorIsFalling
+
+#endregion
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(RetroStyle):
@@ -140,8 +157,8 @@ func set_falling(falling : bool) -> void:
 		print("Started" )
 		MoveParticles.fixed_fps = 10
 		MoveParticles.interpolate = false
+		MoveParticles.emitting = true
 	is_falling = falling
-	MoveParticles.emitting = true
 	set_deferred("freeze", !falling)
 	self.set_deferred("sleeping", !falling)
 

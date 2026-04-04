@@ -41,7 +41,7 @@ size = Vector2(16, 7.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xl8c5"]
 size = Vector2(7.5, 16.375)
 
-[node name="Input_is_action_pressed(_ui_editor_place_)" type="Area2D" unique_id=1386857898]
+[node name="Killbox" type="Area2D" unique_id=1386857898 groups=["Killbox"]]
 texture_repeat = 2
 collision_layer = 132097
 collision_mask = 1029
@@ -68,16 +68,18 @@ collision_mask = 0
 script = ExtResource("5_qr0vw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YExpandableEditor" unique_id=2101570533]
+self_modulate = Color(1, 1, 1, 0.19607843)
 position = Vector2(0, -7.25)
 shape = SubResource("RectangleShape2D_cdhe4")
 disabled = true
-debug_color = Color(3.3210217e-06, 0.63359237, 0.442276, 0.41960785)
+debug_color = Color(0, 0.63529414, 0.44313726, 0.18039216)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="YExpandableEditor" unique_id=1572564515]
+self_modulate = Color(1, 1, 1, 0.19607843)
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_cdhe4")
 disabled = true
-debug_color = Color(0, 0.6396381, 0.36628267, 0.41960785)
+debug_color = Color(0, 0.63529414, 0.44313726, 0.18039216)
 
 [node name="Sprite2D" type="Sprite2D" parent="YExpandableEditor" unique_id=1805430136]
 visible = false
@@ -96,12 +98,14 @@ collision_mask = 0
 script = ExtResource("5_qr0vw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="XExpandableEditor" unique_id=517170655]
+self_modulate = Color(1, 1, 1, 0.11764706)
 position = Vector2(-12, 4)
 shape = SubResource("RectangleShape2D_xl8c5")
 disabled = true
 debug_color = Color(0.95960194, 9.62615e-07, 0.52340174, 0.41960785)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="XExpandableEditor" unique_id=544695534]
+self_modulate = Color(1, 1, 1, 0.11764706)
 position = Vector2(12.25, 4)
 shape = SubResource("RectangleShape2D_xl8c5")
 disabled = true

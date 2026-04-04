@@ -47,6 +47,8 @@ func _create_point_particles(score: int):
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
+	if(Edition.Is_in_editor): hide()
+	else: show()
 	#StyleText.text = " " + LevelManager.GetStyle()
 	
 	if(LevelManager.GetStyle() == "P"):

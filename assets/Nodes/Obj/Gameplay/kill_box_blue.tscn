@@ -8,12 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c8rrngho2ach4" path="res://assets/Sprites/Tileset/Editor/Expand-Upper.png" id="6_4xc6n"]
 [ext_resource type="Texture2D" uid="uid://cmcqc73vrfdeu" path="res://assets/Sprites/Tileset/Editor/Expand-Down.png" id="7_gyxon"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u88ov"]
-size = Vector2(16, 4.375)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2v1y"]
-size = Vector2(4, 16.375)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6vfnf"]
 shader = ExtResource("2_j01qq")
 shader_parameter/tile_size = Vector2(1, 1)
@@ -41,66 +35,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qvlp"]
 size = Vector2(14.5, 14.5)
 
-[node name="KillBox" type="Area2D" unique_id=1271129577]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4tg5"]
+size = Vector2(16, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xc6n"]
+size = Vector2(7.5, 16.375)
+
+[node name="KillBox" type="Area2D" unique_id=1271129577 groups=["Killbox"]]
 collision_layer = 131073
 script = ExtResource("1_h0fej")
 Type = 1
-
-[node name="YExpandableEditor" type="Area2D" parent="." unique_id=2005229715 groups=["YExpandEditor"]]
-position = Vector2(0, -5)
-collision_layer = 262144
-collision_mask = 0
-script = ExtResource("5_j4tg5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YExpandableEditor" unique_id=680945418]
-position = Vector2(0, -1.1875)
-shape = SubResource("RectangleShape2D_u88ov")
-disabled = true
-debug_color = Color(3.3210217e-06, 0.63359237, 0.442276, 0.41960785)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="YExpandableEditor" unique_id=1282187284]
-position = Vector2(0, 10.625)
-shape = SubResource("RectangleShape2D_u88ov")
-disabled = true
-debug_color = Color(0, 0.6396381, 0.36628267, 0.41960785)
-
-[node name="Sprite2D" type="Sprite2D" parent="YExpandableEditor" unique_id=1297904482]
-visible = false
-position = Vector2(0, -1)
-texture = ExtResource("6_4xc6n")
-
-[node name="Sprite2D2" type="Sprite2D" parent="YExpandableEditor" unique_id=358602403]
-visible = false
-position = Vector2(0, 11)
-texture = ExtResource("7_gyxon")
-
-[node name="XExpandableEditor" type="Area2D" parent="." unique_id=334858556 groups=["XExpandEditor"]]
-position = Vector2(0, -5)
-collision_layer = 524288
-collision_mask = 0
-script = ExtResource("5_j4tg5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="XExpandableEditor" unique_id=1141444932]
-position = Vector2(-6, 4.8125)
-shape = SubResource("RectangleShape2D_y2v1y")
-disabled = true
-debug_color = Color(0.95960194, 9.62615e-07, 0.52340174, 0.41960785)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="XExpandableEditor" unique_id=1356206432]
-position = Vector2(6, 4.8125)
-shape = SubResource("RectangleShape2D_y2v1y")
-disabled = true
-debug_color = Color(0.9431156, 6.545782e-06, 0.6053207, 0.41960785)
-
-[node name="Sprite2D" type="Sprite2D" parent="XExpandableEditor" unique_id=359598544]
-visible = false
-position = Vector2(0, -1)
-texture = ExtResource("6_4xc6n")
-
-[node name="Sprite2D2" type="Sprite2D" parent="XExpandableEditor" unique_id=1536282214]
-visible = false
-position = Vector2(0, 11)
-texture = ExtResource("7_gyxon")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2112575003]
 texture_repeat = 2
@@ -115,5 +59,61 @@ shape = SubResource("RectangleShape2D_3qvlp")
 [node name="LavaTimer" type="Timer" parent="." unique_id=841736047]
 wait_time = 0.7
 one_shot = true
+
+[node name="YExpandableEditor" type="Area2D" parent="." unique_id=1958642159 groups=["YExpandEditor"]]
+position = Vector2(0, -5)
+collision_layer = 262144
+collision_mask = 0
+script = ExtResource("5_j4tg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YExpandableEditor" unique_id=2093864762]
+position = Vector2(0, -7.25)
+shape = SubResource("RectangleShape2D_j4tg5")
+disabled = true
+debug_color = Color(3.3210217e-06, 0.63359237, 0.442276, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YExpandableEditor" unique_id=1364309578]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_j4tg5")
+disabled = true
+debug_color = Color(0, 0.6396381, 0.36628267, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="YExpandableEditor" unique_id=666357710]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("6_4xc6n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="YExpandableEditor" unique_id=407218549]
+visible = false
+position = Vector2(0, 11)
+texture = ExtResource("7_gyxon")
+
+[node name="XExpandableEditor" type="Area2D" parent="." unique_id=2065685162 groups=["XExpandEditor"]]
+position = Vector2(0, -5)
+collision_layer = 524288
+collision_mask = 0
+script = ExtResource("5_j4tg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XExpandableEditor" unique_id=1709407465]
+position = Vector2(-12, 4)
+shape = SubResource("RectangleShape2D_4xc6n")
+disabled = true
+debug_color = Color(0.95960194, 9.62615e-07, 0.52340174, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="XExpandableEditor" unique_id=1725248229]
+position = Vector2(12.25, 4)
+shape = SubResource("RectangleShape2D_4xc6n")
+disabled = true
+debug_color = Color(0.9431156, 6.545782e-06, 0.6053207, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="XExpandableEditor" unique_id=1602612274]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("6_4xc6n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="XExpandableEditor" unique_id=921264571]
+visible = false
+position = Vector2(0, 11)
+texture = ExtResource("7_gyxon")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

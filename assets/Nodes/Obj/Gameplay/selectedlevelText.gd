@@ -12,6 +12,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(Edition.Is_in_editor):
+		hide()
+		$"../Sprite2D".hide()
 	if(int(text) < 0):
 		hide()
 		text = "1"

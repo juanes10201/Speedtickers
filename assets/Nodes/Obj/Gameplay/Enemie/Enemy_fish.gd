@@ -84,6 +84,7 @@ func _dash_hit() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
 	_strech_tick(delta)
 	if(!Enabled && Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
 		Enabled = true

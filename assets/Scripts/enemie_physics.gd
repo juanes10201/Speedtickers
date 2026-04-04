@@ -64,6 +64,35 @@ var StatePlaying : bool = false
 
 #endregion
 
+#region Editor
+var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
+
+var InitialEnemyDirection : Directions = Directions.RIGHT
+var InitialGravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
+
+func cache_values_editor() -> void:
+	EditorInitialPos = position
+	InitialEnemyDirection = direction
+	InitialGravityDirection = GravityDirection
+	_ready()
+
+func editor_reset() -> void:
+	Sprite.visible = true
+	Enabled = true
+	for Child in get_children():
+		if(Child is Timer):
+			Child.stop()
+		if(Child is GPUParticles2D || Child is CPUParticles2D):
+			Child.emitting = false
+	velocity = Vector2(0.0, 0.0)
+	strech_size(1.0, 1.0)
+	Sprite.play("Idle")
+	position = EditorInitialPos
+	direction = InitialEnemyDirection
+	GravityDirection = InitialGravityDirection
+	Move = true
+#endregion
+
 #region Killed by Slide or Groundsmash Sound
 func _killed_by_player_sound() -> void:
 	#if(!SlideSound.playing):
@@ -122,6 +151,7 @@ func _ready():
 		$HitFlyParticles.interpolate = false
 	if(SaveGame.get_config_value("Particles") != null):
 		Particles = SaveGame.get_config_value("Particles")
+	if(Edition.Is_in_editor): Particles = false
 	if(EnemyDirection == Directions.RIGHT): direction = 1
 	elif(EnemyDirection == Directions.LEFT): direction = -1
 	else: direction = 0
@@ -136,12 +166,14 @@ func _Enemie_Shoot_Sprite_Shader() -> void:
 
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
+	#print("Current direction: " + str(direction))
+	#print("Enemy direction: " + str(InitialEnemyDirection))
 	if(RetroStyle):
 		position = _Position
 		position.x /= 8
 		position.x = round(global_position.x)
 		position.x *= 8
-	if(!Enabled && Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
+	if(Player && Player.EnemiesPhysics && !Enabled && Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
 		Enabled = true
 		if(ShootBulletTimer):
 			ShootBulletTimer.start()
@@ -300,7 +332,11 @@ func On_Death():
 		if(RetroStyle):
 			InstanceParticles.RetroStyle()
 	#endregion
-	self.queue_free()
+	if(Edition.Is_in_editor):
+		Sprite.visible = false
+		Enabled = false
+	else:
+		self.queue_free()
 #endregion
 
 #Diferencia maxima para considerar que no se mueva

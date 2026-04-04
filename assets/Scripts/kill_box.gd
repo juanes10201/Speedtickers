@@ -40,7 +40,9 @@ func _ready() -> void:
 
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
-	if(Edition.Is_in_editor):
+	#print(scale)
+	#Sprite.material.set_shader_parameter("tile_size", scale)
+	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor):
 		$CollisionShape2D.disabled = false
 	else:
 		#If current killbox

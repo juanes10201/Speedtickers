@@ -227,6 +227,32 @@ func _stop_slam_particles():
 var RecordedActions : Array[Vector3] = []
 @export var RecordedLocation : String = "res://assets/Replays/tutorial_level1_1.json"
 
+#region Editor
+var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
+
+func cache_values_editor() -> void:
+	EditorInitialPos = position
+	_ready()
+
+func editor_reset() -> void:
+	for Child in get_children():
+		if(Child is Timer):
+			Child.stop()
+		if(Child is GPUParticles2D || Child is CPUParticles2D):
+			Child.emitting = false
+	position = EditorInitialPos
+	velocity = Vector2(0.0, 0.0)
+	Speed = Vector2(0.0, 0.0)
+	strech_size(1.0, 1.0, true)
+	Sprite.play("Idle")
+	Reset_Slide()
+	Reset_Groundsmash(false, false, true)
+	Dead = false
+	Sprite.show()
+	EnabledKillBox = Global.KillBoxTypes.Red
+	MoveLava = false
+	Dashed = false
+#endregion
 
 func array_to_vec3(arr: Array) -> Array[Vector3]:
 	var out: Array[Vector3] = []
@@ -955,6 +981,13 @@ func On_Death():
 		_play_sound(AudioDeath, true)
 		#TransitionOut.show()
 		#TransitionOut.fade_out()
+		if(Edition.Is_in_editor):
+			await(get_tree().create_timer(TimeDeath).timeout)
+			#Dead = false
+			#Sprite.show()
+			ParticlesDeathAir.emitting = false
+			ParticlesDeathFloor.emitting = false
+			#get_parent()._play_state_tick(true)
 		if(!Edition.Is_in_editor && ReplayAction == Global.ReplayStates.STOPPED):
 			await(get_tree().create_timer(TimeDeath).timeout)
 			if get_tree():
