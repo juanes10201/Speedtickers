@@ -1,0 +1,116 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://assets/Nodes/LevelEditor/editor_level_data.gd" id="1_o8e8b"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="2_fwj54"]
+[ext_resource type="Script" path="res://assets/Scripts/Player.gd" id="3_e4qag"]
+[ext_resource type="Script" path="res://assets/Scripts/Player_camera.gd" id="4_x3l15"]
+[ext_resource type="TileSet" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="5_3yvfl"]
+[ext_resource type="Script" path="res://assets/Scripts/tile_map_layer.gd" id="6_5m6si"]
+[ext_resource type="Shader" path="res://assets/Shader/Water2.gdshader" id="7_n40jq"]
+[ext_resource type="Script" path="res://assets/Nodes/Obj/Tileset/tile_map_layer_water.gd" id="8_jiptr"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="9_oxivg"]
+[ext_resource type="Script" path="res://assets/Scripts/kill_box.gd" id="10_80lm7"]
+
+[sub_resource type="Gradient" id="Gradient_aueqc"]
+offsets = PackedFloat32Array(0, 0.75271297)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6jsng"]
+frequency = 0.0007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d77xg"]
+width = 1200
+height = 1200
+noise = SubResource("FastNoiseLite_6jsng")
+color_ramp = SubResource("Gradient_aueqc")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uchq"]
+shader = ExtResource("7_n40jq")
+shader_parameter/opacity_post_border = 0.0
+shader_parameter/refraction_map = SubResource("NoiseTexture2D_d77xg")
+shader_parameter/refraction_stretch = Vector2(1, 1)
+shader_parameter/refraction_strength = 0.02
+shader_parameter/water_tint = Color(0.4576931, 0.6033853, 0.77906215, 0.101960786)
+shader_parameter/speed = 0.1
+shader_parameter/border_wave_height = 1.5570000739575
+shader_parameter/border_wave_x_strength = 0.2050000097375
+shader_parameter/border_wave_frequency = 0.26800001273
+shader_parameter/border_wave_speed = 2.5870001228825
+shader_parameter/border_thickness = 4.434000210615
+shader_parameter/border_color = Color(0.6, 0.85, 1, 0.6)
+shader_parameter/water_surface_y = 0.0
+
+[node name="LevelData" type="Node2D" unique_id=1256106357 node_paths=PackedStringArray("LevelEditor")]
+script = ExtResource("1_o8e8b")
+LevelEditor = NodePath("")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=173086588 groups=["Player"] instance=ExtResource("2_fwj54")]
+position = Vector2(33, 1)
+collision_layer = 131081
+collision_mask = 67868
+script = ExtResource("3_e4qag")
+Physics = false
+TimeDeath = 0.4
+EnemiesPhysics = false
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=991615959]
+position = Vector2(14.5308, -29.4338)
+zoom = Vector2(2.08, 2.08)
+limit_left = -403
+limit_top = -414
+limit_right = 819
+limit_bottom = 243
+position_smoothing_enabled = true
+script = ExtResource("4_x3l15")
+
+[node name="TileMapLayer0" type="TileMapLayer" parent="." unique_id=591772185 groups=["Tileset"]]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16.999998, -16)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AAAAAAEAAQAAAAAAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAIAAAABAAEAAQACAAAAAAABAAIAAQACAAEAAAABAAMAAQACAAIAAAD5/wAAAQAAAAMAAAD6/wAAAQACAAMAAAD6////AQADAAEAAAD6//7/AQADAAEAAAD6//3/AQADAAAAAAD7//3/AQACAAMAAAD7//z/AQAAAAMAAAD8//z/AQABAAMAAAD9//z/AQABAAMAAAD+//z/AQACAAMAAAD+//3/AQADAAIAAAD///3/AQABAAMAAAAAAP3/AQABAAMAAAABAP3/AQABAAMAAAACAP3/AQACAAMAAAACAP7/AQADAAIAAAADAP7/AQABAAMAAAAEAP7/AQACAAMAAAA=")
+tile_set = ExtResource("5_3yvfl")
+script = ExtResource("6_5m6si")
+
+[node name="TileMapTemp" type="TileMapLayer" parent="." unique_id=224322114 groups=["Tileset"]]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16.999998, -16)
+scale = Vector2(1.00384, 1)
+tile_set = ExtResource("5_3yvfl")
+script = ExtResource("6_5m6si")
+
+[node name="TileMapLayerWater" type="TileMapLayer" parent="." unique_id=794932979 groups=["Tileset", "WaterTileset"]]
+z_index = 2
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_7uchq")
+position = Vector2(-2, 32)
+scale = Vector2(1.00384, 1)
+tile_set = ExtResource("5_3yvfl")
+script = ExtResource("8_jiptr")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=176841055 groups=["Tileset"]]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(15.999998, -16)
+scale = Vector2(1.00384, 1)
+tile_set = ExtResource("5_3yvfl")
+script = ExtResource("6_5m6si")
+
+[node name="Killbox" type="Area2D" parent="." unique_id=1386857898 groups=["Killbox"] instance=ExtResource("9_oxivg")]
+visible = false
+texture_repeat = 2
+position = Vector2(-3, 232)
+scale = Vector2(999, 1)
+collision_layer = 1025
+collision_mask = 1029
+script = ExtResource("10_80lm7")
+Visible = false
+CanChange = false
+
+[node name="Time_Left" type="Timer" parent="." unique_id=220543048 groups=["GameTimer"]]
+wait_time = 7.0
+one_shot = true
+
+[connection signal="body_entered" from="Killbox" to="Killbox" method="_on_body_entered"]

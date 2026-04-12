@@ -1,22 +1,110 @@
 extends Node2D
 
-@export var SelectedTilemap : TileMapLayer
+var SelectedTilemap : TileMapLayer
 @export var EditorCursor : Node2D
 
 @onready var LevelEditor = get_parent()
+@export var LevelData : Node2D
 
 @export var SpriteFill1 : Sprite2D
 @export var SpriteFill2 : Sprite2D
 
 var LastCollidedBody : Node2D
 
+var SelectingMultiple : bool = false
+
+var AreaSelectOriginalPositions : Array[Vector2] = []
+var AreaSelectOriginalPos : Vector2 = Vector2(0.0, 0.0)
+@export var AreaSelectMultiple : Area2D
+
+@export var TilesetTempCopy : TileMapLayer
+
+@export var EditorDataParser : Node2D
+
+func _reset_select_multiple() -> void:
+	SpriteFill1.hide()
+	SpriteFill2.hide()
+	SelectingMultiple = false
+	SelectedNodes = []
+	MultipleMovingSelecting = false
+	MultipleMadeSelection = false
+	AreaSelectOriginalPositions = []
+	AreaSelectOriginalPos = Vector2(0.0, 0.0)
+
+var MultipleMadeSelection : bool = false
+var MultipleMovingSelecting : bool = false
+
+func _select_area_tick() -> void:
+	var box_x : float = abs(SpriteFill1.global_position.x - SpriteFill2.global_position.x)/2
+	var box_y : float = abs(SpriteFill1.global_position.y - SpriteFill2.global_position.y)/2
+	AreaSelectMultiple.Collision_Shape.shape.extents = Vector2(box_x, box_y)
+	
+	AreaSelectMultiple.global_position.x = SpriteFill1.global_position.x - (SpriteFill1.global_position.x-SpriteFill2.global_position.x)/2
+	AreaSelectMultiple.global_position.y = SpriteFill1.global_position.y - (SpriteFill1.global_position.y-SpriteFill2.global_position.y)/2
+
+func _multiple_moving_select_visuals() -> void:
+	SpriteFill1.show()
+	SpriteFill2.show()
+	
+	SpriteFill1.global_position = AreaSelectMultiple.global_position
+	SpriteFill1.global_position.x -= AreaSelectMultiple.Collision_Shape.shape.extents.x
+	SpriteFill1.global_position.y -= AreaSelectMultiple.Collision_Shape.shape.extents.y
+	
+	SpriteFill2.global_position = AreaSelectMultiple.global_position
+	SpriteFill2.global_position.x += AreaSelectMultiple.Collision_Shape.shape.extents.x
+	SpriteFill2.global_position.y += AreaSelectMultiple.Collision_Shape.shape.extents.y
+	
+	AreaSelectMultiple.global_position = EditorCursor.global_position
+
+func _selecting_multiple() -> void:
+	#print(SelectedNodes)
+	AreaSelectMultiple.monitoring = SelectingMultiple
+	AreaSelectMultiple.Collision_Shape.disabled = !SelectingMultiple
+	if(Input.is_action_just_pressed("ui_editor_erase")):
+		if(MultipleMadeSelection):
+			for node in SelectedNodes:
+				_delete_node(node)
+				_reset_select_multiple()
+	if(Input.is_action_just_pressed("ui_editor_place")):
+		if(MultipleMadeSelection && CollidingBody && CollidingBody.is_in_group("AreaSelectMultiple")):
+			MultipleMovingSelecting = true
+		else:
+			_reset_select_multiple()
+	if(Input.is_action_pressed("ui_editor_place")):
+		if(MultipleMovingSelecting):
+			_multiple_moving_select_visuals()
+			var Dif_pos : Vector2 = AreaSelectMultiple.global_position-AreaSelectOriginalPos
+			for i in range(SelectedNodes.size()):
+				SelectedNodes[i].global_position = AreaSelectOriginalPositions[i]+Dif_pos
+	if(Input.is_action_pressed("ui_editor_multiple_select")):
+		if(Input.is_action_just_pressed("ui_editor_place")):
+			SelectingMultiple = true
+			RectanglePos1 = EditorCursor.global_position
+			SpriteFill1.global_position = RectanglePos1
+			SpriteFill2.global_position = EditorCursor.global_position
+			SpriteFill1.show()
+			SpriteFill2.show()
+		if(Input.is_action_pressed("ui_editor_place")):
+			SpriteFill2.global_position = EditorCursor.global_position
+			#AreaSelectMultiple.global_position = SpriteFill1.global_position
+			
+			_select_area_tick()
+		elif(Input.is_action_just_released("ui_editor_place")):
+			MultipleMadeSelection = true
+			AreaSelectOriginalPos = AreaSelectMultiple.global_position
+			for Selected in SelectedNodes:
+				AreaSelectOriginalPositions.append(Selected.global_position)
+
 func _convert_coordinates_to_local(pos : Vector2) -> Vector2i:
 	var _pos_local = SelectedTilemap.to_local(pos)
 	var tile_pos: Vector2i = SelectedTilemap.local_to_map(_pos_local)
 	return tile_pos
 
-func _place_tile_terrain_local_pos(pos : Vector2i):
-	SelectedTilemap.set_cells_terrain_connect([pos], 2, 0)
+func _place_tile_terrain_local_pos(pos : Vector2i, tilemap : TileMapLayer = SelectedTilemap, subtile : int = EditorCursor.SelectedSubTile):
+	if(SelectedTilemap.get_cell_source_id(pos) == -1):
+		GlobalFunctions.record_action(GlobalFunctions.FUNCTIONS.Create_tile_local, pos, pos, SelectedTilemap)
+	tilemap.set_cells_terrain_connect([pos], subtile, 0, false)
+
 
 func _place_tile_terrain_global_pos(pos : Vector2):
 	var _pos_local = SelectedTilemap.to_local(pos)
@@ -24,7 +112,7 @@ func _place_tile_terrain_global_pos(pos : Vector2):
 	_place_tile_terrain_local_pos(tile_pos)
 
 func _erase_tile_terrain_local_pos(pos : Vector2i):
-	SelectedTilemap.set_cells_terrain_connect([pos], 2, -1)
+	SelectedTilemap.set_cells_terrain_connect([pos], EditorCursor.SelectedSubTile, -1)
 
 func _erase_tile_terrain_global_pos(pos : Vector2i):
 	var _pos_local = SelectedTilemap.to_local(pos)
@@ -49,15 +137,15 @@ func _fill_slope_local_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : boo
 	var Cells : Array[Vector2i]
 	#print("pos1: " + str(pos1))
 	#print("pos2: " + str(pos2))
+	#print(PreCalcAngleY)
 	for x in range(pos1.x, pos2.x):
-		var _posY = pos1.y - tan(deg_to_rad(SlopeAngle))*abs(pos1.x - x)
+		var _posY : float = ceil(pos1.y - PreCalcAngleY*(x-pos1.x))
 		var Cell : Vector2i = Vector2i(x, _posY)
 		Cells.append(Cell)
-	#print(SelectedTilemap.tile_set.get_terrain_set_mode(3))
 	if(!RemoveTiles):
-		SelectedTilemap.set_cells_terrain_path(Cells, 2, 0)
+		SelectedTilemap.set_cells_terrain_connect(Cells, 0,  1, false)
 	else:
-		SelectedTilemap.set_cells_terrain_path(Cells, 3, -1)
+		SelectedTilemap.set_cells_terrain_connect(Cells, 0, -1)
 
 func _fill_rectangle_global_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : bool = false) -> void:
 	#Convertir las 2 posiciones a posiciones locales que entienda el tilemap
@@ -72,24 +160,106 @@ func _fill_rectangle_global_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles 
 func _fill_rectangle_local_tileset(pos1 : Vector2i, pos2 : Vector2i, RemoveTiles : bool = false) -> void:
 	#Poner cada tile en la lista para luego enviarlo a pintar
 	var Cells : Array[Vector2i]
-	#var range1x = pos1.x if pos1.x < pos2.x else pos2.x
-	#var range2x = pos1.x if pos1.x > pos2.x else pos2.x
-	#var range1y = pos1.y if pos1.y < pos2.y else pos2.y
-	#var range2y = pos1.y if pos1.y < pos2.y else pos2.y
 	
 	for x in range(pos1.x, pos2.x+1):
 		for y in range(pos1.y, pos2.y+1):
 			var Cell : Vector2i = Vector2i(x, y)
 			Cells.append(Cell)
 	if(!RemoveTiles):
-		SelectedTilemap.set_cells_terrain_connect(Cells, 2, 0)
+		SelectedTilemap.set_cells_terrain_connect(Cells, EditorCursor.SelectedSubTile, 0)
 	else:
-		SelectedTilemap.set_cells_terrain_connect(Cells, 2, -1)
+		SelectedTilemap.set_cells_terrain_connect(Cells, EditorCursor.SelectedSubTile, -1)
 
 #Angulo de la rampa
 var SlopeAngle : float = 22.5
+var PreCalcAngleY = .5#tan(deg_to_rad(SlopeAngle))
+
+var TilesetSelection : Array[Vector2] = [Vector2(0.0, 0.0), Vector2(0.0, 0.0)]
+
+func _copy_ranged_tiles_to_temp(ReferencePos : Vector2i, pos1 : Vector2i, pos2 : Vector2i, Tilemap : TileMapLayer):
+	var TilePos : Array[Vector2i]
+	for x in range(pos1.x, pos2.x):
+		for y in range(pos1.y, pos2.y):
+			TilePos.append(Vector2i(x, y))
+	_copy_tiles_to_temp(ReferencePos, TilePos, Tilemap)
+
+func _copy_cell(FromPos : Vector2i, ToPos : Vector2i,  TileMapFrom : TileMapLayer, TileMapTo : TileMapLayer):
+	#TileMapTo.set_cell(ToPos, TileMapFrom.get_cell_source_id(FromPos), TileMapFrom.get_cell_atlas_coords(FromPos), TileMapFrom.get_cell_alternative_tile(FromPos))
+	_place_tile_terrain_local_pos(ToPos, TileMapTo)
+
+func _copy_back_tiles(ToPos : Vector2i):
+	var TilesPos : Array[Vector2i] = TilesetTempCopy.get_used_cells() 
+	for Pos in TilesPos:
+		_copy_cell(Pos, ToPos+Pos, TilesetTempCopy, SelectedTilemap)
+	TilesetTempCopy.clear()
+
+func _copy_tiles_to_temp(ReferencePos : Vector2i, TilePos : Array[Vector2i], Tilemap : TileMapLayer):
+	TilesetTempCopy.clear()
+	for Pos in TilePos:
+		var Tile = Tilemap.get_cell_tile_data(Pos)
+		var NewPos = Vector2i(Pos.x - ReferencePos.x, Pos.y - ReferencePos.y)
+		if(Tilemap.get_cell_tile_data(Pos)):
+			_copy_cell(Pos, NewPos, Tilemap, TilesetTempCopy)
+			_erase_tile_terrain_local_pos(Pos)
+	#debe copiar datos de tiles contenidos en la posicion local dada, y
+	#pegarlos en base a la posicion 0 local del tilemap temp
+	#TilesetTempCopy
+
+func _select_multiple_tileset(delta: float):
+	#copy tiles
+	if(SelectingMultiple && Input.is_action_just_pressed("ui_copy")):
+		var TilePos : Array[Vector2i] = []
+		var Pos1 : Vector2i = _convert_coordinates_to_local(SpriteFill1.global_position)
+		var Pos2 : Vector2i = _convert_coordinates_to_local(SpriteFill2.global_position)
+		for x in range(Pos1.x, Pos2.x):
+			for y in range(Pos1.y, Pos2.y):
+				if(SelectedTilemap.get_cell_tile_data(Vector2i(x,y) )):
+					TilePos.append(Vector2i(x, y))
+		#print(TilePos)
+		EditorDataParser.SaveDataTiles(TilePos, SelectedTilemap, EditorDataParser.Clipboard)
+	if(Input.is_action_pressed("ui_editor_place")):
+		if(MultipleMadeSelection && CollidingBody && CollidingBody.is_in_group("AreaSelectMultiple")):
+			if(!MultipleMovingSelecting):
+				MultipleMovingSelecting = true
+				print("Selecting multiple tiles")
+				_copy_ranged_tiles_to_temp(_convert_coordinates_to_local(SpriteFill1.global_position), _convert_coordinates_to_local(SpriteFill1.global_position), _convert_coordinates_to_local(SpriteFill2.global_position), SelectedTilemap)
+			TilesetTempCopy.global_position = SpriteFill1.global_position
+			_multiple_moving_select_visuals()
+	elif(MultipleMovingSelecting):
+		_copy_back_tiles(_convert_coordinates_to_local(SpriteFill1.global_position))
+		MultipleMovingSelecting = false
+	if(Input.is_action_pressed("ui_editor_multiple_select") && Input.is_action_just_pressed("ui_editor_place")):
+		AreaSelectMultiple.Collision_Shape.disabled = false
+		MultipleMadeSelection = false
+		SelectingMultiple = false
+		#if(!SelectingMultiple):
+		SpriteFill1.show()
+		SpriteFill2.show()
+		SpriteFill1.global_position = EditorCursor.global_position
+		SelectingMultiple = true
+	if(Input.is_action_pressed("ui_editor_multiple_select") && SelectingMultiple):
+		SpriteFill2.global_position = EditorCursor.global_position
+		_select_area_tick()
+	else:
+		if(SelectingMultiple):
+			MultipleMadeSelection = true
+			TilesetSelection[0] = SpriteFill1.global_position
+			TilesetSelection[1] = SpriteFill2.global_position
+		else: SelectingMultiple = false
 
 func _tick_tileset(delta: float):
+	if(Input.is_action_just_pressed("ui_paste")):
+		EditorDataParser.LoadDataTiles(SelectedTilemap, EditorDataParser.Clipboard)
+	if(Input.is_action_just_pressed("ui_editor_cancel_action")):
+		SelectingBody = false
+		CollidingBody = null
+		SelectingMultiple = false
+		MultipleMadeSelection = false
+		MultipleMovingSelecting = false
+		_reset_select_multiple()
+	
+	_select_multiple_tileset(delta)
+	if(SelectingMultiple || Input.is_action_pressed("ui_editor_multiple_select")): return
 	if(EditorCursor.SelectedSubNode == EditorCursor.TileTools.Pencil):
 		if(Input.is_action_pressed("ui_editor_place") ):
 			_place_tile_terrain_global_pos(get_global_mouse_position())
@@ -132,7 +302,7 @@ func _tick_tileset(delta: float):
 		if(PreparingRectangle || PreparingRemoveRectangle):
 			SpriteFill1.global_position = RectanglePos1
 			SpriteFill2.global_position.x = EditorCursor.global_position.x
-			SpriteFill2.global_position.y = SpriteFill1.global_position.y - tan(deg_to_rad(SlopeAngle))*abs(SpriteFill1.global_position.x - SpriteFill2.global_position.x)
+			SpriteFill2.global_position.y = SpriteFill1.global_position.y - PreCalcAngleY*abs(SpriteFill1.global_position.x - SpriteFill2.global_position.x)
 			SpriteFill1.show()
 			SpriteFill2.show()
 		if(Input.is_action_just_pressed("ui_editor_place") ):
@@ -146,10 +316,39 @@ func _tick_tileset(delta: float):
 			_fill_slope_global_tileset(SpriteFill1.global_position, SpriteFill2.global_position, false)
 			SpriteFill1.hide()
 			SpriteFill2.hide()
+		
+		if(Input.is_action_just_pressed("ui_editor_erase") ):
+			PreparingRemoveRectangle = true
+			#Posicion 1 del rectangulo, la posicion 2 sera la final
+			RectanglePos1 = EditorCursor.global_position
+		elif(PreparingRemoveRectangle && !Input.is_action_pressed("ui_editor_erase") ):
+			#RectanglePos2 = EditorCursor.global_position
+			PreparingRemoveRectangle = false
+			#print("Filling slope")
+			_fill_slope_global_tileset(SpriteFill1.global_position, SpriteFill2.global_position, true)
+			SpriteFill1.hide()
+			SpriteFill2.hide()
+
+func _delete_node(node : Node2D):
+	if(node && !node.is_in_group("Player") && !node.is_in_group("YExpandEditor") && !node.is_in_group("XExpandEditor")):
+		node.queue_free()
+
+var LastPositionSelectedBody : Vector2 = Vector2(0.0, 0.0)
 
 func _tick_nodes(delta: float):
+	if(EditorCursor.SelectedNode == 0): return
+	if(CollidingBody && (CollidingBody is TileMap || CollidingBody is TileMapLayer)): CollidingBody = null
+	
+	if(Input.is_action_just_pressed("ui_editor_cancel_action")):
+		SelectingBody = false
+		CollidingBody = null
+		_reset_select_multiple()
+	
+	_selecting_multiple()
+	if(SelectingMultiple): return
 	if(Input.is_action_pressed("ui_editor_place")):
 		if(CollidingBody):
+			if(!SelectingBody): LastPositionSelectedBody = CollidingBody.global_position
 			LastCollidedBody = CollidingBody
 			ExpandingY = false
 			ExpandingX = false
@@ -179,16 +378,15 @@ func _tick_nodes(delta: float):
 			ExpandingY = false
 			ExpandingX = false
 			ExpandingOriginalPos = Vector2(0.0,0.0)
-			var NewNode = load(LevelEditor.SelectableObjects[EditorCursor.SelectedNode-1][EditorCursor.SelectedSubNode])
-			var InstanceNode = NewNode.instantiate()
-			LevelEditor.add_child(InstanceNode)
-			InstanceNode.global_position = EditorCursor.global_position
+			var NewNode = GlobalFunctions.Create_node2d(LevelEditor.SelectableObjects[EditorCursor.SelectedNode-1][EditorCursor.SelectedSubNode], LevelData)
+			
+			NewNode.global_position = EditorCursor.global_position
 	#Selecting Node
 	elif(Input.is_action_pressed("ui_editor_erase") ):
-		if(CollidingBody && !CollidingBody.is_in_group("Player") && !CollidingBody.is_in_group("YExpandEditor") && !CollidingBody.is_in_group("XExpandEditor")):
-			CollidingBody.queue_free()
-	elif(CollidingBody):
+		_delete_node(CollidingBody)
+	elif(CollidingBody && SelectingBody):
 		SelectingBody = false
+		GlobalFunctions.record_action(GlobalFunctions.FUNCTIONS.Move_node, LastPositionSelectedBody, CollidingBody.global_position, CollidingBody)
 	if(!Input.is_action_pressed("ui_editor_place") && ExpandingY):
 		#print("yes")
 		ExpandingY = false
@@ -204,7 +402,7 @@ func _tick_nodes(delta: float):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	EditorCursor._update_tilemap_layer()
 
 var ExpandingY : bool = false
 var ExpandYSelected : Node2D = null
@@ -213,13 +411,25 @@ var ExpandXSelected : Node2D = null
 var ExpandingOriginalPos : Vector2 = Vector2(0.0, 0.0)
 var ExpandingOriginalSize : float = 0.5
 
+@export var RewindTimer : Timer
+const RewindTimerWait : float = .3
+const RewindTimerWaitLess : float = .05
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(ImGui.IsWindowHovered(ImGui.HoveredFlags_AnyWindow) || LevelEditor.ButtonHovered): return
 	#print(EditorCursor.SelectedNode)
 	LevelEditor.IsTileMapSelected = (EditorCursor.SelectedNode == 0)
 	#print(CollidingBody)
 	if(LevelEditor.IsTileMapSelected): _tick_tileset(delta)
 	else: _tick_nodes(delta)
+	if(Input.is_action_pressed("ui_editor_rewind")):
+		if(RewindTimer.is_stopped()):
+			GlobalFunctions.rewind_action()
+			RewindTimer.start()
+		RewindTimer.wait_time = lerp(RewindTimer.wait_time, RewindTimerWaitLess, 3*delta)
+	elif(!Input.is_action_pressed("ui_editor_rewind")):
+		RewindTimer.wait_time = RewindTimerWait
 
 var CollidingBody : Node2D = null
 var SelectingBody : bool = false
@@ -253,3 +463,37 @@ func _on_editor_cursor_area_exited(area: Area2D) -> void:
 		if(area.is_in_group("XExpandEditor")):
 			ExpandXSelected = null
 		else: CollidingBody = null 
+
+
+#region Selecting Area body
+var SelectedNodes : Array[Node2D]
+
+func _on_editor_ui_selecting_multiple_body_entered(body: Node2D) -> void:
+	if(SelectingMultiple && !MultipleMadeSelection):
+		SelectedNodes.append(body)
+
+
+func _on_editor_ui_selecting_multiple_body_exited(body: Node2D) -> void:
+	#print("sample: " + str(body.name))
+	if(SelectingMultiple && !MultipleMadeSelection):
+		for i in range(SelectedNodes.size()):
+			#print("i: " + str(SelectedNodes[i].name))
+			if(i >= SelectedNodes.size()): return
+			if(body.name == SelectedNodes[i].name):
+				#print("yes")
+				SelectedNodes.remove_at(i)
+
+func _on_editor_ui_selecting_multiple_area_entered(area: Area2D) -> void:
+	if(SelectingMultiple && !MultipleMadeSelection):
+		SelectedNodes.append(area)
+
+
+func _on_editor_ui_selecting_multiple_area_exited(area: Area2D) -> void:
+	#print("sample: " + str(area.name))
+	if(SelectingMultiple && !MultipleMadeSelection):
+		for i in range(SelectedNodes.size()):
+			#print("i: " + str(SelectedNodes[i].name))
+			if(area.name == SelectedNodes[i].name):
+				SelectedNodes.remove_at(i)
+
+#endregion

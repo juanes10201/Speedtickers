@@ -1,5 +1,8 @@
 //https://godotshaders.com/shader/2d-water-distortion-effect-godot-4/
 shader_type canvas_item;
+
+uniform float opacity_post_border : hint_range(0.0, 1.0) = 0.0;
+
 uniform sampler2D refraction_map;
 uniform vec2 refraction_stretch = vec2(1.0, 1.0);
 uniform float refraction_strength : hint_range(0.0, 0.1) = 0.02;
@@ -55,14 +58,16 @@ void fragment()
 	vec2 border_uv = SCREEN_UV + vec2(wave_x / vec2(textureSize(SCREEN_TEXTURE, 0)).x, 0.0) * border_mask;
 	vec4 border_sample = texture(SCREEN_TEXTURE, border_uv - refraction_offset * refraction_strength);
 	
-	if (dist_to_border < -1.0) {
-    	discard;
-	}
+	//if (dist_to_border < -1.0) {
+    //	discard;
+	//}
 	
 	// --- Composite ---
 	vec4 color = vec4(1.0);
 	color.rgb = mix(refraction.rgb, water_tint.rgb, water_tint.a);
 	color.rgb = mix(color.rgb, border_color.rgb, border_mask * border_color.a);
-
+	
+	color.a = dist_to_border < -1.0 ? opacity_post_border : 1.0;
+	
 	COLOR = color;
 }

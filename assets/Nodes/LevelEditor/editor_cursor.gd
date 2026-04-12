@@ -14,6 +14,8 @@ var GridSizeSmall : int = 8
 
 @export var TooltipUi : Node2D
 
+var SelectedSubTile : int = 0
+
 enum TileTools{
 	Pencil = 0,
 	Rectangle = 1,
@@ -25,11 +27,25 @@ enum TileTools{
 #Y el otro consiste en importar diferentes objetos tscn, los cuales pueden ser movidos por el cursor
 #y ademas cambiados sus valores @export
 
-func _tick_position(delta: float):
+func _tick_position(delta: float) -> void:
 	#Grid position
 	if(LevelEditor.IsTileMapSelected): position = floor(get_global_mouse_position()/GridSize)*GridSize
 	elif(OnGrid): position = floor(get_global_mouse_position()/GridSizeSmall)*GridSizeSmall
 	else: position = get_global_mouse_position()
+
+func _change_subtile(amount : int = 0) -> void:
+	SelectedSubTile += amount
+	if(SelectedSubTile >= LevelEditor.SelectableAutotiles.size()):
+		SelectedSubTile = 0
+	if(SelectedSubTile < 0):
+		SelectedSubTile = LevelEditor.SelectableAutotiles.size()-1
+	_update_tilemap_layer()
+
+func _update_tilemap_layer(layer : int = LevelEditor.AutotileTilemapLayers[SelectedSubTile]) -> void:
+	EditorPlace.SelectedTilemap = LevelEditor.TilesetLayers[layer]
+	EditorPlace.CollidingBody = EditorPlace.SelectedTilemap
+	EditorPlace.LastCollidedBody = EditorPlace.SelectedTilemap
+	#print(EditorPlace.SelectedTilemap)
 
 func _change_selected_node_next() -> void:
 	SelectedNode += 1
@@ -93,3 +109,11 @@ func _process(delta: float) -> void:
 	if(Input.is_action_just_pressed("editor_element9")): _alt_element(8)
 	if(Input.is_action_just_pressed("editor_element10")): _alt_element(9)
 	_tick_position(delta)
+
+
+func _on_button_tile_tooltip_0_pressed() -> void:
+	_change_subtile(1)
+
+
+func _on_button_tile_tooltip_1_pressed() -> void:
+	_change_subtile(-1)

@@ -45,6 +45,7 @@ shader_parameter/pixel_size = 0.72400003439
 shader_parameter/handle_edges = false
 
 [node name="Enemy_Fish" type="Area2D" unique_id=455147022 node_paths=PackedStringArray("InitialMarker", "EndMarker", "WaterFloatLogic")]
+collision_layer = 131073
 script = ExtResource("1_2laik")
 InitialMarker = NodePath("InitialMarkerCustom")
 EndMarker = NodePath("EndMarkerCustom")

@@ -21,6 +21,7 @@ var Velocity : Vector2 = Vector2(0.0, 0.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func float_logic(delta: float) -> void:
+	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
 	if(!WaterTileset): return
 	if(Enabled):
 		#region Float On Water

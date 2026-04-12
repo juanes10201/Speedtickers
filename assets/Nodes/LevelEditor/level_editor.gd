@@ -5,11 +5,14 @@ var AdvancedMode
 var IsTileMapSelected : bool = false
 @export var Cursor : Node2D
 @export var SelectableObjects : Array[Array]
+@export var SelectableAutotiles : Array[int]
+@export var AutotileTilemapLayers : Array[int]
 @export var TilesetLayers : Array[TileMapLayer]
 @export var EditorCamera : Camera2D
 @export var Time_Left : Timer
 @export var Player : Node2D
 @export var PlayerCamera : Camera2D
+@export var LevelData : Node2D
 var Paused : bool = false
 
 func _ready() -> void:
@@ -76,3 +79,11 @@ func _on_button_minus_time_pressed() -> void:
 
 func _on_advanced_mode_button_pressed() -> void:
 	AdvancedMode = !AdvancedMode
+
+var ButtonHovered : bool = false
+
+func _button_hovered() -> void:
+	ButtonHovered = true
+
+func _button_not_hovered() -> void:
+	ButtonHovered = false

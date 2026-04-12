@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
 	if(body.is_in_group("Player")):
 		if(Player.GroundSmash || Player.Slide):
 			Player.throw_enemies(false)
@@ -78,12 +79,14 @@ func _on_timer_respawn_timeout() -> void:
 
 
 func _on_area_disable_slam_body_entered(body: Node2D) -> void:
+	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
 	if(body.is_in_group("Player") && (Player.GroundSmash || Player.Slide)):
 		set_collision_layer_value(9, false)
 		SlamDisabledCollision = true
 
 
 func _on_area_disable_slam_body_exited(body: Node2D) -> void:
+	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
 	if(body.is_in_group("Player") && SlamDisabledCollision):
 		set_collision_layer_value(9, true)
 		SlamDisabledCollision = false

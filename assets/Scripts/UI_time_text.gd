@@ -1,6 +1,6 @@
 extends RichTextLabel
 
-@onready var Time_Left = $"../../Time_Left"
+@onready var Time_Left : Timer
 @onready var original_size = get_theme_font_size("normal_font_size")
 @onready var Font_Size = get_theme_font_size("normal_font_size")
 
@@ -50,6 +50,7 @@ var AddSize : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if(Player): Time_Left = Player.Time_Left
 	#If timer disabled destroy
 	if((Player && Player.is_in_group("Player") && Player.CountTime == false) || (SaveGame.get_config_value("DisableTimer") && SaveGame.get_config_value("DisableTimer") == 1)):
 		RaySprite.hide()
@@ -58,6 +59,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(Player && !Time_Left): Time_Left = Player.Time_Left
 	if(Player && Player.is_in_group("Player") && Player.CountTime && !self.visible):
 		AddSize = 30
 		RaySprite.show()

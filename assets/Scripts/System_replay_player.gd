@@ -46,11 +46,11 @@ func Record_Actions() -> void:
 		if(Input.is_action_just_pressed(Actions[i])):
 			var RecordedAction : Vector3 = Vector3(CurrentTime, i, 1)
 			Player.RecordedActions.append(RecordedAction)
-			print("Vector3" +str(RecordedAction) + ",")
+			#print("Vector3" +str(RecordedAction) + ",")
 		elif(Input.is_action_just_released(Actions[i])):
 			var RecordedAction : Vector3 = Vector3(CurrentTime, i, 0)
 			Player.RecordedActions.append(RecordedAction)
-			print("Vector3" +str(RecordedAction) + ",")
+			#print("Vector3" +str(RecordedAction) + ",")
 
 func Replay_Actions() -> void:
 	#Check if the action time is the same(Or less) as the current

@@ -6,8 +6,8 @@ extends TileMapLayer
 @export var WaterLevel : float = 0.0
 @onready var WaterLevelGoTo : float = WaterLevel
 
-func _ready() -> void:
-	print(is_tile_water_global(-314, -344))
+#func _ready() -> void:
+	#print(is_tile_water_global(-314, -344))
 
 #Check if tile is water and below Water Level
 #region Check tile
@@ -25,6 +25,11 @@ func _is_tile_on_water_level_global(X : int, Y : int) -> bool:
 #endregion
 
 func _process(delta: float) -> void:
+	#if(Edition.Is_in_editor):
+	#	material.set_shader_parameter("opacity_post_border", .5)
+	#else:
+	#	material.set_shader_parameter("opacity_post_border", 0.0)
 	material.set_shader_parameter("water_surface_y", WaterLevel)
-	if not Engine.is_editor_hint():
-		WaterLevel = lerpf(WaterLevel, WaterLevelGoTo, 5*delta)
+	if !Engine.is_editor_hint():
+		if(Edition.Is_in_editor): WaterLevelGoTo = WaterLevel
+		else: WaterLevel = lerpf(WaterLevel, WaterLevelGoTo, 5*delta)

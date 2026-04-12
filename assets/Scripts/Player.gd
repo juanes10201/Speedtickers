@@ -595,7 +595,7 @@ func _pause_game() -> void:
 		_spawn_pause_menu()
 		#Get timer and pause
 		_pause_game_no_menu()
-	else:
+	else: 
 		_unpause_game()
 
 func _pause_game_no_menu(State : bool = true) -> void:
@@ -683,8 +683,8 @@ func _change_gravity_decal() -> void:
 	if(Particles): $ParticlesOrb.emitting = true
 	_play_sound(AudioOrbGravity, true)
 
-func _invert_gravity() -> void:
-	GravityDirection *= -1
+func _invert_gravity(Dir : int = GravityDirection*-1) -> void:
+	GravityDirection = Dir
 	_change_gravity_decal()
 
 var GlobalGravityDirection = Global.GravityDirections.MAIN

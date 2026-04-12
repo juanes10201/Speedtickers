@@ -36,6 +36,31 @@ var velocity : Vector2 = Vector2(0.0, 0.0)
 @export var Enabled : bool = true
 var EnabledMovement : bool = true
 
+#region Editor
+var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
+
+var InitialDirection : direction = direction.INITIAL
+
+func cache_values_editor() -> void:
+	EditorInitialPos = position
+	InitialDirection = CurrentDir
+	_ready()
+
+func editor_reset() -> void:
+	Sprite.visible = true
+	Enabled = true
+	for Child in get_children():
+		if(Child is Timer):
+			Child.stop()
+		if(Child is GPUParticles2D || Child is CPUParticles2D):
+			Child.emitting = false
+	velocity = Vector2(0.0, 0.0)
+	strech_size(1.0, 1.0)
+	position = EditorInitialPos
+	CurrentDir = InitialDirection
+#endregion
+
+
 func _set_rotation() -> void:
 	if(!InitialMarker || !EndMarker): return
 	var dir : Vector2 = EndMarker.global_position if CurrentDir == direction.INITIAL else InitialMarker.global_position
@@ -46,7 +71,10 @@ func _ready() -> void:
 	if(Activate_on_color != Global.LASER_COLORS.NONE):
 		Enabled = false
 	
-	if(InitialMarker && EndMarker):
+	if($MoveEditorL && $MoveEditorR):
+		$MoveEditorL.top_level = true
+		$MoveEditorR.top_level = true
+	elif(InitialMarker && EndMarker):
 		var tmp_global = InitialMarker.global_position
 		InitialMarker.top_level = true
 		InitialMarker.global_position = tmp_global
@@ -84,12 +112,11 @@ func _dash_hit() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
 	_strech_tick(delta)
 	if(!Enabled && Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
 		Enabled = true
 	#print(velocity)
-	if(Enabled):
+	if(Enabled && !(Edition.Is_in_editor && !Edition.Is_playing_in_editor)):
 		if(HitDash):
 			#if(abs(velocity.x) > 100.0):
 			strech_size(1.2+1*clamp(abs(velocity.x), 0.0, 500)/500, 1.2+1*clamp(abs(velocity.x), 0.0, 500)/500, true)

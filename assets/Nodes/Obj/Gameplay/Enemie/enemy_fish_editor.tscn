@@ -1,12 +1,14 @@
-[gd_scene format=3 uid="uid://bpcyg6vqonftj"]
+[gd_scene format=3 uid="uid://cxx27hol2paxc"]
 
-[ext_resource type="Script" uid="uid://bbg14nxj3y840" path="res://assets/Nodes/Obj/Gameplay/Enemie/Enemy_fish.gd" id="1_ag4a2"]
-[ext_resource type="Shader" uid="uid://8y1wwmi7dikk" path="res://assets/Shader/enemy_fish.gdshader" id="2_4a5x5"]
-[ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/enemies/fish/fish.png" id="2_n3rl0"]
-[ext_resource type="Texture2D" uid="uid://bsna244ytjal" path="res://assets/Sprites/particles/Slime-hit-particle1.png" id="2_pyajc"]
-[ext_resource type="Texture2D" uid="uid://bclniw1yo1m6k" path="res://assets/Sprites/particles/Slime-hit-particle2.png" id="3_e8cxl"]
-[ext_resource type="Script" uid="uid://dwdcgo564kwae" path="res://assets/Nodes/Obj/water_float_logic.gd" id="3_n3rl0"]
-[ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="4_uxl0p"]
+[ext_resource type="Script" uid="uid://bbg14nxj3y840" path="res://assets/Nodes/Obj/Gameplay/Enemie/Enemy_fish.gd" id="1_n2jsv"]
+[ext_resource type="Texture2D" uid="uid://bsna244ytjal" path="res://assets/Sprites/particles/Slime-hit-particle1.png" id="2_y6odx"]
+[ext_resource type="Texture2D" uid="uid://bclniw1yo1m6k" path="res://assets/Sprites/particles/Slime-hit-particle2.png" id="3_5gu5v"]
+[ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="4_x2l0s"]
+[ext_resource type="Shader" uid="uid://8y1wwmi7dikk" path="res://assets/Shader/enemy_fish.gdshader" id="5_bxtle"]
+[ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/enemies/fish/fish.png" id="6_veryc"]
+[ext_resource type="Script" uid="uid://dwdcgo564kwae" path="res://assets/Nodes/Obj/water_float_logic.gd" id="7_nor2h"]
+[ext_resource type="Texture2D" uid="uid://i24m8jfh7at7" path="res://assets/Sprites/Tileset/Editor/Reference.png" id="8_5gu5v"]
+[ext_resource type="Script" uid="uid://d0hv5l08shw0c" path="res://assets/Nodes/Obj/Gameplay/Enemie/editor_reference.gd" id="9_x2l0s"]
 
 [sub_resource type="Curve" id="Curve_c0bgn"]
 _data = [Vector2(0.79568875, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -40,18 +42,22 @@ turbulence_enabled = true
 size = Vector2(23, 12)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b1jxq"]
-shader = ExtResource("2_4a5x5")
+shader = ExtResource("5_bxtle")
 shader_parameter/pixel_size = 0.72400003439
 shader_parameter/handle_edges = false
 
-[node name="Enemy_Fish" type="Area2D" unique_id=455147022 node_paths=PackedStringArray("WaterFloatLogic")]
-collision_layer = 1179648
-script = ExtResource("1_ag4a2")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2jsv"]
+
+[node name="Enemy_Fish" type="Area2D" unique_id=455147022 node_paths=PackedStringArray("InitialMarker", "EndMarker", "WaterFloatLogic") groups=["Enemie"]]
+collision_layer = 131073
+script = ExtResource("1_n2jsv")
+InitialMarker = NodePath("MoveEditorR/InitialMarkerCustom")
+EndMarker = NodePath("MoveEditorL/EndMarkerCustom")
 WaterFloatLogic = NodePath("WaterFloatLogic")
 
 [node name="HitParticles1" type="GPUParticles2D" parent="." unique_id=94100777]
 emitting = false
-texture = ExtResource("2_pyajc")
+texture = ExtResource("2_y6odx")
 one_shot = true
 trail_enabled = true
 trail_lifetime = 0.1
@@ -59,7 +65,7 @@ process_material = SubResource("ParticleProcessMaterial_riq7v")
 
 [node name="HitParticles2" type="GPUParticles2D" parent="." unique_id=1721940910]
 emitting = false
-texture = ExtResource("3_e8cxl")
+texture = ExtResource("3_5gu5v")
 one_shot = true
 trail_enabled = true
 trail_lifetime = 0.1
@@ -67,7 +73,7 @@ process_material = SubResource("ParticleProcessMaterial_riq7v")
 
 [node name="HitParticles3" type="GPUParticles2D" parent="." unique_id=1270245648]
 emitting = false
-texture = ExtResource("4_uxl0p")
+texture = ExtResource("4_x2l0s")
 lifetime = 0.46
 one_shot = true
 trail_enabled = true
@@ -81,13 +87,13 @@ debug_color = Color(0.9128084, 0.29397675, 1.92523e-07, 0.41960785)
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1493686293]
 material = SubResource("ShaderMaterial_b1jxq")
-texture = ExtResource("2_n3rl0")
+texture = ExtResource("6_veryc")
 
 [node name="CooldownDir" type="Timer" parent="." unique_id=1993057862]
 one_shot = true
 
 [node name="WaterFloatLogic" type="Node2D" parent="." unique_id=2090670624 node_paths=PackedStringArray("OnWaterRay", "NotOnWaterRay")]
-script = ExtResource("3_n3rl0")
+script = ExtResource("7_nor2h")
 FloatOnWater = false
 OnWaterRay = NodePath("OnWaterRay")
 NotOnWaterRay = NodePath("NotOnWaterRay")
@@ -102,5 +108,35 @@ target_position = Vector2(0, -15.24)
 collision_mask = 33024
 hit_from_inside = true
 collide_with_areas = true
+
+[node name="MoveEditorR" type="Area2D" parent="." unique_id=898575682]
+position = Vector2(60, 0)
+collision_layer = 131072
+collision_mask = 0
+
+[node name="InitialMarkerCustom" type="Marker2D" parent="MoveEditorR" unique_id=773508996]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveEditorR" unique_id=1014252980]
+shape = SubResource("RectangleShape2D_n2jsv")
+
+[node name="EditorReference" type="Sprite2D" parent="MoveEditorR" unique_id=1575734561]
+visible = false
+texture = ExtResource("8_5gu5v")
+script = ExtResource("9_x2l0s")
+
+[node name="MoveEditorL" type="Area2D" parent="." unique_id=1857304014]
+position = Vector2(-60, 0)
+collision_layer = 131072
+collision_mask = 0
+
+[node name="EndMarkerCustom" type="Marker2D" parent="MoveEditorL" unique_id=220740783]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveEditorL" unique_id=22182153]
+shape = SubResource("RectangleShape2D_n2jsv")
+
+[node name="EditorReference" type="Sprite2D" parent="MoveEditorL" unique_id=21485336]
+visible = false
+texture = ExtResource("8_5gu5v")
+script = ExtResource("9_x2l0s")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

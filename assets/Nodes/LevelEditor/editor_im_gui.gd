@@ -4,12 +4,52 @@ extends Node2D
 var AnalizedBody : Node2D = null
 @export var Editor : Node2D
 
+var SelectingMultipleRepeatedElements : Dictionary = {}
+var SelectingMultipleAnalize : Array[Dictionary] = []
+
+var SelectingMultipleAmount : int = 0
+
+func _calculate_multiple() -> void:
+	if((!SelectingMultipleRepeatedElements || SelectingMultipleAmount != EditorPlace.SelectedNodes.size()) && EditorPlace.SelectedNodes):
+		SelectingMultipleAnalize = []
+		SelectingMultipleAmount = EditorPlace.SelectedNodes.size()
+		var ExampleNode : Node2D = EditorPlace.SelectedNodes[0]
+		#Crear un diccionario que contenga todos los puntos que esten
+		for property in ExampleNode.get_property_list() :
+			if(property.usage & PROPERTY_USAGE_EDITOR && property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE):
+				SelectingMultipleRepeatedElements.set(property.name, 0)
+		#Luego pasar por cada elemento de cada nodo y checkear la cantidad de veces que este
+		for node in EditorPlace.SelectedNodes:
+			for property in node.get_property_list() :
+				if(property.usage & PROPERTY_USAGE_EDITOR && property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE):
+					if(property.name in SelectingMultipleRepeatedElements && node.get(property.name) == ExampleNode.get(property.name)):
+						SelectingMultipleRepeatedElements[property.name] += 1
+		#Ahora volver a pasar por el primer nodo y pasar a SelectingMultipleAnalize los que estan
+		for property in ExampleNode.get_property_list() :
+			if(property.usage & PROPERTY_USAGE_EDITOR && property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE):
+				#La cantidad de veces que esta tiene que ser igual a la longitud de la cantidad de elementos
+				if(SelectingMultipleRepeatedElements[property.name] >= EditorPlace.SelectedNodes.size()):
+					SelectingMultipleAnalize.append(property)
+	#Finalmente mostrar en la interfaz los datos
+	if(EditorPlace.SelectedNodes):
+		#AnalizedBody = EditorPlace.SelectedNodes[0]
+		for property in SelectingMultipleAnalize:
+			if(ImGuiShowProperty(property)):
+				for node in EditorPlace.SelectedNodes:
+					node.set(property.name, AnalizedBody.get(property.name))
+			
+			##Resetear los elementos para volver a precalcular todo
+			##SelectingMultipleRepeatedElements = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 func AnalizeBody(Body : Node2D) -> void:
-	AnalizedBody = Body
+	if(EditorPlace.SelectedNodes && EditorPlace.SelectingMultiple):
+		AnalizedBody = EditorPlace.SelectedNodes[0]
+	else:
+		AnalizedBody = Body
 
 func AnalizeAdvancedBodyTick() -> void:
 	if(AnalizedBody):
@@ -18,38 +58,51 @@ func AnalizeAdvancedBodyTick() -> void:
 			if(property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE):
 				ImGui.Text(property.name + ": " + str(AnalizedBody.get(property.name)))
 
-func ImGuiShowProperty(property):
+func ImGuiShowProperty(property) -> bool:
 	#Enum
+	if(!AnalizedBody): return false
+	var ChangedValue : bool = false
 	if property.type == TYPE_INT && property.hint == PROPERTY_HINT_ENUM:
 		var options : PackedStringArray = property.hint_string.split(",")
-		var arr := [AnalizedBody.get(property.name) as int]
-		if ImGui.Combo(property.name, arr, options):
-			AnalizedBody.set(property.name, arr[0])
-		#all other data types
+		var raw_value = AnalizedBody.get(property.name)
+		if typeof(raw_value) == TYPE_INT or typeof(raw_value) == TYPE_FLOAT:
+			var arr = [AnalizedBody.get(property.name) as int]
+			if ImGui.Combo(property.name, arr, options):
+				AnalizedBody.set(property.name, arr[0])
+				ChangedValue = true
+	#all other data types
 	else:
 		match property.type:
 			TYPE_BOOL:
 				var arr := [AnalizedBody.get(property.name)]
 				if(ImGui.Checkbox(property.name, arr )):
 					AnalizedBody.set(property.name, arr[0])
+					ChangedValue = true
 			TYPE_INT:
 				var arr := [AnalizedBody.get(property.name)]
 				if(ImGui.InputInt(property.name, arr )):
 					AnalizedBody.set(property.name, arr[0])
+					ChangedValue = true
 			TYPE_FLOAT:
 				var arr := [AnalizedBody.get(property.name)]
 				if(ImGui.InputFloat(property.name, arr )):
 					AnalizedBody.set(property.name, arr[0])
+					ChangedValue = true
+	return ChangedValue
 
 func AnalizeBodyTick() -> void:
-	if(AnalizedBody):
-		ImGui.Text("Inspecting " + str(AnalizedBody.name))
-		for property in AnalizedBody.get_property_list() :
-			if(property.usage & PROPERTY_USAGE_EDITOR && property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE):
-				######Esto cambia dependiendo del tipo d variable######
-				ImGuiShowProperty(property)
-						#_:
-						#	ImGui.Text(property.name + ": " + str(AnalizedBody.get(property.name)))
+	#If selected multiple elements
+	if(EditorPlace.SelectingMultiple):
+		_calculate_multiple()
+	else:
+		if(AnalizedBody):
+			ImGui.Text("Inspecting " + str(AnalizedBody.name))
+			for property in AnalizedBody.get_property_list() :
+				if(property.usage & PROPERTY_USAGE_EDITOR && property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE):
+					######Esto cambia dependiendo del tipo d variable######
+					ImGuiShowProperty(property)
+							#_:
+							#	ImGui.Text(property.name + ": " + str(AnalizedBody.get(property.name)))
 
 #func AddPropertyUi(Property) -> void:
 #	

@@ -1,9 +1,9 @@
 extends Area2D
 
 @onready var Player : ClassPlayer = SaveGame.get_player()
-@export var AditionalAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
+@export var AditionalAction : GlobalFunctions.FUNCTIONS = GlobalFunctions.FUNCTIONS.none
 @export var AditionalActionArgument : float
-@export var AnotherAction : Global.OBJECT_ACTIONS = Global.OBJECT_ACTIONS.none
+@export var AnotherAction : GlobalFunctions.FUNCTIONS = GlobalFunctions.FUNCTIONS.none
 
 @onready var Sprite : AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var Light : PointLight2D = $"PointLight2D"
@@ -19,9 +19,9 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+	if(AditionalAction == GlobalFunctions.FUNCTIONS.Switch_Player_Gravity):
 		$AnimatedSprite2D.play("orb")
-	elif(AditionalAction == Global.OBJECT_ACTIONS.Restart_Time):
+	elif(AditionalAction == GlobalFunctions.FUNCTIONS.Restart_Time):
 		$AnimatedSprite2D.play("clock")
 	else:
 		$AnimatedSprite2D.play("default")
@@ -69,23 +69,23 @@ func set_key_state(state : bool, PlayAction : bool):
 	if(PlayAction):
 		#print("Play action!")
 		done = true
-		if(AditionalAction == Global.OBJECT_ACTIONS.Restart_Time):
+		if(AditionalAction == GlobalFunctions.FUNCTIONS.Restart_Time):
 			Player._play_sound(Player.AudioClockBreak, true)
 			$ParticleDestroy1.emitting = true
 			$ParticleDestroy2.emitting = true
 			$ParticleDestroy3.emitting = true
 			$ParticleDestroy4.emitting = true
 		else:
-			if(AditionalAction != Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+			if(AditionalAction != GlobalFunctions.FUNCTIONS.Switch_Player_Gravity):
 				Player._play_sound(Player.AudioSwitch, false)
-			if(AditionalAction == Global.OBJECT_ACTIONS.none):
+			if(AditionalAction == GlobalFunctions.FUNCTIONS.none):
 				Player._play_sound(Player.AudioKey, false)
-		if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+		if(AditionalAction == GlobalFunctions.FUNCTIONS.Switch_Player_Gravity):
 			$AnimatedSprite2D.play("get_orb")
 		if(Respawn):
 			TimerRespawn.start() 
-		Global.Play_Global_Action(AditionalAction, AditionalActionArgument)
-		Global.Play_Global_Action(AnotherAction)
+		Global.play_function(AditionalAction, AditionalActionArgument)
+		Global.play_function(AnotherAction)
 	if(state && Despawn):
 		var Boss = get_tree().get_nodes_in_group("Boss")[0] if get_tree().get_nodes_in_group("Boss").size() else null
 		if(Boss):
