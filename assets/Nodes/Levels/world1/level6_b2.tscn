@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="11_s17ab"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="12_6l3qu"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="13_xw5c7"]
-[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/rail.tscn" id="14_d5v02"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="14_d5v02"]
 
 [sub_resource type="Animation" id="Animation_timnu"]
 length = 0.001

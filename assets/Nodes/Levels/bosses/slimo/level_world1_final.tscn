@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Nodes/Obj/Gameplay/laser.tscn" id="18_xdos2"]
 [ext_resource type="PackedScene" uid="uid://fswjgnqueri7" path="res://assets/Nodes/Obj/Gameplay/Boss/Slimo/enemie_slime_boss.tscn" id="20_1rl84"]
 [ext_resource type="Shader" uid="uid://dkqraf03jdkib" path="res://assets/Shader/HighBloom.gdshader" id="22_stess"]
-[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/rail.tscn" id="22_sw0pm"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="22_sw0pm"]
 [ext_resource type="Script" uid="uid://dkc2dv8d2secv" path="res://assets/Nodes/Obj/Gameplay/Boss/Slimo/timer_spawner.gd" id="22_v8p1a"]
 [ext_resource type="Texture2D" uid="uid://jai2a8iwux2v" path="res://assets/Sprites/Bosses/Stage/3.png" id="27_px2v3"]
 [ext_resource type="Texture2D" uid="uid://d3xiljyf7nhbo" path="res://assets/Sprites/Bosses/Stage/2.png" id="31_0dkde"]

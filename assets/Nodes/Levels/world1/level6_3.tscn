@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="12_dq18w"]
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/kenney_inputs.png" id="14_7b3gs"]
 [ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Scripts/animated_button.gd" id="15_elnin"]
-[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/rail.tscn" id="16_b3igw"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="16_b3igw"]
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Scripts/DynamicLightAnimation.gd" id="16_eqw1s"]
 [ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="16_ll0s4"]
 [ext_resource type="Script" uid="uid://b70n1us6src5o" path="res://assets/Nodes/Obj/Dialogue/dialog_text_area.gd" id="17_a2p30"]

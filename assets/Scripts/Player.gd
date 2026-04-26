@@ -699,6 +699,9 @@ func _physics_jump(delta: float) -> void:
 	# Handle jump.
 	DashWithJump = false
 	if(is_on_floor()):
+		if(JumpedUmbrella):
+			set_collision_mask_value(4, true)
+			set_collision_mask_value(3, true)
 		JumpedUmbrella = false
 		CanJump = true
 	if ((!PreJumpTime.is_stopped() && (_is_on_floor() || WallJump || !CoyoteTimer.is_stopped() || OnWaterInitialSlide || (!DoubleJumped && DoubleJumpEnabled && $DoubleJumpCooldownTimer.is_stopped())) ) || (!PreWallJumpTimer.is_stopped() && is_action_pressed("player_jump")) ):
@@ -858,8 +861,8 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	
 	#if(!SlidingInAir):
 		#strech_size(1, 1)
-	if(!Slide): set_collision_mask_value(3, true)
-	if(!GroundSmash): set_collision_mask_value(4, true)
+	if(!Slide && !JumpedUmbrella): set_collision_mask_value(3, true)
+	if(!GroundSmash && !JumpedUmbrella): set_collision_mask_value(4, true)
 	if(!is_action_pressed("player_slide") && _is_on_floor() ):
 		PressingGroundSmash = false
 

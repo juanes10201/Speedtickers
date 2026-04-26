@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ytdkacld0nb" path="res://assets/Nodes/Obj/Gameplay/open_box.tscn" id="15_x43xa"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="15_y51ri"]
 [ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Nodes/Obj/Gameplay/laser.tscn" id="16_kjx87"]
-[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/rail.tscn" id="17_l857t"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="17_l857t"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001

@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="17_t8xas"]
 [ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Nodes/Obj/Ui/style_add_box.gd" id="18_ybat6"]
 [ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Nodes/Obj/Gameplay/laser.tscn" id="20_hk702"]
-[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/umbrella.tscn" id="21_x26fl"]
+[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="21_x26fl"]
 [ext_resource type="Shader" uid="uid://bfnyn2mcfcjby" path="res://assets/Shader/Water2.gdshader" id="22_nt8ge"]
 [ext_resource type="Script" uid="uid://cekeslpashr8u" path="res://assets/Nodes/Obj/Tileset/tile_map_layer_water.gd" id="23_bv23a"]
 

@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="16_ko08c"]
 [ext_resource type="PackedScene" uid="uid://cqqh8fidhrwc3" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn" id="17_y5s6n"]
 [ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Nodes/Obj/Gameplay/laser.tscn" id="18_cnn4i"]
-[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/umbrella.tscn" id="19_cnn4i"]
+[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="19_cnn4i"]
 [ext_resource type="PackedScene" uid="uid://5wgsndvnte8" path="res://assets/Nodes/Obj/Gameplay/float.tscn" id="20_2xmjt"]
 [ext_resource type="PackedScene" uid="uid://bpcyg6vqonftj" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish.tscn" id="21_2xmjt"]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3jlq8xohxw3c"]
 
-[ext_resource type="Script" uid="uid://dlqh5wqv3u6m1" path="res://assets/Nodes/Obj/moving_platform.gd" id="1_ab024"]
+[ext_resource type="Script" uid="uid://dlqh5wqv3u6m1" path="res://assets/Nodes/Obj/Gameplay/moving_platform.gd" id="1_ab024"]
 [ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="2_3jr1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6cpg"]

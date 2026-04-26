@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="15_tuuql"]
 [ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn" id="16_5y404"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="17_drifc"]
-[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/umbrella.tscn" id="19_q28t7"]
+[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="19_q28t7"]
 [ext_resource type="PackedScene" uid="uid://5wgsndvnte8" path="res://assets/Nodes/Obj/Gameplay/float.tscn" id="20_omd57"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="21_s6voy"]
 

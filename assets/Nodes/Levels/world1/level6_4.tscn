@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="14_a0ky5"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="15_qg6ch"]
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Scripts/DynamicLightAnimation.gd" id="16_b1vvu"]
-[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/rail.tscn" id="16_unhkb"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="16_unhkb"]
 
 [sub_resource type="Animation" id="Animation_timnu"]
 length = 0.001

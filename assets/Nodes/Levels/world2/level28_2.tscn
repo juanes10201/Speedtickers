@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn" id="15_t8p6u"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="16_8uh0k"]
 [ext_resource type="PackedScene" uid="uid://cqqh8fidhrwc3" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn" id="17_8vvda"]
-[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/umbrella.tscn" id="19_dcupc"]
+[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="19_dcupc"]
 [ext_resource type="PackedScene" uid="uid://5wgsndvnte8" path="res://assets/Nodes/Obj/Gameplay/float.tscn" id="20_fokfr"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="21_4oas6"]
 

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_t1f4y"]
 [ext_resource type="Texture2D" uid="uid://csqkhgwc5nj2t" path="res://assets/Sprites/signs/placeholder.png" id="4_fnpmo"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="4_i8whd"]
-[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/rail.tscn" id="5_77phb"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="5_77phb"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="5_eq0dd"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="6_ih448"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="7_wxvqd"]

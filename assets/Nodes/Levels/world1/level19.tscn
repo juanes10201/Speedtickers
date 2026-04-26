@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bygxx5ppwysc3" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie_special.tscn" id="15_7h57r"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="16_a6nlu"]
 [ext_resource type="Script" uid="uid://cyxm73atp4f5a" path="res://assets/Nodes/Obj/Ui/style_add_box.gd" id="17_lbwgj"]
-[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/rail.tscn" id="18_t70fv"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="18_t70fv"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001

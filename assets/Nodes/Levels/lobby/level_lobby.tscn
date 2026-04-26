@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="17_s7htf"]
 [ext_resource type="Script" uid="uid://6216kh0o2v0m" path="res://assets/Nodes/Obj/hologram.gd" id="18_7uw4i"]
 [ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="19_p1iso"]
-[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/rail.tscn" id="20_aqykh"]
+[ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="20_aqykh"]
 [ext_resource type="Script" uid="uid://b7kp4oyo8y484" path="res://assets/Nodes/Obj/Ui/text_tutorial_anim.gd" id="20_u01wk"]
 [ext_resource type="Script" uid="uid://f857f6q36vlf" path="res://assets/Nodes/Obj/Dialogue/dialogue_trigger.gd" id="21_7hf1d"]
 [ext_resource type="AudioStream" uid="uid://dsvfo3erylgm" path="res://assets/Sounds/Tutorial/voicetutorial.wav" id="21_25w60"]
