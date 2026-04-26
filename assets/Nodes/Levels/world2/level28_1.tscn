@@ -128,6 +128,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0p2r3"]
 shader = ExtResource("4_cnn4i")
+shader_parameter/opacity_post_border = 0.0
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_d77xg")
 shader_parameter/refraction_stretch = Vector2(1, 1)
 shader_parameter/refraction_strength = 0.02
@@ -184,6 +185,9 @@ tile_map_data = PackedByteArray("AAD+/xIAAQARABYAAAD+/xMAAQARABYAAAD+/xQAAQARABY
 tile_set = ExtResource("5_yoxse")
 script = ExtResource("6_2xmjt")
 WaterLevel = 253.93
+
+[node name="KillBox2" parent="." unique_id=317210304 instance=ExtResource("18_cnn4i")]
+position = Vector2(3, 311)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1783344830 groups=["Tileset"]]
 texture_filter = 1
@@ -281,9 +285,6 @@ AnotherAction = 1
 position = Vector2(329, 132)
 Activate_on_color = 1
 TimeToShoot = 0.6
-
-[node name="KillBox2" parent="." unique_id=317210304 instance=ExtResource("18_cnn4i")]
-position = Vector2(-15.000001, 3)
 
 [node name="Umbrella" parent="." unique_id=791046513 instance=ExtResource("19_cnn4i")]
 position = Vector2(342, 121)

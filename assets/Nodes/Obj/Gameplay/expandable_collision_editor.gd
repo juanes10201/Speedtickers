@@ -8,5 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(Edition.Is_in_editor): show()
+	else: hide()
 	$CollisionShape2D.disabled = !Edition.Is_in_editor
 	$CollisionShape2D2.disabled = !Edition.Is_in_editor

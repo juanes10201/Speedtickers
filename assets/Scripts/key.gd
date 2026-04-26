@@ -19,6 +19,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if($PointLight2D): $PointLight2D.show()
 	if(AditionalAction == GlobalFunctions.FUNCTIONS.Switch_Player_Gravity):
 		$AnimatedSprite2D.play("orb")
 	elif(AditionalAction == GlobalFunctions.FUNCTIONS.Restart_Time):
@@ -52,9 +53,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player") && !done):
 		set_key_state(true, true)
-		if(AditionalAction == Global.OBJECT_ACTIONS.Switch_Player_Gravity):
+		if(AditionalAction == GlobalFunctions.FUNCTIONS.Switch_Player_Gravity):
 			LevelManager.AddStyle(0, "Changed Gravity")
-		elif(AditionalAction == Global.OBJECT_ACTIONS.Restart_Time):
+		elif(AditionalAction == GlobalFunctions.FUNCTIONS.Restart_Time):
 			LevelManager.AddStyle(1, "Got Clock")
 		else: LevelManager.AddStyle(0, "Got Key")
 
@@ -84,8 +85,8 @@ func set_key_state(state : bool, PlayAction : bool):
 			$AnimatedSprite2D.play("get_orb")
 		if(Respawn):
 			TimerRespawn.start() 
-		Global.play_function(AditionalAction, AditionalActionArgument)
-		Global.play_function(AnotherAction)
+		GlobalFunctions.play_function(AditionalAction, AditionalActionArgument)
+		GlobalFunctions.play_function(AnotherAction)
 	if(state && Despawn):
 		var Boss = get_tree().get_nodes_in_group("Boss")[0] if get_tree().get_nodes_in_group("Boss").size() else null
 		if(Boss):

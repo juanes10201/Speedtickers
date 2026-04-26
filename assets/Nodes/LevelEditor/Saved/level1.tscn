@@ -40,7 +40,7 @@ shader_parameter/border_thickness = 4.434000210615
 shader_parameter/border_color = Color(0.6, 0.85, 1, 0.6)
 shader_parameter/water_surface_y = 0.0
 
-[node name="LevelData" type="Node2D" unique_id=1256106357 node_paths=PackedStringArray("LevelEditor")]
+[node name="LevelData" type="Node2D" unique_id=1767543161 node_paths=PackedStringArray("LevelEditor")]
 script = ExtResource("1_o8e8b")
 LevelEditor = NodePath("")
 
@@ -53,7 +53,7 @@ Physics = false
 TimeDeath = 0.4
 EnemiesPhysics = false
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=991615959]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=96040622]
 position = Vector2(14.5308, -29.4338)
 zoom = Vector2(2.08, 2.08)
 limit_left = -403
@@ -63,16 +63,16 @@ limit_bottom = 243
 position_smoothing_enabled = true
 script = ExtResource("4_x3l15")
 
-[node name="TileMapLayer0" type="TileMapLayer" parent="." unique_id=591772185 groups=["Tileset"]]
+[node name="TileMapLayer0" type="TileMapLayer" parent="." unique_id=1240120575 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(16.999998, -16)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AAAAAAEAAQAAAAAAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAIAAAABAAEAAQACAAAAAAABAAIAAQACAAEAAAABAAMAAQACAAIAAAD5/wAAAQAAAAMAAAD6/wAAAQACAAMAAAD6////AQADAAEAAAD6//7/AQADAAEAAAD6//3/AQADAAAAAAD7//3/AQACAAMAAAD7//z/AQAAAAMAAAD8//z/AQABAAMAAAD9//z/AQABAAMAAAD+//z/AQACAAMAAAD+//3/AQADAAIAAAD///3/AQABAAMAAAAAAP3/AQABAAMAAAABAP3/AQABAAMAAAACAP3/AQACAAMAAAACAP7/AQADAAIAAAADAP7/AQABAAMAAAAEAP7/AQACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAQAAAAAAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAIAAAABAAEAAQACAAAAAAABAAIAAQACAAEAAAABAAMAAQACAAIAAAAFAP7/AQADAAAAAAAFAP//AQADAAEAAAAFAAAAAQADAAEAAAAFAAEAAQADAAIAAAA=")
 tile_set = ExtResource("5_3yvfl")
 script = ExtResource("6_5m6si")
 
-[node name="TileMapTemp" type="TileMapLayer" parent="." unique_id=224322114 groups=["Tileset"]]
+[node name="TileMapTemp" type="TileMapLayer" parent="." unique_id=262951258 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(16.999998, -16)
@@ -80,7 +80,7 @@ scale = Vector2(1.00384, 1)
 tile_set = ExtResource("5_3yvfl")
 script = ExtResource("6_5m6si")
 
-[node name="TileMapLayerWater" type="TileMapLayer" parent="." unique_id=794932979 groups=["Tileset", "WaterTileset"]]
+[node name="TileMapLayerWater" type="TileMapLayer" parent="." unique_id=1952535160 groups=["Tileset", "WaterTileset"]]
 z_index = 2
 texture_filter = 1
 texture_repeat = 2
@@ -90,7 +90,7 @@ scale = Vector2(1.00384, 1)
 tile_set = ExtResource("5_3yvfl")
 script = ExtResource("8_jiptr")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=176841055 groups=["Tileset"]]
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=460161379 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(15.999998, -16)
@@ -109,7 +109,7 @@ script = ExtResource("10_80lm7")
 Visible = false
 CanChange = false
 
-[node name="Time_Left" type="Timer" parent="." unique_id=220543048 groups=["GameTimer"]]
+[node name="Time_Left" type="Timer" parent="." unique_id=320341294 groups=["GameTimer"]]
 wait_time = 7.0
 one_shot = true
 

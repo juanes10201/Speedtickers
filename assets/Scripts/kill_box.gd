@@ -29,7 +29,7 @@ enum LavaDirections{
 func _ready() -> void:
 	if(!Visible): self.hide()
 	
-	var shader = load("res://assets/Levels/Shader/kill_box.gdshader")
+	var shader = load("res://assets/Shader/kill_box.gdshader")
 	
 	var shader_material = ShaderMaterial.new()
 	shader_material.shader = shader

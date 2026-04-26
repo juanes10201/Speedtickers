@@ -129,6 +129,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0p2r3"]
 shader = ExtResource("4_yrldp")
+shader_parameter/opacity_post_border = 0.0
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_d77xg")
 shader_parameter/refraction_stretch = Vector2(1, 1)
 shader_parameter/refraction_strength = 0.02
@@ -191,7 +192,7 @@ texture_filter = 1
 texture_repeat = 2
 position = Vector2(-2, 0)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AAACABoAAQABAAIAAAACABkAAQABAAEAAAACABgAAQABAAEAAAACABcAAQABAAEAAAACABYAAQABAAIAAAACABUAAQABAAEAAAACABQAAQABAAEAAAACABMAAQABAAEAAAACABIAAQABAAEAAAACABEAAQABAAEAAAACABAAAQABAAEAAAACAA8AAQABAAEAAAACAA4AAQABAAEAAAAFABoAAQACAAIAAAAFABkAAQACAAEAAAAFABgAAQACAAEAAAAFABcAAQACAAAAAAAFABYAAQABAAIAAAAFABUAAQABAAEAAAAFABQAAQABAAEAAAAFABMAAQABAAEAAAAFABIAAQABAAEAAAAFABEAAQACAAEAAAAFABAAAQACAAEAAAAFAA8AAQACAAEAAAAFAA4AAQABAAEAAAAEABoAAQABAAIAAAAEABkAAQABAAEAAAAEABgAAQABAAEAAAAEABcAAQABAAEAAAAEABYAAQABAAIAAAAEABUAAQABAAEAAAAEABQAAQABAAEAAAAEABMAAQABAAEAAAAEABIAAQABAAEAAAAEABEAAQABAAEAAAAEABAAAQABAAEAAAAEAA8AAQABAAEAAAAEAA4AAQABAAEAAAADABoAAQAAAAIAAAADABkAAQAAAAEAAAADABgAAQAAAAEAAAADABcAAQAAAAEAAAADABYAAQABAAIAAAADABUAAQABAAEAAAADABQAAQABAAEAAAADABMAAQABAAEAAAADABIAAQABAAEAAAADABEAAQABAAEAAAADABAAAQABAAEAAAADAA8AAQABAAEAAAADAA4AAQABAAEAAAABAA4AAQAAAAEAAAABAA8AAQAAAAEAAAABABAAAQAAAAEAAAABABEAAQAAAAEAAAABABIAAQAAAAEAAAABABMAAQAAAAEAAAABABQAAQAAAAEAAAABABUAAQAAAAEAAAABABYAAQAAAAIAAAAEAA0AAQABAAEAAAADAA0AAQABAAEAAAACAA0AAQABAAEAAAABAA0AAQAAAAEAAAABAAwAAQAAAAAAAAACAAwAAQABAAAAAAADAAwAAQABAAAAAAAEAAwAAQABAAAAAAAFAAwAAQACAAAAAAAFAA0AAQABAAEAAAAZAAQAAQAAAAMAAAAZAAUAAQADAAEAAAAZAAYAAQADAAEAAAAZAAcAAQADAAIAAAAaAAQAAQABAAMAAAAaAAcAAQABAAMAAAAbAAQAAQABAAMAAAAbAAcAAQABAAMAAAAcAAQAAQACAAMAAAAcAAUAAQADAAEAAAAcAAYAAQADAAEAAAAcAAcAAQACAAMAAAAJAA4AAQACAAIAAAAIAA4AAQABAAIAAAAHAA4AAQABAAIAAAAGAA4AAQABAAIAAAAJAA0AAQACAAAAAAAIAA0AAQABAAAAAAAHAA0AAQABAAAAAAAGAA0AAQABAAAAAAAGABQAAQABAAEAAAAHABQAAQABAAEAAAAIABQAAQABAAEAAAAJABQAAQACAAEAAAAJABUAAQACAAEAAAAIABUAAQABAAEAAAAHABUAAQABAAEAAAAGABUAAQABAAEAAAAGABYAAQABAAIAAAAHABYAAQABAAIAAAAIABYAAQABAAIAAAAJABYAAQACAAIAAAAHABIAAQABAAAAAAAGABIAAQABAAAAAAAIABIAAQABAAAAAAAIABMAAQABAAEAAAAJABMAAQACAAEAAAAGABMAAQABAAEAAAAHABMAAQABAAEAAAAJABIAAQACAAAAAAA=")
+tile_map_data = PackedByteArray("AAACABoAAQABAAIAAAACABkAAQABAAEAAAACABgAAQABAAEAAAACABcAAQABAAEAAAACABYAAQABAAIAAAACABUAAQABAAEAAAACABQAAQABAAEAAAACABMAAQABAAEAAAACABIAAQABAAEAAAACABEAAQABAAEAAAACABAAAQABAAEAAAACAA8AAQABAAEAAAACAA4AAQABAAEAAAAFABoAAQACAAIAAAAFABkAAQACAAEAAAAFABgAAQACAAEAAAAFABcAAQACAAAAAAAFABYAAQABAAIAAAAFABUAAQABAAEAAAAFABQAAQABAAEAAAAFABMAAQABAAEAAAAFABIAAQABAAEAAAAFABEAAQACAAEAAAAFABAAAQACAAEAAAAFAA8AAQACAAEAAAAFAA4AAQABAAEAAAAEABoAAQABAAIAAAAEABkAAQABAAEAAAAEABgAAQABAAEAAAAEABcAAQABAAEAAAAEABYAAQABAAIAAAAEABUAAQABAAEAAAAEABQAAQABAAEAAAAEABMAAQABAAEAAAAEABIAAQABAAEAAAAEABEAAQABAAEAAAAEABAAAQABAAEAAAAEAA8AAQABAAEAAAAEAA4AAQABAAEAAAADABoAAQAAAAIAAAADABkAAQAAAAEAAAADABgAAQAAAAEAAAADABcAAQAAAAEAAAADABYAAQABAAIAAAADABUAAQABAAEAAAADABQAAQABAAEAAAADABMAAQABAAEAAAADABIAAQABAAEAAAADABEAAQABAAEAAAADABAAAQABAAEAAAADAA8AAQABAAEAAAADAA4AAQABAAEAAAABAA4AAQAAAAEAAAABAA8AAQAAAAEAAAABABAAAQAAAAEAAAABABEAAQAAAAEAAAABABIAAQAAAAEAAAABABMAAQAAAAEAAAABABQAAQAAAAEAAAABABUAAQAAAAEAAAABABYAAQAAAAIAAAAEAA0AAQABAAEAAAADAA0AAQABAAEAAAACAA0AAQABAAEAAAABAA0AAQAAAAEAAAABAAwAAQAAAAAAAAACAAwAAQABAAAAAAADAAwAAQABAAAAAAAEAAwAAQABAAAAAAAFAAwAAQACAAAAAAAFAA0AAQABAAEAAAAZAAQAAQAAAAMAAAAZAAUAAQADAAEAAAAZAAYAAQADAAEAAAAZAAcAAQADAAIAAAAaAAQAAQABAAMAAAAaAAcAAQABAAMAAAAbAAQAAQABAAMAAAAbAAcAAQABAAMAAAAcAAQAAQACAAMAAAAcAAUAAQADAAEAAAAcAAYAAQADAAEAAAAcAAcAAQACAAMAAAAJAA4AAQACAAIAAAAIAA4AAQABAAIAAAAHAA4AAQABAAIAAAAGAA4AAQABAAIAAAAJAA0AAQACAAAAAAAIAA0AAQABAAAAAAAHAA0AAQABAAAAAAAGAA0AAQABAAAAAAAGABQAAQABAAEAAAAHABQAAQABAAEAAAAIABQAAQABAAEAAAAJABQAAQACAAEAAAAJABUAAQACAAEAAAAIABUAAQABAAEAAAAHABUAAQABAAEAAAAGABUAAQABAAEAAAAGABYAAQABAAIAAAAHABYAAQABAAIAAAAIABYAAQABAAIAAAAJABYAAQACAAIAAAAHABIAAQABAAAAAAAGABIAAQABAAAAAAAIABIAAQABAAAAAAAIABMAAQABAAEAAAAJABMAAQACAAEAAAAGABMAAQABAAEAAAAHABMAAQABAAEAAAAJABIAAQACAAAAAAANAP3/AQACAAAAAFANAP7/AQACAAAAAFANAP//AQACAAAAAFANAAAAAQACAAAAAFAMAP3/AQACAAIAAFAMAP7/AQAAAAEAAAAMAP//AQAAAAEAAAAMAAAAAQAAAAIAAFA=")
 tile_set = ExtResource("5_bnrfy")
 script = ExtResource("7_d8hgi")
 
@@ -227,12 +228,12 @@ floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1584871878]
-position = Vector2(104.60181, -27.760986)
+position = Vector2(104.60181, -43.760986)
 zoom = Vector2(2.08, 2.08)
 limit_left = 11
-limit_top = -50
+limit_top = -196
 limit_right = 503
-limit_bottom = 393
+limit_bottom = 468
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("14_pr7nx")
@@ -290,51 +291,49 @@ position = Vector2(-267, -143)
 AditionalAction = 6
 AditionalActionArgument = 464.53
 
-[node name="falling_sand" parent="." unique_id=214611821 instance=ExtResource("20_n13g2")]
-position = Vector2(267, 42)
-
 [node name="falling_sand4" parent="." unique_id=1777968022 instance=ExtResource("20_n13g2")]
 position = Vector2(340, 317)
 
 [node name="falling_sand5" parent="." unique_id=1873196591 instance=ExtResource("20_n13g2")]
 position = Vector2(356, 317)
 
-[node name="falling_sand8" parent="." unique_id=1716103101 instance=ExtResource("20_n13g2")]
-position = Vector2(170, 248)
-
-[node name="falling_sand9" parent="." unique_id=224623004 instance=ExtResource("20_n13g2")]
-position = Vector2(170, 264)
-
-[node name="falling_sand10" parent="." unique_id=959006156 instance=ExtResource("20_n13g2")]
-position = Vector2(170, 280)
-
 [node name="falling_sand6" parent="." unique_id=1024784136 instance=ExtResource("20_n13g2")]
 position = Vector2(372, 317)
 
 [node name="falling_sand2" parent="." unique_id=155009937 instance=ExtResource("20_n13g2")]
-position = Vector2(267, 58)
+position = Vector2(260, 67)
 
 [node name="falling_sand3" parent="." unique_id=617333930 instance=ExtResource("20_n13g2")]
-position = Vector2(267, 74)
+position = Vector2(260, 83)
 
 [node name="falling_sand7" parent="." unique_id=1452227932 instance=ExtResource("20_n13g2")]
-position = Vector2(267, 90)
+position = Vector2(260, 99)
+
+[node name="falling_sand11" parent="." unique_id=214611821 instance=ExtResource("20_n13g2")]
+position = Vector2(260, 115)
+
+[node name="falling_sand12" parent="." unique_id=679599938 instance=ExtResource("20_n13g2")]
+position = Vector2(260, 51)
 
 [node name="KillBox9" parent="." unique_id=1626786048 instance=ExtResource("11_k2x7a")]
 position = Vector2(-26.999939, -263.99994)
 scale = Vector2(1.27, 1.255)
 
 [node name="KillBox6" parent="." unique_id=689861341 instance=ExtResource("11_k2x7a")]
-position = Vector2(212, -219.885)
+position = Vector2(206, -218.99998)
 scale = Vector2(1, 30.09)
 
 [node name="KillBox7" parent="." unique_id=1857462045 instance=ExtResource("11_k2x7a")]
-position = Vector2(212, 350)
+position = Vector2(204, 343.99997)
 scale = Vector2(1, 30.09)
 
 [node name="KillBox8" parent="." unique_id=1428154290 instance=ExtResource("11_k2x7a")]
-position = Vector2(346.99997, 144.99998)
-scale = Vector2(17.73, 0.68)
+position = Vector2(295.9999, 144.99998)
+scale = Vector2(11.255, 0.68)
+
+[node name="KillBox21" parent="." unique_id=1909138087 instance=ExtResource("11_k2x7a")]
+position = Vector2(299, -62)
+scale = Vector2(11.255, 0.68)
 
 [node name="KillBox18" parent="." unique_id=110491731 instance=ExtResource("11_k2x7a")]
 position = Vector2(153, 200.99998)
@@ -345,7 +344,7 @@ position = Vector2(393.00003, 25.999996)
 scale = Vector2(0.83, 16.29)
 
 [node name="Key5" parent="." unique_id=640842020 instance=ExtResource("12_u10ui")]
-position = Vector2(294, 45)
+position = Vector2(286, 104)
 AditionalAction = 6
 AditionalActionArgument = 146.0
 AnotherAction = 1
@@ -354,8 +353,16 @@ AnotherAction = 1
 position = Vector2(275, 165)
 scale = Vector2(6.86, 1)
 
+[node name="KillBox20" parent="." unique_id=1271129577 instance=ExtResource("15_ititj")]
+position = Vector2(157.00002, 200)
+scale = Vector2(7.895, 1)
+
 [node name="KillBox4" parent="." unique_id=807546768 instance=ExtResource("15_ititj")]
 position = Vector2(234, 399)
+scale = Vector2(1.54, 14.025)
+
+[node name="KillBox22" parent="." unique_id=235342786 instance=ExtResource("15_ititj")]
+position = Vector2(314.00003, 340)
 scale = Vector2(1.54, 14.025)
 
 [node name="KillBox14" parent="." unique_id=1909173433 instance=ExtResource("15_ititj")]
@@ -363,19 +370,22 @@ position = Vector2(233, 191.99997)
 scale = Vector2(1.54, 2.405)
 
 [node name="KillBox3" parent="." unique_id=1677845497 instance=ExtResource("15_ititj")]
-position = Vector2(438, 165)
+position = Vector2(453.99997, 165)
 scale = Vector2(6.86, 1)
 
 [node name="KillBox15" parent="." unique_id=855899481 instance=ExtResource("15_ititj")]
 position = Vector2(407, 41.00001)
 scale = Vector2(0.985, 14.445)
 
+[node name="KillBox19" parent="." unique_id=748649570 instance=ExtResource("15_ititj")]
+position = Vector2(337, 68.99999)
+scale = Vector2(0.985, 12.955)
+
 [node name="Enemy_Fish3" parent="." unique_id=455147022 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("21_1k25g")]
 position = Vector2(260, 332)
 Activate_on_color = 1
 InitialMarker = NodePath("InitialMarkerCustom")
 EndMarker = NodePath("EndMarkerCustom")
-Speed = 0.7
 
 [node name="InitialMarkerCustom" type="Marker2D" parent="Enemy_Fish3" unique_id=60506650]
 top_level = true
@@ -386,16 +396,15 @@ top_level = true
 position = Vector2(259, 356)
 
 [node name="Enemy_Fish5" parent="." unique_id=974571940 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("21_1k25g")]
-position = Vector2(260, 213)
+position = Vector2(260, 196)
 Activate_on_color = 1
 InitialMarker = NodePath("InitialMarkerCustom")
 EndMarker = NodePath("EndMarkerCustom")
-Speed = 0.7
 CurrentDir = -1
 
 [node name="InitialMarkerCustom" type="Marker2D" parent="Enemy_Fish5" unique_id=1062899583]
 top_level = true
-position = Vector2(260, 186)
+position = Vector2(260, 180)
 
 [node name="EndMarkerCustom" type="Marker2D" parent="Enemy_Fish5" unique_id=1493930615]
 top_level = true

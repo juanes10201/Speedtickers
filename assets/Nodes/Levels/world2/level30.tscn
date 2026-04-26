@@ -126,6 +126,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_51bub"]
 shader = ExtResource("4_apaee")
+shader_parameter/opacity_post_border = 0.0
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_d77xg")
 shader_parameter/refraction_stretch = Vector2(1, 1)
 shader_parameter/refraction_strength = 0.02
@@ -184,8 +185,7 @@ script = ExtResource("6_uxvbw")
 WaterLevel = 237.675
 
 [node name="KillBox5" parent="." unique_id=1394380819 instance=ExtResource("7_uxvbw")]
-position = Vector2(-168, 151)
-scale = Vector2(2.895, 0.15)
+position = Vector2(-173, 263)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1959210488 groups=["Tileset"]]
 texture_filter = 1
@@ -233,6 +233,7 @@ script = ExtResource("11_mobwh")
 
 [node name="EnemieSkeleton" parent="." unique_id=1852943957 instance=ExtResource("14_1xrpc")]
 position = Vector2(31, 106)
+Activate_on_color = 1
 TimeToShoot = 1.2
 
 [node name="Key" parent="." unique_id=1446547821 instance=ExtResource("9_8iqda")]

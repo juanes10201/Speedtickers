@@ -65,10 +65,11 @@ func _get_player() -> CharacterBody2D:
 	return SaveGame.get_player() 
 
 func switch_killbox_type(Type : Global.KillBoxTypes = Global.KillBoxTypes.None) -> void:
-	if(Type == Global.KillBoxTypes.None): return
+	#if(Type == Global.KillBoxTypes.None): return
 	var Player : Node2D = _get_player()
 	LastOriginalvalue = Player.EnabledKillBox
 	Player.EnabledKillBox *= -1
+	print("changed")
 
 func MoveLava() -> void:
 	var Player : Node2D = _get_player()

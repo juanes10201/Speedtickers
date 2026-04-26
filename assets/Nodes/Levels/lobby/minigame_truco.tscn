@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://by8oesyiy8bb2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m210k"]
+size = Vector2(129, 195)
+
+[node name="MinigameTruco" type="Node2D" unique_id=1374415160]
+
+[node name="Control" type="Control" parent="." unique_id=98756379]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Carta1" type="Button" parent="Control" unique_id=1402767889]
+layout_mode = 0
+offset_left = 821.0
+offset_top = 407.0
+offset_right = 949.0
+offset_bottom = 602.0
+text = "Carta"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Carta1" unique_id=450541073]
+visible = false
+texture = SubResource("PlaceholderTexture2D_m210k")
+centered = false
+
+[node name="Carta2" type="Button" parent="Control" unique_id=64961257]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 427.0
+offset_right = 1120.0
+offset_bottom = 622.0
+text = "Carta"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Carta2" unique_id=692672579]
+visible = false
+texture = SubResource("PlaceholderTexture2D_m210k")
+centered = false
+
+[node name="Carta3" type="Button" parent="Control" unique_id=1857861435]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 423.0
+offset_right = 785.0
+offset_bottom = 618.0
+text = "Carta"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Carta3" unique_id=1141383424]
+visible = false
+texture = SubResource("PlaceholderTexture2D_m210k")
+centered = false
