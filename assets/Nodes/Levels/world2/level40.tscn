@@ -206,7 +206,7 @@ autostart = true
 [node name="CanvasLayer" parent="." unique_id=2036359490 instance=ExtResource("8_8pbkc")]
 
 [node name="Flag" parent="." unique_id=1280264517 instance=ExtResource("9_4fqvr")]
-position = Vector2(-195, -112)
+position = Vector2(-184, -175)
 
 [node name="WorldEnvironment" parent="." unique_id=1206830019 instance=ExtResource("10_yy58f")]
 
@@ -229,7 +229,7 @@ floor_max_angle = 1.39626
 position = Vector2(89.60181, -81.76099)
 zoom = Vector2(2.08, 2.08)
 limit_left = -285
-limit_top = -152
+limit_top = -256
 limit_right = 353
 limit_bottom = 618
 limit_smoothed = true
@@ -237,7 +237,7 @@ position_smoothing_enabled = true
 script = ExtResource("14_8nai4")
 
 [node name="KillBox2" parent="." unique_id=1271129577 instance=ExtResource("15_mwhal")]
-position = Vector2(-72, 287)
+position = Vector2(-72, 273)
 scale = Vector2(1.415, 24.33)
 
 [node name="KillBox3" parent="." unique_id=363736359 instance=ExtResource("15_mwhal")]
@@ -245,8 +245,8 @@ position = Vector2(-72, -191)
 scale = Vector2(1.415, 24.33)
 
 [node name="KillBox7" parent="." unique_id=1195076645 instance=ExtResource("15_mwhal")]
-position = Vector2(-231.99998, -24.000015)
-scale = Vector2(1.415, 17.16)
+position = Vector2(-232, -38.00002)
+scale = Vector2(1.415, 19.015)
 
 [node name="KillBox10" parent="." unique_id=1835188332 instance=ExtResource("15_mwhal")]
 position = Vector2(-165, 65.999985)
@@ -261,12 +261,20 @@ position = Vector2(12.000061, -73)
 scale = Vector2(8.990001, 2)
 
 [node name="KillBox8" parent="." unique_id=423878341 instance=ExtResource("15_mwhal")]
-position = Vector2(-152, -145)
-scale = Vector2(8.595, 2)
+position = Vector2(-162.99997, -207)
+scale = Vector2(9.97, 2)
 
 [node name="KillBox9" parent="." unique_id=1323035696 instance=ExtResource("15_mwhal")]
-position = Vector2(-127, -106.000015)
-scale = Vector2(5.455, 2.875)
+position = Vector2(-127.00001, -143.00002)
+scale = Vector2(5.455, 5.965)
+
+[node name="KillBox12" parent="." unique_id=1997168633 instance=ExtResource("15_mwhal")]
+position = Vector2(-180, -104.99999)
+scale = Vector2(1.23, 1.185)
+
+[node name="KillBox13" parent="." unique_id=986541739 instance=ExtResource("15_mwhal")]
+position = Vector2(-211, -182)
+scale = Vector2(1.23, 1.185)
 
 [node name="KillBox6" parent="." unique_id=1640759688 instance=ExtResource("15_mwhal")]
 position = Vector2(-162.99998, 129)
@@ -353,13 +361,13 @@ position = Vector2(8, 30)
 AditionalAction = 1
 
 [node name="falling_sand" parent="." unique_id=214611821 instance=ExtResource("20_3fk70")]
-position = Vector2(-128, 41)
+position = Vector2(-128, 9)
 
 [node name="falling_sand2" parent="." unique_id=1968124833 instance=ExtResource("20_3fk70")]
-position = Vector2(-128, 57)
+position = Vector2(-128, 25)
 
 [node name="falling_sand4" parent="." unique_id=565917601 instance=ExtResource("20_3fk70")]
-position = Vector2(-128, 73)
+position = Vector2(-128, 41)
 
 [node name="falling_sand5" parent="." unique_id=690910901 instance=ExtResource("20_3fk70")]
-position = Vector2(-128, 89)
+position = Vector2(-128, 57)

@@ -531,6 +531,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x += KickSpeed.x * delta
 		if(KickTimer.is_stopped()):
 			KickSpeed.x = lerpf(KickSpeed.x, 0, delta*7)
+			KickSpeed.y = lerpf(KickSpeed.y, 0, delta*7)
+		elif(KickSpeed.y != 0.0): velocity.y = KickSpeed.y
 		
 		# Move the character
 		move_and_slide()

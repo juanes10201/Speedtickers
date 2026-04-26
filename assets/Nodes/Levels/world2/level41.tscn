@@ -186,9 +186,6 @@ tile_set = ExtResource("5_4gphw")
 script = ExtResource("6_uyhgx")
 WaterLevel = 281.765
 
-[node name="Umbrella3" parent="." unique_id=389473554 instance=ExtResource("7_alurp")]
-position = Vector2(-195, 18)
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1783344830 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
@@ -206,7 +203,7 @@ autostart = true
 [node name="CanvasLayer" parent="." unique_id=2036359490 instance=ExtResource("9_ap3vj")]
 
 [node name="Flag" parent="." unique_id=1280264517 instance=ExtResource("10_ehimq")]
-position = Vector2(-195, -112)
+position = Vector2(-536, -119)
 
 [node name="WorldEnvironment" parent="." unique_id=1206830019 instance=ExtResource("11_p1itc")]
 
@@ -236,65 +233,13 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("15_gpfeq")
 
-[node name="KillBox2" parent="." unique_id=1271129577 instance=ExtResource("16_8i0dt")]
-position = Vector2(-72, 287)
-scale = Vector2(1.415, 24.33)
-
-[node name="KillBox3" parent="." unique_id=363736359 instance=ExtResource("16_8i0dt")]
-position = Vector2(-72, -191)
-scale = Vector2(1.415, 24.33)
-
-[node name="KillBox7" parent="." unique_id=1195076645 instance=ExtResource("16_8i0dt")]
-position = Vector2(-231.99998, -24.000015)
-scale = Vector2(1.415, 17.16)
-
-[node name="KillBox10" parent="." unique_id=1835188332 instance=ExtResource("16_8i0dt")]
-position = Vector2(-165, 65.999985)
-scale = Vector2(1.415, 5.835)
-
 [node name="KillBox4" parent="." unique_id=52301444 instance=ExtResource("16_8i0dt")]
 position = Vector2(73, 137)
 scale = Vector2(1.415, 24.33)
 
-[node name="KillBox5" parent="." unique_id=310200664 instance=ExtResource("16_8i0dt")]
-position = Vector2(12.000061, -73)
-scale = Vector2(8.990001, 2)
-
-[node name="KillBox8" parent="." unique_id=423878341 instance=ExtResource("16_8i0dt")]
-position = Vector2(-152, -145)
-scale = Vector2(8.595, 2)
-
-[node name="KillBox9" parent="." unique_id=1323035696 instance=ExtResource("16_8i0dt")]
-position = Vector2(-127, -106.000015)
-scale = Vector2(5.455, 2.875)
-
-[node name="KillBox6" parent="." unique_id=1640759688 instance=ExtResource("16_8i0dt")]
-position = Vector2(-162.99998, 129)
-scale = Vector2(9.945, 2)
-
 [node name="KillBox14" parent="." unique_id=938803801 instance=ExtResource("12_yatmq")]
 position = Vector2(-72.00001, 249)
 scale = Vector2(1.5, 9.395)
-
-[node name="KillBox16" parent="." unique_id=1386857898 instance=ExtResource("12_yatmq")]
-position = Vector2(7.9999995, 192.00002)
-scale = Vector2(1.5, 16.725)
-
-[node name="KillBox17" parent="." unique_id=889195298 instance=ExtResource("12_yatmq")]
-position = Vector2(6.9999995, -9)
-scale = Vector2(1.5, 2)
-
-[node name="KillBox15" parent="." unique_id=1719607967 instance=ExtResource("12_yatmq")]
-position = Vector2(-72.00001, 40)
-scale = Vector2(1.5, 7.93)
-
-[node name="KillBox19" parent="." unique_id=459074202 instance=ExtResource("12_yatmq")]
-position = Vector2(-186, 94.99999)
-scale = Vector2(13.035, 1)
-
-[node name="KillBox18" parent="." unique_id=1967950444 instance=ExtResource("12_yatmq")]
-position = Vector2(-32.00001, -38.999992)
-scale = Vector2(6.395, 2)
 
 [node name="KillBox11" parent="." unique_id=951144048 instance=ExtResource("16_8i0dt")]
 position = Vector2(-514, -33)
@@ -342,24 +287,3 @@ position = Vector2(-543, -67)
 
 [node name="Umbrella" parent="." unique_id=791046513 instance=ExtResource("7_alurp")]
 position = Vector2(-32, 257)
-
-[node name="Umbrella2" parent="." unique_id=1024664547 instance=ExtResource("7_alurp")]
-position = Vector2(56, 29)
-rotation = -1.5707964
-PushVelocity = -400.0
-
-[node name="Key4" parent="." unique_id=1975102781 instance=ExtResource("13_jjrnq")]
-position = Vector2(8, 30)
-AditionalAction = 1
-
-[node name="falling_sand" parent="." unique_id=214611821 instance=ExtResource("21_arc5b")]
-position = Vector2(-128, 41)
-
-[node name="falling_sand2" parent="." unique_id=1968124833 instance=ExtResource("21_arc5b")]
-position = Vector2(-128, 57)
-
-[node name="falling_sand4" parent="." unique_id=565917601 instance=ExtResource("21_arc5b")]
-position = Vector2(-128, 73)
-
-[node name="falling_sand5" parent="." unique_id=690910901 instance=ExtResource("21_arc5b")]
-position = Vector2(-128, 89)
