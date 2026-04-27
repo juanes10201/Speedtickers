@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://fo7p1nt5o3y8" path="res://assets/Nodes/Ui/level_select_canvas.tscn" id="2_4iqwx"]
 [ext_resource type="Shader" uid="uid://bewtpgjognj1i" path="res://assets/Shader/playertexttime.gdshader" id="14_12lcu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4iqwx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bayh8"]
 resource_local_to_scene = true
 shader = ExtResource("14_12lcu")
 shader_parameter/center = Vector2(50, 50)
@@ -22,13 +22,11 @@ metadata/_edit_vertical_guides_ = [634.0]
 
 [node name="CanvasLayer" parent="." unique_id=336245842 instance=ExtResource("2_4iqwx")]
 
-[node name="select15" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="14" unique_id=548727812]
-visible = false
-
 [node name="BestUser" parent="CanvasLayer/Iconuser" parent_id_path=PackedInt32Array(336245842, 104304584) index="0" unique_id=1394394965]
-material = SubResource("ShaderMaterial_4iqwx")
+material = SubResource("ShaderMaterial_bayh8")
 
 [node name="PauseMenuButton2" parent="CanvasLayer" index="15" unique_id=1217067170]
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world2.tscn"
 ExpoButton = false
 
 [node name="PauseMenuButton3" parent="CanvasLayer" index="16" unique_id=1832989316]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fo7p1nt5o3y8" path="res://assets/Nodes/Ui/level_select_canvas.tscn" id="2_epm3a"]
 [ext_resource type="Shader" uid="uid://bewtpgjognj1i" path="res://assets/Shader/playertexttime.gdshader" id="34_3qa8k"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvj4i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mok0"]
 resource_local_to_scene = true
 shader = ExtResource("34_3qa8k")
 shader_parameter/center = Vector2(50, 50)
@@ -12,7 +12,7 @@ shader_parameter/amplitude = 0.1
 shader_parameter/frequency = 1.0
 shader_parameter/downward_offset = 22.512
 
-[node name="control_pause_menu" type="Control"]
+[node name="control_pause_menu" type="Control" unique_id=1072014080]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 1.0
@@ -22,68 +22,62 @@ focus_mode = 2
 script = ExtResource("1_rn8e2")
 metadata/_edit_vertical_guides_ = [634.0]
 
-[node name="CanvasLayer" parent="." instance=ExtResource("2_epm3a")]
+[node name="CanvasLayer" parent="." unique_id=1363605440 instance=ExtResource("2_epm3a")]
 
-[node name="select1" parent="CanvasLayer/Levels" index="0"]
-text = "15"
-
-[node name="select2" parent="CanvasLayer/Levels" index="1"]
+[node name="select1" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="0" unique_id=963325185]
 text = "16"
 
-[node name="select3" parent="CanvasLayer/Levels" index="2"]
+[node name="select2" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="1" unique_id=554054037]
 text = "17"
 
-[node name="select4" parent="CanvasLayer/Levels" index="3"]
+[node name="select3" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="2" unique_id=1303425179]
 text = "18"
 
-[node name="select5" parent="CanvasLayer/Levels" index="4"]
+[node name="select4" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="3" unique_id=1444800482]
 text = "19"
 
-[node name="select6" parent="CanvasLayer/Levels" index="5"]
+[node name="select5" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="4" unique_id=701490149]
 text = "20"
 
-[node name="select7" parent="CanvasLayer/Levels" index="6"]
+[node name="select6" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="5" unique_id=1867965926]
 text = "21"
 
-[node name="select8" parent="CanvasLayer/Levels" index="7"]
+[node name="select7" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="6" unique_id=1630380182]
 text = "22"
 
-[node name="select9" parent="CanvasLayer/Levels" index="8"]
+[node name="select8" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="7" unique_id=515915180]
 text = "23"
 
-[node name="select10" parent="CanvasLayer/Levels" index="9"]
+[node name="select9" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="8" unique_id=1396243757]
 text = "24"
 
-[node name="select11" parent="CanvasLayer/Levels" index="10"]
+[node name="select10" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="9" unique_id=542076726]
 text = "25"
 
-[node name="select12" parent="CanvasLayer/Levels" index="11"]
+[node name="select11" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="10" unique_id=1800198492]
 text = "26"
 
-[node name="select13" parent="CanvasLayer/Levels" index="12"]
-visible = false
+[node name="select12" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="11" unique_id=784748179]
+text = "27"
+
+[node name="select13" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="12" unique_id=540793293]
 text = "28"
 
-[node name="select14" parent="CanvasLayer/Levels" index="13"]
-visible = false
+[node name="select14" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="13" unique_id=350446339]
 text = "29"
 
-[node name="select15" parent="CanvasLayer/Levels" index="14"]
-visible = false
+[node name="select15" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(1363605440, 594197803) index="14" unique_id=548727812]
 text = "30"
 
-[node name="BestUser" parent="CanvasLayer/Iconuser" index="0"]
-material = SubResource("ShaderMaterial_xvj4i")
+[node name="BestUser" parent="CanvasLayer/Iconuser" parent_id_path=PackedInt32Array(1363605440, 104304584) index="0" unique_id=1394394965]
+material = SubResource("ShaderMaterial_0mok0")
 
-[node name="PauseMenuButton2" parent="CanvasLayer" index="16"]
-ADITIONAL_ARGUMENT = "select_level_world3"
+[node name="PauseMenuButton2" parent="CanvasLayer" index="15" unique_id=1217067170]
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world3.tscn"
 ExpoButton = false
 
-[node name="PauseMenuButton3" parent="CanvasLayer" index="17"]
-ADITIONAL_ARGUMENT = "select_level_world1"
+[node name="PauseMenuButton3" parent="CanvasLayer" index="16" unique_id=1832989316]
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world1.tscn"
 ExpoButton = false
-
-[node name="9" parent="CanvasLayer" index="21"]
-text = "WORLD 2"
 
 [editable path="CanvasLayer"]
