@@ -367,7 +367,7 @@ AditionalActionArgument = 266.0
 position = Vector2(-543, -67)
 
 [node name="Umbrella" parent="." unique_id=791046513 instance=ExtResource("7_alurp")]
-position = Vector2(-224, 185)
+position = Vector2(-232.00003, 193)
 rotation = 0.7853982
 
 [node name="Umbrella2" parent="." unique_id=1508263644 instance=ExtResource("7_alurp")]

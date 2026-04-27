@@ -71,9 +71,12 @@ directories/dtl_directory={
 "npc_lobby_tv1": "res://assets/Dialogic/Timelines/Tvs/npc_lobby_tv1.dtl",
 "npc_lobby_tv2": "res://assets/Dialogic/Timelines/Tvs/npc_lobby_tv2.dtl"
 }
-layout/style_directory={}
-layout/style_list=["res://assets/Dialog/Styles/FaceShow.tres"]
-layout/default_style="res://assets/Dialog/Styles/FaceShow.tres"
+layout/style_directory={
+"FaceShow": "res://assets/Dialogic/Styles/FaceShow.tres",
+"NoFaceBG": "res://assets/Dialogic/Styles/NoFaceBG.tres"
+}
+layout/style_list=["res://assets/Dialogic/Styles/FaceShow.tres", "res://assets/Dialogic/Styles/NoFaceBG.tres"]
+layout/default_style=""
 variables={}
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
