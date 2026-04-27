@@ -49,9 +49,11 @@ text = "59"
 text = "60"
 
 [node name="select9" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(188760645, 594197803) index="8" unique_id=1396243757]
+visible = false
 text = "61"
 
 [node name="select10" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(188760645, 594197803) index="9" unique_id=542076726]
+visible = false
 text = "62"
 
 [node name="select11" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(188760645, 594197803) index="10" unique_id=1800198492]

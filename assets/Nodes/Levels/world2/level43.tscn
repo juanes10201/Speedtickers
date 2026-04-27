@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="19_q44ya"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="20_157t0"]
 [ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="21_gqxw3"]
-[ext_resource type="PackedScene" uid="uid://cqqh8fidhrwc3" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn" id="22_c6uul"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -224,7 +223,7 @@ autostart = true
 [node name="CanvasLayer" parent="." unique_id=2036359490 instance=ExtResource("8_0ahkb")]
 
 [node name="Flag" parent="." unique_id=1280264517 instance=ExtResource("9_sa164")]
-position = Vector2(-374, 73)
+position = Vector2(-344, 105)
 
 [node name="WorldEnvironment" parent="." unique_id=1206830019 instance=ExtResource("10_830lb")]
 
@@ -241,7 +240,7 @@ AditionalActionArgument = 470.0
 AnotherAction = 1
 
 [node name="Key4" parent="." unique_id=2070008152 instance=ExtResource("12_bvgrf")]
-position = Vector2(-88, 68)
+position = Vector2(-88, 57)
 AditionalAction = 6
 AditionalActionArgument = -288.0
 
@@ -332,12 +331,8 @@ PushVelocity = -360.0
 position = Vector2(-88, -36)
 scale = Vector2(2, 8.03)
 
-[node name="Enemie" parent="." unique_id=1078688910 instance=ExtResource("22_c6uul")]
-position = Vector2(80, 153)
-TimeToShoot = 0.3
-
 [node name="KillBox2" parent="." unique_id=1271129577 instance=ExtResource("15_d167q")]
-position = Vector2(-344, 577)
+position = Vector2(-344, 609)
 scale = Vector2(1.24, 59.225)
 
 [node name="KillBox8" parent="." unique_id=1603544654 instance=ExtResource("15_d167q")]
@@ -345,7 +340,7 @@ position = Vector2(-400, 225)
 scale = Vector2(1.24, 59.225)
 
 [node name="KillBox6" parent="." unique_id=550677736 instance=ExtResource("15_d167q")]
-position = Vector2(-344, -431)
+position = Vector2(-344, -391.00003)
 scale = Vector2(1.24, 59.225)
 
 [node name="KillBox3" parent="." unique_id=929279321 instance=ExtResource("15_d167q")]

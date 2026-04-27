@@ -204,6 +204,13 @@ autostart = true
 
 [node name="CanvasLayer" parent="." unique_id=2036359490 instance=ExtResource("8_nne3s")]
 
+[node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("23_kd84w")]
+position = Vector2(115, 129)
+Laser_Color = 2
+
+[node name="KillBox3" parent="." unique_id=1486130144 instance=ExtResource("23_kd84w")]
+position = Vector2(-90, 33)
+
 [node name="Flag" parent="." unique_id=1280264517 instance=ExtResource("9_jyfp6")]
 position = Vector2(184, 361)
 
@@ -220,7 +227,7 @@ position = Vector2(-572, -41)
 AditionalAction = 1
 
 [node name="Key4" parent="." unique_id=2070008152 instance=ExtResource("12_t1k2e")]
-position = Vector2(50, 131)
+position = Vector2(48, 153)
 
 [node name="Player" parent="." unique_id=148438413 instance=ExtResource("13_hcqfq")]
 position = Vector2(-168, 217)
@@ -251,7 +258,7 @@ position = Vector2(-88, -63)
 scale = Vector2(2, 8.03)
 
 [node name="KillBox17" parent="." unique_id=1566834034 instance=ExtResource("11_dvf5q")]
-position = Vector2(12, 369)
+position = Vector2(24, 369.00003)
 scale = Vector2(2, 10.63)
 
 [node name="KillBox18" parent="." unique_id=1226516884 instance=ExtResource("11_dvf5q")]
@@ -259,7 +266,7 @@ position = Vector2(10.000001, 49)
 scale = Vector2(1.22, 20.885)
 
 [node name="KillBox21" parent="." unique_id=58531168 instance=ExtResource("11_dvf5q")]
-position = Vector2(112, 353)
+position = Vector2(112, 361)
 scale = Vector2(2, 22.67)
 
 [node name="KillBox22" parent="." unique_id=777040968 instance=ExtResource("11_dvf5q")]
@@ -305,7 +312,8 @@ AditionalAction = 6
 AditionalActionArgument = 275.175
 
 [node name="Enemy_Fish6" parent="." unique_id=939992457 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("17_j85ux")]
-position = Vector2(-48, 177)
+position = Vector2(-48, 145)
+Activate_on_color = 1
 InitialMarker = NodePath("InitialMarkerCustom")
 EndMarker = NodePath("EndMarkerCustom")
 CurrentDir = -1
@@ -319,7 +327,8 @@ top_level = true
 position = Vector2(-48, 304)
 
 [node name="Enemy_Fish7" parent="." unique_id=455147022 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("17_j85ux")]
-position = Vector2(-16, 177)
+position = Vector2(-16, 241)
+Activate_on_color = 1
 InitialMarker = NodePath("InitialMarkerCustom")
 EndMarker = NodePath("EndMarkerCustom")
 
@@ -352,35 +361,33 @@ position = Vector2(-125, 273)
 PushVelocity = -350.0
 
 [node name="Umbrella2" parent="." unique_id=2008754632 instance=ExtResource("21_11tnm")]
-position = Vector2(63, 337)
+position = Vector2(72, 345)
 
 [node name="Umbrella3" parent="." unique_id=243534432 instance=ExtResource("21_11tnm")]
-position = Vector2(12, 137)
+position = Vector2(8, 145)
 rotation = 1.5707964
+PushVelocity = -370.0
 
 [node name="falling_sand" parent="." unique_id=214611821 instance=ExtResource("20_dhy5r")]
 position = Vector2(200, 97)
-Activate_on_color = 1
+Activate_on_color = 2
 MAX_SPEED = 80.0
 
 [node name="falling_sand2" parent="." unique_id=309191955 instance=ExtResource("20_dhy5r")]
 position = Vector2(200, 113)
-Activate_on_color = 1
+Activate_on_color = 2
 MAX_SPEED = 80.0
 
 [node name="falling_sand3" parent="." unique_id=238174931 instance=ExtResource("20_dhy5r")]
 position = Vector2(200, 129)
-Activate_on_color = 1
+Activate_on_color = 2
 MAX_SPEED = 80.0
 
 [node name="falling_sand4" parent="." unique_id=1857920513 instance=ExtResource("20_dhy5r")]
 position = Vector2(200, 145)
-Activate_on_color = 1
+Activate_on_color = 2
 MAX_SPEED = 80.0
 
-[node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("23_kd84w")]
-position = Vector2(115, 129)
-
 [node name="StaticBody2D" parent="." unique_id=382029224 instance=ExtResource("23_05yqg")]
-position = Vector2(112, 129)
+position = Vector2(111.99999, 133)
 scale = Vector2(1.695, 5.765)

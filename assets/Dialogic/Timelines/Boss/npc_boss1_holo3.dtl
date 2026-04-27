@@ -1,17 +1,20 @@
-Holo: Y ACA llegamos! Ehemm
+Holo: HOLA! Ehemm
 do SaveGame.boss_slime_change_portrait("Right")
-Holo: Den TODOS una RONDA de APLAUSOS al Gran slimo
+Holo: Parece que crecio la monada
+Holo: Den todos una ronda de aplausos al GRAN SLIMO!
 do SaveGame.boss_slime_play_anim("intro-flowers")
 do SaveGame.boss_slime_change_portrait("Look-Up")
+audio "res://assets/Sounds/Boss/Dialogue-Crowd-cheer-short.wav"
 Boss1: ehehe GRACIAS GRACIAS
-Boss1: [mood=Tired]EZPERO LOGRARR INZPIRARLOS LUEGO DE EZTO
-do SaveGame.boss_slime_change_portrait("Dialogue_Right")
-Boss1: [mood=Angry](y vos pendejo no te pasez de picante)
+Boss1: [mood=Tired]EZPERO LOGRAR INZPIRARLOS
 do SaveGame.boss_slime_change_portrait("Dialogue_Confused")
 Holo: Bueno bueno...
 do SaveGame.boss_slime_play_anim("end-flowers")
 Boss1: [mood=Tired]Mhm
 do SaveGame.boss_slime_change_portrait("Dialogue_Right")
-Holo: Y ahora todos aplaudamos al nene aca al lado
-Holo: Bueno bueno no tan fuerte che...
-Holo: Pongan sus apuestas, que comenzara la VERDADERA batalla!
+Holo: Y ahora todos aplaudan al niño
+audio "res://assets/Sounds/Boss/Dialogue-Crowd-cheer.wav"
+[wait time="1.0" skippable="true"]
+Holo: Hey tampoco tanto
+Holo: Pongan sus apuestas!
+Holo: Que este es el eterno juego de Speedtest!

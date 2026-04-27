@@ -8,6 +8,7 @@
 size = Vector2(14.5, 343.37897)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eos1v"]
+resource_local_to_scene = true
 shader = ExtResource("2_i8t52")
 shader_parameter/color0 = Color(0, 0, 0, 1)
 shader_parameter/color1 = Color(0, 0, 0, 1)
@@ -39,7 +40,7 @@ position = Vector2(-0.23999977, 0)
 scale = Vector2(0.455, 1)
 texture = ExtResource("3_u1kq6")
 region_enabled = true
-region_rect = Rect2(0, 2218.1426, 15.708, 377.403)
+region_rect = Rect2(0, 0, 15.708, 377.403)
 
 [node name="LavaTimer" type="Timer" parent="." unique_id=975615749]
 wait_time = 0.7

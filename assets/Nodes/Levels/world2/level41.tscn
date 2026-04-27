@@ -215,7 +215,7 @@ Visible = false
 CanChange = false
 
 [node name="Key2" parent="." unique_id=134933412 instance=ExtResource("13_jjrnq")]
-position = Vector2(-90, 65)
+position = Vector2(-96, 65)
 AditionalAction = 6
 AditionalActionArgument = 16.0
 AnotherAction = 1
@@ -286,7 +286,7 @@ position = Vector2(-92, 197)
 scale = Vector2(4.135, 2)
 
 [node name="KillBox24" parent="." unique_id=1066487129 instance=ExtResource("12_yatmq")]
-position = Vector2(85, 193)
+position = Vector2(80, 177.00002)
 scale = Vector2(2.68, 2.875)
 
 [node name="KillBox18" parent="." unique_id=1700252767 instance=ExtResource("12_yatmq")]

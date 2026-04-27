@@ -3268,7 +3268,7 @@ theme_override_font_sizes/font_size = 192
 theme_override_styles/normal = SubResource("StyleBoxFlat_r0vit")
 text = "Boss 1(wip)"
 script = ExtResource("40_5454g")
-Scene = "level_world1_final"
+Scene = "res://assets/Nodes/Levels/bosses/slimo/level_world1_final.tscn"
 
 [node name="Button2" type="Button" parent="." unique_id=1678650717]
 offset_left = 2373.3333
@@ -3281,6 +3281,7 @@ theme_override_font_sizes/font_size = 192
 theme_override_styles/normal = SubResource("StyleBoxFlat_r0vit")
 text = "Remix Tapes(very wip)"
 script = ExtResource("40_5454g")
+Scene = "res://assets/Nodes/Ui/select_level_bside.tscn"
 
 [node name="Button3" type="Button" parent="." unique_id=1659414033]
 visible = false

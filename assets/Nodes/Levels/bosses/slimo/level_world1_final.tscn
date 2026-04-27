@@ -2127,7 +2127,6 @@ position = Vector2(-1026, -1052)
 
 [node name="LaserBoss" parent="." unique_id=1131864393 instance=ExtResource("18_xdos2")]
 position = Vector2(302.63, -402)
-scale = Vector2(0.23, 27.755)
 collision_layer = 1024
 Laser_Color = 4
 
@@ -2781,19 +2780,12 @@ position = Vector2(-669, -175)
 Activate_on_color = 1
 MAX_SPEED = 120.0
 
-[node name="KillBox7" parent="." unique_id=1295531796 instance=ExtResource("18_xdos2")]
-position = Vector2(-684.99994, -201.00002)
-rotation = 1.5707964
-scale = Vector2(0.125, 4.62)
-
 [node name="KillBox14" parent="." unique_id=490034016 instance=ExtResource("18_xdos2")]
 position = Vector2(-644, 67)
-scale = Vector2(0.125, 3.91)
 Laser_Color = 2
 
 [node name="KillBox19" parent="." unique_id=1333517030 instance=ExtResource("18_xdos2")]
-position = Vector2(-455, 283)
-scale = Vector2(0.125, 4.83)
+position = Vector2(-496, 369)
 Laser_Color = 3
 
 [node name="Enemie4" parent="." unique_id=3774632 instance=ExtResource("12_o6gnl")]
@@ -3094,6 +3086,11 @@ scale = Vector2(2.82, 1.55)
 [node name="Key7" parent="." unique_id=1906301517 instance=ExtResource("13_f6viy")]
 position = Vector2(-552, 270)
 AditionalAction = 1
+
+[node name="KillBox7" parent="." unique_id=1295531796 instance=ExtResource("18_xdos2")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-835, -190)
+rotation = 1.5707964
 
 [connection signal="body_entered" from="SlimeRingIntro" to="SlimeRingIntro" method="_on_body_entered"]
 [connection signal="body_entered" from="SlimeRingIntro2" to="SlimeRingIntro2" method="_on_body_entered"]
