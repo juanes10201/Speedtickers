@@ -206,7 +206,7 @@ autostart = true
 [node name="CanvasLayer" parent="." unique_id=2036359490 instance=ExtResource("8_8pbkc")]
 
 [node name="Flag" parent="." unique_id=1280264517 instance=ExtResource("9_4fqvr")]
-position = Vector2(-184, -175)
+position = Vector2(-186, -171)
 
 [node name="WorldEnvironment" parent="." unique_id=1206830019 instance=ExtResource("10_yy58f")]
 
@@ -241,44 +241,36 @@ position = Vector2(-72, 273)
 scale = Vector2(1.415, 24.33)
 
 [node name="KillBox3" parent="." unique_id=363736359 instance=ExtResource("15_mwhal")]
-position = Vector2(-72, -191)
-scale = Vector2(1.415, 24.33)
+position = Vector2(-71.00003, -53.000015)
+scale = Vector2(1.415, 6.185)
 
 [node name="KillBox7" parent="." unique_id=1195076645 instance=ExtResource("15_mwhal")]
-position = Vector2(-232, -38.00002)
-scale = Vector2(1.415, 19.015)
+position = Vector2(-231, -39.00002)
+scale = Vector2(1.415, 19.21)
 
 [node name="KillBox10" parent="." unique_id=1835188332 instance=ExtResource("15_mwhal")]
-position = Vector2(-165, 65.999985)
-scale = Vector2(1.415, 5.835)
+position = Vector2(-158, 64.999985)
+scale = Vector2(2.41, 6)
 
 [node name="KillBox4" parent="." unique_id=52301444 instance=ExtResource("15_mwhal")]
-position = Vector2(73, 137)
-scale = Vector2(1.415, 24.33)
+position = Vector2(72.99999, 106.999985)
+scale = Vector2(1.415, 26.32)
 
 [node name="KillBox5" parent="." unique_id=310200664 instance=ExtResource("15_mwhal")]
-position = Vector2(12.000061, -73)
-scale = Vector2(8.990001, 2)
+position = Vector2(-49.99994, -115.000015)
+scale = Vector2(16.785, 1.5)
 
 [node name="KillBox8" parent="." unique_id=423878341 instance=ExtResource("15_mwhal")]
-position = Vector2(-162.99997, -207)
-scale = Vector2(9.97, 2)
+position = Vector2(-196, -200.99998)
+scale = Vector2(5.86, 1.25)
 
 [node name="KillBox9" parent="." unique_id=1323035696 instance=ExtResource("15_mwhal")]
-position = Vector2(-127.00001, -143.00002)
-scale = Vector2(5.455, 5.965)
-
-[node name="KillBox12" parent="." unique_id=1997168633 instance=ExtResource("15_mwhal")]
-position = Vector2(-180, -104.99999)
-scale = Vector2(1.23, 1.185)
-
-[node name="KillBox13" parent="." unique_id=986541739 instance=ExtResource("15_mwhal")]
-position = Vector2(-211, -182)
-scale = Vector2(1.23, 1.185)
+position = Vector2(-158.99997, -159.00003)
+scale = Vector2(1.28, 4.02)
 
 [node name="KillBox6" parent="." unique_id=1640759688 instance=ExtResource("15_mwhal")]
-position = Vector2(-162.99998, 129)
-scale = Vector2(9.945, 2)
+position = Vector2(-162.99998, 126)
+scale = Vector2(9.945, 1.5)
 
 [node name="KillBox14" parent="." unique_id=938803801 instance=ExtResource("11_3af4b")]
 position = Vector2(-72.00001, 249)
@@ -293,6 +285,7 @@ position = Vector2(6.9999995, -9)
 scale = Vector2(1.5, 2)
 
 [node name="KillBox15" parent="." unique_id=1719607967 instance=ExtResource("11_3af4b")]
+visible = false
 position = Vector2(-72.00001, 40)
 scale = Vector2(1.5, 7.93)
 

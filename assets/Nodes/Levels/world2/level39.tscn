@@ -223,7 +223,7 @@ floor_max_angle = 1.39626
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1584871878]
 position = Vector2(89.60181, 17.239014)
 zoom = Vector2(2.08, 2.08)
-limit_left = -415
+limit_left = -241
 limit_top = 58
 limit_right = 390
 limit_bottom = 662
