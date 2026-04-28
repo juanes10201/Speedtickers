@@ -77,6 +77,7 @@
 [ext_resource type="Script" uid="uid://c61a1j6oepgig" path="res://assets/Nodes/LevelEditor/editor_tooltip_sub_tile_icon.gd" id="70_5mcbv"]
 [ext_resource type="Script" uid="uid://bj1n0pp1a8sc2" path="res://assets/Nodes/LevelEditor/editor_data_parser.gd" id="75_6jsng"]
 [ext_resource type="Texture2D" uid="uid://bpbooy4d8qxqx" path="res://assets/Sprites/Tileset/Editor/TilesetGrid.png" id="76_7uchq"]
+[ext_resource type="Script" uid="uid://b4bm8emwrhku" path="res://assets/Nodes/LevelEditor/editor_player_trail.gd" id="78_jtl08"]
 
 [sub_resource type="GDScript" id="GDScript_4cp2g"]
 script/source = "extends Sprite2D
@@ -1122,6 +1123,9 @@ shader_parameter/border_thickness = 4.434000210615
 shader_parameter/border_color = Color(0.6, 0.85, 1, 0.6)
 shader_parameter/water_surface_y = 0.0
 
+[sub_resource type="Gradient" id="Gradient_jtl08"]
+colors = PackedColorArray(0.66882294, 0.00036126943, 0.6749954, 0.5294118, 1, 0.5882353, 1, 0.5137255)
+
 [node name="LevelEditorRework" type="Node2D" unique_id=1519603222]
 
 [node name="Grid" type="Sprite2D" parent="." unique_id=1845255170]
@@ -1135,7 +1139,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 9999, 9999)
 script = ExtResource("2_denb7")
 
-[node name="LevelEditor" type="Node2D" parent="." unique_id=1375215272 node_paths=PackedStringArray("Cursor", "TilesetLayers", "EditorCamera", "Time_Left", "Player", "PlayerCamera", "LevelData")]
+[node name="LevelEditor" type="Node2D" parent="." unique_id=1375215272 node_paths=PackedStringArray("Cursor", "TilesetLayers", "EditorCamera", "Time_Left", "Player", "PlayerCamera", "LevelData", "EditorPlayerTrail")]
 script = ExtResource("1_qesh2")
 Cursor = NodePath("EditorCursor")
 SelectableObjects = Array[Array]([["res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_special.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn"], ["res://assets/Nodes/Obj/Gameplay/falling_sand.tscn", "res://assets/Nodes/Obj/Gameplay/key.tscn", "res://assets/Nodes/Obj/Gameplay/open_box.tscn"], ["res://assets/Nodes/Obj/Gameplay/kill_box.tscn", "res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn", "res://assets/Nodes/Obj/Gameplay/laser.tscn"], ["res://assets/Nodes/Obj/Gameplay/float.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish_editor.tscn", "res://assets/Nodes/Obj/Gameplay/umbrella.tscn"], ["res://assets/Nodes/Obj/Gameplay/flag.tscn", "res://assets/Nodes/Obj/Gameplay/clock.tscn"]])
@@ -1147,6 +1151,7 @@ Time_Left = NodePath("LevelData/Time_Left")
 Player = NodePath("LevelData/Player")
 PlayerCamera = NodePath("LevelData/Player/Camera2D")
 LevelData = NodePath("LevelData")
+EditorPlayerTrail = NodePath("EditorPlayerTrail")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="LevelEditor" unique_id=1210512174]
 layer = 2
@@ -1747,6 +1752,20 @@ autostart = true
 [node name="EditorDataParser" type="Node2D" parent="LevelEditor" unique_id=1150111339 node_paths=PackedStringArray("EditorPlace")]
 script = ExtResource("75_6jsng")
 EditorPlace = NodePath("../EditorPlace")
+
+[node name="EditorPlayerTrail" type="Line2D" parent="LevelEditor" unique_id=1954549939 node_paths=PackedStringArray("Player", "PointCooldown")]
+visible = false
+top_level = true
+width = 3.105
+default_color = Color(0.9843137, 0.61960787, 0.9647059, 0.69411767)
+gradient = SubResource("Gradient_jtl08")
+script = ExtResource("78_jtl08")
+Player = NodePath("../LevelData/Player")
+PointCooldown = NodePath("PointCooldown")
+
+[node name="PointCooldown" type="Timer" parent="LevelEditor/EditorPlayerTrail" unique_id=1415105858]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="mouse_entered" from="LevelEditor/CanvasLayer/ButtonPlusTime" to="LevelEditor" method="_button_hovered"]
 [connection signal="mouse_exited" from="LevelEditor/CanvasLayer/ButtonPlusTime" to="LevelEditor" method="_button_not_hovered"]

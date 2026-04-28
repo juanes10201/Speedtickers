@@ -13,6 +13,7 @@ var IsTileMapSelected : bool = false
 @export var Player : Node2D
 @export var PlayerCamera : Camera2D
 @export var LevelData : Node2D
+@export var EditorPlayerTrail : Line2D
 var Paused : bool = false
 
 func _ready() -> void:
@@ -31,6 +32,7 @@ func _play_state_tick(ResetAll : bool = false) -> void:
 			_cache_editor_elements_values()
 		Edition.Is_playing_in_editor = !Edition.Is_playing_in_editor
 		Edition.Is_in_editor = true
+		EditorPlayerTrail.Activated = Edition.Is_playing_in_editor
 		Player.Physics = Edition.Is_playing_in_editor
 		Player.EnemiesPhysics = Edition.Is_playing_in_editor
 		

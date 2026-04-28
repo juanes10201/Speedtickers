@@ -188,7 +188,9 @@ script = ExtResource("6_soox2")
 WaterLevel = 134.985
 
 [node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("7_4epsv")]
-position = Vector2(48, 129)
+position = Vector2(184.00002, 169)
+rotation = 1.5707964
+scale = Vector2(1, 0.855)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1783344830 groups=["Tileset"]]
 texture_filter = 1
@@ -245,8 +247,8 @@ position = Vector2(8, 41.000004)
 scale = Vector2(0.945, 1.45)
 
 [node name="KillBox10" parent="." unique_id=1887255885 instance=ExtResource("11_xfg05")]
-position = Vector2(296, 81)
-scale = Vector2(1, 1.53)
+position = Vector2(297.00003, 81)
+scale = Vector2(0.935, 1.53)
 
 [node name="KillBox14" parent="." unique_id=1641589480 instance=ExtResource("11_xfg05")]
 position = Vector2(392, 137)
@@ -257,7 +259,7 @@ position = Vector2(487.99997, 121)
 scale = Vector2(1.075, 1.53)
 
 [node name="KillBox17" parent="." unique_id=712196186 instance=ExtResource("11_xfg05")]
-position = Vector2(455.99997, 41)
+position = Vector2(455.99997, 33)
 scale = Vector2(1.075, 1.53)
 
 [node name="KillBox15" parent="." unique_id=876398808 instance=ExtResource("11_xfg05")]
@@ -266,11 +268,11 @@ scale = Vector2(1.41, 2.465)
 
 [node name="KillBox12" parent="." unique_id=1115075057 instance=ExtResource("11_xfg05")]
 position = Vector2(147.00002, 173)
-scale = Vector2(1.56, 4.18)
+scale = Vector2(1.135, 4.18)
 
 [node name="KillBox13" parent="." unique_id=337994989 instance=ExtResource("11_xfg05")]
-position = Vector2(232, 78)
-scale = Vector2(1.56, 11.55)
+position = Vector2(231, 77.99999)
+scale = Vector2(1.15, 11.55)
 
 [node name="AmbientParticles" parent="." unique_id=645727892 instance=ExtResource("16_vyx1j")]
 position = Vector2(225, 350)
@@ -292,21 +294,21 @@ top_level = true
 position = Vector2(-630, -86)
 
 [node name="Enemy_Fish4" parent="." unique_id=2025301304 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("17_eyboq")]
-position = Vector2(88, 145)
+position = Vector2(120, 145)
 Activate_on_color = 1
 InitialMarker = NodePath("InitialMarkerCustom")
 EndMarker = NodePath("EndMarkerCustom")
 
 [node name="InitialMarkerCustom" type="Marker2D" parent="Enemy_Fish4" unique_id=489889073]
 top_level = true
-position = Vector2(178, 146)
+position = Vector2(232, 152)
 
 [node name="EndMarkerCustom" type="Marker2D" parent="Enemy_Fish4" unique_id=1541941335]
 top_level = true
 position = Vector2(66, 146)
 
 [node name="Enemy_Fish5" parent="." unique_id=1496036005 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("17_eyboq")]
-position = Vector2(160, 145)
+position = Vector2(176, 145)
 Activate_on_color = 1
 InitialMarker = NodePath("InitialMarkerCustom")
 EndMarker = NodePath("EndMarkerCustom")
@@ -314,7 +316,7 @@ CurrentDir = -1
 
 [node name="InitialMarkerCustom" type="Marker2D" parent="Enemy_Fish5" unique_id=1687565774]
 top_level = true
-position = Vector2(178, 146)
+position = Vector2(232, 152)
 
 [node name="EndMarkerCustom" type="Marker2D" parent="Enemy_Fish5" unique_id=996988013]
 top_level = true
@@ -329,11 +331,11 @@ CurrentDir = -1
 
 [node name="InitialMarkerCustom" type="Marker2D" parent="Enemy_Fish7" unique_id=1249471836]
 top_level = true
-position = Vector2(200, 200)
+position = Vector2(216, 200)
 
 [node name="EndMarkerCustom" type="Marker2D" parent="Enemy_Fish7" unique_id=123292589]
 top_level = true
-position = Vector2(168, 200)
+position = Vector2(160, 200)
 
 [node name="Enemy_Fish8" parent="." unique_id=786446294 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("17_eyboq")]
 position = Vector2(424, 241)
