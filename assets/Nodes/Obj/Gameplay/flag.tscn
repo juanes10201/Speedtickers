@@ -77,6 +77,7 @@ texture = SubResource("AtlasTexture_r0xch")
 script = SubResource("GDScript_qmtqk")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2015092853]
+visible = false
 scale = Vector2(1.00384, 1)
 color = Color(0.809302, 0.528971, 0.270935, 1)
 energy = 0.3
