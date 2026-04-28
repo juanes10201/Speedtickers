@@ -141,7 +141,7 @@ shader_parameter/border_wave_frequency = 0.26800001273
 shader_parameter/border_wave_speed = 2.5870001228825
 shader_parameter/border_thickness = 4.434000210615
 shader_parameter/border_color = Color(0.6, 0.85, 1, 0.6)
-shader_parameter/water_surface_y = -107.37
+shader_parameter/water_surface_y = -120.14
 
 [node name="Node2D" type="Node2D" unique_id=132502342]
 position = Vector2(0, -1)
@@ -180,19 +180,19 @@ z_index = 2
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_0p2r3")
-position = Vector2(-2, 32)
+position = Vector2(-2, 21)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AAD1//n/AQARABYAAAD1//j/AQARABYAAAD1//f/AQARABYAAAD0//n/AQARABYAAAD0//j/AQARABYAAAD0//f/AQARABYAAADz//n/AQARABYAAADz//j/AQARABYAAADz//f/AQARABYAAADy//n/AQARABYAAADy//j/AQARABYAAADy//f/AQARABYAAADx//n/AQARABYAAADx//j/AQARABYAAADx//f/AQARABYAAADw//n/AQARABYAAADw//j/AQARABYAAADw//f/AQARABYAAADv//n/AQARABYAAADv//j/AQARABYAAADv//f/AQARABYAAAD6//n/AQARABYAAAD6//j/AQARABYAAAD6//f/AQARABYAAAD5//n/AQARABYAAAD5//j/AQARABYAAAD5//f/AQARABYAAAD4//n/AQARABYAAAD4//j/AQARABYAAAD4//f/AQARABYAAAD3//n/AQARABYAAAD3//j/AQARABYAAAD3//f/AQARABYAAAD2//n/AQARABYAAAD2//j/AQARABYAAAD2//f/AQARABYAAAD6/wIAAQARABYAAAD6/wEAAQARABYAAAD6/wAAAQARABYAAAD6////AQARABYAAAD6//7/AQARABYAAAD6//3/AQARABYAAAD6//z/AQARABYAAAD6//v/AQARABYAAAD6//r/AQARABYAAAD5/wIAAQARABYAAAD5/wEAAQARABYAAAD5/wAAAQARABYAAAD5////AQARABYAAAD5//7/AQARABYAAAD5//3/AQARABYAAAD5//z/AQARABYAAAD5//v/AQARABYAAAD5//r/AQARABYAAAD4/wIAAQARABYAAAD4/wEAAQARABYAAAD4/wAAAQARABYAAAD4////AQARABYAAAD4//7/AQARABYAAAD4//3/AQARABYAAAD4//z/AQARABYAAAD4//v/AQARABYAAAD4//r/AQARABYAAAD6/wMAAQARABYAAAD5/wMAAQARABYAAAD4/wMAAQARABYAAAD3/wMAAQARABYAAAD3/wIAAQARABYAAAD3/wEAAQARABYAAAD3/wAAAQARABYAAAD3////AQARABYAAAD3//7/AQARABYAAAD3//3/AQARABYAAAD3//z/AQARABYAAAD3//v/AQARABYAAAD3//r/AQARABYAAAD2/wMAAQARABYAAAD2/wIAAQARABYAAAD2/wEAAQARABYAAAD2/wAAAQARABYAAAD2////AQARABYAAAD2//7/AQARABYAAAD2//3/AQARABYAAAD2//z/AQARABYAAAD2//v/AQARABYAAAD2//r/AQARABYAAADv//r/AQARABYAAADv//b/AQARABYAAADu//r/AQARABYAAADu//n/AQARABYAAADu//j/AQARABYAAADu//f/AQARABYAAADu//b/AQARABYAAADt//r/AQARABYAAADt//n/AQARABYAAADt//j/AQARABYAAADt//f/AQARABYAAADt//b/AQARABYAAADs//r/AQARABYAAADs//n/AQARABYAAADs//j/AQARABYAAADs//f/AQARABYAAADs//b/AQARABYAAADr//r/AQARABYAAADr//n/AQARABYAAADr//j/AQARABYAAADr//f/AQARABYAAADr//b/AQARABYAAADq//r/AQARABYAAADq//n/AQARABYAAADq//j/AQARABYAAADq//f/AQARABYAAADq//b/AQARABYAAADp//r/AQARABYAAADp//n/AQARABYAAADp//j/AQARABYAAADp//f/AQARABYAAADp//b/AQARABYAAAA=")
 tile_set = ExtResource("5_onq4l")
 script = ExtResource("6_6mla4")
-WaterLevel = -107.37
+WaterLevel = -120.14
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1783344830 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-2, 0)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AAD0/w4AAQAAAAAAAAD0/w8AAQAAAAEAAAD0/xAAAQAAAAEAAAD0/xEAAQAAAAEAAAD0/xIAAQAAAAEAAAD0/xMAAQAAAAIAAAD1/w4AAQABAAAAAAD1/w8AAQABAAEAAAD1/xAAAQABAAEAAAD1/xEAAQABAAEAAAD1/xIAAQABAAEAAAD1/xMAAQABAAIAAAD2/w4AAQACAAAAAAD2/w8AAQACAAEAAAD2/xAAAQACAAEAAAD2/xEAAQACAAEAAAD2/xIAAQACAAEAAAD2/xMAAQACAAIAAAD9/wsAAQAAAAAAAAD+/wsAAQABAAAAAAD//wsAAQABAAAAAAAAAAsAAQACAAAAAAD9/wwAAQAAAAIAAAD+/wwAAQABAAIAAAD//wwAAQABAAIAAAAAAAwAAQACAAIAAAAFAAsAAQAAAAIAAAAGAAsAAQACAAIAAAAFAAoAAQAAAAAAAAAGAAoAAQACAAAAAAD2/wUAAQADAAIAAAD2/wQAAQADAAEAAAD2/wMAAQADAAEAAAD2/wIAAQADAAEAAAD2/wEAAQADAAEAAAD2/wAAAQADAAEAAAD2////AQADAAEAAAD2//7/AQADAAEAAAD2//3/AQADAAAAAAD8//3/AQACAAEAAAD7//3/AQAAAAEAAAD8//7/AQACAAIAAAD7//7/AQAAAAIAAAD8//z/AQACAAEAAAD7//z/AQAAAAAAAAD8//v/AQACAAEAAAD8//r/AQACAAEAAAD8//n/AQACAAEAAAD8//j/AQACAAAAAAD6/wUAAQACAAMAAAD5/wUAAQABAAMAAAD4/wUAAQABAAMAAAD3/wUAAQABAAMAAAA=")
+tile_map_data = PackedByteArray("AAD0/w4AAQAAAAAAAAD0/w8AAQAAAAEAAAD0/xAAAQAAAAEAAAD0/xEAAQAAAAEAAAD0/xIAAQAAAAEAAAD0/xMAAQAAAAIAAAD1/w4AAQABAAAAAAD1/w8AAQABAAEAAAD1/xAAAQABAAEAAAD1/xEAAQABAAEAAAD1/xIAAQABAAEAAAD1/xMAAQABAAIAAAD2/w4AAQACAAAAAAD2/w8AAQACAAEAAAD2/xAAAQACAAEAAAD2/xEAAQACAAEAAAD2/xIAAQACAAEAAAD2/xMAAQACAAIAAAD9/wsAAQAAAAAAAAD+/wsAAQABAAAAAAD//wsAAQABAAAAAAAAAAsAAQACAAAAAAD9/wwAAQAAAAIAAAD+/wwAAQABAAIAAAD//wwAAQABAAIAAAAAAAwAAQACAAIAAAAFAAsAAQAAAAIAAAAGAAsAAQACAAIAAAAFAAoAAQAAAAAAAAAGAAoAAQACAAAAAAD2/wUAAQADAAIAAAD2/wQAAQADAAEAAAD2/wMAAQADAAEAAAD2/wIAAQADAAEAAAD2/wEAAQADAAEAAAD2/wAAAQADAAEAAAD2////AQADAAEAAAD2//7/AQADAAEAAAD2//3/AQADAAEAAAD8//3/AQACAAEAAAD7//3/AQAAAAEAAAD8//7/AQACAAIAAAD7//7/AQAAAAIAAAD8//z/AQACAAEAAAD7//z/AQAAAAAAAAD8//v/AQACAAEAAAD8//r/AQACAAEAAAD8//n/AQACAAEAAAD8//j/AQACAAAAAAD6/wUAAQACAAMAAAD5/wUAAQABAAMAAAD4/wUAAQABAAMAAAD3/wUAAQABAAMAAAD9/wQAAQACAAIAAAD8/wQAAQAAAAIAAAD9/wMAAQACAAAAAAD8/wMAAQAAAAAAAAD5//7/AQAAAAMAAAD6//7/AQABAAMAAAD2//v/AQADAAAAAAD3//v/AQAAAAMAAAD4//v/AQACAAMAAAD2//z/AQADAAEAAAA=")
 tile_set = ExtResource("5_onq4l")
 script = ExtResource("7_dpgyg")
 
@@ -204,7 +204,7 @@ autostart = true
 [node name="CanvasLayer" parent="." unique_id=2036359490 instance=ExtResource("8_tckdo")]
 
 [node name="Flag" parent="." unique_id=1280264517 instance=ExtResource("9_m0xcr")]
-position = Vector2(-336, -87)
+position = Vector2(-336, -98)
 
 [node name="WorldEnvironment" parent="." unique_id=1206830019 instance=ExtResource("10_jlnjy")]
 
@@ -260,20 +260,6 @@ position = Vector2(-518, -86)
 top_level = true
 position = Vector2(-630, -86)
 
-[node name="Enemy_Fish4" parent="." unique_id=1430172372 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("16_wamla")]
-position = Vector2(-96, -31)
-InitialMarker = NodePath("InitialMarkerCustom")
-EndMarker = NodePath("EndMarkerCustom")
-Speed = 0.8
-
-[node name="InitialMarkerCustom" type="Marker2D" parent="Enemy_Fish4" unique_id=769649678]
-top_level = true
-position = Vector2(-80, -32)
-
-[node name="EndMarkerCustom" type="Marker2D" parent="Enemy_Fish4" unique_id=377294177]
-top_level = true
-position = Vector2(-152, -32)
-
 [node name="float2" parent="." unique_id=847996116 instance=ExtResource("17_f2cgo")]
 position = Vector2(-520, -111)
 
@@ -303,7 +289,7 @@ position = Vector2(-24.560028, 163.2356)
 position = Vector2(-116, 58)
 
 [node name="_Area2D_115" parent="." unique_id=1453054322 instance=ExtResource("21_rsm7b")]
-position = Vector2(-56.21617, -85.230804)
+position = Vector2(-56, -103)
 rotation = -1.5707964
 PushVelocity = -400.0
 Rotation = -90.0
@@ -322,7 +308,7 @@ scale = Vector2(1.523, 14.416)
 
 [node name="Enemie" parent="." unique_id=1078688910 instance=ExtResource("22_7ji3c")]
 position = Vector2(96, 153)
-TimeToShoot = 0.6
+TimeToShoot = 0.3
 Particles = false
 
 [node name="_Area2D_132" parent="." unique_id=49369531 instance=ExtResource("11_uacm6")]
@@ -330,21 +316,21 @@ position = Vector2(-3.4467592, -33.801285)
 scale = Vector2(4.89, 1.551)
 
 [node name="_Area2D_174" parent="." unique_id=2007629593 instance=ExtResource("11_uacm6")]
-position = Vector2(-217, -127.00001)
+position = Vector2(-217, -138)
 scale = Vector2(17.951, 1)
 
 [node name="_Area2D_181" parent="." unique_id=1869542167 instance=ExtResource("11_uacm6")]
-position = Vector2(-258.00003, -55)
+position = Vector2(-258, -66)
 scale = Vector2(12.33, 1)
 
 [node name="_Area2D_182" parent="." unique_id=1959697597 instance=ExtResource("11_uacm6")]
-position = Vector2(-200, -64)
+position = Vector2(-200, -75)
 scale = Vector2(5.145, 1)
 
 [node name="_Area2D_183" parent="." unique_id=1930820756 instance=ExtResource("11_uacm6")]
-position = Vector2(-320, -111)
+position = Vector2(-320, -122)
 scale = Vector2(5.145, 1)
 
 [node name="_Area2D_184" parent="." unique_id=1867934286 instance=ExtResource("11_uacm6")]
-position = Vector2(-360, -91.99999)
+position = Vector2(-360, -103)
 scale = Vector2(1.255, 5.305)
