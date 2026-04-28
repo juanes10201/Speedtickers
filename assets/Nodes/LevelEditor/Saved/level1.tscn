@@ -1,15 +1,19 @@
 [gd_scene format=4]
 
-[ext_resource type="Script" path="res://assets/Nodes/LevelEditor/editor_level_data.gd" id="1_o8e8b"]
-[ext_resource type="PackedScene" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="2_fwj54"]
-[ext_resource type="Script" path="res://assets/Scripts/Player.gd" id="3_e4qag"]
-[ext_resource type="Script" path="res://assets/Scripts/Player_camera.gd" id="4_x3l15"]
-[ext_resource type="TileSet" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="5_3yvfl"]
-[ext_resource type="Script" path="res://assets/Scripts/tile_map_layer.gd" id="6_5m6si"]
-[ext_resource type="Shader" path="res://assets/Shader/Water2.gdshader" id="7_n40jq"]
-[ext_resource type="Script" path="res://assets/Nodes/Obj/Tileset/tile_map_layer_water.gd" id="8_jiptr"]
-[ext_resource type="PackedScene" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="9_oxivg"]
-[ext_resource type="Script" path="res://assets/Scripts/kill_box.gd" id="10_80lm7"]
+[ext_resource type="Script" path="res://assets/Nodes/LevelEditor/editor_level_data.gd" id="1_3yvfl"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="2_5m6si"]
+[ext_resource type="Script" path="res://assets/Scripts/Player.gd" id="3_n40jq"]
+[ext_resource type="Script" path="res://assets/Scripts/Player_camera.gd" id="4_jiptr"]
+[ext_resource type="TileSet" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="5_oxivg"]
+[ext_resource type="Script" path="res://assets/Scripts/tile_map_layer.gd" id="6_80lm7"]
+[ext_resource type="Shader" path="res://assets/Shader/Water2.gdshader" id="7_0vpi5"]
+[ext_resource type="Script" path="res://assets/Nodes/Obj/Tileset/tile_map_layer_water.gd" id="8_0snxw"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="9_t2bdw"]
+[ext_resource type="Script" path="res://assets/Scripts/kill_box.gd" id="10_y3d60"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="11_2hjvt"]
+[ext_resource type="Script" path="res://assets/Nodes/Obj/Gameplay/Umbrella.gd" id="12_ugm2i"]
+[ext_resource type="PackedScene" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn" id="13_nqjuh"]
+[ext_resource type="Script" path="res://assets/Scripts/enemie_physics.gd" id="14_gdig2"]
 
 [sub_resource type="Gradient" id="Gradient_aueqc"]
 offsets = PackedFloat32Array(0, 0.75271297)
@@ -25,7 +29,7 @@ color_ramp = SubResource("Gradient_aueqc")
 seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7uchq"]
-shader = ExtResource("7_n40jq")
+shader = ExtResource("7_0vpi5")
 shader_parameter/opacity_post_border = 0.0
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_d77xg")
 shader_parameter/refraction_stretch = Vector2(1, 1)
@@ -40,77 +44,181 @@ shader_parameter/border_thickness = 4.434000210615
 shader_parameter/border_color = Color(0.6, 0.85, 1, 0.6)
 shader_parameter/water_surface_y = 0.0
 
-[node name="LevelData" type="Node2D" unique_id=1767543161 node_paths=PackedStringArray("LevelEditor")]
-script = ExtResource("1_o8e8b")
+[node name="LevelData" type="Node2D" unique_id=798956733 node_paths=PackedStringArray("LevelEditor")]
+script = ExtResource("1_3yvfl")
 LevelEditor = NodePath("")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=173086588 groups=["Player"] instance=ExtResource("2_fwj54")]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=173086588 groups=["Player"] instance=ExtResource("2_5m6si")]
 position = Vector2(33, 1)
 collision_layer = 131081
-collision_mask = 67868
-script = ExtResource("3_e4qag")
+collision_mask = 67856
+velocity = Vector2(0, -280)
+script = ExtResource("3_n40jq")
 Physics = false
 TimeDeath = 0.4
 EnemiesPhysics = false
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=96040622]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=159401182]
 position = Vector2(14.5308, -29.4338)
+enabled = false
 zoom = Vector2(2.08, 2.08)
 limit_left = -403
 limit_top = -414
 limit_right = 819
 limit_bottom = 243
 position_smoothing_enabled = true
-script = ExtResource("4_x3l15")
+script = ExtResource("4_jiptr")
 
-[node name="TileMapLayer0" type="TileMapLayer" parent="." unique_id=1240120575 groups=["Tileset"]]
+[node name="TileMapLayer0" type="TileMapLayer" parent="." unique_id=1607030670 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(16.999998, -16)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AAAAAAEAAQAAAAAAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAIAAAABAAEAAQACAAAAAAABAAIAAQACAAEAAAABAAMAAQACAAIAAAAFAP7/AQADAAAAAAAFAP//AQADAAEAAAAFAAAAAQADAAEAAAAFAAEAAQADAAIAAAA=")
-tile_set = ExtResource("5_3yvfl")
-script = ExtResource("6_5m6si")
+tile_map_data = PackedByteArray("AAAAAAEAAQAAAAAAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAIAAAABAAEAAQACAAAAAAABAAIAAQACAAEAAAABAAMAAQACAAIAAAARAP7/AQACAAIAAAARAP3/AQACAAEAAAARAPz/AQACAAAAAAAQAP7/AQAAAAIAAAAQAP3/AQAAAAEAAAAQAPz/AQAAAAAAAAA=")
+tile_set = ExtResource("5_oxivg")
+script = ExtResource("6_80lm7")
 
-[node name="TileMapTemp" type="TileMapLayer" parent="." unique_id=262951258 groups=["Tileset"]]
+[node name="TileMapTemp" type="TileMapLayer" parent="." unique_id=1593345585 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(16.999998, -16)
 scale = Vector2(1.00384, 1)
-tile_set = ExtResource("5_3yvfl")
-script = ExtResource("6_5m6si")
+tile_set = ExtResource("5_oxivg")
+script = ExtResource("6_80lm7")
 
-[node name="TileMapLayerWater" type="TileMapLayer" parent="." unique_id=1952535160 groups=["Tileset", "WaterTileset"]]
+[node name="TileMapLayerWater" type="TileMapLayer" parent="." unique_id=1385356347 groups=["Tileset", "WaterTileset"]]
 z_index = 2
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_7uchq")
 position = Vector2(-2, 32)
 scale = Vector2(1.00384, 1)
-tile_set = ExtResource("5_3yvfl")
-script = ExtResource("8_jiptr")
+tile_set = ExtResource("5_oxivg")
+script = ExtResource("8_0snxw")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=460161379 groups=["Tileset"]]
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=356606707 groups=["Tileset"]]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(15.999998, -16)
 scale = Vector2(1.00384, 1)
-tile_set = ExtResource("5_3yvfl")
-script = ExtResource("6_5m6si")
+tile_set = ExtResource("5_oxivg")
+script = ExtResource("6_80lm7")
 
-[node name="Killbox" type="Area2D" parent="." unique_id=1386857898 groups=["Killbox"] instance=ExtResource("9_oxivg")]
+[node name="Killbox" type="Area2D" parent="." unique_id=1386857898 groups=["Killbox"] instance=ExtResource("9_t2bdw")]
 visible = false
 texture_repeat = 2
 position = Vector2(-3, 232)
 scale = Vector2(999, 1)
 collision_layer = 1025
 collision_mask = 1029
-script = ExtResource("10_80lm7")
+script = ExtResource("10_y3d60")
 Visible = false
 CanChange = false
 
-[node name="Time_Left" type="Timer" parent="." unique_id=320341294 groups=["GameTimer"]]
+[node name="Time_Left" type="Timer" parent="." unique_id=1220533185 groups=["GameTimer"]]
 wait_time = 7.0
 one_shot = true
 
+[node name="Umbrella" type="Area2D" parent="." unique_id=791046513 instance=ExtResource("11_2hjvt")]
+position = Vector2(80.18005, 57.694794)
+collision_layer = 131328
+script = ExtResource("12_ugm2i")
+
+[node name="_Area2D_113" type="Area2D" parent="." unique_id=1603708184 instance=ExtResource("11_2hjvt")]
+position = Vector2(174.51953, -77.764404)
+collision_layer = 131328
+script = ExtResource("12_ugm2i")
+
+[node name="_Area2D_114" type="Area2D" parent="." unique_id=1310121639 instance=ExtResource("11_2hjvt")]
+position = Vector2(83.69676, -196.25647)
+collision_layer = 131328
+script = ExtResource("12_ugm2i")
+
+[node name="_Area2D_115" type="Area2D" parent="." unique_id=405255739 instance=ExtResource("11_2hjvt")]
+position = Vector2(142.86339, -326.2308)
+rotation = -1.5707964
+collision_layer = 131328
+script = ExtResource("12_ugm2i")
+PushVelocity = -500.0
+Rotation = -90.0
+
+[node name="_Area2D_116" type="Area2D" parent="." unique_id=1457059119 groups=["Killbox"] instance=ExtResource("9_t2bdw")]
+texture_repeat = 2
+position = Vector2(131.97952, 5.3534393)
+scale = Vector2(1.4478018, 5.8433275)
+collision_layer = 132097
+collision_mask = 1029
+script = ExtResource("10_y3d60")
+
+[node name="_Area2D_117" type="Area2D" parent="." unique_id=104965866 groups=["Killbox"] instance=ExtResource("9_t2bdw")]
+texture_repeat = 2
+position = Vector2(121.06828, -187.30844)
+scale = Vector2(1.1181335, 3.9409354)
+collision_layer = 132097
+collision_mask = 1029
+script = ExtResource("10_y3d60")
+
+[node name="_Area2D_118" type="Area2D" parent="." unique_id=1472616613 groups=["Killbox"] instance=ExtResource("9_t2bdw")]
+texture_repeat = 2
+position = Vector2(127.99136, -295.76996)
+scale = Vector2(2.9313214, 1)
+collision_layer = 132097
+collision_mask = 1029
+script = ExtResource("10_y3d60")
+
+[node name="Enemie" type="CharacterBody2D" parent="." unique_id=1078688910 groups=["Enemie"] instance=ExtResource("13_nqjuh")]
+position = Vector2(291.10345, -87.02629)
+collision_layer = 131076
+collision_mask = 273
+script = ExtResource("14_gdig2")
+enemy_type = 2.0
+EnemyDirection = 2
+TimeToShoot = 0.6
+Max_groundsmash_distance = 200.0
+Can_BeGroundSmash = false
+Particles = false
+
+[node name="_Area2D_132" type="Area2D" parent="." unique_id=45397588 groups=["Killbox"] instance=ExtResource("9_t2bdw")]
+texture_repeat = 2
+position = Vector2(199.63277, -274.80127)
+scale = Vector2(5.774726, 1.5508226)
+collision_layer = 132097
+collision_mask = 1029
+script = ExtResource("10_y3d60")
+
+[node name="_Area2D_133" type="Area2D" parent="." unique_id=1261211926 groups=["Killbox"] instance=ExtResource("9_t2bdw")]
+texture_repeat = 2
+position = Vector2(152, -176)
+scale = Vector2(4.0646143, 1.2417581)
+collision_layer = 132097
+collision_mask = 1029
+script = ExtResource("10_y3d60")
+
+[node name="_Area2D_174" type="Area2D" parent="." unique_id=1204849802 groups=["Killbox"] instance=ExtResource("9_t2bdw")]
+texture_repeat = 2
+position = Vector2(16, -368)
+scale = Vector2(11.150674, 1)
+collision_layer = 132097
+collision_mask = 1029
+script = ExtResource("10_y3d60")
+
+[node name="_Area2D_181" type="Area2D" parent="." unique_id=1104596047 groups=["Killbox"] instance=ExtResource("9_t2bdw")]
+texture_repeat = 2
+position = Vector2(-16.92044, -294.7146)
+scale = Vector2(7.1602626, 1)
+collision_layer = 132097
+collision_mask = 1029
+script = ExtResource("10_y3d60")
+
 [connection signal="body_entered" from="Killbox" to="Killbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Umbrella" to="Umbrella" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_113" to="_Area2D_113" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_114" to="_Area2D_114" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_115" to="_Area2D_115" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_116" to="_Area2D_116" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_117" to="_Area2D_117" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_118" to="_Area2D_118" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_132" to="_Area2D_132" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_133" to="_Area2D_133" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_174" to="_Area2D_174" method="_on_body_entered"]
+[connection signal="body_entered" from="_Area2D_181" to="_Area2D_181" method="_on_body_entered"]
