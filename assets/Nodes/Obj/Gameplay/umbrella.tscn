@@ -12,7 +12,7 @@ region = Rect2(512.4671, 19.464512, 45.291687, 61.96954)
 size = Vector2(46, 18)
 
 [node name="Umbrella" type="Area2D" unique_id=791046513]
-collision_layer = 256
+collision_layer = 131328
 script = ExtResource("1_wanhh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=674738501]

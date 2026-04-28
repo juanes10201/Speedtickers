@@ -1,6 +1,14 @@
 extends Area2D
 
 @export var PushVelocity : float = -320.0
+@export var Rotation : float = 0.0
+
+func _ready() -> void:
+	Rotation = rotation_degrees
+
+func _process(delta: float) -> void:
+	if(Edition.Is_in_editor):
+		rotation_degrees = Rotation
 
 func _on_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):

@@ -227,7 +227,7 @@ position = Vector2(-572, -41)
 AditionalAction = 1
 
 [node name="Key4" parent="." unique_id=2070008152 instance=ExtResource("12_t1k2e")]
-position = Vector2(48, 153)
+position = Vector2(48, 145)
 
 [node name="Player" parent="." unique_id=148438413 instance=ExtResource("13_hcqfq")]
 position = Vector2(-168, 217)
@@ -364,7 +364,7 @@ PushVelocity = -350.0
 position = Vector2(72, 345)
 
 [node name="Umbrella3" parent="." unique_id=243534432 instance=ExtResource("21_11tnm")]
-position = Vector2(8, 145)
+position = Vector2(15, 137)
 rotation = 1.5707964
 PushVelocity = -370.0
 

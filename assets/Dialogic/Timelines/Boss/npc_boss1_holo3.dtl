@@ -1,6 +1,5 @@
 Holo: HOLA! Ehemm
 do SaveGame.boss_slime_change_portrait("Right")
-Holo: Parece que crecio la monada
 Holo: Den todos una ronda de aplausos al GRAN SLIMO!
 do SaveGame.boss_slime_play_anim("intro-flowers")
 do SaveGame.boss_slime_change_portrait("Look-Up")

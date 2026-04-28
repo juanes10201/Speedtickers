@@ -1076,18 +1076,18 @@ region = Rect2(0, 0, 1135.9956, 58.893406)
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_exxqf"]
 color = Color(0, 0, 0, 0)
 
-[node name="pause_menu" type="CanvasLayer"]
+[node name="pause_menu" type="CanvasLayer" unique_id=1447653325]
 layer = 2
 scale = Vector2(0.38, 0.38)
 transform = Transform2D(0.38, 0, 0, 0.38, 0, 0)
 script = ExtResource("1_g1e14")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=224321473]
 position = Vector2(1506.8967, 831.579)
 scale = Vector2(2.1052637, 2.1052632)
 texture = ExtResource("2_inmrc")
 
-[node name="Transition" type="Sprite2D" parent="."]
+[node name="Transition" type="Sprite2D" parent="." unique_id=828850037]
 modulate = Color(1, 1, 1, 0.9372549)
 position = Vector2(791.99994, 1280)
 rotation = -3.0368729
@@ -1096,12 +1096,10 @@ texture = ExtResource("3_cuiuk")
 offset = Vector2(-76.585, 0)
 script = ExtResource("4_inmrc")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
-libraries = {
-&"": SubResource("AnimationLibrary_g1e14")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition" unique_id=1294264559]
+libraries/ = SubResource("AnimationLibrary_g1e14")
 
-[node name="Transition2" type="Sprite2D" parent="."]
+[node name="Transition2" type="Sprite2D" parent="." unique_id=1802435514]
 modulate = Color(1, 1, 1, 0.9372549)
 z_index = 3
 position = Vector2(-2500, 842.105)
@@ -1110,20 +1108,20 @@ scale = Vector2(4.763, -3.418)
 texture = ExtResource("3_cuiuk")
 offset = Vector2(-76.585, 0)
 
-[node name="Mockup" type="Sprite2D" parent="."]
+[node name="Mockup" type="Sprite2D" parent="." unique_id=1070066375]
 visible = false
 position = Vector2(-1873.6846, 757.8947)
 scale = Vector2(0.91573834, 0.9157383)
 texture = ExtResource("2_cuiuk")
 
-[node name="ButtonAudio" parent="." instance=ExtResource("4_cuiuk")]
+[node name="ButtonAudio" parent="." unique_id=2145544819 instance=ExtResource("4_cuiuk")]
 material = SubResource("ShaderMaterial_68s3g")
 offset_left = 40.0
 offset_top = 264.0
 offset_right = 1186.0
 offset_bottom = 624.0056
 
-[node name="ButtonVideo" parent="." instance=ExtResource("4_cuiuk")]
+[node name="ButtonVideo" parent="." unique_id=1521617339 instance=ExtResource("4_cuiuk")]
 material = SubResource("ShaderMaterial_8q134")
 offset_left = 64.0
 offset_top = 552.0
@@ -1137,7 +1135,7 @@ text = "Video"
 [node name="RichTextLabel" parent="ButtonVideo/Node2D" index="1"]
 text = "Video"
 
-[node name="ButtonInput" parent="." instance=ExtResource("4_cuiuk")]
+[node name="ButtonInput" parent="." unique_id=1610100472 instance=ExtResource("4_cuiuk")]
 material = SubResource("ShaderMaterial_inmrc")
 offset_left = 96.0
 offset_top = 841.0
@@ -1151,7 +1149,7 @@ text = "Input"
 [node name="RichTextLabel" parent="ButtonInput/Node2D" index="1"]
 text = "Input"
 
-[node name="ButtonGameplay" parent="." instance=ExtResource("4_cuiuk")]
+[node name="ButtonGameplay" parent="." unique_id=1429042175 instance=ExtResource("4_cuiuk")]
 material = SubResource("ShaderMaterial_ddlxb")
 offset_left = 120.0
 offset_top = 1128.0
@@ -1165,22 +1163,22 @@ text = "Gameplay"
 [node name="RichTextLabel" parent="ButtonGameplay/Node2D" index="1"]
 text = "Gameplay"
 
-[node name="CategoryAudio" parent="." instance=ExtResource("6_8q134")]
+[node name="CategoryAudio" parent="." unique_id=502405790 instance=ExtResource("6_8q134")]
 visible = false
 position = Vector2(120, 1128)
 
-[node name="MusicBar" type="Node2D" parent="CategoryAudio"]
+[node name="MusicBar" type="Node2D" parent="CategoryAudio" unique_id=1967378632]
 position = Vector2(-120, -1128)
 script = ExtResource("4_6f5jg")
 
-[node name="ProgressbarSelected" type="Sprite2D" parent="CategoryAudio/MusicBar"]
+[node name="ProgressbarSelected" type="Sprite2D" parent="CategoryAudio/MusicBar" unique_id=665173665]
 visible = false
 top_level = true
 position = Vector2(2086.84, 665.79004)
 scale = Vector2(1.517, 1.78)
 texture = ExtResource("8_8q134")
 
-[node name="LabelMusic" type="RichTextLabel" parent="CategoryAudio/MusicBar"]
+[node name="LabelMusic" type="RichTextLabel" parent="CategoryAudio/MusicBar" unique_id=595720353]
 top_level = true
 anchors_preset = -1
 anchor_top = -0.097465895
@@ -1196,7 +1194,7 @@ text = "Music
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="ProgressBar" type="TextureProgressBar" parent="CategoryAudio/MusicBar"]
+[node name="ProgressBar" type="TextureProgressBar" parent="CategoryAudio/MusicBar" unique_id=151408754]
 top_level = true
 anchors_preset = -1
 anchor_right = 0.79101056
@@ -1213,7 +1211,7 @@ texture_under = SubResource("AtlasTexture_68s3g")
 texture_progress = SubResource("AtlasTexture_8q134")
 metadata/_edit_use_anchors_ = true
 
-[node name="ControlMusic" type="HSlider" parent="CategoryAudio/MusicBar"]
+[node name="ControlMusic" type="HSlider" parent="CategoryAudio/MusicBar" unique_id=2069753284]
 modulate = Color(1, 1, 1, 0)
 top_level = true
 offset_left = 1255.2634
@@ -1225,19 +1223,19 @@ min_value = -80.0
 max_value = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="SfxBar" type="Node2D" parent="CategoryAudio"]
+[node name="SfxBar" type="Node2D" parent="CategoryAudio" unique_id=1791562962]
 position = Vector2(-120, -1128)
 script = ExtResource("4_6f5jg")
 Audio_Bus_Name = "Sfx"
 
-[node name="ProgressbarSelected" type="Sprite2D" parent="CategoryAudio/SfxBar"]
+[node name="ProgressbarSelected" type="Sprite2D" parent="CategoryAudio/SfxBar" unique_id=517914815]
 visible = false
 top_level = true
 position = Vector2(2157.8945, 876.3159)
 scale = Vector2(1.517, 1.78)
 texture = ExtResource("8_8q134")
 
-[node name="LabelMusic" type="RichTextLabel" parent="CategoryAudio/SfxBar"]
+[node name="LabelMusic" type="RichTextLabel" parent="CategoryAudio/SfxBar" unique_id=284874409]
 top_level = true
 anchors_preset = -1
 anchor_top = -0.1218322
@@ -1252,7 +1250,7 @@ theme_override_font_sizes/normal_font_size = 106
 text = "Sfx"
 metadata/_edit_use_anchors_ = true
 
-[node name="ProgressBar" type="TextureProgressBar" parent="CategoryAudio/SfxBar"]
+[node name="ProgressBar" type="TextureProgressBar" parent="CategoryAudio/SfxBar" unique_id=485448491]
 top_level = true
 anchors_preset = -1
 anchor_right = 0.77539146
@@ -1269,7 +1267,7 @@ texture_under = SubResource("AtlasTexture_68s3g")
 texture_progress = SubResource("AtlasTexture_8q134")
 metadata/_edit_use_anchors_ = true
 
-[node name="ControlMusic" type="HSlider" parent="CategoryAudio/SfxBar"]
+[node name="ControlMusic" type="HSlider" parent="CategoryAudio/SfxBar" unique_id=1414957633]
 modulate = Color(1, 1, 1, 0)
 top_level = true
 offset_left = 1339.4736
@@ -1281,11 +1279,11 @@ min_value = -80.0
 max_value = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="CategoryVideo" parent="." instance=ExtResource("6_8q134")]
+[node name="CategoryVideo" parent="." unique_id=864777177 instance=ExtResource("6_8q134")]
 position = Vector2(120, 1128)
 Category = 2
 
-[node name="ConfigButton" parent="CategoryVideo" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton" parent="CategoryVideo" unique_id=389973076 instance=ExtResource("10_68s3g")]
 position = Vector2(1080, -854.3158)
 Var = "Fullscreen"
 
@@ -1296,7 +1294,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryVideo/ConfigButton" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton2" parent="CategoryVideo" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton2" parent="CategoryVideo" unique_id=1818413404 instance=ExtResource("10_68s3g")]
 position = Vector2(1143.158, -664.84216)
 
 [node name="LabelMusic2" parent="CategoryVideo/ConfigButton2" index="0"]
@@ -1305,7 +1303,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryVideo/ConfigButton2" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton3" parent="CategoryVideo" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton3" parent="CategoryVideo" unique_id=1503703937 instance=ExtResource("10_68s3g")]
 position = Vector2(1214.2109, -464.84213)
 Var = "PixelPerfect"
 
@@ -1318,7 +1316,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryVideo/ConfigButton3" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton4" parent="CategoryVideo" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton4" parent="CategoryVideo" unique_id=718499754 instance=ExtResource("10_68s3g")]
 position = Vector2(1295.7896, -259.579)
 Var = "Juice"
 
@@ -1329,7 +1327,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryVideo/ConfigButton4" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton5" parent="CategoryVideo" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton5" parent="CategoryVideo" unique_id=1055447342 instance=ExtResource("10_68s3g")]
 position = Vector2(1348.4226, -67.47385)
 Var = "Particles"
 
@@ -1340,7 +1338,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryVideo/ConfigButton5" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton6" parent="CategoryVideo" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton6" parent="CategoryVideo" unique_id=1262838851 instance=ExtResource("10_68s3g")]
 position = Vector2(1398.4241, 111.47354)
 Var = "CrtShader"
 
@@ -1355,12 +1353,12 @@ offset_right = 1565.3654
 offset_bottom = 346.63184
 metadata/_edit_use_anchors_ = true
 
-[node name="CategoryGameplay2" parent="." instance=ExtResource("6_8q134")]
+[node name="CategoryGameplay2" parent="." unique_id=1435700211 instance=ExtResource("6_8q134")]
 visible = false
 position = Vector2(120, 1128)
 Category = 3
 
-[node name="ConfigButton2" parent="CategoryGameplay2" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton2" parent="CategoryGameplay2" unique_id=2045486515 instance=ExtResource("10_68s3g")]
 position = Vector2(1143.1578, -791.15784)
 Var = "Cheats"
 
@@ -1372,7 +1370,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryGameplay2/ConfigButton2" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton4" parent="CategoryGameplay2" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton4" parent="CategoryGameplay2" unique_id=1420356552 instance=ExtResource("10_68s3g")]
 position = Vector2(1227.3684, -433.26306)
 Var = "DisableTimer"
 ShowOnCondition = true
@@ -1385,7 +1383,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryGameplay2/ConfigButton4" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton5" parent="CategoryGameplay2" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton5" parent="CategoryGameplay2" unique_id=235604318 instance=ExtResource("10_68s3g")]
 position = Vector2(1280.0015, -241.1579)
 Var = "GodMode"
 ShowOnCondition = true
@@ -1398,7 +1396,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryGameplay2/ConfigButton5" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton6" parent="CategoryGameplay2" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton6" parent="CategoryGameplay2" unique_id=1727120323 instance=ExtResource("10_68s3g")]
 position = Vector2(1330.0029, -62.210503)
 Var = "UnlockAll"
 ShowOnCondition = true
@@ -1411,7 +1409,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryGameplay2/ConfigButton6" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton7" parent="CategoryGameplay2" instance=ExtResource("10_68s3g")]
+[node name="ConfigButton7" parent="CategoryGameplay2" unique_id=857782720 instance=ExtResource("10_68s3g")]
 position = Vector2(1374.7354, 116.736664)
 Var = "ShowHitboxes"
 ShowOnCondition = true
@@ -1424,11 +1422,11 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" parent="CategoryGameplay2/ConfigButton7" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="CategoryInput" parent="." instance=ExtResource("6_8q134")]
+[node name="CategoryInput" parent="." unique_id=1457373459 instance=ExtResource("6_8q134")]
 visible = false
 position = Vector2(120, 1128)
 
-[node name="PauseMenuGoBackButton2" type="Button" parent="."]
+[node name="PauseMenuGoBackButton2" type="Button" parent="." unique_id=1448523054]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -1445,30 +1443,30 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_ddlxb")
 BUTTON_ACTION = 4
-ADITIONAL_ARGUMENT = "main_menu_w_level_preview"
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/main_menu_w_level_preview.tscn"
 FadeTransition = true
 
-[node name="TitlemenuPlaceholder" type="Sprite2D" parent="."]
+[node name="TitlemenuPlaceholder" type="Sprite2D" parent="." unique_id=1390044833]
 z_index = 3
 position = Vector2(2216, 144.00002)
 scale = Vector2(1.1388164, 1.1388164)
 texture = ExtResource("11_3lhgp")
 
-[node name="Bg" type="Sprite2D" parent="."]
+[node name="Bg" type="Sprite2D" parent="." unique_id=1053980137]
 visible = false
 z_index = 2
 position = Vector2(520, 300)
 texture = ExtResource("3_cuiuk")
 flip_h = true
 
-[node name="control_pause_menu" type="Control" parent="."]
+[node name="control_pause_menu" type="Control" parent="." unique_id=763264682]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 focus_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1672479851]
 offset_left = 1073.6842
 offset_top = -400.0
 offset_right = 2926.3157
