@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn" id="15_oxqxo"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="16_efh8v"]
 [ext_resource type="Script" uid="uid://d2l4eaqvtvlba" path="res://assets/Nodes/Levels/bosses/Cd/boss_cd.gd" id="17_soa5s"]
+[ext_resource type="Script" uid="uid://fqnwipqdoeeq" path="res://assets/Nodes/Levels/bosses/Cd/proyectile.gd" id="18_pmxm5"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -137,6 +138,12 @@ shader_parameter/border_wave_speed = 2.5870001228825
 shader_parameter/border_thickness = 4.434000210615
 shader_parameter/border_color = Color(0.6, 0.85, 1, 0.6)
 shader_parameter/water_surface_y = 258.78
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_17tii"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmxm5"]
+size = Vector2(11, 11)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dgjp1"]
 size = Vector2(23, 32)
@@ -259,11 +266,28 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054]
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout")]
 position = Vector2(192, 222)
 collision_layer = 512
 collision_mask = 3455
 script = ExtResource("17_soa5s")
+SlamTimeout = NodePath("SlamTimeout")
+
+[node name="Proyectile" type="Area2D" parent="BossCd" unique_id=942153894 node_paths=PackedStringArray("TimerInitialFly")]
+top_level = true
+position = Vector2(193, 221)
+script = ExtResource("18_pmxm5")
+TimerInitialFly = NodePath("TimerInitialFly")
+
+[node name="Sprite2D" type="Sprite2D" parent="BossCd/Proyectile" unique_id=432307485]
+texture = SubResource("PlaceholderTexture2D_17tii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd/Proyectile" unique_id=1722695815]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_pmxm5")
+
+[node name="TimerInitialFly" type="Timer" parent="BossCd/Proyectile" unique_id=245237523]
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
 texture = SubResource("PlaceholderTexture2D_dgjp1")
@@ -271,3 +295,10 @@ texture = SubResource("PlaceholderTexture2D_dgjp1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd" unique_id=1487528214]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_vcciw")
+
+[node name="SlamTimeout" type="Timer" parent="BossCd" unique_id=596381299]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="BossCd/Proyectile/TimerInitialFly" to="BossCd/Proyectile" method="_on_timer_initial_fly_timeout"]
+[connection signal="timeout" from="BossCd/SlamTimeout" to="BossCd" method="_on_slam_timeout_timeout"]
