@@ -17,7 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn" id="15_oxqxo"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="16_efh8v"]
 [ext_resource type="Script" uid="uid://d2l4eaqvtvlba" path="res://assets/Nodes/Levels/bosses/Cd/boss_cd.gd" id="17_soa5s"]
-[ext_resource type="Script" uid="uid://fqnwipqdoeeq" path="res://assets/Nodes/Levels/bosses/Cd/proyectile.gd" id="18_pmxm5"]
+[ext_resource type="Script" uid="uid://dmk3ukni4bl3q" path="res://assets/Nodes/Levels/bosses/Cd/proyectile_spawner.gd" id="18_eb5km"]
+[ext_resource type="PackedScene" uid="uid://dp30t21d6ctnd" path="res://assets/Nodes/Levels/bosses/Cd/proyectile.tscn" id="19_eb5km"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -139,12 +140,6 @@ shader_parameter/border_thickness = 4.434000210615
 shader_parameter/border_color = Color(0.6, 0.85, 1, 0.6)
 shader_parameter/water_surface_y = 258.78
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_17tii"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmxm5"]
-size = Vector2(11, 11)
-
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dgjp1"]
 size = Vector2(23, 32)
 
@@ -232,12 +227,12 @@ floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1584871878]
-position = Vector2(89.60181, 17.239014)
+position = Vector2(89.60181, -78.76099)
 zoom = Vector2(2.08, 2.08)
 limit_left = -285
-limit_top = 58
+limit_top = -55
 limit_right = 353
-limit_bottom = 618
+limit_bottom = 336
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("14_vun5p")
@@ -266,28 +261,13 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout")]
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileSpawner")]
 position = Vector2(192, 222)
 collision_layer = 512
 collision_mask = 3455
 script = ExtResource("17_soa5s")
 SlamTimeout = NodePath("SlamTimeout")
-
-[node name="Proyectile" type="Area2D" parent="BossCd" unique_id=942153894 node_paths=PackedStringArray("TimerInitialFly")]
-top_level = true
-position = Vector2(193, 221)
-script = ExtResource("18_pmxm5")
-TimerInitialFly = NodePath("TimerInitialFly")
-
-[node name="Sprite2D" type="Sprite2D" parent="BossCd/Proyectile" unique_id=432307485]
-texture = SubResource("PlaceholderTexture2D_17tii")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd/Proyectile" unique_id=1722695815]
-position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_pmxm5")
-
-[node name="TimerInitialFly" type="Timer" parent="BossCd/Proyectile" unique_id=245237523]
-one_shot = true
+ProyectileSpawner = NodePath("ProyectileSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
 texture = SubResource("PlaceholderTexture2D_dgjp1")
@@ -300,5 +280,24 @@ shape = SubResource("RectangleShape2D_vcciw")
 wait_time = 0.3
 one_shot = true
 
-[connection signal="timeout" from="BossCd/Proyectile/TimerInitialFly" to="BossCd/Proyectile" method="_on_timer_initial_fly_timeout"]
+[node name="ProyectileSpawner" type="Node2D" parent="BossCd" unique_id=420811214]
+script = ExtResource("18_eb5km")
+
+[node name="Proyectile" parent="BossCd/ProyectileSpawner" unique_id=1301223286 node_paths=PackedStringArray("Boss") instance=ExtResource("19_eb5km")]
+position = Vector2(193, 221)
+Boss = NodePath("../..")
+
+[node name="Proyectile2" parent="BossCd/ProyectileSpawner" unique_id=843038249 node_paths=PackedStringArray("Boss") instance=ExtResource("19_eb5km")]
+position = Vector2(193, 221)
+Boss = NodePath("../..")
+
+[node name="Proyectile3" parent="BossCd/ProyectileSpawner" unique_id=1749174128 node_paths=PackedStringArray("Boss") instance=ExtResource("19_eb5km")]
+position = Vector2(193, 221)
+Boss = NodePath("../..")
+
+[node name="ProyectileCooldown" type="Timer" parent="BossCd" unique_id=608613241]
+wait_time = 5.0
+autostart = true
+
 [connection signal="timeout" from="BossCd/SlamTimeout" to="BossCd" method="_on_slam_timeout_timeout"]
+[connection signal="timeout" from="BossCd/ProyectileCooldown" to="BossCd" method="_on_proyectile_cooldown_timeout"]

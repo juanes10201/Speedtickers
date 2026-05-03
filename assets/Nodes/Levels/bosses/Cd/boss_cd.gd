@@ -10,7 +10,7 @@ var MovingDir : Vector2 = Vector2(1.0, 0.0)
 
 @export_subgroup("Jump")
 @export_range(0, 7000.0, .5, "or_greater", "or_less") var WallJumpVelocity : float = 7000.0
-@export_range(0, 100, .5, "or_greater", "or_less") var jump_height : float = 90.0
+@export_range(0, 100, .5, "or_greater", "or_less") var jump_height : float = 130.0
 @export_range(0, 1.0, .25, "or_greater", "or_less") var jump_time_to_peak : float = 0.7
 @export_range(0, 1.0, .25, "or_greater", "or_less") var jump_time_to_descent : float = 0.2
 
@@ -25,6 +25,10 @@ var MovingDir : Vector2 = Vector2(1.0, 0.0)
 var Jumped : bool = false
 const DistPlayerSlam : float = 15.0
 var FallingSlam : bool = false
+
+func _ready() -> void:
+	pass
+	#_shoot_proyectiles()
 
 func _calc_player_dir() -> float:
 	return ceil(clamp(Player.global_position.x - global_position.x, -1.0, 1.0))
@@ -61,9 +65,17 @@ func _physics_process(delta: float) -> void:
 	_movement_y(delta)
 	
 	velocity.x = Speed.x
-	print(velocity)
+	#print(velocity)
 	move_and_slide()
 
 
 func _on_slam_timeout_timeout() -> void:
 	FallingSlam = true
+
+@export var ProyectileSpawner : Node
+
+func _shoot_proyectiles() -> void:
+	ProyectileSpawner.spawn_proyectiles()
+
+func _on_proyectile_cooldown_timeout() -> void:
+	_shoot_proyectiles()

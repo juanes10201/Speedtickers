@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dp30t21d6ctnd"]
+
+[ext_resource type="Script" uid="uid://fqnwipqdoeeq" path="res://assets/Nodes/Levels/bosses/Cd/proyectile.gd" id="1_cn7ef"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_17tii"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmxm5"]
+size = Vector2(11, 11)
+
+[node name="Proyectile" type="Area2D" unique_id=1301223286 node_paths=PackedStringArray("TimerInitialFly")]
+top_level = true
+script = ExtResource("1_cn7ef")
+TimerInitialFly = NodePath("TimerInitialFly")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=997412798]
+texture = SubResource("PlaceholderTexture2D_17tii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049069247]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_pmxm5")
+
+[node name="TimerInitialFly" type="Timer" parent="." unique_id=1147230615]
+one_shot = true
+
+[connection signal="timeout" from="TimerInitialFly" to="." method="_on_timer_initial_fly_timeout"]
