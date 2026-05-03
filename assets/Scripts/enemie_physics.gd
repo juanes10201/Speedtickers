@@ -71,9 +71,12 @@ var InitialEnemyDirection : Directions = Directions.RIGHT
 var InitialGravityDirection : Global.GravityDirections = Global.GravityDirections.MAIN
 
 func cache_values_editor() -> void:
+	if(ShootBulletTimer): ShootBulletTimer.wait_time = TimeToShoot
 	EditorInitialPos = position
 	InitialEnemyDirection = direction
 	InitialGravityDirection = GravityDirection
+	if(ShootBulletTimer):
+		ShootBulletTimer.start()
 	_ready()
 
 func editor_reset() -> void:
@@ -177,7 +180,7 @@ func _process(delta: float) -> void:
 		Enabled = true
 		if(ShootBulletTimer):
 			ShootBulletTimer.start()
-	
+	if( ( ((Edition.Is_in_editor && Edition.Is_playing_in_editor)) || !Edition.Is_in_editor) && ShootBulletTimer && ShootBulletTimer.is_stopped()): ShootBulletTimer.stop()
 	if(Player && Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
 		PrevGravityDirection = Player.GlobalGravityDirection * GravityDirection
 		velocity.y = 100 * PrevGravityDirection*GravityDirection
@@ -196,14 +199,15 @@ func _process(delta: float) -> void:
 			$HitFlyParticles.emitting = false
 		
 		#region Shoot
-		if(enemy_type == 2):
-			if(ShootBulletTimer.is_stopped() && BulletObject):
-				ShootBulletTimer.start()
-				var BulletInstance = BulletObject.instantiate()
-				BulletInstance.position = self.position
-				BulletInstance.top_level = true
-				add_child(BulletInstance)
-				Sprite.play("Shoot")
+		if(( ((Edition.Is_in_editor && Edition.Is_playing_in_editor)) || !Edition.Is_in_editor)):
+			if(enemy_type == 2):
+				if(ShootBulletTimer.is_stopped() && BulletObject):
+					ShootBulletTimer.start()
+					var BulletInstance = BulletObject.instantiate()
+					BulletInstance.position = self.position
+					BulletInstance.top_level = true
+					add_child(BulletInstance)
+					Sprite.play("Shoot")
 		#endregion
 		
 		if(Player && !Player.EnemiesPhysics):

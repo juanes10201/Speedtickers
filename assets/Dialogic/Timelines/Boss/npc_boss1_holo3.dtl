@@ -1,19 +1,21 @@
-Holo: HOLA! Ehemm
+Holo (Chad): BIENVENIDOS SEAN LOS ULTIMOS, Y SIEMPRE SINTONIZADOS!
 do SaveGame.boss_slime_change_portrait("Right")
-Holo: Den todos una ronda de aplausos al GRAN SLIMO!
+Holo (Chad): May all be welcomed to the fight dome!!
+Holo (Regular): Den todos la MAS fuerte ronda de aplausos al Slimo
 do SaveGame.boss_slime_play_anim("intro-flowers")
 do SaveGame.boss_slime_change_portrait("Look-Up")
 audio "res://assets/Sounds/Boss/Dialogue-Crowd-cheer-short.wav"
-Boss1: ehehe GRACIAS GRACIAS
+Crowd: *aplausos descoordinados*
+Boss1: ehehe GRACIAZ GRACIAZ
 Boss1: [mood=Tired]EZPERO LOGRAR INZPIRARLOS
 do SaveGame.boss_slime_change_portrait("Dialogue_Confused")
-Holo: Bueno bueno...
+Holo (Doubt): ...Bueno bueno
 do SaveGame.boss_slime_play_anim("end-flowers")
-Boss1: [mood=Tired]Mhm
 do SaveGame.boss_slime_change_portrait("Dialogue_Right")
-Holo: Y ahora todos aplaudan al niño
+Holo: AHORA APLAUDAN AL OTRO
 audio "res://assets/Sounds/Boss/Dialogue-Crowd-cheer.wav"
-[wait time="1.0" skippable="true"]
-Holo: Hey tampoco tanto
-Holo: Pongan sus apuestas!
-Holo: Que este es el eterno juego de Speedtest!
+Crowd: *aplausos mas descoordinados todavia*
+Holo (Doubt): No se pasen tampoco che
+Boss1: [mood=Tired](Mmm)
+Holo (Chad): Comiencen en 3... 2... 1...
+Holo (Chad): Que este es el eterno juego de Speedtest!

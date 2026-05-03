@@ -17,6 +17,16 @@
 "volume_base": 0.0,
 "volume_variance": 0.0
 },
+"Bleep": {
+"mode": 0,
+"name": "Bleep",
+"pitch_base": 0.9,
+"pitch_variance": 0.0,
+"skip_characters": 7.0,
+"sound_path": "res://assets/Sounds/Voices/BleepSound.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+},
 "Main": {
 "mode": 0,
 "name": "Main",
