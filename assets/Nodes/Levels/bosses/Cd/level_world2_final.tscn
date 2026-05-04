@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://d2l4eaqvtvlba" path="res://assets/Nodes/Levels/bosses/Cd/boss_cd.gd" id="17_soa5s"]
 [ext_resource type="Script" uid="uid://dmk3ukni4bl3q" path="res://assets/Nodes/Levels/bosses/Cd/proyectile_spawner.gd" id="18_eb5km"]
 [ext_resource type="PackedScene" uid="uid://dp30t21d6ctnd" path="res://assets/Nodes/Levels/bosses/Cd/proyectile.tscn" id="19_eb5km"]
+[ext_resource type="Script" uid="uid://dilciucoxpvda" path="res://assets/Nodes/Levels/bosses/Cd/shoot_lines.gd" id="20_eip27"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -144,7 +145,7 @@ shader_parameter/water_surface_y = 258.78
 size = Vector2(23, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcciw"]
-size = Vector2(22, 32)
+size = Vector2(24, 34)
 
 [node name="Node2D" type="Node2D" unique_id=132502342]
 position = Vector2(0, -1)
@@ -261,19 +262,22 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileSpawner")]
-position = Vector2(192, 222)
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "ProyectileSpawner")]
+position = Vector2(210, 221)
 collision_layer = 512
 collision_mask = 3455
 script = ExtResource("17_soa5s")
 SlamTimeout = NodePath("SlamTimeout")
+ProyectileNoMove = NodePath("ProyectileNoMove")
+TimerShootCooldown = NodePath("ShootCooldown")
+ShootLines = NodePath("ShootLines")
 ProyectileSpawner = NodePath("ProyectileSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
 texture = SubResource("PlaceholderTexture2D_dgjp1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd" unique_id=1487528214]
-position = Vector2(1, 0)
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_vcciw")
 
 [node name="SlamTimeout" type="Timer" parent="BossCd" unique_id=596381299]
@@ -284,20 +288,51 @@ one_shot = true
 script = ExtResource("18_eb5km")
 
 [node name="Proyectile" parent="BossCd/ProyectileSpawner" unique_id=1301223286 node_paths=PackedStringArray("Boss") instance=ExtResource("19_eb5km")]
-position = Vector2(193, 221)
 Boss = NodePath("../..")
 
 [node name="Proyectile2" parent="BossCd/ProyectileSpawner" unique_id=843038249 node_paths=PackedStringArray("Boss") instance=ExtResource("19_eb5km")]
-position = Vector2(193, 221)
 Boss = NodePath("../..")
 
 [node name="Proyectile3" parent="BossCd/ProyectileSpawner" unique_id=1749174128 node_paths=PackedStringArray("Boss") instance=ExtResource("19_eb5km")]
-position = Vector2(193, 221)
 Boss = NodePath("../..")
 
 [node name="ProyectileCooldown" type="Timer" parent="BossCd" unique_id=608613241]
 wait_time = 5.0
 autostart = true
 
+[node name="ProyectileNoMove" type="Timer" parent="BossCd" unique_id=2109760348]
+wait_time = 1.5
+one_shot = true
+
+[node name="ShootCooldown" type="Timer" parent="BossCd" unique_id=1941249793]
+wait_time = 0.2
+one_shot = true
+
+[node name="ShootLines" type="Node2D" parent="BossCd" unique_id=1330824715]
+script = ExtResource("20_eip27")
+
+[node name="ShootLine" type="Line2D" parent="BossCd/ShootLines" unique_id=1036999571]
+points = PackedVector2Array(0, 0, -353, 4)
+width = 3.69
+default_color = Color(1, 1, 1, 0.29803923)
+
+[node name="Raycast" type="RayCast2D" parent="BossCd/ShootLines/ShootLine" unique_id=684380612]
+
+[node name="ShootLine2" type="Line2D" parent="BossCd/ShootLines" unique_id=1574555405]
+points = PackedVector2Array(0, 0, -353, 4)
+width = 3.69
+default_color = Color(1, 1, 1, 0.29803923)
+
+[node name="Raycast" type="RayCast2D" parent="BossCd/ShootLines/ShootLine2" unique_id=1175499188]
+
+[node name="ShootLine3" type="Line2D" parent="BossCd/ShootLines" unique_id=620903141]
+points = PackedVector2Array(0, 0, -353, 4)
+width = 3.69
+default_color = Color(1, 1, 1, 0.29803923)
+
+[node name="Raycast" type="RayCast2D" parent="BossCd/ShootLines/ShootLine3" unique_id=1019028262]
+
 [connection signal="timeout" from="BossCd/SlamTimeout" to="BossCd" method="_on_slam_timeout_timeout"]
 [connection signal="timeout" from="BossCd/ProyectileCooldown" to="BossCd" method="_on_proyectile_cooldown_timeout"]
+[connection signal="timeout" from="BossCd/ProyectileNoMove" to="BossCd" method="_on_proyectile_no_move_timeout"]
+[connection signal="timeout" from="BossCd/ShootCooldown" to="BossCd" method="_on_shoot_cooldown_timeout"]
