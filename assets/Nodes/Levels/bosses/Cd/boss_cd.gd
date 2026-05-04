@@ -35,8 +35,13 @@ var Sliding : bool = false
 const DistSlide : float = 300.0
 const SlideVel : float = 400.0
 
-const ShootAmount : int = 3.0
+const ShootAmount : int = 5.0
 var ShootedLocations : Array[Vector2] = []
+
+var PlayerPreviousPos : Vector2 = Vector2(0.0, 0.0)
+var PlayerMoveRadius : float = 0.2
+var PlayerShootTime : float = .5
+const PlayerAfkTime : float = 0.5
 
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
@@ -60,7 +65,7 @@ func _slide(delta : float) -> void:
 			if(ShootedLocations.size() < ShootAmount):
 				print("Shoot")
 				TimerShootCooldown.start()
-				var ShootPos : Vector2 = Vector2(Player.global_position.x-ShootLines.global_position.x, Player.global_position.y-ShootLines.global_position.y)
+				var ShootPos : Vector2 = Player.global_position#Vector2(Player.global_position.x-ShootLines.global_position.x, Player.global_position.y-ShootLines.global_position.y)
 				#ShootRaycast.target_position = Vector2(Player.global_position.x-ShootRaycast.global_position.x, Player.global_position.y-ShootRaycast.global_position.y)
 				#ShootLine.points[1] = ShootRaycast.target_position
 				ShootLines.add_line(ShootPos)
@@ -98,10 +103,30 @@ func get_gravity_player() -> float:
 	if(FallingSlam): return fall_gravity
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
+func _shoot_pos(pos : Vector2) -> void:
+	ShootLines.add_line(pos)
+	ShootedLocations.append(pos)
+	await get_tree().create_timer(0.5).timeout
+	Shoot_all()
+	ShootedLocations.clear()
+
+func _shoot_tick(delta : float) -> void:
+	print(PlayerShootTime)
+	if(PlayerPreviousPos.distance_to(Player.global_position) <= PlayerMoveRadius):
+		if(PlayerShootTime <= 0.0 && !ShootedLocations):
+			_shoot_pos(Player.global_position)
+			PlayerShootTime = PlayerAfkTime
+		else:
+			PlayerShootTime -= 1*delta
+	else:
+		PlayerShootTime = PlayerAfkTime
+	PlayerPreviousPos = Player.global_position
+
 func _physics_process(delta: float) -> void:
 	if(ProyectileNoMove.is_stopped()):
 		_movement_x(delta)
 		_movement_y(delta)
+		_shoot_tick(delta)
 		
 		velocity.x = Speed.x
 		#print(velocity)

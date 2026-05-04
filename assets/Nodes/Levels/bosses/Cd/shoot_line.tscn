@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://lo6qsy2id4ao"]
+
+[node name="ShootLine" type="Line2D" unique_id=1121714015]
+points = PackedVector2Array(0, 0, -353, 4)
+width = 3.69
+default_color = Color(1, 1, 1, 0.29803923)
+
+[node name="Raycast" type="RayCast2D" parent="." unique_id=854193565]

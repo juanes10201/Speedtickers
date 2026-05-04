@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://dmk3ukni4bl3q" path="res://assets/Nodes/Levels/bosses/Cd/proyectile_spawner.gd" id="18_eb5km"]
 [ext_resource type="PackedScene" uid="uid://dp30t21d6ctnd" path="res://assets/Nodes/Levels/bosses/Cd/proyectile.tscn" id="19_eb5km"]
 [ext_resource type="Script" uid="uid://dilciucoxpvda" path="res://assets/Nodes/Levels/bosses/Cd/shoot_lines.gd" id="20_eip27"]
+[ext_resource type="PackedScene" uid="uid://lo6qsy2id4ao" path="res://assets/Nodes/Levels/bosses/Cd/shoot_line.tscn" id="21_r75pg"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -201,7 +202,7 @@ tile_set = ExtResource("5_r75pg")
 script = ExtResource("7_fcwgh")
 
 [node name="Time_Left" type="Timer" parent="." unique_id=123732541 groups=["GameTimer"]]
-wait_time = 12.0
+wait_time = 999.0
 one_shot = true
 autostart = true
 
@@ -311,26 +312,15 @@ one_shot = true
 [node name="ShootLines" type="Node2D" parent="BossCd" unique_id=1330824715]
 script = ExtResource("20_eip27")
 
-[node name="ShootLine" type="Line2D" parent="BossCd/ShootLines" unique_id=1036999571]
-points = PackedVector2Array(0, 0, -353, 4)
-width = 3.69
-default_color = Color(1, 1, 1, 0.29803923)
+[node name="ShootLine" parent="BossCd/ShootLines" unique_id=1121714015 instance=ExtResource("21_r75pg")]
 
-[node name="Raycast" type="RayCast2D" parent="BossCd/ShootLines/ShootLine" unique_id=684380612]
+[node name="ShootLine2" parent="BossCd/ShootLines" unique_id=630259270 instance=ExtResource("21_r75pg")]
 
-[node name="ShootLine2" type="Line2D" parent="BossCd/ShootLines" unique_id=1574555405]
-points = PackedVector2Array(0, 0, -353, 4)
-width = 3.69
-default_color = Color(1, 1, 1, 0.29803923)
+[node name="ShootLine3" parent="BossCd/ShootLines" unique_id=427931904 instance=ExtResource("21_r75pg")]
 
-[node name="Raycast" type="RayCast2D" parent="BossCd/ShootLines/ShootLine2" unique_id=1175499188]
+[node name="ShootLine4" parent="BossCd/ShootLines" unique_id=1854630509 instance=ExtResource("21_r75pg")]
 
-[node name="ShootLine3" type="Line2D" parent="BossCd/ShootLines" unique_id=620903141]
-points = PackedVector2Array(0, 0, -353, 4)
-width = 3.69
-default_color = Color(1, 1, 1, 0.29803923)
-
-[node name="Raycast" type="RayCast2D" parent="BossCd/ShootLines/ShootLine3" unique_id=1019028262]
+[node name="ShootLine5" parent="BossCd/ShootLines" unique_id=347104251 instance=ExtResource("21_r75pg")]
 
 [connection signal="timeout" from="BossCd/SlamTimeout" to="BossCd" method="_on_slam_timeout_timeout"]
 [connection signal="timeout" from="BossCd/ProyectileCooldown" to="BossCd" method="_on_proyectile_cooldown_timeout"]
