@@ -1,8 +1,17 @@
 [gd_scene format=3 uid="uid://lo6qsy2id4ao"]
 
+[ext_resource type="Script" uid="uid://cyknxgt2kudvt" path="res://assets/Nodes/Levels/bosses/Cd/shoot_line.gd" id="1_xrake"]
+
 [node name="ShootLine" type="Line2D" unique_id=1121714015]
 points = PackedVector2Array(0, 0, -353, 4)
 width = 3.69
 default_color = Color(1, 1, 1, 0.29803923)
+script = ExtResource("1_xrake")
 
 [node name="Raycast" type="RayCast2D" parent="." unique_id=854193565]
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1763553763]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -57,3 +57,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_initial_fly_timeout() -> void:
 	GoToPos = Player.global_position
+
+
+func _on_body_entered(body: Node2D) -> void:
+	body.On_Death()

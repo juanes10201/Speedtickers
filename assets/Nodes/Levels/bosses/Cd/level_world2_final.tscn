@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dp30t21d6ctnd" path="res://assets/Nodes/Levels/bosses/Cd/proyectile.tscn" id="19_eb5km"]
 [ext_resource type="Script" uid="uid://dilciucoxpvda" path="res://assets/Nodes/Levels/bosses/Cd/shoot_lines.gd" id="20_eip27"]
 [ext_resource type="PackedScene" uid="uid://lo6qsy2id4ao" path="res://assets/Nodes/Levels/bosses/Cd/shoot_line.tscn" id="21_r75pg"]
+[ext_resource type="Script" uid="uid://dwbwjebvi2mhe" path="res://assets/Nodes/Levels/bosses/Cd/boomerang.gd" id="22_r0lfl"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -40,6 +41,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_6ubuh"]
 resource_name = "move"
 length = 40.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -77,6 +79,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_y3i1q"]
 resource_name = "move"
 length = 40.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -93,6 +96,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_b10uo"]
 resource_name = "move2"
 length = 40.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -147,6 +151,12 @@ size = Vector2(23, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcciw"]
 size = Vector2(24, 34)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fcwgh"]
+size = Vector2(62, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0lfl"]
+size = Vector2(58, 6)
 
 [node name="Node2D" type="Node2D" unique_id=132502342]
 position = Vector2(0, -1)
@@ -263,7 +273,7 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "ProyectileSpawner")]
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "Boomerang", "ProyectileSpawner")]
 position = Vector2(210, 221)
 collision_layer = 512
 collision_mask = 3455
@@ -272,6 +282,7 @@ SlamTimeout = NodePath("SlamTimeout")
 ProyectileNoMove = NodePath("ProyectileNoMove")
 TimerShootCooldown = NodePath("ShootCooldown")
 ShootLines = NodePath("ShootLines")
+Boomerang = NodePath("Boomerang")
 ProyectileSpawner = NodePath("ProyectileSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
@@ -322,7 +333,30 @@ script = ExtResource("20_eip27")
 
 [node name="ShootLine5" parent="BossCd/ShootLines" unique_id=347104251 instance=ExtResource("21_r75pg")]
 
+[node name="Boomerang" type="Area2D" parent="BossCd" unique_id=559555564 node_paths=PackedStringArray("ChangeTime", "Boss")]
+top_level = true
+script = ExtResource("22_r0lfl")
+ChangeTime = NodePath("Timer")
+Boss = NodePath("..")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BossCd/Boomerang" unique_id=944124956]
+texture = SubResource("PlaceholderTexture2D_fcwgh")
+
+[node name="Timer" type="Timer" parent="BossCd/Boomerang" unique_id=451590762]
+wait_time = 1.5
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd/Boomerang" unique_id=1716349418]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_r0lfl")
+
+[node name="BoomerangCooldown" type="Timer" parent="BossCd" unique_id=276932316]
+wait_time = 3.0
+autostart = true
+
 [connection signal="timeout" from="BossCd/SlamTimeout" to="BossCd" method="_on_slam_timeout_timeout"]
 [connection signal="timeout" from="BossCd/ProyectileCooldown" to="BossCd" method="_on_proyectile_cooldown_timeout"]
 [connection signal="timeout" from="BossCd/ProyectileNoMove" to="BossCd" method="_on_proyectile_no_move_timeout"]
 [connection signal="timeout" from="BossCd/ShootCooldown" to="BossCd" method="_on_shoot_cooldown_timeout"]
+[connection signal="timeout" from="BossCd/Boomerang/Timer" to="BossCd/Boomerang" method="_on_timer_timeout"]
+[connection signal="timeout" from="BossCd/BoomerangCooldown" to="BossCd" method="_on_boomerang_cooldown_timeout"]

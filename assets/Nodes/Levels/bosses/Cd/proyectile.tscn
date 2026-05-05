@@ -10,6 +10,7 @@ size = Vector2(11, 11)
 
 [node name="Proyectile" type="Area2D" unique_id=1301223286 node_paths=PackedStringArray("TimerInitialFly")]
 top_level = true
+collision_layer = 0
 script = ExtResource("1_cn7ef")
 TimerInitialFly = NodePath("TimerInitialFly")
 
@@ -23,4 +24,5 @@ shape = SubResource("RectangleShape2D_pmxm5")
 [node name="TimerInitialFly" type="Timer" parent="." unique_id=1147230615]
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimerInitialFly" to="." method="_on_timer_initial_fly_timeout"]

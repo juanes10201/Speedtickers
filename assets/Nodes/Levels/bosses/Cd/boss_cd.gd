@@ -43,6 +43,8 @@ var PlayerMoveRadius : float = 0.2
 var PlayerShootTime : float = .5
 const PlayerAfkTime : float = 0.5
 
+@export var Boomerang : Area2D
+
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
 	#_shoot_proyectiles()
@@ -70,8 +72,8 @@ func _slide(delta : float) -> void:
 				#ShootLine.points[1] = ShootRaycast.target_position
 				ShootLines.add_line(ShootPos)
 				ShootedLocations.append(ShootPos)
-			else:
-				Shoot_all()
+			#else:
+			#	Shoot_all()
 		Speed.x = SlideVel * MovingDir.x
 		#print(MovingDir)
 
@@ -156,3 +158,7 @@ func _on_shoot_cooldown_timeout() -> void:
 	#else:
 	#	ShootedAmount = 0
 	#	return
+
+
+func _on_boomerang_cooldown_timeout() -> void:
+	Boomerang.enable()
