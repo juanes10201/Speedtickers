@@ -35,7 +35,7 @@ var Sliding : bool = false
 const DistSlide : float = 300.0
 const SlideVel : float = 400.0
 
-const ShootAmount : int = 5.0
+const ShootAmount : int = 4.0
 var ShootedLocations : Array[Vector2] = []
 
 var PlayerPreviousPos : Vector2 = Vector2(0.0, 0.0)
@@ -44,6 +44,7 @@ var PlayerShootTime : float = .5
 const PlayerAfkTime : float = 0.5
 
 @export var Boomerang : Area2D
+@export var BoomerangTimer : Timer
 
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
@@ -59,13 +60,13 @@ func _slide(delta : float) -> void:
 	if(is_on_wall()):
 		Sliding = false
 		ShootedLocations.clear()
-		ShootLines.reset()
+		ShootLines.shoot_all()
 	if(!Sliding && global_position.distance_to(Player.global_position) >= DistSlide ):
 		Sliding = true
 	if(Sliding):
 		if(TimerShootCooldown.is_stopped()):
 			if(ShootedLocations.size() < ShootAmount):
-				print("Shoot")
+				#print("Shoot")
 				TimerShootCooldown.start()
 				var ShootPos : Vector2 = Player.global_position#Vector2(Player.global_position.x-ShootLines.global_position.x, Player.global_position.y-ShootLines.global_position.y)
 				#ShootRaycast.target_position = Vector2(Player.global_position.x-ShootRaycast.global_position.x, Player.global_position.y-ShootRaycast.global_position.y)
@@ -113,7 +114,7 @@ func _shoot_pos(pos : Vector2) -> void:
 	ShootedLocations.clear()
 
 func _shoot_tick(delta : float) -> void:
-	print(PlayerShootTime)
+	#print(PlayerShootTime)
 	if(PlayerPreviousPos.distance_to(Player.global_position) <= PlayerMoveRadius):
 		if(PlayerShootTime <= 0.0 && !ShootedLocations):
 			_shoot_pos(Player.global_position)
@@ -129,11 +130,15 @@ func _physics_process(delta: float) -> void:
 		_movement_x(delta)
 		_movement_y(delta)
 		_shoot_tick(delta)
+		_boomerang_tick(delta)
 		
 		velocity.x = Speed.x
 		#print(velocity)
 		move_and_slide()
 
+func _boomerang_tick(delta : float) -> void:
+	if(is_on_floor() && !Player._is_on_floor() && !Boomerang.Enabled):
+		BoomerangTimer.start()
 
 func _on_slam_timeout_timeout() -> void:
 	FallingSlam = true
@@ -162,3 +167,7 @@ func _on_shoot_cooldown_timeout() -> void:
 
 func _on_boomerang_cooldown_timeout() -> void:
 	Boomerang.enable()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	body.On_Death()

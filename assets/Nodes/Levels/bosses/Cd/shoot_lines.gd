@@ -33,13 +33,15 @@ func add_line(pos : Vector2):
 			return
 
 func shoot_line(line : Node2D) -> void:
-	var Raycast = line.get_child(0)
-	if(Raycast):
-		Raycast.target_position = line.points[1]
-		Raycast.enabled = true
-		if(Raycast.is_colliding()):
-			var hit_collider = Raycast.get_collider()
-			hit_collider.On_Death()
+	for Raycast in line.get_children():
+		print(Raycast)
+		if(Raycast && Raycast is RayCast2D):
+			Raycast.target_position = line.points[1]
+			Raycast.enabled = true
+			if(Raycast.is_colliding()):
+				var hit_collider = Raycast.get_collider()
+				hit_collider.On_Death()
+				
 
 func shoot_all():
 	#print("kill")

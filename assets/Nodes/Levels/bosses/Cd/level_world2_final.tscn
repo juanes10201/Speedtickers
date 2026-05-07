@@ -150,13 +150,16 @@ shader_parameter/water_surface_y = 258.78
 size = Vector2(23, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcciw"]
-size = Vector2(24, 34)
+size = Vector2(13, 28)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fcwgh"]
-size = Vector2(62, 9)
+size = Vector2(38, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0lfl"]
-size = Vector2(58, 6)
+size = Vector2(29, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcwgh"]
+size = Vector2(19, 32)
 
 [node name="Node2D" type="Node2D" unique_id=132502342]
 position = Vector2(0, -1)
@@ -239,11 +242,11 @@ floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1584871878]
-position = Vector2(89.60181, -78.76099)
+position = Vector2(187.6018, -78.76099)
 zoom = Vector2(2.08, 2.08)
 limit_left = -285
 limit_top = -55
-limit_right = 353
+limit_right = 292
 limit_bottom = 336
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -273,9 +276,9 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "Boomerang", "ProyectileSpawner")]
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "Boomerang", "BoomerangTimer", "ProyectileSpawner") groups=["Boss"]]
 position = Vector2(210, 221)
-collision_layer = 512
+collision_layer = 2097664
 collision_mask = 3455
 script = ExtResource("17_soa5s")
 SlamTimeout = NodePath("SlamTimeout")
@@ -283,13 +286,14 @@ ProyectileNoMove = NodePath("ProyectileNoMove")
 TimerShootCooldown = NodePath("ShootCooldown")
 ShootLines = NodePath("ShootLines")
 Boomerang = NodePath("Boomerang")
+BoomerangTimer = NodePath("BoomerangCooldown")
 ProyectileSpawner = NodePath("ProyectileSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
 texture = SubResource("PlaceholderTexture2D_dgjp1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd" unique_id=1487528214]
-position = Vector2(1, -1)
+position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_vcciw")
 
 [node name="SlamTimeout" type="Timer" parent="BossCd" unique_id=596381299]
@@ -335,6 +339,7 @@ script = ExtResource("20_eip27")
 
 [node name="Boomerang" type="Area2D" parent="BossCd" unique_id=559555564 node_paths=PackedStringArray("ChangeTime", "Boss")]
 top_level = true
+collision_mask = 2097153
 script = ExtResource("22_r0lfl")
 ChangeTime = NodePath("Timer")
 Boss = NodePath("..")
@@ -343,20 +348,28 @@ Boss = NodePath("..")
 texture = SubResource("PlaceholderTexture2D_fcwgh")
 
 [node name="Timer" type="Timer" parent="BossCd/Boomerang" unique_id=451590762]
-wait_time = 1.5
+wait_time = 0.8
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd/Boomerang" unique_id=1716349418]
-position = Vector2(0, 1)
+position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_r0lfl")
 
 [node name="BoomerangCooldown" type="Timer" parent="BossCd" unique_id=276932316]
-wait_time = 3.0
-autostart = true
+wait_time = 0.5
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="BossCd" unique_id=1714809928]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd/Area2D" unique_id=86774572]
+position = Vector2(1.5, 2)
+shape = SubResource("RectangleShape2D_fcwgh")
 
 [connection signal="timeout" from="BossCd/SlamTimeout" to="BossCd" method="_on_slam_timeout_timeout"]
 [connection signal="timeout" from="BossCd/ProyectileCooldown" to="BossCd" method="_on_proyectile_cooldown_timeout"]
 [connection signal="timeout" from="BossCd/ProyectileNoMove" to="BossCd" method="_on_proyectile_no_move_timeout"]
 [connection signal="timeout" from="BossCd/ShootCooldown" to="BossCd" method="_on_shoot_cooldown_timeout"]
+[connection signal="body_entered" from="BossCd/Boomerang" to="BossCd/Boomerang" method="_on_body_entered"]
 [connection signal="timeout" from="BossCd/Boomerang/Timer" to="BossCd/Boomerang" method="_on_timer_timeout"]
 [connection signal="timeout" from="BossCd/BoomerangCooldown" to="BossCd" method="_on_boomerang_cooldown_timeout"]
+[connection signal="body_entered" from="BossCd/Area2D" to="BossCd" method="_on_area_2d_body_entered"]
