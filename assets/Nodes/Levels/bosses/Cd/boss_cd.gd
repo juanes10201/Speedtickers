@@ -35,7 +35,7 @@ var Sliding : bool = false
 const DistSlide : float = 300.0
 const SlideVel : float = 400.0
 
-const ShootAmount : int = 4.0
+const ShootAmount : int = 3.0
 var ShootedLocations : Array[Vector2] = []
 
 var PlayerPreviousPos : Vector2 = Vector2(0.0, 0.0)
@@ -137,7 +137,9 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _boomerang_tick(delta : float) -> void:
-	if(is_on_floor() && !Player._is_on_floor() && !Boomerang.Enabled):
+	print(BoomerangTimer.time_left)
+	if(is_on_floor() && !Player._is_on_floor() && !Boomerang.Enabled && BoomerangTimer.is_stopped()):
+		#Boomerang.enable()
 		BoomerangTimer.start()
 
 func _on_slam_timeout_timeout() -> void:

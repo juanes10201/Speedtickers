@@ -348,7 +348,6 @@ Boss = NodePath("..")
 texture = SubResource("PlaceholderTexture2D_fcwgh")
 
 [node name="Timer" type="Timer" parent="BossCd/Boomerang" unique_id=451590762]
-wait_time = 0.8
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd/Boomerang" unique_id=1716349418]

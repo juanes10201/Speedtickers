@@ -34,7 +34,7 @@ func add_line(pos : Vector2):
 
 func shoot_line(line : Node2D) -> void:
 	for Raycast in line.get_children():
-		print(Raycast)
+		#print(Raycast)
 		if(Raycast && Raycast is RayCast2D):
 			Raycast.target_position = line.points[1]
 			Raycast.enabled = true

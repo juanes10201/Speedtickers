@@ -11,10 +11,11 @@ var State = States.Initial
 @export var Boss : Node2D
 
 var Speed : float = 0.0
-const Acc : float = 500.0
-const InitialSpeed : float = 200.0
+const Acc : float = 800.0
+const InitialSpeed : float = 500.0
 const SpeedDelta : float = 3.0
 var Direction : int = 1.0
+@onready var Sprite = $Sprite2D2
 
 func disable() -> void:
 	State = States.Initial
@@ -23,6 +24,7 @@ func disable() -> void:
 	Direction = Boss.MovingDir.x
 	Speed = InitialSpeed
 	hide()
+	Sprite.hide()
 
 func enable() -> void:
 	show()
@@ -31,7 +33,8 @@ func enable() -> void:
 	Enabled = true
 	global_position = Boss.global_position
 	Direction = Boss.MovingDir.x
-	Speed = InitialSpeed
+	Speed = InitialSpeed + Boss.Speed.x
+	Sprite.show()
 
 func _ready() -> void:
 	pass # Replace with function body.
