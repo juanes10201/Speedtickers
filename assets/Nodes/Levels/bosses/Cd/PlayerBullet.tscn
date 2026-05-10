@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c0anqhecb4jfa"]
+
+[ext_resource type="Texture2D" uid="uid://i24m8jfh7at7" path="res://assets/Sprites/Tileset/Editor/Reference.png" id="1_q6fhn"]
+[ext_resource type="Script" uid="uid://c5fs6perpf1ym" path="res://assets/Nodes/Levels/bosses/Cd/player_bullet.gd" id="1_uogfn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj2ym"]
+size = Vector2(22, 22)
+
+[node name="PlayerBullet" type="Area2D" unique_id=71032558]
+top_level = true
+collision_layer = 0
+collision_mask = 287
+script = ExtResource("1_uogfn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1341562071]
+texture = ExtResource("1_q6fhn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=568418891]
+shape = SubResource("RectangleShape2D_hj2ym")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

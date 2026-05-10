@@ -50,6 +50,9 @@ const PlayerAfkTime : float = 0.5
 @export var DiagonalShotRayCast : RayCast2D
 @export var MidAirShotRayCast : RayCast2D
 
+@export var BossLifeBar : ProgressBar
+var BossLife : float = 100.0
+
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
 	#_shoot_proyectiles()
@@ -150,12 +153,16 @@ func _shoot_tick(delta : float) -> void:
 		PlayerShootTime = PlayerAfkTime
 	PlayerPreviousPos = Player.global_position
 
+func _life_boss_tick(delta : float) -> void:
+	BossLifeBar.value = BossLife
+
 func _physics_process(delta: float) -> void:
 	if(ProyectileNoMove.is_stopped()):
 		_movement_x(delta)
 		_movement_y(delta)
 		_shoot_tick(delta)
 		_boomerang_tick(delta)
+		_life_boss_tick(delta)
 		
 		velocity.x = Speed.x
 		#print(velocity)
