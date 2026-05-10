@@ -9,6 +9,10 @@ const max_vel : Vector2 = Vector2(100.0, 100.0)
 @export var TimerInitialFly : Timer
 @onready var Player = SaveGame.get_player()
 @export var Boss : Node2D
+
+@export var AudioStartRocket : AudioStreamPlayer
+@export var AudioExplodeRocket : AudioStreamPlayer
+
 var GoToPos : Vector2 = Vector2(0.0, 0.0)
 
 var initial_dir : float = 0.0
@@ -27,9 +31,12 @@ func _set_enabled(state : bool) -> void:
 	$CollisionShape2D.disabled = !state
 
 func _explode() -> void:
+	Player._play_sound(AudioExplodeRocket)
+	if(visible): get_parent().ShootingAmount -= 1
 	_set_enabled(false)
 
 func restart() -> void:
+	Player._play_sound(AudioStartRocket)
 	global_position = Boss.global_position
 	TimerInitialFly.start()
 	_set_enabled(true)

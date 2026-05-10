@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dp30t21d6ctnd"]
 
 [ext_resource type="Script" uid="uid://fqnwipqdoeeq" path="res://assets/Nodes/Levels/bosses/Cd/proyectile.gd" id="1_cn7ef"]
+[ext_resource type="AudioStream" uid="uid://b1gr212kuljrh" path="res://assets/Sounds/BossCd/Explosion.wav" id="2_cw8yo"]
+[ext_resource type="AudioStream" uid="uid://cjed3pxhireba" path="res://assets/Sounds/BossCd/activate_proccesed.wav" id="3_gc375"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_17tii"]
 size = Vector2(16, 16)
@@ -8,11 +10,13 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmxm5"]
 size = Vector2(11, 11)
 
-[node name="Proyectile" type="Area2D" unique_id=1301223286 node_paths=PackedStringArray("TimerInitialFly")]
+[node name="Proyectile" type="Area2D" unique_id=1301223286 node_paths=PackedStringArray("TimerInitialFly", "AudioStartRocket", "AudioExplodeRocket")]
 top_level = true
 collision_layer = 0
 script = ExtResource("1_cn7ef")
 TimerInitialFly = NodePath("TimerInitialFly")
+AudioStartRocket = NodePath("AudioStartRocket")
+AudioExplodeRocket = NodePath("AudioExplodeRocket")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=997412798]
 texture = SubResource("PlaceholderTexture2D_17tii")
@@ -23,6 +27,12 @@ shape = SubResource("RectangleShape2D_pmxm5")
 
 [node name="TimerInitialFly" type="Timer" parent="." unique_id=1147230615]
 one_shot = true
+
+[node name="AudioExplodeRocket" type="AudioStreamPlayer" parent="." unique_id=1159746998]
+stream = ExtResource("2_cw8yo")
+
+[node name="AudioStartRocket" type="AudioStreamPlayer" parent="." unique_id=451669189]
+stream = ExtResource("3_gc375")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimerInitialFly" to="." method="_on_timer_initial_fly_timeout"]

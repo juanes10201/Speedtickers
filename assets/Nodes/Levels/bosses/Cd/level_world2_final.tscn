@@ -24,6 +24,11 @@
 [ext_resource type="Script" uid="uid://dilciucoxpvda" path="res://assets/Nodes/Levels/bosses/Cd/shoot_lines.gd" id="20_eip27"]
 [ext_resource type="PackedScene" uid="uid://lo6qsy2id4ao" path="res://assets/Nodes/Levels/bosses/Cd/shoot_line.tscn" id="21_r75pg"]
 [ext_resource type="Script" uid="uid://dwbwjebvi2mhe" path="res://assets/Nodes/Levels/bosses/Cd/boomerang.gd" id="22_r0lfl"]
+[ext_resource type="AudioStream" uid="uid://ckbv0j1avu6j4" path="res://assets/Sounds/BossCd/old_machine_loop_proccesed.wav" id="24_0gxog"]
+[ext_resource type="AudioStream" uid="uid://4m48yab5m5eb" path="res://assets/Sounds/BossCd/shootbullet.wav" id="25_hj2ym"]
+[ext_resource type="AudioStream" uid="uid://btv2nfwixeno4" path="res://assets/Sounds/BossCd/load.wav" id="26_iaqam"]
+[ext_resource type="AudioStream" uid="uid://c4npcla77ociv" path="res://assets/Sounds/BossCd/shootbullet_alt_proccesed.wav" id="27_0gxog"]
+[ext_resource type="AudioStream" uid="uid://dshmprhdld8rd" path="res://assets/Sounds/BossCd/BulletFall_proccesed.wav" id="27_g6def"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -162,6 +167,11 @@ size = Vector2(29, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcwgh"]
 size = Vector2(19, 32)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vun5p"]
+streams_count = 2
+stream_0/stream = ExtResource("25_hj2ym")
+stream_1/stream = ExtResource("27_0gxog")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0lfl"]
 bg_color = Color(0.7020419, 0.5300703, 0.7314462, 0.7372549)
@@ -314,7 +324,7 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "BossLifeBar", "ShieldLifeBar", "ProyectileSpawner") groups=["Boss", "CdBoss"]]
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "BossLifeBar", "ShieldLifeBar", "AudioShoot", "AudioLoad", "AudioFall", "ProyectileSpawner") groups=["Boss", "CdBoss"]]
 position = Vector2(210, 221)
 collision_layer = 2097664
 collision_mask = 3455
@@ -330,6 +340,9 @@ DiagonalShotRayCast = NodePath("DiagonalShotRayCast")
 MidAirShotRayCast = NodePath("MidAirShotRayCast")
 BossLifeBar = NodePath("../BossUi/ProgressBar")
 ShieldLifeBar = NodePath("../BossUi/ProgressBar2")
+AudioShoot = NodePath("AudioShoot")
+AudioLoad = NodePath("AudioLoad")
+AudioFall = NodePath("AudioFall")
 ProyectileSpawner = NodePath("ProyectileSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
@@ -343,8 +356,9 @@ shape = SubResource("RectangleShape2D_vcciw")
 wait_time = 0.3
 one_shot = true
 
-[node name="ProyectileSpawner" type="Node2D" parent="BossCd" unique_id=420811214]
+[node name="ProyectileSpawner" type="Node2D" parent="BossCd" unique_id=420811214 node_paths=PackedStringArray("AudioIdle")]
 script = ExtResource("18_eb5km")
+AudioIdle = NodePath("AudioIdle")
 
 [node name="Proyectile" parent="BossCd/ProyectileSpawner" unique_id=1301223286 node_paths=PackedStringArray("Boss") instance=ExtResource("19_eb5km")]
 Boss = NodePath("../..")
@@ -354,6 +368,9 @@ Boss = NodePath("../..")
 
 [node name="Proyectile3" parent="BossCd/ProyectileSpawner" unique_id=1749174128 node_paths=PackedStringArray("Boss") instance=ExtResource("19_eb5km")]
 Boss = NodePath("../..")
+
+[node name="AudioIdle" type="AudioStreamPlayer" parent="BossCd/ProyectileSpawner" unique_id=1323620031]
+stream = ExtResource("24_0gxog")
 
 [node name="ProyectileCooldown" type="Timer" parent="BossCd" unique_id=608613241]
 wait_time = 5.0
@@ -367,8 +384,9 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
-[node name="ShootLines" type="Node2D" parent="BossCd" unique_id=1330824715]
+[node name="ShootLines" type="Node2D" parent="BossCd" unique_id=1330824715 node_paths=PackedStringArray("Boss")]
 script = ExtResource("20_eip27")
+Boss = NodePath("..")
 
 [node name="ShootLine" parent="BossCd/ShootLines" unique_id=1121714015 instance=ExtResource("21_r75pg")]
 
@@ -416,6 +434,15 @@ target_position = Vector2(-150, 0)
 [node name="CooldownSlide" type="Timer" parent="BossCd" unique_id=271189146]
 wait_time = 0.7
 one_shot = true
+
+[node name="AudioShoot" type="AudioStreamPlayer" parent="BossCd" unique_id=1073783023]
+stream = SubResource("AudioStreamRandomizer_vun5p")
+
+[node name="AudioFall" type="AudioStreamPlayer" parent="BossCd" unique_id=220811483]
+stream = ExtResource("27_g6def")
+
+[node name="AudioLoad" type="AudioStreamPlayer" parent="BossCd" unique_id=1655925321]
+stream = ExtResource("26_iaqam")
 
 [node name="BossUi" type="CanvasLayer" parent="." unique_id=1217045057]
 

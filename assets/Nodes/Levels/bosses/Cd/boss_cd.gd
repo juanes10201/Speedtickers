@@ -55,6 +55,10 @@ const PlayerAfkTime : float = 0.5
 var BossLife : float = 100.0
 var ShieldLife : float = 30.0
 
+@export var AudioShoot : AudioStreamPlayer
+@export var AudioLoad : AudioStreamPlayer
+@export var AudioFall : AudioStreamPlayer
+
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
 	#_shoot_proyectiles()
@@ -83,6 +87,7 @@ func _slide(delta : float) -> void:
 				#ShootLine.points[1] = ShootRaycast.target_position
 				ShootLines.add_line(ShootPos)
 				ShootedLocations.append(ShootPos)
+				Player._play_sound(AudioLoad)
 			#else:
 			#	Shoot_all()
 		Speed.x = SlideVel * MovingDir.x
@@ -118,6 +123,7 @@ func get_gravity_player() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 func _shoot_pos(pos : Vector2, wait_time : float = 0.5) -> void:
+	Player._play_sound(AudioLoad)
 	ShootLines.add_line(pos)
 	ShootedLocations.append(pos)
 	await get_tree().create_timer(wait_time).timeout

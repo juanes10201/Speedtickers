@@ -1,6 +1,10 @@
 extends Node2D
 
 var global_pos : Array[Vector2] = []
+@export var Boss : CharacterBody2D
+
+const ShootCooldown : float = .1
+@onready var Player = SaveGame.get_player()
 
 func _process(delta: float) -> void:
 	if(global_pos):
@@ -33,6 +37,7 @@ func add_line(pos : Vector2):
 			return
 
 func shoot_line(line : Node2D) -> void:
+	if(!line.visible): return
 	for Raycast in line.get_children():
 		#print(Raycast)
 		if(Raycast && Raycast is RayCast2D):
@@ -41,10 +46,14 @@ func shoot_line(line : Node2D) -> void:
 			if(Raycast.is_colliding()):
 				var hit_collider = Raycast.get_collider()
 				hit_collider.On_Death()
+			Player._play_sound(Boss.AudioShoot)
+	line.visible = false
 				
 
 func shoot_all():
 	#print("kill")
 	for line in get_children():
 		shoot_line(line)
+		if(get_tree()): await get_tree().create_timer(ShootCooldown).timeout
 	reset()
+	Player._play_sound(Boss.AudioFall)
