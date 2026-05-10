@@ -4,6 +4,9 @@ var Shooting : bool = false
 @export var ShootCooldown : Timer
 @export var Player : CharacterBody2D
 
+var ShootMoveXNum : int = 0
+const ShootMoveXMax : int = 4
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -11,7 +14,9 @@ func shoot() -> void:
 	ShootCooldown.start()
 	for Bullet in get_children():
 		if(Bullet is Area2D && !Bullet.Enabled):
-			Bullet.shoot(Player.LastDirection, Player.global_position)
+			Bullet.shoot(Player.LastDirection, Player.global_position, ShootMoveXNum)
+			ShootMoveXNum += 1
+			if(ShootMoveXNum > ShootMoveXMax): ShootMoveXNum = 0
 			return
 
 func _shoot_tick(delta : float) -> void:

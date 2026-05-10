@@ -51,7 +51,9 @@ const PlayerAfkTime : float = 0.5
 @export var MidAirShotRayCast : RayCast2D
 
 @export var BossLifeBar : ProgressBar
+@export var ShieldLifeBar : ProgressBar
 var BossLife : float = 100.0
+var ShieldLife : float = 30.0
 
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
@@ -90,7 +92,8 @@ func _movement_x(delta : float) -> void:
 	#if(Jumped): return
 	_slide(delta)
 	if(!Sliding):
-		MovingDir.x = _calc_player_dir()
+		if(is_on_floor()):
+			MovingDir.x = _calc_player_dir()
 		if(MovingDir.x):
 			if(ceil(clamp(Speed.x, -1.0, 1.0) ) != MovingDir.x): Speed.x = lerpf(Speed.x, MovingDir.x, ChangeDirXVel*delta)
 			if(abs(Speed.x) < abs(MaxSpeed.x)):
@@ -155,14 +158,15 @@ func _shoot_tick(delta : float) -> void:
 
 func _life_boss_tick(delta : float) -> void:
 	BossLifeBar.value = BossLife
+	ShieldLifeBar.value = ShieldLife
 
 func _physics_process(delta: float) -> void:
+	_life_boss_tick(delta)
 	if(ProyectileNoMove.is_stopped()):
 		_movement_x(delta)
 		_movement_y(delta)
 		_shoot_tick(delta)
 		_boomerang_tick(delta)
-		_life_boss_tick(delta)
 		
 		velocity.x = Speed.x
 		#print(velocity)

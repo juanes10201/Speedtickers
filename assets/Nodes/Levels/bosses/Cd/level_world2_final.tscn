@@ -169,6 +169,12 @@ bg_color = Color(0.7020419, 0.5300703, 0.7314462, 0.7372549)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcwgh"]
 bg_color = Color(0.99999994, 0.26379046, 0.6159684, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyoxk"]
+bg_color = Color(0.7019608, 0.5294118, 0.73333335, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0bvb"]
+bg_color = Color(0.47504836, 0.55649567, 1, 1)
+
 [node name="Node2D" type="Node2D" unique_id=132502342]
 position = Vector2(0, -1)
 
@@ -308,7 +314,7 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "BossLifeBar", "ProyectileSpawner") groups=["Boss"]]
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "BossLifeBar", "ShieldLifeBar", "ProyectileSpawner") groups=["Boss", "CdBoss"]]
 position = Vector2(210, 221)
 collision_layer = 2097664
 collision_mask = 3455
@@ -323,6 +329,7 @@ BoomerangTimer = NodePath("BoomerangCooldown")
 DiagonalShotRayCast = NodePath("DiagonalShotRayCast")
 MidAirShotRayCast = NodePath("MidAirShotRayCast")
 BossLifeBar = NodePath("../BossUi/ProgressBar")
+ShieldLifeBar = NodePath("../BossUi/ProgressBar2")
 ProyectileSpawner = NodePath("ProyectileSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
@@ -420,6 +427,16 @@ rotation = -1.5707964
 theme_override_styles/background = SubResource("StyleBoxFlat_r0lfl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fcwgh")
 value = 70.79
+show_percentage = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="BossUi" unique_id=1558087053]
+offset_top = 648.0
+offset_right = 647.8533
+offset_bottom = 662.2938
+rotation = -1.5707964
+theme_override_styles/background = SubResource("StyleBoxFlat_xyoxk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i0bvb")
+value = 55.95
 show_percentage = false
 
 [connection signal="timeout" from="BossCd/SlamTimeout" to="BossCd" method="_on_slam_timeout_timeout"]
