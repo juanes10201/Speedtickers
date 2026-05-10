@@ -29,6 +29,8 @@
 [ext_resource type="AudioStream" uid="uid://btv2nfwixeno4" path="res://assets/Sounds/BossCd/load.wav" id="26_iaqam"]
 [ext_resource type="AudioStream" uid="uid://c4npcla77ociv" path="res://assets/Sounds/BossCd/shootbullet_alt_proccesed.wav" id="27_0gxog"]
 [ext_resource type="AudioStream" uid="uid://dshmprhdld8rd" path="res://assets/Sounds/BossCd/BulletFall_proccesed.wav" id="27_g6def"]
+[ext_resource type="AudioStream" uid="uid://ctg5xm0bve74w" path="res://assets/Sounds/BossCd/woosh_back.wav" id="27_oxqxo"]
+[ext_resource type="AudioStream" uid="uid://bdckx5bgwqshh" path="res://assets/Sounds/BossCd/attack_boomerang_proccesed.wav" id="30_vun5p"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -324,7 +326,7 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "BossLifeBar", "ShieldLifeBar", "AudioShoot", "AudioLoad", "AudioFall", "ProyectileSpawner") groups=["Boss", "CdBoss"]]
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "BossLifeBar", "ShieldLifeBar", "AudioShoot", "AudioLoad", "AudioFall", "AudioAttackBoomerang", "ProyectileSpawner") groups=["Boss", "CdBoss"]]
 position = Vector2(210, 221)
 collision_layer = 2097664
 collision_mask = 3455
@@ -343,6 +345,7 @@ ShieldLifeBar = NodePath("../BossUi/ProgressBar2")
 AudioShoot = NodePath("AudioShoot")
 AudioLoad = NodePath("AudioLoad")
 AudioFall = NodePath("AudioFall")
+AudioAttackBoomerang = NodePath("Boomerang/AudioAtackBoomerang")
 ProyectileSpawner = NodePath("ProyectileSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
@@ -398,12 +401,14 @@ Boss = NodePath("..")
 
 [node name="ShootLine5" parent="BossCd/ShootLines" unique_id=347104251 instance=ExtResource("21_r75pg")]
 
-[node name="Boomerang" type="Area2D" parent="BossCd" unique_id=559555564 node_paths=PackedStringArray("ChangeTime", "Boss")]
+[node name="Boomerang" type="Area2D" parent="BossCd" unique_id=559555564 node_paths=PackedStringArray("ChangeTime", "Boss", "AudioAttackBoomerang", "AudioAttackBack")]
 top_level = true
 collision_mask = 2097153
 script = ExtResource("22_r0lfl")
 ChangeTime = NodePath("Timer")
 Boss = NodePath("..")
+AudioAttackBoomerang = NodePath("AudioAtackBoomerang")
+AudioAttackBack = NodePath("AudioAtackBack")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BossCd/Boomerang" unique_id=944124956]
 texture = SubResource("PlaceholderTexture2D_fcwgh")
@@ -414,6 +419,12 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd/Boomerang" unique_id=1716349418]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_r0lfl")
+
+[node name="AudioAtackBoomerang" type="AudioStreamPlayer" parent="BossCd/Boomerang" unique_id=2041000872]
+stream = ExtResource("30_vun5p")
+
+[node name="AudioAtackBack" type="AudioStreamPlayer" parent="BossCd/Boomerang" unique_id=48636188]
+stream = ExtResource("27_oxqxo")
 
 [node name="BoomerangCooldown" type="Timer" parent="BossCd" unique_id=276932316]
 wait_time = 0.5

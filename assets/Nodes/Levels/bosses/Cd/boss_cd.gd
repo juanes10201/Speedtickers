@@ -152,7 +152,7 @@ func _shoot_tick(delta : float) -> void:
 				_shoot_pos(_predict_player_mov(1.0), .7)
 		
 	#Timeout shoot
-	if(PlayerPreviousPos.distance_to(Player.global_position) <= PlayerMoveRadius):
+	if(abs(PlayerPreviousPos.y-Player.global_position.y)  <= PlayerMoveRadius): #PlayerPreviousPos.distance_to(Player.global_position) <= PlayerMoveRadius):
 		if(PlayerShootTime <= 0.0 && !ShootedLocations && !Sliding):
 			_shoot_pos(Player.global_position)
 			PlayerShootTime = PlayerAfkTime
@@ -178,11 +178,13 @@ func _physics_process(delta: float) -> void:
 		#print(velocity)
 		move_and_slide()
 
+@export var AudioAttackBoomerang : AudioStreamPlayer
 func _boomerang_tick(delta : float) -> void:
 	#print(BoomerangTimer.time_left)
 	if(is_on_floor() && !Player._is_on_floor() && !Boomerang.Enabled && BoomerangTimer.is_stopped()):
 		#Boomerang.enable()
 		BoomerangTimer.start()
+		Player._play_sound(AudioAttackBoomerang)
 
 func _on_slam_timeout_timeout() -> void:
 	FallingSlam = true

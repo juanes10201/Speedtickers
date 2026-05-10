@@ -16,6 +16,9 @@ const InitialSpeed : float = 500.0
 const SpeedDelta : float = 3.0
 var Direction : int = 1.0
 @onready var Sprite = $Sprite2D2
+@onready var Player = SaveGame.get_player()  
+@export var AudioAttackBoomerang : AudioStreamPlayer
+@export var AudioAttackBack : AudioStreamPlayer
 
 func disable() -> void:
 	State = States.Initial
@@ -27,6 +30,7 @@ func disable() -> void:
 	Sprite.hide()
 
 func enable() -> void:
+	#Player._play_sound(AudioAttackBoomerang)
 	show()
 	ChangeTime.start()
 	State = States.Initial
@@ -51,6 +55,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	State *= -1
+	Player._play_sound(AudioAttackBack)
 
 
 func _on_body_entered(body: Node2D) -> void:
