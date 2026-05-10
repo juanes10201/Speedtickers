@@ -30,6 +30,7 @@ var FallingSlam : bool = false
 
 @export var TimerShootCooldown : Timer
 @export var ShootLines : Node2D
+@export var TimeCooldownSlide : Timer
 
 var Sliding : bool = false
 const DistSlide : float = 300.0
@@ -46,6 +47,9 @@ const PlayerAfkTime : float = 0.5
 @export var Boomerang : Area2D
 @export var BoomerangTimer : Timer
 
+@export var DiagonalShotRayCast : RayCast2D
+@export var MidAirShotRayCast : RayCast2D
+
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
 	#_shoot_proyectiles()
@@ -58,10 +62,11 @@ func Shoot_all() -> void:
 
 func _slide(delta : float) -> void:
 	if(is_on_wall()):
+		TimeCooldownSlide.start()
 		Sliding = false
 		ShootedLocations.clear()
 		ShootLines.shoot_all()
-	if(!Sliding && global_position.distance_to(Player.global_position) >= DistSlide ):
+	if(TimeCooldownSlide.is_stopped() && !Sliding && global_position.distance_to(Player.global_position) >= DistSlide ):
 		Sliding = true
 	if(Sliding):
 		if(TimerShootCooldown.is_stopped()):
@@ -106,17 +111,37 @@ func get_gravity_player() -> float:
 	if(FallingSlam): return fall_gravity
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
-func _shoot_pos(pos : Vector2) -> void:
+func _shoot_pos(pos : Vector2, wait_time : float = 0.5) -> void:
 	ShootLines.add_line(pos)
 	ShootedLocations.append(pos)
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(wait_time).timeout
 	Shoot_all()
 	ShootedLocations.clear()
 
+func _predict_mov(global_pos : Vector2,vel : Vector2, time : float) -> Vector2:
+	return Vector2(vel.x*time, vel.y*time)+global_pos
+
+func _predict_player_mov(time : float) -> Vector2:
+	if(Player):
+		return _predict_mov(Player.global_position, Player.velocity, time)
+	else: return Vector2(0.0, 0.0)
+
 func _shoot_tick(delta : float) -> void:
 	#print(PlayerShootTime)
+	
+	if(ShootedLocations.is_empty()):
+		#Midair and diagonal shoot
+		MidAirShotRayCast.target_position.x = abs(MidAirShotRayCast.target_position.x)*_calc_player_dir()
+		DiagonalShotRayCast.target_position.x = abs(DiagonalShotRayCast.target_position.x)*_calc_player_dir()
+		if(!Sliding):
+			if(is_on_floor() && MidAirShotRayCast.is_colliding()):
+				_shoot_pos(MidAirShotRayCast.target_position)
+			if(DiagonalShotRayCast.is_colliding()):
+				_shoot_pos(_predict_player_mov(1.0), .7)
+		
+	#Timeout shoot
 	if(PlayerPreviousPos.distance_to(Player.global_position) <= PlayerMoveRadius):
-		if(PlayerShootTime <= 0.0 && !ShootedLocations):
+		if(PlayerShootTime <= 0.0 && !ShootedLocations && !Sliding):
 			_shoot_pos(Player.global_position)
 			PlayerShootTime = PlayerAfkTime
 		else:
@@ -137,7 +162,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _boomerang_tick(delta : float) -> void:
-	print(BoomerangTimer.time_left)
+	#print(BoomerangTimer.time_left)
 	if(is_on_floor() && !Player._is_on_floor() && !Boomerang.Enabled && BoomerangTimer.is_stopped()):
 		#Boomerang.enable()
 		BoomerangTimer.start()

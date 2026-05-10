@@ -54,7 +54,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Player")):
+	if(body.is_in_group("Player") && Enabled):
 		body.On_Death()
 	elif(body.is_in_group("Boss") && State == States.Back):
 		disable()

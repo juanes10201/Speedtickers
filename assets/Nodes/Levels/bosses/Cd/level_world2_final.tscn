@@ -242,12 +242,12 @@ floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1584871878]
-position = Vector2(187.6018, -78.76099)
+position = Vector2(187.6018, -51.760986)
 zoom = Vector2(2.08, 2.08)
 limit_left = -285
-limit_top = -55
+limit_top = -5
 limit_right = 292
-limit_bottom = 336
+limit_bottom = 355
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("14_vun5p")
@@ -276,7 +276,7 @@ position = Vector2(-509, -128)
 AditionalAction = 6
 AditionalActionArgument = 91.0
 
-[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "Boomerang", "BoomerangTimer", "ProyectileSpawner") groups=["Boss"]]
+[node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "ProyectileSpawner") groups=["Boss"]]
 position = Vector2(210, 221)
 collision_layer = 2097664
 collision_mask = 3455
@@ -285,8 +285,11 @@ SlamTimeout = NodePath("SlamTimeout")
 ProyectileNoMove = NodePath("ProyectileNoMove")
 TimerShootCooldown = NodePath("ShootCooldown")
 ShootLines = NodePath("ShootLines")
+TimeCooldownSlide = NodePath("CooldownSlide")
 Boomerang = NodePath("Boomerang")
 BoomerangTimer = NodePath("BoomerangCooldown")
+DiagonalShotRayCast = NodePath("DiagonalShotRayCast")
+MidAirShotRayCast = NodePath("MidAirShotRayCast")
 ProyectileSpawner = NodePath("ProyectileSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossCd" unique_id=1253428346]
@@ -321,7 +324,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="ShootCooldown" type="Timer" parent="BossCd" unique_id=1941249793]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [node name="ShootLines" type="Node2D" parent="BossCd" unique_id=1330824715]
@@ -363,6 +366,16 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossCd/Area2D" unique_id=86774572]
 position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_fcwgh")
+
+[node name="DiagonalShotRayCast" type="RayCast2D" parent="BossCd" unique_id=1191143773]
+target_position = Vector2(-150, -150)
+
+[node name="MidAirShotRayCast" type="RayCast2D" parent="BossCd" unique_id=1866904809]
+target_position = Vector2(-150, 0)
+
+[node name="CooldownSlide" type="Timer" parent="BossCd" unique_id=271189146]
+wait_time = 0.7
+one_shot = true
 
 [connection signal="timeout" from="BossCd/SlamTimeout" to="BossCd" method="_on_slam_timeout_timeout"]
 [connection signal="timeout" from="BossCd/ProyectileCooldown" to="BossCd" method="_on_proyectile_cooldown_timeout"]
