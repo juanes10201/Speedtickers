@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="19_i7kmg"]
 [ext_resource type="PackedScene" uid="uid://b3jlq8xohxw3c" path="res://assets/Nodes/Obj/Gameplay/moving_platform.tscn" id="20_igmjh"]
 [ext_resource type="PackedScene" uid="uid://bpcyg6vqonftj" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish.tscn" id="21_o6cpg"]
+[ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="22_c70bu"]
+[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="23_gfvgd"]
+[ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="24_7liu2"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -75,6 +78,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75dy6"]
 shader = ExtResource("5_d77xg")
+shader_parameter/opacity_post_border = 0.0
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_d77xg")
 shader_parameter/refraction_stretch = Vector2(1, 1)
 shader_parameter/refraction_strength = 0.02
@@ -116,6 +120,17 @@ glow_hdr_threshold = 1.29
 adjustment_enabled = true
 adjustment_brightness = 1.05
 adjustment_saturation = 1.15
+
+[sub_resource type="Curve" id="Curve_d77xg"]
+_data = [Vector2(0, 0.7821012), 0.0, 0.0, 0, 0, Vector2(1, 0.6731518), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_75dy6"]
+colors = PackedColorArray(0.16082096, 0.10031984, 0.27544695, 1, 0.91397053, 0.60972846, 0.8570899, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_pknad"]
+resource_local_to_scene = true
 
 [node name="Node2D" type="Node2D" unique_id=782773658]
 position = Vector2(0, -1)
@@ -238,7 +253,7 @@ AditionalActionArgument = -287.2
 position = Vector2(-463, -623)
 
 [node name="Player" parent="." unique_id=1683755303 instance=ExtResource("5_ljyct")]
-position = Vector2(-328, -404)
+position = Vector2(-245, -595)
 CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=292185324]
@@ -246,7 +261,7 @@ position = Vector2(31.545025, 5.6991425)
 offset = Vector2(-28.055, 23.85)
 zoom = Vector2(2.49, 2.49)
 limit_left = -415
-limit_top = -603
+limit_top = -862
 limit_right = 409
 limit_bottom = -107
 limit_smoothed = true
@@ -272,3 +287,35 @@ position = Vector2(-229, -256)
 [node name="EndMarker2" type="Marker2D" parent="Enemy_Fish" unique_id=370575707]
 top_level = true
 position = Vector2(-318, -256)
+
+[node name="Rail3" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("MoveRef", "Path", "PathFollow", "RailedNodes")]
+position = Vector2(-406, -616)
+points = PackedVector2Array(-6, 6, 0, 2, 270, 2, 274, 5)
+width = 4.835
+width_curve = SubResource("Curve_d77xg")
+default_color = Color(0.9597251, 0.5843025, 1, 1)
+gradient = SubResource("Gradient_75dy6")
+script = ExtResource("22_c70bu")
+MoveRef = NodePath("Path2D/PathFollow2D/MoveRef")
+Path = NodePath("Path2D")
+PathFollow = NodePath("Path2D/PathFollow2D")
+RailedNodes = NodePath("RailedNodes")
+
+[node name="Path2D" type="Path2D" parent="Rail3" unique_id=182914977]
+curve = SubResource("Curve2D_pknad")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Rail3/Path2D" unique_id=501016468]
+loop = false
+
+[node name="MoveRef" type="Sprite2D" parent="Rail3/Path2D/PathFollow2D" unique_id=720746459]
+visible = false
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("23_gfvgd")
+
+[node name="FallCooldown" type="Timer" parent="Rail3" unique_id=685187114]
+wait_time = 0.5
+one_shot = true
+
+[node name="RailedNodes" type="Node2D" parent="Rail3" unique_id=623492847]
+top_level = true
+script = ExtResource("24_7liu2")
