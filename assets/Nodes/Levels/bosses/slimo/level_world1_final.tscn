@@ -2836,6 +2836,7 @@ NeedToInteract = false
 Dialogue_Action = "npc_boss1_holo2"
 RecordDialogueId = 1
 RecordOnlyOnce = true
+Enabled = false
 
 [node name="CharacterBody2D3" parent="." unique_id=1945689064 instance=ExtResource("34_lxrh3")]
 position = Vector2(387, -309)
@@ -2843,6 +2844,7 @@ NeedToInteract = false
 Dialogue_Action = "npc_boss1_holo3"
 RecordDialogueId = 2
 RecordOnlyOnce = true
+Enabled = false
 
 [node name="KillBox" parent="." unique_id=96789255 instance=ExtResource("11_3k3gd")]
 position = Vector2(536, 1113)

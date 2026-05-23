@@ -39,7 +39,6 @@ var StyloMetter : int = 5
 var StyloString : String = "B"
 
 enum Styles{
-	please_dont_sue_me = 10000,
 	P = 1500,
 	SSS = 1000,
 	SS = 900,

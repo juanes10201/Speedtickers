@@ -52,12 +52,16 @@ const PlayerAfkTime : float = 0.5
 
 @export var BossLifeBar : ProgressBar
 @export var ShieldLifeBar : ProgressBar
-var BossLife : float = 100.0
-var ShieldLife : float = 30.0
+var BossLife : float = 80.0
+var ShieldLife : float = 0.0
 
 @export var AudioShoot : AudioStreamPlayer
 @export var AudioLoad : AudioStreamPlayer
 @export var AudioFall : AudioStreamPlayer
+
+@export var DestroyTilemap : TileMapLayer
+
+@export var CameraPlayer : Camera2D
 
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
@@ -147,9 +151,9 @@ func _shoot_tick(delta : float) -> void:
 		DiagonalShotRayCast.target_position.x = abs(DiagonalShotRayCast.target_position.x)*_calc_player_dir()
 		if(!Sliding):
 			if(is_on_floor() && MidAirShotRayCast.is_colliding()):
-				_shoot_pos(MidAirShotRayCast.target_position)
+				_shoot_pos(MidAirShotRayCast.target_position, .7)
 			if(DiagonalShotRayCast.is_colliding()):
-				_shoot_pos(_predict_player_mov(1.0), .7)
+				_shoot_pos(_predict_player_mov(1.0), 1.0)
 		
 	#Timeout shoot
 	if(abs(PlayerPreviousPos.y-Player.global_position.y)  <= PlayerMoveRadius): #PlayerPreviousPos.distance_to(Player.global_position) <= PlayerMoveRadius):
@@ -165,6 +169,10 @@ func _shoot_tick(delta : float) -> void:
 func _life_boss_tick(delta : float) -> void:
 	BossLifeBar.value = BossLife
 	ShieldLifeBar.value = ShieldLife
+	if(BossLife <= 0):
+		CameraPlayer.limit_right = lerpf(CameraPlayer.limit_right, 2000, 10*delta)
+		if(DestroyTilemap):
+			DestroyTilemap.queue_free()
 
 func _physics_process(delta: float) -> void:
 	_life_boss_tick(delta)
@@ -212,7 +220,8 @@ func _on_shoot_cooldown_timeout() -> void:
 
 
 func _on_boomerang_cooldown_timeout() -> void:
-	Boomerang.enable()
+	if(ProyectileNoMove.is_stopped()):
+		Boomerang.enable()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

@@ -11,7 +11,7 @@ script = ExtResource("1_xrake")
 [node name="Raycast" type="RayCast2D" parent="." unique_id=854193565]
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=1763553763]
-wait_time = 0.2
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

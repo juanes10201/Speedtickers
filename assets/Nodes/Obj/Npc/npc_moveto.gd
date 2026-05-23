@@ -24,7 +24,7 @@ var Move : bool = true
 @export var HideAnim : bool = false
 var Done : bool = false
 var InDialogue : bool = false
-
+@export var Enabled : bool = true
 func _ready() -> void:
 	$DialogueTrigger.Action = Dialogue_Action
 	$DialogueTrigger.NeedAction = NeedToInteract
@@ -34,6 +34,7 @@ func _ready() -> void:
 	$DialogueTrigger.RecordOnlyOnce = RecordOnlyOnce
 
 func _physics_process(delta: float) -> void:
+	if(!Enabled): queue_free()
 	if(Done || (!InDialogue && RecordOnlyOnce && SaveGame.GetDialogue(RecordDialogueId))):
 		Done = true
 		if(Sprite.animation != "hide"): Sprite.play("hide")
