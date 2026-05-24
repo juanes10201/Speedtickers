@@ -49,10 +49,10 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=898028998]
 position = Vector2(0, -1)
 
-[node name="Bg" type="Sprite2D" parent="."]
+[node name="Bg" type="Sprite2D" parent="." unique_id=2013114128]
 visible = false
 texture_repeat = 2
 position = Vector2(-755, -863)
@@ -62,102 +62,101 @@ region_enabled = true
 region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
 script = ExtResource("2_5cd6a")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
-libraries = {
-&"": SubResource("AnimationLibrary_0i2pc")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg" unique_id=2146215]
+libraries/ = SubResource("AnimationLibrary_0i2pc")
 
-[node name="Player" parent="." instance=ExtResource("3_5h4v3")]
+[node name="Player" parent="." unique_id=1156321366 instance=ExtResource("3_5h4v3")]
 position = Vector2(-360, 25)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(24.3886, 26.053)
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1617415063]
+position = Vector2(262.524, 34.568)
 zoom = Vector2(2.08, 2.08)
-limit_left = -403
-limit_right = 338
-limit_bottom = 208
+limit_left = -378
+limit_top = -281
+limit_right = 196
+limit_bottom = 242
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_m5uqm")
 
-[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+[node name="Time_Left" type="Timer" parent="." unique_id=75907469 groups=["GameTimer"]]
 wait_time = 8.0
 one_shot = true
 autostart = true
 
-[node name="Flag" parent="." instance=ExtResource("5_e678g")]
+[node name="Flag" parent="." unique_id=661437730 instance=ExtResource("5_e678g")]
 position = Vector2(-145, 175)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1747639311 groups=["Tileset"]]
 position = Vector2(89, 79)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AADi//3/AAAAAAAAAADi//7/AAAAAAIAAADj//3/AAABAAAAAADj//7/AAABAAIAAADk//3/AAABAAAAAADk//7/AAABAAIAAADl//3/AAACAAAAAADl//7/AAACAAIAAADv//f/AAAAAAcAAADw//f/AAABAAcAAADx//f/AAABAAcAAADy//f/AAABAAcAAADz//f/AAACAAcAAAD3//3/AAAAAAcAAAD4//3/AAABAAcAAAD5//3/AAABAAcAAAD6//3/AAACAAcAAAD3/+//AAAAAAAAACD4/+//AAABAAAAACD5/+//AAABAAAAACD6/+//AAACAAAAACD3/+7/AAAAAAIAACD4/+7/AAABAAIAACD5/+7/AAABAAIAACD6/+7/AAACAAIAACDv/wQAAAAAAAcAAADw/wQAAAABAAcAAADx/wQAAAABAAcAAADy/wQAAAABAAcAAADz/wQAAAACAAcAAADv/wYAAAAJAAAAABDw/wYAAAALAAAAABDy/wYAAAALAAAAAADz/wYAAAAJAAAAAADv/wcAAAAFAAMAAADw/wcAAAAJAAAAABDy/wcAAAAJAAAAAADz/wcAAAAFAAMAAAA=")
 tile_set = ExtResource("6_xhqd5")
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("7_rprtc")]
+[node name="WorldEnvironment" parent="." unique_id=1737180467 instance=ExtResource("7_rprtc")]
 
-[node name="KillBox" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox" parent="." unique_id=236600230 instance=ExtResource("8_rybqb")]
 position = Vector2(-96, 214)
 scale = Vector2(99.32, 1)
 Visible = false
 
-[node name="KillBox9" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox9" parent="." unique_id=1285283429 instance=ExtResource("8_rybqb")]
 position = Vector2(216, -295)
 scale = Vector2(99.32, 1)
 Visible = false
 
-[node name="CanvasLayer" parent="." instance=ExtResource("9_wo7gl")]
+[node name="CanvasLayer" parent="." unique_id=1825251123 instance=ExtResource("9_wo7gl")]
 
-[node name="AmbientParticles" parent="." instance=ExtResource("10_tbfs0")]
+[node name="AmbientParticles" parent="." unique_id=924498955 instance=ExtResource("10_tbfs0")]
 position = Vector2(32, -183)
 
-[node name="Key2" parent="." instance=ExtResource("11_jww4d")]
+[node name="Key2" parent="." unique_id=1785901233 instance=ExtResource("11_jww4d")]
 position = Vector2(-88, -23)
 Respawn = false
 
-[node name="Key5" parent="." instance=ExtResource("11_jww4d")]
+[node name="Key5" parent="." unique_id=264177421 instance=ExtResource("11_jww4d")]
 position = Vector2(-89, -157)
 Respawn = false
 
-[node name="Key4" parent="." instance=ExtResource("11_jww4d")]
+[node name="Key4" parent="." unique_id=1575839141 instance=ExtResource("11_jww4d")]
 position = Vector2(-25, 79)
 Respawn = false
 
-[node name="KillBox2" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox2" parent="." unique_id=1617739693 instance=ExtResource("8_rybqb")]
 position = Vector2(-80, 112)
 scale = Vector2(3, 13)
 
-[node name="KillBox3" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox3" parent="." unique_id=1646920361 instance=ExtResource("8_rybqb")]
 position = Vector2(-88, -90)
 scale = Vector2(2, 5.03)
 
-[node name="KillBox11" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox11" parent="." unique_id=2120343438 instance=ExtResource("8_rybqb")]
 position = Vector2(-18, 121)
 scale = Vector2(5.33, 1)
 
-[node name="KillBox7" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox7" parent="." unique_id=883500643 instance=ExtResource("8_rybqb")]
 position = Vector2(-101, -229)
 scale = Vector2(14.05, 3)
 
-[node name="KillBox8" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox8" parent="." unique_id=1376816283 instance=ExtResource("8_rybqb")]
 position = Vector2(-104, 529)
 scale = Vector2(75.705, 38.47)
 Visible = false
 lavaMovDif = 30.0
 
-[node name="KillBox6" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox6" parent="." unique_id=2059922936 instance=ExtResource("8_rybqb")]
 position = Vector2(25, -61)
 scale = Vector2(2, 23.76)
 
-[node name="Key3" parent="." instance=ExtResource("11_jww4d")]
+[node name="Key3" parent="." unique_id=1033102972 instance=ExtResource("11_jww4d")]
 position = Vector2(-200, 103)
 AnotherAction = 2
 Respawn = false
 
-[node name="KillBox4" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox4" parent="." unique_id=755207682 instance=ExtResource("8_rybqb")]
 position = Vector2(-200, 237)
 scale = Vector2(2, 13)
 
-[node name="KillBox5" parent="." instance=ExtResource("8_rybqb")]
+[node name="KillBox5" parent="." unique_id=191707485 instance=ExtResource("8_rybqb")]
 position = Vector2(-198, -79)
 scale = Vector2(2, 19.02)

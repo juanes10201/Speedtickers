@@ -14,6 +14,8 @@ var PlayerOffset : float
 var PlayerSnapped : bool = false
 @export var EndWithSlam : bool = false
 
+@export var KickDirection : Global.GravityDirections = Global.GravityDirections.MAIN
+
 func _ready() -> void:
 	Path.global_position = self.global_position
 	Path.curve.clear_points()
@@ -59,7 +61,7 @@ func EndPlayerRail(EndSlam : bool = false, VelY : float = 10.0, MoveX : bool = t
 		Player.velocity.y = VelY
 		if(MoveX):
 			Player.KickTimer.start()
-			Player.KickSpeed.x = MoveSpeed*30
+			Player.KickSpeed.x = MoveSpeed*30 * KickDirection
 			if(PathFollow.rotation_degrees >= 100.0): Player.KickSpeed.x *= -1
 		else:
 			Player.Speed.x = 0
