@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b3jlq8xohxw3c" path="res://assets/Nodes/Obj/Gameplay/moving_platform.tscn" id="20_igmjh"]
 [ext_resource type="PackedScene" uid="uid://bpcyg6vqonftj" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish.tscn" id="21_o6cpg"]
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="22_c70bu"]
-[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="23_gfvgd"]
+[ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="23_c70bu"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="24_7liu2"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
@@ -131,6 +131,10 @@ metadata/_snap_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_pknad"]
 resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 50, 51, 0, 0, 0, 0, 369, 53, 0, 0, 0, 0, 197, -105, 0, 0, 0, 0, 9, -97)
+}
+point_count = 4
 
 [node name="Node2D" type="Node2D" unique_id=782773658]
 position = Vector2(0, -1)
@@ -259,7 +263,7 @@ CountTime = false
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=292185324]
 position = Vector2(31.545025, 5.6991425)
 offset = Vector2(-28.055, 23.85)
-zoom = Vector2(2.49, 2.49)
+zoom = Vector2(1.675, 1.675)
 limit_left = -415
 limit_top = -862
 limit_right = 409
@@ -288,34 +292,36 @@ position = Vector2(-229, -256)
 top_level = true
 position = Vector2(-318, -256)
 
-[node name="Rail3" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("MoveRef", "Path", "PathFollow", "RailedNodes")]
+[node name="WindSand" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("Path", "PathFollow", "RailedNodes")]
 position = Vector2(-406, -616)
-points = PackedVector2Array(-6, 6, 0, 2, 270, 2, 274, 5)
+points = PackedVector2Array(50, 51, 369, 53, 197, -105, 9, -97)
+closed = true
 width = 4.835
 width_curve = SubResource("Curve_d77xg")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
 gradient = SubResource("Gradient_75dy6")
 script = ExtResource("22_c70bu")
-MoveRef = NodePath("Path2D/PathFollow2D/MoveRef")
 Path = NodePath("Path2D")
-PathFollow = NodePath("Path2D/PathFollow2D")
+PathFollow = NodePath("Path2D/WindSandPathFollow")
 RailedNodes = NodePath("RailedNodes")
 
-[node name="Path2D" type="Path2D" parent="Rail3" unique_id=182914977]
+[node name="Path2D" type="Path2D" parent="WindSand" unique_id=182914977]
 curve = SubResource("Curve2D_pknad")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Rail3/Path2D" unique_id=501016468]
-loop = false
+[node name="WindSandPathFollow" type="PathFollow2D" parent="WindSand/Path2D" unique_id=501016468]
+position = Vector2(50, 51)
+rotation = 0.0062695104
+script = ExtResource("23_c70bu")
 
-[node name="MoveRef" type="Sprite2D" parent="Rail3/Path2D/PathFollow2D" unique_id=720746459]
-visible = false
-scale = Vector2(0.14, 0.14)
-texture = ExtResource("23_gfvgd")
+[node name="Enemie2" parent="WindSand/Path2D/WindSandPathFollow" unique_id=1044905873 instance=ExtResource("16_75dy6")]
+position = Vector2(0, 0)
+EnemyDirection = 2
+Enabled = false
 
-[node name="FallCooldown" type="Timer" parent="Rail3" unique_id=685187114]
+[node name="FallCooldown" type="Timer" parent="WindSand" unique_id=685187114]
 wait_time = 0.5
 one_shot = true
 
-[node name="RailedNodes" type="Node2D" parent="Rail3" unique_id=623492847]
+[node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=623492847]
 top_level = true
 script = ExtResource("24_7liu2")

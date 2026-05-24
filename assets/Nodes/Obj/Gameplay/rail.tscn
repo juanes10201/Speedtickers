@@ -14,7 +14,7 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_u35qx"]
 resource_local_to_scene = true
 
-[node name="Rail" type="Line2D" node_paths=PackedStringArray("FallCooldown", "MoveRef", "Path", "PathFollow")]
+[node name="Rail" type="Line2D" unique_id=607275562 node_paths=PackedStringArray("FallCooldown", "MoveRef", "Path", "PathFollow")]
 points = PackedVector2Array(-6, 6, 0, 2, 270, 2, 274, 5)
 width = 4.835
 width_curve = SubResource("Curve_d77xg")
@@ -26,17 +26,17 @@ MoveRef = NodePath("Path2D/PathFollow2D/MoveRef")
 Path = NodePath("Path2D")
 PathFollow = NodePath("Path2D/PathFollow2D")
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="." unique_id=2055011182]
 curve = SubResource("Curve2D_u35qx")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=305946612]
 loop = false
 
-[node name="MoveRef" type="Sprite2D" parent="Path2D/PathFollow2D"]
+[node name="MoveRef" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=210090366]
 visible = false
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("2_pxxnd")
 
-[node name="FallCooldown" type="Timer" parent="."]
+[node name="FallCooldown" type="Timer" parent="." unique_id=617978959]
 wait_time = 0.5
 one_shot = true
