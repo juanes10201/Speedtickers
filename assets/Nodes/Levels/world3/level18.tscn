@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="14_yolq8"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="15_5064t"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="16_flaqu"]
+[ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="17_mwwlh"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -65,7 +66,7 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_m2ygx"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 70, -17, 0, 0, 0, 0, 106, -94, 0, 0, 0, 0, 204, -77, 0, 0, 0, 0, 235, -130, 0, 0, 0, 0, 325, -131, 0, 0, 0, 0, 343, -54, 0, 0, 0, 0, 85, 48, 0, 0, 0, 0, 70, -17)
+"points": PackedVector2Array(0, 0, 0, 0, 70, -17, 0, 0, 0, 0, 106, -94, 0, 0, 0, 0, 204, -77, 0, 0, 0, 0, 226, -131, 0, 0, 0, 0, 357, -135, 0, 0, 0, 0, 343, -54, 0, 0, 0, 0, 85, 48, 0, 0, 0, 0, 70, -17)
 }
 point_count = 8
 
@@ -89,10 +90,11 @@ libraries/ = SubResource("AnimationLibrary_0i2pc")
 position = Vector2(-346, -19)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=390457935]
-position = Vector2(30, 26.053)
+position = Vector2(234.845, -61.222)
 zoom = Vector2(2.08, 2.08)
 limit_left = -403
-limit_right = 338
+limit_top = -350
+limit_right = 175
 limit_bottom = 153
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -104,7 +106,7 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." unique_id=1273041 instance=ExtResource("5_b7gjd")]
-position = Vector2(116, -165)
+position = Vector2(109, -173)
 
 [node name="AmbientParticles2" parent="." unique_id=350597279 instance=ExtResource("6_cjquh")]
 position = Vector2(-96, -160)
@@ -117,7 +119,7 @@ position = Vector2(-327, -18)
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=246146196 groups=["Tileset"]]
 position = Vector2(-4, 32)
 scale = Vector2(1.01399, 1)
-tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//r/AAACAAAAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAAAFAPX/AAAAAAAAAAAGAPX/AAABAAAAAAAHAPX/AAABAAAAAAAIAPX/AAABAAAAAAAJAPX/AAABAAAAAAAFAPr/AAAAAAEAAAAFAPv/AAAAAAIAAAAGAPv/AAABAAIAAAAHAPv/AAABAAIAAAAIAPv/AAABAAIAAAAJAPv/AAABAAIAAAAGAPr/AAABAAEAAAAHAPr/AAABAAEAAAAIAPr/AAABAAEAAAAJAPr/AAABAAEAAAAFAPn/AAAAAAEAAAAGAPn/AAABAAEAAAAHAPn/AAABAAEAAAAIAPn/AAABAAEAAAAJAPn/AAABAAEAAAAFAPf/AAAAAAEAAAAGAPf/AAABAAEAAAAHAPf/AAABAAEAAAAIAPf/AAABAAEAAAAJAPf/AAABAAEAAAAFAPj/AAAAAAEAAAAGAPj/AAABAAEAAAAHAPj/AAABAAEAAAAIAPj/AAABAAEAAAAJAPj/AAABAAEAAAAFAPb/AAAAAAEAAAAGAPb/AAABAAEAAAAHAPb/AAABAAEAAAAIAPb/AAABAAEAAAAJAPb/AAABAAEAAAD1/+3/AAABAAEAAAD1/+z/AAABAAEAAAD0/+3/AAABAAEAAAD0/+z/AAABAAEAAADz/+3/AAABAAEAAADz/+z/AAABAAEAAADy/+3/AAABAAEAAADy/+z/AAABAAEAAADx/+3/AAABAAEAAADx/+z/AAABAAEAAADw/+3/AAABAAEAAADw/+z/AAABAAEAAAD//+v/AAABAAEAAAD+/+v/AAABAAEAAAD9/+v/AAABAAEAAAD8/+v/AAABAAEAAAD7/+v/AAABAAEAAAD6/+v/AAABAAEAAAD5/+v/AAABAAEAAAD4/+v/AAABAAEAAAD3/+v/AAABAAEAAAD2/+v/AAABAAEAAAD1/+v/AAABAAEAAAD0/+v/AAABAAEAAADz/+v/AAABAAEAAAAHAOz/AAACAAIAAAAHAOv/AAACAAEAAAAHAOr/AAACAAAAAAAGAOz/AAABAAIAAAAGAOv/AAABAAEAAAAGAOr/AAABAAAAAAAFAOz/AAABAAEAAAAFAOv/AAABAAEAAAAFAOr/AAABAAAAAAAEAOz/AAABAAEAAAAEAOv/AAABAAEAAAAEAOr/AAABAAAAAAADAOz/AAABAAEAAAADAOv/AAABAAEAAAADAOr/AAABAAAAAAACAOz/AAABAAEAAAACAOv/AAABAAEAAAACAOr/AAABAAAAAAABAOz/AAABAAEAAAABAOv/AAABAAEAAAABAOr/AAABAAAAAAAAAOz/AAABAAEAAAAAAOv/AAABAAEAAAAAAOr/AAABAAAAAAD//+z/AAABAAEAAAD//+r/AAABAAAAAAD+/+z/AAABAAEAAAD+/+r/AAABAAAAAAD9/+z/AAABAAEAAAD9/+r/AAABAAAAAAD8/+z/AAABAAEAAAD8/+r/AAABAAAAAAD7/+z/AAABAAEAAAD7/+r/AAABAAAAAAD6/+z/AAABAAEAAAD6/+r/AAABAAAAAAD5/+z/AAABAAEAAAD5/+r/AAABAAAAAAD4/+z/AAABAAEAAAD4/+r/AAABAAAAAAD3/+z/AAABAAEAAAD3/+r/AAABAAAAAAD2/+z/AAABAAEAAAD2/+r/AAABAAAAAAD1/+r/AAABAAAAAAD0/+r/AAABAAAAAADz/+r/AAABAAAAAADy/+v/AAABAAEAAADy/+r/AAABAAAAAADx/+v/AAABAAEAAADx/+r/AAABAAAAAADw/+v/AAABAAEAAADw/+r/AAABAAAAAADv/+z/AAABAAEAAADv/+v/AAAAAAEAAADv/+r/AAAAAAAAAAAFAO3/AAACAAIAAAAEAO3/AAABAAIAAAADAO3/AAABAAIAAAACAO3/AAABAAIAAAABAO3/AAABAAIAAAAAAO3/AAABAAEAAAD//+3/AAABAAEAAAD+/+3/AAABAAEAAAD9/+3/AAABAAEAAAD8/+3/AAABAAEAAAD7/+3/AAABAAEAAAD6/+3/AAABAAEAAAD5/+3/AAABAAEAAAD4/+3/AAABAAEAAAD3/+3/AAABAAEAAAD2/+3/AAABAAEAAADv/+3/AAABAAEAAADu/+3/AAABAAEAAADu/+z/AAABAAEAAADt/+3/AAABAAEAAADt/+z/AAABAAEAAADs/+3/AAABAAEAAADs/+z/AAABAAEAAADr/+3/AAABAAEAAADr/+z/AAABAAEAAAAAAO7/AAACAAIAAAD//+7/AAABAAIAAAD+/+7/AAABAAIAAAD9/+7/AAABAAIAAAD8/+7/AAABAAIAAAD7/+7/AAABAAIAAAD6/+7/AAABAAEAAAD5/+7/AAABAAEAAAD4/+7/AAABAAEAAAD3/+7/AAABAAEAAAD2/+7/AAABAAEAAAD1/+7/AAABAAEAAAD0/+7/AAABAAEAAADz/+7/AAABAAEAAADy/+7/AAABAAEAAADx/+7/AAABAAEAAADw/+7/AAABAAEAAADv/+7/AAABAAEAAADu/+7/AAABAAEAAADt/+7/AAABAAEAAADs/+7/AAABAAEAAADr/+7/AAABAAEAAAD6/+//AAACAAIAAAD5/+//AAABAAIAAAD4/+//AAABAAIAAAD3/+//AAABAAIAAAD2/+//AAABAAIAAAD1/+//AAABAAIAAAD0/+//AAABAAIAAADz/+//AAABAAIAAADy/+//AAABAAIAAADx/+//AAABAAEAAADw/+//AAABAAEAAADv/+//AAABAAEAAADu/+//AAABAAEAAADt/+//AAABAAEAAADs/+//AAABAAEAAADr/+//AAABAAEAAADq/+//AAABAAEAAADq/+7/AAABAAEAAADq/+3/AAABAAEAAADq/+z/AAABAAEAAADp/+//AAABAAEAAADp/+7/AAABAAEAAADp/+3/AAABAAEAAADp/+z/AAABAAEAAADo/+//AAABAAEAAADo/+7/AAABAAEAAADo/+3/AAABAAEAAADo/+z/AAABAAEAAADn/+//AAABAAEAAADn/+7/AAABAAEAAADn/+3/AAABAAEAAADn/+z/AAAAAAEAAADx//D/AAACAAIAAADw//D/AAABAAIAAADv//D/AAABAAIAAADu//D/AAABAAIAAADt//D/AAABAAIAAADs//D/AAABAAIAAADr//D/AAABAAIAAADq//D/AAABAAIAAADp//D/AAABAAIAAADo//D/AAABAAIAAADn//D/AAABAAIAAADm//D/AAABAAIAAADm/+//AAABAAEAAADm/+7/AAABAAEAAADm/+3/AAABAAEAAADl//D/AAABAAIAAADl/+//AAABAAEAAADl/+7/AAABAAEAAADl/+3/AAABAAEAAADk//D/AAAAAAIAAADk/+//AAAAAAEAAADk/+7/AAAAAAEAAADk/+3/AAAAAAEAAADz//v/AAAAAAAAAADz//z/AAAAAAIAAAD0//v/AAABAAAAAAD0//z/AAABAAIAAAD1//v/AAABAAAAAAD1//z/AAABAAIAAAD2//v/AAACAAAAAAD2//z/AAACAAIAAAD8//j/AAAAAAAAAAD8//n/AAAAAAIAAAD9//j/AAABAAAAAAD9//n/AAABAAIAAAD+//j/AAABAAAAAAD+//n/AAABAAIAAAD///j/AAACAAAAAAD///n/AAACAAIAAAA=")
+tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//r/AAACAAAAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAADz//v/AAAAAAAAAADz//z/AAAAAAIAAAD0//v/AAABAAAAAAD0//z/AAABAAIAAAD1//v/AAABAAAAAAD1//z/AAABAAIAAAD2//v/AAACAAAAAAD2//z/AAACAAIAAAAFAO//AAAAAAEAAAAFAPD/AAAAAAEAACAFAPH/AAAAAAAAACAGAO//AAABAAEAAAAGAPD/AAABAAEAACAGAPH/AAABAAAAACAHAO//AAABAAEAAAAHAPD/AAABAAEAACAHAPH/AAABAAAAACAIAO//AAACAAEAAAAIAPD/AAACAAEAAAAIAPH/AAACAAAAACD8/+3/AAAAAAAAACD9/+3/AAABAAAAACD+/+3/AAABAAAAACD//+3/AAACAAAAACD8/+v/AAAAAAIAACD8/+z/AAAAAAEAACD9/+v/AAABAAIAACD9/+z/AAABAAEAACD+/+v/AAABAAIAACD+/+z/AAABAAEAACD//+v/AAACAAIAACD//+z/AAACAAEAACAIAO7/AAACAAEAAAAIAO3/AAACAAIAACAHAO7/AAABAAEAAAAHAO3/AAABAAIAACAGAO7/AAABAAEAAAAGAO3/AAABAAIAACAFAO7/AAAAAAEAAAAFAO3/AAAAAAIAACA=")
 tile_set = ExtResource("9_w72is")
 
 [node name="WorldEnvironment" parent="." unique_id=303150478 instance=ExtResource("10_qjlcw")]
@@ -136,7 +138,7 @@ Visible = false
 
 [node name="WindSand" type="Line2D" parent="." unique_id=424187687 node_paths=PackedStringArray("Path", "RailedNodes")]
 position = Vector2(-325, 7)
-points = PackedVector2Array(70, -17, 106, -94, 204, -77, 235, -130, 325, -131, 343, -54, 85, 48)
+points = PackedVector2Array(70, -17, 106, -94, 204, -77, 226, -131, 357, -135, 343, -54, 85, 48)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_7ug0n")
@@ -174,7 +176,7 @@ position = Vector2(0, -1.9073486e-06)
 EnabledPhysics = false
 
 [node name="WindSandPathFollow4" type="PathFollow2D" parent="WindSand/Path2D" unique_id=882792098 node_paths=PackedStringArray("Line")]
-position = Vector2(208.67522, -84.9931)
+position = Vector2(207.49887, -85.58812)
 progress = 193.75
 rotates = false
 script = ExtResource("14_yolq8")
@@ -185,7 +187,7 @@ position = Vector2(0, -1.9073486e-06)
 EnabledPhysics = false
 
 [node name="WindSandPathFollow5" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1366382257 node_paths=PackedStringArray("Line")]
-position = Vector2(288.88638, -130.59874)
+position = Vector2(282.94894, -132.7389)
 progress = 299.75
 rotates = false
 script = ExtResource("14_yolq8")
@@ -196,7 +198,7 @@ position = Vector2(0, -1.9073486e-06)
 EnabledPhysics = false
 
 [node name="WindSandPathFollow6" type="PathFollow2D" parent="WindSand/Path2D" unique_id=226083687 node_paths=PackedStringArray("Line")]
-position = Vector2(337.8259, -76.133675)
+position = Vector2(353.87476, -116.91826)
 progress = 392.2
 rotates = false
 script = ExtResource("14_yolq8")
@@ -207,7 +209,7 @@ position = Vector2(0, -1.9073486e-06)
 EnabledPhysics = false
 
 [node name="WindSandPathFollow7" type="PathFollow2D" parent="WindSand/Path2D" unique_id=92854209 node_paths=PackedStringArray("Line")]
-position = Vector2(286.03754, -31.479975)
+position = Vector2(324.2789, -46.598637)
 progress = 476.2
 rotates = false
 script = ExtResource("14_yolq8")
@@ -218,7 +220,7 @@ position = Vector2(0, -1.9073486e-06)
 EnabledPhysics = false
 
 [node name="WindSandPathFollow8" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1145265735 node_paths=PackedStringArray("Line")]
-position = Vector2(214.05666, -3.0223954)
+position = Vector2(252.26993, -18.12998)
 progress = 553.6
 rotates = false
 script = ExtResource("14_yolq8")
@@ -229,13 +231,24 @@ position = Vector2(0, -1.9073486e-06)
 EnabledPhysics = false
 
 [node name="WindSandPathFollow9" type="PathFollow2D" parent="WindSand/Path2D" unique_id=794374757 node_paths=PackedStringArray("Line")]
-position = Vector2(137.10146, 27.401743)
+position = Vector2(175.31403, 12.294458)
 progress = 636.35
 rotates = false
 script = ExtResource("14_yolq8")
 Line = NodePath("../..")
 
 [node name="Enemie" parent="WindSand/Path2D/WindSandPathFollow9" unique_id=1103387130 instance=ExtResource("15_5064t")]
+position = Vector2(0, -1.9073486e-06)
+EnabledPhysics = false
+
+[node name="WindSandPathFollow10" type="PathFollow2D" parent="WindSand/Path2D" unique_id=180633046 node_paths=PackedStringArray("Line")]
+position = Vector2(103.4472, 40.706924)
+progress = 713.5956
+rotates = false
+script = ExtResource("14_yolq8")
+Line = NodePath("../..")
+
+[node name="Enemie" parent="WindSand/Path2D/WindSandPathFollow10" unique_id=2009381715 instance=ExtResource("15_5064t")]
 position = Vector2(0, -1.9073486e-06)
 EnabledPhysics = false
 
@@ -246,3 +259,6 @@ one_shot = true
 [node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=382208093]
 top_level = true
 script = ExtResource("16_flaqu")
+
+[node name="Key3" parent="." unique_id=518495141 instance=ExtResource("17_mwwlh")]
+position = Vector2(-42, -75)
