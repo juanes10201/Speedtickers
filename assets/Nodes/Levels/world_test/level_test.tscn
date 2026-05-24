@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="22_c70bu"]
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="23_c70bu"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="24_7liu2"]
+[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="24_gfvgd"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -132,9 +133,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_pknad"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 51, 0, 0, 0, 0, 369, 53, 0, 0, 0, 0, 197, -105, 0, 0, 0, 0, 9, -97)
+"points": PackedVector2Array(0, 0, 0, 0, 50, 51, 0, 0, 0, 0, 81, 14, 0, 0, 0, 0, 524, 16, 0, 0, 0, 0, 197, -105, 0, 0, 0, 0, 85, -55, 0, 0, 0, 0, 9, -97, 0, 0, 0, 0, 50, 51)
 }
-point_count = 4
+point_count = 7
 
 [node name="Node2D" type="Node2D" unique_id=782773658]
 position = Vector2(0, -1)
@@ -257,7 +258,7 @@ AditionalActionArgument = -287.2
 position = Vector2(-463, -623)
 
 [node name="Player" parent="." unique_id=1683755303 instance=ExtResource("5_ljyct")]
-position = Vector2(-245, -595)
+position = Vector2(-232, -619)
 CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=292185324]
@@ -294,7 +295,7 @@ position = Vector2(-318, -256)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("Path", "PathFollow", "RailedNodes")]
 position = Vector2(-406, -616)
-points = PackedVector2Array(50, 51, 369, 53, 197, -105, 9, -97)
+points = PackedVector2Array(50, 51, 81, 14, 524, 16, 197, -105, 85, -55, 9, -97)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_d77xg")
@@ -310,12 +311,46 @@ curve = SubResource("Curve2D_pknad")
 
 [node name="WindSandPathFollow" type="PathFollow2D" parent="WindSand/Path2D" unique_id=501016468]
 position = Vector2(50, 51)
-rotation = 0.0062695104
+rotation = -0.8734056
 script = ExtResource("23_c70bu")
+Speed = 250.0
 
 [node name="Enemie2" parent="WindSand/Path2D/WindSandPathFollow" unique_id=1044905873 instance=ExtResource("16_75dy6")]
 position = Vector2(0, 0)
 EnemyDirection = 2
+Enabled = false
+
+[node name="WindSandPathFollow2" type="PathFollow2D" parent="WindSand/Path2D" unique_id=303901127]
+position = Vector2(152.46947, 14.322661)
+rotation = 0.004514642
+progress = 119.75
+script = ExtResource("23_c70bu")
+Speed = 250.0
+
+[node name="falling_sand" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=214611821 instance=ExtResource("24_gfvgd")]
+position = Vector2(0, 0)
+Enabled = false
+
+[node name="WindSandPathFollow3" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1855012767]
+position = Vector2(169.62271, 14.400103)
+rotation = 0.004514642
+progress = 136.9
+script = ExtResource("23_c70bu")
+Speed = 250.0
+
+[node name="falling_sand" parent="WindSand/Path2D/WindSandPathFollow3" unique_id=1460931036 instance=ExtResource("24_gfvgd")]
+position = Vector2(0, 0)
+Enabled = false
+
+[node name="WindSandPathFollow4" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1286357176]
+position = Vector2(185.62158, 14.472332)
+rotation = 0.004514642
+progress = 152.9
+script = ExtResource("23_c70bu")
+Speed = 250.0
+
+[node name="falling_sand" parent="WindSand/Path2D/WindSandPathFollow4" unique_id=219093285 instance=ExtResource("24_gfvgd")]
+position = Vector2(0, 0)
 Enabled = false
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=685187114]

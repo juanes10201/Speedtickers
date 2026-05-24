@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-const Speed : float = 100.0
+@export var Speed : float = 100.0
 
 
 # Called when the node enters the scene tree for the first time.

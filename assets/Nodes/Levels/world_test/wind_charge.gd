@@ -14,6 +14,7 @@ func _reload() -> void:
 	Path.curve.clear_points()
 	for point in points:
 		Path.curve.add_point(point)
+	Path.curve.add_point(points[0])
 
 func _ready() -> void:
 	_reload()

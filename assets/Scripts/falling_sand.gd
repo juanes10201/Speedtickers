@@ -33,6 +33,7 @@ var StatePlaying : bool = false
 @onready var RetroTimer = $RetroTimer
 @onready var RetroTimerMove = $RetroTimerMove
 var paused : bool = false
+@export var Enabled : bool = true
 
 #region Editor
 var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
@@ -151,6 +152,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		set_falling(true)
 
 func set_falling(falling : bool) -> void:
+	if(!Enabled): return
 	print("Changing sand fall to " + str(falling))
 	if(falling && RetroStyle && !is_falling):
 		RetroTimer.start()
