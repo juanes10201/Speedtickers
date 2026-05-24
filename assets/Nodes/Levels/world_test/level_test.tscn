@@ -133,9 +133,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_pknad"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 51, 0, 0, 0, 0, 81, 14, 0, 0, 0, 0, 524, 16, 0, 0, 0, 0, 197, -105, 0, 0, 0, 0, 85, -55, 0, 0, 0, 0, 9, -97, 0, 0, 0, 0, 50, 51)
+"points": PackedVector2Array(0, 0, 0, 0, 50, 51, 0, 0, 0, 0, 50, 51, 0, 0, 0, 0, 81, 14, 0, 0, 0, 0, 524, 16, 0, 0, 0, 0, 197, -105, 0, 0, 0, 0, 9, -97, 0, 0, 0, 0, 85, -55, 0, 0, 0, 0, 9, -97, 0, 0, 0, 0, 50, 51)
 }
-point_count = 7
+point_count = 9
 
 [node name="Node2D" type="Node2D" unique_id=782773658]
 position = Vector2(0, -1)
@@ -310,8 +310,7 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_pknad")
 
 [node name="WindSandPathFollow" type="PathFollow2D" parent="WindSand/Path2D" unique_id=501016468]
-position = Vector2(50, 51)
-rotation = -0.8734056
+position = Vector2(49.916748, 51.099365)
 script = ExtResource("23_c70bu")
 Speed = 250.0
 

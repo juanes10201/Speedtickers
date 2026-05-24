@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var Cancel_speed : float = 200.0
 @export var Max_groundsmash_distance = 300.0
 @export var Can_BeGroundSmash : bool = true
+@export var EnabledPhysics : bool = true
 
 #For editor
 enum Directions{
@@ -187,7 +188,7 @@ func _process(delta: float) -> void:
 	
 	if(enemy_type == 2.0): _Enemie_Shoot_Sprite_Shader()
 	#region Physics
-	if(Enabled):
+	if(Enabled && EnabledPhysics):
 		#if(Player):
 		if(Particles && _is_on_floor() && velocity.x > 0):
 			$Moveparticles.emitting = true

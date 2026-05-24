@@ -72,10 +72,12 @@ libraries/ = SubResource("AnimationLibrary_0i2pc")
 position = Vector2(-344, 73)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=459020492]
-position = Vector2(14.455, -64.442)
+position = Vector2(183.45502, -48.442)
 zoom = Vector2(2.08, 2.08)
 limit_left = -448
-limit_right = 338
+limit_top = -183
+limit_right = 118
+limit_bottom = 830
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_4wgtk")
@@ -126,12 +128,12 @@ position = Vector2(-105, -87)
 Respawn = false
 
 [node name="KillBox12" parent="." unique_id=701997318 instance=ExtResource("7_itxwh")]
-position = Vector2(-217, -337)
+position = Vector2(-222, -337.00003)
 scale = Vector2(2, 39.91)
 
 [node name="KillBox13" parent="." unique_id=1362716973 instance=ExtResource("7_itxwh")]
-position = Vector2(-223.00002, 263.99997)
-scale = Vector2(2, 27)
+position = Vector2(-222.00002, 271.99997)
+scale = Vector2(2, 28.77)
 
 [node name="KillBox14" parent="." unique_id=1764440595 instance=ExtResource("7_itxwh")]
 position = Vector2(-160, 89)
@@ -174,20 +176,20 @@ position = Vector2(-103, 290)
 scale = Vector2(2, 14.88)
 
 [node name="KillBox23" parent="." unique_id=1306315066 instance=ExtResource("7_itxwh")]
-position = Vector2(-103, 714.00507)
-scale = Vector2(2, 28.625)
+position = Vector2(-104, 661.005)
+scale = Vector2(2, 18.09)
 
 [node name="KillBox26" parent="." unique_id=913016430 instance=ExtResource("7_itxwh")]
-position = Vector2(-7, 754)
-scale = Vector2(2, 34.265)
+position = Vector2(-7, 643.00006)
+scale = Vector2(2, 20.065)
 
 [node name="KillBox17" parent="." unique_id=649580576 instance=ExtResource("7_itxwh")]
 position = Vector2(-23.000002, -180.00002)
 scale = Vector2(2, 47.905)
 
 [node name="KillBox16" parent="." unique_id=1154374545 instance=ExtResource("7_itxwh")]
-position = Vector2(-104, -202.00002)
-scale = Vector2(2, 10)
+position = Vector2(-105, -315)
+scale = Vector2(2, 24.8)
 
 [node name="Flag2" parent="." unique_id=689353913 instance=ExtResource("11_8dgio")]
 position = Vector2(-73, 748)

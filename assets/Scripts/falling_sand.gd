@@ -34,6 +34,7 @@ var StatePlaying : bool = false
 @onready var RetroTimerMove = $RetroTimerMove
 var paused : bool = false
 @export var Enabled : bool = true
+@export var CanKillPlayer : bool = true
 
 #region Editor
 var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
@@ -79,7 +80,7 @@ func _input(event):
 
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
-	if(!is_falling && Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
+	if(!is_falling && Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
 		set_falling(true)
 	if(Player):
 		CurrentGravityDirection = GravityDirection * Player.GlobalGravityDirection
@@ -172,7 +173,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_area_2d_crush_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player") && Player.GravityDirection != Global.GravityDirections.INVERTED && CurrentGravityDirection != Global.GravityDirections.INVERTED):
-		body.On_Death()
+		if(CanKillPlayer):
+			body.On_Death()
 
 
 func _on_retro_timer_timeout() -> void:
