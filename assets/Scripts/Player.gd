@@ -916,7 +916,9 @@ func _physics_walljump(delta: float) -> void:
 	if(is_near_wall() && direction && !Slide):
 		CanJump = true 
 		Dashed = false
+		#print("walljump")
 		if($Wallchecker.get_collider() is not StaticBody2D || $Wallchecker.get_collider().collision_layer != 65536):
+			print("walljump")
 			velocity.y += 50* delta * GravityDirection
 			if(!WallJump): velocity.y = 50 * GravityDirection
 		else:
