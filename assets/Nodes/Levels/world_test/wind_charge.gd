@@ -2,7 +2,6 @@
 extends Line2D
 
 @export var Path : Path2D
-@export var MoveSpeed : float = 700
 @export var MovOffset : Vector2 = Vector2(0.0, -5.0)
 @export var EndWithSlam : bool = false
 @export var RailedNodes : Node

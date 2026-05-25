@@ -1259,6 +1259,11 @@ process_material = SubResource("ParticleProcessMaterial_0hfwl")
 wait_time = 0.3
 one_shot = true
 
+[node name="CeilingRaycast" type="RayCast2D" parent="." unique_id=672838504]
+position = Vector2(0, -8)
+target_position = Vector2(0, -15)
+collision_mask = 350
+
 [connection signal="area_entered" from="WaterArea" to="." method="_on_water_area_area_entered"]
 [connection signal="area_exited" from="WaterArea" to="." method="_on_water_area_area_exited"]
 [connection signal="body_entered" from="WaterArea" to="." method="_on_water_area_body_entered"]

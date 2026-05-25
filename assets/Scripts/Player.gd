@@ -123,6 +123,7 @@ var direction = get_axis()
 @onready var ParticlesDeathFloor : GPUParticles2D = $ParticlesDeathFloor
 @onready var ParticlesDeathAir : GPUParticles2D = $ParticlesDeathAir
 @onready var SlidingOnRamp : bool = false
+@onready var CeilingRaycast : RayCast2D = $CeilingRaycast
 
 @onready var AudioRail : AudioStreamPlayer = $AudioRail
 @onready var AudioDash : AudioStreamPlayer = $AudioDash
@@ -195,6 +196,8 @@ var PlayedSwitchedGravityAnimation : bool = false
 
 var KickSpeed : Vector2 = Vector2(0.0,0.0)
 @onready var KickTimer : Timer = $KickTimer
+
+
 
 enum AirSides{
 	Jumping = 1,
@@ -1047,17 +1050,23 @@ func _is_on_floor_raycast() -> bool:
 	GroundRaycast.enabled = true
 	return GroundRaycast.is_colliding()
 
+func _is_on_ceiling_raycast() -> bool:
+	CeilingRaycast.enabled = true
+	return CeilingRaycast.is_colliding()
+
 func _is_on_floor() -> bool:
+	#print("Is on floor: " + str(is_on_floor()))
+	#print("Is on Ceiling: " + str(is_on_ceiling()))
 	if(GravityDirection == Global.GravityDirections.MAIN):
 		return is_on_floor()
 	else:
-		return is_on_ceiling()
+		return _is_on_ceiling_raycast()
 
 func _is_on_ceiling() -> bool:
 	if(GravityDirection == Global.GravityDirections.INVERTED):
 		return is_on_floor()
 	else:
-		return is_on_ceiling()
+		return _is_on_ceiling_raycast()
 
 #region Wall Checker
 func is_near_wall() -> bool:
