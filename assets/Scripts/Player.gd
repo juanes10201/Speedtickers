@@ -913,17 +913,22 @@ func _physics_dash(delta: float) -> void:
 
 
 #region WallJump
+var WalljumpVel : float = 0.0
 func _physics_walljump(delta: float) -> void:
+	print(velocity.y)
 	#The idea is to mantain some vertical movement, but still be able to jump more than before, like SuperMeatBoy
+	#print(velocity.y)
 	direction = get_axis()
 	if(is_near_wall() && direction && !Slide):
 		CanJump = true 
 		Dashed = false
 		#print("walljump")
 		if($Wallchecker.get_collider() is not StaticBody2D || $Wallchecker.get_collider().collision_layer != 65536):
-			print("walljump")
-			velocity.y += 50* delta * GravityDirection
-			if(!WallJump): velocity.y = 50 * GravityDirection
+			#print("walljump")
+			WalljumpVel += 50* delta * GravityDirection
+			if(!WallJump): 
+				WalljumpVel = 50 * GravityDirection
+			velocity.y = WalljumpVel
 		else:
 			velocity.y = 0.0
 		WallJump = true
@@ -977,6 +982,8 @@ func FrameFreeze(TimeScale, duration):
 #endregion
 
 func get_gravity_player() -> float:
+	if(GravityDirection == Global.GravityDirections.INVERTED):
+		return fall_gravity if velocity.y < 0.0 else jump_gravity
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 #region Death
@@ -1051,8 +1058,11 @@ func _is_on_floor_raycast() -> bool:
 	return GroundRaycast.is_colliding()
 
 func _is_on_ceiling_raycast() -> bool:
-	CeilingRaycast.enabled = true
-	return CeilingRaycast.is_colliding()
+	CeilingRaycast.set_collision_mask_value(4, GroundSmash)
+	if(CeilingRaycast):
+		CeilingRaycast.enabled = true
+		return CeilingRaycast.is_colliding()
+	return is_on_ceiling()
 
 func _is_on_floor() -> bool:
 	#print("Is on floor: " + str(is_on_floor()))

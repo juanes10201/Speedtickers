@@ -101,6 +101,11 @@ position = Vector2(-192, 201)
 scale = Vector2(99.32, 1)
 Visible = false
 
+[node name="KillBox2" parent="." unique_id=1386857898 instance=ExtResource("8_88q82")]
+position = Vector2(-205.00002, -300)
+scale = Vector2(99.32, 1)
+Visible = false
+
 [node name="CanvasLayer" parent="." unique_id=1842600422 instance=ExtResource("9_c6yi7")]
 
 [node name="AmbientParticles" parent="." unique_id=676145132 instance=ExtResource("10_rj2v6")]

@@ -105,7 +105,7 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." unique_id=1273041 instance=ExtResource("5_63w4r")]
-position = Vector2(116, -165)
+position = Vector2(128, -163)
 
 [node name="AmbientParticles2" parent="." unique_id=350597279 instance=ExtResource("6_o52aa")]
 position = Vector2(-96, -160)
