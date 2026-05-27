@@ -93,8 +93,35 @@ func GetLevelTime(Level : float) -> float:
 #	}
 #
 #}
-func GetUser(Times : Dictionary, index : int) -> Dictionary:
-	return Times.users[index]
+
+#Asumimos que estan sorteados en tiempo
+var UserTimes : Dictionary = {
+	"level0" : {
+		"users" : [
+			{
+				"time": 0.05,
+				"name": "pla1",
+				"uuid": ""
+			},
+			{
+				"time": 1.00,
+				"name": "pla2",
+				"uuid": ""
+			}
+		]
+	}
+}
+
+func GetLevelTimeDiccionary(level : int) -> Dictionary:
+	var s : String = "level"+str(level)
+	if(UserTimes.has(s)): return UserTimes[s]
+	return {}
+
+func GetUserLevelDiccionary(level : int, index : int) -> Dictionary:
+	var LevelDic : Dictionary = GetLevelTimeDiccionary(level)
+	if(LevelDic.has("users") && LevelDic["users"].size()-1 >= index):
+		return LevelDic["users"][index]
+	return {}
 
 func GetPlayerUserName() -> String:
 	var name = Steam.getPersonaName()
