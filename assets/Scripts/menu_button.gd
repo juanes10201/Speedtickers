@@ -39,6 +39,9 @@ var tween_hover = null
 var tween_press = null
 var tween_normal = null
 
+@export var LevelBg : AnimatedSprite2D
+@export var LevelRanking : Control
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#if(text == "1"):
@@ -68,8 +71,8 @@ func _process(delta: float) -> void:
 			#Checks if mouse is touching button or if has focused(For controller support)
 			if(has_focus() || (Mouse_pos.x >= self.position.x && Mouse_pos.x <= self.position.x + self.size.x && Mouse_pos.y >= self.position.y && Mouse_pos.y <= self.position.y + self.size.y+20)):
 				if(IsPixelartButton && !touching_mouse):
-					if($"../../Bg"): $"../../Bg".frame = int(text)-1
-					if($"../Iconuser"): $"../Iconuser"._update_best_scores(float(text))
+					if(LevelBg): LevelBg.frame = int(text)-1
+					if(LevelRanking): LevelRanking._update_best_scores(float(text))
 				touching_mouse = true
 				if(IsPixelartButton): icon = tex_selected
 				#region On pressed

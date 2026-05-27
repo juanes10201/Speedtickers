@@ -88,6 +88,7 @@
 [ext_resource type="Texture2D" uid="uid://bv0jtqvdgrmyj" path="res://assets/Sprites/menus/LevelSelect/Previews/58.png" id="64_scclb"]
 [ext_resource type="Texture2D" uid="uid://carkmi70x77x" path="res://assets/Sprites/menus/LevelSelect/Previews/59.png" id="65_lgidf"]
 [ext_resource type="Texture2D" uid="uid://dllkg3cu5hwtc" path="res://assets/Sprites/menus/LevelSelect/Previews/60.png" id="66_pj54h"]
+[ext_resource type="Script" uid="uid://cad2skq2xmp6d" path="res://assets/Nodes/Ui/ranking.gd" id="88_a1p8q"]
 
 [sub_resource type="Animation" id="Animation_8cdkx"]
 length = 0.001
@@ -130,7 +131,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../1:position")
+tracks/3/path = NodePath("../ranking/place1:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -142,7 +143,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../2:position")
+tracks/4/path = NodePath("../ranking/place2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -154,7 +155,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../3:position")
+tracks/5/path = NodePath("../ranking/place3:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -166,7 +167,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../4:position")
+tracks/6/path = NodePath("../ranking/placeplayer:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -478,7 +479,7 @@ tracks/31/keys = {
 tracks/32/type = "value"
 tracks/32/imported = false
 tracks/32/enabled = true
-tracks/32/path = NodePath("../1:self_modulate")
+tracks/32/path = NodePath("../ranking/place1:self_modulate")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/keys = {
@@ -490,7 +491,7 @@ tracks/32/keys = {
 tracks/33/type = "value"
 tracks/33/imported = false
 tracks/33/enabled = true
-tracks/33/path = NodePath("../2:self_modulate")
+tracks/33/path = NodePath("../ranking/place2:self_modulate")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
@@ -502,7 +503,7 @@ tracks/33/keys = {
 tracks/34/type = "value"
 tracks/34/imported = false
 tracks/34/enabled = true
-tracks/34/path = NodePath("../3:self_modulate")
+tracks/34/path = NodePath("../ranking/place3:self_modulate")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/keys = {
@@ -514,7 +515,7 @@ tracks/34/keys = {
 tracks/35/type = "value"
 tracks/35/imported = false
 tracks/35/enabled = true
-tracks/35/path = NodePath("../4:self_modulate")
+tracks/35/path = NodePath("../ranking/placeplayer:self_modulate")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/keys = {
@@ -526,7 +527,7 @@ tracks/35/keys = {
 tracks/36/type = "value"
 tracks/36/imported = false
 tracks/36/enabled = true
-tracks/36/path = NodePath("../1/5:self_modulate")
+tracks/36/path = NodePath("../ranking/place1/user1:self_modulate")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/keys = {
@@ -538,7 +539,7 @@ tracks/36/keys = {
 tracks/37/type = "value"
 tracks/37/imported = false
 tracks/37/enabled = true
-tracks/37/path = NodePath("../2/6:self_modulate")
+tracks/37/path = NodePath("../ranking/place2/user2:self_modulate")
 tracks/37/interp = 1
 tracks/37/loop_wrap = true
 tracks/37/keys = {
@@ -550,7 +551,7 @@ tracks/37/keys = {
 tracks/38/type = "value"
 tracks/38/imported = false
 tracks/38/enabled = true
-tracks/38/path = NodePath("../3/7:self_modulate")
+tracks/38/path = NodePath("../ranking/place3/user3:self_modulate")
 tracks/38/interp = 1
 tracks/38/loop_wrap = true
 tracks/38/keys = {
@@ -562,7 +563,7 @@ tracks/38/keys = {
 tracks/39/type = "value"
 tracks/39/imported = false
 tracks/39/enabled = true
-tracks/39/path = NodePath("../4/8:self_modulate")
+tracks/39/path = NodePath("../ranking/placeplayer/nameplayer:self_modulate")
 tracks/39/interp = 1
 tracks/39/loop_wrap = true
 tracks/39/keys = {
@@ -854,7 +855,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../1:position")
+tracks/3/path = NodePath("../ranking/place1:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -866,7 +867,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../2:position")
+tracks/4/path = NodePath("../ranking/place2:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -878,7 +879,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../3:position")
+tracks/5/path = NodePath("../ranking/place3:position")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -890,7 +891,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../4:position")
+tracks/6/path = NodePath("../ranking/placeplayer:position")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1202,7 +1203,7 @@ tracks/31/keys = {
 tracks/32/type = "value"
 tracks/32/imported = false
 tracks/32/enabled = true
-tracks/32/path = NodePath("../1:self_modulate")
+tracks/32/path = NodePath("../ranking/place1:self_modulate")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/keys = {
@@ -1214,7 +1215,7 @@ tracks/32/keys = {
 tracks/33/type = "value"
 tracks/33/imported = false
 tracks/33/enabled = true
-tracks/33/path = NodePath("../2:self_modulate")
+tracks/33/path = NodePath("../ranking/place2:self_modulate")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
@@ -1226,7 +1227,7 @@ tracks/33/keys = {
 tracks/34/type = "value"
 tracks/34/imported = false
 tracks/34/enabled = true
-tracks/34/path = NodePath("../3:self_modulate")
+tracks/34/path = NodePath("../ranking/place3:self_modulate")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/keys = {
@@ -1238,7 +1239,7 @@ tracks/34/keys = {
 tracks/35/type = "value"
 tracks/35/imported = false
 tracks/35/enabled = true
-tracks/35/path = NodePath("../4:self_modulate")
+tracks/35/path = NodePath("../ranking/placeplayer:self_modulate")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/keys = {
@@ -1250,7 +1251,7 @@ tracks/35/keys = {
 tracks/36/type = "value"
 tracks/36/imported = false
 tracks/36/enabled = true
-tracks/36/path = NodePath("../1/5:self_modulate")
+tracks/36/path = NodePath("../ranking/place1/user1:self_modulate")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/keys = {
@@ -1262,7 +1263,7 @@ tracks/36/keys = {
 tracks/37/type = "value"
 tracks/37/imported = false
 tracks/37/enabled = true
-tracks/37/path = NodePath("../2/6:self_modulate")
+tracks/37/path = NodePath("../ranking/place2/user2:self_modulate")
 tracks/37/interp = 1
 tracks/37/loop_wrap = true
 tracks/37/keys = {
@@ -1274,7 +1275,7 @@ tracks/37/keys = {
 tracks/38/type = "value"
 tracks/38/imported = false
 tracks/38/enabled = true
-tracks/38/path = NodePath("../3/7:self_modulate")
+tracks/38/path = NodePath("../ranking/place3/user3:self_modulate")
 tracks/38/interp = 1
 tracks/38/loop_wrap = true
 tracks/38/keys = {
@@ -1286,7 +1287,7 @@ tracks/38/keys = {
 tracks/39/type = "value"
 tracks/39/imported = false
 tracks/39/enabled = true
-tracks/39/path = NodePath("../4/8:self_modulate")
+tracks/39/path = NodePath("../ranking/placeplayer/nameplayer:self_modulate")
 tracks/39/interp = 1
 tracks/39/loop_wrap = true
 tracks/39/keys = {
@@ -1567,7 +1568,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../1:position")
+tracks/2/path = NodePath("../ranking/place1:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1579,7 +1580,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../2:position")
+tracks/3/path = NodePath("../ranking/place2:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1591,7 +1592,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../3:position")
+tracks/4/path = NodePath("../ranking/place3:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1603,7 +1604,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../4:position")
+tracks/5/path = NodePath("../ranking/placeplayer:position")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1667,7 +1668,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../1:position")
+tracks/3/path = NodePath("../ranking/place1:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1679,7 +1680,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../2:position")
+tracks/4/path = NodePath("../ranking/place2:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1691,7 +1692,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../3:position")
+tracks/5/path = NodePath("../ranking/place3:position")
 tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1703,7 +1704,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../4:position")
+tracks/6/path = NodePath("../ranking/placeplayer:position")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -2015,7 +2016,7 @@ tracks/31/keys = {
 tracks/32/type = "value"
 tracks/32/imported = false
 tracks/32/enabled = true
-tracks/32/path = NodePath("../1:self_modulate")
+tracks/32/path = NodePath("../ranking/place1:self_modulate")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/keys = {
@@ -2027,7 +2028,7 @@ tracks/32/keys = {
 tracks/33/type = "value"
 tracks/33/imported = false
 tracks/33/enabled = true
-tracks/33/path = NodePath("../2:self_modulate")
+tracks/33/path = NodePath("../ranking/place2:self_modulate")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
@@ -2039,7 +2040,7 @@ tracks/33/keys = {
 tracks/34/type = "value"
 tracks/34/imported = false
 tracks/34/enabled = true
-tracks/34/path = NodePath("../3:self_modulate")
+tracks/34/path = NodePath("../ranking/place3:self_modulate")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/keys = {
@@ -2051,7 +2052,7 @@ tracks/34/keys = {
 tracks/35/type = "value"
 tracks/35/imported = false
 tracks/35/enabled = true
-tracks/35/path = NodePath("../4:self_modulate")
+tracks/35/path = NodePath("../ranking/placeplayer:self_modulate")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/keys = {
@@ -2063,7 +2064,7 @@ tracks/35/keys = {
 tracks/36/type = "value"
 tracks/36/imported = false
 tracks/36/enabled = true
-tracks/36/path = NodePath("../1/5:self_modulate")
+tracks/36/path = NodePath("../ranking/place1/user1:self_modulate")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/keys = {
@@ -2075,7 +2076,7 @@ tracks/36/keys = {
 tracks/37/type = "value"
 tracks/37/imported = false
 tracks/37/enabled = true
-tracks/37/path = NodePath("../2/6:self_modulate")
+tracks/37/path = NodePath("../ranking/place2/user2:self_modulate")
 tracks/37/interp = 1
 tracks/37/loop_wrap = true
 tracks/37/keys = {
@@ -2087,7 +2088,7 @@ tracks/37/keys = {
 tracks/38/type = "value"
 tracks/38/imported = false
 tracks/38/enabled = true
-tracks/38/path = NodePath("../3/7:self_modulate")
+tracks/38/path = NodePath("../ranking/place3/user3:self_modulate")
 tracks/38/interp = 1
 tracks/38/loop_wrap = true
 tracks/38/keys = {
@@ -2099,7 +2100,7 @@ tracks/38/keys = {
 tracks/39/type = "value"
 tracks/39/imported = false
 tracks/39/enabled = true
-tracks/39/path = NodePath("../4/8:self_modulate")
+tracks/39/path = NodePath("../ranking/placeplayer/nameplayer:self_modulate")
 tracks/39/interp = 1
 tracks/39/loop_wrap = true
 tracks/39/keys = {
@@ -2643,7 +2644,7 @@ animation = &"1"
 [node name="Levels" type="Node2D" parent="." unique_id=594197803]
 script = ExtResource("28_kdu7l")
 
-[node name="select1" type="Button" parent="Levels" unique_id=963325185]
+[node name="select1" type="Button" parent="Levels" unique_id=963325185 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2667,8 +2668,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select2" type="Button" parent="Levels" unique_id=554054037]
+[node name="select2" type="Button" parent="Levels" unique_id=554054037 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2692,8 +2695,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select3" type="Button" parent="Levels" unique_id=1303425179]
+[node name="select3" type="Button" parent="Levels" unique_id=1303425179 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2717,8 +2722,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select4" type="Button" parent="Levels" unique_id=1444800482]
+[node name="select4" type="Button" parent="Levels" unique_id=1444800482 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2742,8 +2749,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select5" type="Button" parent="Levels" unique_id=701490149]
+[node name="select5" type="Button" parent="Levels" unique_id=701490149 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2767,8 +2776,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select6" type="Button" parent="Levels" unique_id=1867965926]
+[node name="select6" type="Button" parent="Levels" unique_id=1867965926 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2792,8 +2803,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select7" type="Button" parent="Levels" unique_id=1630380182]
+[node name="select7" type="Button" parent="Levels" unique_id=1630380182 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2817,8 +2830,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select8" type="Button" parent="Levels" unique_id=515915180]
+[node name="select8" type="Button" parent="Levels" unique_id=515915180 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2842,8 +2857,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select9" type="Button" parent="Levels" unique_id=1396243757]
+[node name="select9" type="Button" parent="Levels" unique_id=1396243757 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2867,8 +2884,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select10" type="Button" parent="Levels" unique_id=542076726]
+[node name="select10" type="Button" parent="Levels" unique_id=542076726 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2892,8 +2911,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select11" type="Button" parent="Levels" unique_id=1800198492]
+[node name="select11" type="Button" parent="Levels" unique_id=1800198492 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2917,8 +2938,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select12" type="Button" parent="Levels" unique_id=784748179]
+[node name="select12" type="Button" parent="Levels" unique_id=784748179 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2942,8 +2965,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select13" type="Button" parent="Levels" unique_id=540793293]
+[node name="select13" type="Button" parent="Levels" unique_id=540793293 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2967,8 +2992,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select14" type="Button" parent="Levels" unique_id=350446339]
+[node name="select14" type="Button" parent="Levels" unique_id=350446339 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2992,8 +3019,10 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
-[node name="select15" type="Button" parent="Levels" unique_id=548727812]
+[node name="select15" type="Button" parent="Levels" unique_id=548727812 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -3017,6 +3046,8 @@ ADITIONAL_ARGUMENT = "level"
 HoverDif = 50.0
 IsPixelartButton = true
 MobileBoxSize = 0
+LevelBg = NodePath("../../Bg")
+LevelRanking = NodePath("../../ranking")
 
 [node name="Iconuser" type="Sprite2D" parent="." unique_id=104304584]
 material = SubResource("ShaderMaterial_jubap")
@@ -3078,97 +3109,6 @@ offset_bottom = 2190.0005
 theme_override_fonts/normal_font = ExtResource("41_v882m")
 theme_override_font_sizes/normal_font_size = 136
 text = "will it be Prometeo, Pandora, or Piltdown man?"
-
-[node name="1" type="RichTextLabel" parent="." unique_id=1595467454]
-offset_left = 226.66667
-offset_top = 533.3333
-offset_right = 1819.9999
-offset_bottom = 766.6671
-theme_override_constants/outline_size = 60
-theme_override_fonts/normal_font = ExtResource("41_v882m")
-theme_override_font_sizes/normal_font_size = 181
-text = " 1. "
-vertical_alignment = 1
-
-[node name="5" type="RichTextLabel" parent="1" unique_id=2081558527]
-layout_mode = 0
-offset_left = 213.33333
-offset_right = 1593.3334
-offset_bottom = 233.33337
-theme_override_constants/outline_size = 60
-theme_override_fonts/normal_font = ExtResource("42_rv8xa")
-theme_override_font_sizes/normal_font_size = 161
-text = "placeceholder"
-vertical_alignment = 1
-
-[node name="2" type="RichTextLabel" parent="." unique_id=786058682]
-offset_left = 340.0
-offset_top = 749.99994
-offset_right = 1603.3333
-offset_bottom = 983.3447
-theme_override_constants/outline_size = 60
-theme_override_fonts/normal_font = ExtResource("41_v882m")
-theme_override_font_sizes/normal_font_size = 181
-text = " 2. "
-vertical_alignment = 1
-
-[node name="6" type="RichTextLabel" parent="2" unique_id=1855206534]
-layout_mode = 0
-offset_left = 209.99994
-offset_top = -6.666626
-offset_right = 1590.0
-offset_bottom = 226.66675
-theme_override_constants/outline_size = 60
-theme_override_fonts/normal_font = ExtResource("42_rv8xa")
-theme_override_font_sizes/normal_font_size = 161
-text = "placeceholder"
-vertical_alignment = 1
-
-[node name="3" type="RichTextLabel" parent="." unique_id=905818219]
-offset_left = 446.66666
-offset_top = 983.33325
-offset_right = 1743.3334
-offset_bottom = 1216.6025
-theme_override_constants/outline_size = 60
-theme_override_fonts/normal_font = ExtResource("41_v882m")
-theme_override_font_sizes/normal_font_size = 181
-text = " 3. "
-vertical_alignment = 1
-
-[node name="7" type="RichTextLabel" parent="3" unique_id=1934364743]
-layout_mode = 0
-offset_left = 213.33328
-offset_top = -6.666626
-offset_right = 1593.3333
-offset_bottom = 226.66675
-theme_override_constants/outline_size = 60
-theme_override_fonts/normal_font = ExtResource("42_rv8xa")
-theme_override_font_sizes/normal_font_size = 161
-text = "placeceholder"
-vertical_alignment = 1
-
-[node name="4" type="RichTextLabel" parent="." unique_id=1887901243]
-offset_left = 513.3333
-offset_top = 1200.0
-offset_right = 1776.6665
-offset_bottom = 1433.3334
-theme_override_constants/outline_size = 60
-theme_override_fonts/normal_font = ExtResource("41_v882m")
-theme_override_font_sizes/normal_font_size = 181
-text = " 90."
-vertical_alignment = 1
-
-[node name="8" type="RichTextLabel" parent="4" unique_id=196758234]
-layout_mode = 0
-offset_left = 276.66663
-offset_top = 16.666626
-offset_right = 1656.6666
-offset_bottom = 250.0
-theme_override_constants/outline_size = 60
-theme_override_fonts/normal_font = ExtResource("42_rv8xa")
-theme_override_font_sizes/normal_font_size = 161
-text = "{steam user}"
-vertical_alignment = 1
 
 [node name="BestTimes" type="Sprite2D" parent="." unique_id=240768865]
 position = Vector2(1310.2764, 320.6973)
@@ -3295,6 +3235,116 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_r0vit")
 text = "Lobby(very wip)"
 script = ExtResource("40_5454g")
 Scene = "level_lobby"
+
+[node name="ranking" type="Control" parent="." unique_id=334064905 node_paths=PackedStringArray("User1", "Place1", "User2", "Place2", "User3", "Place3", "UserPlayer", "PlacePlayer")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("88_a1p8q")
+User1 = NodePath("place1/user1")
+Place1 = NodePath("place1")
+User2 = NodePath("place2/user2")
+Place2 = NodePath("place2")
+User3 = NodePath("place3/user3")
+Place3 = NodePath("place3")
+UserPlayer = NodePath("placeplayer/nameplayer")
+PlacePlayer = NodePath("placeplayer")
+
+[node name="place1" type="RichTextLabel" parent="ranking" unique_id=1595467454]
+layout_mode = 0
+offset_left = 226.66667
+offset_top = 533.3333
+offset_right = 1819.9999
+offset_bottom = 766.6671
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("41_v882m")
+theme_override_font_sizes/normal_font_size = 181
+text = " 1. "
+vertical_alignment = 1
+
+[node name="user1" type="RichTextLabel" parent="ranking/place1" unique_id=2081558527]
+layout_mode = 0
+offset_left = 213.33333
+offset_right = 1593.3334
+offset_bottom = 233.33337
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("42_rv8xa")
+theme_override_font_sizes/normal_font_size = 161
+text = "placeceholder"
+vertical_alignment = 1
+
+[node name="place2" type="RichTextLabel" parent="ranking" unique_id=786058682]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 749.99994
+offset_right = 1603.3333
+offset_bottom = 983.3447
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("41_v882m")
+theme_override_font_sizes/normal_font_size = 181
+text = " 2. "
+vertical_alignment = 1
+
+[node name="user2" type="RichTextLabel" parent="ranking/place2" unique_id=1855206534]
+layout_mode = 0
+offset_left = 209.99994
+offset_top = -6.666626
+offset_right = 1590.0
+offset_bottom = 226.66675
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("42_rv8xa")
+theme_override_font_sizes/normal_font_size = 161
+text = "placeceholder"
+vertical_alignment = 1
+
+[node name="place3" type="RichTextLabel" parent="ranking" unique_id=905818219]
+layout_mode = 0
+offset_left = 446.66666
+offset_top = 983.33325
+offset_right = 1743.3334
+offset_bottom = 1216.6025
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("41_v882m")
+theme_override_font_sizes/normal_font_size = 181
+text = " 3. "
+vertical_alignment = 1
+
+[node name="user3" type="RichTextLabel" parent="ranking/place3" unique_id=1934364743]
+layout_mode = 0
+offset_left = 213.33328
+offset_top = -6.666626
+offset_right = 1593.3333
+offset_bottom = 226.66675
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("42_rv8xa")
+theme_override_font_sizes/normal_font_size = 161
+text = "placeceholder"
+vertical_alignment = 1
+
+[node name="placeplayer" type="RichTextLabel" parent="ranking" unique_id=1887901243]
+layout_mode = 0
+offset_left = 513.3333
+offset_top = 1200.0
+offset_right = 1776.6665
+offset_bottom = 1433.3334
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("41_v882m")
+theme_override_font_sizes/normal_font_size = 181
+text = " 90."
+vertical_alignment = 1
+
+[node name="nameplayer" type="RichTextLabel" parent="ranking/placeplayer" unique_id=196758234]
+layout_mode = 0
+offset_left = 276.66663
+offset_top = 16.666626
+offset_right = 1656.6666
+offset_bottom = 250.0
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("42_rv8xa")
+theme_override_font_sizes/normal_font_size = 161
+text = "{steam user}"
+vertical_alignment = 1
 
 [connection signal="pressed" from="Levels/select1" to="Levels/select1" method="_on_pressed"]
 [connection signal="pressed" from="Levels/select2" to="Levels/select2" method="_on_pressed"]

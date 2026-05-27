@@ -10,7 +10,7 @@ var RespawnLevelId : int = 0
 
 var DialoguesIdEnabled : Array[bool] = []
 var DialogueLevelId : int = 0
-
+#Random bullshit go!
 func PlayedIntro() -> bool:
 	return PlayedIntroBool
 
@@ -23,18 +23,21 @@ func IfPlayedFirstTime() -> bool:
 		config.set_value("Game", "PlayedBefore", "true")
 	return false
 
-func set_config_value(id : String, Val) -> void:
-	print("Set config id: " + id + " to val: " + str(Val))
-	config.set_value("Config", id, Val)
+func set_save_value(Category : String, id : String, Val):
+	print("Set " + str(Category) + " id: " + id + " to val: " + str(Val))
+	config.set_value(Category, id, Val)
 	writegamedata()
+
+func set_config_value(id : String, Val) -> void:
+	set_save_value("Config", id, Val)
 
 func get_value(sc: String, id : String):
 	if(config.get_value(sc, id) != null):
 		return config.get_value(sc, id)
+	else: return null
 
 func get_config_value(id : String):
-	if(config.get_value("Config", id) != null):
-		return config.get_value("Config", id)
+	return get_value("Config", id)
 
 func writegamedata() -> void:
 	config.save(SAVE_GAME_PATH)
@@ -46,6 +49,8 @@ func _setup_default_value(sc : String, id : String, val) -> void:
 		config.set_value(sc, id, val)
 
 func setup_default_values() -> void:
+	#Si fuese un buen programador(boe), aca lo que haria es automatizar esto d alguna forma
+	#pero me da paja asi q se queda asi.
 	_setup_default_value("Config", "AudioMusic", 1)
 	_setup_default_value("Config", "AudioSfx", 1)
 	_setup_default_value("Config", "Fullscreen", 0)
@@ -61,14 +66,40 @@ func setup_default_values() -> void:
 	_setup_default_value("Config", "ShowHitboxes", 0)
 	writegamedata()
 
-func savelevelrecord(Level : float = 1, RealTime : float = 0) -> void:
+#La idea es parsear un json a un diccionario en godot.
+func SaveLevelPersonalRecord(Level : float = 1, RealTime : float = 0) -> void:
 	loadgamedata()
 	setup_default_values()
-	var current_best_score = config.get_value("Level", str(Level))
-	if(current_best_score != null && RealTime < current_best_score):
-		config.set_value("Level", str(Level), RealTime)
-	print("Saved data of level!")
+	
+	var CurrentBest = get_value("Level", str(Level))
+	if(!CurrentBest || RealTime < CurrentBest):
+		set_save_value("Level", str(Level), RealTime)
+
+func SaveLevelRecord(Level : float = 1, RealTime : float = 0) -> void:
+	SaveLevelPersonalRecord(Level, RealTime)
+	#var CurrentBest : float = get_value("Level", str(Level))
 	writegamedata()
+
+func GetLevelTime(Level : float) -> float:
+	var CurrentBest = get_value("Level", str(Level))
+	print("Got time:" + str(CurrentBest) + " of level: " + str(Level))
+	if(CurrentBest): return CurrentBest
+	else: return 0.0
+
+#Los tiempos son de esta forma:
+# users: {
+#	{
+#		time:"", name:"", uuid:""
+#	}
+#
+#}
+func GetUser(Times : Dictionary, index : int) -> Dictionary:
+	return Times.users[index]
+
+func GetPlayerUserName() -> String:
+	var name = Steam.getPersonaName()
+	if(!name): name = "Player: "
+	return name
 
 func boss_slime_play_anim(anim : String) -> void:
 	get_boss().play_anim(anim)
@@ -97,12 +128,6 @@ func get_group_node(Group : String):
 func get_player_replay():
 	var Player = get_tree().get_nodes_in_group("PlayerReplay")[0] if get_tree().get_nodes_in_group("PlayerReplay").size() else null
 	return Player
-
-func getleveltime(Level : float) -> float:
-	var leveltime = config.get_value("Level", str(Level))
-	print("Got time:" + str(leveltime) + " of level: " + str(Level))
-	if(!leveltime): return 0.0
-	return leveltime
 
 func loadgamedata() -> void:
 	var err = config.load(SAVE_GAME_PATH)

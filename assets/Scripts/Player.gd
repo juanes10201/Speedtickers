@@ -915,7 +915,7 @@ func _physics_dash(delta: float) -> void:
 #region WallJump
 var WalljumpVel : float = 0.0
 func _physics_walljump(delta: float) -> void:
-	print(velocity.y)
+	#print(velocity.y)
 	#The idea is to mantain some vertical movement, but still be able to jump more than before, like SuperMeatBoy
 	#print(velocity.y)
 	direction = get_axis()
@@ -1058,8 +1058,8 @@ func _is_on_floor_raycast() -> bool:
 	return GroundRaycast.is_colliding()
 
 func _is_on_ceiling_raycast() -> bool:
-	CeilingRaycast.set_collision_mask_value(4, GroundSmash)
 	if(CeilingRaycast):
+		CeilingRaycast.set_collision_mask_value(4, GroundSmash)
 		CeilingRaycast.enabled = true
 		return CeilingRaycast.is_colliding()
 	return is_on_ceiling()

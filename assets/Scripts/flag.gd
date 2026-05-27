@@ -44,7 +44,7 @@ func _on_body_entered(body):
 		var _lvl = LevelManager.get_level()
 		if(_lvl <= 0): _lvl = 0
 		#region Save level
-		SaveGame.savelevelrecord(_lvl ,$"../Time_Left".wait_time - $"../Time_Left".time_left)
+		SaveGame.SaveLevelRecord(_lvl ,$"../Time_Left".wait_time - $"../Time_Left".time_left)
 		#endregion
 		#region Change level
 		LevelManager.change_to_level(_lvl+1, BSide, Gb)
