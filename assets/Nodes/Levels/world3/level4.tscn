@@ -127,21 +127,21 @@ Visible = false
 position = Vector2(24, -135)
 
 [node name="StaticBody2D2" parent="." unique_id=1307420433 instance=ExtResource("13_r0tkd")]
-position = Vector2(-104, -49)
+position = Vector2(-104, -47)
 scale = Vector2(3.225, 2)
 
 [node name="Enemie4" parent="." unique_id=195172822 instance=ExtResource("14_rjil8")]
-position = Vector2(-139, -15)
+position = Vector2(-138, -22)
 EnemyDirection = 2
 GravityDirection = -1
 
 [node name="Enemie2" parent="." unique_id=396487368 instance=ExtResource("14_rjil8")]
-position = Vector2(-176, -15)
+position = Vector2(-175, -22)
 EnemyDirection = 2
 GravityDirection = -1
 
 [node name="Enemie3" parent="." unique_id=1291633350 instance=ExtResource("14_rjil8")]
-position = Vector2(-157, -15)
+position = Vector2(-156, -22)
 EnemyDirection = 2
 GravityDirection = -1
 

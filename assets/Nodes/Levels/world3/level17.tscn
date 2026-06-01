@@ -113,7 +113,7 @@ scale = Vector2(179.273, 1.805)
 texture = ExtResource("7_kfotq")
 
 [node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("8_63w4r")]
-position = Vector2(-304, -22)
+position = Vector2(-300, -199)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=246146196 groups=["Tileset"]]
 position = Vector2(-4, 32)

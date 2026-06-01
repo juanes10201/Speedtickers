@@ -720,26 +720,30 @@ offset = Vector2(-0.28, -6.525)
 script = ExtResource("13_5ruuh")
 
 [node name="IdleAnim" type="Sprite2D" parent="Sprite2D" unique_id=432012126]
-position = Vector2(-0.7200012, -1.3700008)
+position = Vector2(-0.7200012, 1.6299992)
 texture = SubResource("CanvasTexture_mxkeg")
+offset = Vector2(0, -2.375)
 hframes = 3
 
 [node name="AirAnim" type="Sprite2D" parent="Sprite2D" unique_id=1282070827]
 visible = false
-position = Vector2(-0.7200012, -1.3700008)
+position = Vector2(-0.7200012, 0.62999916)
 texture = SubResource("CanvasTexture_nnhfd")
+offset = Vector2(0, -0.415)
 hframes = 7
 
 [node name="LaserAnim" type="Sprite2D" parent="Sprite2D" unique_id=353093110]
 visible = false
-position = Vector2(-0.7200012, -1.3700008)
+position = Vector2(-0.7200012, 0.62999916)
 texture = ExtResource("4_k4yf5")
+offset = Vector2(0, -1.915)
 hframes = 3
 
 [node name="WalkingAnim" type="Sprite2D" parent="Sprite2D" unique_id=610641878]
 visible = false
-position = Vector2(-0.7200012, -1.3700008)
+position = Vector2(-0.7200012, 0.62999916)
 texture = SubResource("CanvasTexture_5ruuh")
+offset = Vector2(0, -1.685)
 hframes = 6
 
 [node name="Anim" type="AnimationPlayer" parent="Sprite2D" unique_id=2146337338]

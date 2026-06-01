@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="14_yolq8"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="15_5064t"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="16_flaqu"]
+[ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="17_mwwlh"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -105,7 +106,7 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." unique_id=1273041 instance=ExtResource("5_b7gjd")]
-position = Vector2(109, -165)
+position = Vector2(26, -279)
 
 [node name="AmbientParticles2" parent="." unique_id=350597279 instance=ExtResource("6_cjquh")]
 position = Vector2(-96, -160)
@@ -118,7 +119,7 @@ position = Vector2(-942, -244)
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=246146196 groups=["Tileset"]]
 position = Vector2(-4, 32)
 scale = Vector2(1.01399, 1)
-tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//r/AAACAAAAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAADz//v/AAAAAAAAAADz//z/AAAAAAIAAAD0//v/AAABAAAAAAD0//z/AAABAAIAAAD1//v/AAABAAAAAAD1//z/AAABAAIAAAD2//v/AAACAAAAAAD2//z/AAACAAIAAAD+//j/AAABAAAAAAD+//n/AAABAAIAAAD///j/AAABAAAAAAD///n/AAABAAIAAAAGAPX/AAAAAAAAAAAHAPX/AAABAAAAAAAHAPb/AAABAAIAAAAGAPb/AAAAAAIAAAAAAPn/AAACAAIAAAAAAPj/AAACAAAAAAD9//n/AAAAAAIAAAD9//j/AAAAAAAAAAAJAPb/AAACAAIAAAAIAPb/AAABAAIAAAAJAPX/AAACAAEAAAAIAPX/AAABAAEAAAAJAPT/AAACAAAAAAAIAPT/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//r/AAACAAAAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAADz//v/AAAAAAAAAADz//z/AAAAAAIAAAD0//v/AAABAAAAAAD0//z/AAABAAIAAAD1//v/AAABAAAAAAD1//z/AAABAAIAAAD2//v/AAACAAAAAAD2//z/AAACAAIAAAD+//j/AAABAAAAAAD+//n/AAABAAIAAAD///j/AAABAAAAAAD///n/AAABAAIAAAAGAPX/AAAAAAAAAAAHAPX/AAABAAAAAAAHAPb/AAABAAIAAAAGAPb/AAAAAAIAAAAAAPn/AAACAAIAAAAAAPj/AAACAAAAAAD9//n/AAAAAAIAAAD9//j/AAAAAAAAAAAJAPb/AAACAAIAAAAIAPb/AAABAAIAAAAJAPX/AAACAAEAAAAIAPX/AAABAAEAAAAJAPT/AAACAAAAAAAIAPT/AAAAAAAAAAD8/+z/AAADAAEAAAD8/+3/AAADAAEAAAD8/+7/AAADAAEAAAD8/+//AAADAAEAAAD8//D/AAADAAEAAAD8//H/AAADAAIAAAABAO//AAADAAEAAAABAPD/AAADAAEAAAABAPH/AAADAAIAAAABAOr/AAAAAAMAAAABAO7/AAADAAAAAAACAOr/AAABAAMAAAACAO7/AAABAAMAAAADAOr/AAABAAMAAAADAO7/AAACAAMAAAAEAOr/AAABAAMAAAAFAOr/AAABAAMAAAAGAOr/AAACAAMAAAD8/+r/AAADAAAAAAD8/+v/AAADAAEAAAAAAOr/AAACAAMAAAD//+r/AAABAAMAAAD+/+r/AAABAAMAAAD9/+r/AAABAAMAAAA=")
 tile_set = ExtResource("9_w72is")
 
 [node name="WorldEnvironment" parent="." unique_id=303150478 instance=ExtResource("10_qjlcw")]
@@ -146,6 +147,7 @@ gradient = SubResource("Gradient_ibkbc")
 script = ExtResource("13_qlkgf")
 Path = NodePath("Path2D")
 RailedNodes = NodePath("RailedNodes")
+Speed = 120.0
 
 [node name="Path2D" type="Path2D" parent="WindSand" unique_id=1579871613]
 curve = SubResource("Curve2D_m2ygx")
@@ -255,3 +257,6 @@ one_shot = true
 [node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=382208093]
 top_level = true
 script = ExtResource("16_flaqu")
+
+[node name="Key" parent="." unique_id=518495141 instance=ExtResource("17_mwwlh")]
+position = Vector2(-20, -199)

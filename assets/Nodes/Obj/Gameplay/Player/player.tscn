@@ -1262,7 +1262,7 @@ one_shot = true
 [node name="CeilingRaycast" type="RayCast2D" parent="." unique_id=672838504]
 position = Vector2(0, -8)
 target_position = Vector2(0, -12.85)
-collision_mask = 350
+collision_mask = 351
 
 [connection signal="area_entered" from="WaterArea" to="." method="_on_water_area_area_entered"]
 [connection signal="area_exited" from="WaterArea" to="." method="_on_water_area_area_exited"]

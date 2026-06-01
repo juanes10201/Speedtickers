@@ -822,7 +822,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	if((is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash/Slam
-		if(!_is_on_floor_raycast() && (!Slide && !SlidingInAir && !PressedSlide) ):# || velocity.y < jump_height+10)):
+		if(!_gravity_is_on_floor_raycast() && (!Slide && !SlidingInAir && !PressedSlide) ):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			if(GroundSmashVelocity && GravityDirection): velocity.y = GroundSmashVelocity * GravityDirection
 			if(OnWater): velocity *= OnWaterSlamMult
@@ -923,14 +923,15 @@ func _physics_walljump(delta: float) -> void:
 		CanJump = true 
 		Dashed = false
 		#print("walljump")
-		if($Wallchecker.get_collider() is not StaticBody2D || $Wallchecker.get_collider().collision_layer != 65536):
-			#print("walljump")
-			WalljumpVel += 50* delta * GravityDirection
-			if(!WallJump): 
-				WalljumpVel = 50 * GravityDirection
-			velocity.y = WalljumpVel
-		else:
-			velocity.y = 0.0
+		if(!GroundSmash):
+			if($Wallchecker.get_collider() is not StaticBody2D || $Wallchecker.get_collider().collision_layer != 65536):
+				#print("walljump")
+				WalljumpVel += 50* delta * GravityDirection
+				if(!WallJump): 
+					WalljumpVel = 50 * GravityDirection
+				velocity.y = WalljumpVel
+			else:
+				velocity.y = 0.0
 		WallJump = true
 		if(direction > 0):
 			WallJumpSide = Sides.RIGHT
@@ -1053,13 +1054,18 @@ func _Raycast_Destroy_Tiles(Raycaster : RayCast2D) -> void:
 
 
 @onready var GroundRaycast : RayCast2D = $GroundRaycast
+func _gravity_is_on_floor_raycast() -> bool:
+	if(GravityDirection == Global.GravityDirections.INVERTED): return _is_on_ceiling_raycast()
+	return _is_on_floor_raycast()
+
 func _is_on_floor_raycast() -> bool:
 	GroundRaycast.enabled = true
+	#if(is_on_wall()): return _is_on_floor()
 	return GroundRaycast.is_colliding()
 
 func _is_on_ceiling_raycast() -> bool:
 	if(CeilingRaycast):
-		CeilingRaycast.set_collision_mask_value(4, GroundSmash)
+		CeilingRaycast.set_collision_mask_value(4, !GroundSmash)
 		CeilingRaycast.enabled = true
 		return CeilingRaycast.is_colliding()
 	return is_on_ceiling()

@@ -239,6 +239,10 @@ func _process(delta: float) -> void:
 			#endregion
 			if(direction): Sprite.flip_h = false if direction >= 0 else true
 			Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
+			if(Sprite.scale.y < 0):
+				Sprite.position.y = 8.0
+			else:
+				Sprite.position.y = 0.0
 			#region Horizontal Movement
 			#Enemy Movement
 			if(Move && Player):
