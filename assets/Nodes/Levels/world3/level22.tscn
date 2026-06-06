@@ -10,11 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="10_jv6v8"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="11_2fti3"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="12_2hu0c"]
-[ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="13_j0b7y"]
-[ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="14_sux3c"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="15_ksskr"]
-[ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="16_fp1qh"]
-[ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="17_j0tdd"]
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="18_kf4gn"]
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Nodes/Obj/Gameplay/key.tscn" id="19_fqohu"]
 [ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="20_8k41h"]
@@ -58,28 +54,6 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
-[sub_resource type="Curve" id="Curve_7ug0n"]
-_data = [Vector2(0, 0.7821012), 0.0, 0.0, 0, 0, Vector2(1, 0.6731518), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_ibkbc"]
-colors = PackedColorArray(0.16082096, 0.10031984, 0.27544695, 1, 0.91397053, 0.60972846, 0.8570899, 1)
-metadata/_snap_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_mf1qm"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 100, -196, 0, 0, 0, 0, 100, -250, 0, 0, 0, 0, 152, -251, 0, 0, 0, 0, 169, -266, 0, 0, 0, 0, 407, -326, 0, 0, 0, 0, 455, -284, 0, 0, 0, 0, 454, -223, 0, 0, 0, 0, 418, -179, 0, 0, 0, 0, 141, -145, 0, 0, 0, 0, 100, -196)
-}
-point_count = 10
-
-[sub_resource type="Curve2D" id="Curve2D_m2ygx"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 74, -154, 0, 0, 0, 0, 55, -180, 0, 0, 0, 0, 55, -239, 0, 0, 0, 0, 78, -262, 0, 0, 0, 0, 245, -266, 0, 0, 0, 0, 271, -243, 0, 0, 0, 0, 269, -172, 0, 0, 0, 0, 244, -151, 0, 0, 0, 0, 118, -151, 0, 0, 0, 0, 74, -154)
-}
-point_count = 10
-
 [node name="Node2D" type="Node2D" unique_id=1568561541]
 position = Vector2(0, -1)
 
@@ -103,7 +77,7 @@ position = Vector2(-312, -65)
 position = Vector2(235.025, -25.946983)
 zoom = Vector2(2.08, 2.08)
 limit_left = -358
-limit_top = -403
+limit_top = -493
 limit_right = 261
 limit_bottom = 131
 limit_smoothed = true
@@ -116,7 +90,7 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." unique_id=1273041 instance=ExtResource("5_jaoih")]
-position = Vector2(-524, -300)
+position = Vector2(-87, -122)
 
 [node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("8_nhs4j")]
 position = Vector2(-518, -293)
@@ -124,10 +98,34 @@ position = Vector2(-518, -293)
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=246146196 groups=["Tileset"]]
 position = Vector2(-4, 32)
 scale = Vector2(1.01399, 1)
-tile_map_data = PackedByteArray("AADt////AAACAAEAAADt//7/AAACAAEAAADt/wAAAAACAAEAAADt/wYAAAACAAIAAADt/wUAAAACAAEAAADt/wQAAAACAAEAAADt/wMAAAACAAEAAADt/wIAAAACAAEAAADt/wEAAAACAAEAAADw//7/AAAAAAcAAADx//7/AAABAAcAAADy//7/AAACAAcAAAD0/wAAAAACAAIAAAD0////AAACAAEAAAD0//7/AAACAAAAAADz/wAAAAAAAAIAAADz////AAAAAAEAAADz//7/AAAAAAAAAAD0/wYAAAACAAIAAAD0/wUAAAACAAAAAADz/wYAAAABAAIAAADz/wUAAAABAAAAAADy/wYAAAABAAIAAADy/wUAAAABAAAAAADx/wYAAAABAAIAAADx/wUAAAABAAAAAADw/wYAAAABAAIAAADw/wUAAAABAAAAAADt//3/AAACAAEAAADt//z/AAACAAEAAADs/wYAAAAAAAIAAADs/wUAAAAAAAEAAADs/wQAAAAAAAEAAADs/wMAAAAAAAEAAADs/wIAAAAAAAEAAADs/wEAAAAAAAEAAADs/wAAAAAAAAEAAADs////AAAAAAEAAADs//7/AAAAAAEAAADs//3/AAAAAAEAAADs//z/AAAAAAEAAADv/wYAAAAAAAIAAADv/wUAAAAAAAEAAADv/wQAAAAAAAEAAADv/wMAAAAAAAEAAADv/wIAAAAAAAEAAADv/wEAAAAAAAEAAADv/wAAAAAAAAEAAADv////AAAAAAEAAADv//7/AAAAAAAAAADt//v/AAACAAEAAADt//r/AAACAAAAAADs//v/AAAAAAEAAADs//r/AAAAAAAAAADz/+7/AAAAAAAAAADz/+//AAAAAAIAAADz//P/AAAAAAAAAADz//T/AAAAAAIAAAD0/+7/AAACAAAAAAD0/+//AAACAAIAAAD0//P/AAACAAAAAAD0//T/AAACAAIAAADv/+7/AAADAAAAAADv/+//AAADAAEAAADv//D/AAADAAEAAADv//H/AAADAAEAAADv//L/AAADAAEAAADv//P/AAADAAIAAAD0//z/AAACAAIAAAD0//v/AAACAAEAAAD0//r/AAACAAEAAAD0//n/AAACAAEAAAD0//j/AAACAAEAAAD0//f/AAACAAEAAAD0//b/AAACAAAAAADz//z/AAAAAAIAAADz//v/AAAAAAEAAADz//r/AAAAAAEAAADz//n/AAAAAAEAAADz//j/AAAAAAEAAADz//f/AAAAAAEAAADz//b/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADt////AAACAAEAAADt//7/AAACAAEAAADt/wAAAAACAAIAAADw//7/AAAAAAcAAADx//7/AAABAAcAAADy//7/AAACAAcAAAD0/wAAAAACAAEAAAD0////AAACAAEAAAD0//7/AAACAAAAAADz/wAAAAAAAAEAAADz////AAAAAAEAAADz//7/AAAAAAAAAADt//3/AAACAAEAAADt//z/AAACAAEAAADs/wAAAAAAAAIAAADs////AAAAAAEAAADs//7/AAAAAAEAAADs//3/AAAAAAEAAADs//z/AAAAAAEAAADv/wAAAAADAAEAAADv////AAADAAEAAADv//7/AAADAAAAAADt//v/AAACAAEAAADt//r/AAACAAAAAADs//v/AAAAAAEAAADs//r/AAAAAAAAAADz/+7/AAAAAAEAAADz/+//AAAAAAIAAADz//P/AAAAAAAAAADz//T/AAAAAAEAAAD0/+7/AAACAAEAAAD0/+//AAACAAIAAAD0//P/AAACAAAAAAD0//T/AAACAAEAAADv/+7/AAADAAEAAADv/+//AAADAAEAAADv//D/AAADAAEAAADv//H/AAADAAEAAADv//L/AAADAAEAAADv//P/AAADAAEAAAAEAAIAAAACAAEAAAAEAAEAAAACAAEAAAAEAAAAAAACAAEAAAAEAP//AAACAAEAAAAEAP7/AAACAAEAAAAEAP3/AAACAAEAAAAEAPz/AAACAAEAAAAEAPv/AAACAAEAAAAEAPr/AAACAAEAAAAEAPn/AAACAAEAAAAEAPj/AAACAAEAAAAEAPf/AAACAAEAAAAEAPb/AAACAAEAAAAEAPX/AAACAAEAAAAEAPT/AAACAAEAAAAEAPP/AAACAAEAAAAEAPL/AAACAAEAAAAEAPH/AAACAAEAAAAEAPD/AAACAAEAAAAEAO//AAACAAEAAAD9/wMAAAACAAEAAAD9/wIAAAACAAEAAAD9/wEAAAACAAEAAAD9/wAAAAACAAEAAAD9////AAACAAEAAAD9//7/AAACAAEAAAD9//3/AAACAAEAAAD9//z/AAACAAEAAAD9//v/AAACAAEAAAD9//r/AAACAAEAAAD9//n/AAACAAEAAAD9//j/AAACAAEAAAD9//f/AAACAAEAAAD9//b/AAACAAEAAAD9//X/AAACAAAAAAD8/wMAAAAAAAEAAAD8/wIAAAAAAAEAAAD8/wEAAAAAAAEAAAD8/wAAAAAAAAEAAAD8////AAAAAAEAAAD8//7/AAAAAAEAAAD8//3/AAAAAAEAAAD8//z/AAAAAAEAAAD8//v/AAAAAAEAAAD8//r/AAAAAAEAAAD8//n/AAAAAAEAAAD8//j/AAAAAAEAAAD8//f/AAAAAAEAAAD8//b/AAAAAAEAAAD8//X/AAAAAAAAAAAEAAQAAAACAAEAAAAEAAMAAAACAAEAAAAEAO7/AAACAAEAAAADAAQAAAABAAEAAAADAAMAAAABAAEAAAADAAIAAAABAAEAAAADAAEAAAAAAAEAAAADAAAAAAAAAAEAAAADAP//AAAAAAEAAAADAP7/AAAAAAEAAAADAP3/AAAAAAEAAAADAPz/AAAAAAEAAAADAPv/AAAAAAEAAAADAPr/AAAAAAEAAAADAPn/AAAAAAEAAAADAPj/AAAAAAEAAAADAPf/AAAAAAEAAAADAPb/AAAAAAEAAAADAPX/AAAAAAEAAAADAPT/AAAAAAEAAAADAPP/AAAAAAEAAAADAPL/AAAAAAEAAAADAPH/AAAAAAEAAAADAPD/AAAAAAEAAAADAO//AAAAAAEAAAADAO7/AAAAAAEAAAD9/wUAAAABAAIAAAD9/wQAAAABAAEAAAD8/wUAAAAAAAIAAAD8/wQAAAAAAAEAAAAEAAUAAAACAAIAAAADAAUAAAABAAIAAAD0//b/AAACAAIAAAD0//X/AAACAAEAAADz//b/AAAAAAIAAADz//X/AAAAAAEAAADv//T/AAADAAIAAAD0/+3/AAACAAEAAAD0/+z/AAACAAEAAAD0/+v/AAACAAAAAADz/+3/AAAAAAEAAADz/+z/AAAAAAEAAADz/+v/AAAAAAAAAADv/+3/AAADAAEAAADv/+z/AAADAAEAAADv/+v/AAADAAAAAAD+/+n/AAAAAAEAAAD+/+j/AAAAAAAAAAAEAO3/AAACAAEAAAAEAOz/AAACAAEAAAAEAOv/AAACAAEAAAAEAOr/AAACAAEAAAAEAOn/AAACAAEAAAAEAOj/AAACAAAAAAADAO3/AAAAAAEAAAADAOz/AAAAAAEAAAADAOv/AAAAAAEAAAADAOr/AAAAAAEAAAADAOn/AAAAAAEAAAADAOj/AAAAAAAAAAACAAUAAAABAAIAAAACAAQAAAABAAEAAAABAAUAAAABAAIAAAABAAQAAAABAAEAAAAAAAUAAAABAAIAAAAAAAQAAAABAAAAAAD//wUAAAABAAIAAAD//wQAAAABAAAAAAD+/wUAAAABAAIAAAD+/wQAAAABAAAAAAACAAMAAAABAAEAAAACAAIAAAABAAAAAAABAAMAAAAAAAEAAAABAAIAAAAAAAAAAAD+/+r/AAAAAAEAAAD//+v/AAACAAIAAAAAAOv/AAAAAAcAAAABAOv/AAABAAcAAAACAOv/AAACAAcAAAD//+r/AAACAAEAAAD//+n/AAACAAEAAAD//+j/AAACAAAAAAD+/+v/AAAAAAIAAAD6/+H/AAAAAAAAAAD6/+L/AAAAAAEAAAD6/+P/AAAAAAEAAAD6/+T/AAAAAAIAAAD7/+T/AAACAAIAAAD7/+P/AAACAAEAAAD7/+L/AAACAAEAAAD7/+H/AAACAAAAAADv/+H/AAADAAEAAADv/+L/AAADAAEAAADv/+P/AAADAAEAAADv/+T/AAADAAIAAADv/+D/AAADAAAAAADv/wEAAAADAAEAAAD0/wEAAAACAAEAAADz/wEAAAAAAAEAAADv/wIAAAAAAAIAAAD0/wIAAAACAAIAAADz/wIAAAABAAIAAADy/wIAAAABAAIAAADx/wIAAAABAAIAAADw/wIAAAABAAIAAAA=")
 tile_set = ExtResource("9_r4qxy")
 
 [node name="WorldEnvironment" parent="." unique_id=303150478 instance=ExtResource("10_jv6v8")]
+
+[node name="KillBox29" parent="." unique_id=1134875478 instance=ExtResource("21_lbcn0")]
+position = Vector2(-126, -235)
+scale = Vector2(7.345, 1.31)
+
+[node name="KillBox26" parent="." unique_id=951026688 instance=ExtResource("21_lbcn0")]
+position = Vector2(-117, -298)
+scale = Vector2(8.22, 1.265)
+
+[node name="KillBox10" parent="." unique_id=1184430598 instance=ExtResource("21_lbcn0")]
+position = Vector2(-60.00003, -215.99998)
+scale = Vector2(0.94, 8.975)
+
+[node name="KillBox5" parent="." unique_id=2015857928 instance=ExtResource("21_lbcn0")]
+position = Vector2(-272, -357)
+scale = Vector2(0.94, 6.43)
+
+[node name="KillBox7" parent="." unique_id=1064316702 instance=ExtResource("21_lbcn0")]
+position = Vector2(-206, -388.0001)
+scale = Vector2(0.94, 10.51)
+
+[node name="KillBox8" parent="." unique_id=1485046472 instance=ExtResource("21_lbcn0")]
+position = Vector2(-239, -479.99997)
+scale = Vector2(5.12, 0.995)
 
 [node name="KillBox" parent="." unique_id=1619571913 instance=ExtResource("11_2fti3")]
 position = Vector2(-200, 249)
@@ -135,251 +133,121 @@ scale = Vector2(99.32, 1)
 Visible = false
 
 [node name="KillBox6" parent="." unique_id=757582552 instance=ExtResource("11_2fti3")]
-position = Vector2(-117, -443)
+position = Vector2(-116, -545)
 scale = Vector2(99.32, 1)
 Visible = false
 
 [node name="CanvasLayer" parent="." unique_id=97962373 instance=ExtResource("12_2hu0c")]
 
-[node name="WindSand2" type="Line2D" parent="." unique_id=1757163128 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
-position = Vector2(-964.16504, 111.83499)
-points = PackedVector2Array(100, -196, 100, -250, 152, -251, 169, -266, 407, -326, 455, -284, 454, -223, 418, -179, 141, -145)
-closed = true
-width = 4.835
-width_curve = SubResource("Curve_7ug0n")
-default_color = Color(0.9597251, 0.5843025, 1, 1)
-gradient = SubResource("Gradient_ibkbc")
-script = ExtResource("13_j0b7y")
-Path = NodePath("Path2D")
-RailedNodes = NodePath("RailedNodes")
-Speed = 120.0
-Activate_on_color = 1
-Enabled = false
-
-[node name="Path2D" type="Path2D" parent="WindSand2" unique_id=1232833966]
-curve = SubResource("Curve2D_mf1qm")
-
-[node name="WindSandPathFollow4" type="PathFollow2D" parent="WindSand2/Path2D" unique_id=1567751483 node_paths=PackedStringArray("Line")]
-position = Vector2(100, -198.72523)
-progress = 2.75354
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="falling_sand" parent="WindSand2/Path2D/WindSandPathFollow4" unique_id=47358990 instance=ExtResource("15_ksskr")]
-position = Vector2(-16, 0)
-Enabled = false
-CanKillPlayer = false
-
-[node name="falling_sand2" parent="WindSand2/Path2D/WindSandPathFollow4" unique_id=1253553378 instance=ExtResource("15_ksskr")]
-position = Vector2(-0.00019836426, 0.0796051)
-Enabled = false
-CanKillPlayer = false
-
-[node name="falling_sand3" parent="WindSand2/Path2D/WindSandPathFollow4" unique_id=717847689 instance=ExtResource("15_ksskr")]
-position = Vector2(15.999802, 0.0796051)
-Enabled = false
-CanKillPlayer = false
-
-[node name="FallCooldown" type="Timer" parent="WindSand2" unique_id=987598777]
-wait_time = 0.5
-one_shot = true
-
-[node name="RailedNodes" type="Node2D" parent="WindSand2" unique_id=1718527864]
-top_level = true
-script = ExtResource("16_fp1qh")
-
-[node name="WindSand3" type="Line2D" parent="." unique_id=962791938 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
-position = Vector2(-857.16504, -2.1650085)
-points = PackedVector2Array(74, -154, 55, -180, 55, -239, 78, -262, 245, -266, 271, -243, 269, -172, 244, -151, 118, -151)
-closed = true
-width = 4.835
-width_curve = SubResource("Curve_7ug0n")
-default_color = Color(0.9597251, 0.5843025, 1, 1)
-gradient = SubResource("Gradient_ibkbc")
-script = ExtResource("13_j0b7y")
-Path = NodePath("Path2D")
-RailedNodes = NodePath("RailedNodes")
-Activate_on_color = 1
-Enabled = false
-
-[node name="Path2D" type="Path2D" parent="WindSand3" unique_id=1464449247]
-curve = SubResource("Curve2D_m2ygx")
-
-[node name="WindSandPathFollow4" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=1257717479 node_paths=PackedStringArray("Line")]
-position = Vector2(74.48162, -153.96718)
-progress = 598.5
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow4" unique_id=1044905873 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow5" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=2065935921 node_paths=PackedStringArray("Line")]
-position = Vector2(64.700134, -166.72614)
-progress = 15.762573
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow5" unique_id=278696386 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow6" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=397029303 node_paths=PackedStringArray("Line")]
-position = Vector2(54.95295, -181.25337)
-progress = 33.56256
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow6" unique_id=1105645117 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow7" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=1484803835 node_paths=PackedStringArray("Line")]
-position = Vector2(228.83195, -151)
-progress = 444.35
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow7" unique_id=492138989 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow8" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=7015340 node_paths=PackedStringArray("Line")]
-position = Vector2(245.82884, -152.53622)
-progress = 426.65
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow8" unique_id=710021625 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow9" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=2133285665 node_paths=PackedStringArray("Line")]
-position = Vector2(260.9033, -165.19873)
-progress = 407.1
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow9" unique_id=1101735931 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow10" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=1509949147 node_paths=PackedStringArray("Line")]
-position = Vector2(244.24568, -266.05188)
-progress = 289.95
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow10" unique_id=342270364 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow12" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=1780300450 node_paths=PackedStringArray("Line")]
-position = Vector2(257.26062, -255.15407)
-progress = 307.15
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow12" unique_id=106717684 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow13" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=1081180892 node_paths=PackedStringArray("Line")]
-position = Vector2(92.09027, -262.33746)
-progress = 137.7
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow13" unique_id=652022486 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow14" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=536814091 node_paths=PackedStringArray("Line")]
-position = Vector2(109.95762, -262.76544)
-progress = 155.7
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow14" unique_id=689003503 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow15" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=2108230441 node_paths=PackedStringArray("Line")]
-position = Vector2(126.95433, -263.17255)
-progress = 172.7
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow15" unique_id=1128597443 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="WindSandPathFollow11" type="PathFollow2D" parent="WindSand3/Path2D" unique_id=1648867334 node_paths=PackedStringArray("Line")]
-position = Vector2(228.48955, -265.60455)
-progress = 274.4
-rotates = false
-script = ExtResource("14_sux3c")
-Line = NodePath("../..")
-
-[node name="Enemie" parent="WindSand3/Path2D/WindSandPathFollow11" unique_id=1637372736 instance=ExtResource("17_j0tdd")]
-position = Vector2(0, 0)
-EnabledPhysics = false
-
-[node name="FallCooldown" type="Timer" parent="WindSand3" unique_id=1855958022]
-wait_time = 0.5
-one_shot = true
-
-[node name="RailedNodes" type="Node2D" parent="WindSand3" unique_id=202972209]
-top_level = true
-script = ExtResource("16_fp1qh")
-
 [node name="KillBox11" parent="." unique_id=1762710421 instance=ExtResource("11_2fti3")]
-position = Vector2(-102, -236.99998)
-scale = Vector2(9.795, 1.58)
+position = Vector2(-110, -302.00006)
+scale = Vector2(9.095, 1.58)
 
-[node name="KillBox12" parent="." unique_id=1386857898 instance=ExtResource("11_2fti3")]
-position = Vector2(-103, -159)
-scale = Vector2(9.655, 1.58)
+[node name="KillBox21" parent="." unique_id=1386857898 instance=ExtResource("11_2fti3")]
+position = Vector2(-237, -480)
+scale = Vector2(5.07, 1.015)
+
+[node name="KillBox18" parent="." unique_id=1147778157 instance=ExtResource("11_2fti3")]
+position = Vector2(20, -503)
+scale = Vector2(3.995, 5.56)
+
+[node name="KillBox22" parent="." unique_id=1217086843 instance=ExtResource("11_2fti3")]
+position = Vector2(-111, -461.00006)
+scale = Vector2(1.205, 7.59)
+
+[node name="KillBox23" parent="." unique_id=2061211584 instance=ExtResource("11_2fti3")]
+position = Vector2(-160.00002, -513)
+scale = Vector2(6.355, 1.1)
+
+[node name="KillBox19" parent="." unique_id=1387618407 instance=ExtResource("11_2fti3")]
+position = Vector2(-271.99994, -357)
+scale = Vector2(0.915, 6.445)
+
+[node name="KillBox20" parent="." unique_id=1933176108 instance=ExtResource("11_2fti3")]
+position = Vector2(-205.99997, -357)
+scale = Vector2(0.915, 6.51)
+
+[node name="KillBox24" parent="." unique_id=243590401 instance=ExtResource("11_2fti3")]
+position = Vector2(-202.99997, -496)
+scale = Vector2(0.915, 2.91)
+
+[node name="KillBox13" parent="." unique_id=1451982879 instance=ExtResource("11_2fti3")]
+position = Vector2(-238.99998, -238)
+scale = Vector2(2.91, 1.58)
+
+[node name="KillBox16" parent="." unique_id=1742009395 instance=ExtResource("11_2fti3")]
+position = Vector2(-15, -122)
+scale = Vector2(2.56, 1.58)
+
+[node name="KillBox17" parent="." unique_id=503037018 instance=ExtResource("11_2fti3")]
+position = Vector2(26, 42)
+scale = Vector2(2.47, 1.58)
+
+[node name="KillBox14" parent="." unique_id=1673197429 instance=ExtResource("11_2fti3")]
+position = Vector2(-55.999996, -189)
+scale = Vector2(2.44, 2.925)
+
+[node name="KillBox15" parent="." unique_id=179996725 instance=ExtResource("11_2fti3")]
+position = Vector2(-163.00002, -266)
+scale = Vector2(2.455, 2.925)
+
+[node name="KillBox12" parent="." unique_id=35952090 instance=ExtResource("11_2fti3")]
+position = Vector2(-106.00001, -159)
+scale = Vector2(8.76, 1.58)
 
 [node name="Key3" parent="." unique_id=518495141 instance=ExtResource("18_kf4gn")]
 position = Vector2(-411, -339)
 
 [node name="Key2" parent="." unique_id=815395336 instance=ExtResource("19_fqohu")]
-position = Vector2(-447, -305)
-AditionalAction = 13
-AditionalActionArgument = 80.0
-
-[node name="Umbrella" parent="." unique_id=791046513 instance=ExtResource("20_8k41h")]
-position = Vector2(-269, 82)
-rotation = 1.5707964
+position = Vector2(-237, -398)
+AditionalAction = 1
 
 [node name="Umbrella3" parent="." unique_id=1374829594 instance=ExtResource("20_8k41h")]
-position = Vector2(-240, 82)
-rotation = 1.5707964
+position = Vector2(-795, -349)
+rotation = -1.5707964
 
 [node name="Key" parent="." unique_id=1068234150 instance=ExtResource("18_kf4gn")]
 position = Vector2(-238, 38)
 
 [node name="Key4" parent="." unique_id=961856198 instance=ExtResource("18_kf4gn")]
-position = Vector2(-239, -198)
+position = Vector2(-240, -441)
 
-[node name="KillBox5" parent="." unique_id=2015857928 instance=ExtResource("21_lbcn0")]
-position = Vector2(-472.99997, -233.00003)
-scale = Vector2(3.905, 0.835)
+[node name="Key5" parent="." unique_id=1108519002 instance=ExtResource("18_kf4gn")]
+position = Vector2(22, -325)
+Respawn = false
+
+[node name="Key6" parent="." unique_id=1839779151 instance=ExtResource("18_kf4gn")]
+position = Vector2(-18, 73)
+
+[node name="KillBox28" parent="." unique_id=2121292876 instance=ExtResource("21_lbcn0")]
+position = Vector2(-129.00002, -86.00001)
+scale = Vector2(7.645, 1.31)
+
+[node name="KillBox27" parent="." unique_id=1688937068 instance=ExtResource("21_lbcn0")]
+position = Vector2(-198, -56.00002)
+scale = Vector2(0.94, 6.99)
+
+[node name="KillBox25" parent="." unique_id=1706495002 instance=ExtResource("21_lbcn0")]
+position = Vector2(-272, -71.99999)
+scale = Vector2(0.94, 9.23)
 
 [node name="Rail" parent="." unique_id=607275562 instance=ExtResource("20_f7voq")]
 position = Vector2(-257, -152)
-points = PackedVector2Array(-6, 6, 0, 2, 17, -12, 24, -30, 216, -40, 230, -51, 237, -41)
+points = PackedVector2Array(-41, 126, -33, 108, -1, 122, 2, 140)
+EndWithSlam = true
+
+[node name="Rail2" parent="." unique_id=1265843283 instance=ExtResource("20_f7voq")]
+position = Vector2(-222.6, -309.935)
+points = PackedVector2Array(-41, 126, -33, 108, 36.600006, 125.935, 45.600006, 124.935)
+
+[node name="falling_sand" parent="." unique_id=214611821 instance=ExtResource("15_ksskr")]
+position = Vector2(-4, -448)
+
+[node name="falling_sand2" parent="." unique_id=1245485716 instance=ExtResource("15_ksskr")]
+position = Vector2(12, -448)
+
+[node name="falling_sand3" parent="." unique_id=2004474052 instance=ExtResource("15_ksskr")]
+position = Vector2(28, -448)
+
+[node name="falling_sand4" parent="." unique_id=1843333559 instance=ExtResource("15_ksskr")]
+position = Vector2(44, -448)
