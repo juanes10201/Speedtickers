@@ -690,6 +690,7 @@ func _change_gravity_decal() -> void:
 
 func _invert_gravity(Dir : int = GravityDirection*-1) -> void:
 	GravityDirection = Dir
+	JumpedUmbrella = false
 	_change_gravity_decal()
 
 var GlobalGravityDirection = Global.GravityDirections.MAIN

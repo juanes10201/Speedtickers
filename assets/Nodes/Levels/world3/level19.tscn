@@ -63,12 +63,19 @@ point_count = 2
 colors = PackedColorArray(0.16082096, 0.10031984, 0.27544695, 1, 0.91397053, 0.60972846, 0.8570899, 1)
 metadata/_snap_count = 2
 
+[sub_resource type="Curve2D" id="Curve2D_afrs1"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 145, -210, 0, 0, 0, 0, 201.27618, -222.44897, 0, 0, 0, 0, 223.74927, -227.42029, 0, 0, 0, 0, 454.7728, -278.5255, 0, 0, 0, 0, 475, -283, 0, 0, 0, 0, 145, -210)
+}
+point_count = 6
+
 [sub_resource type="Curve2D" id="Curve2D_m2ygx"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 145, -210, 0, 0, 0, 0, 475, -283, 0, 0, 0, 0, 145, -210)
+"points": PackedVector2Array(0, 0, 0, 0, 145, -210, 0, 0, 0, 0, 433, -288.55, 0, 0, 0, 0, 437, 47.449997, 0, 0, 0, 0, 141, 5.449997, 0, 0, 0, 0, 145, -210)
 }
-point_count = 3
+point_count = 5
 
 [node name="Node2D" type="Node2D" unique_id=1568561541]
 position = Vector2(0, -1)
@@ -106,7 +113,7 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." unique_id=1273041 instance=ExtResource("5_klfx7")]
-position = Vector2(146, -11)
+position = Vector2(144, -118)
 
 [node name="AmbientParticles2" parent="." unique_id=350597279 instance=ExtResource("6_1a65j")]
 position = Vector2(-96, -160)
@@ -139,7 +146,7 @@ Visible = false
 
 [node name="WindSand" type="Line2D" parent="." unique_id=424187687 node_paths=PackedStringArray("Path", "RailedNodes")]
 position = Vector2(-330, 7)
-points = PackedVector2Array(145, -210, 201.27618, -222.44897, 223.74927, -227.42029, 475, -283)
+points = PackedVector2Array(145, -210, 201.27618, -222.44897, 223.74927, -227.42029, 454.7728, -278.5255, 475, -283)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_7ug0n")
@@ -153,10 +160,10 @@ Activate_on_color = 1
 Enabled = false
 
 [node name="Path2D" type="Path2D" parent="WindSand" unique_id=1579871613]
-curve = SubResource("Curve2D_m2ygx")
+curve = SubResource("Curve2D_afrs1")
 
 [node name="WindSandPathFollow2" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1646277068 node_paths=PackedStringArray("Line")]
-position = Vector2(151.57979, -211.45554)
+position = Vector2(151.40482, -211.41682)
 progress = 6.65
 rotates = false
 script = ExtResource("14_dvatw")
@@ -192,7 +199,7 @@ script = ExtResource("16_rdp3u")
 
 [node name="WindSand2" type="Line2D" parent="." unique_id=1059024957 node_paths=PackedStringArray("Path", "RailedNodes")]
 position = Vector2(-330, 254.55)
-points = PackedVector2Array(145, -210, 475, -283)
+points = PackedVector2Array(145, -210, 433, -288.55, 437, 47.449997, 141, 5.449997)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_7ug0n")
@@ -209,7 +216,7 @@ Enabled = false
 curve = SubResource("Curve2D_m2ygx")
 
 [node name="WindSandPathFollow2" type="PathFollow2D" parent="WindSand2/Path2D" unique_id=1945471740 node_paths=PackedStringArray("Line")]
-position = Vector2(193.57445, -220.74521)
+position = Vector2(192.99326, -223.08981)
 progress = 49.75
 rotates = false
 script = ExtResource("14_dvatw")
@@ -272,8 +279,12 @@ position = Vector2(-16, 91.00001)
 scale = Vector2(2, 11.25)
 
 [node name="KillBox8" parent="." unique_id=845803471 instance=ExtResource("11_5mlp4")]
-position = Vector2(112, -16)
-scale = Vector2(2, 5.16)
+position = Vector2(116, -26)
+scale = Vector2(2, 7.77)
+
+[node name="KillBox10" parent="." unique_id=2120046838 instance=ExtResource("11_5mlp4")]
+position = Vector2(112, -210)
+scale = Vector2(2, 7.77)
 
 [node name="Key3" parent="." unique_id=518495141 instance=ExtResource("17_afrs1")]
 position = Vector2(-228, -83)

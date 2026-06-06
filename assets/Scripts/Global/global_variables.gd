@@ -38,7 +38,6 @@ enum LASER_COLORS{
 	YELLOW = 5
 }
 
-
 var Player = null
 
 #Order of levels
