@@ -704,6 +704,7 @@ func _invert_gravity_remix() -> void:
 func _physics_jump(delta: float) -> void:
 	# Handle jump.
 	DashWithJump = false
+	if(KickTimer.is_stopped()): JumpedUmbrella = false
 	if(is_on_floor()):
 		if(JumpedUmbrella):
 			set_collision_mask_value(4, true)
