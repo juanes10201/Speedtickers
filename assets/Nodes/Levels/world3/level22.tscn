@@ -93,7 +93,7 @@ autostart = true
 position = Vector2(-87, -122)
 
 [node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("8_nhs4j")]
-position = Vector2(-518, -293)
+position = Vector2(-604, -337)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=246146196 groups=["Tileset"]]
 position = Vector2(-4, 32)
@@ -112,8 +112,8 @@ position = Vector2(-117, -298)
 scale = Vector2(8.22, 1.265)
 
 [node name="KillBox10" parent="." unique_id=1184430598 instance=ExtResource("21_lbcn0")]
-position = Vector2(-60.00003, -215.99998)
-scale = Vector2(0.94, 8.975)
+position = Vector2(-59.000023, -194.99997)
+scale = Vector2(0.94, 6.41)
 
 [node name="KillBox5" parent="." unique_id=2015857928 instance=ExtResource("21_lbcn0")]
 position = Vector2(-272, -357)
@@ -196,7 +196,7 @@ position = Vector2(-106.00001, -159)
 scale = Vector2(8.76, 1.58)
 
 [node name="Key3" parent="." unique_id=518495141 instance=ExtResource("18_kf4gn")]
-position = Vector2(-411, -339)
+position = Vector2(-678, -483)
 
 [node name="Key2" parent="." unique_id=815395336 instance=ExtResource("19_fqohu")]
 position = Vector2(-237, -398)
@@ -220,12 +220,16 @@ Respawn = false
 position = Vector2(-18, 73)
 
 [node name="KillBox28" parent="." unique_id=2121292876 instance=ExtResource("21_lbcn0")]
-position = Vector2(-129.00002, -86.00001)
-scale = Vector2(7.645, 1.31)
+position = Vector2(-125.00001, -91.000015)
+scale = Vector2(7.235, 1.31)
+
+[node name="KillBox30" parent="." unique_id=1271129577 instance=ExtResource("21_lbcn0")]
+position = Vector2(-168.00002, -120.000015)
+scale = Vector2(1.775, 2.315)
 
 [node name="KillBox27" parent="." unique_id=1688937068 instance=ExtResource("21_lbcn0")]
-position = Vector2(-198, -56.00002)
-scale = Vector2(0.94, 6.99)
+position = Vector2(-199.99997, -56.000023)
+scale = Vector2(1.32, 6.99)
 
 [node name="KillBox25" parent="." unique_id=1706495002 instance=ExtResource("21_lbcn0")]
 position = Vector2(-272, -71.99999)

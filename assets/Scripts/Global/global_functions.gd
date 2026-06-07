@@ -29,6 +29,7 @@ func Change_Railed_Nodes_Speed(Speed : float) -> void:
 	for Rail in get_tree().current_scene.get_children():
 		if(Rail.is_in_group("RailNodes")):
 			Rail.Speed = Speed
+			print("Changed rail speed")
 
 func record_action(FUNC : FUNCTIONS = FUNCTIONS.none, FinalValue = 0, InitialValue = LastOriginalvalue, OptionalValue = null) -> void:
 	var _action : Array = [FUNC, InitialValue, FinalValue]

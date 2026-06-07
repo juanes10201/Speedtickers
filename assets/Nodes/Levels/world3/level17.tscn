@@ -135,7 +135,7 @@ Visible = false
 
 [node name="CanvasLayer" parent="." unique_id=97962373 instance=ExtResource("11_12knm")]
 
-[node name="WindSand" type="Line2D" parent="." unique_id=424187687 node_paths=PackedStringArray("Path", "RailedNodes")]
+[node name="WindSand" type="Line2D" parent="." unique_id=424187687 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-325, 7)
 points = PackedVector2Array(70, -17, 152, -20, 156, -112, 353, -157, 356, 146, 85, 48)
 closed = true

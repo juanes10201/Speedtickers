@@ -230,6 +230,8 @@ func _stop_slam_particles():
 var RecordedActions : Array[Vector3] = []
 @export var RecordedLocation : String = "res://assets/Replays/tutorial_level1_1.json"
 
+var Moved : bool = false
+
 #region Editor
 var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
 
@@ -311,6 +313,7 @@ func _input(event):
 #endregion
 
 func _ready() -> void:
+	Time_Left.paused = true
 	if(RetroStyle):
 		ParticlesSlide.fixed_fps = 15
 		ParticlesSlide.interpolate = false
@@ -361,6 +364,12 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
+	if(!Moved):
+		if(Input.is_action_just_pressed("player_dash") || Input.is_action_just_pressed("player_jump") || Input.is_action_just_pressed("player_jump") || Input.is_action_just_pressed("player_slide") || Input.is_action_just_pressed("player_move")):
+			Moved = true
+			if(CountTime):
+				Time_Left.paused = false
+	
 	#print(OnWaterInitialSlideTile)
 	if($MovingPlatformRay):
 		$MovingPlatformRay.enabled = StickOnPlatform
