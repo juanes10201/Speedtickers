@@ -135,7 +135,7 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_pknad"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 165, 17, 0, 0, 0, 0, 248, 10, 0, 0, 0, 0, 136, -47, 0, 0, 0, 0, 165, 17)
+"points": PackedVector2Array(0, 0, 0, 0, 165, 17, 0, 0, 0, 0, 424, -62, 0, 0, 0, 0, 136, -47, 0, 0, 0, 0, 165, 17)
 }
 point_count = 4
 
@@ -147,10 +147,13 @@ shader_parameter/fill_dir = Vector2(1, -192.16)
 shader_parameter/alpha_cutoff = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gfvgd"]
-size = Vector2(58, 16)
+size = Vector2(80, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c70bu"]
-size = Vector2(56.98584, 14.045258)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7liu2"]
+size = Vector2(80, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
+size = Vector2(88, 23.591614)
 
 [node name="Node2D" type="Node2D" unique_id=782773658]
 position = Vector2(0, -1)
@@ -273,7 +276,7 @@ AditionalActionArgument = -287.2
 position = Vector2(-463, -623)
 
 [node name="Player" parent="." unique_id=1683755303 instance=ExtResource("5_ljyct")]
-position = Vector2(-201, -656)
+position = Vector2(-140, -598)
 CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=292185324]
@@ -310,14 +313,13 @@ position = Vector2(-318, -256)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("Path", "RailedNodes")]
 position = Vector2(-406, -631)
-points = PackedVector2Array(165, 17, 248, 10, 136, -47)
+points = PackedVector2Array(165, 17, 424, -62, 136, -47)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_d77xg")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
 gradient = SubResource("Gradient_75dy6")
 script = ExtResource("22_c70bu")
-Closed = null
 Path = NodePath("Path2D")
 RailedNodes = NodePath("RailedNodes")
 
@@ -325,34 +327,42 @@ RailedNodes = NodePath("RailedNodes")
 material = SubResource("ShaderMaterial_c70bu")
 curve = SubResource("Curve2D_pknad")
 
-[node name="WindSandPathFollow" type="PathFollow2D" parent="WindSand/Path2D" unique_id=303901127 node_paths=PackedStringArray("Line", "CooldownTimer")]
+[node name="WindSandPathFollow3" type="PathFollow2D" parent="WindSand/Path2D" unique_id=275115504 node_paths=PackedStringArray("Line", "CooldownTimer", "RigidBody")]
 use_parent_material = true
-position = Vector2(206.55687, -11.091591)
-progress = 129.8
+position = Vector2(165, 17)
 rotates = false
 script = ExtResource("23_c70bu")
 Line = NodePath("../..")
+Enabled = false
 CooldownAnim = null
 CooldownTimer = NodePath("CooldownTimer")
+Type = 1
+RigidBody = NodePath("RigidBody2D")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="WindSand/Path2D/WindSandPathFollow" unique_id=371644002]
+[node name="RigidBody2D" type="RigidBody2D" parent="WindSand/Path2D/WindSandPathFollow3" unique_id=1168956738]
 material = SubResource("ShaderMaterial_7liu2")
 collision_layer = 2048
 can_sleep = false
 freeze = true
 freeze_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="WindSand/Path2D/WindSandPathFollow/RigidBody2D" unique_id=1105406269]
+[node name="Sprite2D" type="Sprite2D" parent="WindSand/Path2D/WindSandPathFollow3/RigidBody2D" unique_id=1599705791]
 use_parent_material = true
 texture = SubResource("PlaceholderTexture2D_gfvgd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WindSand/Path2D/WindSandPathFollow/RigidBody2D" unique_id=1929035138]
-position = Vector2(0.4431305, 0.09161377)
-shape = SubResource("RectangleShape2D_c70bu")
+[node name="Collision" type="CollisionShape2D" parent="WindSand/Path2D/WindSandPathFollow3/RigidBody2D" unique_id=1244688640]
+position = Vector2(0.2536316, 0.09161377)
+shape = SubResource("RectangleShape2D_7liu2")
 
-[node name="CooldownTimer" type="Timer" parent="WindSand/Path2D/WindSandPathFollow" unique_id=1553482725]
+[node name="CooldownTimer" type="Timer" parent="WindSand/Path2D/WindSandPathFollow3" unique_id=1635174775]
 wait_time = 0.2
 one_shot = true
+
+[node name="EnableArea" type="Area2D" parent="WindSand/Path2D/WindSandPathFollow3" unique_id=424708997]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindSand/Path2D/WindSandPathFollow3/EnableArea" unique_id=1655638434]
+position = Vector2(0.2536316, -2.2042236)
+shape = SubResource("RectangleShape2D_pknad")
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=685187114]
 wait_time = 0.5
@@ -361,3 +371,6 @@ one_shot = true
 [node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=623492847]
 top_level = true
 script = ExtResource("24_7liu2")
+
+[connection signal="body_entered" from="WindSand/Path2D/WindSandPathFollow3/EnableArea" to="WindSand/Path2D/WindSandPathFollow3" method="_on_enable_area_body_entered"]
+[connection signal="body_exited" from="WindSand/Path2D/WindSandPathFollow3/EnableArea" to="WindSand/Path2D/WindSandPathFollow3" method="_on_enable_area_body_exited"]

@@ -29,6 +29,10 @@ enum GravityDirections{
 	INVERTED = -1,
 	MAIN = 1
 }
+enum Directions{
+	INVERTED = -1,
+	MAIN = 1
+}
 enum LASER_COLORS{
 	NONE = 0,
 	RED = 1,

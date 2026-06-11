@@ -35,7 +35,6 @@ func _process(delta: float) -> void:
 				_reload()
 	else:
 		if(Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
-			Enabled = true
 			for PathFollow in Path.get_children():
 				if(PathFollow is PathFollow2D):
 					PathFollow.restart()

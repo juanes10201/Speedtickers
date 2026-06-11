@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://r1duq2mhbpmc"]
+
+[ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="1_i1rqt"]
+[ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_acik0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
+shader = ExtResource("2_acik0")
+shader_parameter/progress = 0.0
+shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
+shader_parameter/fill_dir = Vector2(1, -192.16)
+shader_parameter/alpha_cutoff = 0.01
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gfvgd"]
+size = Vector2(58, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c70bu"]
+size = Vector2(56.98584, 14.045258)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfvgd"]
+size = Vector2(65, 22.99997)
+
+[node name="HorizontalPiston" type="PathFollow2D" unique_id=226068745 node_paths=PackedStringArray("CooldownTimer")]
+use_parent_material = true
+rotates = false
+script = ExtResource("1_i1rqt")
+Enabled = false
+CooldownTimer = NodePath("CooldownTimer")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1168956738]
+material = SubResource("ShaderMaterial_7liu2")
+collision_layer = 2048
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1599705791]
+use_parent_material = true
+texture = SubResource("PlaceholderTexture2D_gfvgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1244688640]
+position = Vector2(0.4431305, 0.09161377)
+shape = SubResource("RectangleShape2D_c70bu")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1635174775]
+wait_time = 0.2
+one_shot = true
+
+[node name="EnableArea" type="Area2D" parent="." unique_id=424708997]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnableArea" unique_id=1655638434]
+position = Vector2(-0.056869507, -0.40838623)
+shape = SubResource("RectangleShape2D_gfvgd")
+
+[connection signal="body_entered" from="EnableArea" to="." method="_on_enable_area_body_entered"]
+[connection signal="body_exited" from="EnableArea" to="." method="_on_enable_area_body_exited"]
