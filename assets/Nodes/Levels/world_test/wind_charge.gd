@@ -2,6 +2,7 @@
 extends Line2D
 
 @export var Speed : float = 150.0
+@export var GlobalSpeed : float = 0.0
 @export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
 @export var Enabled : bool = true
 @export var CooldownTime : float

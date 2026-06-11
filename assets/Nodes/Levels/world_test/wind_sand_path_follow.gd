@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-@export var Line : Line2D
+@onready var Line : Line2D = get_parent().get_parent()
 @export var Enabled : bool = true
 @export var CooldownAnim : bool = true
 
@@ -10,6 +10,7 @@ extends PathFollow2D
 @onready var previous_ratio : float = progress_ratio
 
 enum Types {
+	None,
 	Horizontal,
 	HorizontalChangeDir
 }
@@ -18,9 +19,10 @@ enum Types {
 
 var Direction : float = 1.0
 @export var RigidBody : RigidBody2D
-@onready var SizeX : float = RigidBody.get_node("Collision").shape.size.x if RigidBody.get_node_or_null("Collision") else 16.0
+@onready var SizeX : float = RigidBody.get_node("Collision").shape.size.x if $"RigidBody/Collision" else 16.0
 
 @onready var LastGlobalPosition : Vector2 = global_position
+@export var ChangeGlobalSpeed : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,6 +30,7 @@ func _ready() -> void:
 		restart()
 
 func restart() -> void:
+	if(Type == Types.None): return
 	if(!Enabled || progress_ratio >= OriginalRatio):
 		Enabled = true
 		if(CooldownTimer): CooldownTimer.start()
@@ -54,7 +57,12 @@ func get_tangent() -> int:
 	return -1
 
 var Vel : float = 0.0#Vector2(0.0, 0.0)
-var StopAcc : float = 0.5
+@export var StopAcc : float = 0.5
+
+var ChangingVel : bool = false
+
+func tick_global_speed() -> void:
+	Line.GlobalSpeed = Vel
 
 func _process(delta: float) -> void:
 	_reload_material_shader()
@@ -64,26 +72,33 @@ func _process(delta: float) -> void:
 			var tan = get_tangent()
 			if(tan): Direction *= tan
 			#if(global_position > LastGlobalPosition): Direction *= -1.0
-		if(Type != Types.HorizontalChangeDir || PlayerInteracted):
-			progress += Line.Speed * delta * Direction
-			Vel = (progress_ratio-previous_ratio)/delta #(global_position-LastGlobalPosition)/delta
-		elif(Type == Types.HorizontalChangeDir):
-			if(!PlayerInteracted && Vel != 0.0):
-				progress_ratio += Vel*delta
-				Vel = lerp(Vel, 0.0, StopAcc*delta)
+		if(Type != Types.None):
+			if(Type != Types.HorizontalChangeDir || PlayerInteracted):
+				progress += Line.Speed * delta * Direction
+				Vel = (progress_ratio-previous_ratio)/delta #(global_position-LastGlobalPosition)/delta
+			elif(Type == Types.HorizontalChangeDir):
+				if(!PlayerInteracted && Vel != 0.0):
+					progress_ratio += Vel*delta
+					Vel = lerp(Vel, 0.0, StopAcc*delta)
+					if(Vel <= .1):
+						Vel = 0.0
+						ChangingVel = false
+		if(ChangingVel && ChangeGlobalSpeed): tick_global_speed()
 		if(previous_ratio > progress_ratio && Type != Types.HorizontalChangeDir):
 			restart()
 		else:
 			previous_ratio = progress_ratio
 		LastGlobalPosition = global_position
+	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
+	#print(Line.GlobalSpeed)
 
 var PlayerInteracted : bool = false
 
 func _on_enable_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
 		PlayerInteracted = true
+		if(ChangeGlobalSpeed): ChangingVel = true
 		if(!Enabled):
-			PlayerInteracted = true
 			restart()
 
 

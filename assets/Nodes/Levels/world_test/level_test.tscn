@@ -22,9 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://b3jlq8xohxw3c" path="res://assets/Nodes/Obj/Gameplay/moving_platform.tscn" id="20_igmjh"]
 [ext_resource type="PackedScene" uid="uid://bpcyg6vqonftj" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish.tscn" id="21_o6cpg"]
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="22_c70bu"]
-[ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="23_c70bu"]
+[ext_resource type="PackedScene" uid="uid://dkyfw4w4irwm0" path="res://assets/Nodes/Obj/Gameplay/rail_horizontal_change_dir_piston.tscn" id="23_c70bu"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="24_7liu2"]
-[ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="24_gfvgd"]
+[ext_resource type="PackedScene" uid="uid://b40beedst2m65" path="res://assets/Nodes/Obj/Gameplay/rail_horizontal_piston_none.tscn" id="24_gfvgd"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -135,25 +135,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_pknad"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 165, 17, 0, 0, 0, 0, 424, -62, 0, 0, 0, 0, 136, -47, 0, 0, 0, 0, 165, 17)
+"points": PackedVector2Array(0, 0, 0, 0, 165, 17, 0, 0, 0, 0, 424, -62, 0, 0, 0, 0, 126, -155, 0, 0, 0, 0, 165, 17)
 }
 point_count = 4
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
-shader = ExtResource("24_gfvgd")
-shader_parameter/progress = 0.0
-shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
-shader_parameter/fill_dir = Vector2(1, -192.16)
-shader_parameter/alpha_cutoff = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gfvgd"]
-size = Vector2(80, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7liu2"]
-size = Vector2(80, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
-size = Vector2(88, 23.591614)
 
 [node name="Node2D" type="Node2D" unique_id=782773658]
 position = Vector2(0, -1)
@@ -291,7 +275,7 @@ limit_smoothed = true
 script = ExtResource("6_u6rfp")
 
 [node name="MovingPlatform" parent="." unique_id=2070563805 instance=ExtResource("20_igmjh")]
-position = Vector2(-57, -770)
+position = Vector2(-86, -966)
 XSpeed = 500.0
 
 [node name="Rail2" parent="." unique_id=1020545274 instance=ExtResource("14_me14y")]
@@ -313,7 +297,7 @@ position = Vector2(-318, -256)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("Path", "RailedNodes")]
 position = Vector2(-406, -631)
-points = PackedVector2Array(165, 17, 424, -62, 136, -47)
+points = PackedVector2Array(165, 17, 424, -62, 126, -155)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_d77xg")
@@ -327,42 +311,24 @@ RailedNodes = NodePath("RailedNodes")
 material = SubResource("ShaderMaterial_c70bu")
 curve = SubResource("Curve2D_pknad")
 
-[node name="WindSandPathFollow3" type="PathFollow2D" parent="WindSand/Path2D" unique_id=275115504 node_paths=PackedStringArray("Line", "CooldownTimer", "RigidBody")]
-use_parent_material = true
+[node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("23_c70bu")]
 position = Vector2(165, 17)
-rotates = false
-script = ExtResource("23_c70bu")
-Line = NodePath("../..")
-Enabled = false
-CooldownAnim = null
-CooldownTimer = NodePath("CooldownTimer")
-Type = 1
-RigidBody = NodePath("RigidBody2D")
+Type = 2
+ChangeGlobalSpeed = true
 
-[node name="RigidBody2D" type="RigidBody2D" parent="WindSand/Path2D/WindSandPathFollow3" unique_id=1168956738]
-material = SubResource("ShaderMaterial_7liu2")
-collision_layer = 2048
-can_sleep = false
-freeze = true
-freeze_mode = 1
+[node name="rail_horizontal_change_dir_piston2" parent="WindSand/Path2D" unique_id=249511682 instance=ExtResource("23_c70bu")]
+position = Vector2(262.55865, -112.38268)
+progress = 439.9
+Type = 2
+ChangeGlobalSpeed = true
 
-[node name="Sprite2D" type="Sprite2D" parent="WindSand/Path2D/WindSandPathFollow3/RigidBody2D" unique_id=1599705791]
-use_parent_material = true
-texture = SubResource("PlaceholderTexture2D_gfvgd")
+[node name="HorizontalPistonMove" parent="WindSand/Path2D" unique_id=226068745 instance=ExtResource("24_gfvgd")]
+position = Vector2(350.70453, -39.643467)
+progress = 194.15
 
-[node name="Collision" type="CollisionShape2D" parent="WindSand/Path2D/WindSandPathFollow3/RigidBody2D" unique_id=1244688640]
-position = Vector2(0.2536316, 0.09161377)
-shape = SubResource("RectangleShape2D_7liu2")
-
-[node name="CooldownTimer" type="Timer" parent="WindSand/Path2D/WindSandPathFollow3" unique_id=1635174775]
-wait_time = 0.2
-one_shot = true
-
-[node name="EnableArea" type="Area2D" parent="WindSand/Path2D/WindSandPathFollow3" unique_id=424708997]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WindSand/Path2D/WindSandPathFollow3/EnableArea" unique_id=1655638434]
-position = Vector2(0.2536316, -2.2042236)
-shape = SubResource("RectangleShape2D_pknad")
+[node name="HorizontalPistonMove3" parent="WindSand/Path2D" unique_id=1503016950 instance=ExtResource("24_gfvgd")]
+position = Vector2(138.96692, -97.81254)
+progress = 641.6
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=685187114]
 wait_time = 0.5
@@ -371,6 +337,3 @@ one_shot = true
 [node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=623492847]
 top_level = true
 script = ExtResource("24_7liu2")
-
-[connection signal="body_entered" from="WindSand/Path2D/WindSandPathFollow3/EnableArea" to="WindSand/Path2D/WindSandPathFollow3" method="_on_enable_area_body_entered"]
-[connection signal="body_exited" from="WindSand/Path2D/WindSandPathFollow3/EnableArea" to="WindSand/Path2D/WindSandPathFollow3" method="_on_enable_area_body_exited"]
