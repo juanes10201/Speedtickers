@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="22_c70bu"]
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="23_c70bu"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="24_7liu2"]
-[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="24_gfvgd"]
+[ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="24_gfvgd"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -130,12 +130,27 @@ point_count = 2
 colors = PackedColorArray(0.16082096, 0.10031984, 0.27544695, 1, 0.91397053, 0.60972846, 0.8570899, 1)
 metadata/_snap_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c70bu"]
+
 [sub_resource type="Curve2D" id="Curve2D_pknad"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 50, 51, 0, 0, 0, 0, 50, 51, 0, 0, 0, 0, 81, 14, 0, 0, 0, 0, 524, 16, 0, 0, 0, 0, 197, -105, 0, 0, 0, 0, 9, -97, 0, 0, 0, 0, 85, -55, 0, 0, 0, 0, 9, -97, 0, 0, 0, 0, 50, 51)
+"points": PackedVector2Array(0, 0, 0, 0, 165, 17, 0, 0, 0, 0, 248, 10, 0, 0, 0, 0, 136, -47, 0, 0, 0, 0, 165, 17)
 }
-point_count = 9
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
+shader = ExtResource("24_gfvgd")
+shader_parameter/progress = 0.0
+shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
+shader_parameter/fill_dir = Vector2(1, -192.16)
+shader_parameter/alpha_cutoff = 0.01
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gfvgd"]
+size = Vector2(58, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c70bu"]
+size = Vector2(56.98584, 14.045258)
 
 [node name="Node2D" type="Node2D" unique_id=782773658]
 position = Vector2(0, -1)
@@ -258,7 +273,7 @@ AditionalActionArgument = -287.2
 position = Vector2(-463, -623)
 
 [node name="Player" parent="." unique_id=1683755303 instance=ExtResource("5_ljyct")]
-position = Vector2(-232, -619)
+position = Vector2(-201, -656)
 CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=292185324]
@@ -273,7 +288,7 @@ limit_smoothed = true
 script = ExtResource("6_u6rfp")
 
 [node name="MovingPlatform" parent="." unique_id=2070563805 instance=ExtResource("20_igmjh")]
-position = Vector2(-341, -775)
+position = Vector2(-57, -770)
 XSpeed = 500.0
 
 [node name="Rail2" parent="." unique_id=1020545274 instance=ExtResource("14_me14y")]
@@ -293,64 +308,51 @@ position = Vector2(-229, -256)
 top_level = true
 position = Vector2(-318, -256)
 
-[node name="WindSand" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("Path", "PathFollow", "RailedNodes")]
-position = Vector2(-406, -616)
-points = PackedVector2Array(50, 51, 81, 14, 524, 16, 197, -105, 85, -55, 9, -97)
+[node name="WindSand" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("Path", "RailedNodes")]
+position = Vector2(-406, -631)
+points = PackedVector2Array(165, 17, 248, 10, 136, -47)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_d77xg")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
 gradient = SubResource("Gradient_75dy6")
 script = ExtResource("22_c70bu")
+Closed = null
 Path = NodePath("Path2D")
-PathFollow = NodePath("Path2D/WindSandPathFollow")
 RailedNodes = NodePath("RailedNodes")
 
 [node name="Path2D" type="Path2D" parent="WindSand" unique_id=182914977]
+material = SubResource("ShaderMaterial_c70bu")
 curve = SubResource("Curve2D_pknad")
 
-[node name="WindSandPathFollow" type="PathFollow2D" parent="WindSand/Path2D" unique_id=501016468]
-position = Vector2(49.916748, 51.099365)
+[node name="WindSandPathFollow" type="PathFollow2D" parent="WindSand/Path2D" unique_id=303901127 node_paths=PackedStringArray("Line", "CooldownTimer")]
+use_parent_material = true
+position = Vector2(206.55687, -11.091591)
+progress = 129.8
+rotates = false
 script = ExtResource("23_c70bu")
-Speed = 250.0
+Line = NodePath("../..")
+CooldownAnim = null
+CooldownTimer = NodePath("CooldownTimer")
 
-[node name="Enemie2" parent="WindSand/Path2D/WindSandPathFollow" unique_id=1044905873 instance=ExtResource("16_75dy6")]
-position = Vector2(0, 0)
-EnemyDirection = 2
-Enabled = false
+[node name="RigidBody2D" type="RigidBody2D" parent="WindSand/Path2D/WindSandPathFollow" unique_id=371644002]
+material = SubResource("ShaderMaterial_7liu2")
+collision_layer = 2048
+can_sleep = false
+freeze = true
+freeze_mode = 1
 
-[node name="WindSandPathFollow2" type="PathFollow2D" parent="WindSand/Path2D" unique_id=303901127]
-position = Vector2(152.46947, 14.322661)
-rotation = 0.004514642
-progress = 119.75
-script = ExtResource("23_c70bu")
-Speed = 250.0
+[node name="Sprite2D" type="Sprite2D" parent="WindSand/Path2D/WindSandPathFollow/RigidBody2D" unique_id=1105406269]
+use_parent_material = true
+texture = SubResource("PlaceholderTexture2D_gfvgd")
 
-[node name="falling_sand" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=214611821 instance=ExtResource("24_gfvgd")]
-position = Vector2(0, 0)
-Enabled = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindSand/Path2D/WindSandPathFollow/RigidBody2D" unique_id=1929035138]
+position = Vector2(0.4431305, 0.09161377)
+shape = SubResource("RectangleShape2D_c70bu")
 
-[node name="WindSandPathFollow3" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1855012767]
-position = Vector2(169.62271, 14.400103)
-rotation = 0.004514642
-progress = 136.9
-script = ExtResource("23_c70bu")
-Speed = 250.0
-
-[node name="falling_sand" parent="WindSand/Path2D/WindSandPathFollow3" unique_id=1460931036 instance=ExtResource("24_gfvgd")]
-position = Vector2(0, 0)
-Enabled = false
-
-[node name="WindSandPathFollow4" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1286357176]
-position = Vector2(185.62158, 14.472332)
-rotation = 0.004514642
-progress = 152.9
-script = ExtResource("23_c70bu")
-Speed = 250.0
-
-[node name="falling_sand" parent="WindSand/Path2D/WindSandPathFollow4" unique_id=219093285 instance=ExtResource("24_gfvgd")]
-position = Vector2(0, 0)
-Enabled = false
+[node name="CooldownTimer" type="Timer" parent="WindSand/Path2D/WindSandPathFollow" unique_id=1553482725]
+wait_time = 0.2
+one_shot = true
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=685187114]
 wait_time = 0.5

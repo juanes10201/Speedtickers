@@ -823,6 +823,7 @@ var DidDiagonalSlam : bool = false
 func _physics_slide_and_groundsmash(delta: float) -> void:
 	#if(OnWater && Slide):
 	#	Reset_Slide()
+	print(PressingGroundSmash)
 	if(JumpedUmbrella):
 		_Destroy_Tiles_Umbrella()
 	if(GroundSmash):
@@ -1125,7 +1126,7 @@ func Reset_Groundsmash(ThrowEnemies : bool = true, Visuals: bool = true, ResetVe
 		ParticlesLanding.show()
 		AudioGroundsmash.play()
 		if(Camera): Camera.Shake(10.0, 10.0)
-	PressingGroundSmash = false
+	PressingGroundSmash = Input.is_action_pressed("player_slide")
 	GroundSmash = false
 	DidSlamStorage = false
 	DidDiagonalSlam = false

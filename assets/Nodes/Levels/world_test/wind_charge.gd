@@ -1,15 +1,19 @@
 @tool
 extends Line2D
 
+@export var Speed : float = 150.0
+@export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
+@export var Enabled : bool = true
+@export var CooldownTime : float
+
+@export var Closed : bool = true
+
 @export var Path : Path2D
 @export var MovOffset : Vector2 = Vector2(0.0, -5.0)
 @export var EndWithSlam : bool = false
 @export var RailedNodes : Node
 
-@export var Speed : float = 150.0
-@export var Activate_on_color : Global.LASER_COLORS = Global.LASER_COLORS.NONE
 @onready var Player = SaveGame.get_player()
-@export var Enabled : bool = true
 
 func _reload() -> void:
 	Path.global_position = self.global_position
@@ -32,3 +36,6 @@ func _process(delta: float) -> void:
 	else:
 		if(Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
 			Enabled = true
+			for PathFollow in Path.get_children():
+				if(PathFollow is PathFollow2D):
+					PathFollow.restart()
