@@ -33,6 +33,7 @@ func restart() -> void:
 	if(Type == Types.None): return
 	if(!Enabled || progress_ratio >= OriginalRatio):
 		Enabled = true
+		if(Type == Types.HorizontalChangeDir): return
 		if(CooldownTimer): CooldownTimer.start()
 		progress_ratio = OriginalRatio
 		previous_ratio = progress_ratio
@@ -83,7 +84,8 @@ func _process(delta: float) -> void:
 					if(Vel <= .1):
 						Vel = 0.0
 						ChangingVel = false
-		if(ChangingVel && ChangeGlobalSpeed): tick_global_speed()
+		if(ChangingVel && Line.GlobalMovingNode == self && ChangeGlobalSpeed):
+			tick_global_speed()
 		if(previous_ratio > progress_ratio && Type != Types.HorizontalChangeDir):
 			restart()
 		else:
@@ -97,10 +99,15 @@ var PlayerInteracted : bool = false
 func _on_enable_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
 		PlayerInteracted = true
-		if(ChangeGlobalSpeed): ChangingVel = true
+		if(ChangeGlobalSpeed):
+			ChangingVel = true
+			Line.GlobalMovingNode = self
 		if(!Enabled):
 			restart()
 
 
 func _on_enable_area_body_exited(body: Node2D) -> void:
-	if(body.is_in_group("Player")): PlayerInteracted = false
+	if(body.is_in_group("Player")):
+		#if(Line.GlobalMovingNode == self): Line.GlobalMovingNode = null
+		PlayerInteracted = false
+		Vel /= 2

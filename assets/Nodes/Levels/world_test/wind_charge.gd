@@ -16,6 +16,8 @@ extends Line2D
 
 @onready var Player = SaveGame.get_player()
 
+var GlobalMovingNode : Node
+
 func _reload() -> void:
 	Path.global_position = self.global_position
 	Path.curve.clear_points()
@@ -35,7 +37,8 @@ func _process(delta: float) -> void:
 				print("Reloading Wind Sand")
 				_reload()
 	else:
-		if(Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
+		if(!Enabled && Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
+			Enabled = true
 			for PathFollow in Path.get_children():
 				if(PathFollow is PathFollow2D):
 					PathFollow.restart()

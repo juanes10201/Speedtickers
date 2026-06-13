@@ -22,9 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://b3jlq8xohxw3c" path="res://assets/Nodes/Obj/Gameplay/moving_platform.tscn" id="20_igmjh"]
 [ext_resource type="PackedScene" uid="uid://bpcyg6vqonftj" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish.tscn" id="21_o6cpg"]
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="22_c70bu"]
-[ext_resource type="PackedScene" uid="uid://dkyfw4w4irwm0" path="res://assets/Nodes/Obj/Gameplay/rail_horizontal_change_dir_piston.tscn" id="23_c70bu"]
+[ext_resource type="PackedScene" uid="uid://dkyfw4w4irwm0" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_change_dir_piston.tscn" id="23_c70bu"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="24_7liu2"]
-[ext_resource type="PackedScene" uid="uid://b40beedst2m65" path="res://assets/Nodes/Obj/Gameplay/rail_horizontal_piston_none.tscn" id="24_gfvgd"]
+[ext_resource type="PackedScene" uid="uid://b40beedst2m65" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_piston_none.tscn" id="24_gfvgd"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -135,7 +135,7 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_pknad"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 165, 17, 0, 0, 0, 0, 424, -62, 0, 0, 0, 0, 126, -155, 0, 0, 0, 0, 165, 17)
+"points": PackedVector2Array(0, 0, 0, 0, 165, 17, 0, 0, 0, 0, 516, -52, 0, 0, 0, 0, 126, -155, 0, 0, 0, 0, 165, 17)
 }
 point_count = 4
 
@@ -297,7 +297,7 @@ position = Vector2(-318, -256)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("Path", "RailedNodes")]
 position = Vector2(-406, -631)
-points = PackedVector2Array(165, 17, 424, -62, 126, -155)
+points = PackedVector2Array(165, 17, 516, -52, 126, -155)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_d77xg")
@@ -313,21 +313,19 @@ curve = SubResource("Curve2D_pknad")
 
 [node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("23_c70bu")]
 position = Vector2(165, 17)
-Type = 2
 ChangeGlobalSpeed = true
 
 [node name="rail_horizontal_change_dir_piston2" parent="WindSand/Path2D" unique_id=249511682 instance=ExtResource("23_c70bu")]
-position = Vector2(262.55865, -112.38268)
+position = Vector2(436.54587, -72.98405)
 progress = 439.9
-Type = 2
 ChangeGlobalSpeed = true
 
 [node name="HorizontalPistonMove" parent="WindSand/Path2D" unique_id=226068745 instance=ExtResource("24_gfvgd")]
-position = Vector2(350.70453, -39.643467)
+position = Vector2(355.5048, -20.44966)
 progress = 194.15
 
 [node name="HorizontalPistonMove3" parent="WindSand/Path2D" unique_id=1503016950 instance=ExtResource("24_gfvgd")]
-position = Vector2(138.96692, -97.81254)
+position = Vector2(241.52608, -124.48928)
 progress = 641.6
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=685187114]

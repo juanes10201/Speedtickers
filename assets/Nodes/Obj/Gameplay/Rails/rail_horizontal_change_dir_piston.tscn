@@ -19,19 +19,19 @@ size = Vector2(80, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
 size = Vector2(88, 23.591614)
 
-[node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("Line", "CooldownTimer", "RigidBody")]
+[node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("CooldownTimer", "RigidBody")]
 use_parent_material = true
 rotates = false
 script = ExtResource("1_ns8ob")
-Line = NodePath("")
 Enabled = false
 CooldownTimer = NodePath("CooldownTimer")
-Type = 1
+Type = 2
 RigidBody = NodePath("RigidBody2D")
+ChangeGlobalSpeed = true
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1892304175]
 material = SubResource("ShaderMaterial_7liu2")
-collision_layer = 2048
+collision_layer = 2304
 can_sleep = false
 freeze = true
 freeze_mode = 1

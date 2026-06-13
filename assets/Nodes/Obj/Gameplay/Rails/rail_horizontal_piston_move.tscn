@@ -29,7 +29,7 @@ RigidBody = NodePath("RigidBody2D")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1168956738]
 material = SubResource("ShaderMaterial_7liu2")
-collision_layer = 2048
+collision_layer = 2304
 can_sleep = false
 freeze = true
 freeze_mode = 1

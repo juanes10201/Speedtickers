@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_k71pe"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_nlghw"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="6_6acan"]
+[ext_resource type="PackedScene" uid="uid://cm8ckym2tb2eh" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_piston_move.tscn" id="6_7oj5y"]
 [ext_resource type="Texture2D" uid="uid://cvdsaeuured5y" path="res://assets/Sprites/particles/bright_particles.png" id="7_7oj5y"]
 [ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="8_p3u8v"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="9_2pjbg"]
@@ -15,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="12_n7ale"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="13_3smcx"]
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="15_7oj5y"]
-[ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="16_p3u8v"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="17_2pjbg"]
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Nodes/Obj/Gameplay/key.tscn" id="18_nu7g1"]
 
@@ -67,9 +67,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_yojhv"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 218, -262, 0, 0, 0, 0, 218, -62, 0, 0, 0, 0, 116, -62, 0, 0, 0, 0, 131, -7, 0, 0, 0, 0, 218, -6, 0, 0, 0, 0, 218, 201, 0, 0, 0, 0, 332, 201, 0, 0, 0, 0, 330, -262, 0, 0, 0, 0, 218, -262)
+"points": PackedVector2Array(0, 0, 0, 0, 218, -262, 0, 0, 0, 0, 218, -62, 0, 0, 0, 0, 116, -62, 0, 0, 0, 0, 131, -7, 0, 0, 0, 0, 218, -6, 0, 0, 0, 0, 218, 201, 0, 0, 0, 0, 332, 201, 0, 0, 0, 0, 331, -57, 0, 0, 0, 0, 389, -103, 0, 0, 0, 0, 325, -262, 0, 0, 0, 0, 218, -262)
 }
-point_count = 9
+point_count = 11
 
 [node name="Node2D" type="Node2D" unique_id=1281977526]
 position = Vector2(0, -1)
@@ -96,65 +96,36 @@ zoom = Vector2(2.08, 2.08)
 limit_left = -403
 limit_top = -208
 limit_right = 338
-limit_bottom = 192
+limit_bottom = 254
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_k71pe")
 
 [node name="WindSand" type="Line2D" parent="." unique_id=1292463007 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-330, 7)
-points = PackedVector2Array(218, -262, 218, -62, 116, -62, 131, -7, 218, -6, 218, 201, 332, 201, 330, -262)
+points = PackedVector2Array(218, -262, 218, -62, 116, -62, 131, -7, 218, -6, 218, 201, 332, 201, 331, -57, 389, -103, 325, -262)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_duybn")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
 gradient = SubResource("Gradient_n7ale")
 script = ExtResource("15_7oj5y")
-Path = NodePath("Path2D")
-RailedNodes = NodePath("RailedNodes")
 Speed = 80.0
 Activate_on_color = 1
 Enabled = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
 
 [node name="Path2D" type="Path2D" parent="WindSand" unique_id=222747763]
 curve = SubResource("Curve2D_yojhv")
 
-[node name="WindSandPathFollow2" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1575172238 node_paths=PackedStringArray("Line")]
-position = Vector2(218, -167.90112)
-progress = 94.1
-rotates = false
-script = ExtResource("16_p3u8v")
-Line = NodePath("../..")
+[node name="HorizontalPistonMove" parent="WindSand/Path2D" unique_id=226068745 instance=ExtResource("6_7oj5y")]
+position = Vector2(218, -193.65382)
+progress = 68.35
 
-[node name="falling_sand5" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=1204198579 instance=ExtResource("13_3smcx")]
-position = Vector2(-24, 1.3600769)
-Activate_on_color = 1
-MAX_SPEED = 90.0
-CanKillPlayer = false
-
-[node name="falling_sand6" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=83130 instance=ExtResource("13_3smcx")]
-position = Vector2(-8, 1.3600769)
-Activate_on_color = 1
-MAX_SPEED = 90.0
-CanKillPlayer = false
-
-[node name="falling_sand7" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=1216349372 instance=ExtResource("13_3smcx")]
-position = Vector2(8, 1.3600769)
-Activate_on_color = 1
-MAX_SPEED = 90.0
-CanKillPlayer = false
-
-[node name="falling_sand8" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=1570212212 instance=ExtResource("13_3smcx")]
-position = Vector2(24, 0.90112305)
-Activate_on_color = 1
-MAX_SPEED = 90.0
-CanKillPlayer = false
-
-[node name="falling_sand9" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=214611821 instance=ExtResource("13_3smcx")]
-position = Vector2(40, 0.90112305)
-Activate_on_color = 1
-MAX_SPEED = 90.0
-CanKillPlayer = false
+[node name="HorizontalPistonMove2" parent="WindSand/Path2D" unique_id=600613639 instance=ExtResource("6_7oj5y")]
+position = Vector2(218, -212.15656)
+progress = 49.85
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=1045965316]
 wait_time = 0.5
@@ -170,7 +141,7 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." unique_id=1305615115 instance=ExtResource("5_nlghw")]
-position = Vector2(25, -67)
+position = Vector2(50.00001, -114)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=953843440 groups=["Tileset"]]
 position = Vector2(-4, 32)
@@ -204,7 +175,7 @@ position = Vector2(-168, 70.00001)
 scale = Vector2(1.495, 19.385)
 
 [node name="KillBox11" parent="." unique_id=1302735729 instance=ExtResource("10_nu7g1")]
-position = Vector2(-47.000008, 237)
+position = Vector2(-52.000008, 236.99998)
 scale = Vector2(0.925, 11.995)
 
 [node name="KillBox12" parent="." unique_id=1404462820 instance=ExtResource("10_nu7g1")]
@@ -220,19 +191,19 @@ position = Vector2(-91, 18)
 scale = Vector2(1.04, 1.955)
 
 [node name="KillBox19" parent="." unique_id=490726365 instance=ExtResource("10_nu7g1")]
-position = Vector2(25, 13)
-scale = Vector2(3.365, 1.035)
+position = Vector2(31.999998, -7)
+scale = Vector2(4.66, 1.035)
 
 [node name="KillBox20" parent="." unique_id=536146722 instance=ExtResource("10_nu7g1")]
-position = Vector2(-23.000015, -67)
-scale = Vector2(3.365, 1.035)
+position = Vector2(-6.9999995, -109)
+scale = Vector2(4.86, 1.035)
 
 [node name="KillBox16" parent="." unique_id=156181125 instance=ExtResource("10_nu7g1")]
-position = Vector2(-31.000008, 77)
+position = Vector2(-35.00001, 77)
 scale = Vector2(1.57, 1.035)
 
 [node name="KillBox17" parent="." unique_id=1340447773 instance=ExtResource("10_nu7g1")]
-position = Vector2(35.000008, 77)
+position = Vector2(56, 74.999985)
 scale = Vector2(1.57, 1.035)
 
 [node name="KillBox15" parent="." unique_id=962605435 instance=ExtResource("10_nu7g1")]
@@ -240,11 +211,11 @@ position = Vector2(-73, 1)
 scale = Vector2(3.32, 1.035)
 
 [node name="KillBox13" parent="." unique_id=1240411779 instance=ExtResource("10_nu7g1")]
-position = Vector2(-46.999996, -106)
+position = Vector2(-52.999992, -106.00001)
 scale = Vector2(0.925, 23.885)
 
 [node name="KillBox18" parent="." unique_id=1044779950 instance=ExtResource("10_nu7g1")]
-position = Vector2(54.000004, -2.9999847)
+position = Vector2(75, -5)
 scale = Vector2(0.925, 25.54)
 
 [node name="KillBox8" parent="." unique_id=248489745 instance=ExtResource("10_nu7g1")]
@@ -258,7 +229,7 @@ position = Vector2(-578, -224)
 position = Vector2(-168, -115)
 
 [node name="Key5" parent="." unique_id=1715042000 instance=ExtResource("12_n7ale")]
-position = Vector2(-39, 117)
+position = Vector2(-40, 117)
 
 [node name="KillBox9" parent="." unique_id=1028345701 instance=ExtResource("10_nu7g1")]
 position = Vector2(-514, -102.99999)
@@ -292,22 +263,27 @@ scale = Vector2(179.273, 1.805)
 texture = ExtResource("7_7oj5y")
 
 [node name="Key" parent="." unique_id=2070008152 instance=ExtResource("18_nu7g1")]
-position = Vector2(-112, 116)
+position = Vector2(-111, 97)
 AditionalAction = 13
 AditionalActionArgument = 10.0
 
 [node name="Key9" parent="." unique_id=1136512072 instance=ExtResource("18_nu7g1")]
-position = Vector2(-55, 116)
+position = Vector2(-54, 126)
+AditionalAction = 13
+AditionalActionArgument = 400.0
+
+[node name="Key10" parent="." unique_id=1593476015 instance=ExtResource("18_nu7g1")]
+position = Vector2(-54, 98)
 AditionalAction = 13
 AditionalActionArgument = 400.0
 
 [node name="Key6" parent="." unique_id=110470029 instance=ExtResource("18_nu7g1")]
-position = Vector2(-80, -71)
+position = Vector2(-81, -71)
 AditionalAction = 13
 AditionalActionArgument = 150.0
 
 [node name="Key8" parent="." unique_id=2141265489 instance=ExtResource("18_nu7g1")]
-position = Vector2(-23, 5)
+position = Vector2(-25, -7)
 AditionalAction = 13
 AditionalActionArgument = 160.0
 
@@ -317,6 +293,11 @@ AditionalAction = 13
 AditionalActionArgument = 250.0
 
 [node name="Key2" parent="." unique_id=26780107 instance=ExtResource("18_nu7g1")]
-position = Vector2(1, 77)
+position = Vector2(-2, 72)
+AditionalAction = 13
+AditionalActionArgument = 80.0
+
+[node name="Key11" parent="." unique_id=273783589 instance=ExtResource("18_nu7g1")]
+position = Vector2(29, 73)
 AditionalAction = 13
 AditionalActionArgument = 80.0

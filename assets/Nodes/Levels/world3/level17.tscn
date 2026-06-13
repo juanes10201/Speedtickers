@@ -13,8 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="10_m2ygx"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="11_12knm"]
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="12_8m2yi"]
-[ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="13_63w4r"]
-[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="14_o52aa"]
+[ext_resource type="PackedScene" uid="uid://dkyfw4w4irwm0" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_change_dir_piston.tscn" id="14_8m2yi"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="15_kfotq"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
@@ -65,9 +64,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_m2ygx"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 70, -17, 0, 0, 0, 0, 152, -20, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 353, -157, 0, 0, 0, 0, 356, 146, 0, 0, 0, 0, 85, 48, 0, 0, 0, 0, 70, -17)
+"points": PackedVector2Array(0, 0, 0, 0, 70, -17, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 353, -157, 0, 0, 0, 0, 441, -93, 0, 0, 0, 0, 85, 48, 0, 0, 0, 0, 70, -17)
 }
-point_count = 7
+point_count = 6
 
 [node name="Node2D" type="Node2D" unique_id=1568561541]
 position = Vector2(0, -1)
@@ -105,7 +104,7 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." unique_id=1273041 instance=ExtResource("5_63w4r")]
-position = Vector2(128, -163)
+position = Vector2(155, -232)
 
 [node name="AmbientParticles2" parent="." unique_id=350597279 instance=ExtResource("6_o52aa")]
 position = Vector2(-96, -160)
@@ -118,7 +117,7 @@ position = Vector2(-300, -199)
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=246146196 groups=["Tileset"]]
 position = Vector2(-4, 32)
 scale = Vector2(1.01399, 1)
-tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//r/AAACAAAAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAAAFAPX/AAAAAAAAAAAGAPX/AAABAAAAAAAHAPX/AAABAAAAAAAIAPX/AAABAAAAAAAJAPX/AAABAAAAAAAFAPr/AAAAAAEAAAAFAPv/AAAAAAIAAAAGAPv/AAABAAIAAAAHAPv/AAABAAIAAAAIAPv/AAABAAIAAAAJAPv/AAABAAIAAAAGAPr/AAABAAEAAAAHAPr/AAABAAEAAAAIAPr/AAABAAEAAAAJAPr/AAABAAEAAAAFAPn/AAAAAAEAAAAGAPn/AAABAAEAAAAHAPn/AAABAAEAAAAIAPn/AAABAAEAAAAJAPn/AAABAAEAAAAFAPf/AAAAAAEAAAAGAPf/AAABAAEAAAAHAPf/AAABAAEAAAAIAPf/AAABAAEAAAAJAPf/AAABAAEAAAAFAPj/AAAAAAEAAAAGAPj/AAABAAEAAAAHAPj/AAABAAEAAAAIAPj/AAABAAEAAAAJAPj/AAABAAEAAAAFAPb/AAAAAAEAAAAGAPb/AAABAAEAAAAHAPb/AAABAAEAAAAIAPb/AAABAAEAAAAJAPb/AAABAAEAAAD4/+r/AAABAAAAAAD4/+v/AAABAAEAAAD4/+z/AAABAAIAAAD5/+r/AAABAAAAAAD5/+v/AAABAAEAAAD5/+z/AAABAAIAAAD6/+r/AAABAAAAAAD6/+v/AAABAAEAAAD6/+z/AAABAAIAAAD7/+r/AAABAAAAAAD7/+v/AAABAAEAAAD7/+z/AAABAAIAAAD8/+r/AAABAAAAAAD8/+v/AAABAAEAAAD8/+z/AAABAAIAAAD9/+r/AAABAAAAAAD9/+v/AAABAAEAAAD9/+z/AAABAAIAAAD+/+r/AAABAAAAAAD+/+v/AAABAAEAAAD+/+z/AAABAAIAAAD//+r/AAABAAAAAAD//+v/AAABAAEAAAD//+z/AAABAAIAAAAAAOr/AAABAAAAAAAAAOv/AAABAAEAAAAAAOz/AAABAAIAAAABAOr/AAACAAAAAAABAOv/AAACAAEAAAABAOz/AAACAAIAAAD3/+z/AAABAAEAAAD3/+v/AAABAAEAAAD3/+r/AAABAAAAAAD2/+z/AAABAAEAAAD2/+v/AAABAAEAAAD2/+r/AAABAAAAAAD1/+z/AAABAAEAAAD1/+v/AAABAAEAAAD1/+r/AAABAAAAAAD0/+z/AAABAAEAAAD0/+v/AAABAAEAAAD0/+r/AAABAAAAAADz/+z/AAAAAAEAAADz/+v/AAAAAAEAAADz/+r/AAAAAAAAAAD3/+3/AAACAAIAAAD2/+3/AAABAAIAAAD1/+3/AAABAAIAAAD0/+3/AAABAAIAAADz/+3/AAAAAAIAAAA=")
+tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//r/AAACAAAAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAAD4/+r/AAABAAAAAAD4/+v/AAABAAEAAAD4/+z/AAABAAIAAAD5/+r/AAABAAAAAAD5/+v/AAABAAEAAAD5/+z/AAABAAIAAAD6/+r/AAABAAAAAAD6/+v/AAABAAEAAAD6/+z/AAABAAIAAAD7/+r/AAABAAAAAAD7/+v/AAABAAEAAAD7/+z/AAABAAIAAAD8/+r/AAABAAAAAAD8/+v/AAABAAEAAAD8/+z/AAABAAIAAAD9/+r/AAABAAAAAAD9/+v/AAABAAEAAAD9/+z/AAABAAIAAAD+/+r/AAABAAAAAAD+/+v/AAABAAEAAAD+/+z/AAABAAIAAAD//+r/AAABAAAAAAD//+v/AAABAAEAAAD//+z/AAABAAIAAAAAAOr/AAABAAAAAAAAAOv/AAABAAEAAAAAAOz/AAABAAIAAAABAOr/AAABAAAAAAABAOv/AAABAAEAAAABAOz/AAABAAIAAAD3/+z/AAABAAEAAAD3/+v/AAABAAEAAAD3/+r/AAABAAAAAAD2/+z/AAABAAEAAAD2/+v/AAABAAEAAAD2/+r/AAABAAAAAAD1/+z/AAABAAEAAAD1/+v/AAABAAEAAAD1/+r/AAABAAAAAAD0/+z/AAABAAEAAAD0/+v/AAABAAEAAAD0/+r/AAABAAAAAADz/+z/AAAAAAEAAADz/+v/AAAAAAEAAADz/+r/AAAAAAAAAAD3/+3/AAACAAIAAAD2/+3/AAABAAIAAAD1/+3/AAABAAIAAAD0/+3/AAABAAIAAADz/+3/AAAAAAIAAAADAOz/AAACAAIAAAADAOv/AAACAAEAAAADAOr/AAACAAAAAAACAOz/AAABAAIAAAACAOv/AAABAAEAAAACAOr/AAABAAAAAAAPAPP/AAACAAIAAAAPAPL/AAACAAEAAAAPAPH/AAACAAEAAAAPAPD/AAACAAEAAAAPAO//AAACAAEAAAAPAO7/AAACAAEAAAAPAO3/AAACAAEAAAAPAOz/AAACAAEAAAAPAOv/AAACAAEAAAAPAOr/AAACAAAAAAAOAPP/AAABAAIAAAAOAPL/AAABAAEAAAAOAPH/AAABAAEAAAAOAPD/AAABAAEAAAAOAO//AAABAAEAAAAOAO7/AAABAAEAAAAOAO3/AAABAAEAAAAOAOz/AAABAAEAAAAOAOv/AAABAAEAAAAOAOr/AAABAAAAAAANAPP/AAABAAIAAAANAPL/AAABAAEAAAANAPH/AAABAAEAAAANAPD/AAABAAEAAAANAO//AAABAAEAAAANAO7/AAABAAEAAAANAO3/AAABAAEAAAANAOz/AAABAAEAAAANAOv/AAABAAEAAAANAOr/AAABAAAAAAAMAPP/AAABAAIAAAAMAPL/AAABAAEAAAAMAPH/AAABAAEAAAAMAPD/AAABAAEAAAAMAO//AAABAAEAAAAMAO7/AAABAAEAAAAMAO3/AAABAAEAAAAMAOz/AAABAAEAAAAMAOv/AAABAAEAAAAMAOr/AAABAAAAAAALAPP/AAAAAAIAAAALAPL/AAABAAEAAAALAPH/AAABAAEAAAALAPD/AAAAAAEAAAALAO//AAAAAAEAAAALAO7/AAAAAAEAAAALAO3/AAAAAAEAAAALAOz/AAAAAAEAAAALAOv/AAAAAAEAAAALAOr/AAAAAAAAAAAKAPL/AAABAAEAAAAKAPH/AAABAAAAAAAJAPL/AAABAAEAAAAJAPH/AAABAAAAAAAIAPH/AAAAAAAAAAAIAPL/AAAAAAIAAAA=")
 tile_set = ExtResource("8_7ug0n")
 
 [node name="WorldEnvironment" parent="." unique_id=303150478 instance=ExtResource("9_ibkbc")]
@@ -137,42 +136,24 @@ Visible = false
 
 [node name="WindSand" type="Line2D" parent="." unique_id=424187687 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-325, 7)
-points = PackedVector2Array(70, -17, 152, -20, 156, -112, 353, -157, 356, 146, 85, 48)
+points = PackedVector2Array(70, -17, 156, -112, 353, -157, 441, -93, 85, 48)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_7ug0n")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
 gradient = SubResource("Gradient_ibkbc")
 script = ExtResource("12_8m2yi")
-Path = NodePath("Path2D")
-RailedNodes = NodePath("RailedNodes")
 Activate_on_color = 1
 Enabled = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
 
 [node name="Path2D" type="Path2D" parent="WindSand" unique_id=1579871613]
 curve = SubResource("Curve2D_m2ygx")
 
-[node name="WindSandPathFollow2" type="PathFollow2D" parent="WindSand/Path2D" unique_id=1646277068 node_paths=PackedStringArray("Line")]
-position = Vector2(117.33718, 59.693886)
-progress = 933.0
-rotates = false
-script = ExtResource("13_63w4r")
-Line = NodePath("../..")
-
-[node name="falling_sand" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=214611821 instance=ExtResource("14_o52aa")]
-position = Vector2(0, 0)
-Enabled = false
-CanKillPlayer = false
-
-[node name="falling_sand2" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=2014603623 instance=ExtResource("14_o52aa")]
-position = Vector2(15.999802, 0.0796051)
-Enabled = false
-CanKillPlayer = false
-
-[node name="falling_sand3" parent="WindSand/Path2D/WindSandPathFollow2" unique_id=1077997658 instance=ExtResource("14_o52aa")]
-position = Vector2(-15.999802, -0.0796051)
-Enabled = false
-CanKillPlayer = false
+[node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("14_8m2yi")]
+position = Vector2(104.69577, -55.32673)
+progress = 51.7
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=733256122]
 wait_time = 0.5
