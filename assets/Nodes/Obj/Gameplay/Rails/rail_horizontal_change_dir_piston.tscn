@@ -11,13 +11,13 @@ shader_parameter/fill_dir = Vector2(1, -192.16)
 shader_parameter/alpha_cutoff = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gfvgd"]
-size = Vector2(80, 16)
+size = Vector2(120, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7liu2"]
-size = Vector2(80, 20)
+size = Vector2(120, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
-size = Vector2(88, 23.591614)
+size = Vector2(123, 23.591614)
 
 [node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("CooldownTimer", "RigidBody")]
 use_parent_material = true
@@ -41,7 +41,7 @@ use_parent_material = true
 texture = SubResource("PlaceholderTexture2D_gfvgd")
 
 [node name="Collision" type="CollisionShape2D" parent="RigidBody2D" unique_id=1521798088]
-position = Vector2(0.2536316, 0.09161377)
+position = Vector2(0, 0.09161377)
 shape = SubResource("RectangleShape2D_7liu2")
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=669331100]
@@ -51,7 +51,7 @@ one_shot = true
 [node name="EnableArea" type="Area2D" parent="." unique_id=667742697]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnableArea" unique_id=1326560902]
-position = Vector2(0.2536316, -2.2042236)
+position = Vector2(-0.5, -2.2042236)
 shape = SubResource("RectangleShape2D_pknad")
 
 [connection signal="body_entered" from="EnableArea" to="." method="_on_enable_area_body_entered"]

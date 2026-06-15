@@ -57,8 +57,10 @@ func get_tangent() -> int:
 	PreviousTan -1
 	return -1
 
+var InternalSpeed : float = 0.0
 var Vel : float = 0.0#Vector2(0.0, 0.0)
-@export var StopAcc : float = 0.5
+
+@export var StopAcc : float = 0.0
 
 var ChangingVel : bool = false
 
@@ -69,22 +71,28 @@ func _process(delta: float) -> void:
 	_reload_material_shader()
 	if(Enabled && Line.Enabled && CooldownTimer.is_stopped()):
 		if(Player && Type == Types.HorizontalChangeDir):
-			Direction = clamp(global_position.x-Player.global_position.x, -SizeX/2, SizeX/2)*2/SizeX
+			Direction = (global_position-Player.global_position).normalized().x
 			var tan = get_tangent()
 			if(tan): Direction *= tan
 			#if(global_position > LastGlobalPosition): Direction *= -1.0
 		if(Type != Types.None):
 			if(Type != Types.HorizontalChangeDir || PlayerInteracted):
-				progress += Line.Speed * delta * Direction
+				progress += InternalSpeed * delta * Direction
 				Vel = (progress_ratio-previous_ratio)/delta #(global_position-LastGlobalPosition)/delta
+				if(InternalSpeed < Line.Speed): InternalSpeed += Line.Acc*delta
+				else: InternalSpeed = Line.Speed
 			elif(Type == Types.HorizontalChangeDir):
 				if(!PlayerInteracted && Vel != 0.0):
 					progress_ratio += Vel*delta
 					Vel = lerp(Vel, 0.0, StopAcc*delta)
-					if(Vel <= .1):
-						Vel = 0.0
+					InternalSpeed = abs(Vel)/delta*5
+					#print(delta)
+					if(abs(Vel) <= .05):
+						Vel = Line.InitialAccSpeed
+						InternalSpeed = Line.InitialAccSpeed
+						if(ChangingVel): tick_global_speed()
 						ChangingVel = false
-		if(ChangingVel && Line.GlobalMovingNode == self && ChangeGlobalSpeed):
+		if(ChangingVel && Line.GlobalMovingNode == self && ChangeGlobalSpeed): 
 			tick_global_speed()
 		if(previous_ratio > progress_ratio && Type != Types.HorizontalChangeDir):
 			restart()
@@ -92,13 +100,15 @@ func _process(delta: float) -> void:
 			previous_ratio = progress_ratio
 		LastGlobalPosition = global_position
 	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
-	#print(Line.GlobalSpeed)
+	print(Vel)
+	print(InternalSpeed)
 
 var PlayerInteracted : bool = false
 
 func _on_enable_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
 		PlayerInteracted = true
+		if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
 		if(ChangeGlobalSpeed):
 			ChangingVel = true
 			Line.GlobalMovingNode = self
@@ -110,4 +120,6 @@ func _on_enable_area_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Player")):
 		#if(Line.GlobalMovingNode == self): Line.GlobalMovingNode = null
 		PlayerInteracted = false
-		Vel /= 2
+		if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
+		#InternalSpeed = 0.0
+		#Vel /= 2
