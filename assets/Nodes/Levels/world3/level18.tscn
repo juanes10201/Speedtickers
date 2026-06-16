@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="11_j48sm"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="12_u8e8u"]
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="13_qlkgf"]
-[ext_resource type="PackedScene" uid="uid://dkyfw4w4irwm0" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_change_dir_piston.tscn" id="14_j323o"]
 [ext_resource type="PackedScene" uid="uid://b40beedst2m65" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_piston_none.tscn" id="15_5064t"]
 [ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn" id="16_8fspu"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="16_flaqu"]
@@ -69,7 +68,7 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_ufqx1"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 226, 102, 0, 0, 0, 0, 568, 5, 0, 0, 0, 0, 512, -122, 0, 0, 0, 0, 420, -167, 0, 0, 0, 0, 362, -31, 0, 0, 0, 0, 161, -4, 0, 0, 0, 0, 226, 102)
+"points": PackedVector2Array(0, 0, 0, 0, 226, 102, 0, 0, 0, 0, 606, 42, 0, 0, 0, 0, 546, -151, 0, 0, 0, 0, 420, -167, 0, 0, 0, 0, 362, -31, 0, 0, 0, 0, 161, -4, 0, 0, 0, 0, 226, 102)
 }
 point_count = 7
 
@@ -117,12 +116,12 @@ scale = Vector2(179.273, 1.805)
 texture = ExtResource("7_2vuhn")
 
 [node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("8_n3d5q")]
-position = Vector2(-942, -244)
+position = Vector2(-315, -197)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=246146196 groups=["Tileset"]]
 position = Vector2(-4, 32)
 scale = Vector2(1.01399, 1)
-tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//r/AAACAAAAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAAAIAO//AAABAAMAAAAHAO//AAABAAMAAAAGAO//AAABAAMAAAAFAO//AAAAAAMAAAAJAO//AAACAAMAAAA=")
+tile_map_data = PackedByteArray("AADq//3/AAABAAAAAADr//3/AAABAAAAAADs//3/AAABAAAAAADt//3/AAABAAAAAADu//3/AAACAAAAAADo//r/AAAAAAAAAADo//v/AAAAAAEAAADo//z/AAAAAAEAAADo//3/AAAAAAEAAADo//7/AAAAAAEAAADo////AAAAAAIAAADp//r/AAACAAAAAADp//v/AAACAAEAAADp//z/AAACAAEAAADp//3/AAAHAAMAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAABAAEAAADr////AAABAAIAAADs//7/AAABAAEAAADs////AAABAAIAAADt//7/AAABAAEAAADt////AAABAAIAAADu//7/AAACAAEAAADu////AAACAAIAAAAIAO//AAABAAMAAAAHAO//AAABAAMAAAAGAO//AAABAAMAAAAFAO//AAAAAAMAAAAJAO//AAACAAMAAAACAPj/AAABAAAAAAADAPj/AAACAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAIAAAACAPn/AAABAAIAAAADAPn/AAACAAIAAAA=")
 tile_set = ExtResource("9_w72is")
 
 [node name="WorldEnvironment" parent="." unique_id=303150478 instance=ExtResource("10_qjlcw")]
@@ -141,16 +140,18 @@ CanChange = false
 
 [node name="CanvasLayer" parent="." unique_id=97962373 instance=ExtResource("12_u8e8u")]
 
-[node name="WindSand" type="Line2D" parent="." unique_id=910461722 node_paths=PackedStringArray("Path", "RailedNodes")]
+[node name="WindSand" type="Line2D" parent="." unique_id=910461722 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-413, -45)
-points = PackedVector2Array(226, 102, 568, 5, 512, -122, 420, -167, 362, -31, 161, -4)
+points = PackedVector2Array(226, 102, 606, 42, 546, -151, 420, -167, 362, -31, 161, -4)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_5064t")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
 gradient = SubResource("Gradient_mwwlh")
 script = ExtResource("13_qlkgf")
-Speed = 120.0
+Speed = 100.0
+Activate_on_color = 1
+Enabled = false
 Path = NodePath("Path2D")
 RailedNodes = NodePath("RailedNodes")
 
@@ -158,28 +159,40 @@ RailedNodes = NodePath("RailedNodes")
 material = SubResource("ShaderMaterial_8fspu")
 curve = SubResource("Curve2D_ufqx1")
 
-[node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("14_j323o")]
-position = Vector2(241.55356, -14.820627)
-progress = 866.08
-Enabled = true
-
-[node name="rail_horizontal_change_dir_piston2" parent="WindSand/Path2D" unique_id=1670545259 instance=ExtResource("14_j323o")]
-position = Vector2(492.78125, 26.333979)
-progress = 277.3
-Enabled = true
-
-[node name="rail_horizontal_change_dir_piston3" parent="WindSand/Path2D" unique_id=420625959 instance=ExtResource("14_j323o")]
-position = Vector2(533.1151, -74.11392)
-progress = 441.95
-Enabled = true
-
 [node name="HorizontalPistonMove4" parent="WindSand/Path2D" unique_id=226068745 instance=ExtResource("15_5064t")]
-position = Vector2(318.08408, 75.88259)
-progress = 95.72107
+position = Vector2(324.77176, 86.40445)
+progress = 100.0
+Type = 1
 
-[node name="HorizontalPistonMove5" parent="WindSand/Path2D" unique_id=27479598 instance=ExtResource("15_5064t")]
-position = Vector2(184.11024, 33.687466)
-progress = 991.5731
+[node name="HorizontalPistonMove5" parent="WindSand/Path2D" unique_id=123141359 instance=ExtResource("15_5064t")]
+position = Vector2(218.45784, -11.71822)
+progress = 1006.5031
+Type = 1
+
+[node name="HorizontalPistonMove7" parent="WindSand/Path2D" unique_id=881009165 instance=ExtResource("15_5064t")]
+position = Vector2(472.9036, -160.28207)
+progress = 660.5
+Type = 1
+
+[node name="HorizontalPistonMove10" parent="WindSand/Path2D" unique_id=592001631 instance=ExtResource("15_5064t")]
+position = Vector2(597.3093, 14.044932)
+progress = 414.0
+Type = 1
+
+[node name="HorizontalPistonMove9" parent="WindSand/Path2D" unique_id=537312668 instance=ExtResource("15_5064t")]
+position = Vector2(368.88687, -47.14856)
+progress = 844.1
+Type = 1
+
+[node name="HorizontalPistonMove6" parent="WindSand/Path2D" unique_id=4684029 instance=ExtResource("15_5064t")]
+position = Vector2(479.45767, 61.980362)
+progress = 256.59375
+Type = 1
+
+[node name="HorizontalPistonMove8" parent="WindSand/Path2D" unique_id=666481031 instance=ExtResource("15_5064t")]
+position = Vector2(563.3709, -95.1233)
+progress = 528.2969
+Type = 1
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=1113929057]
 wait_time = 0.5
@@ -190,21 +203,21 @@ top_level = true
 script = ExtResource("16_flaqu")
 
 [node name="Killbox" parent="." unique_id=1386857898 instance=ExtResource("11_j48sm")]
-position = Vector2(-51.999992, -110)
-scale = Vector2(2.835, 5.32)
-
-[node name="Killbox3" parent="." unique_id=354865074 instance=ExtResource("11_j48sm")]
-position = Vector2(-51, 60.000004)
-scale = Vector2(2.835, 5.32)
-
-[node name="Killbox5" parent="." unique_id=128239334 instance=ExtResource("11_j48sm")]
-position = Vector2(-66, -25)
-scale = Vector2(1.02, 5.32)
+position = Vector2(-49.999996, -17.000008)
+scale = Vector2(2.835, 16.32)
 
 [node name="KillBox4" parent="." unique_id=1271129577 instance=ExtResource("16_8fspu")]
-position = Vector2(26.000008, -126.999985)
+position = Vector2(27.000006, -165.99998)
 rotation = 0.8115781
 scale = Vector2(0.64, 10.29)
+
+[node name="KillBox7" parent="." unique_id=1808707746 instance=ExtResource("16_8fspu")]
+position = Vector2(-28, -87)
+scale = Vector2(0.935, 3.31)
+
+[node name="KillBox8" parent="." unique_id=1258339453 instance=ExtResource("16_8fspu")]
+position = Vector2(-25, 67)
+scale = Vector2(0.935, 7.11)
 
 [node name="KillBox5" parent="." unique_id=764925369 instance=ExtResource("16_8fspu")]
 position = Vector2(181, 91.999985)
@@ -219,9 +232,19 @@ position = Vector2(71, -292)
 scale = Vector2(2, 8.785)
 
 [node name="Key" parent="." unique_id=2070008152 instance=ExtResource("18_ufqx1")]
-position = Vector2(-40, -36)
-AditionalAction = 1
+position = Vector2(38, -111)
+AditionalAction = 13
+AditionalActionArgument = -120.0
+AnotherAction = 1
 
 [node name="KillBox3" parent="." unique_id=1529540005 instance=ExtResource("16_8fspu")]
-position = Vector2(-195, 50)
-scale = Vector2(2.605, 5.12)
+position = Vector2(-168, 67)
+scale = Vector2(2.605, 8.76)
+
+[node name="KillBox9" parent="." unique_id=1522517076 instance=ExtResource("16_8fspu")]
+position = Vector2(2.0000057, -193)
+scale = Vector2(0.89, 6.29)
+
+[node name="KillBox10" parent="." unique_id=228555746 instance=ExtResource("16_8fspu")]
+position = Vector2(77.00001, -237.99998)
+scale = Vector2(0.89, 3.175)

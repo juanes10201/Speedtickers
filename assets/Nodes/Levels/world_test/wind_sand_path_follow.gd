@@ -34,9 +34,9 @@ func restart() -> void:
 	if(!Enabled || progress_ratio >= OriginalRatio):
 		Enabled = true
 		if(Type == Types.HorizontalChangeDir): return
-		if(CooldownTimer): CooldownTimer.start()
-		progress_ratio = OriginalRatio
-		previous_ratio = progress_ratio
+		#if(CooldownTimer): CooldownTimer.start()
+		#progress_ratio = OriginalRatio
+		#previous_ratio = progress_ratio
 
 func _reload_material_shader() -> void:
 	for Child in get_children():
@@ -47,13 +47,13 @@ func _reload_material_shader() -> void:
 				Child.material.set_shader_parameter("progress", 0.0 )
 var PreviousTan : int = 1
 func get_tangent() -> int:
-	var curve = get_parent().curve
-	var p1 = curve.sample_baked(progress - 1.0)
-	var p2 = curve.sample_baked(progress + 1.0)
-	if(abs(p1.x-p2.x) <= 0.1): return PreviousTan
-	if(p1.x-p2.x > 0.0):
-		PreviousTan = 1
-		return 1
+	#var curve = get_parent().curve
+	#var p1 = curve.sample_baked(progress - 1.0)
+	#var p2 = curve.sample_baked(progress + 1.0)
+	#if(abs(p1.x-p2.x) <= 0.1): return PreviousTan
+	#if(p1.x-p2.x > 0.0):
+	#	PreviousTan = 1
+	#	return 1
 	PreviousTan -1
 	return -1
 
@@ -100,8 +100,10 @@ func _process(delta: float) -> void:
 			previous_ratio = progress_ratio
 		LastGlobalPosition = global_position
 	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
-	print(Vel)
-	print(InternalSpeed)
+	if(InternalSpeed > Line.Speed): InternalSpeed = Line.Speed
+	if(Vel > Line.Speed): Vel = Line.Speed
+	#print(Vel)
+	#print(InternalSpeed)
 
 var PlayerInteracted : bool = false
 

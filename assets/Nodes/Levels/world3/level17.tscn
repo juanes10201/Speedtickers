@@ -106,7 +106,7 @@ one_shot = true
 autostart = true
 
 [node name="Flag" parent="." unique_id=1273041 instance=ExtResource("5_63w4r")]
-position = Vector2(-197, -254)
+position = Vector2(-197, -242)
 
 [node name="AmbientParticles2" parent="." unique_id=350597279 instance=ExtResource("6_o52aa")]
 position = Vector2(-96, -160)
@@ -125,6 +125,8 @@ width_curve = SubResource("Curve_7ug0n")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
 gradient = SubResource("Gradient_ibkbc")
 script = ExtResource("12_8m2yi")
+Speed = 200.0
+InitialAccSpeed = 100.0
 Activate_on_color = 1
 Enabled = false
 Path = NodePath("Path2D")
@@ -171,8 +173,8 @@ position = Vector2(-115.99999, 22.00003)
 scale = Vector2(2.045, 22.585)
 
 [node name="Killbox3" parent="." unique_id=802927801 instance=ExtResource("10_m2ygx")]
-position = Vector2(-196.00002, -252.99995)
-scale = Vector2(2.045, 4.28)
+position = Vector2(-196, -250.99998)
+scale = Vector2(2.045, 4.725)
 
 [node name="Killbox2" parent="." unique_id=22010906 instance=ExtResource("10_m2ygx")]
 position = Vector2(11.000015, -76)
@@ -187,13 +189,13 @@ position = Vector2(-547, -256)
 scale = Vector2(0.64, 9.98)
 
 [node name="Key" parent="." unique_id=2070008152 instance=ExtResource("16_o52aa")]
-position = Vector2(50, -102)
+position = Vector2(47, -84)
 AditionalAction = 1
 
 [node name="KillBox3" parent="." unique_id=1271129577 instance=ExtResource("17_kfotq")]
-position = Vector2(-196, -70.99997)
+position = Vector2(-196, -60.999966)
 scale = Vector2(1.795, 18.365)
 
 [node name="KillBox4" parent="." unique_id=1612914005 instance=ExtResource("17_kfotq")]
-position = Vector2(-48, -98.99997)
-scale = Vector2(1.795, 14.18)
+position = Vector2(-46, -163)
+scale = Vector2(1.795, 5.985)
