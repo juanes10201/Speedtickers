@@ -1,0 +1,295 @@
+[gd_scene format=4 uid="uid://mlfo2ljpcyd"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_5bs5x"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_13mx3"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="5_of3sb"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="6_78nvr"]
+[ext_resource type="Texture2D" uid="uid://cvdsaeuured5y" path="res://assets/Sprites/particles/bright_particles.png" id="6_mtsri"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="7_ai6ku"]
+[ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="7_gohl6"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="8_6fju5"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="9_wasra"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="10_decpx"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="11_7157d"]
+[ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="11_u6fwo"]
+[ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="12_irwnl"]
+[ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn" id="13_oxcdg"]
+[ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Nodes/Obj/Gameplay/key.tscn" id="14_uddct"]
+[ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="15_ayoq5"]
+[ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="17_ffsya"]
+[ext_resource type="PackedScene" uid="uid://dkyfw4w4irwm0" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_change_dir_piston.tscn" id="18_n4go0"]
+[ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="19_1osbn"]
+[ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="20_u6fwo"]
+[ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="21_irwnl"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[sub_resource type="Curve" id="Curve_24d20"]
+_data = [Vector2(0, 0.7821012), 0.0, 0.0, 0, 0, Vector2(1, 0.6731518), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lpnse"]
+colors = PackedColorArray(0.16082096, 0.10031984, 0.27544695, 1, 0.91397053, 0.60972846, 0.8570899, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_mii8u"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 70, -17, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 384, -149, 0, 0, 0, 0, 447, -96, 0, 0, 0, 0, 203.84363, 0.92993164, 0, 0, 0, 0, 85, 48, 0, 0, 0, 0, 70, -17)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_oxcdg"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 73, -267, 0, 0, 0, 0, 76, -76, 0, 0, 0, 0, 73, -267)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
+shader = ExtResource("21_irwnl")
+shader_parameter/progress = 0.0
+shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
+shader_parameter/fill_dir = Vector2(1, -192.16)
+shader_parameter/alpha_cutoff = 0.01
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uddct"]
+size = Vector2(73, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayoq5"]
+size = Vector2(72.99999, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffsya"]
+size = Vector2(82, 115)
+
+[node name="Node2D" type="Node2D" unique_id=451057958]
+position = Vector2(0, -1)
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=163613003]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+texture = ExtResource("1_5bs5x")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
+script = ExtResource("2_13mx3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg" unique_id=2077684793]
+libraries/ = SubResource("AnimationLibrary_0i2pc")
+
+[node name="Player" parent="." unique_id=271241358 instance=ExtResource("9_wasra")]
+position = Vector2(-328, -87)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2089736162]
+position = Vector2(233.07, -7.552)
+zoom = Vector2(2.08, 2.08)
+limit_left = -403
+limit_top = -368
+limit_right = 184
+limit_bottom = 153
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("10_decpx")
+
+[node name="Time_Left" type="Timer" parent="." unique_id=837228384 groups=["GameTimer"]]
+wait_time = 99.0
+one_shot = true
+autostart = true
+
+[node name="AmbientParticles2" parent="." unique_id=1270376781 instance=ExtResource("11_7157d")]
+position = Vector2(-96, -160)
+scale = Vector2(179.273, 1.805)
+texture = ExtResource("6_mtsri")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=84853944 groups=["Tileset"]]
+position = Vector2(-4, 32)
+scale = Vector2(1.01399, 1)
+tile_map_data = PackedByteArray("AADr//n/AAADAAAAAADr//r/AAADAAEAAADr//v/AAADAAEAAADr//z/AAADAAEAAADr//3/AAADAAEAAADr//7/AAADAAEAAADr////AAADAAEAAADr/wAAAAADAAEAAADr/wEAAAADAAEAAADr/wIAAAADAAEAAADr/wMAAAADAAEAAADr/wQAAAADAAEAAADr/wUAAAADAAEAAADr/wYAAAADAAEAAADr/wcAAAADAAIAAAA=")
+tile_set = ExtResource("7_gohl6")
+
+[node name="WorldEnvironment" parent="." unique_id=1429607840 instance=ExtResource("7_ai6ku")]
+
+[node name="KillBox" parent="." unique_id=631627583 instance=ExtResource("8_6fju5")]
+position = Vector2(-196, 144)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="KillBox6" parent="." unique_id=193821091 instance=ExtResource("8_6fju5")]
+position = Vector2(-198, -436)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="CanvasLayer" parent="." unique_id=341672404 instance=ExtResource("5_of3sb")]
+
+[node name="KillBox2" parent="." unique_id=561049871 instance=ExtResource("8_6fju5")]
+position = Vector2(-613, -271)
+scale = Vector2(2, 21.07)
+
+[node name="KillBox3" parent="." unique_id=1606147076 instance=ExtResource("8_6fju5")]
+position = Vector2(-615, 6.214966)
+scale = Vector2(2, 7)
+
+[node name="Key3" parent="." unique_id=427133952 instance=ExtResource("11_u6fwo")]
+position = Vector2(-359.99997, -334.99997)
+
+[node name="Enemie" parent="." unique_id=1044905873 instance=ExtResource("12_irwnl")]
+position = Vector2(-271.99997, -334.99997)
+EnemyDirection = 2
+GravityDirection = -1
+
+[node name="Killbox" parent="." unique_id=1386857898 instance=ExtResource("8_6fju5")]
+position = Vector2(-391.99997, -334.99997)
+
+[node name="KillBox4" parent="." unique_id=1271129577 instance=ExtResource("13_oxcdg")]
+position = Vector2(-416, -335)
+
+[node name="Key" parent="." unique_id=2070008152 instance=ExtResource("14_uddct")]
+position = Vector2(-311.99997, -334.99997)
+AditionalAction = 1
+
+[node name="falling_sand6" parent="." unique_id=1487036821 instance=ExtResource("15_ayoq5")]
+position = Vector2(-239.99997, -334.99997)
+
+[node name="Flag" parent="." unique_id=893668377 instance=ExtResource("6_78nvr")]
+position = Vector2(-207.99997, -334.99997)
+
+[node name="WindSand" type="Line2D" parent="." unique_id=1391092971 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
+position = Vector2(97, -16)
+points = PackedVector2Array(70, -17, 156, -112, 384, -149, 447, -96, 203.84363, 0.92993164, 85, 48)
+closed = true
+width = 4.835
+width_curve = SubResource("Curve_24d20")
+default_color = Color(0.9597251, 0.5843025, 1, 1)
+gradient = SubResource("Gradient_lpnse")
+script = ExtResource("17_ffsya")
+Speed = 200.0
+InitialAccSpeed = 100.0
+Activate_on_color = 1
+Enabled = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
+
+[node name="Path2D" type="Path2D" parent="WindSand" unique_id=274616441]
+curve = SubResource("Curve2D_mii8u")
+
+[node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("18_n4go0")]
+position = Vector2(104.69577, -55.32673)
+progress = 51.7
+
+[node name="FallCooldown" type="Timer" parent="WindSand" unique_id=2104053735]
+wait_time = 0.5
+one_shot = true
+
+[node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=422604267]
+top_level = true
+script = ExtResource("19_1osbn")
+
+[node name="WindSand2" type="Line2D" parent="." unique_id=760855876 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
+position = Vector2(-344, -1)
+points = PackedVector2Array(73, -267, 76, -76)
+width = 4.835
+width_curve = SubResource("Curve_24d20")
+default_color = Color(0.9597251, 0.5843025, 1, 1)
+gradient = SubResource("Gradient_lpnse")
+script = ExtResource("17_ffsya")
+Speed = 500.0
+Acc = 300.0
+InitialAccSpeed = 100.0
+Activate_on_color = 1
+Enabled = false
+Closed = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
+
+[node name="Path2D" type="Path2D" parent="WindSand2" unique_id=35333120]
+curve = SubResource("Curve2D_oxcdg")
+
+[node name="rail_horizontal_change_dir_piston" type="PathFollow2D" parent="WindSand2/Path2D" unique_id=1512629185 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "PistonSwitchDirTimer")]
+use_parent_material = true
+position = Vector2(73.689316, -223.1134)
+progress = 338.15
+rotates = false
+script = ExtResource("20_u6fwo")
+CooldownTimer = NodePath("CooldownTimer")
+Type = 3
+RigidBody = NodePath("RigidBody2D")
+PistonSwitchDirTimer = NodePath("SwitchDirTimer")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="WindSand2/Path2D/rail_horizontal_change_dir_piston" unique_id=1892304175]
+material = SubResource("ShaderMaterial_7liu2")
+collision_layer = 2304
+collision_mask = 0
+mass = 2.0
+gravity_scale = 0.5
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="WindSand2/Path2D/rail_horizontal_change_dir_piston/RigidBody2D" unique_id=705086938]
+use_parent_material = true
+texture = SubResource("PlaceholderTexture2D_uddct")
+
+[node name="Collision" type="CollisionShape2D" parent="WindSand2/Path2D/rail_horizontal_change_dir_piston/RigidBody2D" unique_id=1521798088]
+position = Vector2(0.23762512, 0.56738424)
+shape = SubResource("RectangleShape2D_ayoq5")
+
+[node name="CooldownTimer" type="Timer" parent="WindSand2/Path2D/rail_horizontal_change_dir_piston" unique_id=669331100]
+wait_time = 0.2
+one_shot = true
+
+[node name="EnableArea" type="Area2D" parent="WindSand2/Path2D/rail_horizontal_change_dir_piston" unique_id=667742697]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindSand2/Path2D/rail_horizontal_change_dir_piston/EnableArea" unique_id=1326560902]
+position = Vector2(-0.26237488, 0.56738997)
+shape = SubResource("RectangleShape2D_ffsya")
+
+[node name="SwitchDirTimer" type="Timer" parent="WindSand2/Path2D/rail_horizontal_change_dir_piston" unique_id=2016931753]
+wait_time = 0.5
+one_shot = true
+
+[node name="FallCooldown" type="Timer" parent="WindSand2" unique_id=1488482794]
+wait_time = 0.5
+one_shot = true
+
+[node name="RailedNodes" type="Node2D" parent="WindSand2" unique_id=1708079443]
+top_level = true
+script = ExtResource("19_1osbn")
+
+[connection signal="body_entered" from="WindSand2/Path2D/rail_horizontal_change_dir_piston/EnableArea" to="WindSand2/Path2D/rail_horizontal_change_dir_piston" method="_on_enable_area_body_entered"]
+[connection signal="body_exited" from="WindSand2/Path2D/rail_horizontal_change_dir_piston/EnableArea" to="WindSand2/Path2D/rail_horizontal_change_dir_piston" method="_on_enable_area_body_exited"]

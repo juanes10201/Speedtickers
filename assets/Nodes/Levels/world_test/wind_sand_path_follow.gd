@@ -13,7 +13,8 @@ extends PathFollow2D
 enum Types {
 	None,
 	Horizontal,
-	HorizontalChangeDir
+	HorizontalChangeDir,
+	Piston
 }
 @export var Type : Types = Types.Horizontal
 @onready var Player = SaveGame.get_player()
@@ -28,12 +29,12 @@ var Direction : float = 1.0
 const InLineMargin : float = 10.0
 var Falling : bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(Enabled):
 		restart()
 
 func restart() -> void:
+	print("Restart")
 	if(Type == Types.None): return
 	if(!Enabled || progress_ratio >= OriginalRatio):
 		Enabled = true
@@ -95,43 +96,74 @@ func tick_global_speed() -> void:
 
 func _process(delta: float) -> void:
 	_reload_material_shader()
-	if(!Line.Closed): _tick_falling()
-	if(!Falling):
-		if(Enabled && Line.Enabled && CooldownTimer.is_stopped()):
-			if(Player && Type == Types.HorizontalChangeDir):
-				Direction = (global_position-Player.global_position).normalized().x
-				var tan = get_tangent()
-				if(tan): Direction *= tan
-				#if(global_position > LastGlobalPosition): Direction *= -1.0
-			if(Type != Types.None):
-				if(Type != Types.HorizontalChangeDir || PlayerInteracted):
-					progress += InternalSpeed * delta * Direction
-					Vel = (progress_ratio-previous_ratio)/delta #(global_position-LastGlobalPosition)/delta
-					if(InternalSpeed < Line.Speed): InternalSpeed += Line.Acc*delta
-					else: InternalSpeed = Line.Speed
-				elif(Type == Types.HorizontalChangeDir):
-					if(!PlayerInteracted && Vel != 0.0):
-						progress_ratio += Vel*delta
-						Vel = lerp(Vel, 0.0, StopAcc*delta)
-						InternalSpeed = abs(Vel)/delta*5
-						#print(delta)
-						if(abs(Vel) <= .05):
-							Vel = Line.InitialAccSpeed
-							InternalSpeed = Line.InitialAccSpeed
-							if(ChangingVel): tick_global_speed()
-							ChangingVel = false
-			if(ChangingVel && Line.GlobalMovingNode == self && ChangeGlobalSpeed): 
-				tick_global_speed()
-			if(previous_ratio > progress_ratio && Type != Types.HorizontalChangeDir):
-				restart()
-			else:
-				previous_ratio = progress_ratio
-			LastGlobalPosition = global_position
-		if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
-		if(InternalSpeed > Line.Speed): InternalSpeed = Line.Speed
-		if(Vel > Line.Speed): Vel = Line.Speed
-	#print(Vel)
-	#print(InternalSpeed)
+	if(Type == Types.Piston):
+		_piston_movement_tick(delta)
+		_piston_speed_tick(delta)
+	else:
+		if(!Line.Closed): _tick_falling()
+		if(!Falling):
+			if(Enabled && Line.Enabled && CooldownTimer.is_stopped()):
+				_block_movement_tick(delta)
+				
+				if(ChangingVel && Line.GlobalMovingNode == self && ChangeGlobalSpeed): 
+					tick_global_speed()
+				if(previous_ratio > progress_ratio && Type != Types.HorizontalChangeDir):
+					restart()
+				else:
+					previous_ratio = progress_ratio
+				LastGlobalPosition = global_position
+			if(Type != Types.Piston):
+				_block_speed_tick(delta)
+
+func _piston_speed_tick(delta: float) -> void:
+	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
+	if(Direction == 1):
+		if(InternalSpeed >= Line.Speed): InternalSpeed = Line.Speed
+		else: InternalSpeed += Line.Acc*delta
+	else:
+		if(InternalSpeed >= Line.Speed): InternalSpeed = Line.Speed/2
+		else: InternalSpeed += Line.Acc*delta/2
+	if(Vel > Line.Speed): Vel = Line.Speed
+
+@export var PistonSwitchDirTimer : Timer 
+
+func _piston_movement_tick(delta : float) -> void:
+	progress += InternalSpeed * delta * Direction
+	#print((progress_ratio <= 0.3 && Direction == 1.0) || (progress_ratio >= 0.7 && Direction == -1.0))
+	if( (progress_ratio <= 0.2 && Direction == 1.0) || (progress_ratio >= 0.8 && Direction == -1.0) ):
+		InternalSpeed = 0.0
+		Direction *= -1
+		PistonSwitchDirTimer.start()
+		print("Changedir")
+
+func _block_speed_tick(delta: float) -> void:
+	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
+	if(InternalSpeed > Line.Speed): InternalSpeed = Line.Speed
+	if(Vel > Line.Speed): Vel = Line.Speed
+
+func _block_movement_tick(delta : float) -> void:
+	if(Player && Type == Types.HorizontalChangeDir):
+		Direction = (global_position-Player.global_position).normalized().x
+		var tan = get_tangent()
+		if(tan): Direction *= tan
+		#if(global_position > LastGlobalPosition): Direction *= -1.0
+	if(Type != Types.None):
+		if(Type != Types.HorizontalChangeDir || PlayerInteracted):
+			progress += InternalSpeed * delta * Direction
+			Vel = (progress_ratio-previous_ratio)/delta #(global_position-LastGlobalPosition)/delta
+			if(InternalSpeed < Line.Speed): InternalSpeed += Line.Acc*delta
+			else: InternalSpeed = Line.Speed
+		elif(Type == Types.HorizontalChangeDir):
+			if(!PlayerInteracted && Vel != 0.0):
+				progress_ratio += Vel*delta
+				Vel = lerp(Vel, 0.0, StopAcc*delta)
+				InternalSpeed = abs(Vel)/delta*5
+				#print(delta)
+				if(abs(Vel) <= .05):
+					Vel = Line.InitialAccSpeed
+					InternalSpeed = Line.InitialAccSpeed
+					if(ChangingVel): tick_global_speed()
+					ChangingVel = false
 
 var PlayerInteracted : bool = false
 
