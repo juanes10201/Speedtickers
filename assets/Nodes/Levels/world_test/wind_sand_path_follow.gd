@@ -1,6 +1,7 @@
 extends PathFollow2D
 
 @onready var Line : Line2D = get_parent().get_parent()
+@onready var Path : Path2D = get_parent()
 @export var Enabled : bool = true
 @export var CooldownAnim : bool = true
 
@@ -24,6 +25,9 @@ var Direction : float = 1.0
 @onready var LastGlobalPosition : Vector2 = global_position
 @export var ChangeGlobalSpeed : bool = false
 
+const InLineMargin : float = 10.0
+var Falling : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(Enabled):
@@ -34,9 +38,6 @@ func restart() -> void:
 	if(!Enabled || progress_ratio >= OriginalRatio):
 		Enabled = true
 		if(Type == Types.HorizontalChangeDir): return
-		#if(CooldownTimer): CooldownTimer.start()
-		#progress_ratio = OriginalRatio
-		#previous_ratio = progress_ratio
 
 func _reload_material_shader() -> void:
 	for Child in get_children():
@@ -64,44 +65,71 @@ var Vel : float = 0.0#Vector2(0.0, 0.0)
 
 var ChangingVel : bool = false
 
+func is_in_closed_line() -> bool:
+	if(Line is Line2D):
+		for i in range(Line.points.size()-1):
+			if(is_in_line(position+RigidBody.position, i) ): return true
+	return false
+
+func is_in_line(position : Vector2, LineId : int, margin : float = InLineMargin):
+	var closest_point := Geometry2D.get_closest_point_to_segment(position, Line.points[LineId], Line.points[LineId+1])
+	#print("distance: " + str(closest_point.distance_to(position+RigidBody.position)))
+	return closest_point.distance_to(position) <= margin
+
+func _tick_falling() -> void:
+	var _falling : bool = !is_in_closed_line()
+	if(_falling != Falling):
+		Falling = _falling
+		if(Falling && RigidBody):
+			#print("lol exited")
+			RigidBody.freeze = false
+		else:
+			#print("entered")
+			RigidBody.freeze = true
+			global_position = RigidBody.global_position
+			RigidBody.position = Vector2(0.0,0.0)
+			progress = Path.curve.get_closest_offset(Path.to_local(RigidBody.global_position))
+
 func tick_global_speed() -> void:
 	Line.GlobalSpeed = Vel
 
 func _process(delta: float) -> void:
 	_reload_material_shader()
-	if(Enabled && Line.Enabled && CooldownTimer.is_stopped()):
-		if(Player && Type == Types.HorizontalChangeDir):
-			Direction = (global_position-Player.global_position).normalized().x
-			var tan = get_tangent()
-			if(tan): Direction *= tan
-			#if(global_position > LastGlobalPosition): Direction *= -1.0
-		if(Type != Types.None):
-			if(Type != Types.HorizontalChangeDir || PlayerInteracted):
-				progress += InternalSpeed * delta * Direction
-				Vel = (progress_ratio-previous_ratio)/delta #(global_position-LastGlobalPosition)/delta
-				if(InternalSpeed < Line.Speed): InternalSpeed += Line.Acc*delta
-				else: InternalSpeed = Line.Speed
-			elif(Type == Types.HorizontalChangeDir):
-				if(!PlayerInteracted && Vel != 0.0):
-					progress_ratio += Vel*delta
-					Vel = lerp(Vel, 0.0, StopAcc*delta)
-					InternalSpeed = abs(Vel)/delta*5
-					#print(delta)
-					if(abs(Vel) <= .05):
-						Vel = Line.InitialAccSpeed
-						InternalSpeed = Line.InitialAccSpeed
-						if(ChangingVel): tick_global_speed()
-						ChangingVel = false
-		if(ChangingVel && Line.GlobalMovingNode == self && ChangeGlobalSpeed): 
-			tick_global_speed()
-		if(previous_ratio > progress_ratio && Type != Types.HorizontalChangeDir):
-			restart()
-		else:
-			previous_ratio = progress_ratio
-		LastGlobalPosition = global_position
-	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
-	if(InternalSpeed > Line.Speed): InternalSpeed = Line.Speed
-	if(Vel > Line.Speed): Vel = Line.Speed
+	if(!Line.Closed): _tick_falling()
+	if(!Falling):
+		if(Enabled && Line.Enabled && CooldownTimer.is_stopped()):
+			if(Player && Type == Types.HorizontalChangeDir):
+				Direction = (global_position-Player.global_position).normalized().x
+				var tan = get_tangent()
+				if(tan): Direction *= tan
+				#if(global_position > LastGlobalPosition): Direction *= -1.0
+			if(Type != Types.None):
+				if(Type != Types.HorizontalChangeDir || PlayerInteracted):
+					progress += InternalSpeed * delta * Direction
+					Vel = (progress_ratio-previous_ratio)/delta #(global_position-LastGlobalPosition)/delta
+					if(InternalSpeed < Line.Speed): InternalSpeed += Line.Acc*delta
+					else: InternalSpeed = Line.Speed
+				elif(Type == Types.HorizontalChangeDir):
+					if(!PlayerInteracted && Vel != 0.0):
+						progress_ratio += Vel*delta
+						Vel = lerp(Vel, 0.0, StopAcc*delta)
+						InternalSpeed = abs(Vel)/delta*5
+						#print(delta)
+						if(abs(Vel) <= .05):
+							Vel = Line.InitialAccSpeed
+							InternalSpeed = Line.InitialAccSpeed
+							if(ChangingVel): tick_global_speed()
+							ChangingVel = false
+			if(ChangingVel && Line.GlobalMovingNode == self && ChangeGlobalSpeed): 
+				tick_global_speed()
+			if(previous_ratio > progress_ratio && Type != Types.HorizontalChangeDir):
+				restart()
+			else:
+				previous_ratio = progress_ratio
+			LastGlobalPosition = global_position
+		if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
+		if(InternalSpeed > Line.Speed): InternalSpeed = Line.Speed
+		if(Vel > Line.Speed): Vel = Line.Speed
 	#print(Vel)
 	#print(InternalSpeed)
 

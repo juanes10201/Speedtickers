@@ -32,6 +32,7 @@ func _ready() -> void:
 	_reload()
 
 func _process(delta: float) -> void:
+	closed = Closed
 	if Engine.is_editor_hint():
 		for i in range(points.size()):
 			var pos : Vector2 = Path.curve.get_point_position(i)
