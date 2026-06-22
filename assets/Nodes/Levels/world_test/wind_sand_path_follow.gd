@@ -29,7 +29,14 @@ var Direction : float = 1.0
 const InLineMargin : float = 10.0
 var Falling : bool = false
 
+@export var InitialWaitTime : float = .5
+@export var InitialWaitTimer : Timer
+
 func _ready() -> void:
+	if(InitialWaitTimer && InitialWaitTime != 0.0):
+		InitialWaitTimer.wait_time = InitialWaitTime
+		InitialWaitTimer.start()
+	if(PistonSwitchDirTimer): PistonSwitchDirTimer.wait_time = PistonCooldownTime
 	if(Enabled):
 		restart()
 
@@ -40,11 +47,18 @@ func restart() -> void:
 		Enabled = true
 		if(Type == Types.HorizontalChangeDir): return
 
+func _set_shader_to_timer(timer : Timer, node : Node):
+	node.material.set_shader_parameter("progress", 1-(timer.time_left/timer.wait_time) )
+
 func _reload_material_shader() -> void:
 	for Child in get_children():
 		if(Child is RigidBody2D):
-			if(!CooldownTimer.is_stopped()):
-				Child.material.set_shader_parameter("progress", 1-(CooldownTimer.time_left/CooldownTimer.wait_time) )
+			if(InitialWaitTimer && !InitialWaitTimer.is_stopped() ):
+				_set_shader_to_timer(InitialWaitTimer, Child)
+			elif(PistonSwitchDirTimer && !PistonSwitchDirTimer.is_stopped() ):
+				_set_shader_to_timer(PistonSwitchDirTimer, Child)
+			elif(!CooldownTimer.is_stopped()):
+				_set_shader_to_timer(CooldownTimer, Child)
 			else:
 				Child.material.set_shader_parameter("progress", 0.0 )
 var PreviousTan : int = 1
@@ -65,6 +79,8 @@ var Vel : float = 0.0#Vector2(0.0, 0.0)
 @export var StopAcc : float = 0.0
 
 var ChangingVel : bool = false
+
+@export var PistonCooldownTime : float = .2
 
 func is_in_closed_line() -> bool:
 	if(Line is Line2D):
@@ -116,25 +132,26 @@ func _process(delta: float) -> void:
 				_block_speed_tick(delta)
 
 func _piston_speed_tick(delta: float) -> void:
-	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
-	if(Direction == 1):
-		if(InternalSpeed >= Line.Speed): InternalSpeed = Line.Speed
-		else: InternalSpeed += Line.Acc*delta
-	else:
-		if(InternalSpeed >= Line.Speed): InternalSpeed = Line.Speed/2
-		else: InternalSpeed += Line.Acc*delta/2
-	if(Vel > Line.Speed): Vel = Line.Speed
+	if(PistonSwitchDirTimer.is_stopped() && InitialWaitTimer.is_stopped()):
+		if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
+		if(Direction == 1):
+			if(InternalSpeed >= Line.Speed): InternalSpeed = Line.Speed
+			else: InternalSpeed += Line.Acc*delta
+		else:
+			if(InternalSpeed >= Line.Speed): InternalSpeed = Line.Speed/3
+			else: InternalSpeed += Line.Acc*delta/3
+		if(Vel > Line.Speed): Vel = Line.Speed
 
 @export var PistonSwitchDirTimer : Timer 
 
 func _piston_movement_tick(delta : float) -> void:
 	progress += InternalSpeed * delta * Direction
-	#print((progress_ratio <= 0.3 && Direction == 1.0) || (progress_ratio >= 0.7 && Direction == -1.0))
-	if( (progress_ratio <= 0.2 && Direction == 1.0) || (progress_ratio >= 0.8 && Direction == -1.0) ):
-		InternalSpeed = 0.0
-		Direction *= -1
-		PistonSwitchDirTimer.start()
-		print("Changedir")
+	if(PistonSwitchDirTimer.is_stopped() && InitialWaitTimer.is_stopped()):
+		#print((progress_ratio <= 0.3 && Direction == 1.0) || (progress_ratio >= 0.7 && Direction == -1.0))
+		if( (progress_ratio >= 0.95 && Direction == 1.0) || (progress_ratio <= 0.05 && Direction == -1.0) ):
+			if(Direction == -1.0): PistonSwitchDirTimer.start()
+			InternalSpeed = 20.0
+			Direction *= -1
 
 func _block_speed_tick(delta: float) -> void:
 	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
@@ -185,3 +202,8 @@ func _on_enable_area_body_exited(body: Node2D) -> void:
 		if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
 		#InternalSpeed = 0.0
 		#Vel /= 2
+
+
+func _on_death_player_area_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("Player")):
+		body.On_Death()

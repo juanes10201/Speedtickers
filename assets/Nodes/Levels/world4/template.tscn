@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="17_kwdxx"]
 [ext_resource type="PackedScene" uid="uid://dkyfw4w4irwm0" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_change_dir_piston.tscn" id="18_hc04h"]
 [ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="19_ukwea"]
+[ext_resource type="PackedScene" uid="uid://bar5vqya4g02d" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_piston.tscn" id="20_r7lgy"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -71,6 +72,21 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 70, -17, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 384, -149, 0, 0, 0, 0, 447, -96, 0, 0, 0, 0, 203.84363, 0.92993164, 0, 0, 0, 0, 85, 48, 0, 0, 0, 0, 70, -17)
 }
 point_count = 7
+
+[sub_resource type="Curve" id="Curve_wtfx3"]
+_data = [Vector2(0, 0.7821012), 0.0, 0.0, 0, 0, Vector2(1, 0.6731518), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_364mc"]
+colors = PackedColorArray(0.16082096, 0.10031984, 0.27544695, 1, 0.91397053, 0.60972846, 0.8570899, 1)
+metadata/_snap_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xeuyp"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 73, -276, 0, 0, 0, 0, 73, -129)
+}
+point_count = 2
 
 [node name="Node2D" type="Node2D" unique_id=451057958]
 position = Vector2(0, -1)
@@ -192,5 +208,35 @@ wait_time = 0.5
 one_shot = true
 
 [node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=422604267]
+top_level = true
+script = ExtResource("19_ukwea")
+
+[node name="WindSand2" type="Line2D" parent="." unique_id=1309318902 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
+position = Vector2(152, 193)
+points = PackedVector2Array(73, -276, 73, -129)
+width = 4.835
+width_curve = SubResource("Curve_wtfx3")
+default_color = Color(0.9597251, 0.5843025, 1, 1)
+gradient = SubResource("Gradient_364mc")
+script = ExtResource("17_0b57s")
+Speed = 700.0
+Acc = 700.0
+InitialAccSpeed = 100.0
+Enabled = false
+Closed = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
+
+[node name="Path2D" type="Path2D" parent="WindSand2" unique_id=1658558378]
+curve = SubResource("Curve2D_xeuyp")
+
+[node name="rail_horizontal_piston" parent="WindSand2/Path2D" unique_id=1936384365 instance=ExtResource("20_r7lgy")]
+position = Vector2(73, -276)
+
+[node name="FallCooldown" type="Timer" parent="WindSand2" unique_id=240683427]
+wait_time = 0.5
+one_shot = true
+
+[node name="RailedNodes" type="Node2D" parent="WindSand2" unique_id=1081155496]
 top_level = true
 script = ExtResource("19_ukwea")

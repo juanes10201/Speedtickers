@@ -25,6 +25,8 @@ enum LavaDirections{
 @export var LavaMoveDirection : LavaDirections = LavaDirections.Up
 @export var LavaGoBack : bool = true
 
+@onready var OriginalZIndex = z_index
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if(!Visible): self.hide()
@@ -40,6 +42,9 @@ func _ready() -> void:
 
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
+	if($CollisionShape2D.disabled):
+		z_index = -1
+	else: z_index = OriginalZIndex
 	#print(scale)
 	#Sprite.material.set_shader_parameter("tile_size", scale)
 	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor):

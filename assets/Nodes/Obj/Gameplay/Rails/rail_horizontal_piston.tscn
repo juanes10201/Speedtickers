@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bar5vqya4g02d"]
+
+[ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="1_yyrom"]
+[ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_4772k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
+shader = ExtResource("2_4772k")
+shader_parameter/progress = 0.0
+shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
+shader_parameter/fill_dir = Vector2(1, -192.16)
+shader_parameter/alpha_cutoff = 0.01
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uddct"]
+size = Vector2(73, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayoq5"]
+size = Vector2(72.99999, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffsya"]
+size = Vector2(82, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6fwo"]
+size = Vector2(57, 88)
+
+[node name="rail_horizontal_piston" type="PathFollow2D" unique_id=1936384365 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "InitialWaitTimer", "PistonSwitchDirTimer")]
+use_parent_material = true
+rotates = false
+script = ExtResource("1_yyrom")
+CooldownTimer = NodePath("CooldownTimer")
+Type = 3
+RigidBody = NodePath("RigidBody2D")
+InitialWaitTimer = NodePath("PistonInitialWaitTimer")
+PistonSwitchDirTimer = NodePath("SwitchDirTimer")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1094236687]
+material = SubResource("ShaderMaterial_7liu2")
+collision_layer = 2304
+collision_mask = 0
+mass = 2.0
+gravity_scale = 0.5
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1773288132]
+use_parent_material = true
+texture = SubResource("PlaceholderTexture2D_uddct")
+
+[node name="Collision" type="CollisionShape2D" parent="RigidBody2D" unique_id=1238738961]
+position = Vector2(0.23762512, 0.56738424)
+shape = SubResource("RectangleShape2D_ayoq5")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=531127304]
+wait_time = 0.2
+one_shot = true
+
+[node name="EnableArea" type="Area2D" parent="." unique_id=1356329429]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnableArea" unique_id=1628988253]
+position = Vector2(-0.26237488, 0.56738997)
+shape = SubResource("RectangleShape2D_ffsya")
+
+[node name="DeathPlayerArea" type="Area2D" parent="." unique_id=1294706118]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathPlayerArea" unique_id=1937702717]
+position = Vector2(1.5, 2)
+shape = SubResource("RectangleShape2D_u6fwo")
+debug_color = Color(0.9579844, 2.4065375e-06, 0.532244, 0.41960785)
+
+[node name="SwitchDirTimer" type="Timer" parent="." unique_id=1840722194]
+wait_time = 0.5
+one_shot = true
+
+[node name="PistonInitialWaitTimer" type="Timer" parent="." unique_id=1628243424]
+one_shot = true
+
+[connection signal="body_entered" from="EnableArea" to="." method="_on_enable_area_body_entered"]
+[connection signal="body_exited" from="EnableArea" to="." method="_on_enable_area_body_exited"]
+[connection signal="body_entered" from="DeathPlayerArea" to="." method="_on_death_player_area_body_entered"]

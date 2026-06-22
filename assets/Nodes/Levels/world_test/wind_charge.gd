@@ -20,12 +20,14 @@ extends Line2D
 
 var GlobalMovingNode : Node
 
+
+
 func _reload() -> void:
 	Path.global_position = self.global_position
 	Path.curve.clear_points()
 	for point in points:
 		Path.curve.add_point(point)
-	Path.curve.add_point(points[0])
+	if(Closed): Path.curve.add_point(points[0])
 
 func _ready() -> void:
 	if(Activate_on_color != Global.LASER_COLORS.NONE): Enabled = false
@@ -45,3 +47,7 @@ func _process(delta: float) -> void:
 			for PathFollow in Path.get_children():
 				if(PathFollow is PathFollow2D):
 					PathFollow.restart()
+
+
+func _on_death_player_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
