@@ -23,6 +23,7 @@ size = Vector2(82, 115)
 size = Vector2(57, 88)
 
 [node name="rail_horizontal_piston" type="PathFollow2D" unique_id=1936384365 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "InitialWaitTimer", "PistonSwitchDirTimer")]
+z_index = 1
 use_parent_material = true
 rotates = false
 script = ExtResource("1_yyrom")

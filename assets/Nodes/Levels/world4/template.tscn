@@ -191,8 +191,6 @@ gradient = SubResource("Gradient_lpnse")
 script = ExtResource("17_0b57s")
 Speed = 200.0
 InitialAccSpeed = 100.0
-Activate_on_color = 1
-Enabled = false
 Path = NodePath("Path2D")
 RailedNodes = NodePath("RailedNodes")
 

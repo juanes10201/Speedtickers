@@ -41,7 +41,7 @@ func _ready() -> void:
 		restart()
 
 func restart() -> void:
-	print("Restart")
+	#print("Restart")
 	if(Type == Types.None): return
 	if(!Enabled || progress_ratio >= OriginalRatio):
 		Enabled = true
@@ -159,6 +159,7 @@ func _block_speed_tick(delta: float) -> void:
 	if(Vel > Line.Speed): Vel = Line.Speed
 
 func _block_movement_tick(delta : float) -> void:
+	print(InternalSpeed)
 	if(Player && Type == Types.HorizontalChangeDir):
 		Direction = (global_position-Player.global_position).normalized().x
 		var tan = get_tangent()
