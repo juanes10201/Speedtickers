@@ -186,7 +186,7 @@ func _block_movement_tick(delta : float) -> void:
 var PlayerInteracted : bool = false
 
 func _on_enable_area_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Player")):
+	if(InitialWaitTimer.is_stopped() && body.is_in_group("Player")):
 		PlayerInteracted = true
 		if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
 		if(ChangeGlobalSpeed):
@@ -197,7 +197,7 @@ func _on_enable_area_body_entered(body: Node2D) -> void:
 
 
 func _on_enable_area_body_exited(body: Node2D) -> void:
-	if(body.is_in_group("Player")):
+	if(InitialWaitTimer.is_stopped() && body.is_in_group("Player")):
 		#if(Line.GlobalMovingNode == self): Line.GlobalMovingNode = null
 		PlayerInteracted = false
 		if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
