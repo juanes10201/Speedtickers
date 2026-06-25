@@ -21,7 +21,8 @@ enum Types {
 
 var Direction : float = 1.0
 @export var RigidBody : RigidBody2D
-@onready var SizeX : float = RigidBody.get_node("Collision").shape.size.x if $"RigidBody/Collision" else 16.0
+@onready var CollisionShape : CollisionShape2D = RigidBody.get_node("Collision")
+@onready var SizeX : float = CollisionShape.shape.size.x if CollisionShape else 16.0
 
 @onready var LastGlobalPosition : Vector2 = global_position
 @export var ChangeGlobalSpeed : bool = false
@@ -82,6 +83,9 @@ var ChangingVel : bool = false
 
 @export var PistonCooldownTime : float = .2
 
+#@export var OneWayCollisionMargin : float = -2.0
+@export var OneWayCollision : bool = false
+
 func is_in_closed_line() -> bool:
 	if(Line is Line2D):
 		for i in range(Line.points.size()-1):
@@ -110,8 +114,17 @@ func _tick_falling() -> void:
 func tick_global_speed() -> void:
 	Line.GlobalSpeed = Vel
 
+func _tick_one_way_collision() -> void:
+	if(Player && CollisionShape):
+		#CollisionShape.disabled = Player.global_position.y >= global_position.y-CollisionShape.shape.size.y/2-OneWayCollisionMargin
+		if(Player.GravityDirection == Global.GravityDirections.MAIN):
+			CollisionShape.disabled = Player.velocity.y < 0
+		else:
+			CollisionShape.disabled = Player.velocity.y > 0
+
 func _process(delta: float) -> void:
 	_reload_material_shader()
+	if(OneWayCollision): _tick_one_way_collision()
 	if(Type == Types.Piston):
 		_piston_movement_tick(delta)
 		_piston_speed_tick(delta)

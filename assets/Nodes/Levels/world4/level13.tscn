@@ -128,6 +128,10 @@ curve = SubResource("Curve2D_mii8u")
 position = Vector2(374.42545, -42.29741)
 progress = 946.8548
 
+[node name="rail_horizontal_change_dir_piston3" parent="WindSand/Path2D" unique_id=1694581798 instance=ExtResource("18_10w1v")]
+position = Vector2(453, -126.60414)
+progress = 794.8
+
 [node name="rail_horizontal_change_dir_piston2" parent="WindSand/Path2D" unique_id=1632887564 instance=ExtResource("18_10w1v")]
 position = Vector2(133.00778, -256.9391)
 progress = 331.15

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="1_ns8ob"]
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_20rdv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
+size = Vector2(130, 28.00003)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
 shader = ExtResource("2_20rdv")
 shader_parameter/progress = 0.0
@@ -16,19 +19,24 @@ size = Vector2(120, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7liu2"]
 size = Vector2(120, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
-size = Vector2(130, 28.00003)
-
 [node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("CooldownTimer", "RigidBody")]
 use_parent_material = true
 rotates = false
 script = ExtResource("1_ns8ob")
 CooldownTimer = NodePath("CooldownTimer")
 Type = 2
-RigidBody = NodePath("RigidBody2D")
+RigidBody = NodePath("RigidBody")
 ChangeGlobalSpeed = true
+OneWayCollision = true
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1892304175]
+[node name="EnableArea" type="Area2D" parent="." unique_id=667742697]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnableArea" unique_id=1326560902]
+position = Vector2(0, -1.5258789e-05)
+shape = SubResource("RectangleShape2D_pknad")
+debug_color = Color(0, 0.6, 0.69803923, 0.12156863)
+
+[node name="RigidBody" type="RigidBody2D" parent="." unique_id=1892304175]
 material = SubResource("ShaderMaterial_7liu2")
 collision_layer = 2304
 collision_mask = 0
@@ -38,23 +46,18 @@ can_sleep = false
 freeze = true
 freeze_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=705086938]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody" unique_id=705086938]
 use_parent_material = true
 texture = SubResource("PlaceholderTexture2D_gfvgd")
 
-[node name="Collision" type="CollisionShape2D" parent="RigidBody2D" unique_id=1521798088]
+[node name="Collision" type="CollisionShape2D" parent="RigidBody" unique_id=1521798088]
 position = Vector2(0, 0.09161377)
 shape = SubResource("RectangleShape2D_7liu2")
+debug_color = Color(0.7961287, 0.062504806, 0.9999998, 0.41960785)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=669331100]
 wait_time = 0.2
 one_shot = true
-
-[node name="EnableArea" type="Area2D" parent="." unique_id=667742697]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnableArea" unique_id=1326560902]
-position = Vector2(0, -1.5258789e-05)
-shape = SubResource("RectangleShape2D_pknad")
 
 [connection signal="body_entered" from="EnableArea" to="." method="_on_enable_area_body_entered"]
 [connection signal="body_exited" from="EnableArea" to="." method="_on_enable_area_body_exited"]
