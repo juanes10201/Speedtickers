@@ -159,7 +159,6 @@ func _block_speed_tick(delta: float) -> void:
 	if(Vel > Line.Speed): Vel = Line.Speed
 
 func _block_movement_tick(delta : float) -> void:
-	print(InternalSpeed)
 	if(Player && Type == Types.HorizontalChangeDir):
 		Direction = (global_position-Player.global_position).normalized().x
 		var tan = get_tangent()
@@ -182,25 +181,30 @@ func _block_movement_tick(delta : float) -> void:
 					InternalSpeed = Line.InitialAccSpeed
 					if(ChangingVel): tick_global_speed()
 					ChangingVel = false
+				if(self != Line.GlobalMovingNode && Line.GlobalSpeed <= 0.05):
+					InternalSpeed = 0.0
+					Vel = 0.0
+					ChangingVel = false
 
 var PlayerInteracted : bool = false
 
 func _on_enable_area_body_entered(body: Node2D) -> void:
-	if(InitialWaitTimer.is_stopped() && body.is_in_group("Player")):
+	if(body.is_in_group("Player")):
 		PlayerInteracted = true
-		if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
+		if(!InitialWaitTimer || InitialWaitTimer.is_stopped()):
+			if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
+			if(!Enabled): restart()
 		if(ChangeGlobalSpeed):
 			ChangingVel = true
 			Line.GlobalMovingNode = self
-		if(!Enabled):
-			restart()
 
 
 func _on_enable_area_body_exited(body: Node2D) -> void:
-	if(InitialWaitTimer.is_stopped() && body.is_in_group("Player")):
+	if(body.is_in_group("Player")):
 		#if(Line.GlobalMovingNode == self): Line.GlobalMovingNode = null
 		PlayerInteracted = false
-		if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
+		if(!InitialWaitTimer || InitialWaitTimer.is_stopped()):
+			if(InternalSpeed < Line.InitialAccSpeed): InternalSpeed = Line.InitialAccSpeed
 		#InternalSpeed = 0.0
 		#Vel /= 2
 

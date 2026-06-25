@@ -100,10 +100,10 @@ libraries/ = SubResource("AnimationLibrary_0i2pc")
 position = Vector2(-285, -3)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=390457935]
-position = Vector2(213.025, -36.946983)
+position = Vector2(213.025, -16.946983)
 zoom = Vector2(2.08, 2.08)
 limit_left = -358
-limit_top = -313
+limit_top = -304
 limit_right = 218
 limit_bottom = 98
 limit_smoothed = true

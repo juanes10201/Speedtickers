@@ -23,7 +23,6 @@ size = Vector2(130, 28.00003)
 use_parent_material = true
 rotates = false
 script = ExtResource("1_ns8ob")
-Enabled = false
 CooldownTimer = NodePath("CooldownTimer")
 Type = 2
 RigidBody = NodePath("RigidBody2D")
