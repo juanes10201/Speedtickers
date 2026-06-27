@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 		for i in range(points.size()):
 			var pos : Vector2 = Path.curve.get_point_position(i)
 			if !pos or pos not in points:
-				print("Reloading Wind Sand")
+				#print("Reloading Wind Sand")
 				_reload()
 	else:
 		if(!Enabled && Activate_on_color != Global.LASER_COLORS.NONE && Player.LASERS_ENABLED[Activate_on_color]):
@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 			for PathFollow in Path.get_children():
 				if(PathFollow is PathFollow2D):
 					PathFollow.restart()
-
 
 func _on_death_player_area_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.

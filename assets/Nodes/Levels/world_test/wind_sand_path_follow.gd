@@ -34,15 +34,15 @@ var Falling : bool = false
 @export var InitialWaitTimer : Timer
 
 func _ready() -> void:
-	if(InitialWaitTimer && InitialWaitTime != 0.0):
-		InitialWaitTimer.wait_time = InitialWaitTime
-		InitialWaitTimer.start()
-	if(PistonSwitchDirTimer): PistonSwitchDirTimer.wait_time = PistonCooldownTime
 	if(Enabled):
 		restart()
 
 func restart() -> void:
 	#print("Restart")
+	if(InitialWaitTimer && InitialWaitTime != 0.0):
+		InitialWaitTimer.wait_time = InitialWaitTime
+		InitialWaitTimer.start()
+	if(PistonSwitchDirTimer): PistonSwitchDirTimer.wait_time = PistonCooldownTime
 	if(Type == Types.None): return
 	if(!Enabled || progress_ratio >= OriginalRatio):
 		Enabled = true
@@ -145,7 +145,7 @@ func _process(delta: float) -> void:
 				_block_speed_tick(delta)
 
 func _piston_speed_tick(delta: float) -> void:
-	if(PistonSwitchDirTimer.is_stopped() && InitialWaitTimer.is_stopped()):
+	if(Enabled && PistonSwitchDirTimer.is_stopped() && InitialWaitTimer.is_stopped()):
 		if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
 		if(Direction == 1):
 			if(InternalSpeed >= Line.Speed): InternalSpeed = Line.Speed
@@ -158,6 +158,7 @@ func _piston_speed_tick(delta: float) -> void:
 @export var PistonSwitchDirTimer : Timer 
 
 func _piston_movement_tick(delta : float) -> void:
+	if(!Enabled): return
 	progress += InternalSpeed * delta * Direction
 	if(PistonSwitchDirTimer.is_stopped() && InitialWaitTimer.is_stopped()):
 		#print((progress_ratio <= 0.3 && Direction == 1.0) || (progress_ratio >= 0.7 && Direction == -1.0))

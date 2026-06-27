@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="7_mcun0"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="8_gycrb"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="9_2uktp"]
+[ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Nodes/Obj/Gameplay/laser.tscn" id="9_p0jyo"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="10_2jbej"]
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="11_8t6b2"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="12_v1lyn"]
@@ -69,28 +70,42 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_xeuyp"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -178.83499, 3.1649933)
+"points": PackedVector2Array(0, 0, 0, 0, -2, -31, 0, 0, 0, 0, -178.83499, 30.330002)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_e7vxy"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -170, 8)
+"points": PackedVector2Array(0, 0, 0, 0, 33.16501, 3.1650085, 0, 0, 0, 0, -170, 8)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_hjhwk"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -128)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_mcun0"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_objct"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 176, 8)
+"points": PackedVector2Array(0, 0, 0, 0, -36.83499, 3.1650085, 0, 0, 0, 0, 176, 8)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_3tjxk"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 179.16501, 3.1649933)
+"points": PackedVector2Array(0, 0, 0, 0, -2, -31, 0, 0, 0, 0, 179.16501, 30.330002)
 }
 point_count = 2
 
@@ -105,21 +120,21 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_p0jyo"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 77, 34, 0, 0, 0, 0, 80.16501, -482.83502, 0, 0, 0, 0, 536.16504, -482.83502)
+"points": PackedVector2Array(0, 0, 0, 0, 77, 34, 0, 0, 0, 0, 80.16501, -482.83502, 0, 0, 0, 0, 912.16504, -482.83502)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_jcr8x"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 77, 34, 0, 0, 0, 0, 77, -481.65863, 0, 0, 0, 0, 472.165, -482.83502)
+"points": PackedVector2Array(0, 0, 0, 0, 77, 34, 0, 0, 0, 0, 77, -481.65863, 0, 0, 0, 0, 848.16504, -482.83502)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_obihh"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 77, 34, 0, 0, 0, 0, 80.16501, -482.83502, 0, 0, 0, 0, 408.165, -482.83502)
+"points": PackedVector2Array(0, 0, 0, 0, 77, 34, 0, 0, 0, 0, 80.16501, -482.83502, 0, 0, 0, 0, 784.16504, -482.83502)
 }
 point_count = 3
 
@@ -140,21 +155,21 @@ script = ExtResource("2_p0jyo")
 libraries/ = SubResource("AnimationLibrary_0i2pc")
 
 [node name="Player" parent="." unique_id=271241358 instance=ExtResource("3_objct")]
-position = Vector2(-272, -71)
+position = Vector2(-272, -63)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2089736162]
 position = Vector2(125.07001, -33.552002)
 zoom = Vector2(2.08, 2.08)
 limit_left = -403
 limit_top = -856
-limit_right = 264
+limit_right = 792
 limit_bottom = 104
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_jcr8x")
 
 [node name="Time_Left" type="Timer" parent="." unique_id=837228384 groups=["GameTimer"]]
-wait_time = 8.0
+wait_time = 12.0
 one_shot = true
 autostart = true
 
@@ -166,10 +181,13 @@ texture = ExtResource("6_hjhwk")
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=84853944 groups=["Tileset"]]
 position = Vector2(-4, 32)
 scale = Vector2(1.01399, 1)
-tile_map_data = PackedByteArray("AADu//r/AAAAAAAAAADu//v/AAAAAAEAAADu//z/AAAAAAEAAADu//3/AAAAAAEAAADu//7/AAAAAAEAAADu////AAAAAAEAAADu/wAAAAAAAAEAAADu/wEAAAAAAAEAAADv//r/AAABAAAAAADv//v/AAABAAEAAADv//z/AAABAAEAAADv//3/AAABAAEAAADv//7/AAABAAEAAADv////AAABAAEAAADv/wAAAAABAAEAAADv/wEAAAABAAEAAADw//r/AAACAAAAAADw//v/AAACAAEAAADw//z/AAACAAEAAADw//3/AAACAAEAAADw//7/AAACAAEAAADw////AAACAAEAAADw/wAAAAACAAEAAADw/wEAAAACAAEAAADu/wIAAAAAAAEAAADu/wMAAAAAAAIAAADv/wIAAAABAAEAAADv/wMAAAABAAIAAADw/wIAAAACAAEAAADw/wMAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AADu//r/AAAAAAAAAADu//v/AAAAAAEAAADu//z/AAAAAAEAAADu//3/AAAAAAEAAADu//7/AAAAAAEAAADu////AAAAAAEAAADu/wAAAAAAAAEAAADu/wEAAAAAAAEAAADv//r/AAABAAAAAADv//v/AAABAAEAAADv//z/AAABAAEAAADv//3/AAABAAEAAADv//7/AAABAAEAAADv////AAABAAEAAADv/wAAAAABAAEAAADv/wEAAAABAAEAAADw//r/AAACAAAAAADw//v/AAACAAEAAADw//z/AAACAAEAAADw//3/AAACAAEAAADw//7/AAACAAEAAADw////AAACAAEAAADw/wAAAAACAAEAAADw/wEAAAACAAEAAADu/wIAAAAAAAEAAADu/wMAAAAAAAIAAADv/wIAAAABAAEAAADv/wMAAAABAAIAAADw/wIAAAACAAEAAADw/wMAAAACAAIAAAARANj/AAACAAAAAAARANn/AAACAAEAAAARANr/AAACAAEAAAAQANr/AAAAAAEAAAAQANn/AAAAAAEAAAAQANj/AAAAAAAAAAAQANv/AAAAAAIAAAARANv/AAACAAIAAAAtAOH/AAACAAIAAAAtAOD/AAACAAEAAAAtAN//AAACAAEAAAAtAN7/AAACAAAAAAAsAOH/AAABAAIAAAAsAOD/AAABAAEAAAAsAN//AAABAAEAAAAsAN7/AAABAAAAAAArAOH/AAAAAAIAAAArAOD/AAAAAAEAAAArAN//AAAAAAEAAAArAN7/AAAAAAAAAAA=")
 tile_set = ExtResource("7_mcun0")
 
 [node name="WorldEnvironment" parent="." unique_id=1429607840 instance=ExtResource("8_gycrb")]
+
+[node name="KillBox11" parent="." unique_id=1255027827 instance=ExtResource("9_p0jyo")]
+position = Vector2(224, -607)
 
 [node name="KillBox" parent="." unique_id=631627583 instance=ExtResource("9_2uktp")]
 position = Vector2(-196, 144)
@@ -177,7 +195,7 @@ scale = Vector2(99.32, 1)
 Visible = false
 
 [node name="KillBox6" parent="." unique_id=193821091 instance=ExtResource("9_2uktp")]
-position = Vector2(-192, -719)
+position = Vector2(-192.00002, -751)
 scale = Vector2(99.32, 1)
 Visible = false
 
@@ -188,11 +206,23 @@ position = Vector2(-613, -271)
 scale = Vector2(2, 21.07)
 
 [node name="KillBox5" parent="." unique_id=1386857898 instance=ExtResource("9_2uktp")]
-position = Vector2(120, -343)
+position = Vector2(112, -359.00003)
 scale = Vector2(2, 21.07)
 
 [node name="KillBox7" parent="." unique_id=144249382 instance=ExtResource("9_2uktp")]
-position = Vector2(120, -751)
+position = Vector2(120, -767)
+scale = Vector2(2, 21.07)
+
+[node name="KillBox8" parent="." unique_id=1424154084 instance=ExtResource("9_2uktp")]
+position = Vector2(296, -447)
+scale = Vector2(2, 21.07)
+
+[node name="KillBox10" parent="." unique_id=1314527538 instance=ExtResource("9_2uktp")]
+position = Vector2(1032, -527)
+scale = Vector2(2, 2.505)
+
+[node name="KillBox9" parent="." unique_id=790286759 instance=ExtResource("9_2uktp")]
+position = Vector2(296, -855)
 scale = Vector2(2, 21.07)
 
 [node name="KillBox3" parent="." unique_id=1606147076 instance=ExtResource("9_2uktp")]
@@ -221,11 +251,11 @@ AditionalAction = 1
 position = Vector2(-487.99997, -478.99997)
 
 [node name="Flag" parent="." unique_id=893668377 instance=ExtResource("16_hl8al")]
-position = Vector2(-455.99997, -478.99997)
+position = Vector2(720, -535)
 
 [node name="WindSand2" type="Line2D" parent="." unique_id=1309318902 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
-position = Vector2(50.83499, -165.33)
-points = PackedVector2Array(0, 0, -178.83499, 3.1649933)
+position = Vector2(42, -200)
+points = PackedVector2Array(-2, -31, -178.83499, 30.330002)
 width = 4.835
 width_curve = SubResource("Curve_wtfx3")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
@@ -243,7 +273,8 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_xeuyp")
 
 [node name="rail_horizontal_piston" parent="WindSand2/Path2D" unique_id=1936384365 instance=ExtResource("20_nceer")]
-InitialWaitTime = 1.5
+position = Vector2(-2, -31)
+InitialWaitTime = 2.0
 
 [node name="FallCooldown" type="Timer" parent="WindSand2" unique_id=240683427]
 wait_time = 0.5
@@ -255,7 +286,7 @@ script = ExtResource("19_en3sa")
 
 [node name="WindSand6" type="Line2D" parent="." unique_id=1813463752 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(46.83499, -362.165)
-points = PackedVector2Array(0, 0, -170, 8)
+points = PackedVector2Array(33.16501, 3.1650085, -170, 8)
 width = 4.835
 width_curve = SubResource("Curve_wtfx3")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
@@ -273,7 +304,8 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_e7vxy")
 
 [node name="rail_horizontal_piston" parent="WindSand6/Path2D" unique_id=472895205 instance=ExtResource("20_nceer")]
-InitialWaitTime = 1.5
+position = Vector2(33.16501, 3.1650085)
+InitialWaitTime = 2.0
 
 [node name="FallCooldown" type="Timer" parent="WindSand6" unique_id=954546668]
 wait_time = 0.5
@@ -283,9 +315,135 @@ one_shot = true
 top_level = true
 script = ExtResource("19_en3sa")
 
+[node name="WindSand8" type="Line2D" parent="." unique_id=1917952331 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
+position = Vector2(468.835, -373.32996)
+points = PackedVector2Array(0, 0, 0, -128)
+width = 4.835
+width_curve = SubResource("Curve_wtfx3")
+default_color = Color(0.9597251, 0.5843025, 1, 1)
+gradient = SubResource("Gradient_364mc")
+script = ExtResource("17_ocfal")
+Speed = 400.0
+Acc = 700.0
+InitialAccSpeed = 100.0
+Activate_on_color = 1
+Enabled = false
+Closed = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
+
+[node name="Path2D" type="Path2D" parent="WindSand8" unique_id=1681383091]
+curve = SubResource("Curve2D_hjhwk")
+
+[node name="rail_horizontal_piston" parent="WindSand8/Path2D" unique_id=102941555 groups=["RailNodes"] instance=ExtResource("20_nceer")]
+Enabled = false
+
+[node name="FallCooldown" type="Timer" parent="WindSand8" unique_id=1427407587]
+wait_time = 0.5
+one_shot = true
+
+[node name="RailedNodes" type="Node2D" parent="WindSand8" unique_id=1104356213]
+top_level = true
+script = ExtResource("19_en3sa")
+
+[node name="WindSand9" type="Line2D" parent="." unique_id=452568905 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
+position = Vector2(468.99997, -738.165)
+points = PackedVector2Array(0, 0, 0, 128)
+width = 4.835
+width_curve = SubResource("Curve_wtfx3")
+default_color = Color(0.9597251, 0.5843025, 1, 1)
+gradient = SubResource("Gradient_364mc")
+script = ExtResource("17_ocfal")
+Speed = 400.0
+Acc = 700.0
+InitialAccSpeed = 100.0
+Activate_on_color = 1
+Enabled = false
+Closed = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
+
+[node name="Path2D" type="Path2D" parent="WindSand9" unique_id=1418521500]
+curve = SubResource("Curve2D_mcun0")
+
+[node name="rail_horizontal_piston" parent="WindSand9/Path2D" unique_id=290314235 instance=ExtResource("20_nceer")]
+Enabled = false
+
+[node name="FallCooldown" type="Timer" parent="WindSand9" unique_id=1165078867]
+wait_time = 0.5
+one_shot = true
+
+[node name="RailedNodes" type="Node2D" parent="WindSand9" unique_id=230881289]
+top_level = true
+script = ExtResource("19_en3sa")
+
+[node name="WindSand10" type="Line2D" parent="." unique_id=1252684262 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
+position = Vector2(612.835, -373.32996)
+points = PackedVector2Array(0, 0, 0, -128)
+width = 4.835
+width_curve = SubResource("Curve_wtfx3")
+default_color = Color(0.9597251, 0.5843025, 1, 1)
+gradient = SubResource("Gradient_364mc")
+script = ExtResource("17_ocfal")
+Speed = 400.0
+Acc = 700.0
+InitialAccSpeed = 100.0
+Activate_on_color = 1
+Enabled = false
+Closed = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
+
+[node name="Path2D" type="Path2D" parent="WindSand10" unique_id=111656038]
+curve = SubResource("Curve2D_hjhwk")
+
+[node name="rail_horizontal_piston" parent="WindSand10/Path2D" unique_id=193188101 groups=["RailNodes"] instance=ExtResource("20_nceer")]
+Enabled = false
+InitialWaitTime = 1.0
+
+[node name="FallCooldown" type="Timer" parent="WindSand10" unique_id=1591443795]
+wait_time = 0.5
+one_shot = true
+
+[node name="RailedNodes" type="Node2D" parent="WindSand10" unique_id=1519381670]
+top_level = true
+script = ExtResource("19_en3sa")
+
+[node name="WindSand11" type="Line2D" parent="." unique_id=2045878259 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
+position = Vector2(613.00006, -738.165)
+points = PackedVector2Array(0, 0, 0, 128)
+width = 4.835
+width_curve = SubResource("Curve_wtfx3")
+default_color = Color(0.9597251, 0.5843025, 1, 1)
+gradient = SubResource("Gradient_364mc")
+script = ExtResource("17_ocfal")
+Speed = 400.0
+Acc = 700.0
+InitialAccSpeed = 100.0
+Activate_on_color = 1
+Enabled = false
+Closed = false
+Path = NodePath("Path2D")
+RailedNodes = NodePath("RailedNodes")
+
+[node name="Path2D" type="Path2D" parent="WindSand11" unique_id=957664632]
+curve = SubResource("Curve2D_mcun0")
+
+[node name="rail_horizontal_piston" parent="WindSand11/Path2D" unique_id=1983417156 instance=ExtResource("20_nceer")]
+Enabled = false
+InitialWaitTime = 1.0
+
+[node name="FallCooldown" type="Timer" parent="WindSand11" unique_id=783605882]
+wait_time = 0.5
+one_shot = true
+
+[node name="RailedNodes" type="Node2D" parent="WindSand11" unique_id=934399539]
+top_level = true
+script = ExtResource("19_en3sa")
+
 [node name="WindSand7" type="Line2D" parent="." unique_id=862894587 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-331.165, -362.165)
-points = PackedVector2Array(0, 0, 176, 8)
+points = PackedVector2Array(-36.83499, 3.1650085, 176, 8)
 width = 4.835
 width_curve = SubResource("Curve_wtfx3")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
@@ -303,7 +461,8 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_objct")
 
 [node name="rail_horizontal_piston" parent="WindSand7/Path2D" unique_id=1053432514 instance=ExtResource("20_nceer")]
-InitialWaitTime = 1.5
+position = Vector2(-36.83499, 3.1650085)
+InitialWaitTime = 2.5
 
 [node name="FallCooldown" type="Timer" parent="WindSand7" unique_id=721913105]
 wait_time = 0.5
@@ -314,8 +473,8 @@ top_level = true
 script = ExtResource("19_en3sa")
 
 [node name="WindSand3" type="Line2D" parent="." unique_id=18000159 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
-position = Vector2(-331.165, -165.33)
-points = PackedVector2Array(0, 0, 179.16501, 3.1649933)
+position = Vector2(-334, -200)
+points = PackedVector2Array(-2, -31, 179.16501, 30.330002)
 width = 4.835
 width_curve = SubResource("Curve_wtfx3")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
@@ -333,7 +492,9 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_3tjxk")
 
 [node name="rail_horizontal_piston" parent="WindSand3/Path2D" unique_id=1335768089 instance=ExtResource("20_nceer")]
-InitialWaitTime = 1.5
+position = Vector2(-1.1603674, -30.715757)
+progress = 1.05
+InitialWaitTime = 1.0
 
 [node name="FallCooldown" type="Timer" parent="WindSand3" unique_id=871483591]
 wait_time = 0.5
@@ -345,7 +506,7 @@ script = ExtResource("19_en3sa")
 
 [node name="WindSand" type="Line2D" parent="." unique_id=284494713 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-280.165, 11.835022)
-points = PackedVector2Array(77, 34, 80.16501, -482.83502, 536.16504, -482.83502)
+points = PackedVector2Array(77, 34, 80.16501, -482.83502, 912.16504, -482.83502)
 width = 4.835
 width_curve = SubResource("Curve_24d20")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
@@ -374,7 +535,7 @@ script = ExtResource("19_en3sa")
 
 [node name="WindSand4" type="Line2D" parent="." unique_id=19573004 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-216.16501, 11.835022)
-points = PackedVector2Array(77, 34, 77, -481.65863, 472.165, -482.83502)
+points = PackedVector2Array(77, 34, 77, -481.65863, 848.16504, -482.83502)
 width = 4.835
 width_curve = SubResource("Curve_24d20")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
@@ -403,7 +564,7 @@ script = ExtResource("19_en3sa")
 
 [node name="WindSand5" type="Line2D" parent="." unique_id=424492995 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-152.16501, 11.835022)
-points = PackedVector2Array(77, 34, 80.16501, -482.83502, 408.165, -482.83502)
+points = PackedVector2Array(77, 34, 80.16501, -482.83502, 784.16504, -482.83502)
 width = 4.835
 width_curve = SubResource("Curve_24d20")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
