@@ -66,9 +66,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_m2ygx"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 70, -17, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 384, -149, 0, 0, 0, 0, 447, -96, 0, 0, 0, 0, 203.84363, 0.92993164, 0, 0, 0, 0, 85, 48, 0, 0, 0, 0, 70, -17)
+"points": PackedVector2Array(0, 0, 0, 0, 70, -17, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 384, -149, 0, 0, 0, 0, 461, -102, 0, 0, 0, 0, 445, -62, 0, 0, 0, 0, 203.84363, 0.92993164, 0, 0, 0, 0, 85, 48, 0, 0, 0, 0, 70, -17)
 }
-point_count = 7
+point_count = 8
 
 [node name="Node2D" type="Node2D" unique_id=1568561541]
 position = Vector2(0, -1)
@@ -118,7 +118,7 @@ position = Vector2(-300, -199)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=424187687 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-325, 7)
-points = PackedVector2Array(70, -17, 156, -112, 384, -149, 447, -96, 203.84363, 0.92993164, 85, 48)
+points = PackedVector2Array(70, -17, 156, -112, 384, -149, 461, -102, 445, -62, 203.84363, 0.92993164, 85, 48)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_7ug0n")
@@ -189,7 +189,7 @@ position = Vector2(-547, -256)
 scale = Vector2(0.64, 9.98)
 
 [node name="Key" parent="." unique_id=2070008152 instance=ExtResource("16_o52aa")]
-position = Vector2(47, -84)
+position = Vector2(44, -60)
 AditionalAction = 1
 
 [node name="KillBox3" parent="." unique_id=1271129577 instance=ExtResource("17_kfotq")]

@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_20rdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
-size = Vector2(130, 28.00003)
+size = Vector2(130, 43)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
 shader = ExtResource("2_20rdv")
@@ -32,7 +32,7 @@ OneWayCollision = true
 [node name="EnableArea" type="Area2D" parent="." unique_id=667742697]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnableArea" unique_id=1326560902]
-position = Vector2(0, -1.5258789e-05)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_pknad")
 debug_color = Color(0, 0.6, 0.69803923, 0.12156863)
 
@@ -44,7 +44,6 @@ mass = 2.0
 gravity_scale = 0.5
 can_sleep = false
 freeze = true
-freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody" unique_id=705086938]
 use_parent_material = true

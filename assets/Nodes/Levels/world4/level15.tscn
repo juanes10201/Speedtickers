@@ -90,9 +90,9 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_xeuyp"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1300, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 182.46248, 0, 0, 0, 0, 0, 1300, 0)
 }
-point_count = 2
+point_count = 3
 
 [node name="Node2D" type="Node2D" unique_id=451057958]
 position = Vector2(0, -1)
@@ -229,7 +229,7 @@ script = ExtResource("19_n1eta")
 
 [node name="WindSand4" type="Line2D" parent="." unique_id=865582259 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-512, -295)
-points = PackedVector2Array(0, 0, 1300, 0)
+points = PackedVector2Array(0, 0, 182.46248, 0, 1300, 0)
 width = 4.835
 width_curve = SubResource("Curve_wtfx3")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
@@ -247,7 +247,7 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_xeuyp")
 
 [node name="rail_horizontal_piston" parent="WindSand4/Path2D" unique_id=1011662249 instance=ExtResource("20_8yydl")]
-position = Vector2(39.69183, 0)
+position = Vector2(39.689358, 0)
 progress = 39.7
 
 [node name="FallCooldown" type="Timer" parent="WindSand4" unique_id=422888063]
