@@ -21,7 +21,6 @@ extends Line2D
 var GlobalMovingNode : Node
 
 
-
 func _reload() -> void:
 	Path.global_position = self.global_position
 	Path.curve.clear_points()

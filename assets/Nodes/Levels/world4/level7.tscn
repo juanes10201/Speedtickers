@@ -68,9 +68,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_mii8u"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 509, 98, 0, 0, 0, 0, 69, 122, 0, 0, 0, 0, 69, -22, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 213, -110, 0, 0, 0, 0, 301, -86, 0, 0, 0, 0, 421, -110, 0, 0, 0, 0, 437, -134, 0, 0, 0, 0, 437, -102, 0, 0, 0, 0, 509, 98)
+"points": PackedVector2Array(0, 0, 0, 0, 509, 98, 0, 0, 0, 0, 69, 122, 0, 0, 0, 0, 69, -22, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 213, -110, 0, 0, 0, 0, 301, -86, 0, 0, 0, 0, 421, -110, 0, 0, 0, 0, 437, -134, 0, 0, 0, 0, 437, -102)
 }
-point_count = 10
+point_count = 9
 
 [node name="Node2D" type="Node2D" unique_id=451057958]
 position = Vector2(0, -1)
@@ -207,12 +207,10 @@ curve = SubResource("Curve2D_mii8u")
 [node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("18_doxtt")]
 position = Vector2(94.32839, -48.201786)
 progress = 621.1
-Enabled = true
 
 [node name="rail_horizontal_change_dir_piston2" parent="WindSand/Path2D" unique_id=1232682448 instance=ExtResource("18_doxtt")]
 position = Vector2(265.5195, -95.6765)
 progress = 821.3
-Enabled = true
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=2104053735]
 wait_time = 0.5

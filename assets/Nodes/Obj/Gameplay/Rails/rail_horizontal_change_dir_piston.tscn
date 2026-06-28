@@ -19,7 +19,7 @@ size = Vector2(120, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7liu2"]
 size = Vector2(120, 20)
 
-[node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("CooldownTimer", "RigidBody")]
+[node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "FallCooldownTimer")]
 use_parent_material = true
 rotates = false
 script = ExtResource("1_ns8ob")
@@ -28,8 +28,11 @@ Type = 2
 RigidBody = NodePath("RigidBody")
 ChangeGlobalSpeed = true
 OneWayCollision = true
+FallCooldownTimer = NodePath("FallCooldownTimer")
 
 [node name="EnableArea" type="Area2D" parent="." unique_id=667742697]
+collision_layer = 0
+collision_mask = 545
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnableArea" unique_id=1326560902]
 position = Vector2(0, -1.5)
@@ -56,6 +59,10 @@ debug_color = Color(0.7961287, 0.062504806, 0.9999998, 0.41960785)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=669331100]
 wait_time = 0.2
+one_shot = true
+
+[node name="FallCooldownTimer" type="Timer" parent="." unique_id=1273525999]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="EnableArea" to="." method="_on_enable_area_body_entered"]

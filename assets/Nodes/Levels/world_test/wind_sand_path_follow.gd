@@ -39,6 +39,7 @@ func _ready() -> void:
 
 func restart() -> void:
 	#print("Restart")
+	loop = Line.closed
 	if(InitialWaitTimer && InitialWaitTime != 0.0):
 		InitialWaitTimer.wait_time = InitialWaitTime
 		InitialWaitTimer.start()
@@ -88,6 +89,10 @@ var ChangingVel : bool = false
 #@export var OneWayCollisionMargin : float = -2.0
 @export var OneWayCollision : bool = false
 
+@export var FallCooldownTimer : Timer
+
+var InteractingBodies : Array[Node2D] = []
+
 func is_in_closed_line() -> bool:
 	if(Line is Line2D):
 		for i in range(Line.points.size()-1):
@@ -100,18 +105,23 @@ func is_in_line(position : Vector2, LineId : int, margin : float = InLineMargin)
 	return closest_point.distance_to(position) <= margin
 
 func _tick_falling() -> void:
-	var _falling : bool = !is_in_closed_line()
-	if(_falling != Falling):
-		Falling = _falling
-		if(Falling && RigidBody):
-			#print("lol exited")
+	var _falling = (progress_ratio >= 0.99 || progress_ratio <= 0.01)
+	if(Falling && is_in_closed_line() && FallCooldownTimer.is_stopped()):
+		print("again")
+		_falling = false
+	if(Falling != _falling):
+		if(_falling && RigidBody):
+			FallCooldownTimer.start()
 			RigidBody.freeze = false
 		else:
-			#print("entered")
-			RigidBody.freeze = true
-			global_position = RigidBody.global_position
-			RigidBody.position = Vector2(0.0,0.0)
-			progress = Path.curve.get_closest_offset(Path.to_local(RigidBody.global_position))
+			_reset_falling()
+		Falling = _falling
+
+func _reset_falling() -> void:
+	RigidBody.freeze = true
+	global_position = RigidBody.global_position
+	RigidBody.position = Vector2(0.0,0.0)
+	progress = Path.curve.get_closest_offset(Path.to_local(RigidBody.global_position))
 
 func tick_global_speed() -> void:
 	Line.GlobalSpeed = VelocityProgressRatio
@@ -119,10 +129,12 @@ func tick_global_speed() -> void:
 func _tick_one_way_collision() -> void:
 	if(Player && CollisionShape):
 		#CollisionShape.disabled = Player.global_position.y >= global_position.y-CollisionShape.shape.size.y/2-OneWayCollisionMargin
-		if(Player.GravityDirection == Global.GravityDirections.MAIN):
-			CollisionShape.disabled = Player.velocity.y < 0
+		if(InteractingBodies.size() > 0): CollisionShape.disabled = false
 		else:
-			CollisionShape.disabled = Player.velocity.y > 0
+			if(Player.GravityDirection == Global.GravityDirections.MAIN):
+				CollisionShape.disabled = Player.velocity.y < 0
+			else:
+				CollisionShape.disabled = Player.velocity.y > 0
 
 func _process(delta: float) -> void:
 	_reload_material_shader()
@@ -175,17 +187,20 @@ func _block_speed_tick(delta: float) -> void:
 	if(VelocityProgressRatio > Line.Speed): VelocityProgressRatio = Line.Speed
 
 func _block_movement_tick(delta : float) -> void:
+	VelocityPosition = global_position - LastPosition
+	LastPosition = global_position
+	if(VelocityPosition.x != 0.0 && InteractingBodies.size() > 0):
+		for Body in InteractingBodies:
+			#print(Body)
+			Body.global_position += VelocityPosition
+	
 	if(Player && Type == Types.HorizontalChangeDir && PlayerInteracted):
 		Direction = (global_position-Player.global_position).normalized().x
 		var tan = get_tangent()
 		if(tan): Direction *= tan
 		#if(global_position > LastGlobalPosition): Direction *= -1.0
 	if(Type != Types.None):
-		VelocityPosition = global_position - LastPosition
-		LastPosition = global_position
 		#print(VelocityPosition)
-		if(PlayerInteracted && VelocityPosition.x != 0.0):
-			Player.global_position += VelocityPosition
 		if(Type != Types.HorizontalChangeDir || PlayerInteracted):
 			progress += InternalSpeed * delta * Direction
 			VelocityProgressRatio = (progress_ratio-previous_ratio)/delta
@@ -204,6 +219,7 @@ func _block_movement_tick(delta : float) -> void:
 var PlayerInteracted : bool = false
 
 func _on_enable_area_body_entered(body: Node2D) -> void:
+	InteractingBodies.append(body)
 	if(body.is_in_group("Player")):
 		PlayerInteracted = true
 		if(!InitialWaitTimer || InitialWaitTimer.is_stopped()):
@@ -215,6 +231,7 @@ func _on_enable_area_body_entered(body: Node2D) -> void:
 
 
 func _on_enable_area_body_exited(body: Node2D) -> void:
+	if(InteractingBodies.has(body)): InteractingBodies.erase(body)
 	if(body.is_in_group("Player")):
 		#if(Line.GlobalMovingNode == self): Line.GlobalMovingNode = null
 		PlayerInteracted = false

@@ -68,7 +68,7 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_ufqx1"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 226, 102, 0, 0, 0, 0, 606, 42, 0, 0, 0, 0, 546, -151, 0, 0, 0, 0, 420, -167, 0, 0, 0, 0, 362, -31, 0, 0, 0, 0, 161, -4, 0, 0, 0, 0, 226, 102)
+"points": PackedVector2Array(0, 0, 0, 0, 229, 118, 0, 0, 0, 0, 605, 62, 0, 0, 0, 0, 546, -151, 0, 0, 0, 0, 420, -167, 0, 0, 0, 0, 362, -31, 0, 0, 0, 0, 161, -4, 0, 0, 0, 0, 229, 118)
 }
 point_count = 7
 
@@ -142,7 +142,7 @@ CanChange = false
 
 [node name="WindSand" type="Line2D" parent="." unique_id=910461722 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-413, -45)
-points = PackedVector2Array(226, 102, 606, 42, 546, -151, 420, -167, 362, -31, 161, -4)
+points = PackedVector2Array(229, 118, 605, 62, 546, -151, 420, -167, 362, -31, 161, -4)
 closed = true
 width = 4.835
 width_curve = SubResource("Curve_5064t")
@@ -160,37 +160,37 @@ material = SubResource("ShaderMaterial_8fspu")
 curve = SubResource("Curve2D_ufqx1")
 
 [node name="HorizontalPistonMove4" parent="WindSand/Path2D" unique_id=226068745 instance=ExtResource("15_5064t")]
-position = Vector2(324.77176, 86.40445)
+position = Vector2(327.90836, 103.268974)
 progress = 100.0
 Type = 1
 
 [node name="HorizontalPistonMove5" parent="WindSand/Path2D" unique_id=123141359 instance=ExtResource("15_5064t")]
-position = Vector2(218.45784, -11.71822)
+position = Vector2(232.68488, -13.629312)
 progress = 1006.5031
 Type = 1
 
 [node name="HorizontalPistonMove7" parent="WindSand/Path2D" unique_id=881009165 instance=ExtResource("15_5064t")]
-position = Vector2(472.9036, -160.28207)
+position = Vector2(487.14148, -158.4741)
 progress = 660.5
 Type = 1
 
 [node name="HorizontalPistonMove10" parent="WindSand/Path2D" unique_id=592001631 instance=ExtResource("15_5064t")]
-position = Vector2(597.3093, 14.044932)
+position = Vector2(595.96643, 29.387466)
 progress = 414.0
 Type = 1
 
 [node name="HorizontalPistonMove9" parent="WindSand/Path2D" unique_id=537312668 instance=ExtResource("15_5064t")]
-position = Vector2(368.88687, -47.14856)
+position = Vector2(374.5234, -60.36525)
 progress = 844.1
 Type = 1
 
 [node name="HorizontalPistonMove6" parent="WindSand/Path2D" unique_id=4684029 instance=ExtResource("15_5064t")]
-position = Vector2(479.45767, 61.980362)
+position = Vector2(482.79718, 80.20042)
 progress = 256.59375
 Type = 1
 
 [node name="HorizontalPistonMove8" parent="WindSand/Path2D" unique_id=666481031 instance=ExtResource("15_5064t")]
-position = Vector2(563.3709, -95.1233)
+position = Vector2(565.45, -80.782104)
 progress = 528.2969
 Type = 1
 
@@ -248,3 +248,7 @@ scale = Vector2(0.89, 6.29)
 [node name="KillBox10" parent="." unique_id=228555746 instance=ExtResource("16_8fspu")]
 position = Vector2(77.00001, -237.99998)
 scale = Vector2(0.89, 3.175)
+
+[node name="KillBox11" parent="." unique_id=2079803146 instance=ExtResource("16_8fspu")]
+position = Vector2(171, -309.99997)
+scale = Vector2(1.39, 10.52)
