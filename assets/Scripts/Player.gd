@@ -232,6 +232,9 @@ var RecordedActions : Array[Vector3] = []
 
 var Moved : bool = false
 
+var PositionDifference : Vector2
+@onready var LastPosition : Vector2 = global_position
+
 #region Editor
 var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
 
@@ -364,8 +367,10 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
+	PositionDifference = global_position - LastPosition
+	#print(velocity)
 	if(!Moved):
-		if(Input.is_action_just_pressed("player_dash") || Input.is_action_just_pressed("player_jump") || Input.is_action_just_pressed("player_jump") || Input.is_action_just_pressed("player_slide") || Input.is_action_just_pressed("player_move")):
+		if(velocity != Vector2(0.0,0.0) || Input.is_action_just_pressed("player_dash") || Input.is_action_just_pressed("player_jump") || Input.is_action_just_pressed("player_jump") || Input.is_action_just_pressed("player_slide") || Input.is_action_just_pressed("player_move")):
 			Moved = true
 			if(CountTime):
 				Time_Left.paused = false
@@ -513,6 +518,7 @@ func _physics_process(delta: float) -> void:
 		# Update velocity based on Speed and Dash status
 		if(DashTime.is_stopped()): velocity.x = Speed.x*delta
 		else: velocity.x = DashMove.x
+		if(abs(velocity.x) <= MinXVelocity): velocity.x = 0.0
 		#endregion
 		
 		#region Prevent overflow
@@ -547,6 +553,7 @@ func _physics_process(delta: float) -> void:
 		elif(KickSpeed.y != 0.0): velocity.y = KickSpeed.y
 		
 		# Move the character
+		LastPosition = global_position
 		move_and_slide()
 		#endregion
 	elif(SnappedOnRail):
@@ -712,9 +719,11 @@ func _invert_gravity_remix() -> void:
 #region jump
 func _physics_jump(delta: float) -> void:
 	# Handle jump.
+	print(PositionDifference)
 	DashWithJump = false
 	if(KickTimer.is_stopped()): JumpedUmbrella = false
 	if(is_on_floor()):
+		WallJumped = false
 		if(JumpedUmbrella):
 			set_collision_mask_value(4, true)
 			set_collision_mask_value(3, true)
@@ -727,7 +736,7 @@ func _physics_jump(delta: float) -> void:
 			if($DoubleJumpCooldownTimer.is_stopped()): $DoubleJumpCooldownTimer.start()
 		if(CanJump):
 			SnappedOnRail = false
-			DoJump()
+			DoJump(delta)
 		LevelManager.ExpoMoveTimeout.start()
 	#Cancel jump
 	if(CanJump && ( velocity.y < 0 && !is_action_pressed("player_jump") && !DashWithJump)):
@@ -742,7 +751,9 @@ func _physics_jump(delta: float) -> void:
 	#Pre-detect jump
 #endregion
 
-func DoJump() -> void:
+var WallJumped : bool = false
+
+func DoJump(delta : float = 1/60) -> void:
 	#Slide + Jump combo
 	#if(Sliding != Sides.NONE):
 	#	SlidingInAir = true
@@ -772,8 +783,14 @@ func DoJump() -> void:
 			PressingGroundSmash = false
 			if(GroundSmashMultiplier < GroundSmashMultiplierLimit):
 				GroundSmashMultiplier += 1.1
-		Speed.x = WallJumpVelocity*-1 if WallJumpPreviousSide == Sides.RIGHT else WallJumpVelocity
+		var _vel_walljump = WallJumpVelocity*-1 if WallJumpPreviousSide == Sides.RIGHT else WallJumpVelocity 
+		if(!WallJumped && abs(PositionDifference.x) > 0.5):
+			WallJumped = true
+			Speed.x = PositionDifference.x/delta/delta + _vel_walljump
+			print(PositionDifference.x/delta)
+		elif(abs(Speed.x) < abs(_vel_walljump)): Speed.x = _vel_walljump
 		PreWallJumpTimer.stop()
+	#	print(PositionDifference.x/delta/delta)
 		velocity.y -= 50 * GravityDirection
 		if($ParticleWalljump && !$ParticleWalljump/ParticleWallJumpAnim.is_playing()):
 			#print(WallJumpSide)
@@ -785,6 +802,8 @@ func DoJump() -> void:
 			$ParticleWalljump/ParticleWalljump1.play("default")
 			$ParticleWalljump/ParticleWalljump2.play("default")
 	#endregion
+
+var MinXVelocity : float = 9.0
 
 #region Horizontal movement
 func _physics_h_movement(delta: float) -> void:
@@ -939,7 +958,7 @@ func _physics_walljump(delta: float) -> void:
 			if($Wallchecker.get_collider() is not StaticBody2D || $Wallchecker.get_collider().collision_layer != 65536):
 				#print("walljump")
 				WalljumpVel += 50* delta * GravityDirection
-				if(!WallJump): 
+				if(!WallJump):
 					WalljumpVel = 50 * GravityDirection
 				velocity.y = WalljumpVel
 			else:
@@ -952,6 +971,7 @@ func _physics_walljump(delta: float) -> void:
 			WallJumpSide = Sides.LEFT
 			if(WallJumpPreviousSide == Sides.NONE):  WallJumpPreviousSide = Sides.LEFT
 	else:
+		#print("no walljump")
 		if(WallJump):
 			PreWallJumpTimer.start()
 			DoubleJumped = false

@@ -828,6 +828,7 @@ region = Rect2(245.81227, 357.8401, 4.423416, 4.180359)
 [node name="Player" type="CharacterBody2D" unique_id=173086588 groups=["Player"]]
 position = Vector2(8, 18)
 collision_mask = 67868
+floor_constant_speed = true
 script = ExtResource("1_uhpgg")
 TimeDeath = 0.4
 

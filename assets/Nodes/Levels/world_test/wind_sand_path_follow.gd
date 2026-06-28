@@ -189,10 +189,13 @@ func _block_speed_tick(delta: float) -> void:
 func _block_movement_tick(delta : float) -> void:
 	VelocityPosition = global_position - LastPosition
 	LastPosition = global_position
-	if(VelocityPosition.x != 0.0 && InteractingBodies.size() > 0):
-		for Body in InteractingBodies:
-			#print(Body)
-			Body.global_position += VelocityPosition
+	if(VelocityPosition.x != 0.0):
+		if(InteractingBodies.size() > 0):
+			for Body in InteractingBodies:
+				#print(Body)
+				Body.global_position += VelocityPosition
+		if(PlayerInteracted):
+			Player.global_position += VelocityPosition
 	
 	if(Player && Type == Types.HorizontalChangeDir && PlayerInteracted):
 		Direction = (global_position-Player.global_position).normalized().x
@@ -219,7 +222,6 @@ func _block_movement_tick(delta : float) -> void:
 var PlayerInteracted : bool = false
 
 func _on_enable_area_body_entered(body: Node2D) -> void:
-	InteractingBodies.append(body)
 	if(body.is_in_group("Player")):
 		PlayerInteracted = true
 		if(!InitialWaitTimer || InitialWaitTimer.is_stopped()):
@@ -228,6 +230,8 @@ func _on_enable_area_body_entered(body: Node2D) -> void:
 		if(ChangeGlobalSpeed):
 			ChangingVel = true
 			Line.GlobalMovingNode = self
+	else:
+		InteractingBodies.append(body)
 
 
 func _on_enable_area_body_exited(body: Node2D) -> void:
