@@ -507,12 +507,12 @@ func _physics_process(delta: float) -> void:
 		#endregion
 		_strech_tick(delta)
 		_physics_water(delta)
+		_physics_walljump(delta) 
 		_physics_jump(delta)
 		_physics_apply_gravity(delta)
 		_physics_h_movement(delta)
 		_physics_dash(delta)
 		_physics_slide_and_groundsmash(delta)
-		_physics_walljump(delta)
 
 		#region Apply horizontal movement
 		# Update velocity based on Speed and Dash status
@@ -718,8 +718,9 @@ func _invert_gravity_remix() -> void:
 
 #region jump
 func _physics_jump(delta: float) -> void:
+	#print(Speed.x)
 	# Handle jump.
-	print(PositionDifference)
+	#print(PositionDifference)
 	DashWithJump = false
 	if(KickTimer.is_stopped()): JumpedUmbrella = false
 	if(is_on_floor()):
@@ -784,13 +785,20 @@ func DoJump(delta : float = 1/60) -> void:
 			if(GroundSmashMultiplier < GroundSmashMultiplierLimit):
 				GroundSmashMultiplier += 1.1
 		var _vel_walljump = WallJumpVelocity*-1 if WallJumpPreviousSide == Sides.RIGHT else WallJumpVelocity 
-		if(!WallJumped && abs(PositionDifference.x) > 0.5):
+		if(!WallJumped && abs(PositionDifference.x) > 1.0):
 			WallJumped = true
-			Speed.x = PositionDifference.x/delta/delta + _vel_walljump
-			print(PositionDifference.x/delta)
-		elif(abs(Speed.x) < abs(_vel_walljump)): Speed.x = _vel_walljump
+			Speed.x = _vel_walljump
+			var _vel_dif = PositionDifference.x/delta/delta
+			if((WallJumpPreviousSide == Sides.RIGHT && _vel_dif < 0) || (WallJumpPreviousSide == Sides.LEFT && _vel_dif > 0)):
+				Speed.x += _vel_dif*.4
+			else: Speed.x += _vel_dif
+			#print(PositionDifference.x/delta)
+			print("walljump")
+		elif(abs(Speed.x) < abs(_vel_walljump)):
+			Speed.x = _vel_walljump
+		print("wall")
 		PreWallJumpTimer.stop()
-	#	print(PositionDifference.x/delta/delta)
+		#print(PositionDifference.x)
 		velocity.y -= 50 * GravityDirection
 		if($ParticleWalljump && !$ParticleWalljump/ParticleWallJumpAnim.is_playing()):
 			#print(WallJumpSide)
@@ -953,6 +961,7 @@ func _physics_walljump(delta: float) -> void:
 	if(is_near_wall() && direction && !Slide):
 		CanJump = true 
 		Dashed = false
+		WallJumped = false
 		#print("walljump")
 		if(!GroundSmash):
 			if($Wallchecker.get_collider() is not StaticBody2D || $Wallchecker.get_collider().collision_layer != 65536):

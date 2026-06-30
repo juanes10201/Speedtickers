@@ -70,7 +70,7 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_mii8u"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 120, -8, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 384, -149, 0, 0, 0, 0, 447, -96, 0, 0, 0, 0, 203.84363, 0.92993164, 0, 0, 0, 0, 96, 64)
+"points": PackedVector2Array(0, 0, 0, 0, 160, -80, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 384, -149, 0, 0, 0, 0, 447, -96, 0, 0, 0, 0, 203.84363, 0.92993164, 0, 0, 0, 0, 96, 64)
 }
 point_count = 6
 
@@ -183,8 +183,7 @@ position = Vector2(-656, -342.99997)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=1391092971 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-152, -47)
-points = PackedVector2Array(120, -8, 156, -112, 384, -149, 447, -96, 203.84363, 0.92993164, 96, 64)
-closed = true
+points = PackedVector2Array(160, -80, 156, -112, 384, -149, 447, -96, 203.84363, 0.92993164, 96, 64)
 width = 4.835
 width_curve = SubResource("Curve_24d20")
 default_color = Color(0.9597251, 0.5843025, 1, 1)
@@ -192,6 +191,7 @@ gradient = SubResource("Gradient_lpnse")
 script = ExtResource("17_0b57s")
 Speed = 200.0
 InitialAccSpeed = 100.0
+Closed = false
 Path = NodePath("Path2D")
 RailedNodes = NodePath("RailedNodes")
 
@@ -199,7 +199,7 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_mii8u")
 
 [node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("18_hc04h")]
-position = Vector2(136.91139, -56.85515)
+position = Vector2(175.1737, -115.11153)
 progress = 51.7
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=2104053735]
