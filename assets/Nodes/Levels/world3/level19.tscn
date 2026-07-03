@@ -1,0 +1,196 @@
+[gd_scene format=4 uid="uid://kxsafil7wskf"]
+
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_kkw4b"]
+[ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_kdlor"]
+[ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="3_3s56u"]
+[ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_xju02"]
+[ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_rc8sd"]
+[ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="6_afrs1"]
+[ext_resource type="Texture2D" uid="uid://cvdsaeuured5y" path="res://assets/Sprites/particles/bright_particles.png" id="7_2lixk"]
+[ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="8_tou51"]
+[ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="9_klfx7"]
+[ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="10_1a65j"]
+[ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="11_g3d4a"]
+[ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="12_57f06"]
+[ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="12_u7twl"]
+[ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Nodes/Obj/Gameplay/key.tscn" id="14_tgys3"]
+[ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn" id="15_4p8mt"]
+
+[sub_resource type="Animation" id="Animation_wh1ld"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-755, -863)]
+}
+
+[sub_resource type="Animation" id="Animation_6ubuh"]
+resource_name = "move"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 21.2, 39.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-755, -863), Vector2(-493, -367), Vector2(-755, -863)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0i2pc"]
+_data = {
+&"RESET": SubResource("Animation_wh1ld"),
+&"move": SubResource("Animation_6ubuh")
+}
+
+[node name="Node2D" type="Node2D" unique_id=453183402]
+position = Vector2(0, -1)
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=384685953]
+visible = false
+texture_repeat = 2
+position = Vector2(-755, -863)
+texture = ExtResource("1_kkw4b")
+centered = false
+region_enabled = true
+region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
+script = ExtResource("2_kdlor")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg" unique_id=367429065]
+libraries/ = SubResource("AnimationLibrary_0i2pc")
+
+[node name="Player" parent="." unique_id=2137754646 instance=ExtResource("3_3s56u")]
+position = Vector2(-298, -182)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1429243109]
+position = Vector2(94.675, 74.153)
+zoom = Vector2(2.08, 2.08)
+limit_left = -576
+limit_right = 248
+limit_bottom = 280
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("4_xju02")
+
+[node name="Time_Left" type="Timer" parent="." unique_id=1835537373 groups=["GameTimer"]]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="Flag" parent="." unique_id=1488852708 instance=ExtResource("5_rc8sd")]
+position = Vector2(-386, 76)
+
+[node name="AmbientParticles2" parent="." unique_id=1449215166 instance=ExtResource("6_afrs1")]
+position = Vector2(-96, -160)
+scale = Vector2(179.273, 1.805)
+texture = ExtResource("7_2lixk")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1976921382 groups=["Tileset"]]
+position = Vector2(-4, 32)
+scale = Vector2(1.01399, 1)
+tile_map_data = PackedByteArray("AADo//P/AAABAAIAAADp//P/AAABAAIAAAAFAPX/AAAAAAAAAAAGAPX/AAABAAAAAAAHAPX/AAABAAAAAAAIAPX/AAABAAAAAAAJAPX/AAABAAAAAAAFAPr/AAAAAAEAAAAFAPv/AAAAAAIAAAAGAPv/AAABAAIAAAAHAPv/AAABAAIAAAAIAPv/AAABAAIAAAAJAPv/AAABAAIAAAAGAPr/AAABAAEAAAAHAPr/AAABAAEAAAAIAPr/AAABAAEAAAAJAPr/AAABAAEAAAAFAPn/AAAAAAEAAAAGAPn/AAABAAEAAAAHAPn/AAABAAEAAAAIAPn/AAABAAEAAAAJAPn/AAABAAEAAAAFAPf/AAAAAAEAAAAGAPf/AAABAAEAAAAHAPf/AAABAAEAAAAIAPf/AAABAAEAAAAJAPf/AAABAAEAAAAFAPj/AAAAAAEAAAAGAPj/AAABAAEAAAAHAPj/AAABAAEAAAAIAPj/AAABAAEAAAAJAPj/AAABAAEAAAAFAPb/AAAAAAEAAAAGAPb/AAABAAEAAAAHAPb/AAABAAEAAAAIAPb/AAABAAEAAAAJAPb/AAABAAEAAADu//j/AAACAAIAAADu//f/AAACAAEAAADt//j/AAABAAIAAADt//f/AAABAAEAAADs//j/AAABAAIAAADs//f/AAABAAEAAADr//j/AAABAAIAAADr//f/AAABAAEAAADq//j/AAAAAAIAAADq//f/AAAAAAEAAAD6/wIAAAACAAIAAAD6/wEAAAACAAEAAAD6/wAAAAACAAEAAAD6////AAACAAEAAAD6//7/AAACAAEAAAD6//3/AAACAAEAAAD6//z/AAACAAAAAAD5/wIAAAAAAAIAAAD5/wEAAAAAAAEAAAD5/wAAAAAAAAEAAAD5////AAAAAAEAAAD5//7/AAAAAAEAAAD5//3/AAAAAAEAAADu//b/AAACAAEAAADu//X/AAACAAEAAADu//T/AAACAAEAAADu//P/AAACAAAAAADt//b/AAABAAEAAADt//X/AAABAAEAAADt//T/AAABAAEAAADt//P/AAABAAAAAADs//b/AAABAAEAAADs//X/AAABAAEAAADs//T/AAABAAEAAADs//P/AAABAAAAAADr//b/AAABAAEAAADr//X/AAABAAEAAADr//T/AAABAAEAAADr//P/AAABAAEAAADq//b/AAAAAAEAAADq//X/AAAAAAEAAADq//T/AAAAAAEAAADq//P/AAABAAEAAADp//L/AAABAAEAAADp//H/AAABAAEAAADp//D/AAABAAAAAADo//L/AAABAAEAAADo//H/AAABAAEAAADo//D/AAABAAAAAAD5//z/AAAAAAAAAADv//j/AAAAAAcAAADw//j/AAABAAcAAADx//j/AAABAAcAAADy//j/AAABAAcAAADz//j/AAABAAcAAAD0//j/AAABAAcAAAD1//j/AAABAAcAAAD2//j/AAABAAcAAAD3//j/AAABAAcAAAD4//j/AAACAAcAAADl//f/AAABAAEAAADl//b/AAABAAEAAADl//X/AAABAAEAAADn//P/AAABAAIAAADn//L/AAABAAEAAADn//H/AAABAAEAAADn//D/AAABAAAAAADm//X/AAACAAEAAADm//T/AAACAAEAAADm//P/AAABAAEAAADm//L/AAABAAEAAADm//H/AAABAAEAAADm//D/AAABAAAAAADl//T/AAABAAEAAADl//P/AAABAAEAAADl//L/AAABAAEAAADl//H/AAABAAEAAADl//D/AAABAAAAAADl//j/AAABAAIAAADk//j/AAAAAAIAAADk//f/AAAAAAEAAADk//b/AAAAAAEAAADk//X/AAAAAAEAAADk//T/AAAAAAEAAADk//P/AAAAAAEAAADk//L/AAAAAAEAAADk//H/AAAAAAEAAADk//D/AAAAAAAAAADm//j/AAACAAIAAADm//f/AAACAAEAAADm//b/AAACAAEAAADq//L/AAABAAEAAADq//H/AAABAAEAAADq//D/AAABAAAAAADr//L/AAABAAEAAADr//H/AAABAAEAAADr//D/AAABAAAAAADn//f/AAAAAAcAAADo//f/AAABAAcAAADp//f/AAACAAcAAADp/wYAAAACAAIAAADp/wUAAAACAAEAAADp/wQAAAACAAAAAADo/wYAAAABAAIAAADo/wUAAAABAAEAAADo/wQAAAABAAAAAADn/wYAAAAAAAIAAADn/wUAAAAAAAEAAADn/wQAAAAAAAAAAAA=")
+tile_set = ExtResource("8_tou51")
+
+[node name="WorldEnvironment" parent="." unique_id=2048812214 instance=ExtResource("9_klfx7")]
+
+[node name="KillBox" parent="." unique_id=1896744517 instance=ExtResource("10_1a65j")]
+position = Vector2(-168, 337)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="KillBox6" parent="." unique_id=132105206 instance=ExtResource("10_1a65j")]
+position = Vector2(-224, -367)
+scale = Vector2(99.32, 1)
+Visible = false
+
+[node name="CanvasLayer" parent="." unique_id=380260915 instance=ExtResource("11_g3d4a")]
+
+[node name="Umbrella" parent="." unique_id=791046513 instance=ExtResource("12_u7twl")]
+position = Vector2(-264, 259)
+
+[node name="Umbrella2" parent="." unique_id=1428549200 instance=ExtResource("12_u7twl")]
+position = Vector2(-238, 249)
+
+[node name="Umbrella3" parent="." unique_id=656009896 instance=ExtResource("12_u7twl")]
+position = Vector2(-215, 262)
+
+[node name="Umbrella4" parent="." unique_id=1697850024 instance=ExtResource("12_u7twl")]
+position = Vector2(-184, 265)
+
+[node name="Umbrella5" parent="." unique_id=1717912693 instance=ExtResource("12_u7twl")]
+position = Vector2(-168, 257)
+
+[node name="Umbrella6" parent="." unique_id=315757395 instance=ExtResource("12_u7twl")]
+position = Vector2(-135, 262)
+
+[node name="Killbox4" parent="." unique_id=335039937 instance=ExtResource("10_1a65j")]
+position = Vector2(-160, 113)
+scale = Vector2(4.95, 1.725)
+
+[node name="Killbox6" parent="." unique_id=1386857898 instance=ExtResource("10_1a65j")]
+position = Vector2(-268, 113.00001)
+scale = Vector2(2.43, 1.725)
+
+[node name="Killbox5" parent="." unique_id=989626129 instance=ExtResource("10_1a65j")]
+position = Vector2(-235, -148)
+scale = Vector2(5.305, 1.725)
+
+[node name="Killbox3" parent="." unique_id=1998663774 instance=ExtResource("10_1a65j")]
+position = Vector2(-102, -97.99999)
+scale = Vector2(2.21, 41.92)
+
+[node name="Killbox7" parent="." unique_id=804595840 instance=ExtResource("10_1a65j")]
+position = Vector2(-303.00003, 96.99999)
+scale = Vector2(2.21, 21.955)
+
+[node name="Killbox8" parent="." unique_id=697118427 instance=ExtResource("10_1a65j")]
+position = Vector2(-436, -402)
+scale = Vector2(2.21, 21.955)
+
+[node name="Key" parent="." unique_id=518495141 instance=ExtResource("12_57f06")]
+position = Vector2(-336, -15)
+
+[node name="Key3" parent="." unique_id=397257697 instance=ExtResource("12_57f06")]
+position = Vector2(-386, -136)
+
+[node name="Key2" parent="." unique_id=2070008152 instance=ExtResource("14_tgys3")]
+position = Vector2(-224, 111)
+AditionalAction = 1
+
+[node name="KillBox2" parent="." unique_id=1271129577 instance=ExtResource("15_4p8mt")]
+position = Vector2(-102, 165)
+scale = Vector2(1.445, 10.375)
+
+[node name="KillBox3" parent="." unique_id=1809505503 instance=ExtResource("15_4p8mt")]
+position = Vector2(-102, -116)
+scale = Vector2(1.445, 10.375)
+
+[node name="KillBox4" parent="." unique_id=2137432515 instance=ExtResource("15_4p8mt")]
+position = Vector2(-246, 73)
+scale = Vector2(4.33, 1.895)
+
+[node name="KillBox5" parent="." unique_id=1004870332 instance=ExtResource("15_4p8mt")]
+position = Vector2(-318, 161)
+scale = Vector2(4.335, 17.945)
+
+[node name="KillBox8" parent="." unique_id=1652035614 instance=ExtResource("15_4p8mt")]
+position = Vector2(-428.99997, 25.000025)
+scale = Vector2(1.725, 12.985)
+
+[node name="KillBox9" parent="." unique_id=2055215974 instance=ExtResource("15_4p8mt")]
+position = Vector2(-398.00006, 142)
+scale = Vector2(5.62, 1.755)
+
+[node name="KillBox7" parent="." unique_id=373397607 instance=ExtResource("15_4p8mt")]
+position = Vector2(-317.99997, -66.00001)
+scale = Vector2(4.335, 2.435)

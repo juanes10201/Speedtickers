@@ -668,9 +668,9 @@ func _physics_apply_gravity(delta: float) -> void:
 			#velocity.y = clamp(velocity.y, OnWaterClampMin, OnWaterClampMax)
 			if(is_action_pressed("player_down")):
 				velocity.y = lerpf(velocity.y, OnWaterClampMaxDown, 12*delta)
-			elif(velocity.y > OnWaterClampMax):
+			elif(velocity.y*GravityDirection > OnWaterClampMax*GravityDirection):
 				velocity.y = lerpf(velocity.y, OnWaterClampMax, 10*delta)
-			elif(velocity.y < OnWaterClampMin):
+			elif(velocity.y*GravityDirection < OnWaterClampMin*GravityDirection):
 				velocity.y = lerpf(velocity.y, OnWaterClampMin, 20*delta)
 		if(was_on_floor): CoyoteTimer.start()
 		if(!WallJump && DashTime.is_stopped()):
@@ -793,10 +793,10 @@ func DoJump(delta : float = 1/60) -> void:
 				Speed.x += _vel_dif*.4
 			else: Speed.x += _vel_dif
 			#print(PositionDifference.x/delta)
-			print("walljump")
+			#print("walljump")
 		elif(abs(Speed.x) < abs(_vel_walljump)):
 			Speed.x = _vel_walljump
-		print("wall")
+		#print("wall")
 		PreWallJumpTimer.stop()
 		#print(PositionDifference.x)
 		velocity.y -= 50 * GravityDirection
