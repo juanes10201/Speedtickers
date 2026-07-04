@@ -19,13 +19,14 @@ size = Vector2(56.98584, 14.045258)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfvgd"]
 size = Vector2(65, 22.99997)
 
-[node name="HorizontalPistonMove" type="PathFollow2D" unique_id=226068745 node_paths=PackedStringArray("CooldownTimer", "RigidBody")]
+[node name="HorizontalPistonMove" type="PathFollow2D" unique_id=226068745 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "FallCooldownTimer")]
 use_parent_material = true
 rotates = false
 script = ExtResource("1_4u3dh")
 Enabled = false
 CooldownTimer = NodePath("CooldownTimer")
 RigidBody = NodePath("RigidBody2D")
+FallCooldownTimer = NodePath("FallCooldownTimer")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1168956738]
 material = SubResource("ShaderMaterial_7liu2")
@@ -51,6 +52,10 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnableArea" unique_id=1655638434]
 position = Vector2(-0.056869507, -0.40838623)
 shape = SubResource("RectangleShape2D_gfvgd")
+
+[node name="FallCooldownTimer" type="Timer" parent="." unique_id=1679700708]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="body_entered" from="EnableArea" to="." method="_on_enable_area_body_entered"]
 [connection signal="body_exited" from="EnableArea" to="." method="_on_enable_area_body_exited"]

@@ -33,6 +33,8 @@ var Falling : bool = false
 @export var InitialWaitTime : float = .5
 @export var InitialWaitTimer : Timer
 
+@export var MovePlayerAlong : bool = true
+
 func _ready() -> void:
 	if(Enabled):
 		restart()
@@ -111,7 +113,7 @@ func _tick_falling() -> void:
 		_falling = false
 	if(Falling != _falling):
 		if(_falling && RigidBody):
-			FallCooldownTimer.start()
+			if(FallCooldownTimer): FallCooldownTimer.start()
 			RigidBody.freeze = false
 		else:
 			_reset_falling()
@@ -192,9 +194,10 @@ func _block_movement_tick(delta : float) -> void:
 	if(VelocityPosition.x != 0.0):
 		if(InteractingBodies.size() > 0):
 			for Body in InteractingBodies:
-				#print(Body)
-				Body.global_position += VelocityPosition
-		if(PlayerInteracted):
+				if(!Body.is_in_group("Player")):
+					#print(Body)
+					Body.global_position += VelocityPosition
+		if(PlayerInteracted && MovePlayerAlong):
 			Player.global_position += VelocityPosition
 	
 	if(Player && Type == Types.HorizontalChangeDir && PlayerInteracted):
