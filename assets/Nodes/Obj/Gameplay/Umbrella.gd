@@ -18,7 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var BaseVely : float = PushVelocity*cos(deg_to_rad(rotation_degrees))
 		#print("Base Vel Y: " + str(BaseVely) )
 		#print("Base Vel X: " + str(BaseVelX) )
-		body.KickSpeed.y = BaseVely + -1*abs(body.velocity.y*.3)
+		body.KickSpeed.y = BaseVely + -1*abs(body.velocity.y*.3)*body.GravityDirection
 		body.KickTimer.start()
 		body.KickSpeed.x = BaseVelX * -100# + -1*abs(body.velocity.y*.7)
 		body.PreJumpTime.stop()

@@ -78,7 +78,7 @@ func switch_killbox_type(Type : Global.KillBoxTypes = Global.KillBoxTypes.None) 
 	Player.EnabledKillBox *= -1
 	print("changed")
 
-func MoveLava() -> void:
+func MoveLava(Arg : int = 1) -> void:
 	var Player : Node2D = _get_player()
 	LastOriginalvalue = Player.MoveLava
 	Player.MoveLava = true
