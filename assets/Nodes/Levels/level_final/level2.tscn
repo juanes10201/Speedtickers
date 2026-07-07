@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dvus6excjceee"]
+[gd_scene format=4 uid="uid://hb3ursusm18h"]
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_21cgd"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_qdkjn"]

@@ -71,7 +71,8 @@ var juice : bool = true
 @export var CountTime : bool = true
 @export_group("Physics")
 @export var Physics : bool = true
-@export var Acc_Multiplier : float = 1
+@export var Acc_Multiplier : float = 1.0
+@export var Max_Velocity_Multiplier : float = 1.0
 @onready var InvencibilityTimer : Timer = $InvencibilityTimer
 
 @export_subgroup("Jump")
@@ -317,6 +318,7 @@ func _input(event):
 
 func _ready() -> void:
 	Time_Left.paused = true
+	MaxAcc.x *= Max_Velocity_Multiplier
 	if(RetroStyle):
 		ParticlesSlide.fixed_fps = 15
 		ParticlesSlide.interpolate = false
