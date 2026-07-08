@@ -40,6 +40,8 @@ func _ready() -> void:
 	Sprite.material.set_shader_parameter("tile_size", scale)
 
 
+var WasLavaEnabled : bool = false
+
 @export var grab_grid : float = 8.0
 func _process(delta: float) -> void:
 	if($CollisionShape2D.disabled):
@@ -61,16 +63,17 @@ func _process(delta: float) -> void:
 			$CollisionShape2D.disabled = true
 		if(AditionalAction == Actions.raise_up_on_key && Player.MoveLava):
 			if(Player.EnabledKillBox == Type):
+				WasLavaEnabled = true
 				position.y = lerpf(position.y, posygoto, 2 * delta)
 				position.y -= lavaMovDif/10*LavaMoveDirection
-			elif(LavaGoBack):
+			elif(WasLavaEnabled && LavaGoBack):
 				position.y = lerpf(position.y, posygoto, 2 * delta)
 				position.y += lavaMovDif/10*LavaMoveDirection
 			if(LavaTimer.is_stopped()):
 				if(Player.EnabledKillBox == Type):
 					posygoto = position.y - lavaMovDif*LavaMoveDirection
 					LavaTimer.start()
-				elif(LavaGoBack):
+				elif(WasLavaEnabled && LavaGoBack):
 					posygoto = position.y + lavaMovDif*LavaMoveDirection*1.5
 					LavaTimer.start()
 		
