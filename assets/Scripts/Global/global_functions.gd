@@ -17,7 +17,9 @@ enum FUNCTIONS{
 	Delete_node2d,
 	Create_tile_local, #TODO
 	Delete_tile_local,
-	Change_Railed_Nodes_Speed
+	Change_Railed_Nodes_Speed,
+	Set_Falling_Sand_Max_Velocity,
+	Set_Enemy_Time_To_Shoot
 }
 
 #Uso un array de array, donde el primer sub-elemento de cada elemento contendra el nombre, el resto los valores cambiados
@@ -77,6 +79,17 @@ func switch_killbox_type(Type : Global.KillBoxTypes = Global.KillBoxTypes.None) 
 	LastOriginalvalue = Player.EnabledKillBox
 	Player.EnabledKillBox *= -1
 	print("changed")
+
+func Set_Enemy_Time_To_Shoot(Arg : float = 80.0) -> void:
+	for Enemie in get_tree().current_scene.get_children():
+		if(Enemie.is_in_group("Enemie") && Enemie.enemy_type == 2.0):
+			Enemie.ShootBulletTimer.wait_time = Arg
+			Enemie.TimeToShoot = Arg
+
+func Set_Falling_Sand_Max_Velocity(Arg : float = 80.0) -> void:
+	for Sand in get_tree().current_scene.get_children():
+		if(Sand.is_in_group("sand")):
+			Sand.MAX_SPEED = Arg
 
 func MoveLava(Arg : int = 1) -> void:
 	var Player : Node2D = _get_player()

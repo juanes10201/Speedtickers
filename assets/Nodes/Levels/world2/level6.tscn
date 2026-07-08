@@ -126,6 +126,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2dypk"]
 shader = ExtResource("6_ikpee")
+shader_parameter/opacity_post_border = 0.0
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_x6y5w")
 shader_parameter/refraction_stretch = Vector2(1, 1)
 shader_parameter/refraction_strength = 0.02
@@ -211,8 +212,9 @@ Visible = false
 CanChange = false
 
 [node name="Key2" parent="." unique_id=1905404074 instance=ExtResource("9_7w7x0")]
-position = Vector2(-377, 254)
-AditionalAction = 1
+position = Vector2(-344, 177)
+AditionalAction = 15
+AditionalActionArgument = 0.2
 
 [node name="Player" parent="." unique_id=342350003 instance=ExtResource("10_eodbx")]
 position = Vector2(-56, 334)
