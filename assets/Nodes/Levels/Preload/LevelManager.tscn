@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://c8r0ebu1qkgf2" path="res://assets/Nodes/Levels/world1/level26.tscn" id="29_3ejch"]
 [ext_resource type="PackedScene" uid="uid://d3wx8nlwo3lm1" path="res://assets/Nodes/Levels/world2/level6.tscn" id="32_iq6eh"]
 [ext_resource type="PackedScene" uid="uid://y8hoxiwewykl" path="res://assets/Nodes/Levels/world2/level7.tscn" id="33_nrfoo"]
-[ext_resource type="PackedScene" uid="uid://ddjqbantsc3or" path="res://assets/Nodes/Levels/world2/level8.tscn" id="34_w2xte"]
+[ext_resource type="PackedScene" uid="uid://ddjqbantsc3or" path="res://assets/Nodes/Levels/world2/Bside/level8_bside.tscn" id="34_w2xte"]
 [ext_resource type="PackedScene" uid="uid://5ryr6mg0gjyl" path="res://assets/Nodes/Levels/world2/level9.tscn" id="35_mugeg"]
 [ext_resource type="PackedScene" uid="uid://bjl7alpu2ji21" path="res://assets/Nodes/Levels/world2/level11.tscn" id="37_csxsy"]
 [ext_resource type="PackedScene" uid="uid://bb4ghxs75e4ig" path="res://assets/Nodes/Levels/world2/level13.tscn" id="38_h87q3"]
