@@ -88,7 +88,7 @@ func Set_Enemy_Time_To_Shoot(Arg : float = 80.0) -> void:
 
 func Set_Falling_Sand_Max_Velocity(Arg : float = 80.0) -> void:
 	for Sand in get_tree().current_scene.get_children():
-		if(Sand.is_in_group("sand")):
+		if(Sand.is_in_group("sand") && Sand.is_falling):
 			Sand.MAX_SPEED = Arg
 
 func MoveLava(Arg : int = 1) -> void:
