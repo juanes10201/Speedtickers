@@ -50,6 +50,7 @@ var Player = null
 
 var Level : int = -99
 var World : int = 0
+var BSide : bool = false
 
 func get_level() -> int:
 	return Level

@@ -142,7 +142,7 @@ func _on_pressed() -> void:
 		#ya me da paja rehacer tds estos enums pero bn muy triste el q tenga q entender esto. rip
 		LevelManager.change_to_level(int(text)-1, 0)
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_number_in_world):
-		LevelManager.change_to_level_world_string(int(text)-1, ADITIONAL_ARGUMENT)
+		LevelManager.change_to_level_world_string(int(text)-1, ADITIONAL_ARGUMENT, get_parent().Bside)
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.restart_level):
 		Player.TransitionOut.show()
 		Player.TransitionOut.fade_out()

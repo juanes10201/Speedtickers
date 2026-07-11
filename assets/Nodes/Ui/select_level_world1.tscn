@@ -96,6 +96,7 @@
 
 [sub_resource type="Animation" id="Animation_bx5ix"]
 resource_name = "BSide_end"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -127,10 +128,10 @@ tracks/2/path = NodePath("../DiscBside:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.46666667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 1.0666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(4026.6665, 293.3333), Vector2(3711.0178, 293.33322), Vector2(2986.666, 293.333)]
+"values": [Vector2(4026.6665, 293.3333), Vector2(3711.0178, 293.33322), Vector2(2986.666, 293.333), Vector2(2986.666, 293.333)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -204,9 +205,34 @@ tracks/8/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../DISC2:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(80, 1851.298), Vector2(80, 2133.3333)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../TICKERS:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.39999998, 0.73333335, 1.0333333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(80, 2115.727), Vector2(80, 2056.9023), Vector2(80, 1866.6666), Vector2(80, 1866.6666)]
+}
 
 [sub_resource type="Animation" id="Animation_ber5a"]
 resource_name = "BSide_start"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -238,10 +264,10 @@ tracks/2/path = NodePath("../DiscBside:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 0.2, 0.46666667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.2, 0.6, 0.93333334, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2986.666, 326.66675), Vector2(3686.3293, 326.66693), Vector2(3891.976, 326.667)]
+"values": [Vector2(2986.666, 326.66675), Vector2(3293.877, 326.6668), Vector2(4053.471, 326.667), Vector2(4053.471, 326.667)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -262,10 +288,10 @@ tracks/4/path = NodePath("../DiscReturnBside:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 0.46666667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 1.1666666, 1.4995),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(4026.6665, 293.3333), Vector2(3711.0178, 293.33322), Vector2(2986.666, 293.333)]
+"values": [Vector2(4026.6665, 293.3333), Vector2(3711.0178, 293.33322), Vector2(2986.666, 293.333), Vector2(2986.666, 293.333), Vector2(2986.666, 293.333)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -314,6 +340,30 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [-1]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../TICKERS:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.26666668, 0.46666667, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(80, 1866.6666), Vector2(80, 1946.1451), Vector2(80, 2115.727)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../DISC2:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.5, 1.1333333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(80, 2133.3333), Vector2(80, 1851.298), Vector2(80, 1851.298)]
 }
 
 [sub_resource type="Animation" id="Animation_8cdkx"]
@@ -1326,6 +1376,18 @@ tracks/83/keys = {
 "update": 0,
 "values": [Vector2(1920.476, -838.499)]
 }
+tracks/84/type = "value"
+tracks/84/imported = false
+tracks/84/enabled = true
+tracks/84/path = NodePath("../DISC2:position")
+tracks/84/interp = 1
+tracks/84/loop_wrap = true
+tracks/84/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, 2133.3333)]
+}
 
 [sub_resource type="Animation" id="Animation_7qti3"]
 resource_name = "change_select_buttons"
@@ -1676,10 +1738,10 @@ tracks/13/path = NodePath("../WorldLabel:position")
 tracks/13/interp = 2
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0.3, 0.4899572, 0.8566239, 1.0566238),
+"times": PackedFloat32Array(0.16666667, 0.36666667, 0.8566239, 1.0566238),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2795.878, 43.333), Vector2(3658.2793, -0.6391716), Vector2(3873.3333, -13.333332), Vector2(3873.3333, -13.333332)]
+"values": [Vector2(1639.563, 43.333), Vector2(2958.279, -0.639), Vector2(3173.333, -13.333), Vector2(3173.333, -13.333)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -2492,7 +2554,7 @@ tracks/13/keys = {
 "times": PackedFloat32Array(0.3, 0.43333334, 0.6666667, 0.875884),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(3873.3333, -13.333332), Vector2(3195.8958, 26.654308), Vector2(2795.878, 43.333), Vector2(2795.878, 43.333)]
+"values": [Vector2(3073.333, -13.333), Vector2(2895.896, 26.654), Vector2(1639.563, 43.333), Vector2(1639.563, 43.333)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -3912,8 +3974,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 4.666626
 offset_top = 1440.0
-offset_right = 797.06165
-offset_bottom = 1896.5668
+offset_right = 797.06213
+offset_bottom = 1896.5659
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("80_q8y2j")
 icon = ExtResource("81_au3go")
@@ -3931,8 +3993,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -982.0
 offset_top = 1450.0
-offset_right = -189.68896
-offset_bottom = 1906.6676
+offset_right = -189.69092
+offset_bottom = 1906.6658
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("80_q8y2j")
 icon = ExtResource("82_btbrx")
@@ -3962,23 +4024,35 @@ texture = ExtResource("85_gltq7")
 [node name="WorldLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1741512740]
 offset_left = 2795.878
 offset_top = 43.333
-offset_right = 4089.21
+offset_right = 4902.539
 offset_bottom = 326.66638
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("77_q7of2")
 theme_override_font_sizes/normal_font_size = 321
 text = "WORLD 1"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="TICKERS" type="RichTextLabel" parent="CanvasLayer" unique_id=1792939510]
 offset_left = 80.0
 offset_top = 1866.6666
 offset_right = 1403.3333
-offset_bottom = 2183.1394
+offset_bottom = 2183.1367
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("77_q7of2")
 theme_override_font_sizes/normal_font_size = 321
 text = "TICKERS"
+vertical_alignment = 1
+
+[node name="DISC2" type="RichTextLabel" parent="CanvasLayer" unique_id=905217419]
+offset_left = 80.0
+offset_top = 2133.3333
+offset_right = 1403.3333
+offset_bottom = 2449.81
+theme_override_constants/outline_size = 60
+theme_override_fonts/normal_font = ExtResource("77_q7of2")
+theme_override_font_sizes/normal_font_size = 321
+text = "DISC 2"
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=555810667]
@@ -4028,8 +4102,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 1834.666
 offset_top = 326.66675
-offset_right = 2847.9805
-offset_bottom = 1286.6624
+offset_right = 2847.9917
+offset_bottom = 1286.6536
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("80_q8y2j")
 icon = ExtResource("90_xkuxm")
@@ -4049,8 +4123,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 2874.6665
 offset_top = 293.3333
-offset_right = 3887.9893
-offset_bottom = 1253.3394
+offset_right = 3887.9683
+offset_bottom = 1253.3516
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("80_q8y2j")
 icon = ExtResource("90_lv8yh")
@@ -4104,8 +4178,8 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 340.0
 offset_top = 749.99994
-offset_right = 2293.3323
-offset_bottom = 983.3455
+offset_right = 2293.3347
+offset_bottom = 983.3458
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")
 theme_override_font_sizes/normal_font_size = 181
@@ -4128,8 +4202,8 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 446.66666
 offset_top = 983.33325
-offset_right = 2293.3335
-offset_bottom = 1216.6036
+offset_right = 2293.3372
+offset_bottom = 1216.602
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")
 theme_override_font_sizes/normal_font_size = 181
@@ -4152,7 +4226,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 513.3333
 offset_top = 1200.0
-offset_right = 2319.9993
+offset_right = 2319.999
 offset_bottom = 1433.3334
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")
@@ -4171,6 +4245,17 @@ theme_override_fonts/normal_font = ExtResource("89_u0tr1")
 theme_override_font_sizes/normal_font_size = 161
 text = "{steam user}"
 vertical_alignment = 1
+
+[node name="placeholder2" type="RichTextLabel" parent="CanvasLayer" unique_id=609533443]
+self_modulate = Color(1, 1, 1, 0.7647059)
+z_index = 1
+offset_left = 3193.335
+offset_top = 276.66663
+offset_right = 3796.6682
+offset_bottom = 463.33362
+theme_override_fonts/normal_font = ExtResource("78_ivuwd")
+theme_override_font_sizes/normal_font_size = 136
+text = "Swap Disc"
 
 [connection signal="pressed" from="CanvasLayer/Levels/select1" to="CanvasLayer/Levels/select1" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select2" to="CanvasLayer/Levels/select2" method="_on_pressed"]

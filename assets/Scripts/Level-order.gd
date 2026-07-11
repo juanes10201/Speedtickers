@@ -3,9 +3,15 @@ extends Node
 #Order of levels
 
 @export var LevelsCsvPath : String
+@export var LevelsBsideCsvPath : String
+
 var LevelPaths : Dictionary 
+var LevelPathsBside : Dictionary
 var WorldOrder : Array[String]
+var WorldOrderBside : Array[String]
+
 var AmountLevels : int = 0
+var AmountLevelsBSide : int = 0
 
 @onready var ExpoTimer = $ExpoTimer
 var PlayedExpo : bool = false
@@ -18,12 +24,28 @@ var PreviousStyle : String = "D"
 var PreviousScore : String = ""
 
 func _ready() -> void:
-	load_level_csv()
+	reload_all_level_csv()
+	print(LevelPaths)
 
-func load_level_csv():
-	var filecsv = FileAccess.open(LevelsCsvPath, FileAccess.READ)
+func reload_all_level_csv() -> void:
+	load_regular_level_csv()
+	load_bside_level_csv()
+
+func load_bside_level_csv() -> void:
+	load_level_csv(LevelsBsideCsvPath, LevelPathsBside, WorldOrderBside, true)
+
+func load_regular_level_csv() -> void:
+	load_level_csv(LevelsCsvPath, LevelPaths, WorldOrder, false)
+
+func load_level_csv(csv : String, levelpaths : Dictionary, worldorder : Array[String], BSide: bool = false):
+	var filecsv = FileAccess.open(csv, FileAccess.READ)
 	var filetxt = filecsv.get_as_text()
-	AmountLevels = 0
+	levelpaths.clear()
+	worldorder.clear()
+	if(!BSide):
+		AmountLevels = 0
+	else:
+		AmountLevelsBSide = 0
 	#Iterate throught every line
 	for i in range(filetxt.get_slice_count("\n") ):
 		var _line = filetxt.get_slice("\n", i)
@@ -33,60 +55,75 @@ func load_level_csv():
 			#If the value is in the first line, then use it to create the dictionaries
 			#estoy gaga no se pq a veces escribo en ingles y otras en español. ups
 			if(i == 0):
-				LevelPaths.set(_value, [])
-				WorldOrder.append(_value)
-			elif(l < WorldOrder.size()):
-				AmountLevels += 1
-				LevelPaths[WorldOrder[l]].append(_value)
+				levelpaths.set(_value, [])
+				worldorder.append(_value)
+			elif(l < worldorder.size()):
+				if(!BSide):
+					AmountLevels += 1
+				else:
+					AmountLevelsBSide += 1
+				levelpaths[worldorder[l]].append(_value)
 	print("Reloaded level paths csv file")
 	#print(LevelPaths)
 
-func get_world_by_number(world : int) -> Array:
-	return LevelPaths[WorldOrder[world]]
+func get_amount_total_levels(BSide : bool = false) -> int:
+	if(BSide): return AmountLevelsBSide
+	return AmountLevels
 
-func get_total_number_level(level : int, world : int) -> int:
+func get_world_order(BSide : bool = false) -> Array:
+	if(BSide): return WorldOrderBside
+	return WorldOrder
+
+func get_level_paths(BSide : bool = false) -> Dictionary:
+	if(BSide): return LevelPathsBside
+	return LevelPaths
+
+func get_world_by_number(world : int,  BSide : bool = false) -> Array:
+	return get_level_paths(BSide)[get_world_order(BSide)[world]]
+
+func get_total_number_level(level : int, world : int, BSide : bool = false) -> int:
 	var PrevWorldsSize : int = 0
 	for i in range(world):
 		if(i < 0): break
-		PrevWorldsSize += LevelPaths[WorldOrder[i]].size()
+		PrevWorldsSize += get_level_paths(BSide)[get_world_order(BSide)[i]].size()
 	return PrevWorldsSize+level
 
-func get_world_number(world : String) -> int:
-	return WorldOrder.find(world)
+func get_world_number(world : String, BSide : bool = false) -> int:
+	return get_world_order(BSide).find(world)
 
-func get_amount_levels_in_world(world : int) -> int:
-	return LevelPaths[WorldOrder[world]].size()
+func get_amount_levels_in_world(world : int, BSide : bool = false) -> int:
+	return get_level_paths(BSide)[get_world_order(BSide)[world]].size()
 
-func get_level_time():
+func get_level_time(BSide : bool = false):
 	var Player = get_tree().get_nodes_in_group("GameTimer")[0] if get_tree().get_nodes_in_group("GameTimer").size() else null
 	return Player
 
 func change_to_next_level() -> void:
-	if(Global.Level+1 > LevelPaths[WorldOrder[Global.World]].size() ):
-		change_to_level(0, Global.World + 1)
+	if(Global.Level+1 > get_level_paths(Global.BSide)[get_world_order(Global.BSide)[Global.World]].size() ):
+		change_to_level(0, Global.World + 1, Global.BSide)
 	else:
-		change_to_level(Global.Level+1, Global.World)
+		change_to_level(Global.Level+1, Global.World, Global.BSide)
 
 func get_level() -> int:
 	return Global.Level
 
-func change_to_level(Level : int , World : int) -> void:
-	if(World < WorldOrder.size()):
-		var CurrentWorld : String = WorldOrder[World]
+func change_to_level(Level : int , World : int, BSide : bool = false) -> void:
+	if(World < get_world_order(BSide).size()):
+		var CurrentWorld : String = get_world_order(BSide)[World]
 		Global.World = World
-		change_to_level_world_string(Level, CurrentWorld)
+		change_to_level_world_string(Level, CurrentWorld, BSide)
 
-func get_level_path(Level : int, World : String) -> String:
-	return "res://assets/Nodes/Levels/" + str(World) + "/" + str(LevelPaths[World][Level])
+func get_level_path(Level : int, World : String, BSide : bool) -> String:
+	return "res://assets/Nodes/Levels/" + str(World) + "/" + str(get_level_paths(BSide)[World][Level])
 
-func change_to_level_world_string(Level : int, World : String) -> void:
+func change_to_level_world_string(Level : int, World : String, BSide : bool = false) -> void:
 	Global.Level = Level
-	Global.World = get_world_number(World)
+	Global.World = get_world_number(World, BSide)
 	if(Level <= 0): Global.Level = 1
-	if(Level >= LevelPaths[World].size()):
+	if(Level >= get_level_paths(BSide)[World].size()):
 		Level = 0
-		World = WorldOrder[get_world_number(World)+1]
-	var SceneString : String = get_level_path(Level, World)
+		World = get_world_order(BSide)[get_world_number(World, BSide)+1]
+	var SceneString : String = get_level_path(Level, World, BSide)
 	print("Changing to level " + str(Level) + " World: " + str(World))
 	print("Path: " + SceneString)
 	change_scene(SceneString)
