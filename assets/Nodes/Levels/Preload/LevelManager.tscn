@@ -4,6 +4,7 @@
 
 [node name="Global" type="Node" unique_id=351270033]
 script = ExtResource("1_72qwh")
+LevelsCsvPath = "res://assets/Nodes/Levels/LevelOrder.csv"
 
 [node name="ExpoTimer" type="Timer" parent="." unique_id=538674515]
 wait_time = 420.0

@@ -122,7 +122,11 @@ func _on_pressed() -> void:
 		Player._pause_game()
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_starting_with):
 		#LevelManager.Level = int(text)-1
-		LevelManager.change_to_level(int(text)-1, BSide)
+		#deprecated. q codigo d mrd xdios. se nota q mejore(algo)
+		#ya me da paja rehacer tds estos enums pero bn muy triste el q tenga q entender esto. rip
+		LevelManager.change_to_level(int(text)-1, 0)
+	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_number_in_world):
+		LevelManager.change_to_level_world_string(int(text)-1, ADITIONAL_ARGUMENT)
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.restart_level):
 		Player.TransitionOut.show()
 		Player.TransitionOut.fade_out()

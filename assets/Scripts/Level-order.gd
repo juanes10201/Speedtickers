@@ -1,9 +1,11 @@
 extends Node
 
 #Order of levels
+
 @export var LevelsCsvPath : String
 var LevelPaths : Dictionary 
 var WorldOrder : Array[String]
+
 @onready var ExpoTimer = $ExpoTimer
 var PlayedExpo : bool = false
 var ReturnAfterTimerInExpo : bool = true
@@ -13,6 +15,9 @@ var ReturnAfterTimerInExpo : bool = true
 
 var PreviousStyle : String = "D"
 var PreviousScore : String = ""
+
+func _ready() -> void:
+	load_level_csv()
 
 func load_level_csv():
 	var filecsv = FileAccess.open(LevelsCsvPath, FileAccess.READ)
@@ -25,16 +30,22 @@ func load_level_csv():
 			if(_value == "" || _value == ","): continue
 			#If the value is in the first line, then use it to create the dictionaries
 			if(i == 0):
-				LevelPaths.set(l, _value)
+				LevelPaths.set(_value, [])
 				WorldOrder.append(_value)
-			elif(l < LevelPaths.size()):
-				LevelPaths[l].append(_value)
+			elif(l < WorldOrder.size()):
+				LevelPaths[WorldOrder[l]].append(_value)
+	print("Reloaded level paths csv file")
+	#print(LevelPaths)
 
 func get_level_time():
 	var Player = get_tree().get_nodes_in_group("GameTimer")[0] if get_tree().get_nodes_in_group("GameTimer").size() else null
 	return Player
 
-
+func change_to_next_level() -> void:
+	if(Global.Level+1 > LevelPaths[WorldOrder[Global.World]].size() ):
+		change_to_level(0, Global.World + 1)
+	else:
+		change_to_level(Global.Level+1, Global.World)
 
 func get_level() -> int:
 	return Global.Level
@@ -42,13 +53,18 @@ func get_level() -> int:
 func change_to_level(Level : int , World : int) -> void:
 	if(World < WorldOrder.size()):
 		var CurrentWorld : String = WorldOrder[World]
+		Global.World = World
 		change_to_level_world_string(Level, CurrentWorld)
+
+func get_level_path(Level : int, World : String) -> String:
+	return "res://assets/Nodes/Levels/" + str(World) + "/" + str(LevelPaths[World][Level])
 
 func change_to_level_world_string(Level : int, World : String) -> void:
 	Global.Level = Level
 	if(Level <= 0): Global.Level = 1
+	var SceneString : String = get_level_path(Level, World)
 	print("Changing to level " + str(Level) + " World: " + str(World))
-	var SceneString : String = LevelPaths[World][Level]
+	print("Path: " + SceneString)
 	change_scene(SceneString)
 
 func change_scene(Scene : String) -> void:

@@ -22,21 +22,66 @@ metadata/_edit_vertical_guides_ = [634.0]
 
 [node name="CanvasLayer" parent="." unique_id=336245842 instance=ExtResource("2_4iqwx")]
 
+[node name="select1" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="0" unique_id=963325185]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select2" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="1" unique_id=554054037]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select3" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="2" unique_id=1303425179]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select4" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="3" unique_id=1444800482]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select5" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="4" unique_id=701490149]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select6" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="5" unique_id=1867965926]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select7" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="6" unique_id=1630380182]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select8" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="7" unique_id=515915180]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select9" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="8" unique_id=1396243757]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select10" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="9" unique_id=542076726]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select11" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="10" unique_id=1800198492]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select12" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="11" unique_id=784748179]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select13" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="12" unique_id=540793293]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select14" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="13" unique_id=350446339]
+ADITIONAL_ARGUMENT = "world1"
+
+[node name="select15" parent="CanvasLayer/Levels" parent_id_path=PackedInt32Array(336245842, 594197803) index="14" unique_id=548727812]
+ADITIONAL_ARGUMENT = "world1"
+
 [node name="BestUser" parent="CanvasLayer/Iconuser" parent_id_path=PackedInt32Array(336245842, 104304584) index="0" unique_id=1394394965]
 material = SubResource("ShaderMaterial_bayh8")
 
-[node name="PauseMenuButton2" parent="CanvasLayer" index="15" unique_id=1217067170]
+[node name="PauseMenuButton2" parent="CanvasLayer" index="11" unique_id=1217067170]
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world2.tscn"
 ExpoButton = false
 
-[node name="PauseMenuButton3" parent="CanvasLayer" index="16" unique_id=1832989316]
+[node name="PauseMenuButton3" parent="CanvasLayer" index="12" unique_id=1832989316]
 visible = false
 ExpoButton = false
 
-[node name="MiniStar1" parent="CanvasLayer" index="18" unique_id=1325822117]
+[node name="MiniStar1" parent="CanvasLayer" index="14" unique_id=1325822117]
 visible = false
 
-[node name="9" parent="CanvasLayer" index="20" unique_id=1741512740]
+[node name="9" parent="CanvasLayer" index="16" unique_id=1741512740]
 offset_right = 4206.667
 
 [editable path="CanvasLayer"]

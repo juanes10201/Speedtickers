@@ -47,5 +47,5 @@ func _on_body_entered(body):
 		SaveGame.SaveLevelRecord(_lvl ,$"../Time_Left".wait_time - $"../Time_Left".time_left)
 		#endregion
 		#region Change level
-		LevelManager.change_to_level(_lvl+1, BSide, Gb)
+		LevelManager.change_to_next_level()
 		#endregion

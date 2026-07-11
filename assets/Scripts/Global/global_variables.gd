@@ -23,7 +23,8 @@ enum BUTTON_ACTIONS{
 	config_menu,
 	move_to_scene,
 	move_to_level_starting_with,
-	quit
+	quit,
+	move_to_level_number_in_world
 }
 enum GravityDirections{
 	INVERTED = -1,
