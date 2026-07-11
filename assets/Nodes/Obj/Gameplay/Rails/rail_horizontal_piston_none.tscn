@@ -27,6 +27,7 @@ Enabled = false
 CooldownTimer = NodePath("CooldownTimer")
 Type = 0
 RigidBody = NodePath("RigidBody2D")
+MovePlayerAlong = false
 FallCooldownTimer = NodePath("FallCooldownTimer")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1168956738]

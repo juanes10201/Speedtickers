@@ -242,12 +242,12 @@ position = Vector2(-168, 67)
 scale = Vector2(2.605, 8.76)
 
 [node name="KillBox9" parent="." unique_id=1522517076 instance=ExtResource("16_8fspu")]
-position = Vector2(2.0000057, -193)
-scale = Vector2(0.89, 6.29)
+position = Vector2(1.0000057, -192.99998)
+scale = Vector2(1.26, 6.29)
 
 [node name="KillBox10" parent="." unique_id=228555746 instance=ExtResource("16_8fspu")]
 position = Vector2(77.00001, -237.99998)
-scale = Vector2(0.89, 3.175)
+scale = Vector2(1.04, 3.175)
 
 [node name="KillBox11" parent="." unique_id=2079803146 instance=ExtResource("16_8fspu")]
 position = Vector2(171, -309.99997)

@@ -937,7 +937,8 @@ func _physics_dash(delta: float) -> void:
 		AudioDash.play()
 		strech_size(2.5, 0.5)
 		DashTime.start()
-		DashMove = DashAcc * ceil(LastDirection)
+		DashMove = DashAcc
+		if(LastDirection != 0): DashMove *= ceil(LastDirection)
 		if(OnWater):
 			DashMove *= OnWaterMultX
 		Controller_Vibrate_Player_Movement(0.7)

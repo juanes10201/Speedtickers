@@ -6,6 +6,8 @@ extends Node2D
 
 @export var AmountLevelsLabel : RichTextLabel
 
+@export var Transition : Node2D
+
 var Page : int = 0
 var CurrentWorld : int = 0
 #The amount of buttons per page
@@ -52,8 +54,12 @@ func _reload_page() -> void:
 		_internal_count += 1
 		_count += 1
 
+func _change_buttons_anim() -> void:
+	if(Transition): Transition.Anim.play("change_select_buttons")
+
 func _change_page(_page : int) -> void:
 	Page = _page
+	_change_buttons_anim()
 	_reload_page()
 
 #Next world

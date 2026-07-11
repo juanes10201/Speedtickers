@@ -3,8 +3,8 @@ extends Sprite2D
 @onready var Anim = $AnimationPlayer
 
 func _ready() -> void:
-	$AnimationPlayer.play("start")
+	Anim.play("start")
 
 func _process(delta: float) -> void:
-	if(!$AnimationPlayer.is_playing()):
-		$AnimationPlayer.play("idle")
+	if(!Anim.is_playing()):
+		Anim.play("idle")

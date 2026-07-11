@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Nodes/Obj/Gameplay/key.tscn" id="17_2lixk"]
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="17_afrs1"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="18_2lixk"]
+[ext_resource type="PackedScene" uid="uid://bxtkh08fsp6ue" path="res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn" id="19_3v2if"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -270,3 +271,23 @@ position = Vector2(103, -146)
 
 [node name="Key4" parent="." unique_id=2016953202 instance=ExtResource("17_afrs1")]
 position = Vector2(17, -31)
+
+[node name="Key2" parent="." unique_id=95957178 instance=ExtResource("17_2lixk")]
+position = Vector2(-180, -169)
+AditionalAction = 1
+
+[node name="Key5" parent="." unique_id=953050082 instance=ExtResource("17_2lixk")]
+position = Vector2(-80, -183)
+AditionalAction = 1
+
+[node name="KillBox12" parent="." unique_id=1271129577 instance=ExtResource("19_3v2if")]
+position = Vector2(-128, -181.99998)
+scale = Vector2(1.98, 5.32)
+
+[node name="KillBox14" parent="." unique_id=2122197171 instance=ExtResource("19_3v2if")]
+position = Vector2(-228.00002, -108.00003)
+scale = Vector2(1.98, 16.345)
+
+[node name="KillBox13" parent="." unique_id=1199361014 instance=ExtResource("19_3v2if")]
+position = Vector2(-38.00001, -150)
+scale = Vector2(1.98, 11.135)

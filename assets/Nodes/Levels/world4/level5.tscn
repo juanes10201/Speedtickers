@@ -122,10 +122,12 @@ curve = SubResource("Curve2D_yojhv")
 [node name="HorizontalPistonMove" parent="WindSand/Path2D" unique_id=226068745 instance=ExtResource("6_7oj5y")]
 position = Vector2(218, -193.65382)
 progress = 68.35
+MovePlayerAlong = false
 
 [node name="HorizontalPistonMove2" parent="WindSand/Path2D" unique_id=600613639 instance=ExtResource("6_7oj5y")]
 position = Vector2(218, -212.15656)
 progress = 49.85
+MovePlayerAlong = false
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=1045965316]
 wait_time = 0.5
