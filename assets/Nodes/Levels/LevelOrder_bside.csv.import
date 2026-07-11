@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b0pohp5aqqehc"
+
+[deps]
+
+files=["res://assets/Nodes/Levels/LevelOrder_bside.world2.translation", "res://assets/Nodes/Levels/LevelOrder_bside.world3.translation", "res://assets/Nodes/Levels/LevelOrder_bside.world4.translation"]
+
+source_file="res://assets/Nodes/Levels/LevelOrder_bside.csv"
+dest_files=["res://assets/Nodes/Levels/LevelOrder_bside.world2.translation", "res://assets/Nodes/Levels/LevelOrder_bside.world3.translation", "res://assets/Nodes/Levels/LevelOrder_bside.world4.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

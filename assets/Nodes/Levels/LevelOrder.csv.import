@@ -6,10 +6,10 @@ uid="uid://bi37r0iajij5p"
 
 [deps]
 
-files=["res://assets/Nodes/Levels/LevelOrder.world2.translation", "res://assets/Nodes/Levels/LevelOrder.world3.translation", "res://assets/Nodes/Levels/LevelOrder.world4.translation", "res://assets/Nodes/Levels/LevelOrder.world.translation", "res://assets/Nodes/Levels/LevelOrder.world1.translation", "res://assets/Nodes/Levels/LevelOrder.world2.translation", "res://assets/Nodes/Levels/LevelOrder.world3.translation", "res://assets/Nodes/Levels/LevelOrder.world4.translation"]
+files=["res://assets/Nodes/Levels/LevelOrder.world2.translation", "res://assets/Nodes/Levels/LevelOrder.world3.translation", "res://assets/Nodes/Levels/LevelOrder.world4.translation", "res://assets/Nodes/Levels/LevelOrder.world.translation"]
 
 source_file="res://assets/Nodes/Levels/LevelOrder.csv"
-dest_files=["res://assets/Nodes/Levels/LevelOrder.world2.translation", "res://assets/Nodes/Levels/LevelOrder.world3.translation", "res://assets/Nodes/Levels/LevelOrder.world4.translation", "res://assets/Nodes/Levels/LevelOrder.world.translation", "res://assets/Nodes/Levels/LevelOrder.world1.translation", "res://assets/Nodes/Levels/LevelOrder.world2.translation", "res://assets/Nodes/Levels/LevelOrder.world3.translation", "res://assets/Nodes/Levels/LevelOrder.world4.translation"]
+dest_files=["res://assets/Nodes/Levels/LevelOrder.world2.translation", "res://assets/Nodes/Levels/LevelOrder.world3.translation", "res://assets/Nodes/Levels/LevelOrder.world4.translation", "res://assets/Nodes/Levels/LevelOrder.world.translation"]
 
 [params]
 

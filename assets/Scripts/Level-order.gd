@@ -5,6 +5,7 @@ extends Node
 @export var LevelsCsvPath : String
 var LevelPaths : Dictionary 
 var WorldOrder : Array[String]
+var AmountLevels : int = 0
 
 @onready var ExpoTimer = $ExpoTimer
 var PlayedExpo : bool = false
@@ -22,6 +23,7 @@ func _ready() -> void:
 func load_level_csv():
 	var filecsv = FileAccess.open(LevelsCsvPath, FileAccess.READ)
 	var filetxt = filecsv.get_as_text()
+	AmountLevels = 0
 	#Iterate throught every line
 	for i in range(filetxt.get_slice_count("\n") ):
 		var _line = filetxt.get_slice("\n", i)
@@ -29,13 +31,21 @@ func load_level_csv():
 			var _value = _line.get_slice(",", l)
 			if(_value == "" || _value == ","): continue
 			#If the value is in the first line, then use it to create the dictionaries
+			#estoy gaga no se pq a veces escribo en ingles y otras en español. ups
 			if(i == 0):
 				LevelPaths.set(_value, [])
 				WorldOrder.append(_value)
 			elif(l < WorldOrder.size()):
+				AmountLevels += 1
 				LevelPaths[WorldOrder[l]].append(_value)
 	print("Reloaded level paths csv file")
 	#print(LevelPaths)
+
+func get_world_by_number(world : int) -> Array:
+	return LevelPaths[WorldOrder[world]]
+
+func get_amount_levels_in_world(world : int) -> int:
+	return LevelPaths[WorldOrder[world]].size()
 
 func get_level_time():
 	var Player = get_tree().get_nodes_in_group("GameTimer")[0] if get_tree().get_nodes_in_group("GameTimer").size() else null
