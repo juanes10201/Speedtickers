@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fo7p1nt5o3y8"]
 
 [ext_resource type="Script" uid="uid://bq0swgsur6uoe" path="res://assets/Nodes/Ui/level_select_canvas.gd" id="1_l1mg3"]
-[ext_resource type="Texture2D" uid="uid://typmhnobt82y" path="res://assets/Sprites/menus/LevelSelect/Background.png" id="2_6rc7a"]
+[ext_resource type="Texture2D" uid="uid://typmhnobt82y" path="res://assets/Sprites/menus/LevelSelect/backgrounds/Background.png" id="2_6rc7a"]
 [ext_resource type="Texture2D" uid="uid://bvblufa5y0su4" path="res://assets/Sprites/menus/LevelSelect/border.png" id="3_qnyju"]
 [ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="4_xw2rc"]
 [ext_resource type="Script" uid="uid://vy45jgrig202" path="res://assets/Nodes/Obj/Ui/transitionLevelSelect.gd" id="5_ny8m1"]

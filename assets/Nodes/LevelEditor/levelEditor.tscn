@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://frgvamgpi0lw" path="res://assets/Sprites/key-Sheet.png" id="9_1pr77"]
 [ext_resource type="Script" uid="uid://bf5slbvnwjten" path="res://assets/Scripts/ray_time_sprite.gd" id="9_ay4ap"]
 [ext_resource type="Texture2D" uid="uid://ccvnmxojr4xgl" path="res://assets/Sprites/killbox.png" id="10_r7lbo"]
-[ext_resource type="Texture2D" uid="uid://typmhnobt82y" path="res://assets/Sprites/menus/LevelSelect/Background.png" id="10_v2tji"]
+[ext_resource type="Texture2D" uid="uid://typmhnobt82y" path="res://assets/Sprites/menus/LevelSelect/backgrounds/Background.png" id="10_v2tji"]
 [ext_resource type="Texture2D" uid="uid://bkqxujelg0y5" path="res://assets/Sprites/killbox-blue.png" id="11_3vt02"]
 [ext_resource type="Shader" uid="uid://ydhmjy5irb16" path="res://assets/Nodes/Obj/Pixelate.gdshader" id="11_5mkwl"]
 [ext_resource type="Script" uid="uid://c0p85smca14in" path="res://assets/Scripts/time_progress_bar.gd" id="12_5mcbv"]

@@ -13,6 +13,22 @@ var CurrentWorld : int = 0
 #The amount of buttons per page
 var AmountButtons : int = 0
 
+var Bside : bool = false
+
+func _switch_bside() -> void:
+	if(!Bside):
+		_bside_start()
+	else:
+		_bside_end()
+
+func _bside_start() -> void:
+	Transition.Anim.play("BSide_start")
+	Bside = true
+
+func _bside_end() -> void:
+	Transition.Anim.play("BSide_end")
+	Bside = false
+
 func _ready() -> void:
 	AmountButtons = get_child_count()
 	_reload_page()

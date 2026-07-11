@@ -3,6 +3,8 @@ extends Button
 @export var BUTTON_ACTION = Global.BUTTON_ACTIONS.none
 @export var ADITIONAL_ARGUMENT : String = ""
 
+@export var DiscShader : bool = false
+
 @export var HoverDif : float = 30
 @export var PressedDif : float = -20
 
@@ -58,8 +60,22 @@ func _ready() -> void:
 		queue_free()
 	_set_text_size(original_size.y)
 
+@onready var DiscShaderInitialTilt : float = 0.0
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(DiscShader):
+		if(!DiscShaderInitialTilt):
+			DiscShaderInitialTilt = material.get_shader_parameter("max_tilt")
+		if(touching_mouse):
+			var tilt_val : float = lerp(material.get_shader_parameter("max_tilt"), 0.0, 5*delta)
+			material.set_shader_parameter("max_tilt", tilt_val)
+		else:
+			var tilt_val : float = lerp(material.get_shader_parameter("max_tilt"), DiscShaderInitialTilt, 5*delta)
+			material.set_shader_parameter("max_tilt", tilt_val)
+		
+		material.set_shader_parameter("mouse_position",get_global_mouse_position())
+		material.set_shader_parameter("sprite_position",global_position)
 	if(!Edition.Mobile):
 		#region Press Controller
 		if(Input.is_action_just_pressed("ui_click_controller") &&  has_focus()):
