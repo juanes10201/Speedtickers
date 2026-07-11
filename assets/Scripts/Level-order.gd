@@ -44,6 +44,16 @@ func load_level_csv():
 func get_world_by_number(world : int) -> Array:
 	return LevelPaths[WorldOrder[world]]
 
+func get_total_number_level(level : int, world : int) -> int:
+	var PrevWorldsSize : int = 0
+	for i in range(world):
+		if(i < 0): break
+		PrevWorldsSize += LevelPaths[WorldOrder[i]].size()
+	return PrevWorldsSize+level
+
+func get_world_number(world : String) -> int:
+	return WorldOrder.find(world)
+
 func get_amount_levels_in_world(world : int) -> int:
 	return LevelPaths[WorldOrder[world]].size()
 
@@ -71,7 +81,11 @@ func get_level_path(Level : int, World : String) -> String:
 
 func change_to_level_world_string(Level : int, World : String) -> void:
 	Global.Level = Level
+	Global.World = get_world_number(World)
 	if(Level <= 0): Global.Level = 1
+	if(Level >= LevelPaths[World].size()):
+		Level = 0
+		World = WorldOrder[get_world_number(World)+1]
 	var SceneString : String = get_level_path(Level, World)
 	print("Changing to level " + str(Level) + " World: " + str(World))
 	print("Path: " + SceneString)

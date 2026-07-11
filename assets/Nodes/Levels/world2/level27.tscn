@@ -204,7 +204,7 @@ autostart = true
 [node name="CanvasLayer" parent="." unique_id=2036359490 instance=ExtResource("8_v3men")]
 
 [node name="Flag" parent="." unique_id=1280264517 instance=ExtResource("9_hqypa")]
-position = Vector2(-576, 1)
+position = Vector2(-48, 105)
 
 [node name="WorldEnvironment" parent="." unique_id=1206830019 instance=ExtResource("10_df3wg")]
 
@@ -220,9 +220,9 @@ floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1584871878]
-position = Vector2(89.60181, 17.239014)
+position = Vector2(31.062, -17.796)
 zoom = Vector2(2.08, 2.08)
-limit_left = -285
+limit_left = -336
 limit_top = 58
 limit_right = 353
 limit_bottom = 618
@@ -290,12 +290,10 @@ rotation = -1.5707964
 [node name="Umbrella5" parent="." unique_id=1987855716 instance=ExtResource("21_h5v0q")]
 position = Vector2(-318, 104)
 rotation = 1.5707964
+PushVelocity = -500.0
 
 [node name="Umbrella3" parent="." unique_id=1274888570 instance=ExtResource("21_h5v0q")]
 position = Vector2(-218, 357)
-
-[node name="Umbrella6" parent="." unique_id=708674410 instance=ExtResource("21_h5v0q")]
-position = Vector2(-113, 157)
 
 [node name="Umbrella4" parent="." unique_id=1029420183 instance=ExtResource("21_h5v0q")]
 position = Vector2(-261, 358)
@@ -335,12 +333,8 @@ position = Vector2(-257, 140)
 scale = Vector2(2.255, 1)
 
 [node name="Killbox3" parent="." unique_id=1536080280 instance=ExtResource("11_ej56o")]
-position = Vector2(-159, 137)
-scale = Vector2(2.255, 1)
-
-[node name="Killbox4" parent="." unique_id=130990485 instance=ExtResource("11_ej56o")]
-position = Vector2(-52, 137)
-scale = Vector2(2.985, 1)
+position = Vector2(-96.999985, 137)
+scale = Vector2(10.115, 1)
 
 [node name="Key" parent="." unique_id=2070008152 instance=ExtResource("19_rdbyv")]
 position = Vector2(-250, 191)

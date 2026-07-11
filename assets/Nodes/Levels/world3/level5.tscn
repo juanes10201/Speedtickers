@@ -120,7 +120,7 @@ position = Vector2(-240, 113)
 Respawn = false
 
 [node name="Key2" parent="." unique_id=1008120597 instance=ExtResource("13_5o8v2")]
-position = Vector2(-56, 9)
+position = Vector2(-59, -15)
 Respawn = false
 
 [node name="Key3" parent="." unique_id=133937375 instance=ExtResource("13_5o8v2")]

@@ -196,22 +196,22 @@ position = Vector2(14, 450)
 scale = Vector2(2.5, 1.5)
 
 [node name="KillBox10" parent="." unique_id=588998664 instance=ExtResource("8_ruha4")]
-position = Vector2(111, 419)
-scale = Vector2(2.5, 1.5)
+position = Vector2(113, 419)
+scale = Vector2(2.335, 1.5)
 
 [node name="KillBox11" parent="." unique_id=1927671297 instance=ExtResource("8_ruha4")]
-position = Vector2(85, 318)
-scale = Vector2(2.5, 1.5)
+position = Vector2(80.99999, 318)
+scale = Vector2(2.015, 1.5)
 
 [node name="KillBox12" parent="." unique_id=1472035080 instance=ExtResource("8_ruha4")]
-position = Vector2(111, 216)
-scale = Vector2(2.5, 1.5)
+position = Vector2(115, 216)
+scale = Vector2(2.015, 1.5)
 
 [node name="AmbientParticles" parent="." unique_id=840424726 instance=ExtResource("11_8g3al")]
 position = Vector2(9, 108)
 
 [node name="Key" parent="." unique_id=1969677737 instance=ExtResource("13_nk4a7")]
-position = Vector2(78, 184)
+position = Vector2(83, 191)
 
 [node name="Enemie" parent="." unique_id=123170682 instance=ExtResource("15_etsfn")]
 position = Vector2(203, 134)

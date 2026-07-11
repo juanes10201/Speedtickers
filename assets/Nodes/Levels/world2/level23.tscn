@@ -250,7 +250,7 @@ AditionalAction = 6
 AditionalActionArgument = -120.0
 
 [node name="Player" parent="." unique_id=148438413 instance=ExtResource("13_lwwdx")]
-position = Vector2(-184, 201)
+position = Vector2(-200, 204)
 floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
@@ -352,9 +352,9 @@ position = Vector2(-99.999985, 73.00001)
 scale = Vector2(1.24, 59.225)
 
 [node name="KillBox4" parent="." unique_id=969303606 instance=ExtResource("15_d167q")]
-position = Vector2(-207.99998, 649)
+position = Vector2(-208, 689)
 scale = Vector2(5.155, 59.225)
 
 [node name="KillBox9" parent="." unique_id=641031687 instance=ExtResource("15_d167q")]
-position = Vector2(-176.00002, 146)
-scale = Vector2(1.24, 3.655)
+position = Vector2(-176, 169)
+scale = Vector2(1.24, 6.03)
