@@ -247,8 +247,8 @@ position = Vector2(227, 318)
 TimeToShoot = 0.7
 
 [node name="KillBox4" parent="." unique_id=1297816566 instance=ExtResource("8_d1qd6")]
-position = Vector2(-103, 185)
-scale = Vector2(1, 19.305)
+position = Vector2(-103, 181.00002)
+scale = Vector2(1, 19.835)
 
 [node name="KillBox5" parent="." unique_id=308767630 instance=ExtResource("8_d1qd6")]
 position = Vector2(-39, 244.73499)

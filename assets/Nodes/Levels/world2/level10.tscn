@@ -296,8 +296,8 @@ position = Vector2(-183.99998, 294)
 scale = Vector2(2.315, 2.085)
 
 [node name="KillBox7" parent="." unique_id=1285296203 instance=ExtResource("8_7uuh2")]
-position = Vector2(42.000004, 417)
-scale = Vector2(2.73, 4.515)
+position = Vector2(42.000004, 422)
+scale = Vector2(2.73, 3.975)
 
 [node name="Key" parent="." unique_id=2015727937 instance=ExtResource("12_qurjm")]
 position = Vector2(-189, 392)
@@ -362,11 +362,11 @@ position = Vector2(146, 216)
 scale = Vector2(1.00384, 1)
 
 [node name="falling_sand19" parent="." unique_id=617068277 instance=ExtResource("15_p6p62")]
-position = Vector2(34, 371)
+position = Vector2(34, 378)
 scale = Vector2(1.00384, 1)
 
 [node name="falling_sand20" parent="." unique_id=1268784258 instance=ExtResource("15_p6p62")]
-position = Vector2(50, 371)
+position = Vector2(50, 378)
 scale = Vector2(1.00384, 1)
 
 [node name="falling_sand21" parent="." unique_id=1326617122 instance=ExtResource("15_p6p62")]

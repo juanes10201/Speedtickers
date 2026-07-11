@@ -127,6 +127,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8l7n"]
 shader = ExtResource("4_xncqr")
+shader_parameter/opacity_post_border = 0.0
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_d77xg")
 shader_parameter/refraction_stretch = Vector2(1, 1)
 shader_parameter/refraction_strength = 0.02
@@ -226,7 +227,7 @@ position_smoothing_enabled = true
 script = ExtResource("13_vucr6")
 
 [node name="KillBox2" parent="." unique_id=1267918309 instance=ExtResource("11_prb85")]
-position = Vector2(-355, 223)
+position = Vector2(-506, 151)
 scale = Vector2(1, 1.375)
 
 [node name="KillBox4" parent="." unique_id=2049690392 instance=ExtResource("11_prb85")]
@@ -266,17 +267,17 @@ position = Vector2(-418, 0.9999695)
 scale = Vector2(2.2, 1.3)
 
 [node name="KillBox6" parent="." unique_id=2007723859 instance=ExtResource("11_prb85")]
-position = Vector2(-253, 162)
+position = Vector2(-404, 90)
 scale = Vector2(1.495, 6.61)
 
 [node name="StaticBody2D" parent="." unique_id=1765651386 instance=ExtResource("15_arpyn")]
-position = Vector2(-328, 367)
+position = Vector2(-479, 295)
 
 [node name="KillBox9" parent="." unique_id=978101750 instance=ExtResource("16_sgina")]
-position = Vector2(-295, 229)
+position = Vector2(-446, 157)
 
 [node name="falling_sand2" parent="." unique_id=1466337227 instance=ExtResource("17_ewvvs")]
-position = Vector2(-377, 268)
+position = Vector2(-528, 196)
 
 [node name="falling_sand3" parent="." unique_id=214611821 instance=ExtResource("17_ewvvs")]
 position = Vector2(-129, 436)
@@ -315,12 +316,12 @@ position = Vector2(-37, 286)
 position = Vector2(9, 34)
 
 [node name="float3" parent="." unique_id=1298722529 instance=ExtResource("20_62ycj")]
-position = Vector2(-328, 303)
+position = Vector2(-479, 231)
 TimeRespawn = 0.3
 AccEscapeWater = -10.0
 
 [node name="Key3" parent="." unique_id=2023403146 instance=ExtResource("21_wiemh")]
-position = Vector2(-377, 97)
+position = Vector2(-528, 25)
 AditionalAction = 6
 AditionalActionArgument = 382.0
 
