@@ -48,6 +48,7 @@ var Player = null
 @export var LevelOrder: Array[PackedScene]
 
 var Level : int = -99
+var World : int = 0
 
 func get_level() -> int:
 	return Level

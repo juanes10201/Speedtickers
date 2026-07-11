@@ -1,9 +1,9 @@
 extends Node
 
 #Order of levels
-@export var LevelOrder: Array[PackedScene]
-@export var LevelOrderBsides : Array[PackedScene]
-@export var LevelOrderGb : Array[PackedScene]
+@export var LevelsCsvPath : String
+var LevelPaths : Dictionary 
+var WorldOrder : Array[String]
 @onready var ExpoTimer = $ExpoTimer
 var PlayedExpo : bool = false
 var ReturnAfterTimerInExpo : bool = true
@@ -14,26 +14,45 @@ var ReturnAfterTimerInExpo : bool = true
 var PreviousStyle : String = "D"
 var PreviousScore : String = ""
 
+func load_level_csv():
+	var filecsv = FileAccess.open(LevelsCsvPath, FileAccess.READ)
+	var filetxt = filecsv.get_as_text()
+	#Iterate throught every line
+	for i in range(filetxt.get_slice_count("\n") ):
+		var _line = filetxt.get_slice("\n", i)
+		for l in range(_line.get_slice_count(",")):
+			var _value = _line.get_slice(",", l)
+			if(_value == "" || _value == ","): continue
+			#If the value is in the first line, then use it to create the dictionaries
+			if(i == 0):
+				LevelPaths.set(l, _value)
+				WorldOrder.append(_value)
+			elif(l < LevelPaths.size()):
+				LevelPaths[l].append(_value)
+
 func get_level_time():
 	var Player = get_tree().get_nodes_in_group("GameTimer")[0] if get_tree().get_nodes_in_group("GameTimer").size() else null
 	return Player
 
+
+
 func get_level() -> int:
 	return Global.Level
 
-func change_to_level(Lvl : int, Bside : bool = false, Gb : bool = false) -> void:
-	Global.Level = Lvl
-	print("Changing to level " + str(Lvl))
-	if(Lvl <= 0): Global.Level = 1
-	if(Bside):
-		if(Lvl < LevelOrderBsides.size()):
-			get_tree().change_scene_to_packed(LevelOrderBsides[Lvl])
-	elif(Gb):
-		if(Lvl < LevelOrderBsides.size()):
-			get_tree().change_scene_to_packed(LevelOrderGb[Lvl])
-	else:
-		if(Lvl < LevelOrder.size()):
-			get_tree().change_scene_to_packed(LevelOrder[Lvl])
+func change_to_level(Level : int , World : int) -> void:
+	if(World < WorldOrder.size()):
+		var CurrentWorld : String = WorldOrder[World]
+		change_to_level_world_string(Level, CurrentWorld)
+
+func change_to_level_world_string(Level : int, World : String) -> void:
+	Global.Level = Level
+	if(Level <= 0): Global.Level = 1
+	print("Changing to level " + str(Level) + " World: " + str(World))
+	var SceneString : String = LevelPaths[World][Level]
+	change_scene(SceneString)
+
+func change_scene(Scene : String) -> void:
+	get_tree().change_scene_to_file(Scene)
 
 var StyloMetter : int = 5 
 var StyloString : String = "B"
