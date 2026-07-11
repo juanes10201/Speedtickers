@@ -70,6 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://dllkg3cu5hwtc" path="res://assets/Sprites/menus/LevelSelect/Previews/60.png" id="66_iy4x0"]
 [ext_resource type="Script" uid="uid://dbpmylwbv3u5f" path="res://assets/Nodes/Ui/LevelSelectWorldLevels.gd" id="67_hvhlo"]
 [ext_resource type="FontFile" uid="uid://dfigptrdw0fg2" path="res://assets/Fonts/pixelart/Gossamer Girls.ttf" id="68_wfqlv"]
+[ext_resource type="Texture2D" uid="uid://dtwfhmi1agh7o" path="res://assets/Sprites/longlevelnote.png" id="69_ber5a"]
 [ext_resource type="Texture2D" uid="uid://dtrd6thhu6b8c" path="res://assets/Sprites/levelnote.png" id="69_yuvjn"]
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="70_mrtek"]
 [ext_resource type="Shader" uid="uid://dl0kjgssku3nm" path="res://assets/Shader/playername_text.gdshader" id="71_jvv1s"]
@@ -3488,6 +3489,33 @@ scale = Vector2(0.73485845, 0.73485833)
 sprite_frames = SubResource("SpriteFrames_jeu4u")
 animation = &"1"
 
+[node name="bosslevelselect" type="Button" parent="CanvasLayer" unique_id=1406728298 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 2901.333
+offset_top = 1279.9999
+offset_right = 3328.0
+offset_bottom = 1499.1779
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("68_wfqlv")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "boss"
+icon = ExtResource("69_ber5a")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("70_mrtek")
+BUTTON_ACTION = 7
+ADITIONAL_ARGUMENT = "world1"
+HoverDif = 50.0
+IsPixelartButton = true
+MobileBoxSize = 0
+LevelBg = NodePath("../Bg")
+LevelRanking = NodePath("../ranking")
+
 [node name="Levels" type="Node2D" parent="CanvasLayer" unique_id=594197803 node_paths=PackedStringArray("CurrentWorldLabel", "PreviousButton", "NextButton", "AmountLevelsLabel", "Transition")]
 script = ExtResource("67_hvhlo")
 CurrentWorldLabel = NodePath("../WorldLabel")
@@ -4257,6 +4285,7 @@ theme_override_fonts/normal_font = ExtResource("78_ivuwd")
 theme_override_font_sizes/normal_font_size = 136
 text = "Swap Disc"
 
+[connection signal="pressed" from="CanvasLayer/bosslevelselect" to="CanvasLayer/bosslevelselect" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select1" to="CanvasLayer/Levels/select1" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select2" to="CanvasLayer/Levels/select2" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select3" to="CanvasLayer/Levels/select3" method="_on_pressed"]
