@@ -4,6 +4,7 @@ extends Node
 
 @export var LevelsCsvPath : String
 @export var LevelsBsideCsvPath : String
+@export var BossesLevelPath : Array[String]
 
 var LevelPaths : Dictionary 
 var LevelPathsBside : Dictionary
@@ -25,7 +26,7 @@ var PreviousScore : String = ""
 
 func _ready() -> void:
 	reload_all_level_csv()
-	print(LevelPaths)
+	#print(LevelPaths)
 
 func reload_all_level_csv() -> void:
 	load_regular_level_csv()

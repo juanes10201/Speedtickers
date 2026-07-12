@@ -250,7 +250,7 @@ tile_set = ExtResource("5_r75pg")
 script = ExtResource("7_fcwgh")
 
 [node name="Time_Left" type="Timer" parent="." unique_id=123732541 groups=["GameTimer"]]
-wait_time = 999.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 
@@ -263,7 +263,7 @@ position = Vector2(-441, -157)
 
 [node name="KillBox" parent="." unique_id=1703437455 instance=ExtResource("11_iaqam")]
 position = Vector2(-54, 610)
-scale = Vector2(99.32, 1)
+scale = Vector2(9999, 1)
 Visible = false
 CanChange = false
 
@@ -272,12 +272,12 @@ position = Vector2(-572, -41)
 AditionalAction = 1
 
 [node name="Player" parent="." unique_id=148438413 instance=ExtResource("13_0gxog")]
-position = Vector2(-182, 236)
+position = Vector2(164, 237)
 floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1584871878]
-position = Vector2(187.6018, -51.760986)
+position = Vector2(98.507, -33.516)
 zoom = Vector2(2.08, 2.08)
 limit_left = -285
 limit_top = -5
@@ -336,7 +336,7 @@ AditionalAction = 6
 AditionalActionArgument = 91.0
 
 [node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "BossLifeBar", "ShieldLifeBar", "AudioShoot", "AudioLoad", "AudioFall", "DestroyTilemap", "CameraPlayer", "AudioAttackBoomerang", "ProyectileSpawner") groups=["Boss", "CdBoss"]]
-position = Vector2(210, 221)
+position = Vector2(-155, 223)
 collision_layer = 2097664
 collision_mask = 3455
 script = ExtResource("17_soa5s")

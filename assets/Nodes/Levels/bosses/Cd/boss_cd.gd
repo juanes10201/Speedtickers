@@ -55,6 +55,8 @@ const PlayerAfkTime : float = 0.5
 var BossLife : float = 80.0
 var ShieldLife : float = 0.0
 
+var Escaping : bool = false 
+
 @export var AudioShoot : AudioStreamPlayer
 @export var AudioLoad : AudioStreamPlayer
 @export var AudioFall : AudioStreamPlayer
@@ -65,6 +67,7 @@ var ShieldLife : float = 0.0
 
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
+	_start_escape()
 	#_shoot_proyectiles()
 
 func _calc_player_dir() -> float:
@@ -170,21 +173,40 @@ func _life_boss_tick(delta : float) -> void:
 	BossLifeBar.value = BossLife
 	ShieldLifeBar.value = ShieldLife
 	if(BossLife <= 0):
-		CameraPlayer.limit_right = lerpf(CameraPlayer.limit_right, 2000, 10*delta)
-		if(DestroyTilemap):
-			DestroyTilemap.queue_free()
+		_start_escape()
+
+func _start_escape() -> void:
+	Escaping = true
+	if(DestroyTilemap):
+		DestroyTilemap.queue_free()
+
+var ExtraSpeedX : float = 0.0
+
+func _escape_tick(delta : float) -> void:
+	CameraPlayer.limit_right = lerpf(CameraPlayer.limit_right, 2000, 10*delta)
+	CameraPlayer.zoom.x = lerpf(CameraPlayer.zoom.x, 1.45, 2*delta)
+	CameraPlayer.zoom.y = lerpf(CameraPlayer.zoom.y, 1.45, 2*delta)
+	Speed.x = Player.velocity.x
+	Speed.x = clamp(Speed.x, 200.0, 300.0)
+	if(global_position.distance_to(Player.global_position) > 200.0 ):
+		ExtraSpeedX = lerpf(ExtraSpeedX, 200.0, 2*delta)
+	else: ExtraSpeedX = lerpf(ExtraSpeedX, 0.0, 3*delta)
+	Speed.x += ExtraSpeedX
 
 func _physics_process(delta: float) -> void:
 	_life_boss_tick(delta)
 	if(ProyectileNoMove.is_stopped()):
-		_movement_x(delta)
-		_movement_y(delta)
-		_shoot_tick(delta)
-		_boomerang_tick(delta)
+		if(Escaping):
+			_escape_tick(delta)
+		else:
+			_movement_x(delta)
+			_movement_y(delta)
+			_shoot_tick(delta)
+			_boomerang_tick(delta)
 		
-		velocity.x = Speed.x
-		#print(velocity)
-		move_and_slide()
+	velocity.x = Speed.x
+	print(velocity)
+	move_and_slide()
 
 @export var AudioAttackBoomerang : AudioStreamPlayer
 func _boomerang_tick(delta : float) -> void:

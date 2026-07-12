@@ -75,7 +75,9 @@
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="70_mrtek"]
 [ext_resource type="Shader" uid="uid://dl0kjgssku3nm" path="res://assets/Shader/playername_text.gdshader" id="71_jvv1s"]
 [ext_resource type="Texture2D" uid="uid://bwv6k156sqcd2" path="res://assets/Sprites/menus/noisemap.png" id="72_b3qdv"]
+[ext_resource type="Texture2D" uid="uid://c0lbm58nmo1um" path="res://assets/Sprites/levelnote-selected.png" id="72_cxtu5"]
 [ext_resource type="Texture2D" uid="uid://cd5uevt337ene" path="res://assets/Sprites/menus/iconuser.jpg" id="73_apwgu"]
+[ext_resource type="Texture2D" uid="uid://cfcdlxpyrsadf" path="res://assets/Sprites/longlevelnote-selected.png" id="73_iytug"]
 [ext_resource type="Script" uid="uid://bo2oqy5pkneo2" path="res://assets/Scripts/iconuser.gd" id="74_catvy"]
 [ext_resource type="FontFile" uid="uid://b42aju5a8xkr8" path="res://assets/Fonts/pixelart/Pixel Or GTFO.ttf" id="76_c4dl1"]
 [ext_resource type="FontFile" uid="uid://d3ebca3t4i171" path="res://assets/Fonts/Ace Futurism.ttf" id="77_q7of2"]
@@ -1567,6 +1569,30 @@ tracks/14/path = NodePath("../Levels/select15:scale")
 tracks/14/interp = 2
 tracks/14/loop_wrap = true
 tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.305, 1.305), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../selectBoss:scale")
+tracks/15/interp = 2
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.305, 1.305), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../selectBoss2:scale")
+tracks/16/interp = 2
+tracks/16/loop_wrap = true
+tracks/16/keys = {
 "times": PackedFloat32Array(0, 0.19999999, 0.6666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -3489,40 +3515,14 @@ scale = Vector2(0.73485845, 0.73485833)
 sprite_frames = SubResource("SpriteFrames_jeu4u")
 animation = &"1"
 
-[node name="bosslevelselect" type="Button" parent="CanvasLayer" unique_id=1406728298 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
-z_index = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 2901.333
-offset_top = 1279.9999
-offset_right = 3328.0
-offset_bottom = 1499.1779
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("68_wfqlv")
-theme_override_font_sizes/font_size = 120
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
-text = "boss"
-icon = ExtResource("69_ber5a")
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("70_mrtek")
-BUTTON_ACTION = 7
-ADITIONAL_ARGUMENT = "world1"
-HoverDif = 50.0
-IsPixelartButton = true
-MobileBoxSize = 0
-LevelBg = NodePath("../Bg")
-LevelRanking = NodePath("../ranking")
-
-[node name="Levels" type="Node2D" parent="CanvasLayer" unique_id=594197803 node_paths=PackedStringArray("CurrentWorldLabel", "PreviousButton", "NextButton", "AmountLevelsLabel", "Transition")]
+[node name="Levels" type="Node2D" parent="CanvasLayer" unique_id=594197803 node_paths=PackedStringArray("CurrentWorldLabel", "PreviousButton", "NextButton", "AmountLevelsLabel", "Transition", "BossLevelSelectButton")]
 script = ExtResource("67_hvhlo")
 CurrentWorldLabel = NodePath("../WorldLabel")
 PreviousButton = NodePath("../ButtonPrevPage")
 NextButton = NodePath("../ButtonNextPage")
 AmountLevelsLabel = NodePath("../placeholder")
 Transition = NodePath("../Transition")
+BossLevelSelectButton = NodePath("../selectBoss")
 
 [node name="select1" type="Button" parent="CanvasLayer/Levels" unique_id=963325185 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3540,6 +3540,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "1"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3547,6 +3549,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3567,6 +3570,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "2"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3574,6 +3579,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3594,6 +3600,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "3"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3601,6 +3609,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3621,6 +3630,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "4"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3628,6 +3639,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3648,6 +3660,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "5"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3655,6 +3669,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3675,6 +3690,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "6"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3682,6 +3699,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3702,6 +3720,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "7"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3709,6 +3729,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3729,6 +3750,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "8"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3736,6 +3759,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3756,6 +3780,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "9"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3763,6 +3789,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3783,6 +3810,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "10"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3790,6 +3819,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3810,6 +3840,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "11"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3817,6 +3849,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3837,6 +3870,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "12"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3844,6 +3879,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3864,6 +3900,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "13"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3871,6 +3909,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3891,6 +3930,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "14"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3898,6 +3939,7 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
@@ -3918,6 +3960,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
 text = "15"
 icon = ExtResource("69_yuvjn")
 flat = true
+autowrap_trim_flags = 0
+clip_text = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
@@ -3925,9 +3969,69 @@ BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
 HoverDif = 50.0
 IsPixelartButton = true
+tex_selected = ExtResource("72_cxtu5")
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+
+[node name="selectBoss" type="Button" parent="CanvasLayer" unique_id=283446218 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 2741.3333
+offset_top = 1333.3333
+offset_right = 3248.0
+offset_bottom = 1552.5112
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("68_wfqlv")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "BOSS"
+icon = ExtResource("69_ber5a")
+flat = true
+autowrap_trim_flags = 0
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("70_mrtek")
+BUTTON_ACTION = 4
+HoverDif = 50.0
+IsPixelartButton = true
+tex_selected = ExtResource("73_iytug")
+MobileBoxSize = 0
+LevelBg = NodePath("../Bg")
+LevelRanking = NodePath("../ranking")
+
+[node name="selectBoss2" type="Button" parent="CanvasLayer" unique_id=2126151394 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1114.6665
+offset_top = 933.3333
+offset_right = 1674.6665
+offset_bottom = 1152.5112
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("68_wfqlv")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "LOBBY"
+icon = ExtResource("69_ber5a")
+flat = true
+autowrap_trim_flags = 0
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("70_mrtek")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Levels/lobby/level_lobby.tscn"
+HoverDif = 50.0
+IsPixelartButton = true
+tex_selected = ExtResource("73_iytug")
+MobileBoxSize = 0
+LevelBg = NodePath("../Bg")
+LevelRanking = NodePath("../ranking")
 
 [node name="Iconuser" type="Sprite2D" parent="CanvasLayer" unique_id=104304584]
 material = SubResource("ShaderMaterial_jubap")
@@ -4277,15 +4381,14 @@ vertical_alignment = 1
 [node name="placeholder2" type="RichTextLabel" parent="CanvasLayer" unique_id=609533443]
 self_modulate = Color(1, 1, 1, 0.7647059)
 z_index = 1
-offset_left = 3193.335
-offset_top = 276.66663
-offset_right = 3796.6682
-offset_bottom = 463.33362
+offset_left = 3173.333
+offset_top = 316.66663
+offset_right = 3776.6663
+offset_bottom = 503.33362
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")
 theme_override_font_sizes/normal_font_size = 136
 text = "Swap Disc"
 
-[connection signal="pressed" from="CanvasLayer/bosslevelselect" to="CanvasLayer/bosslevelselect" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select1" to="CanvasLayer/Levels/select1" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select2" to="CanvasLayer/Levels/select2" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select3" to="CanvasLayer/Levels/select3" method="_on_pressed"]
@@ -4301,6 +4404,8 @@ text = "Swap Disc"
 [connection signal="pressed" from="CanvasLayer/Levels/select13" to="CanvasLayer/Levels/select13" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select14" to="CanvasLayer/Levels/select14" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select15" to="CanvasLayer/Levels/select15" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/selectBoss" to="CanvasLayer/selectBoss" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/selectBoss2" to="CanvasLayer/selectBoss2" method="_on_pressed"]
 [connection signal="button_down" from="CanvasLayer/ButtonNextPage" to="CanvasLayer/Levels" method="_on_pause_menu_button_2_button_down"]
 [connection signal="button_down" from="CanvasLayer/ButtonNextPage" to="CanvasLayer/ButtonNextPage" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/ButtonNextPage" to="CanvasLayer/ButtonNextPage" method="_on_pressed"]

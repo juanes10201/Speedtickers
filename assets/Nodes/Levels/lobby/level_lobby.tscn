@@ -762,13 +762,9 @@ position = Vector2(695, -232)
 Dialogue_Action = "npc_lobby9"
 
 [node name="CharacterBody2D8" parent="." unique_id=1406307920 node_paths=PackedStringArray("PointTo") instance=ExtResource("13_wsgti")]
-position = Vector2(3.9999847, -216)
-PointTo = NodePath("PointTo")
+position = Vector2(235.99998, -263)
+PointTo = NodePath("")
 Dialogue_Action = "npc_lobby5"
-
-[node name="PointTo" type="Marker2D" parent="CharacterBody2D8" unique_id=150561928]
-top_level = true
-position = Vector2(163, -222)
 
 [node name="DialogueTrigger" type="Area2D" parent="." unique_id=1459897568]
 position = Vector2(-789, -658)

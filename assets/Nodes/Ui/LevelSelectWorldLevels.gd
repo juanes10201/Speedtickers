@@ -8,6 +8,8 @@ extends Node2D
 
 @export var Transition : Node2D
 
+@export var BossLevelSelectButton : Button
+
 var Page : int = 0
 var CurrentWorld : int = 0
 #The amount of buttons per page
@@ -39,9 +41,12 @@ func _ready() -> void:
 	AmountButtons = get_child_count()
 	_reload_page()
 
+var HasBossInPage : bool = false 
+
 func _reload_page() -> void:
 	if(Page < 0):
 		CurrentWorld -= 1
+		#Page = floor(LevelManager.get_amount_levels_in_world(CurrentWorld, Bside)/AmountButtons
 		if(CurrentWorld < 0): CurrentWorld = 0
 		Page = LevelManager.get_amount_levels_in_world(CurrentWorld, Bside)/AmountButtons
 	if(Page*AmountButtons > LevelManager.get_amount_levels_in_world(CurrentWorld, Bside)):
@@ -50,8 +55,12 @@ func _reload_page() -> void:
 	
 	CurrentWorld = clamp(CurrentWorld, 0, LevelManager.get_world_order(Bside).size()-1)
 	
+	var LastPageInWorld : bool = Page*AmountButtons+AmountButtons > floor(LevelManager.get_amount_levels_in_world(CurrentWorld, Bside))
+	var PlacedBossButton : bool = false
+	HasBossInPage = CurrentWorld < LevelManager.BossesLevelPath.size() && LastPageInWorld && !Bside
+	
 	PreviousButton.visible = !(CurrentWorld == 0 && Page == 0)
-	NextButton.visible = !(CurrentWorld == LevelManager.get_world_order(Bside).size()-1 && Page*AmountButtons+AmountButtons > floor(LevelManager.get_amount_levels_in_world(CurrentWorld, Bside)) )
+	NextButton.visible = !(CurrentWorld == LevelManager.get_world_order(Bside).size()-1 && LastPageInWorld)
 	
 	#print(CurrentWorld == LevelManager.WorldOrder.size()-1)
 	#print(Page*AmountButtons)
@@ -69,6 +78,11 @@ func _reload_page() -> void:
 		button.ADITIONAL_ARGUMENT = LevelManager.get_world_order(Bside)[CurrentWorld]
 		if(_count >= LevelManager.get_amount_levels_in_world(CurrentWorld, Bside) ):
 			button.hide()
+			if(HasBossInPage && !PlacedBossButton):
+				PlacedBossButton = true
+				if(BossLevelSelectButton):
+					BossLevelSelectButton.global_position = button.global_position
+					BossLevelSelectButton.ADITIONAL_ARGUMENT = LevelManager.BossesLevelPath[CurrentWorld]
 		else:
 			button.show()
 			if(AmountLevelsLabel):
@@ -77,6 +91,7 @@ func _reload_page() -> void:
 		
 		_internal_count += 1
 		_count += 1
+	BossLevelSelectButton.visible = PlacedBossButton
 
 func _change_buttons_anim() -> void:
 	if(Transition): Transition.Anim.play("change_select_buttons")

@@ -6,6 +6,7 @@
 script = ExtResource("1_72qwh")
 LevelsCsvPath = "res://assets/Nodes/Levels/LevelOrder.csv"
 LevelsBsideCsvPath = "res://assets/Nodes/Levels/LevelOrder_bside.csv"
+BossesLevelPath = Array[String](["res://assets/Nodes/Levels/bosses/slimo/level_world1_final.tscn", "res://assets/Nodes/Levels/bosses/Cd/level_world2_final.tscn"])
 
 [node name="ExpoTimer" type="Timer" parent="." unique_id=538674515]
 wait_time = 420.0

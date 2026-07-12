@@ -16,7 +16,7 @@ extends Button
 
 @export var FadeTransition : bool = false
 
-@onready var tex_selected : Texture = preload("res://assets/Sprites/levelnote-selected.png") if IsPixelartButton else null
+@export var tex_selected : Texture = preload("res://assets/Sprites/levelnote-selected.png") if IsPixelartButton else null
 @onready var tex_unselected : Texture = self.icon
 
 @onready var hover_size : Vector2 = Vector2(original_size.x+HoverDif, original_size.y+HoverDif)
@@ -123,8 +123,8 @@ func _process(delta: float) -> void:
 
 func _set_text_size(X : float):
 	var tosize = X-140
-	if(get_theme_font_size("font_size") < tosize && get_theme_font_size("font_size") < 140):
-		add_theme_font_size_override('font_size', X-140)
+	#if(get_theme_font_size("font_size") < tosize && get_theme_font_size("font_size") < 140):
+	#	add_theme_font_size_override('font_size', X-140)
 @export var ExpoButton : bool = false
 
 func _on_pressed() -> void:
