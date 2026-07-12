@@ -67,7 +67,7 @@ var Escaping : bool = false
 
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
-	_start_escape()
+	#_start_escape()
 	#_shoot_proyectiles()
 
 func _calc_player_dir() -> float:
@@ -181,17 +181,45 @@ func _start_escape() -> void:
 		DestroyTilemap.queue_free()
 
 var ExtraSpeedX : float = 0.0
+@export var EscapeMinSpeedX : float = 200.0
+@export var EscapeMaxSpeedX : float = 300.0
+@export var EscapeMaxDistance : float = 200.0
+@export var EscapeMinDistance : float = 120.0
+@export var EscapeKillDistance : float = 50.0
+@export var EscapeMaxDistanceSpeed : float = 200.0
+
+var EscapeCatchedPlayer : bool = false
+
+@export var EscapeJumpRaycast : RayCast2D
 
 func _escape_tick(delta : float) -> void:
 	CameraPlayer.limit_right = lerpf(CameraPlayer.limit_right, 2000, 10*delta)
 	CameraPlayer.zoom.x = lerpf(CameraPlayer.zoom.x, 1.45, 2*delta)
 	CameraPlayer.zoom.y = lerpf(CameraPlayer.zoom.y, 1.45, 2*delta)
+	
 	Speed.x = Player.velocity.x
-	Speed.x = clamp(Speed.x, 200.0, 300.0)
-	if(global_position.distance_to(Player.global_position) > 200.0 ):
-		ExtraSpeedX = lerpf(ExtraSpeedX, 200.0, 2*delta)
+	Speed.x = clamp(Speed.x, EscapeMinSpeedX, EscapeMaxSpeedX)
+	#Aumentar la velocidad al alejarse
+	if(global_position.distance_to(Player.global_position) > EscapeMaxDistance ):
+		ExtraSpeedX = lerpf(ExtraSpeedX, EscapeMaxDistanceSpeed, 2*delta)
 	else: ExtraSpeedX = lerpf(ExtraSpeedX, 0.0, 3*delta)
 	Speed.x += ExtraSpeedX
+	
+	#Caso de salto
+	if(is_on_floor() && EscapeJumpRaycast.is_colliding()):
+		velocity.y = jump_velocity
+	velocity.y += get_gravity_player() * delta
+	
+	#Al estar demasiado cerca ir a la posicion del jugador
+	if(EscapeCatchedPlayer || abs(global_position.x - Player.global_position.x) <= EscapeKillDistance):
+		EscapeCatchedPlayer = true
+		velocity.y = 0.0
+		Speed.x = 0.0
+		global_position.x = lerp(global_position.x, Player.global_position.x, 8*delta)
+		global_position.y = lerp(global_position.y, Player.global_position.y, 8*delta)
+	#Saltar al estar cerca del jugador
+	elif(global_position.distance_to(Player.global_position) <= EscapeMinDistance && !Player._is_on_floor()):
+		velocity.y = Player.velocity.y
 
 func _physics_process(delta: float) -> void:
 	_life_boss_tick(delta)
@@ -222,9 +250,11 @@ func _on_slam_timeout_timeout() -> void:
 @export var ProyectileSpawner : Node
 
 func _shoot_proyectiles() -> void:
+	if(Escaping): return
 	ProyectileSpawner.spawn_proyectiles()
 
 func _on_proyectile_cooldown_timeout() -> void:
+	if(Escaping): return
 	_shoot_proyectiles()
 	ProyectileNoMove.start()
 
@@ -242,6 +272,7 @@ func _on_shoot_cooldown_timeout() -> void:
 
 
 func _on_boomerang_cooldown_timeout() -> void:
+	if(Escaping): return
 	if(ProyectileNoMove.is_stopped()):
 		Boomerang.enable()
 
