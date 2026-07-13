@@ -11,7 +11,6 @@ func disable() -> void:
 	Enabled = false
 
 func enable() -> void:
-	global_position = get_parent().global_position
 	Enabled = true
 	Direction_to_go = global_position.direction_to(Player.global_position)
 
@@ -30,3 +29,7 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Killbox")):
 		disable()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("Player")): Player.On_Death()

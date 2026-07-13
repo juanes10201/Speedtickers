@@ -587,16 +587,11 @@ func _on_wall_jump_timer_timeout() -> void:
 func _on_damage_boss_body_entered(body: Node2D) -> void:
 	if(!InteractPlayer): return
 	if(body.is_in_group("Player")):
-		Player.DashTime.stop()
 		_set_sleep(false)
-		Player.GroundSmash = false
-		Player.Reset_Groundsmash()
-		Player.velocity.y = -200
-		Player.velocity.y *= 2
-		Player.KickSpeed.x = 25000.0
-		Player.Dashed = false
 		if(Player.global_position.x <= $DamagePlayerMarker.global_position.x):
-			Player.KickSpeed.x *= -1 
+			Player.kicked_boss(-1.0)
+		else:
+			Player.kicked_boss(1.0)
 		if(CooldownFastTimer.is_stopped()):
 			Player.KickTimer.start()
 			CooldownFastTimer.start()

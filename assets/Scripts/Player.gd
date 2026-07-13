@@ -1031,6 +1031,15 @@ func get_gravity_player() -> float:
 		return fall_gravity if velocity.y < 0.0 else jump_gravity
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
+func kicked_boss(mult : float = 1.0) -> void:
+	DashTime.stop()
+	GroundSmash = false
+	Reset_Groundsmash()
+	velocity.y = -200
+	velocity.y *= 2
+	KickSpeed.x = 25000.0 * mult
+	Dashed = false
+
 #region Death
 func On_Death():
 	if(Physics && InvencibilityTimer.is_stopped()):
