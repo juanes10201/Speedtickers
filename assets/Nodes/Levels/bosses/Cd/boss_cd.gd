@@ -233,7 +233,7 @@ func _physics_process(delta: float) -> void:
 			_boomerang_tick(delta)
 		
 	velocity.x = Speed.x
-	print(velocity)
+	#print(velocity) 
 	move_and_slide()
 
 @export var AudioAttackBoomerang : AudioStreamPlayer

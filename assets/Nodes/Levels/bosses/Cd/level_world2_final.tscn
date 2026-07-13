@@ -272,7 +272,7 @@ position = Vector2(-572, -41)
 AditionalAction = 1
 
 [node name="Player" parent="." unique_id=148438413 instance=ExtResource("13_0gxog")]
-position = Vector2(164, 237)
+position = Vector2(-93, 240)
 floor_stop_on_slope = false
 floor_max_angle = 1.39626
 
@@ -336,7 +336,7 @@ AditionalAction = 6
 AditionalActionArgument = 91.0
 
 [node name="BossCd" type="CharacterBody2D" parent="." unique_id=1861719054 node_paths=PackedStringArray("SlamTimeout", "ProyectileNoMove", "TimerShootCooldown", "ShootLines", "TimeCooldownSlide", "Boomerang", "BoomerangTimer", "DiagonalShotRayCast", "MidAirShotRayCast", "BossLifeBar", "ShieldLifeBar", "AudioShoot", "AudioLoad", "AudioFall", "DestroyTilemap", "CameraPlayer", "EscapeJumpRaycast", "AudioAttackBoomerang", "ProyectileSpawner") groups=["Boss", "CdBoss"]]
-position = Vector2(-155, 223)
+position = Vector2(126, 224)
 collision_layer = 2097664
 collision_mask = 3441
 script = ExtResource("17_soa5s")
@@ -483,6 +483,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_r0lfl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fcwgh")
 value = 70.79
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar2" type="ProgressBar" parent="BossUi" unique_id=1558087053]
 offset_top = 648.0
@@ -493,6 +494,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_xyoxk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i0bvb")
 value = 55.95
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Killbox" parent="." unique_id=1386857898 instance=ExtResource("11_iaqam")]
 position = Vector2(885.9999, 304)
