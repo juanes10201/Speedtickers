@@ -6,6 +6,7 @@ extends Node2D
 @onready var InputMapper : Node = get_parent().get_parent()
 
 var Count : int = 0
+var Event : InputEvent = null
 
 func set_text(txt : String) -> void:
 	TextLabel.text = txt
@@ -19,4 +20,4 @@ func remove_text() -> void:
 
 func _on_button_pressed() -> void:
 	if(InputMapper):
-		InputMapper.button_was_pressed(Count)
+		InputMapper.button_was_pressed(Count, Event)
