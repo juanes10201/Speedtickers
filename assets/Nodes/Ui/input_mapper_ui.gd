@@ -12,6 +12,10 @@ var MappingOldEvent : InputEvent = null
 func _ready() -> void:
 	_reload_keys()
 
+func clear_events() -> void:
+	InputMap.action_erase_events(InputMapName)
+	_reload_keys()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	LabelText.text = Text
@@ -65,5 +69,5 @@ func button_was_pressed(id : int, Event : InputEvent) -> void:
 	MappingOldEvent = Event
 
 func _on_interact_button_pressed() -> void:
-	pass
+	clear_events()
 		

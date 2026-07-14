@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://etptajybc0em" path="res://assets/Nodes/Ui/input_mapper_ui.gd" id="1_k7xi8"]
 [ext_resource type="StyleBox" uid="uid://cmbnccjrfioln" path="res://assets/Nodes/Ui/new_style_box_flat.tres" id="2_42hsf"]
+[ext_resource type="FontFile" uid="uid://dfigptrdw0fg2" path="res://assets/Fonts/pixelart/Gossamer Girls.ttf" id="2_rh180"]
 [ext_resource type="FontFile" uid="uid://cyhethdmcdauq" path="res://assets/Fonts/Beta.ttf" id="3_rh180"]
 [ext_resource type="PackedScene" uid="uid://cb30kjms5xe70" path="res://assets/Nodes/Ui/keyboard_key.tscn" id="4_0emx3"]
 
@@ -11,17 +12,19 @@ NodeKeyboardKeys = NodePath("KeyboardKeys")
 LabelText = NodePath("LabelInput2")
 
 [node name="InteractButton" type="Button" parent="." unique_id=1827084425]
-visible = false
-offset_left = 5462.0
-offset_top = 65.0
-offset_right = 7146.2104
-offset_bottom = 267.6316
+offset_left = 939.0
+offset_top = -28.0
+offset_right = 1501.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.8503795, 0.88027453, 0.88590676, 1)
+theme_override_fonts/font = ExtResource("2_rh180")
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = ExtResource("2_42hsf")
 theme_override_styles/pressed = ExtResource("2_42hsf")
 theme_override_styles/hover = ExtResource("2_42hsf")
 theme_override_styles/disabled = ExtResource("2_42hsf")
 theme_override_styles/focus = ExtResource("2_42hsf")
-disabled = true
+text = "Clear"
 
 [node name="LabelInput2" type="RichTextLabel" parent="." unique_id=1174334024]
 anchors_preset = -1
