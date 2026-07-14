@@ -22,15 +22,15 @@ func _set_data(Level : int, IndexUser : int, TextUser : RichTextLabel):#, TextPl
 	if(!UserDic.is_empty()):
 		TextUser.text = _set_text_pos(UserDic.name, UserDic.time)
 
-func _update_best_scores(Level : int) -> void:
-	var PlayerTime : float = _round_time_number(SaveGame.GetLevelTime(Level-1))
+func _update_best_scores(Level : int, World : int) -> void:
+	var PlayerTime : float = _round_time_number(SaveGame.GetLevelTime(Level-1, World))
 	if(UserPlayer): UserPlayer.text = _set_text_pos(SaveGame.GetPlayerUserName(), PlayerTime)
 	_set_data(Level, 0, User1)
 	_set_data(Level, 1, User2)
 	_set_data(Level, 2, User3)
 	
 func _ready() -> void:
-	_update_best_scores(0)
+	_update_best_scores(0, 0)
 
 func _process(delta: float) -> void:
 	pass

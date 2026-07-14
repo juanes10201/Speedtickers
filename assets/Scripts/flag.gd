@@ -42,9 +42,10 @@ func _on_body_entered(body):
 		LevelManager.AddStyle(3, "Finished level", 1/3+StyleRatio*2/3)
 		body._play_sound(SongPlayer.AudioCompleteLevel, true, true, 1, 1, .9, 0.0, 1.2)
 		var _lvl = LevelManager.get_level()
+		var _world = LevelManager.get_current_world_number()
 		if(_lvl <= 0): _lvl = 0
 		#region Save level
-		SaveGame.SaveLevelRecord(_lvl ,$"../Time_Left".wait_time - $"../Time_Left".time_left)
+		SaveGame.SaveLevelRecord(_lvl, _world,$"../Time_Left".wait_time - $"../Time_Left".time_left)
 		#endregion
 		#region Change level
 		LevelManager.change_to_next_level()

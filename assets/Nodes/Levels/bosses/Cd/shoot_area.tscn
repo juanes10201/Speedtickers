@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://4g8a6tspni3a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hypxh"]
+size = Vector2(20, 314)
+
+[node name="ShootArea" type="Area2D" unique_id=2078184913]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=824780722]
+shape = SubResource("RectangleShape2D_hypxh")
+debug_color = Color(0.62933016, 0.512656, 0.38454005, 0.41960785)

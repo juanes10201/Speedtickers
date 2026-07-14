@@ -24,6 +24,9 @@ var ReturnAfterTimerInExpo : bool = true
 var PreviousStyle : String = "D"
 var PreviousScore : String = ""
 
+func get_current_world_number() -> int:
+	return Global.World
+
 func _ready() -> void:
 	reload_all_level_csv()
 	#print(LevelPaths)
@@ -66,6 +69,9 @@ func load_level_csv(csv : String, levelpaths : Dictionary, worldorder : Array[St
 				levelpaths[worldorder[l]].append(_value)
 	print("Reloaded level paths csv file")
 	#print(LevelPaths)
+
+func get_world_name_by_number(Number : int) -> String:
+	return get_world_order()[Number]
 
 func get_amount_total_levels(BSide : bool = false) -> int:
 	if(BSide): return AmountLevelsBSide

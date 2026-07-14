@@ -67,22 +67,24 @@ func setup_default_values() -> void:
 	writegamedata()
 
 #La idea es parsear un json a un diccionario en godot.
-func SaveLevelPersonalRecord(Level : float = 1, RealTime : float = 0) -> void:
+func SaveLevelPersonalRecord(Level : int = 1, World : int = 1, RealTime : float = 0) -> void:
 	loadgamedata()
 	setup_default_values()
 	
-	var CurrentBest = get_value("Level", str(Level))
+	var _world_name = LevelManager.get_world_name_by_number(World)
+	var CurrentBest = get_value(_world_name, str(Level))
 	if(!CurrentBest || RealTime < CurrentBest):
-		set_save_value("Level", str(Level), RealTime)
+		set_save_value(_world_name, str(Level), RealTime)
 
-func SaveLevelRecord(Level : float = 1, RealTime : float = 0) -> void:
-	SaveLevelPersonalRecord(Level, RealTime)
+func SaveLevelRecord(Level : int = 1, World : int = 0, RealTime : float = 0) -> void:
+	SaveLevelPersonalRecord(Level, World, RealTime)
 	#var CurrentBest : float = get_value("Level", str(Level))
 	writegamedata()
 
-func GetLevelTime(Level : float) -> float:
-	var CurrentBest = get_value("Level", str(Level))
-	print("Got time:" + str(CurrentBest) + " of level: " + str(Level))
+func GetLevelTime(Level : int, World : int) -> float:
+	var _world_name = LevelManager.get_world_name_by_number(World)
+	var CurrentBest = get_value(_world_name, str(Level))
+	print("Got time:" + str(CurrentBest) + " of level: " + str(Level) + " and World: " + str(World))
 	if(CurrentBest): return CurrentBest
 	else: return 0.0
 
