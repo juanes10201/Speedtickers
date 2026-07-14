@@ -1,6 +1,9 @@
+@tool
 extends Node2D
+@export var Text : String = "Dash"
 @export var InputMapName : String = "player_dash" 
 @export var NodeKeyboardKeys : Node
+@export var LabelText : RichTextLabel
 
 var MappingInput : bool = false
 var MappingInputId : int = 0
@@ -11,6 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	LabelText.text = Text
 	if(MappingInput):
 		pass
 

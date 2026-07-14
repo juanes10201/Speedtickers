@@ -19,9 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://6bxbk324obkb" path="res://assets/Sprites/menus/Config/Categories/Text/TextInput.png" id="11_en3uu"]
 [ext_resource type="Texture2D" uid="uid://dvm6ilhkqyq5g" path="res://assets/Sprites/menus/BackButton.png" id="12_68s3g"]
 [ext_resource type="Texture2D" uid="uid://c62e7bn121dyr" path="res://assets/Sprites/menus/Config/Categories/Text/TextGameplay.png" id="12_q3lwx"]
-[ext_resource type="Script" uid="uid://etptajybc0em" path="res://assets/Nodes/Ui/input_mapper_ui.gd" id="16_q3lwx"]
-[ext_resource type="StyleBox" uid="uid://cmbnccjrfioln" path="res://assets/Nodes/Ui/new_style_box_flat.tres" id="17_gv3xx"]
-[ext_resource type="PackedScene" uid="uid://cb30kjms5xe70" path="res://assets/Nodes/Ui/keyboard_key.tscn" id="18_fks14"]
+[ext_resource type="PackedScene" uid="uid://dahd46jihppim" path="res://assets/Nodes/Ui/input_mapper_ui.tscn" id="16_14l6d"]
 
 [sub_resource type="Animation" id="Animation_exxqf"]
 length = 0.001
@@ -1232,47 +1230,18 @@ fit_content = true
 scroll_active = false
 metadata/_edit_use_anchors_ = true
 
-[node name="InputMapperUi" type="Node2D" parent="CategoryInput" unique_id=1357834051 node_paths=PackedStringArray("NodeKeyboardKeys")]
-position = Vector2(1206.3158, -575.3684)
-script = ExtResource("16_q3lwx")
-NodeKeyboardKeys = NodePath("KeyboardKeys")
+[node name="InputMapperUi" parent="CategoryInput" unique_id=562529059 instance=ExtResource("16_14l6d")]
+position = Vector2(1256.936, -575.368)
+Text = "Jump"
+InputMapName = "player_jump"
 
-[node name="InteractButton" type="Button" parent="CategoryInput/InputMapperUi" unique_id=1990001699]
-offset_left = -302.63153
-offset_top = -910.5263
-offset_right = 1381.5789
-offset_bottom = -707.8947
-theme_override_styles/normal = ExtResource("17_gv3xx")
-theme_override_styles/pressed = ExtResource("17_gv3xx")
-theme_override_styles/hover = ExtResource("17_gv3xx")
-theme_override_styles/disabled = ExtResource("17_gv3xx")
-theme_override_styles/focus = ExtResource("17_gv3xx")
-disabled = true
+[node name="InputMapperUi2" parent="CategoryInput" unique_id=1744050349 instance=ExtResource("16_14l6d")]
+position = Vector2(1323.141, -367.474)
 
-[node name="LabelInput2" type="RichTextLabel" parent="CategoryInput/InputMapperUi" unique_id=617593391]
-anchors_preset = -1
-anchor_top = -0.097465895
-anchor_right = 0.2830323
-anchor_bottom = 0.068226
-offset_right = 947.3685
-offset_bottom = 210.52625
-theme_override_fonts/normal_font = ExtResource("8_68s3g")
-theme_override_font_sizes/normal_font_size = 106
-text = "Dash:"
-fit_content = true
-scroll_active = false
-metadata/_edit_use_anchors_ = true
-
-[node name="KeyboardKeys" type="Node2D" parent="CategoryInput/InputMapperUi" unique_id=781334207]
-
-[node name="KeyboardKey" parent="CategoryInput/InputMapperUi/KeyboardKeys" unique_id=1239552907 instance=ExtResource("18_fks14")]
-position = Vector2(373.6842, 44.736816)
-
-[node name="KeyboardKey2" parent="CategoryInput/InputMapperUi/KeyboardKeys" unique_id=2033967151 instance=ExtResource("18_fks14")]
-position = Vector2(572.819, 44.737)
-
-[node name="KeyboardKey3" parent="CategoryInput/InputMapperUi/KeyboardKeys" unique_id=1579551729 instance=ExtResource("18_fks14")]
-position = Vector2(773.684, 44.737)
+[node name="InputMapperUi3" parent="CategoryInput" unique_id=757928950 instance=ExtResource("16_14l6d")]
+position = Vector2(1380.051, -159.649)
+Text = "Slide"
+InputMapName = "player_slide"
 
 [node name="PauseMenuGoBackButton2" type="Button" parent="." unique_id=1448523054]
 z_index = 1
@@ -1333,7 +1302,6 @@ text = "menu placeholder, funciona solo el SFX y Musica"
 [connection signal="mouse_entered" from="CategoryAudio/SfxBar/ProgressBar" to="CategoryAudio/SfxBar" method="_on_progress_bar_mouse_entered"]
 [connection signal="mouse_exited" from="CategoryAudio/SfxBar/ProgressBar" to="CategoryAudio/SfxBar" method="_on_progress_bar_mouse_exited"]
 [connection signal="value_changed" from="CategoryAudio/SfxBar/ControlMusic" to="CategoryAudio/SfxBar" method="_on_control_music_value_changed"]
-[connection signal="pressed" from="CategoryInput/InputMapperUi/InteractButton" to="CategoryInput/InputMapperUi" method="_on_interact_button_pressed"]
 [connection signal="button_down" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_button_down"]
 [connection signal="pressed" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_pressed"]
 
