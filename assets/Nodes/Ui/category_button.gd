@@ -6,6 +6,7 @@ extends Button
 @export var SpriteButtonCategory : AnimatedSprite2D
 
 @onready var InitialZIndex = z_index
+@export var AnimPlayer : AnimationPlayer
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -22,3 +23,4 @@ func _process(delta: float) -> void:
 
 func _on_button_up() -> void:
 	PauseMenu.Selected_Category = Category
+	AnimPlayer.play("Click")

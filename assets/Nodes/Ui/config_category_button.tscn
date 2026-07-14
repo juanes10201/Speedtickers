@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://b766pkykefx8o"]
+
+[ext_resource type="Script" uid="uid://doss4vryubdlk" path="res://assets/Nodes/Ui/category_button.gd" id="1_1o47x"]
+[ext_resource type="Texture2D" uid="uid://vq8julpyjdrx" path="res://assets/Sprites/menus/Config/Categories/CategoryButtonSelected.png" id="2_oadah"]
+[ext_resource type="Texture2D" uid="uid://ckomc1d8xfuyt" path="res://assets/Sprites/menus/Config/Categories/CategoryButtonUnselected.png" id="3_7mtpb"]
+[ext_resource type="Texture2D" uid="uid://b4abby6iu2es" path="res://assets/Sprites/menus/Config/Categories/Text/TextAudio.png" id="4_3i5sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flhvl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14l6d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mxs4o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fks14"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_en3uu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_en3uu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oadah")
+}],
+"loop": true,
+"name": &"Selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7mtpb")
+}],
+"loop": true,
+"name": &"Unselected",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_1o47x"]
+resource_name = "Click"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ButtonCategory:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.966, 0.966), Vector2(0.8664717, 0.8664717), Vector2(0.8664717, 0.8664717)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.475, 1.475), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oadah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ButtonCategory:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8664717, 0.8664717)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mtpb"]
+_data = {
+&"Click": SubResource("Animation_1o47x"),
+&"RESET": SubResource("Animation_oadah")
+}
+
+[node name="CategoryButtonAudio" type="Button" unique_id=1714893075 node_paths=PackedStringArray("SpriteButtonCategory", "AnimPlayer")]
+offset_left = 55.26316
+offset_top = 234.21054
+offset_right = 1292.1053
+offset_bottom = 565.7895
+theme_override_styles/normal = SubResource("StyleBoxEmpty_flhvl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_14l6d")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mxs4o")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fks14")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_en3uu")
+script = ExtResource("1_1o47x")
+SpriteButtonCategory = NodePath("ButtonCategory")
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="ButtonCategory" type="AnimatedSprite2D" parent="." unique_id=1873214710]
+position = Vector2(598.12085, 168.74998)
+scale = Vector2(0.8664717, 0.8664717)
+sprite_frames = SubResource("SpriteFrames_en3uu")
+animation = &"Selected"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1172828508]
+position = Vector2(555.2631, 194.73685)
+texture = ExtResource("4_3i5sn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1458998510]
+libraries/ = SubResource("AnimationLibrary_7mtpb")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

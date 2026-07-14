@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6bxbk324obkb"
-path="res://.godot/imported/TextInput.png-7b717790503454c5e51a2a5c7e0ec71e.ctex"
+path="res://.godot/imported/TextInput.png-e0e4c9229c8d5c8173471d0bd96b6e9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/menus/Config/TextInput.png"
-dest_files=["res://.godot/imported/TextInput.png-7b717790503454c5e51a2a5c7e0ec71e.ctex"]
+source_file="res://assets/Sprites/menus/Config/Categories/Text/TextInput.png"
+dest_files=["res://.godot/imported/TextInput.png-e0e4c9229c8d5c8173471d0bd96b6e9d.ctex"]
 
 [params]
 

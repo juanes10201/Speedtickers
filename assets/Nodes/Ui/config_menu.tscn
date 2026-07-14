@@ -8,17 +8,20 @@
 [ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Scripts/PauseMenuTransition.gd" id="4_inmrc"]
 [ext_resource type="StyleBox" uid="uid://c1edtywsppgxy" path="res://assets/Sprites/menus/selectStylebox2.tres" id="5_8q134"]
 [ext_resource type="PackedScene" uid="uid://bd1ucykhu7c50" path="res://assets/Nodes/Obj/Ui/category_config.tscn" id="6_8q134"]
-[ext_resource type="Script" uid="uid://doss4vryubdlk" path="res://assets/Nodes/Ui/category_button.gd" id="6_flhvl"]
-[ext_resource type="Texture2D" uid="uid://vq8julpyjdrx" path="res://assets/Sprites/menus/Config/Categories/CategoryButtonSelected.png" id="7_14l6d"]
+[ext_resource type="PackedScene" uid="uid://b766pkykefx8o" path="res://assets/Nodes/Ui/config_category_button.tscn" id="6_sdm27"]
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="7_ddlxb"]
 [ext_resource type="Texture2D" uid="uid://bjm5o6mefcowp" path="res://assets/Sprites/menus/Config/ProgressBar/Progressbar_Selected.png" id="8_8q134"]
 [ext_resource type="FontFile" uid="uid://cyhethdmcdauq" path="res://assets/Fonts/Beta.ttf" id="8_68s3g"]
 [ext_resource type="Texture2D" uid="uid://c8kbe510idrnb" path="res://assets/Sprites/menus/Config/ProgressBar/progressbar.png" id="8_cuiuk"]
-[ext_resource type="Texture2D" uid="uid://ckomc1d8xfuyt" path="res://assets/Sprites/menus/Config/Categories/CategoryButtonUnselected.png" id="8_mxs4o"]
-[ext_resource type="Texture2D" uid="uid://b4abby6iu2es" path="res://assets/Sprites/menus/Config/TextAudio.png" id="9_fks14"]
 [ext_resource type="PackedScene" uid="uid://cyiwhv0r4613y" path="res://assets/Nodes/Obj/Ui/config_button.tscn" id="10_68s3g"]
+[ext_resource type="Texture2D" uid="uid://br3hwx16g5knw" path="res://assets/Sprites/menus/Config/Categories/Text/TextVideo.png" id="10_fks14"]
 [ext_resource type="Texture2D" uid="uid://cpkuxgr2hg7ll" path="res://assets/Sprites/menus/logo.png" id="11_3lhgp"]
+[ext_resource type="Texture2D" uid="uid://6bxbk324obkb" path="res://assets/Sprites/menus/Config/Categories/Text/TextInput.png" id="11_en3uu"]
 [ext_resource type="Texture2D" uid="uid://dvm6ilhkqyq5g" path="res://assets/Sprites/menus/BackButton.png" id="12_68s3g"]
+[ext_resource type="Texture2D" uid="uid://c62e7bn121dyr" path="res://assets/Sprites/menus/Config/Categories/Text/TextGameplay.png" id="12_q3lwx"]
+[ext_resource type="Script" uid="uid://etptajybc0em" path="res://assets/Nodes/Ui/input_mapper_ui.gd" id="16_q3lwx"]
+[ext_resource type="StyleBox" uid="uid://cmbnccjrfioln" path="res://assets/Nodes/Ui/new_style_box_flat.tres" id="17_gv3xx"]
+[ext_resource type="PackedScene" uid="uid://cb30kjms5xe70" path="res://assets/Nodes/Ui/keyboard_key.tscn" id="18_fks14"]
 
 [sub_resource type="Animation" id="Animation_exxqf"]
 length = 0.001
@@ -853,35 +856,6 @@ _data = {
 &"initial_movement": SubResource("Animation_ddlxb")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flhvl"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14l6d"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mxs4o"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fks14"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_en3uu"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_en3uu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_14l6d")
-}],
-"loop": true,
-"name": &"Selected",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_mxs4o")
-}],
-"loop": true,
-"name": &"Unselected",
-"speed": 5.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_68s3g"]
 atlas = ExtResource("8_cuiuk")
 region = Rect2(-0.09317589, 71.12769, 1135.9255, 59.60372)
@@ -931,52 +905,49 @@ position = Vector2(-1873.6846, 757.8947)
 scale = Vector2(0.91573834, 0.9157383)
 texture = ExtResource("2_cuiuk")
 
-[node name="CategoryButton2" type="Button" parent="." unique_id=118417515 node_paths=PackedStringArray("SpriteButtonCategory")]
-offset_left = 52.631577
-offset_top = 523.68427
-offset_right = 1289.4738
-offset_bottom = 855.26324
-theme_override_styles/normal = SubResource("StyleBoxEmpty_flhvl")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_14l6d")
-theme_override_styles/hover = SubResource("StyleBoxTexture_mxs4o")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_fks14")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_en3uu")
-script = ExtResource("6_flhvl")
-Category = 1
-SpriteButtonCategory = NodePath("ButtonCategory")
+[node name="CategoryButtonAudio" parent="." unique_id=1714893075 instance=ExtResource("6_sdm27")]
+offset_left = 42.105263
+offset_right = 1278.9474
 
-[node name="ButtonCategory" type="AnimatedSprite2D" parent="CategoryButton2" unique_id=928585649]
-position = Vector2(598.12085, 168.74998)
-scale = Vector2(0.8664717, 0.8664717)
-sprite_frames = SubResource("SpriteFrames_en3uu")
+[node name="CategoryButtonAudio2" parent="." unique_id=2141638775 instance=ExtResource("6_sdm27")]
+offset_left = 105.263145
+offset_top = 571.0527
+offset_right = 1342.1052
+offset_bottom = 902.63165
+Category = 2
+
+[node name="ButtonCategory" parent="CategoryButtonAudio2" index="0" unique_id=1873214710]
 animation = &"Unselected"
 
-[node name="Sprite2D" type="Sprite2D" parent="CategoryButton2" unique_id=925332727]
-position = Vector2(555.2631, 194.73685)
-texture = ExtResource("9_fks14")
+[node name="Sprite2D" parent="CategoryButtonAudio2" index="1" unique_id=1172828508]
+texture = ExtResource("10_fks14")
 
-[node name="CategoryButton" type="Button" parent="." unique_id=2138139992 node_paths=PackedStringArray("SpriteButtonCategory")]
-offset_left = 55.26316
-offset_top = 234.21054
-offset_right = 1292.1053
-offset_bottom = 565.7895
-theme_override_styles/normal = SubResource("StyleBoxEmpty_flhvl")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_14l6d")
-theme_override_styles/hover = SubResource("StyleBoxTexture_mxs4o")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_fks14")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_en3uu")
-script = ExtResource("6_flhvl")
-SpriteButtonCategory = NodePath("ButtonCategory")
+[node name="CategoryButtonAudio3" parent="." unique_id=858494900 instance=ExtResource("6_sdm27")]
+offset_left = 160.52632
+offset_top = 918.4211
+offset_right = 1397.3687
+offset_bottom = 1250.0
+Category = 1
 
-[node name="ButtonCategory" type="AnimatedSprite2D" parent="CategoryButton" unique_id=967390640]
-position = Vector2(598.12085, 168.74998)
-scale = Vector2(0.8664717, 0.8664717)
-sprite_frames = SubResource("SpriteFrames_en3uu")
-animation = &"Selected"
+[node name="ButtonCategory" parent="CategoryButtonAudio3" index="0" unique_id=1873214710]
+animation = &"Unselected"
 
-[node name="Sprite2D" type="Sprite2D" parent="CategoryButton" unique_id=142009704]
-position = Vector2(555.2631, 194.73685)
-texture = ExtResource("9_fks14")
+[node name="Sprite2D" parent="CategoryButtonAudio3" index="1" unique_id=1172828508]
+texture = ExtResource("11_en3uu")
+
+[node name="CategoryButtonAudio4" parent="." unique_id=1874717249 instance=ExtResource("6_sdm27")]
+offset_left = 228.94736
+offset_top = 1244.7369
+offset_right = 1465.7897
+offset_bottom = 1576.3158
+Category = 3
+
+[node name="ButtonCategory" parent="CategoryButtonAudio4" index="0" unique_id=1873214710]
+animation = &"Unselected"
+
+[node name="Sprite2D" parent="CategoryButtonAudio4" index="1" unique_id=1172828508]
+position = Vector2(584.2106, 223.68422)
+texture = ExtResource("12_q3lwx")
 
 [node name="CategoryAudio" parent="." unique_id=502405790 instance=ExtResource("6_8q134")]
 visible = false
@@ -1095,6 +1066,7 @@ max_value = 0.0
 metadata/_edit_use_anchors_ = true
 
 [node name="CategoryVideo" parent="." unique_id=864777177 instance=ExtResource("6_8q134")]
+visible = false
 position = Vector2(120, 1128)
 Category = 2
 
@@ -1241,8 +1213,66 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="CategoryInput" parent="." unique_id=1457373459 instance=ExtResource("6_8q134")]
-visible = false
 position = Vector2(120, 1128)
+Category = 1
+
+[node name="LabelInput" type="RichTextLabel" parent="CategoryInput" unique_id=838961421]
+anchors_preset = -1
+anchor_top = -0.097465895
+anchor_right = 0.2830323
+anchor_bottom = 0.068226
+offset_left = 1198.421
+offset_top = -733.2631
+offset_right = 2145.7896
+offset_bottom = -522.7369
+theme_override_fonts/normal_font = ExtResource("8_68s3g")
+theme_override_font_sizes/normal_font_size = 106
+text = "Player Movement:"
+fit_content = true
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="InputMapperUi" type="Node2D" parent="CategoryInput" unique_id=1357834051 node_paths=PackedStringArray("NodeKeyboardKeys")]
+position = Vector2(1206.3158, -575.3684)
+script = ExtResource("16_q3lwx")
+NodeKeyboardKeys = NodePath("KeyboardKeys")
+
+[node name="InteractButton" type="Button" parent="CategoryInput/InputMapperUi" unique_id=1990001699]
+offset_left = -302.63153
+offset_top = -910.5263
+offset_right = 1381.5789
+offset_bottom = -707.8947
+theme_override_styles/normal = ExtResource("17_gv3xx")
+theme_override_styles/pressed = ExtResource("17_gv3xx")
+theme_override_styles/hover = ExtResource("17_gv3xx")
+theme_override_styles/disabled = ExtResource("17_gv3xx")
+theme_override_styles/focus = ExtResource("17_gv3xx")
+disabled = true
+
+[node name="LabelInput2" type="RichTextLabel" parent="CategoryInput/InputMapperUi" unique_id=617593391]
+anchors_preset = -1
+anchor_top = -0.097465895
+anchor_right = 0.2830323
+anchor_bottom = 0.068226
+offset_right = 947.3685
+offset_bottom = 210.52625
+theme_override_fonts/normal_font = ExtResource("8_68s3g")
+theme_override_font_sizes/normal_font_size = 106
+text = "Dash:"
+fit_content = true
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="KeyboardKeys" type="Node2D" parent="CategoryInput/InputMapperUi" unique_id=781334207]
+
+[node name="KeyboardKey" parent="CategoryInput/InputMapperUi/KeyboardKeys" unique_id=1239552907 instance=ExtResource("18_fks14")]
+position = Vector2(373.6842, 44.736816)
+
+[node name="KeyboardKey2" parent="CategoryInput/InputMapperUi/KeyboardKeys" unique_id=2033967151 instance=ExtResource("18_fks14")]
+position = Vector2(572.819, 44.737)
+
+[node name="KeyboardKey3" parent="CategoryInput/InputMapperUi/KeyboardKeys" unique_id=1579551729 instance=ExtResource("18_fks14")]
+position = Vector2(773.684, 44.737)
 
 [node name="PauseMenuGoBackButton2" type="Button" parent="." unique_id=1448523054]
 z_index = 1
@@ -1285,6 +1315,7 @@ offset_bottom = 40.0
 focus_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1672479851]
+visible = false
 offset_left = 1073.6842
 offset_top = -400.0
 offset_right = 2926.3157
@@ -1292,8 +1323,6 @@ offset_bottom = -252.63159
 theme_override_font_sizes/normal_font_size = 76
 text = "menu placeholder, funciona solo el SFX y Musica"
 
-[connection signal="button_up" from="CategoryButton2" to="CategoryButton2" method="_on_button_up"]
-[connection signal="button_up" from="CategoryButton" to="CategoryButton" method="_on_button_up"]
 [connection signal="focus_entered" from="CategoryAudio/MusicBar/ProgressBar" to="CategoryAudio/MusicBar" method="_on_progress_bar_focus_entered"]
 [connection signal="focus_exited" from="CategoryAudio/MusicBar/ProgressBar" to="CategoryAudio/MusicBar" method="_on_progress_bar_focus_exited"]
 [connection signal="mouse_entered" from="CategoryAudio/MusicBar/ProgressBar" to="CategoryAudio/MusicBar" method="_on_progress_bar_mouse_entered"]
@@ -1304,9 +1333,14 @@ text = "menu placeholder, funciona solo el SFX y Musica"
 [connection signal="mouse_entered" from="CategoryAudio/SfxBar/ProgressBar" to="CategoryAudio/SfxBar" method="_on_progress_bar_mouse_entered"]
 [connection signal="mouse_exited" from="CategoryAudio/SfxBar/ProgressBar" to="CategoryAudio/SfxBar" method="_on_progress_bar_mouse_exited"]
 [connection signal="value_changed" from="CategoryAudio/SfxBar/ControlMusic" to="CategoryAudio/SfxBar" method="_on_control_music_value_changed"]
+[connection signal="pressed" from="CategoryInput/InputMapperUi/InteractButton" to="CategoryInput/InputMapperUi" method="_on_interact_button_pressed"]
 [connection signal="button_down" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_button_down"]
 [connection signal="pressed" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_pressed"]
 
+[editable path="CategoryButtonAudio"]
+[editable path="CategoryButtonAudio2"]
+[editable path="CategoryButtonAudio3"]
+[editable path="CategoryButtonAudio4"]
 [editable path="CategoryVideo/ConfigButton"]
 [editable path="CategoryVideo/ConfigButton2"]
 [editable path="CategoryVideo/ConfigButton3"]

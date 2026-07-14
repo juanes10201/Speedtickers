@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cb30kjms5xe70"]
+
+[ext_resource type="Script" uid="uid://68wvhrjuv6fp" path="res://assets/Nodes/Ui/keyboard_key.gd" id="1_eqrk8"]
+[ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="2_vapq4"]
+[ext_resource type="FontFile" uid="uid://dfigptrdw0fg2" path="res://assets/Fonts/pixelart/Gossamer Girls.ttf" id="3_co6br"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqrk8"]
+atlas = ExtResource("2_vapq4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vapq4"]
+atlas = ExtResource("2_vapq4")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_co6br"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqrk8")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vapq4")
+}],
+"loop": true,
+"name": &"enabled",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqrk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vapq4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_co6br"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2oyws"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1y4gp"]
+
+[node name="KeyboardKey" type="Node2D" unique_id=1239552907 node_paths=PackedStringArray("TextLabel", "SpriteKeycap")]
+script = ExtResource("1_eqrk8")
+TextLabel = NodePath("Text")
+SpriteKeycap = NodePath("Keycap")
+
+[node name="Keycap" type="AnimatedSprite2D" parent="." unique_id=259579639]
+scale = Vector2(11.75, 11.75)
+sprite_frames = SubResource("SpriteFrames_co6br")
+animation = &"enabled"
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=1081888513]
+offset_left = -142.10526
+offset_top = -65.789474
+offset_right = 131.57907
+offset_bottom = 121.05269
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_co6br")
+theme_override_font_sizes/normal_font_size = 90
+text = "A"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="." unique_id=772354979]
+offset_left = -106.0
+offset_top = -99.0
+offset_right = 105.0
+offset_bottom = 109.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eqrk8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vapq4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_co6br")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2oyws")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1y4gp")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
