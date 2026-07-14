@@ -65,6 +65,8 @@ var Escaping : bool = false
 
 @export var CameraPlayer : Camera2D
 
+@export var MarkerEscapePosition : Marker2D
+
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
 	#_start_escape()
@@ -176,9 +178,11 @@ func _life_boss_tick(delta : float) -> void:
 		_start_escape()
 
 func _start_escape() -> void:
-	Escaping = true
-	if(DestroyTilemap):
-		DestroyTilemap.queue_free()
+	if(!Escaping):
+		Escaping = true
+		global_position = MarkerEscapePosition.global_position
+		if(DestroyTilemap):
+			DestroyTilemap.queue_free()
 
 var ExtraSpeedX : float = 0.0
 @export var EscapeMinSpeedX : float = 200.0
@@ -224,6 +228,7 @@ func _escape_tick(delta : float) -> void:
 func _physics_process(delta: float) -> void:
 	_life_boss_tick(delta)
 	if(ProyectileNoMove.is_stopped()):
+		velocity.x = Speed.x
 		if(Escaping):
 			_escape_tick(delta)
 		else:
@@ -231,8 +236,8 @@ func _physics_process(delta: float) -> void:
 			_movement_y(delta)
 			_shoot_tick(delta)
 			_boomerang_tick(delta)
-		
-	velocity.x = Speed.x
+	else:
+		velocity = Vector2(0.0, 0.0)
 	#print(velocity) 
 	move_and_slide()
 
