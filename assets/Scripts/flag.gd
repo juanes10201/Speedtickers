@@ -7,6 +7,9 @@ extends Area2D
 func _ready() -> void:
 	self.body_entered.connect(_on_body_entered)
 	if($PointLight2D): $PointLight2D.show()
+	if(Global.Level == Global.DebugLevelVal || Global.Level == Global.DebugLevelVal+1):
+		var scene_path = get_tree().current_scene.scene_file_path
+		LevelManager.set_global_with_complete_level_path(scene_path)
 
 
 var editable = preload("res://assets/Scripts/default_object.gd").new()

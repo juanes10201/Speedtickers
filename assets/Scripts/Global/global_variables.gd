@@ -48,7 +48,8 @@ var Player = null
 #Order of levels
 @export var LevelOrder: Array[PackedScene]
 
-var Level : int = -99
+var DebugLevelVal : int = -99
+@onready var Level : int = DebugLevelVal
 var World : int = 0
 var BSide : bool = false
 

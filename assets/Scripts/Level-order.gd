@@ -24,6 +24,26 @@ var ReturnAfterTimerInExpo : bool = true
 var PreviousStyle : String = "D"
 var PreviousScore : String = ""
 
+var Prefix : String = "res://assets/Nodes/Levels/"
+
+func set_global_with_complete_level_path(Path : String) -> void:
+	Path = Path.replace(Prefix, "")
+	var string_world = Path.get_slice("/", 0)
+	Global.World = get_world_number(string_world, Global.BSide)
+	Global.Level = get_level_paths(Global.BSide)[string_world].find(Path.get_slice("/", 1))
+	print("!Debug")
+	print("Global.World: "+str(Global.World))
+	print("Global.Level: "+str(Global.Level))
+
+func set_global_with_level_path(Path : String) -> void:
+	for World in LevelPaths:
+		if(Path in LevelPaths[World]):
+			Global.World = get_world_order(Global.BSide).find(World)
+			Global.Level = LevelPaths[World].find(Path)
+			print("!Debug")
+			print("Global.World: "+str(Global.World))
+			print("Global.Level: "+str(Global.Level))
+
 func get_current_world_number() -> int:
 	return Global.World
 
@@ -121,7 +141,7 @@ func change_to_level(Level : int , World : int, BSide : bool = false) -> void:
 		change_to_level_world_string(Level, CurrentWorld, BSide)
 
 func get_level_path(Level : int, World : String, BSide : bool) -> String:
-	return "res://assets/Nodes/Levels/" + str(World) + "/" + str(get_level_paths(BSide)[World][Level])
+	return Prefix + str(World) + "/" + str(get_level_paths(BSide)[World][Level])
 
 func change_to_level_world_string(Level : int, World : String, BSide : bool = false) -> void:
 	Global.Level = Level
