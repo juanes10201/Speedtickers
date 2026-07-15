@@ -6,14 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="3_6l5tb"]
 [ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Scripts/PauseMenuTransition.gd" id="4_i1blh"]
 [ext_resource type="Texture2D" uid="uid://cpkuxgr2hg7ll" path="res://assets/Sprites/menus/logo.png" id="5_0d5a2"]
+[ext_resource type="Texture2D" uid="uid://c205qqsj7u75e" path="res://assets/Sprites/menus/MainMenu/border_mainmenu.png" id="6_gd86k"]
 [ext_resource type="Texture2D" uid="uid://cldi3f8m6wfqy" path="res://assets/Sprites/menus/Button/quit.png" id="7_eqbku"]
 [ext_resource type="StyleBox" uid="uid://c1edtywsppgxy" path="res://assets/Sprites/menus/selectStylebox2.tres" id="7_kynhk"]
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="9_itrmr"]
 [ext_resource type="Texture2D" uid="uid://84h5mqrn7esw" path="res://assets/Sprites/menus/Button/config.png" id="9_yxylt"]
 [ext_resource type="StyleBox" uid="uid://dirm08jxjyusl" path="res://assets/Sprites/menus/selectStylebox.tres" id="10_gopbp"]
 [ext_resource type="Texture2D" uid="uid://db23c3wlmi58l" path="res://assets/Sprites/menus/Button/play.png" id="11_tsnyn"]
+[ext_resource type="Texture2D" uid="uid://cutg5fdr7mjoj" path="res://assets/Sprites/menus/MainMenu/Stars.png" id="12_yfpj7"]
 [ext_resource type="FontFile" uid="uid://c5ntpr4futgw" path="res://assets/Fonts/Smorgasbord.otf" id="12_yxylt"]
 [ext_resource type="FontFile" uid="uid://d3ebca3t4i171" path="res://assets/Fonts/Ace Futurism.ttf" id="13_tsnyn"]
+[ext_resource type="Texture2D" uid="uid://cb14lku61lirw" path="res://assets/Sprites/menus/MainMenu/mini_star2.png" id="17_plytu"]
 
 [sub_resource type="Animation" id="Animation_xvgwm"]
 tracks/0/type = "value"
@@ -31,7 +34,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/1/path = NodePath("../QuitButton:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +46,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/2/path = NodePath("../ConfigButton:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -55,7 +58,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuButton2:position")
+tracks/3/path = NodePath("../PlayButton:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -91,43 +94,43 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Transition2:position")
+tracks/6/path = NodePath("../RichTextLabel:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": []
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../RichTextLabel:self_modulate")
+tracks/7/path = NodePath("../RichTextLabel:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(-756, 346)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../RichTextLabel:position")
+tracks/8/path = NodePath("../PlayButton:self_modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-756, 346)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../PauseMenuButton2:self_modulate")
+tracks/9/path = NodePath("../ConfigButton:self_modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -139,7 +142,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../PauseMenuConfigButton2:self_modulate")
+tracks/10/path = NodePath("../QuitButton:self_modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -151,7 +154,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("../PauseMenuGoBackButton2:self_modulate")
+tracks/11/path = NodePath("../Stars:self_modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -159,6 +162,54 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Stars:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(241, 539)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../MiniStar2:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(802.99994, 509)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../MiniStar2:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../BorderMainmenu:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(575, 725.445)]
 }
 
 [sub_resource type="Animation" id="Animation_0d5a2"]
@@ -179,7 +230,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../PauseMenuButton2:position")
+tracks/1/path = NodePath("../PlayButton:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -191,26 +242,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/2/path = NodePath("../ConfigButton:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.93333334, 1.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(393.41504, 429), Vector2(-417.205, 433.58), Vector2(-417.205, 433.58)]
+"values": [Vector2(423, 402), Vector2(-417.205, 433.58), Vector2(-417.205, 433.58)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/3/path = NodePath("../QuitButton:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.96666664, 1.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(379.41504, 536.735), Vector2(-417.205, 548), Vector2(-417.205, 548)]
+"values": [Vector2(467, 514), Vector2(-417.205, 548), Vector2(-417.205, 548)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -239,74 +290,122 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Transition2:position")
-tracks/6/interp = 2
+tracks/6/path = NodePath("../RichTextLabel:self_modulate")
+tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-132, 1075)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../RichTextLabel:self_modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0.1, 0.33333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../PauseMenuButton2:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../PlayButton:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.36951354, 0.6, 0.8348269),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.6717248), Color(1, 1, 1, 0)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../PauseMenuConfigButton2:self_modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../ConfigButton:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.36666667, 0.46666667, 0.6814375),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.395806), Color(1, 1, 1, 0)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../PauseMenuGoBackButton2:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../QuitButton:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0.36666667, 0.46666667, 0.7147708),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.50170314), Color(1, 1, 1, 0)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../RichTextLabel:position")
-tracks/11/interp = 2
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../RichTextLabel:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0.111735985, 0.23333333, 0.36666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(22, 346), Vector2(22, 336.95465), Vector2(22, 296)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Stars:position")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.6333333, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(241, 539), Vector2(135.015, 539), Vector2(-48.155, 539), Vector2(-296.455, 539)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Stars:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.26666668, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../MiniStar2:position")
+tracks/13/interp = 2
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.56666666, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(802.99994, 509), Vector2(697.785, 509), Vector2(380.995, 523.565), Vector2(123.97, 523.565)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../MiniStar2:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.033333335, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../BorderMainmenu:position")
+tracks/15/interp = 2
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(575, 725.445), Vector2(575, 439.31824), Vector2(575, 290.77)]
 }
 
 [sub_resource type="Animation" id="Animation_2b324"]
@@ -327,7 +426,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../PauseMenuButton2:position")
+tracks/1/path = NodePath("../PlayButton:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -339,26 +438,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/2/path = NodePath("../ConfigButton:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.62, 1.0333334),
+"times": PackedFloat32Array(0.3, 0.5, 0.93333334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(94, 661), Vector2(393.415, 429), Vector2(393.415, 429)]
+"values": [Vector2(-111, 655), Vector2(247.08936, 485.3434), Vector2(423, 402)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/3/path = NodePath("../QuitButton:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.61, 0.9766667),
+"times": PackedFloat32Array(0.3, 0.5, 0.8666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(79, 695), Vector2(379.415, 536.735), Vector2(379.415, 536.735)]
+"values": [Vector2(244, 691), Vector2(415.49005, 554.8846), Vector2(467, 514)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -387,74 +486,110 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Transition2:position")
-tracks/6/interp = 2
+tracks/6/path = NodePath("../RichTextLabel:self_modulate")
+tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.53333336, 1.2590833, 1.8749391),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-161, 1305.0001), Vector2(-128.12425, 1118.4805), Vector2(-132, 1075), Vector2(-132, 1075)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../RichTextLabel:self_modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0.43333334, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../PauseMenuButton2:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../PlayButton:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.19999999, 0.36666667, 0.56666666),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.23809952), Color(1, 1, 1, 1)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../PauseMenuConfigButton2:self_modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../ConfigButton:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.33333334, 0.5, 0.70000005),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.21853858), Color(1, 1, 1, 1)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../PauseMenuGoBackButton2:self_modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../QuitButton:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0.2666667, 0.43333334, 0.6333333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.23364305), Color(1, 1, 1, 1)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../RichTextLabel:position")
-tracks/11/interp = 2
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../RichTextLabel:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0.23333333, 0.36666667, 0.6112833, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-14, 394), Vector2(-7.1865406, 384.91537), Vector2(22, 346), Vector2(22, 346)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Stars:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.43333334, 1.3333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Stars:position")
+tracks/12/interp = 2
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.13333334, 0.53333336, 0.9333334, 1.964),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(241, 539), Vector2(241, 472.535), Vector2(241, 539), Vector2(241, 539)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../MiniStar2:position")
+tracks/13/interp = 2
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.14, 0.53333336, 0.93333334, 1.964),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(802.99994, 509), Vector2(803, 481.06), Vector2(802.99994, 509), Vector2(802.99994, 509)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../MiniStar2:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.46666667, 1.1333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_3qh4w"]
@@ -476,7 +611,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../PauseMenuButton2:position")
+tracks/1/path = NodePath("../PlayButton:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -488,26 +623,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/2/path = NodePath("../ConfigButton:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.06666666, 1.2666668, 2.1666667, 3, 4.266667),
+"times": PackedFloat32Array(0.06, 1.24, 2.1666667, 3, 4.266667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(393.41504, 429), Vector2(393.41504, 429), Vector2(435.41, 429), Vector2(435.41, 429), Vector2(393.41504, 429)]
+"values": [Vector2(423, 402), Vector2(423, 402), Vector2(435.41, 429), Vector2(435.41, 429), Vector2(393.41504, 429)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
+tracks/3/path = NodePath("../QuitButton:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.6666666, 3.0333333, 4.733333, 5.8333335),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.01, 1.3333334, 2.6, 4.8, 5.81, 6.1333337),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(379.41504, 536.735), Vector2(379.41504, 536.735), Vector2(421.41504, 536.735), Vector2(379.41504, 536.735), Vector2(379.41504, 536.735)]
+"values": [Vector2(467, 514), Vector2(467, 514), Vector2(467, 514), Vector2(421.41504, 536.735), Vector2(467, 514), Vector2(467, 514), Vector2(467, 514)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -536,22 +671,10 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Transition2:position")
+tracks/6/path = NodePath("../RichTextLabel:position")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.46667, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-132, 1075), Vector2(-112, 1027), Vector2(-132, 1075)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../RichTextLabel:position")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(1.17, 2.3333333, 3.4, 3.83, 4.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
@@ -583,6 +706,7 @@ scale = Vector2(1.2926039, 1.2926037)
 texture = ExtResource("3_0d5a2")
 
 [node name="Transition" type="Sprite2D" parent="." unique_id=1752509263]
+position = Vector2(1930.465, 377)
 rotation = 1.33518
 scale = Vector2(-1.21884, 1.21061)
 texture = ExtResource("3_6l5tb")
@@ -592,20 +716,19 @@ script = ExtResource("4_i1blh")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transition" unique_id=576646211]
 libraries/ = SubResource("AnimationLibrary_vy804")
 
-[node name="Transition2" type="Sprite2D" parent="." unique_id=1658898123]
-rotation = -3.047345
-scale = Vector2(1.21884, -1.21061)
-texture = ExtResource("3_6l5tb")
-offset = Vector2(-76.585, 0)
+[node name="BorderMainmenu" type="Sprite2D" parent="." unique_id=72947137]
+position = Vector2(575, 725.445)
+scale = Vector2(0.335, 0.335)
+texture = ExtResource("6_gd86k")
 
-[node name="PauseMenuGoBackButton2" type="Button" parent="." unique_id=167611801]
+[node name="QuitButton" type="Button" parent="." unique_id=167611801]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1579.0
-offset_right = -1183.9993
-offset_bottom = 100.0
+offset_right = -1184.008
+offset_bottom = 99.99982
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("7_eqbku")
@@ -616,35 +739,14 @@ script = ExtResource("9_itrmr")
 BUTTON_ACTION = 6
 HoverDif = 20.0
 
-[node name="PauseMenuConfigButton2" type="Button" parent="." unique_id=383621813]
-z_index = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1543.0
-offset_top = -4.0
-offset_right = -1174.9957
-offset_bottom = 111.99646
-grow_horizontal = 0
-theme_override_styles/focus = ExtResource("7_kynhk")
-icon = ExtResource("9_yxylt")
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("9_itrmr")
-BUTTON_ACTION = 4
-ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/config_menu.tscn"
-HoverDif = 20.0
-FadeTransition = true
-
-[node name="PauseMenuButton2" type="Button" parent="." unique_id=792300202]
+[node name="PlayButton" type="Button" parent="." unique_id=792300202]
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1754.0
-offset_right = -1383.1279
-offset_bottom = 213.76825
+offset_right = -1383.1083
+offset_bottom = 213.77042
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("10_gopbp")
 icon = ExtResource("11_tsnyn")
@@ -657,6 +759,33 @@ ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world1.tscn"
 HoverDif = 20.0
 FadeTransition = true
 ExpoButton = true
+
+[node name="Stars" type="Sprite2D" parent="." unique_id=1948636821]
+z_index = 1
+position = Vector2(241, 539)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("12_yfpj7")
+
+[node name="ConfigButton" type="Button" parent="." unique_id=383621813]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1543.0
+offset_top = -4.0
+offset_right = -1174.9888
+offset_bottom = 111.99777
+grow_horizontal = 0
+theme_override_styles/focus = ExtResource("7_kynhk")
+icon = ExtResource("9_yxylt")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("9_itrmr")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/config_menu.tscn"
+HoverDif = 20.0
+FadeTransition = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=609362175]
 offset_left = -756.0
@@ -685,6 +814,7 @@ text = "steam version prototype"
 [node name="Bg" type="Sprite2D" parent="." unique_id=1861380431]
 visible = false
 z_index = 2
+position = Vector2(520, 300)
 texture = ExtResource("3_6l5tb")
 flip_h = true
 
@@ -695,9 +825,15 @@ offset_right = 40.0
 offset_bottom = 40.0
 focus_mode = 2
 
-[connection signal="button_down" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_button_down"]
-[connection signal="pressed" from="PauseMenuGoBackButton2" to="PauseMenuGoBackButton2" method="_on_pressed"]
-[connection signal="button_down" from="PauseMenuConfigButton2" to="PauseMenuConfigButton2" method="_on_button_down"]
-[connection signal="pressed" from="PauseMenuConfigButton2" to="PauseMenuConfigButton2" method="_on_pressed"]
-[connection signal="button_down" from="PauseMenuButton2" to="PauseMenuButton2" method="_on_button_down"]
-[connection signal="pressed" from="PauseMenuButton2" to="PauseMenuButton2" method="_on_pressed"]
+[node name="MiniStar2" type="Sprite2D" parent="." unique_id=489336845]
+z_index = 1
+position = Vector2(802.99994, 509)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("17_plytu")
+
+[connection signal="button_down" from="QuitButton" to="QuitButton" method="_on_button_down"]
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]
+[connection signal="button_down" from="PlayButton" to="PlayButton" method="_on_button_down"]
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="button_down" from="ConfigButton" to="ConfigButton" method="_on_button_down"]
+[connection signal="pressed" from="ConfigButton" to="ConfigButton" method="_on_pressed"]

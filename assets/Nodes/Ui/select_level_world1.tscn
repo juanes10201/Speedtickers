@@ -3331,7 +3331,7 @@ animations = [{
 "texture": ExtResource("66_iy4x0")
 }],
 "loop": false,
-"name": &"1",
+"name": &"world1",
 "speed": 0.0
 }]
 
@@ -3513,7 +3513,7 @@ texture = ExtResource("6_ber5a")
 position = Vector2(3053.3333, 783.1735)
 scale = Vector2(0.73485845, 0.73485833)
 sprite_frames = SubResource("SpriteFrames_jeu4u")
-animation = &"1"
+animation = &"world1"
 
 [node name="Levels" type="Node2D" parent="CanvasLayer" unique_id=594197803 node_paths=PackedStringArray("CurrentWorldLabel", "PreviousButton", "NextButton", "AmountLevelsLabel", "Transition", "BossLevelSelectButton")]
 script = ExtResource("67_hvhlo")

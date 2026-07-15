@@ -87,7 +87,9 @@ func _process(delta: float) -> void:
 			#Checks if mouse is touching button or if has focused(For controller support)
 			if(has_focus() || (Mouse_pos.x >= self.position.x && Mouse_pos.x <= self.position.x + self.size.x && Mouse_pos.y >= self.position.y && Mouse_pos.y <= self.position.y + self.size.y+20)):
 				if(IsPixelartButton && !touching_mouse):
-					if(LevelBg): LevelBg.frame = int(text)-1
+					if(LevelBg):
+						LevelBg.animation == ADITIONAL_ARGUMENT
+						LevelBg.frame = int(text)-1
 					if(LevelRanking): LevelRanking._update_best_scores(float(text), LevelManager.get_world_number(ADITIONAL_ARGUMENT, Global.BSide))
 				touching_mouse = true
 				if(IsPixelartButton): icon = tex_selected
