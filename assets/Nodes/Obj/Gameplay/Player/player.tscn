@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://b53kcu1sjusbk" path="res://assets/Sounds/slide.wav" id="12_mayjg"]
 [ext_resource type="AudioStream" uid="uid://dpxr2ky640n13" path="res://assets/Sounds/groundsmash.wav" id="13_6xtp5"]
 [ext_resource type="AudioStream" uid="uid://bgb5h0wh5v6uq" path="res://assets/Sounds/sand_walking.wav" id="13_ltsn2"]
+[ext_resource type="Texture2D" uid="uid://opi65j0wspy8" path="res://assets/Sprites/Player/change_gravity.png" id="13_q6rov"]
 [ext_resource type="Script" uid="uid://d23fnhxwc5cxw" path="res://assets/Nodes/Obj/Gameplay/ShadowSprite.gd" id="14_2dlrs"]
 [ext_resource type="Shader" uid="uid://vf7wbaxmykte" path="res://assets/Nodes/Obj/blur.gdshader" id="14_3c4ps"]
 [ext_resource type="AudioStream" uid="uid://wvfyegwnf1q4" path="res://assets/Sounds/slime_slide.wav" id="14_8u734"]
@@ -305,6 +306,26 @@ region = Rect2(0, 0, 23, 29)
 atlas = ExtResource("8_3c4ps")
 region = Rect2(23, 0, 23, 29)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yinjy"]
+atlas = ExtResource("13_q6rov")
+region = Rect2(0, 0, 34, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lo5w"]
+atlas = ExtResource("13_q6rov")
+region = Rect2(34, 0, 34, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epkpk"]
+atlas = ExtResource("13_q6rov")
+region = Rect2(68, 0, 34, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdova"]
+atlas = ExtResource("13_q6rov")
+region = Rect2(102, 0, 34, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utmhw"]
+atlas = ExtResource("13_q6rov")
+region = Rect2(136, 0, 34, 31)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0s4h5"]
 atlas = ExtResource("11_0s4h5")
 region = Rect2(0, 0, 18, 22)
@@ -400,6 +421,26 @@ animations = [{
 "loop": true,
 "name": &"Slide",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yinjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lo5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epkpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdova")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utmhw")
+}],
+"loop": false,
+"name": &"Switch_gravity",
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.5,
