@@ -245,31 +245,31 @@ position = Vector2(166.99995, -43.000004)
 scale = Vector2(0.99, 1.23)
 
 [node name="Enemie2" parent="." unique_id=214158135 instance=ExtResource("13_80lkc")]
-position = Vector2(-104, -111)
+position = Vector2(-100, -119)
 EnemyDirection = 2
 
 [node name="Enemie3" parent="." unique_id=366396996 instance=ExtResource("13_80lkc")]
-position = Vector2(-88, -111)
+position = Vector2(-84, -119)
 EnemyDirection = 2
 
 [node name="Enemie4" parent="." unique_id=1748948201 instance=ExtResource("13_80lkc")]
-position = Vector2(-72, -111)
+position = Vector2(-68, -119)
 EnemyDirection = 2
 
 [node name="Enemie5" parent="." unique_id=1075312176 instance=ExtResource("13_80lkc")]
-position = Vector2(-56, -111)
+position = Vector2(-52, -119)
 EnemyDirection = 2
 
 [node name="Enemie6" parent="." unique_id=205794467 instance=ExtResource("13_80lkc")]
-position = Vector2(-40, -111)
+position = Vector2(-36, -119)
 EnemyDirection = 2
 
 [node name="Enemie7" parent="." unique_id=1659177851 instance=ExtResource("13_80lkc")]
-position = Vector2(-24, -111)
+position = Vector2(-20, -119)
 EnemyDirection = 2
 
 [node name="Enemie8" parent="." unique_id=1722954946 instance=ExtResource("13_80lkc")]
-position = Vector2(-8, -111)
+position = Vector2(-4, -119)
 EnemyDirection = 2
 
 [node name="Key2" parent="." unique_id=2141603830 instance=ExtResource("15_ndinq")]

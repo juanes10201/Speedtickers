@@ -522,7 +522,8 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_p0jyo")
 
 [node name="HorizontalPistonMove" parent="WindSand/Path2D" unique_id=226068745 instance=ExtResource("20_e7vxy")]
-position = Vector2(77, 34)
+position = Vector2(77.268196, -9.794929)
+progress = 43.8
 Enabled = true
 
 [node name="FallCooldown" type="Timer" parent="WindSand" unique_id=2125232796]
@@ -551,7 +552,8 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_jcr8x")
 
 [node name="HorizontalPistonMove" parent="WindSand4/Path2D" unique_id=895171367 instance=ExtResource("20_e7vxy")]
-position = Vector2(77, 34)
+position = Vector2(77, -9.797282)
+progress = 43.8
 Enabled = true
 
 [node name="FallCooldown" type="Timer" parent="WindSand4" unique_id=980371889]
@@ -580,7 +582,8 @@ RailedNodes = NodePath("RailedNodes")
 curve = SubResource("Curve2D_obihh")
 
 [node name="HorizontalPistonMove" parent="WindSand5/Path2D" unique_id=335132162 instance=ExtResource("20_e7vxy")]
-position = Vector2(77, 34)
+position = Vector2(77.268196, -9.794929)
+progress = 43.8
 Enabled = true
 
 [node name="FallCooldown" type="Timer" parent="WindSand5" unique_id=1773257775]

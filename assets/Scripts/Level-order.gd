@@ -29,8 +29,9 @@ var Prefix : String = "res://assets/Nodes/Levels/"
 func set_global_with_complete_level_path(Path : String) -> void:
 	Path = Path.replace(Prefix, "")
 	var string_world = Path.get_slice("/", 0)
-	Global.World = get_world_number(string_world, Global.BSide)
-	Global.Level = get_level_paths(Global.BSide)[string_world].find(Path.get_slice("/", 1))
+	if(get_level_paths(Global.BSide).has(string_world)):
+		Global.World = get_world_number(string_world, Global.BSide)
+		Global.Level = get_level_paths(Global.BSide)[string_world].find(Path.get_slice("/", 1))
 	print("!Debug")
 	print("Global.World: "+str(Global.World))
 	print("Global.Level: "+str(Global.Level))

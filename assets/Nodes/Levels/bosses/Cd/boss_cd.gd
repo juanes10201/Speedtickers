@@ -69,7 +69,7 @@ var Escaping : bool = false
 
 func _ready() -> void:
 	MovingDir.x = _calc_player_dir()
-	_start_escape()
+	#_start_escape()
 	#_shoot_proyectiles()
 
 func _calc_player_dir() -> float:

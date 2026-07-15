@@ -121,7 +121,7 @@ script = ExtResource("2_1vqhq")
 libraries/ = SubResource("AnimationLibrary_0i2pc")
 
 [node name="Time_Left" type="Timer" parent="." unique_id=546050651 groups=["GameTimer"]]
-wait_time = 8.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 

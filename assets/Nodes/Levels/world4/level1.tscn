@@ -114,7 +114,7 @@ scale = Vector2(179.273, 1.805)
 texture = ExtResource("7_kfotq")
 
 [node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("8_63w4r")]
-position = Vector2(-300, -199)
+position = Vector2(-664, -167)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=424187687 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-325, 7)
@@ -127,8 +127,6 @@ gradient = SubResource("Gradient_ibkbc")
 script = ExtResource("12_8m2yi")
 Speed = 200.0
 InitialAccSpeed = 100.0
-Activate_on_color = 1
-Enabled = false
 Path = NodePath("Path2D")
 RailedNodes = NodePath("RailedNodes")
 
