@@ -98,7 +98,7 @@ position = Vector2(-472, -79)
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=971991614 groups=["Tileset"]]
 position = Vector2(89, 79)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AADl//b/AAACAAIAAADl//X/AAACAAEAAADl//T/AAACAAEAAADl//P/AAACAAEAAADl//L/AAACAAEAAADl//H/AAACAAEAAADl//D/AAACAAAAAADk//b/AAABAAIAAADk//X/AAABAAEAAADk//T/AAABAAEAAADk//P/AAABAAEAAADk//L/AAABAAEAAADk//H/AAABAAEAAADk//D/AAABAAAAAADj//b/AAABAAIAAADj//X/AAABAAEAAADj//T/AAABAAEAAADj//P/AAABAAEAAADj//L/AAABAAEAAADj//H/AAABAAEAAADj//D/AAABAAAAAADi//b/AAAAAAIAAADi//X/AAAAAAEAAADi//T/AAAAAAEAAADi//P/AAAAAAEAAADi//L/AAAAAAEAAADi//H/AAAAAAEAAADi//D/AAAAAAAAAAD1/+j/AAAAAAAAAAD1/+n/AAAAAAEAAAD1/+r/AAAAAAEAAAD2/+j/AAABAAAAAAD2/+n/AAABAAEAAAD2/+r/AAABAAEAAAD3/+j/AAABAAAAAAD3/+n/AAABAAEAAAD3/+r/AAABAAEAAAD4/+j/AAABAAAAAAD4/+n/AAABAAEAAAD4/+r/AAABAAEAAAD5/+j/AAACAAAAAAD5/+n/AAACAAEAAAD5/+r/AAACAAEAAAD1/+v/AAAAAAIAAAD2/+v/AAABAAIAAAD3/+v/AAABAAIAAAD4/+v/AAABAAIAAAD5/+v/AAACAAIAAAA=")
+tile_map_data = PackedByteArray("AADl//b/AAACAAIAAADl//X/AAACAAEAAADl//T/AAACAAEAAADl//P/AAACAAEAAADl//L/AAACAAEAAADl//H/AAACAAEAAADl//D/AAACAAAAAADk//b/AAABAAIAAADk//X/AAABAAEAAADk//T/AAABAAEAAADk//P/AAABAAEAAADk//L/AAABAAEAAADk//H/AAABAAEAAADk//D/AAABAAAAAADj//b/AAABAAIAAADj//X/AAABAAEAAADj//T/AAABAAEAAADj//P/AAABAAEAAADj//L/AAABAAEAAADj//H/AAABAAEAAADj//D/AAABAAAAAADi//b/AAAAAAIAAADi//X/AAAAAAEAAADi//T/AAAAAAEAAADi//P/AAAAAAEAAADi//L/AAAAAAEAAADi//H/AAAAAAEAAADi//D/AAAAAAAAAAD1/+j/AAAAAAAAAAD1/+n/AAAAAAEAAAD1/+r/AAAAAAEAAAD2/+j/AAABAAAAAAD2/+n/AAABAAEAAAD2/+r/AAABAAEAAAD3/+j/AAABAAAAAAD3/+n/AAABAAEAAAD3/+r/AAABAAEAAAD4/+j/AAABAAAAAAD4/+n/AAABAAEAAAD4/+r/AAABAAEAAAD5/+j/AAACAAAAAAD5/+n/AAACAAEAAAD5/+r/AAACAAEAAAD1/+v/AAAAAAIAAAD2/+v/AAABAAIAAAD3/+v/AAABAAIAAAD4/+v/AAABAAIAAAD5/+v/AAACAAIAAAD2/wMAAAACAAIAAAD2/wIAAAACAAEAAAD2/wEAAAACAAEAAAD2/wAAAAACAAEAAAD2////AAACAAAAAAD1/wMAAAABAAIAAAD1/wIAAAABAAEAAAD1/wEAAAABAAEAAAD1/wAAAAABAAEAAAD1////AAABAAAAAAD0/wMAAAAAAAIAAAD0/wIAAAAAAAEAAAD0/wEAAAAAAAEAAAD0/wAAAAAAAAEAAAD0////AAAAAAAAAADv//T/AAACAAIAAADv//P/AAACAAEAAADv//L/AAACAAEAAADv//H/AAACAAEAAADv//D/AAACAAEAAADv/+//AAACAAEAAADv/+7/AAACAAAAAADu//T/AAAAAAIAAADu//P/AAAAAAEAAADu//L/AAAAAAEAAADu//H/AAAAAAEAAADu//D/AAAAAAEAAADu/+//AAAAAAEAAADu/+7/AAAAAAAAAAA=")
 tile_set = ExtResource("6_5ylga")
 
 [node name="WorldEnvironment" parent="." unique_id=280956584 instance=ExtResource("7_ai6ku")]
@@ -182,7 +182,7 @@ position = Vector2(-89.99999, -66)
 scale = Vector2(4.23, 1.765)
 
 [node name="KillBox19" parent="." unique_id=81121024 instance=ExtResource("8_6fju5")]
-position = Vector2(-176.00002, -169)
+position = Vector2(-176.00002, -247)
 scale = Vector2(4.23, 1.765)
 
 [node name="falling_sand" parent="." unique_id=214611821 instance=ExtResource("13_eqxcj")]
@@ -264,86 +264,6 @@ MAX_SPEED = 120.0
 position = Vector2(-308, -328)
 Activate_on_color = 1
 MAX_SPEED = 120.0
-
-[node name="falling_sand17" parent="." unique_id=806920094 instance=ExtResource("13_eqxcj")]
-position = Vector2(-97, 78)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand18" parent="." unique_id=2068074984 instance=ExtResource("13_eqxcj")]
-position = Vector2(-97, 94)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand19" parent="." unique_id=2111855464 instance=ExtResource("13_eqxcj")]
-position = Vector2(-97, 110)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand20" parent="." unique_id=1872090860 instance=ExtResource("13_eqxcj")]
-position = Vector2(-97, 126)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand21" parent="." unique_id=847892081 instance=ExtResource("13_eqxcj")]
-position = Vector2(-168, -67)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand22" parent="." unique_id=311292416 instance=ExtResource("13_eqxcj")]
-position = Vector2(-168, -51)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand23" parent="." unique_id=2128085011 instance=ExtResource("13_eqxcj")]
-position = Vector2(-168, -35)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand24" parent="." unique_id=1683002328 instance=ExtResource("13_eqxcj")]
-position = Vector2(-168, -19)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand25" parent="." unique_id=742876466 instance=ExtResource("13_eqxcj")]
-position = Vector2(-97, -246)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand26" parent="." unique_id=2117348310 instance=ExtResource("13_eqxcj")]
-position = Vector2(-97, -230)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand27" parent="." unique_id=1150522561 instance=ExtResource("13_eqxcj")]
-position = Vector2(-97, -214)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand28" parent="." unique_id=496992328 instance=ExtResource("13_eqxcj")]
-position = Vector2(-97, -198)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand29" parent="." unique_id=1240669411 instance=ExtResource("13_eqxcj")]
-position = Vector2(-168, -391)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand30" parent="." unique_id=2034664233 instance=ExtResource("13_eqxcj")]
-position = Vector2(-168, -375)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand31" parent="." unique_id=671254649 instance=ExtResource("13_eqxcj")]
-position = Vector2(-168, -359)
-Activate_on_color = 2
-MAX_SPEED = 20.0
-
-[node name="falling_sand32" parent="." unique_id=1408358882 instance=ExtResource("13_eqxcj")]
-position = Vector2(-168, -343)
-Activate_on_color = 2
-MAX_SPEED = 20.0
 
 [node name="Flag2" parent="." unique_id=893668377 instance=ExtResource("6_78nvr")]
 position = Vector2(-528, 25)

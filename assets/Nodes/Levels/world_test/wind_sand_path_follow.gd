@@ -35,6 +35,10 @@ var Falling : bool = false
 
 @export var MovePlayerAlong : bool = true
 
+@export var Sprite : AnimatedSprite2D
+@export var VisualInteracted : bool = false
+@export var VisualYOffsetWhenInteracted : float = 16.0
+
 func _ready() -> void:
 	if(Enabled):
 		restart()
@@ -139,6 +143,28 @@ func _tick_one_way_collision() -> void:
 				CollisionShape.disabled = Player.velocity.y > 0
 
 func _process(delta: float) -> void:
+	if(VisualInteracted):
+		if(!PlayerInteracted):
+			Sprite.play("idle")
+		elif(Player.global_position.x > global_position.x):
+			Sprite.play("right")
+			#Sprite.flip_h = false
+		elif(Player.global_position.x < global_position.x):
+			Sprite.play("left")
+			#Sprite.flip_h = true
+		else:
+			Sprite.play("idle")
+				
+		if(Sprite.animation == "right"):
+			var _lerpf_amount = abs(Player.global_position.x-global_position.x)/60*VisualYOffsetWhenInteracted
+			Sprite.offset.y = lerpf(Sprite.offset.y, _lerpf_amount, 5*delta)
+			print(_lerpf_amount)
+		elif(Sprite.animation == "left"):
+			var _lerpf_amount = abs(Player.global_position.x-global_position.x)/60*VisualYOffsetWhenInteracted
+			Sprite.offset.y = lerpf(Sprite.offset.y, _lerpf_amount, 5*delta)
+			print(_lerpf_amount)
+		else:
+			Sprite.offset.y = lerpf(Sprite.offset.y, 0.0, 5*delta)
 	_reload_material_shader()
 	if(OneWayCollision): _tick_one_way_collision()
 	if(Type == Types.Piston):

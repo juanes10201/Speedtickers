@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="1_ns8ob"]
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_20rdv"]
+[ext_resource type="Texture2D" uid="uid://dccpaqq43k5vl" path="res://assets/Sprites/enemies/world4/platform/platform.png" id="3_k5uou"]
+[ext_resource type="Texture2D" uid="uid://p0ejgs0e0h6t" path="res://assets/Sprites/enemies/world4/platform/platform-move-right.png" id="4_cxvkp"]
+[ext_resource type="Texture2D" uid="uid://ceiwrjtltluym" path="res://assets/Sprites/enemies/world4/platform/platform-move-left.png" id="4_d663u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
 size = Vector2(130, 43)
@@ -13,13 +16,37 @@ shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
 shader_parameter/fill_dir = Vector2(1, -192.16)
 shader_parameter/alpha_cutoff = 0.01
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gfvgd"]
-size = Vector2(120, 16)
+[sub_resource type="SpriteFrames" id="SpriteFrames_d663u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k5uou")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_d663u")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cxvkp")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7liu2"]
 size = Vector2(120, 20)
 
-[node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "FallCooldownTimer")]
+[node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "Sprite", "FallCooldownTimer")]
 use_parent_material = true
 rotates = false
 script = ExtResource("1_ns8ob")
@@ -27,6 +54,8 @@ CooldownTimer = NodePath("CooldownTimer")
 Type = 2
 RigidBody = NodePath("RigidBody")
 ChangeGlobalSpeed = true
+Sprite = NodePath("RigidBody/Sprite2D")
+VisualInteracted = true
 OneWayCollision = true
 FallCooldownTimer = NodePath("FallCooldownTimer")
 
@@ -48,9 +77,11 @@ gravity_scale = 0.5
 can_sleep = false
 freeze = true
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody" unique_id=705086938]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="RigidBody" unique_id=992114233]
 use_parent_material = true
-texture = SubResource("PlaceholderTexture2D_gfvgd")
+position = Vector2(0, 5)
+sprite_frames = SubResource("SpriteFrames_d663u")
+animation = &"idle"
 
 [node name="Collision" type="CollisionShape2D" parent="RigidBody" unique_id=1521798088]
 position = Vector2(0, 0.09161377)

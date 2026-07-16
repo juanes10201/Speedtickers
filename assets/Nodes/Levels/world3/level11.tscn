@@ -127,8 +127,8 @@ Respawn = false
 RespawnTime = 0.3
 
 [node name="KillBox13" parent="." unique_id=2079089167 instance=ExtResource("7_b6dvt")]
-position = Vector2(-232, 269)
-scale = Vector2(2, 23.745)
+position = Vector2(-233, 353.99997)
+scale = Vector2(2, 34.67)
 
 [node name="KillBox15" parent="." unique_id=1409669297 instance=ExtResource("7_b6dvt")]
 position = Vector2(-232, -199)

@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_63w4r"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="6_o52aa"]
 [ext_resource type="Texture2D" uid="uid://cvdsaeuured5y" path="res://assets/Sprites/particles/bright_particles.png" id="7_kfotq"]
-[ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="8_7ug0n"]
 [ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Nodes/Obj/Gameplay/laser.tscn" id="8_63w4r"]
+[ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="9_6wy71"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="9_ibkbc"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="10_m2ygx"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="11_12knm"]
@@ -116,6 +116,12 @@ texture = ExtResource("7_kfotq")
 [node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("8_63w4r")]
 position = Vector2(-664, -167)
 
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1137485663 groups=["Tileset"]]
+position = Vector2(6.9999995, 33)
+scale = Vector2(1.00384, 1)
+tile_map_data = PackedByteArray("AADN/+v/AQAYABUAAADN/+z/AQAYABYAAADN/+3/AQAYABcAAADO/+v/AQAZABUAAADO/+z/AQAZABYAAADO/+3/AQAZABcAAADP/+v/AQAaABUAAADP/+z/AQAaABYAAADP/+3/AQAaABcAAADQ/+v/AQAbABUAAADQ/+z/AQAbABYAAADQ/+3/AQAbABcAAADR/+v/AQAcABUAAADR/+z/AQAcABYAAADR/+3/AQAcABcAAADS/+v/AQAdABUAAADS/+z/AQAdABYAAADS/+3/AQAdABcAAADT/+z/AQAeABYAAADn////AQABAAIAAADn//7/AQABAAEAAADn//3/AQABAAEAAADn//z/AQACAAEAAADn//v/AQACAAEAAADn//r/AQACAAAAAADm////AQAAAAIAAADm//7/AQAAAAEAAADm//3/AQAAAAEAAADm//z/AQAAAAEAAADm//v/AQAAAAEAAADm//r/AQAAAAAAAADq////AQACAAIAAADq//7/AQACAAEAAADq//3/AQACAAAAAADp////AQABAAIAAADp//7/AQABAAEAAADp//3/AQABAAAAAADo////AQABAAIAAADo//7/AQABAAEAAADo//3/AQABAAAAAAACAOv/AQACAAIAAAACAOr/AQACAAAAAAABAOv/AQABAAIAAAABAOr/AQABAAAAAAAAAOv/AQABAAIAAAAAAOr/AQABAAAAAAD//+v/AQABAAIAAAD//+r/AQABAAAAAAD+/+v/AQABAAIAAAD+/+r/AQABAAAAAAD9/+v/AQABAAIAAAD9/+r/AQABAAAAAAD8/+v/AQABAAIAAAD8/+r/AQABAAAAAAD7/+v/AQABAAIAAAD7/+r/AQABAAAAAAD6/+v/AQABAAIAAAD6/+r/AQABAAAAAAD5/+v/AQABAAIAAAD5/+r/AQABAAAAAAD4/+v/AQABAAIAAAD4/+r/AQABAAAAAAD3/+v/AQABAAIAAAD3/+r/AQABAAAAAAD2/+v/AQABAAIAAAD2/+r/AQABAAAAAAD1/+v/AQABAAIAAAD1/+r/AQABAAAAAAD0/+v/AQABAAIAAAD0/+r/AQABAAAAAADz/+v/AQABAAIAAADz/+r/AQABAAAAAADy/+v/AQAAAAIAAADy/+r/AQAAAAAAAAA=")
+tile_set = ExtResource("9_6wy71")
+
 [node name="WindSand" type="Line2D" parent="." unique_id=424187687 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-325, 7)
 points = PackedVector2Array(70, -17, 156, -112, 384, -149, 461, -102, 445, -62, 203.84363, 0.92993164, 85, 48)
@@ -144,12 +150,6 @@ one_shot = true
 [node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=382208093]
 top_level = true
 script = ExtResource("15_kfotq")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=246146196 groups=["Tileset"]]
-position = Vector2(-4, 32)
-scale = Vector2(1.01399, 1)
-tile_map_data = PackedByteArray("AAD4/+r/AAABAAAAAAD4/+v/AAABAAIAAAD5/+r/AAABAAAAAAD5/+v/AAABAAIAAAD6/+r/AAABAAAAAAD6/+v/AAABAAIAAAD7/+r/AAABAAAAAAD7/+v/AAABAAIAAAD8/+r/AAABAAAAAAD8/+v/AAABAAIAAAD9/+r/AAABAAAAAAD9/+v/AAABAAIAAAD+/+r/AAABAAAAAAD+/+v/AAABAAIAAAD//+r/AAABAAAAAAD//+v/AAABAAIAAAAAAOr/AAABAAAAAAAAAOv/AAABAAIAAAABAOr/AAABAAAAAAABAOv/AAABAAIAAAD3/+v/AAABAAIAAAD3/+r/AAABAAAAAAD2/+v/AAABAAIAAAD2/+r/AAABAAAAAAD1/+v/AAABAAIAAAD1/+r/AAABAAAAAAD0/+v/AAABAAIAAAD0/+r/AAABAAAAAADz/+v/AAAAAAIAAADz/+r/AAAAAAAAAAADAOv/AAACAAIAAAADAOr/AAACAAAAAAACAOv/AAABAAIAAAACAOr/AAABAAAAAADn//r/AAAAAAAAAADn//v/AAAAAAEAAADn//z/AAAAAAEAAADn//3/AAAAAAEAAADo//v/AAACAAEAAADo//z/AAACAAEAAADo//3/AAAHAAMAAADp//3/AAABAAAAAADq//3/AAABAAAAAADr//3/AAACAAAAAADn//7/AAAAAAEAAADn////AAAAAAIAAADo//r/AAACAAAAAADo//7/AAABAAEAAADo////AAABAAIAAADp//7/AAABAAEAAADp////AAABAAIAAADq//7/AAABAAEAAADq////AAABAAIAAADr//7/AAACAAEAAADr////AAACAAIAAAA=")
-tile_set = ExtResource("8_7ug0n")
 
 [node name="WorldEnvironment" parent="." unique_id=303150478 instance=ExtResource("9_ibkbc")]
 

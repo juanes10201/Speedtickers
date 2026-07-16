@@ -164,16 +164,24 @@ position = Vector2(-176, -527)
 scale = Vector2(63.705, 4.195)
 
 [node name="falling_sand2" parent="." unique_id=1620553093 instance=ExtResource("15_rjil8")]
-position = Vector2(-291, -415)
+position = Vector2(-295, -415)
 Activate_on_color = 1
+MAX_SPEED = 200.0
 
 [node name="falling_sand3" parent="." unique_id=880624939 instance=ExtResource("15_rjil8")]
-position = Vector2(-275, -415)
+position = Vector2(-279, -415)
 Activate_on_color = 1
+MAX_SPEED = 200.0
+
+[node name="falling_sand5" parent="." unique_id=214611821 instance=ExtResource("15_rjil8")]
+position = Vector2(-263, -415)
+Activate_on_color = 1
+MAX_SPEED = 200.0
 
 [node name="falling_sand4" parent="." unique_id=1416743576 instance=ExtResource("15_rjil8")]
-position = Vector2(-307, -415)
+position = Vector2(-311, -415)
 Activate_on_color = 1
+MAX_SPEED = 200.0
 
 [node name="KillBox3" parent="." unique_id=1789982676 instance=ExtResource("8_oqhb3")]
 position = Vector2(-304, -190)

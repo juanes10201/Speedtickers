@@ -182,7 +182,7 @@ position = Vector2(-688, -342.99997)
 position = Vector2(-656, -342.99997)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=1391092971 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
-position = Vector2(-152, -47)
+position = Vector2(-400, 49)
 points = PackedVector2Array(160, -80, 156, -112, 384, -149, 447, -96, 203.84363, 0.92993164, 96, 64)
 width = 4.835
 width_curve = SubResource("Curve_24d20")
@@ -211,7 +211,7 @@ top_level = true
 script = ExtResource("19_ukwea")
 
 [node name="WindSand2" type="Line2D" parent="." unique_id=1309318902 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
-position = Vector2(-308.16504, 209.83499)
+position = Vector2(251.83496, 177.83499)
 points = PackedVector2Array(73, -276, 73, -129)
 width = 4.835
 width_curve = SubResource("Curve_wtfx3")
@@ -243,7 +243,7 @@ top_level = true
 script = ExtResource("19_ukwea")
 
 [node name="WindSand3" type="Line2D" parent="." unique_id=2145188381 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
-position = Vector2(-220.16504, 209.83499)
+position = Vector2(339.83496, 177.83499)
 points = PackedVector2Array(73, -276, 73, -129)
 width = 4.835
 width_curve = SubResource("Curve_wtfx3")
