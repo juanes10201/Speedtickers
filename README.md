@@ -28,7 +28,7 @@ Original prototype submited for [Hackclub Juice Gamejam](https://github.com/hack
 
 1. Open **Godot Engine 4**.
 2. In the Project Manager window, click **Import**.
-3. Click **Browse**, navigate to the folder where you downloaded/cloned the repo, and select the `project.godot` file located in the root folder.
+3. Navigate to the folder where you downloaded/cloned the repo, and select the `project.godot` file located in the root folder.
 4. Click **Import & Edit** to open the project in the Godot editor.
 
 ## How to Debug the Game
