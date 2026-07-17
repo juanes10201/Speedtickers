@@ -1,16 +1,51 @@
 # SPEEDTICKERS
-![SPEEDTICKERS logo](./md_images/logo.GIF)
+![SPEEDTICKERS logo](./md_images/logo.png)
+![SPEEDTICKERS Steam 1th Screenshot](./md_images/SteamImages/Screenshots/1.png)
 
-[![See the game on itch.io](./md_images/itch.png)](https://juanes10201.itch.io/speedtickers)
+[![See the original game protype on itch.io](./md_images/itch.png)](https://juanes10201.itch.io/speedtickers)
 
-![SPEEDTICKERS logo](./md_images/gameplay1.GIF)
-Speedtickers is a fast paced speedrun centered 2d platformer game that uses the momentum based physics and fast movement from Ultrakill.
+Speedtickers is a fast paced speedrun centered 2d platformer game that uses the momentum based physics and fast movement from Ultrakill. Built with **Godot 4**.
 
-Original prototype submited for [Hackclub Juice Gamejam](https://github.com/hackclub/juice), with special mentions from Santa Fe Argentinian province, and nominated with Hackclub White Rabbit.
+Original prototype submited for [Hackclub Juice Gamejam](https://github.com/hackclub/juice).
 
-[Check my blog made about it!](https://juanest.dev/Shanghai/)
+[Check my blog about juice!](https://juanest.dev/Shanghai/)
+
+## Requirements
+
+- [Godot Engine 4.x](https://godotengine.org/download) (Currently using Godot 4.6 Stable)
+
+## How to Download
+
+1. Click the green **Code** button on this repository's GitHub page.
+2. Select **Download ZIP**, then extract it to a folder on your computer.
+
+   Or, if you have Git installed, clone it via terminal:
+   ```bash
+   git clone https://github.com/juanes10201/UntitledPlatformer.git
+   ```
+
+## How to Open the Project
+
+1. Open **Godot Engine 4**.
+2. In the Project Manager window, click **Import**.
+3. Click **Browse**, navigate to the folder where you downloaded/cloned the repo, and select the `project.godot` file located in the root folder.
+4. Click **Import & Edit** to open the project in the Godot editor.
+
+## How to Debug the Game
+
+- Once the project is open in Godot, press **F5** (or click the Play button in the top-right corner) to run the game.
+
+## How to Export the Game
+
+1. In the Godot editor, go to **Project > Export**
+2. Click **Add** and choose the platform you want to export to (Windows, Linux, macOS, Web, etc.).
+3. If it's your first time exporting for that platform, Godot may ask you to download the corresponding **export templates**. You can do this from **Editor > Manage Export Templates**, then click **Download and Install**.
+4. Configure the export settings for your chosen platform (icon, name, resolution, etc.) as needed.
+5. Click **Export Project**, choose a destination folder, and give the executable a name.
+6. Once exporting finishes, you'll find the runnable game file (`.exe`, `.x86_64`, `.app`, etc.) in the folder you selected.
+
 ## Issues
-if you find any bug or think that a feature should be implemented to the game, you can file a issue.
+Feel free to open an issue or submit a pull request if you'd like to contribute.
 
 ## Authors
 Coding, game design, sounds, and art of the game was made by [@juanes10201](https://github.com/juanes10201)
