@@ -2,17 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="1_yyrom"]
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_4772k"]
-[ext_resource type="Texture2D" uid="uid://ccfoahmcq4jam" path="res://assets/Sprites/enemies/world4/platform/piston-test1.png" id="3_4772k"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
-shader = ExtResource("2_4772k")
-shader_parameter/progress = 0.0
-shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
-shader_parameter/fill_dir = Vector2(1, -192.16)
-shader_parameter/alpha_cutoff = 0.01
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayoq5"]
-size = Vector2(72.99999, 105)
+[ext_resource type="Texture2D" uid="uid://cmqy63g3551i5" path="res://assets/Sprites/enemies/world4/piston/piston-down.png" id="3_b0nf5"]
+[ext_resource type="Texture2D" uid="uid://bulg4hxtrjvan" path="res://assets/Sprites/enemies/world4/piston/piston-down-tired.png" id="4_hx5b4"]
+[ext_resource type="Texture2D" uid="uid://t0cu3wjx4ibo" path="res://assets/Sprites/enemies/world4/piston/piston-left.png" id="5_l85yd"]
+[ext_resource type="Texture2D" uid="uid://cnr30h6mc6bh7" path="res://assets/Sprites/enemies/world4/piston/piston-left-tired.png" id="6_w0vks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffsya"]
 size = Vector2(82, 115)
@@ -20,7 +13,52 @@ size = Vector2(82, 115)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6fwo"]
 size = Vector2(57, 88)
 
-[node name="rail_horizontal_piston" type="PathFollow2D" unique_id=1936384365 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "InitialWaitTimer", "PistonSwitchDirTimer")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
+shader = ExtResource("2_4772k")
+shader_parameter/progress = 0.0
+shader_parameter/overlay_color = Color(0.51701325, 2.2043883e-05, 0.39723086, 0.7058824)
+shader_parameter/fill_dir = Vector2(1, -192.16)
+shader_parameter/alpha_cutoff = 0.01
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayoq5"]
+size = Vector2(72.99999, 105)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_igau0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_b0nf5")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hx5b4")
+}],
+"loop": true,
+"name": &"down-tired",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_l85yd")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_w0vks")
+}],
+"loop": true,
+"name": &"left-tired",
+"speed": 5.0
+}]
+
+[node name="rail_horizontal_piston" type="PathFollow2D" unique_id=1936384365 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "InitialWaitTimer", "Sprite", "PistonSwitchDirTimer")]
 z_index = 1
 use_parent_material = true
 rotates = false
@@ -29,29 +67,8 @@ CooldownTimer = NodePath("CooldownTimer")
 Type = 3
 RigidBody = NodePath("RigidBody2D")
 InitialWaitTimer = NodePath("PistonInitialWaitTimer")
+Sprite = NodePath("RigidBody2D/Sprite2D")
 PistonSwitchDirTimer = NodePath("SwitchDirTimer")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1094236687]
-material = SubResource("ShaderMaterial_7liu2")
-disable_mode = 2
-collision_layer = 2304
-mass = 2.0
-gravity_scale = 0.5
-can_sleep = false
-freeze = true
-freeze_mode = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1773288132]
-use_parent_material = true
-texture = ExtResource("3_4772k")
-
-[node name="Collision" type="CollisionShape2D" parent="RigidBody2D" unique_id=1238738961]
-position = Vector2(0.23762512, 0.56738424)
-shape = SubResource("RectangleShape2D_ayoq5")
-
-[node name="CooldownTimer" type="Timer" parent="." unique_id=531127304]
-wait_time = 0.2
-one_shot = true
 
 [node name="EnableArea" type="Area2D" parent="." unique_id=1356329429]
 
@@ -65,6 +82,30 @@ shape = SubResource("RectangleShape2D_ffsya")
 position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_u6fwo")
 debug_color = Color(0.9579844, 2.4065375e-06, 0.532244, 0.41960785)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1094236687]
+material = SubResource("ShaderMaterial_7liu2")
+disable_mode = 2
+collision_layer = 2304
+mass = 2.0
+gravity_scale = 0.5
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="Collision" type="CollisionShape2D" parent="RigidBody2D" unique_id=1238738961]
+position = Vector2(0.23762512, 0.56738424)
+shape = SubResource("RectangleShape2D_ayoq5")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=1052606652]
+use_parent_material = true
+position = Vector2(-3, 0)
+sprite_frames = SubResource("SpriteFrames_igau0")
+animation = &"left-tired"
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=531127304]
+wait_time = 0.2
+one_shot = true
 
 [node name="SwitchDirTimer" type="Timer" parent="." unique_id=1840722194]
 wait_time = 0.5

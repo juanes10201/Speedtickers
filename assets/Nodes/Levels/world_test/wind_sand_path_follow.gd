@@ -142,7 +142,10 @@ func _tick_one_way_collision() -> void:
 			else:
 				CollisionShape.disabled = Player.velocity.y > 0
 
+@onready var PreviousPosition : Vector2 = global_position
+
 func _process(delta: float) -> void:
+	PreviousPosition = global_position
 	if(VisualInteracted):
 		if(!PlayerInteracted):
 			Sprite.play("idle")
@@ -199,7 +202,7 @@ func _piston_speed_tick(delta: float) -> void:
 
 @export var PistonSwitchDirTimer : Timer 
 
-func _piston_movement_tick(delta : float) -> void:
+func _piston_movement_tick(delta : float) -> void:	
 	if(!Enabled): return
 	progress += InternalSpeed * delta * Direction
 	if(PistonSwitchDirTimer.is_stopped() && InitialWaitTimer.is_stopped()):
@@ -208,6 +211,19 @@ func _piston_movement_tick(delta : float) -> void:
 			if(Direction == -1.0): PistonSwitchDirTimer.start()
 			InternalSpeed = 20.0
 			Direction *= -1
+	if(Sprite):
+		var _delta_pos = global_position-PreviousPosition
+		if(abs(_delta_pos.x) > abs(_delta_pos.y)):
+			if(Direction == 1):
+				Sprite.play("left")
+			else:
+				Sprite.play("left-tired")
+			Sprite.flip_h = _delta_pos.x > 0
+		else:
+			if(Direction == 1):
+				Sprite.play("down")
+			else:
+				Sprite.play("down-tired")
 
 func _block_speed_tick(delta: float) -> void:
 	if(!ChangingVel): progress_ratio += Line.GlobalSpeed * delta
