@@ -37,7 +37,7 @@ var Falling : bool = false
 
 @export var Sprite : AnimatedSprite2D
 @export var VisualInteracted : bool = false
-@export var VisualYOffsetWhenInteracted : float = 16.0
+@export var VisualYOffsetWhenInteracted : float = -26.0
 
 func _ready() -> void:
 	if(Enabled):

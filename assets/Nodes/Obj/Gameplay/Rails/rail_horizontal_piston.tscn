@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="1_yyrom"]
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_4772k"]
+[ext_resource type="Texture2D" uid="uid://ccfoahmcq4jam" path="res://assets/Sprites/enemies/world4/platform/piston-test1.png" id="3_4772k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7liu2"]
 shader = ExtResource("2_4772k")
@@ -9,9 +10,6 @@ shader_parameter/progress = 0.0
 shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
 shader_parameter/fill_dir = Vector2(1, -192.16)
 shader_parameter/alpha_cutoff = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uddct"]
-size = Vector2(73, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayoq5"]
 size = Vector2(72.99999, 105)
@@ -45,7 +43,7 @@ freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1773288132]
 use_parent_material = true
-texture = SubResource("PlaceholderTexture2D_uddct")
+texture = ExtResource("3_4772k")
 
 [node name="Collision" type="CollisionShape2D" parent="RigidBody2D" unique_id=1238738961]
 position = Vector2(0.23762512, 0.56738424)

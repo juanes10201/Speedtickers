@@ -16,6 +16,9 @@ shader_parameter/overlay_color = Color(0.2, 1, 0.2, 0.5)
 shader_parameter/fill_dir = Vector2(1, -192.16)
 shader_parameter/alpha_cutoff = 0.01
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7liu2"]
+size = Vector2(120, 20)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_d663u"]
 animations = [{
 "frames": [{
@@ -42,9 +45,6 @@ animations = [{
 "name": &"right",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7liu2"]
-size = Vector2(120, 20)
 
 [node name="rail_horizontal_change_dir_piston" type="PathFollow2D" unique_id=1346571215 node_paths=PackedStringArray("CooldownTimer", "RigidBody", "Sprite", "FallCooldownTimer")]
 use_parent_material = true
@@ -77,16 +77,16 @@ gravity_scale = 0.5
 can_sleep = false
 freeze = true
 
+[node name="Collision" type="CollisionShape2D" parent="RigidBody" unique_id=1521798088]
+position = Vector2(0, 0.09161377)
+shape = SubResource("RectangleShape2D_7liu2")
+debug_color = Color(0.7961287, 0.062504806, 0.9999998, 0.41960785)
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="RigidBody" unique_id=992114233]
 use_parent_material = true
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_d663u")
 animation = &"idle"
-
-[node name="Collision" type="CollisionShape2D" parent="RigidBody" unique_id=1521798088]
-position = Vector2(0, 0.09161377)
-shape = SubResource("RectangleShape2D_7liu2")
-debug_color = Color(0.7961287, 0.062504806, 0.9999998, 0.41960785)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=669331100]
 wait_time = 0.2
