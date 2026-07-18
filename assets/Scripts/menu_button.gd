@@ -145,6 +145,8 @@ func _on_pressed() -> void:
 		LevelManager.change_to_level(int(text)-1, 0)
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_number_in_world):
 		LevelManager.change_to_level_world_string(int(text)-1, ADITIONAL_ARGUMENT, get_parent().Bside)
+	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.play_replay_from_scene):
+		LevelManager.play_replay_level_string(ADITIONAL_ARGUMENT)
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.restart_level):
 		Player.TransitionOut.show()
 		Player.TransitionOut.fade_out()

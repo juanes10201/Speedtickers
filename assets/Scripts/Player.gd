@@ -226,7 +226,7 @@ func _stop_slam_particles():
 
 @export_group("Recording")
 @onready var Replay = $System_replay
-@export var ReplayAction : Global.ReplayStates = Global.ReplayStates.STOPPED
+@export var ReplayAction : Global.ReplayStates = Global.ReplayStates.RECORD
 @export var ReplayStyle : bool = false
 var RecordedActions : Array[Vector3] = []
 @export var RecordedLocation : String = "res://assets/Replays/tutorial_level1_1.json"
@@ -275,15 +275,20 @@ func _load_replay(Location : String) -> void:
 		var data = JSON.parse_string(file.get_as_text())
 		if typeof(data) == TYPE_ARRAY:
 			RecordedActions = array_to_vec3(data)
+			print("Loaded Replay")
 		else:
 			push_error("Invalid JSON structure")
+	ReplayAction = Global.ReplayStates.REPLAY
+
+func _save_level_replay() -> void:
+	_save_replay(LevelManager.get_level_record_replay_pos(Global.Level, Global.World))
 
 func _save_replay(Location : String) -> void:
 	var json_array = RecordedActions.map(func(v): return [v.x, v.y, v.z])
 
 	var file := FileAccess.open(Location, FileAccess.WRITE)
 	file.store_string(JSON.stringify(json_array, "\t"))
-	print("Saved Replay Json")
+	print("Saved Replay Json; Location: " + str(Location))
 
 #region Debug
 func _input(event):
@@ -317,8 +322,12 @@ func _input(event):
 #endregion
 
 func _ready() -> void:
-	Time_Left.paused = true
+	if(Global.LoadingReplay && ReplayAction != Global.ReplayStates.REPLAY):
+		_load_replay(Global.ReplayLocation)
+	
+	#Time_Left.paused = true
 	MaxAcc.x *= Max_Velocity_Multiplier
+	_set_time_state(CountTime)
 	if(RetroStyle):
 		ParticlesSlide.fixed_fps = 15
 		ParticlesSlide.interpolate = false
@@ -592,7 +601,8 @@ func _set_time_state(State : bool):
 	if(State):
 		Time_Left.paused = false
 	else:
-		Time_Left.paused = true
+		Time_Left.wait_time = 999999.0
+		Time_Left.start()
 
 #region Pause and menu
 func _pause_menu_end_tick() -> void:
@@ -1059,7 +1069,7 @@ func On_Death():
 			ParticlesDeathAir.emitting = false
 			ParticlesDeathFloor.emitting = false
 			#get_parent()._play_state_tick(true)
-		if(!Edition.Is_in_editor && ReplayAction == Global.ReplayStates.STOPPED):
+		if(!Edition.Is_in_editor):# && ReplayAction == Global.ReplayStates.STOPPED):
 			await(get_tree().create_timer(TimeDeath).timeout)
 			if get_tree():
 				get_tree().reload_current_scene() 

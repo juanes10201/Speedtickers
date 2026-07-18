@@ -4378,6 +4378,37 @@ theme_override_font_sizes/normal_font_size = 161
 text = "{steam user}"
 vertical_alignment = 1
 
+[node name="selectBoss2" type="Button" parent="CanvasLayer/ranking/placeplayer" unique_id=1406054013 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -666.66565
+offset_top = 6.666687
+offset_right = -43.33264
+offset_bottom = 225.8446
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("68_wfqlv")
+theme_override_font_sizes/font_size = 120
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+text = "replay"
+icon = ExtResource("69_ber5a")
+flat = true
+autowrap_trim_flags = 0
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("70_mrtek")
+BUTTON_ACTION = 8
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Levels/world1/level2.tscn"
+HoverDif = 50.0
+IsPixelartButton = true
+tex_selected = ExtResource("73_iytug")
+MobileBoxSize = 0
+LevelBg = NodePath("../../../Bg")
+LevelRanking = NodePath("../..")
+
 [node name="placeholder2" type="RichTextLabel" parent="CanvasLayer" unique_id=609533443]
 self_modulate = Color(1, 1, 1, 0.7647059)
 z_index = 1
@@ -4417,3 +4448,4 @@ text = "Swap Disc"
 [connection signal="pressed" from="CanvasLayer/Button3" to="CanvasLayer/Button3" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/DiscBside" to="CanvasLayer/Levels" method="_bside_start"]
 [connection signal="pressed" from="CanvasLayer/DiscReturnBside" to="CanvasLayer/Levels" method="_bside_end"]
+[connection signal="pressed" from="CanvasLayer/ranking/placeplayer/selectBoss2" to="CanvasLayer/ranking/placeplayer/selectBoss2" method="_on_pressed"]

@@ -267,10 +267,6 @@ wait_time = 15.0
 one_shot = true
 autostart = true
 
-[node name="Flag" parent="." unique_id=958854612 instance=ExtResource("8_r8e1x")]
-position = Vector2(59, -120)
-scale = Vector2(1.01682, 1)
-
 [node name="WorldEnvironment" parent="." unique_id=608638154 instance=ExtResource("9_6deub")]
 environment = SubResource("Environment_vmlh1")
 
@@ -525,3 +521,7 @@ texture_scale = 1.62
 height = 13.0
 script = ExtResource("17_kdsa1")
 CurrentAnimation = 1
+
+[node name="Flag" parent="PointLight2D47" unique_id=958854612 instance=ExtResource("8_r8e1x")]
+position = Vector2(28.833908, 47.68403)
+scale = Vector2(0.6663385, 0.7012358)

@@ -298,9 +298,6 @@ wait_time = 7.0
 one_shot = true
 autostart = true
 
-[node name="Flag" parent="." unique_id=1515436627 instance=ExtResource("6_bkyjx")]
-position = Vector2(49, -150)
-
 [node name="falling_sand2" parent="." unique_id=22952063 instance=ExtResource("6_3il1a")]
 position = Vector2(-203, -88)
 
@@ -555,6 +552,9 @@ color = Color(1, 0.4625073, 0.56258214, 1)
 texture = SubResource("GradientTexture2D_t10xc")
 texture_scale = 1.6
 height = 13.0
+
+[node name="Flag" parent="." unique_id=1515436627 instance=ExtResource("6_bkyjx")]
+position = Vector2(49, -150)
 
 [connection signal="body_entered" from="TimeStop" to="TimeStop" method="_on_body_entered"]
 [connection signal="body_entered" from="TimeStop/StopRemover" to="TimeStop" method="_on_stop_remover_body_entered"]

@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://n4qwd5l56oy4" path="res://assets/Scripts/UI_time_text.gd" id="5_xuunc"]
 [ext_resource type="Texture2D" uid="uid://d1y21fe855ulp" path="res://assets/Sprites/ray-time.png" id="6_jmym5"]
 [ext_resource type="Script" uid="uid://bf5slbvnwjten" path="res://assets/Scripts/ray_time_sprite.gd" id="7_kcnvg"]
-[ext_resource type="Texture2D" uid="uid://typmhnobt82y" path="res://assets/Sprites/menus/LevelSelect/backgrounds/Background.png" id="8_m8rtq"]
+[ext_resource type="Texture2D" uid="uid://dwis6q21e8fa8" path="res://assets/Sprites/menus/LevelSelect/backgrounds/Background.png" id="8_m8rtq"]
 [ext_resource type="Shader" uid="uid://ydhmjy5irb16" path="res://assets/Nodes/Obj/Pixelate.gdshader" id="9_jujlo"]
 [ext_resource type="Script" uid="uid://c0p85smca14in" path="res://assets/Scripts/time_progress_bar.gd" id="10_mtms8"]
 [ext_resource type="Texture2D" uid="uid://cabdni6k13vwg" path="res://assets/Sprites/codebar.png" id="11_4yb8t"]

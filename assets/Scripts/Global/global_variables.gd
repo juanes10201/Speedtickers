@@ -24,7 +24,8 @@ enum BUTTON_ACTIONS{
 	move_to_scene,
 	move_to_level_starting_with,
 	quit,
-	move_to_level_number_in_world
+	move_to_level_number_in_world,
+	play_replay_from_scene
 }
 enum GravityDirections{
 	INVERTED = -1,
@@ -52,6 +53,9 @@ var DebugLevelVal : int = -99
 @onready var Level : int = DebugLevelVal
 var World : int = 0
 var BSide : bool = false
+
+var LoadingReplay : bool = false
+var ReplayLocation : String = ""
 
 func get_level() -> int:
 	return Level

@@ -26,6 +26,15 @@ var PreviousScore : String = ""
 
 var Prefix : String = "res://assets/Nodes/Levels/"
 
+func get_level_world_with_complete_level_path(Path : String) -> Vector2:
+	Path = Path.replace(Prefix, "")
+	var string_world = Path.get_slice("/", 0)
+	var result : Vector2 = Vector2(0.0,0.0)
+	if(get_level_paths(Global.BSide).has(string_world)):
+		result.y = get_world_number(string_world, Global.BSide)
+		result.x = get_level_paths(Global.BSide)[string_world].find(Path.get_slice("/", 1))
+	return result
+
 func set_global_with_complete_level_path(Path : String) -> void:
 	Path = Path.replace(Prefix, "")
 	var string_world = Path.get_slice("/", 0)
@@ -158,6 +167,39 @@ func change_to_level_world_string(Level : int, World : String, BSide : bool = fa
 
 func change_scene(Scene : String) -> void:
 	get_tree().change_scene_to_file(Scene)
+
+#func get_level_and_world_number_from_path(path : String) -> Vector2:
+#	var _level = -1
+#	var _world = -1
+#	for world in get_level_paths(Global.BSide):
+#		var _find = get_level_paths(Global.BSide)[world].find(path)
+#		if(_find != -1):
+#			_level = _find
+#			_world = get_world_number(world, Global.BSide)
+#			break
+#	return Vector2(_level, _world)
+
+func play_replay_level_string(Level : String):
+	var _level_world = get_level_world_with_complete_level_path(Level)
+	print(_level_world)
+	play_replay(_level_world.x, _level_world.y)
+
+const ReplaySaveLocation = "res://assets/Replays/"
+
+func get_level_record_replay_pos(level : int, world : int) -> String:
+	return ReplaySaveLocation + "local/local_best_time_level" + str(level) + "_world" + str(world) + ".json"
+
+func play_replay(Level : int, World : int):
+	var WorldString = get_level_path(Level, get_world_name_by_number(World), false)
+	change_scene(WorldString)
+	Global.LoadingReplay = true
+	Global.ReplayLocation = get_level_record_replay_pos(Level, World)
+	#if(_player):
+	print("Loading replay...")
+	#	var _replay_path = _player.get_level_record_replay_pos(Level, World)
+	print("Path: " + str(Global.ReplayLocation))
+	#	_player._load_replay(_replay_path)
+	#	print()
 
 var StyloMetter : int = 5 
 var StyloString : String = "B"

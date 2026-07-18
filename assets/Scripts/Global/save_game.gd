@@ -71,8 +71,13 @@ func SaveLevelPersonalRecord(Level : int = 1, World : int = 1, RealTime : float 
 	loadgamedata()
 	setup_default_values()
 	
+	print("Saved personal record, " + " Level: " + str(Level) + " World: " + str(World) + " Time: " + str(RealTime))
+	
 	var _world_name = LevelManager.get_world_name_by_number(World)
 	var CurrentBest = get_value(_world_name, str(Level))
+	var _player = SaveGame.get_player()
+	if(_player && _player.ReplayAction == Global.ReplayStates.RECORD):
+		_player._save_level_replay()
 	if(!CurrentBest || RealTime < CurrentBest):
 		set_save_value(_world_name, str(Level), RealTime)
 
