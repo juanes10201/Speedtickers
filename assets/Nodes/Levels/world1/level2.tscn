@@ -335,22 +335,6 @@ offset_top = -406.0
 offset_right = 278.0
 offset_bottom = 258.0
 
-[node name="Player" parent="." unique_id=437818478 instance=ExtResource("2_lriho")]
-position = Vector2(-304, -117)
-CountTime = false
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=794174621]
-position = Vector2(39.8863, 30.5841)
-offset = Vector2(-7.5, 50.885)
-zoom = Vector2(2.12, 2.12)
-limit_left = -318
-limit_top = -345
-limit_right = 236
-limit_bottom = 122
-limit_smoothed = true
-position_smoothing_enabled = true
-script = ExtResource("3_mr0pl")
-
 [node name="TimeStop" type="Area2D" parent="." unique_id=1962640830]
 position = Vector2(-199, 2)
 scale = Vector2(1.775, 1)
@@ -555,6 +539,22 @@ height = 13.0
 
 [node name="Flag" parent="." unique_id=1515436627 instance=ExtResource("6_bkyjx")]
 position = Vector2(49, -150)
+
+[node name="Player" parent="." unique_id=437818478 instance=ExtResource("2_lriho")]
+position = Vector2(-304, -117)
+CountTime = false
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=794174621]
+position = Vector2(39.8863, 30.5841)
+offset = Vector2(-7.5, 50.885)
+zoom = Vector2(2.12, 2.12)
+limit_left = -318
+limit_top = -345
+limit_right = 236
+limit_bottom = 122
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("3_mr0pl")
 
 [connection signal="body_entered" from="TimeStop" to="TimeStop" method="_on_body_entered"]
 [connection signal="body_entered" from="TimeStop/StopRemover" to="TimeStop" method="_on_stop_remover_body_entered"]

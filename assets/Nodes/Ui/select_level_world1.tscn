@@ -3515,7 +3515,7 @@ scale = Vector2(0.73485845, 0.73485833)
 sprite_frames = SubResource("SpriteFrames_jeu4u")
 animation = &"world1"
 
-[node name="Levels" type="Node2D" parent="CanvasLayer" unique_id=594197803 node_paths=PackedStringArray("CurrentWorldLabel", "PreviousButton", "NextButton", "AmountLevelsLabel", "Transition", "BossLevelSelectButton")]
+[node name="Levels" type="Node2D" parent="CanvasLayer" unique_id=594197803 node_paths=PackedStringArray("CurrentWorldLabel", "PreviousButton", "NextButton", "AmountLevelsLabel", "Transition", "BossLevelSelectButton", "ReplayButton") groups=["LevelSelector"]]
 script = ExtResource("67_hvhlo")
 CurrentWorldLabel = NodePath("../WorldLabel")
 PreviousButton = NodePath("../ButtonPrevPage")
@@ -3523,6 +3523,7 @@ NextButton = NodePath("../ButtonNextPage")
 AmountLevelsLabel = NodePath("../placeholder")
 Transition = NodePath("../Transition")
 BossLevelSelectButton = NodePath("../selectBoss")
+ReplayButton = NodePath("../ranking/placeplayer/replayButton")
 
 [node name="select1" type="Button" parent="CanvasLayer/Levels" unique_id=963325185 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3547,12 +3548,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select2" type="Button" parent="CanvasLayer/Levels" unique_id=554054037 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3577,12 +3584,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select3" type="Button" parent="CanvasLayer/Levels" unique_id=1303425179 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3607,12 +3620,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select4" type="Button" parent="CanvasLayer/Levels" unique_id=1444800482 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3637,12 +3656,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select5" type="Button" parent="CanvasLayer/Levels" unique_id=701490149 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3667,12 +3692,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select6" type="Button" parent="CanvasLayer/Levels" unique_id=1867965926 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3697,12 +3728,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select7" type="Button" parent="CanvasLayer/Levels" unique_id=1630380182 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3727,12 +3764,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select8" type="Button" parent="CanvasLayer/Levels" unique_id=515915180 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3757,12 +3800,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select9" type="Button" parent="CanvasLayer/Levels" unique_id=1396243757 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3787,12 +3836,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select10" type="Button" parent="CanvasLayer/Levels" unique_id=542076726 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3817,12 +3872,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select11" type="Button" parent="CanvasLayer/Levels" unique_id=1800198492 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3847,12 +3908,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select12" type="Button" parent="CanvasLayer/Levels" unique_id=784748179 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3877,12 +3944,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select13" type="Button" parent="CanvasLayer/Levels" unique_id=540793293 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3907,12 +3980,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select14" type="Button" parent="CanvasLayer/Levels" unique_id=350446339 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3937,12 +4016,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="select15" type="Button" parent="CanvasLayer/Levels" unique_id=548727812 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3967,12 +4052,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 7
 ADITIONAL_ARGUMENT = "world1"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("72_cxtu5")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../Bg")
 LevelRanking = NodePath("../../ranking")
+ExpoButton = null
 
 [node name="selectBoss" type="Button" parent="CanvasLayer" unique_id=283446218 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -3996,12 +4087,19 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = null
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("73_iytug")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../Bg")
 LevelRanking = NodePath("../ranking")
+ExpoButton = null
 
 [node name="selectBoss2" type="Button" parent="CanvasLayer" unique_id=2126151394 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -4026,12 +4124,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 4
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Levels/lobby/level_lobby.tscn"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("73_iytug")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../Bg")
 LevelRanking = NodePath("../ranking")
+ExpoButton = null
 
 [node name="Iconuser" type="Sprite2D" parent="CanvasLayer" unique_id=104304584]
 material = SubResource("ShaderMaterial_jubap")
@@ -4115,8 +4219,17 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
+BUTTON_ACTION = null
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world2.tscn"
+DiscShader = null
 HoverDif = 60.0
+PressedDif = null
+IsPixelartButton = null
+FadeTransition = null
+ShowOnExpo = null
+BSide = null
+MobileBoxSize = null
+ExpoButton = null
 
 [node name="ButtonPrevPage" type="Button" parent="CanvasLayer" unique_id=1832989316]
 z_index = 1
@@ -4134,8 +4247,17 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
+BUTTON_ACTION = null
 ADITIONAL_ARGUMENT = "select_level"
+DiscShader = null
 HoverDif = 60.0
+PressedDif = null
+IsPixelartButton = null
+FadeTransition = null
+ShowOnExpo = null
+BSide = null
+MobileBoxSize = null
+ExpoButton = null
 
 [node name="Stars" type="Sprite2D" parent="CanvasLayer" unique_id=920850166]
 z_index = 2
@@ -4243,9 +4365,17 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
+BUTTON_ACTION = null
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world2.tscn"
 DiscShader = true
 HoverDif = 60.0
+PressedDif = null
+IsPixelartButton = null
+FadeTransition = null
+ShowOnExpo = null
+BSide = null
+MobileBoxSize = null
+ExpoButton = null
 
 [node name="DiscReturnBside" type="Button" parent="CanvasLayer" unique_id=1984114350]
 z_index = 1
@@ -4264,9 +4394,17 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("70_mrtek")
+BUTTON_ACTION = null
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world2.tscn"
 DiscShader = true
 HoverDif = 60.0
+PressedDif = null
+IsPixelartButton = null
+FadeTransition = null
+ShowOnExpo = null
+BSide = null
+MobileBoxSize = null
+ExpoButton = null
 
 [node name="ranking" type="Control" parent="CanvasLayer" unique_id=334064905 node_paths=PackedStringArray("User1", "Place1", "User2", "Place2", "User3", "Place3", "UserPlayer", "PlacePlayer")]
 layout_mode = 3
@@ -4378,7 +4516,7 @@ theme_override_font_sizes/normal_font_size = 161
 text = "{steam user}"
 vertical_alignment = 1
 
-[node name="selectBoss2" type="Button" parent="CanvasLayer/ranking/placeplayer" unique_id=1406054013 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
+[node name="replayButton" type="Button" parent="CanvasLayer/ranking/placeplayer" unique_id=1406054013 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
 layout_mode = 1
 anchors_preset = 1
@@ -4402,12 +4540,18 @@ expand_icon = true
 script = ExtResource("70_mrtek")
 BUTTON_ACTION = 8
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Levels/world1/level2.tscn"
+DiscShader = null
 HoverDif = 50.0
+PressedDif = null
 IsPixelartButton = true
+FadeTransition = null
 tex_selected = ExtResource("73_iytug")
+ShowOnExpo = null
+BSide = null
 MobileBoxSize = 0
 LevelBg = NodePath("../../../Bg")
 LevelRanking = NodePath("../..")
+ExpoButton = null
 
 [node name="placeholder2" type="RichTextLabel" parent="CanvasLayer" unique_id=609533443]
 self_modulate = Color(1, 1, 1, 0.7647059)
@@ -4448,4 +4592,4 @@ text = "Swap Disc"
 [connection signal="pressed" from="CanvasLayer/Button3" to="CanvasLayer/Button3" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/DiscBside" to="CanvasLayer/Levels" method="_bside_start"]
 [connection signal="pressed" from="CanvasLayer/DiscReturnBside" to="CanvasLayer/Levels" method="_bside_end"]
-[connection signal="pressed" from="CanvasLayer/ranking/placeplayer/selectBoss2" to="CanvasLayer/ranking/placeplayer/selectBoss2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/ranking/placeplayer/replayButton" to="CanvasLayer/ranking/placeplayer/replayButton" method="_on_pressed"]

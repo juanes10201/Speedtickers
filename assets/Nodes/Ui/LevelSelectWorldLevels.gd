@@ -10,12 +10,18 @@ extends Node2D
 
 @export var BossLevelSelectButton : Button
 
+@export var ReplayButton : Button
+
 var Page : int = 0
 var CurrentWorld : int = 0
 #The amount of buttons per page
 var AmountButtons : int = 0
 
 var Bside : bool = false
+
+func change_replay_path(level : int, world : String) -> void:
+	if(ReplayButton):
+		ReplayButton.ADITIONAL_ARGUMENT = LevelManager.get_level_path(level, world, Bside)
 
 func _switch_bside() -> void:
 	if(!Bside):

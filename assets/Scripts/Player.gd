@@ -322,8 +322,6 @@ func _input(event):
 #endregion
 
 func _ready() -> void:
-	if(Global.LoadingReplay && ReplayAction != Global.ReplayStates.REPLAY):
-		_load_replay(Global.ReplayLocation)
 	
 	#Time_Left.paused = true
 	MaxAcc.x *= Max_Velocity_Multiplier
@@ -347,6 +345,8 @@ func _ready() -> void:
 	if(LevelManager.StyleTimer.is_stopped()): 
 		LevelManager.ExpoMoveTimeout.paused = false
 		LevelManager.StyleTimer.start()
+	if(Global.LoadingReplay && ReplayAction != Global.ReplayStates.REPLAY):
+		_load_replay(LevelManager.get_level_record_replay_pos(Global.Level, Global.World))
 	
 	if(Physics && Edition.Mobile):
 		var MobileControls = preload("res://assets/Nodes/Obj/Ui/ui_android_control.tscn")
@@ -1069,7 +1069,7 @@ func On_Death():
 			ParticlesDeathAir.emitting = false
 			ParticlesDeathFloor.emitting = false
 			#get_parent()._play_state_tick(true)
-		if(!Edition.Is_in_editor):# && ReplayAction == Global.ReplayStates.STOPPED):
+		if(!Edition.Is_in_editor && ReplayStyle):# && ReplayAction == Global.ReplayStates.STOPPED):
 			await(get_tree().create_timer(TimeDeath).timeout)
 			if get_tree():
 				get_tree().reload_current_scene() 

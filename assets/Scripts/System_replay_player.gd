@@ -8,7 +8,7 @@ var ReplayCurrentAction : int = 0
 @onready var Player = get_parent()
 
 
-var Actions : Array[String] = ["player_jump", "player_slide", "player_dash", "ui_left", "ui_right", "reset"]
+var Actions : Array[String] = ["player_jump", "player_slide", "player_dash", "ui_left", "ui_right", "player_reset"]
 
 var ReplayActions = {
 	"player_jump": false,
@@ -20,7 +20,6 @@ var ReplayActions = {
 	}
 
 func _ready() -> void:
-	State = Player.ReplayAction
 	ReplayCurrentAction = 0
 	CurrentTime = 0
 
@@ -60,6 +59,7 @@ func Replay_Actions() -> void:
 
 #the idea is to check every frame is the player action is pressed, then record
 func _process(delta: float) -> void:
+	State = Player.ReplayAction
 	#print(Input.is_action_pressed("replay_player_jump"))
 	CurrentTime += 1 * delta
 	if(State == Global.ReplayStates.RECORD): Record_Actions()

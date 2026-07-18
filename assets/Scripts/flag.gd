@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body):
 	if(body.is_in_group("Player") && !body.Dead):# && body.ReplayAction == Global.ReplayStates.STOPPED):
 		var StyleRatio : float = 1.0
+		if(body.ReplayStyle): return
 		if(LevelManager.get_level_time()):
 			StyleRatio = LevelManager.get_level_time().time_left/LevelManager.get_level_time().wait_time
 		#print(StyleRatio)
@@ -48,7 +49,7 @@ func _on_body_entered(body):
 		var _world = LevelManager.get_current_world_number()
 		if(_lvl <= 0): _lvl = 0
 		#region Save level
-		var _completed_time : float = $"../Time_Left".wait_time - $"../Time_Left".time_left
+		var _completed_time : float = $"../Time_Left".wait_time - $"../Time_Left".time_left if $"../Time_Left" else 0.00
 		#print(_completed_time)
 		SaveGame.SaveLevelRecord(_lvl, _world, _completed_time)
 		#endregion

@@ -44,6 +44,8 @@ var tween_normal = null
 @export var LevelBg : AnimatedSprite2D
 @export var LevelRanking : Control
 
+@onready var Parent = get_parent()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#if(text == "1"):
@@ -89,6 +91,8 @@ func _process(delta: float) -> void:
 				if(IsPixelartButton && !touching_mouse):
 					if(LevelBg):
 						LevelBg.animation == ADITIONAL_ARGUMENT
+						if(Parent.is_in_group("LevelSelector")):
+							Parent.change_replay_path(int(text), ADITIONAL_ARGUMENT)
 						LevelBg.frame = int(text)-1
 					if(LevelRanking): LevelRanking._update_best_scores(float(text), LevelManager.get_world_number(ADITIONAL_ARGUMENT, Global.BSide))
 				touching_mouse = true
