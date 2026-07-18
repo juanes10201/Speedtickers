@@ -271,13 +271,15 @@ func array_to_vec3(arr: Array) -> Array[Vector3]:
 
 func _load_replay(Location : String) -> void:
 	var file = FileAccess.open(Location, FileAccess.READ)
+	print("Loaded Replay from path: " + Location)
 	if file:
 		var data = JSON.parse_string(file.get_as_text())
 		if typeof(data) == TYPE_ARRAY:
 			RecordedActions = array_to_vec3(data)
-			print("Loaded Replay")
 		else:
 			push_error("Invalid JSON structure")
+	else:
+		print("File not found")
 	ReplayAction = Global.ReplayStates.REPLAY
 
 func _save_level_replay() -> void:
@@ -346,7 +348,9 @@ func _ready() -> void:
 		LevelManager.ExpoMoveTimeout.paused = false
 		LevelManager.StyleTimer.start()
 	if(Global.LoadingReplay && ReplayAction != Global.ReplayStates.REPLAY):
+		print("Loading replay from local Player movement:")
 		_load_replay(LevelManager.get_level_record_replay_pos(Global.Level, Global.World))
+		#print(RecordedActions)
 	
 	if(Physics && Edition.Mobile):
 		var MobileControls = preload("res://assets/Nodes/Obj/Ui/ui_android_control.tscn")
@@ -1069,7 +1073,7 @@ func On_Death():
 			ParticlesDeathAir.emitting = false
 			ParticlesDeathFloor.emitting = false
 			#get_parent()._play_state_tick(true)
-		if(!Edition.Is_in_editor && ReplayStyle):# && ReplayAction == Global.ReplayStates.STOPPED):
+		if(!Edition.Is_in_editor && !ReplayStyle):# && ReplayAction == Global.ReplayStates.STOPPED):
 			await(get_tree().create_timer(TimeDeath).timeout)
 			if get_tree():
 				get_tree().reload_current_scene() 

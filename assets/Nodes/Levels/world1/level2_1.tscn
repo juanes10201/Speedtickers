@@ -124,7 +124,7 @@ tile_map_data = PackedByteArray("AAD+//3/AQARABEAAAD8//v/AQAPAA8AAAD8//z/AQAPABA
 tile_set = ExtResource("4_emvwx")
 
 [node name="Player" parent="." unique_id=1624442490 instance=ExtResource("5_w3txa")]
-position = Vector2(-234, -69)
+position = Vector2(-210, -69)
 CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=173703795]

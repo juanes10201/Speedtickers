@@ -194,6 +194,8 @@ func play_replay(Level : int, World : int):
 	change_scene(WorldString)
 	Global.LoadingReplay = true
 	Global.ReplayLocation = get_level_record_replay_pos(Level, World)
+	Global.World = World
+	Global.Level = Level
 	#if(_player):
 	print("Loading replay...")
 	#	var _replay_path = _player.get_level_record_replay_pos(Level, World)

@@ -92,7 +92,7 @@ func _process(delta: float) -> void:
 					if(LevelBg):
 						LevelBg.animation == ADITIONAL_ARGUMENT
 						if(Parent.is_in_group("LevelSelector")):
-							Parent.change_replay_path(int(text), ADITIONAL_ARGUMENT)
+							Parent.change_replay_path(int(text)-1, ADITIONAL_ARGUMENT)
 						LevelBg.frame = int(text)-1
 					if(LevelRanking): LevelRanking._update_best_scores(float(text), LevelManager.get_world_number(ADITIONAL_ARGUMENT, Global.BSide))
 				touching_mouse = true
