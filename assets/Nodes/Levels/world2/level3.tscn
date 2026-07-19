@@ -331,8 +331,8 @@ wait_time = 0.05
 MAX_SPEED = 800.0
 
 [node name="KillBox4" parent="." unique_id=394037348 instance=ExtResource("11_5f23v")]
-position = Vector2(215.00002, 333)
-scale = Vector2(1, 30.09)
+position = Vector2(213.00002, 333)
+scale = Vector2(1.135, 34.152)
 
 [node name="KillBox8" parent="." unique_id=978248748 instance=ExtResource("11_5f23v")]
 position = Vector2(303, 284)

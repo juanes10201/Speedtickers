@@ -1232,8 +1232,9 @@ one_shot = true
 [node name="SlideDestroyTiles" type="RayCast2D" parent="." unique_id=1459664986]
 position = Vector2(0, -9.061937)
 scale = Vector2(1, 2.205)
-target_position = Vector2(12, 0.12290943)
+target_position = Vector2(16, 0.123)
 collision_mask = 4
+hit_from_inside = true
 
 [node name="RailDestroyTiles" type="RayCast2D" parent="." unique_id=1851407121]
 position = Vector2(0, 1.1327477)

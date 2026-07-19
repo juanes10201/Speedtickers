@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 	if(!Done):
 		GreyVal = lerp(GreyVal, .1, 5*delta)
 		TutorialCanvas.modulate.a = GreyVal
-		if(Input.is_action_pressed(StopAction)):
+		if(Player.is_action_pressed(StopAction)):
 			_resume_mov()
 
 

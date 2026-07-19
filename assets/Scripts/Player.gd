@@ -17,7 +17,7 @@ var EnableMovement : bool = true
 
 var MoveLava : bool = false
 
-var Sliding: Sides = Sides.NONE
+var SlidingDirection: Sides = Sides.NONE
 var WasSliding : bool = false
 var Slide : bool = false
 
@@ -707,8 +707,9 @@ func _physics_apply_gravity(delta: float) -> void:
 		if(GroundSmash):
 			Reset_Groundsmash()
 		if(SlidingInAir):
-			Sliding = Sides.NONE
+			SlidingDirection = Sides.NONE
 			Slide = false
+			Reset_Slide()
 #endregion
 
 #region Invert Gravity
@@ -873,11 +874,12 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 		_Destroy_Tiles_Slam()
 	if(!is_action_pressed("player_slide")):
 		SlidingInAir = false
+		SlideVelocity = 0
 		#LevelManager.ExpoMoveTimeout.start()
 	if((is_action_pressed("player_slide") || PressingGroundSmash)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash/Slam
-		if(!_gravity_is_on_floor_raycast() && (!Slide && !SlidingInAir && !PressedSlide) ):# || velocity.y < jump_height+10)):
+		if(!_gravity_is_on_floor_raycast() && !Slide && !SlidingInAir && !PressedSlide ):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
 			if(GroundSmashVelocity && GravityDirection): velocity.y = GroundSmashVelocity * GravityDirection
 			if(OnWater): velocity *= OnWaterSlamMult
@@ -896,16 +898,17 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 			set_collision_mask_value(4, false)
 		#Slide
 		elif(!SlidingInAir && !PressingGroundSmash):
+			if(!PressedSlide):
+				SlidingDirection = Sides.RIGHT if LastDirection > 0  else Sides.LEFT
+				SlideVelocity = SlideInitialVelocity
 			_Destroy_Tiles_Slide()
-			if(SlideVelocity == 0): SlideVelocity = SlideInitialVelocity
-			#SlideVelocity += SlideAcc * delta
+			SlideVelocity += SlideAcc * delta
 			PressedSlide = true
 			
 			_play_sound(AudioSlide, false)
 			Controller_Vibrate_Player_Movement(0.2)
-			Speed.x = SlideVelocity * Sliding
+			Speed.x = SlideVelocity * SlidingDirection
 			#if(SlidingOnRamp): Speed.x *= 1.2
-			if(Sliding == Sides.NONE): Sliding = Sides.RIGHT if LastDirection > 0  else Sides.LEFT
 			Slide = true
 			if(Particles): ParticlesSlide.emitting = true
 			strech_size(1, .9)
@@ -913,10 +916,9 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 			set_collision_mask_value(3, false)
 		#elif(Slide && velocity.y < 0):
 		#	Speed.x = SlideVelocity * Sliding
-	elif(Sliding != Sides.NONE):
+	elif(PressedSlide):
 		Reset_Slide()
 		Speed.x = 0
-	
 	if(!is_action_pressed("player_slide")): PressedSlide = false
 	
 	#if(!SlidingInAir):
@@ -928,13 +930,13 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 
 func Reset_Slide():
 	_fade_sound(AudioSlide)
-	Sliding = Sides.NONE
+	#SlidingDirection = Sides.NONE
 	ParticlesSlide.emitting = false
 	Slide = false
 	OnWaterInitialSlideTile = false
 	#if(!SlidingInAir):
 		#Speed.x = 0
-	SlideVelocity = 0
+	#SlideVelocity = 0
 
 	#endregion
 
@@ -986,6 +988,7 @@ func _physics_walljump(delta: float) -> void:
 				WalljumpVel += 50* delta * GravityDirection
 				if(!WallJump):
 					WalljumpVel = 50 * GravityDirection
+				if(OnWater): WalljumpVel = lerpf(velocity.y, OnWaterClampMaxDown, .01*delta)
 				velocity.y = WalljumpVel
 			else:
 				velocity.y = 0.0
