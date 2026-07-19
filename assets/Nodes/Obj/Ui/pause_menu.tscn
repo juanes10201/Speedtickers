@@ -2,325 +2,40 @@
 
 [ext_resource type="Script" uid="uid://b40hrfks2w7u6" path="res://assets/Scripts/PauseMenuLogic.gd" id="1_lmvks"]
 [ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://assets/Sprites/screenshot.png" id="2_p57sw"]
-[ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="3_rsgsr"]
+[ext_resource type="Texture2D" uid="uid://b60whtdipdvhj" path="res://assets/Sprites/menus/Pause/bg.png" id="3_k4rge"]
 [ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Scripts/PauseMenuTransition.gd" id="4_37ts2"]
 [ext_resource type="FontFile" uid="uid://d3ebca3t4i171" path="res://assets/Fonts/Ace Futurism.ttf" id="5_rmh30"]
 [ext_resource type="Texture2D" uid="uid://b1ifl8spiqdmv" path="res://assets/Sprites/menus/buttonSelect2.png" id="6_7w7eu"]
+[ext_resource type="FontFile" uid="uid://brwm536qpt5yh" path="res://assets/Fonts/Big Old Boldy.otf" id="6_ysmk6"]
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="7_fg2bv"]
-[ext_resource type="Texture2D" uid="uid://84h5mqrn7esw" path="res://assets/Sprites/menus/Button/config.png" id="7_wn3ts"]
+[ext_resource type="Texture2D" uid="uid://wwhdxxeoqynq" path="res://assets/Sprites/menus/Pause/text_worldranking.png" id="7_fmfnn"]
+[ext_resource type="Texture2D" uid="uid://pggivxhfujj3" path="res://assets/Sprites/menus/Pause/Button_Config.png" id="8_m3xkk"]
 [ext_resource type="StyleBox" uid="uid://dirm08jxjyusl" path="res://assets/Sprites/menus/selectStylebox.tres" id="9_cas78"]
-[ext_resource type="Texture2D" uid="uid://db23c3wlmi58l" path="res://assets/Sprites/menus/Button/play.png" id="10_mxywe"]
-[ext_resource type="Texture2D" uid="uid://cldi3f8m6wfqy" path="res://assets/Sprites/menus/Button/quit.png" id="11_16lqt"]
+[ext_resource type="Texture2D" uid="uid://c18sb46itjsso" path="res://assets/Sprites/menus/Pause/Button_Continue.png" id="11_xu5ud"]
+[ext_resource type="Texture2D" uid="uid://c0c3m8uwkh35y" path="res://assets/Sprites/menus/Pause/Button_Back.png" id="12_r64v8"]
+[ext_resource type="Texture2D" uid="uid://dopq5ces8sdcm" path="res://assets/Sprites/menus/Pause/table.png" id="13_881q1"]
+[ext_resource type="FontFile" uid="uid://cyhethdmcdauq" path="res://assets/Fonts/Beta.ttf" id="14_kgonm"]
+[ext_resource type="Texture2D" uid="uid://dgu7fltvkww86" path="res://assets/Sprites/menus/Pause/start-mini0.png" id="15_3x2v2"]
+[ext_resource type="Texture2D" uid="uid://d3tinissao2vj" path="res://assets/Sprites/menus/Pause/start-mini1.png" id="16_fuuii"]
+[ext_resource type="Texture2D" uid="uid://b8bt0ralfefg7" path="res://assets/Sprites/menus/Ranks/A.png" id="17_t7vvl"]
+[ext_resource type="Texture2D" uid="uid://cif3ty4b4vvd7" path="res://assets/Sprites/menus/Ranks/B.png" id="18_fmfnn"]
+[ext_resource type="Texture2D" uid="uid://d0p3valxpemob" path="res://assets/Sprites/menus/Ranks/C.png" id="19_lsnvj"]
+[ext_resource type="Texture2D" uid="uid://dyl0n31kwqbio" path="res://assets/Sprites/menus/Ranks/D.png" id="20_1jvlq"]
+[ext_resource type="Texture2D" uid="uid://dec2ktmjvg223" path="res://assets/Sprites/menus/Ranks/P.png" id="21_ud0gp"]
+[ext_resource type="Texture2D" uid="uid://cn15j2xams4wc" path="res://assets/Sprites/menus/Ranks/S.png" id="22_aiwrn"]
+[ext_resource type="Texture2D" uid="uid://ciucmy8ech7p1" path="res://assets/Sprites/menus/Ranks/SS.png" id="23_ewgas"]
+[ext_resource type="Texture2D" uid="uid://dfio4ujwr26yk" path="res://assets/Sprites/menus/Ranks/SSS.png" id="24_nxd5a"]
+[ext_resource type="Texture2D" uid="uid://crlcxksd8b3se" path="res://assets/Sprites/menus/Ranks/Untitled.png" id="25_els7t"]
 
 [sub_resource type="Animation" id="Animation_xvgwm"]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1750, 374.562)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../RichTextLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(702.932, -6.43848)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../RichTextLabel2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(541.932, 570.562)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuGoBackButton2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1160, 584)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1170, 419)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../PauseMenuButton2:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(605, 106)]
-}
 
-[sub_resource type="Animation" id="Animation_yq3rj"]
-resource_name = "fade_movement"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667, 0.533333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1220, 374.562), Vector2(2000, 374.562)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../RichTextLabel:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(702.932, -6.43848), Vector2(823, -80)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../RichTextLabel2:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0666667, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(541.932, 570.562), Vector2(645, 644)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuButton2:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.0334333, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(605, 106), Vector2(1193, 195)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.0001, 0.5001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(549, 310), Vector2(1203, 392)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.0001, 0.566767),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(490, 459), Vector2(1203, 554)]
-}
-
-[sub_resource type="Animation" id="Animation_h07xo"]
+[sub_resource type="Animation" id="Animation_fmfnn"]
 resource_name = "initial_movement"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1750, 374.562), Vector2(1220, 363)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../RichTextLabel:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0999997),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(823, -80), Vector2(702.932, -6.43848)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../RichTextLabel2:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.166667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(645, 644), Vector2(541.932, 570.562)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuButton2:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1194, 170), Vector2(605, 106)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1170, 417), Vector2(549, 310)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.0334333, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1160, 584), Vector2(490, 460)]
-}
-
-[sub_resource type="Animation" id="Animation_uc043"]
-resource_name = "main_movement"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.4, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1220, 363), Vector2(1183, 363), Vector2(1220, 363)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../RichTextLabel:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(702.932, -6.43848), Vector2(663.932, -6.43848), Vector2(702.932, -6.43848)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../RichTextLabel2:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.53333, 2.96667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(541.932, 570.562), Vector2(585.932, 570.562), Vector2(541.932, 570.562)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../PauseMenuButton2:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.16667, 1.83333, 1.96667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(605, 106), Vector2(605, 106), Vector2(605, 84), Vector2(605, 106), Vector2(605, 106)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../PauseMenuConfigButton2:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.63333, 1.8, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(549, 310), Vector2(549, 310), Vector2(549, 288), Vector2(549, 310), Vector2(549, 310)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../PauseMenuGoBackButton2:position")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.1, 1.46667, 1.63333, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(490, 460), Vector2(490, 460), Vector2(490, 438), Vector2(490, 460), Vector2(490, 460)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vy804"]
 _data = {
 &"RESET": SubResource("Animation_xvgwm"),
-&"fade_movement": SubResource("Animation_yq3rj"),
-&"initial_movement": SubResource("Animation_h07xo"),
-&"main_movement": SubResource("Animation_uc043")
+&"initial_movement": SubResource("Animation_fmfnn")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ptwe"]
@@ -337,6 +52,81 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_gs08v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_t7vvl")
+}],
+"loop": true,
+"name": &"A",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_fmfnn")
+}],
+"loop": true,
+"name": &"B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_lsnvj")
+}],
+"loop": true,
+"name": &"C",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_1jvlq")
+}],
+"loop": true,
+"name": &"D",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_ud0gp")
+}],
+"loop": true,
+"name": &"P",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_aiwrn")
+}],
+"loop": true,
+"name": &"S",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_ewgas")
+}],
+"loop": true,
+"name": &"SS",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_nxd5a")
+}],
+"loop": true,
+"name": &"SSS",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_els7t")
+}],
+"loop": true,
+"name": &"please_dont_sue_me",
+"speed": 5.0
+}]
+
 [node name="pause_menu" type="CanvasLayer" unique_id=1035125080]
 layer = 2
 script = ExtResource("1_lmvks")
@@ -348,29 +138,57 @@ scale = Vector2(0.635, 0.635)
 texture = ExtResource("2_p57sw")
 
 [node name="Transition" type="Sprite2D" parent="." unique_id=346364958]
-position = Vector2(1750, 374.562)
-rotation = -0.10821
-scale = Vector2(-0.888, 0.882)
-texture = ExtResource("3_rsgsr")
+position = Vector2(574.93427, 322.74997)
+scale = Vector2(0.33695656, 0.33695653)
+texture = ExtResource("3_k4rge")
 script = ExtResource("4_37ts2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transition" unique_id=1570448164]
 libraries/ = SubResource("AnimationLibrary_vy804")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1075394]
-offset_left = 702.932
-offset_top = -6.43848
-offset_right = 1152.9299
-offset_bottom = 86.56151
+[node name="text_speed" type="RichTextLabel" parent="." unique_id=1075394]
+offset_left = 480.0
+offset_top = -184.0
+offset_right = 929.9979
+offset_bottom = -91.000015
 theme_override_fonts/normal_font = ExtResource("5_rmh30")
 theme_override_font_sizes/normal_font_size = 87
 text = "Speed"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=1790604327]
-offset_left = 541.932
-offset_top = 570.562
-offset_right = 991.93207
-offset_bottom = 663.562
+[node name="text_speed2" type="RichTextLabel" parent="." unique_id=1031239763]
+z_index = 1
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 1152.0
+offset_bottom = 184.0
+theme_override_constants/outline_size = 31
+theme_override_fonts/normal_font = ExtResource("6_ysmk6")
+theme_override_font_sizes/normal_font_size = 82
+text = " WORLD 1"
+scroll_active = false
+
+[node name="text_speed3" type="RichTextLabel" parent="text_speed2" unique_id=1997189855]
+z_index = -1
+layout_mode = 0
+offset_right = 1120.0
+offset_bottom = 160.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/normal_font = ExtResource("6_ysmk6")
+theme_override_font_sizes/normal_font_size = 82
+text = " WORLD 1"
+scroll_active = false
+
+[node name="TextWorldranking" type="Sprite2D" parent="." unique_id=1679759896]
+position = Vector2(375.9738, 162)
+scale = Vector2(0.30263156, 0.30263156)
+texture = ExtResource("7_fmfnn")
+
+[node name="text_tickers" type="RichTextLabel" parent="." unique_id=1790604327]
+offset_left = 8.0
+offset_top = -184.0
+offset_right = 458.0
+offset_bottom = -91.0
 theme_override_fonts/normal_font = ExtResource("5_rmh30")
 theme_override_font_sizes/normal_font_size = 87
 text = "Tickers"
@@ -380,13 +198,13 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 18.0
-offset_top = 419.0
-offset_right = 414.0
-offset_bottom = 538.0
+offset_left = -744.0
+offset_top = 416.0
+offset_right = -440.0
+offset_bottom = 520.0
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_0ptwe")
-icon = ExtResource("7_wn3ts")
+icon = ExtResource("8_m3xkk")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -400,13 +218,13 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -547.0
-offset_top = 106.0
-offset_right = -206.00012
-offset_bottom = 302.0
+offset_left = -1096.0
+offset_top = 416.0
+offset_right = -755.0001
+offset_bottom = 612.0
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("9_cas78")
-icon = ExtResource("10_mxywe")
+icon = ExtResource("11_xu5ud")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -418,13 +236,13 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 8.0
-offset_top = 584.0
-offset_right = 414.0
-offset_bottom = 703.0
+offset_left = -744.0
+offset_top = 520.0
+offset_right = -455.0
+offset_bottom = 622.0
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_yw3r3")
-icon = ExtResource("11_16lqt")
+icon = ExtResource("12_r64v8")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -439,6 +257,57 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 focus_mode = 2
+
+[node name="Table" type="Sprite2D" parent="." unique_id=1832339271]
+position = Vector2(365, 308)
+scale = Vector2(0.35027477, 0.35027474)
+texture = ExtResource("13_881q1")
+
+[node name="TextTime" type="RichTextLabel" parent="Table" unique_id=703301056]
+offset_left = -792.2151
+offset_top = -175.63458
+offset_right = 228.73145
+offset_bottom = -3.2659912
+theme_override_fonts/normal_font = ExtResource("14_kgonm")
+theme_override_font_sizes/normal_font_size = 122
+text = "Time: 10:00"
+
+[node name="TextTimeMult" type="RichTextLabel" parent="Table" unique_id=925404636]
+offset_left = -792.2151
+offset_top = -34.86035
+offset_right = 181.80676
+offset_bottom = 90.583435
+theme_override_fonts/normal_font = ExtResource("14_kgonm")
+theme_override_font_sizes/normal_font_size = 122
+text = "Time Mult.: x0.5"
+
+[node name="TextAvgStyle" type="RichTextLabel" parent="Table" unique_id=394229383]
+offset_left = -792.2151
+offset_top = 111.77954
+offset_right = 158.34436
+offset_bottom = 237.22339
+theme_override_fonts/normal_font = ExtResource("14_kgonm")
+theme_override_font_sizes/normal_font_size = 122
+text = "Avg. Style: S"
+
+[node name="StyleSprite" type="AnimatedSprite2D" parent="Table" unique_id=804357714]
+z_index = 3
+position = Vector2(483.5515, -52.457092)
+scale = Vector2(1.4964621, 1.4964625)
+sprite_frames = SubResource("SpriteFrames_gs08v")
+animation = &"P"
+
+[node name="StartMini0" type="Sprite2D" parent="." unique_id=1909134749]
+z_index = 1
+position = Vector2(47.91037, 127.45073)
+scale = Vector2(0.45044526, 0.4504452)
+texture = ExtResource("15_3x2v2")
+
+[node name="StartMini1" type="Sprite2D" parent="." unique_id=1224127442]
+z_index = 1
+position = Vector2(608, 40)
+scale = Vector2(0.27499995, 0.275)
+texture = ExtResource("16_fuuii")
 
 [connection signal="pressed" from="PauseMenuConfigButton2" to="PauseMenuConfigButton2" method="_on_pressed"]
 [connection signal="pressed" from="PauseMenuButton2" to="PauseMenuButton2" method="_on_pressed"]

@@ -69,9 +69,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_mii8u"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 685, 114, 0, 0, 0, 0, 69, 122, 0, 0, 0, 0, 69, -22, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 341, -110, 0, 0, 0, 0, 341, -166, 0, 0, 0, 0, 389, -302, 0, 0, 0, 0, 445, -302, 0, 0, 0, 0, 469, -278, 0, 0, 0, 0, 685, -278, 0, 0, 0, 0, 685, -254, 0, 0, 0, 0, 685, 114)
+"points": PackedVector2Array(0, 0, 0, 0, 685, 114, 0, 0, 0, 0, 69, 122, 0, 0, 0, 0, 69, -22, 0, 0, 0, 0, 156, -112, 0, 0, 0, 0, 341, -110, 0, 0, 0, 0, 341, -166, 0, 0, 0, 0, 389, -302, 0, 0, 0, 0, 445, -302, 0, 0, 0, 0, 469, -278, 0, 0, 0, 0, 685, -278, 0, 0, 0, 0, 685, -254)
 }
-point_count = 12
+point_count = 11
 
 [node name="Node2D" type="Node2D" unique_id=451057958]
 position = Vector2(0, -1)
@@ -194,7 +194,7 @@ position = Vector2(320, -295)
 scale = Vector2(1.2, 9.23)
 
 [node name="KillBox12" parent="." unique_id=846970825 instance=ExtResource("13_slgcc")]
-position = Vector2(391, -127.00001)
+position = Vector2(388, -127.00001)
 scale = Vector2(1.2, 18.95)
 
 [node name="KillBox13" parent="." unique_id=643816204 instance=ExtResource("13_slgcc")]
@@ -209,7 +209,7 @@ AditionalAction = 1
 position = Vector2(-239.99997, -334.99997)
 
 [node name="Flag" parent="." unique_id=893668377 instance=ExtResource("16_n1psl")]
-position = Vector2(358, -81)
+position = Vector2(354, -81)
 
 [node name="WindSand" type="Line2D" parent="." unique_id=1391092971 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
 position = Vector2(-325, 7)
@@ -232,7 +232,6 @@ curve = SubResource("Curve2D_mii8u")
 [node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("18_2hb4p")]
 position = Vector2(99.85517, -53.919125)
 progress = 804.45
-Enabled = true
 
 [node name="HorizontalPistonMove" parent="WindSand/Path2D" unique_id=226068745 instance=ExtResource("19_4t0ma")]
 position = Vector2(341.11084, -111.20707)
