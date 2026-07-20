@@ -296,10 +296,7 @@ func _save_replay(Location : String) -> void:
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_F1:
-			LevelManager.ExpoMoveTimeout.start()
-			LevelManager.ExpoMoveTimeout.paused = true
-			var _scene_string = "res://assets/Levels/world1/main_menu_expo_video.tscn"
-			get_tree().change_scene_to_file(_scene_string)
+			LevelManager.change_to_next_level()
 		elif event.keycode == KEY_F9:
 			get_tree().reload_current_scene()
 		elif event.keycode == KEY_F10:
@@ -387,7 +384,7 @@ func _physics_process(delta: float) -> void:
 		LevelManager.calc_world_timer_mult()
 	
 	PositionDifference = global_position - LastPosition
-	#print(velocity)
+	#print(velocity)s
 	if(!Moved):
 		if(velocity != Vector2(0.0,0.0) || Input.is_action_just_pressed("player_dash") || Input.is_action_just_pressed("player_jump") || Input.is_action_just_pressed("player_jump") || Input.is_action_just_pressed("player_slide") || Input.is_action_just_pressed("player_move")):
 			Moved = true
@@ -880,7 +877,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 		SlidingInAir = false
 		SlideVelocity = 0
 		#LevelManager.ExpoMoveTimeout.start()
-	if((is_action_pressed("player_slide") || PressingGroundSmash)):
+	if((is_action_pressed("player_slide") || PressingGroundSmash || PressedSlide)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash/Slam
 		if(!_gravity_is_on_floor_raycast() && !Slide && !SlidingInAir && !PressedSlide ):# || velocity.y < jump_height+10)):

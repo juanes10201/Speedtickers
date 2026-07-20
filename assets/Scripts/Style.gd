@@ -20,7 +20,8 @@ var PointsParticlePool = []
 
 func _ready() -> void:
 	_setup_point_particles()
-	if(SaveGame.get_player() && !SaveGame.get_player().Styleometter): queue_free()
+	var Player = SaveGame.get_player()
+	if((Player && !Player.Styleometter) || Global.LoadingReplay): queue_free()
 
 func _setup_point_particles() -> void:
 	for i in range(Particle_Points_Preload_Amount):

@@ -173,7 +173,7 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(241, 539)]
+"values": [Vector2(241, 797.725)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -185,7 +185,7 @@ tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(802.99994, 509)]
+"values": [Vector2(803, 688.565)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -209,7 +209,19 @@ tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(575, 725.445)]
+"values": [Vector2(575, 945.195)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../BorderMainmenu:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_0d5a2"]
@@ -591,6 +603,30 @@ tracks/14/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../BorderMainmenu:position")
+tracks/15/interp = 2
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.03333333, 0.36666667, 1.2666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(584, 948.99994), Vector2(578.20306, 805.0074), Vector2(575, 725.445)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../BorderMainmenu:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3qh4w"]
 resource_name = "main_movement"
@@ -680,6 +716,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(22, 346), Vector2(22, 323), Vector2(22, 323), Vector2(22, 346), Vector2(22, 346)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../BorderMainmenu:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.033333335, 2.4333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(575, 725.445), Vector2(575, 663.935)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vy804"]
 _data = {
@@ -706,7 +754,6 @@ scale = Vector2(1.2926039, 1.2926037)
 texture = ExtResource("3_0d5a2")
 
 [node name="Transition" type="Sprite2D" parent="." unique_id=1752509263]
-position = Vector2(1927.14, 377)
 rotation = 1.33518
 scale = Vector2(-1.21884, 1.21061)
 texture = ExtResource("3_6l5tb")
@@ -717,7 +764,7 @@ script = ExtResource("4_i1blh")
 libraries/ = SubResource("AnimationLibrary_vy804")
 
 [node name="BorderMainmenu" type="Sprite2D" parent="." unique_id=72947137]
-position = Vector2(575, 725.445)
+position = Vector2(575, 945.195)
 scale = Vector2(0.335, 0.335)
 texture = ExtResource("6_gd86k")
 
@@ -727,8 +774,8 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1579.0
-offset_right = -1184.008
-offset_bottom = 99.99982
+offset_right = -1184.0082
+offset_bottom = 100.00018
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("7_eqbku")
@@ -745,8 +792,8 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1754.0
-offset_right = -1383.1085
-offset_bottom = 213.77084
+offset_right = -1383.1083
+offset_bottom = 213.77066
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("10_gopbp")
 icon = ExtResource("11_tsnyn")
@@ -762,7 +809,7 @@ ExpoButton = true
 
 [node name="Stars" type="Sprite2D" parent="." unique_id=1948636821]
 z_index = 1
-position = Vector2(241, 539)
+position = Vector2(241, 797.725)
 scale = Vector2(0.37, 0.37)
 texture = ExtResource("12_yfpj7")
 
@@ -773,8 +820,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1543.0
 offset_top = -4.0
-offset_right = -1174.9886
-offset_bottom = 111.99774
+offset_right = -1174.9878
+offset_bottom = 111.998535
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("9_yxylt")
@@ -814,7 +861,6 @@ text = "steam version prototype"
 [node name="Bg" type="Sprite2D" parent="." unique_id=1861380431]
 visible = false
 z_index = 2
-position = Vector2(520, 300)
 texture = ExtResource("3_6l5tb")
 flip_h = true
 
@@ -827,7 +873,7 @@ focus_mode = 2
 
 [node name="MiniStar2" type="Sprite2D" parent="." unique_id=489336845]
 z_index = 1
-position = Vector2(802.99994, 509)
+position = Vector2(803, 688.565)
 scale = Vector2(0.38, 0.38)
 texture = ExtResource("17_plytu")
 

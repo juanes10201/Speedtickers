@@ -12,6 +12,9 @@ extends Node2D
 
 @export var ReplayButton : Button
 
+@onready var ReplayText : String = AmountLevelsLabel.text
+@export var ReplayEnabled : bool = true
+
 var Page : int = 0
 var CurrentWorld : int = 0
 #The amount of buttons per page
@@ -19,9 +22,15 @@ var AmountButtons : int = 0
 
 var Bside : bool = false
 
+var LoadedReplay : String = ""
+
+func replay_tick() -> void:
+	if(ReplayEnabled && Input.is_action_just_pressed("ui_load_replay")):
+		LevelManager.play_replay_level_string(LoadedReplay)
+
 func change_replay_path(level : int, world : String) -> void:
-	if(ReplayButton):
-		ReplayButton.ADITIONAL_ARGUMENT = LevelManager.get_level_path(level, world, Bside)
+	if(ReplayEnabled && ReplayButton):
+		LoadedReplay = LevelManager.get_level_path(level, world, Bside)
 
 func _switch_bside() -> void:
 	if(!Bside):
@@ -93,11 +102,16 @@ func _reload_page() -> void:
 			button.show()
 			if(AmountLevelsLabel):
 				AmountLevelsLabel.text = str(LevelManager.get_total_number_level(Page*AmountButtons+_internal_count+1, CurrentWorld, Bside) ) + "/" + str(LevelManager.get_amount_total_levels(Bside)+1)
+				if(ReplayEnabled):
+					AmountLevelsLabel.text = ReplayText + " " + AmountLevelsLabel.text
 		button.text = str(_count+1)
 		
 		_internal_count += 1
 		_count += 1
 	BossLevelSelectButton.visible = PlacedBossButton
+
+func _process(delta: float) -> void:
+	replay_tick()
 
 func _change_buttons_anim() -> void:
 	if(Transition): Transition.Anim.play("change_select_buttons")

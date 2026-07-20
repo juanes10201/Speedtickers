@@ -219,13 +219,17 @@ func get_level_record_replay_pos(level : int, world : int) -> String:
 
 func play_replay(Level : int, World : int):
 	var WorldString = get_level_path(Level, get_world_name_by_number(World), false)
-	change_scene(WorldString)
-	Global.LoadingReplay = true
-	Global.ReplayLocation = get_level_record_replay_pos(Level, World)
-	Global.World = World
-	Global.Level = Level
+	var _path : String = get_level_record_replay_pos(Level, World)
 	#if(_player):
 	print("Loading replay...")
+	if(ResourceLoader.exists(_path)):
+		Global.LoadingReplay = true
+		Global.ReplayLocation = _path
+		Global.World = World
+		Global.Level = Level
+		change_scene(WorldString)
+	else:
+		print("Replay file doesn't exist")
 	#	var _replay_path = _player.get_level_record_replay_pos(Level, World)
 	print("Path: " + str(Global.ReplayLocation))
 	#	_player._load_replay(_replay_path)

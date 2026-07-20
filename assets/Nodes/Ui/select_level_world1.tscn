@@ -3523,7 +3523,7 @@ NextButton = NodePath("../ButtonNextPage")
 AmountLevelsLabel = NodePath("../placeholder")
 Transition = NodePath("../Transition")
 BossLevelSelectButton = NodePath("../selectBoss")
-ReplayButton = NodePath("../ranking/placeplayer/replayButton")
+ReplayButton = NodePath("../replayButton")
 
 [node name="select1" type="Button" parent="CanvasLayer/Levels" unique_id=963325185 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
 z_index = 1
@@ -4086,13 +4086,13 @@ theme_override_font_sizes/normal_font_size = 95
 text = "Tickers"
 
 [node name="placeholder" type="RichTextLabel" parent="CanvasLayer" unique_id=1458900384]
-offset_left = 1290.0
+offset_left = 1026.6665
 offset_top = 2003.3335
 offset_right = 3786.6665
 offset_bottom = 2190.0005
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")
 theme_override_font_sizes/normal_font_size = 136
-text = "10/20"
+text = "Press 'r' to load the replay"
 horizontal_alignment = 2
 
 [node name="BestTimes" type="Sprite2D" parent="CanvasLayer" unique_id=240768865]
@@ -4379,16 +4379,26 @@ theme_override_font_sizes/normal_font_size = 161
 text = "{steam user}"
 vertical_alignment = 1
 
-[node name="replayButton" type="Button" parent="CanvasLayer/ranking/placeplayer" unique_id=1406054013 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
+[node name="placeholder2" type="RichTextLabel" parent="CanvasLayer" unique_id=609533443]
+self_modulate = Color(1, 1, 1, 0.7647059)
 z_index = 1
-layout_mode = 1
+offset_left = 3173.333
+offset_top = 316.66663
+offset_right = 3776.6663
+offset_bottom = 503.33362
+theme_override_fonts/normal_font = ExtResource("78_ivuwd")
+theme_override_font_sizes/normal_font_size = 136
+text = "Swap Disc"
+
+[node name="replayButton" type="Button" parent="CanvasLayer" unique_id=1406054013 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
+z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -676.6659
-offset_top = -3.333414
-offset_right = -53.332886
-offset_bottom = 215.8445
+offset_left = -1905.3333
+offset_top = 146.66663
+offset_right = -1282.0002
+offset_bottom = 365.84448
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("68_wfqlv")
 theme_override_font_sizes/font_size = 120
@@ -4407,19 +4417,8 @@ HoverDif = 50.0
 IsPixelartButton = true
 tex_selected = ExtResource("73_iytug")
 MobileBoxSize = 0
-LevelBg = NodePath("../../../Bg")
-LevelRanking = NodePath("../..")
-
-[node name="placeholder2" type="RichTextLabel" parent="CanvasLayer" unique_id=609533443]
-self_modulate = Color(1, 1, 1, 0.7647059)
-z_index = 1
-offset_left = 3173.333
-offset_top = 316.66663
-offset_right = 3776.6663
-offset_bottom = 503.33362
-theme_override_fonts/normal_font = ExtResource("78_ivuwd")
-theme_override_font_sizes/normal_font_size = 136
-text = "Swap Disc"
+LevelBg = NodePath("../Bg")
+LevelRanking = NodePath("../ranking")
 
 [connection signal="pressed" from="CanvasLayer/Levels/select1" to="CanvasLayer/Levels/select1" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Levels/select2" to="CanvasLayer/Levels/select2" method="_on_pressed"]
@@ -4449,4 +4448,4 @@ text = "Swap Disc"
 [connection signal="pressed" from="CanvasLayer/Button3" to="CanvasLayer/Button3" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/DiscBside" to="CanvasLayer/Levels" method="_bside_start"]
 [connection signal="pressed" from="CanvasLayer/DiscReturnBside" to="CanvasLayer/Levels" method="_bside_end"]
-[connection signal="pressed" from="CanvasLayer/ranking/placeplayer/replayButton" to="CanvasLayer/ranking/placeplayer/replayButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/replayButton" to="CanvasLayer/replayButton" method="_on_pressed"]
