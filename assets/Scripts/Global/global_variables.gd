@@ -57,6 +57,12 @@ var BSide : bool = false
 var LoadingReplay : bool = false
 var ReplayLocation : String = ""
 
+var WorldTimeSec : float = 0.0
+var WorldTimeMult : float = 1.0
+var WorldTimeMin : Vector2 = Vector2(0.0, 0.0) 
+var TextAvgStyle : float = 0
+var TextSumStyle : int = 0
+
 func get_level() -> int:
 	return Level
 

@@ -138,7 +138,7 @@ func _on_player_slide_signal() -> void:
 		_jump(-400)
 		Player.Camera.Shake(1.0, 5.0)
 		velocity.x = Enemy_burst_speed
-		if(Player.Sliding == Player.Sides.LEFT): velocity.x *= -1
+		if(Player.SlidingDirection == Player.Sides.LEFT): velocity.x *= -1
 		if(Player.SnappedOnRail): velocity.x *= -1
 		Player.Controller_Vibrate_Player_Movement(1)
 		Move = false

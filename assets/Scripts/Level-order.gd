@@ -26,6 +26,34 @@ var PreviousScore : String = ""
 
 var Prefix : String = "res://assets/Nodes/Levels/"
 
+#X: Minutes
+#Y: Seconds
+func get_times(time : float) -> Vector2:
+	#Hours
+	return Vector2(time/60.0, int(time)%60)
+
+func reset_world_timer() -> void:
+	Global.WorldTimeSec = 0.0
+
+func world_timer_tick(delta: float) -> void:
+	Global.WorldTimeSec += delta
+	var new_times : Vector2 = get_times(Global.WorldTimeSec)
+	#print("Stylemetter: " + str(StyloMetter))
+	#print("avg: " + str(Global.TextAvgStyle))
+	#print("total: " + str(Global.TextSumStyle))
+	#print("time: " + str(Global.WorldTimeMin))
+	if(floor(Global.WorldTimeMin.x) != floor(new_times.x)):
+		Global.TextSumStyle += StyloMetter
+		Global.TextAvgStyle = Global.TextSumStyle/new_times.x
+	Global.WorldTimeMin = new_times
+
+var InitialWorldTimerMult : float = 1.5
+var MinWorldTimerMult : float = .7
+
+func calc_world_timer_mult() -> void:
+	Global.WorldTimeMult = InitialWorldTimerMult - 0.05*Global.WorldTimeMin.x
+	Global.WorldTimeMult = clamp(Global.WorldTimeMult, MinWorldTimerMult, InitialWorldTimerMult)
+
 func get_level_world_with_complete_level_path(Path : String) -> Vector2:
 	Path = Path.replace(Prefix, "")
 	var string_world = Path.get_slice("/", 0)
@@ -262,11 +290,11 @@ func AddStyle(Qt : int, Moto : String = "", Mult : float = 1.0):
 	StyleTimer.start()
 	LastScore = StyleAmounts[Qt] * ScoreMult * Mult
 
-func GetStyle() -> String:
+func GetStyle(Style : int = StyloMetter) -> String:
 	#The styles are sorted from biggest to lowest
 	#So we search for the first one that the Style >=, and return the name
 	for i in range(Styles.values().size()):
-		if StyloMetter >= Styles.values()[i]:
+		if Style >= Styles.values()[i]:
 			StyloString = Styles.keys()[i]
 			break
 	return StyloString

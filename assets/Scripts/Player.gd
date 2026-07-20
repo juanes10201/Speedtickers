@@ -382,6 +382,10 @@ func _ready() -> void:
 	
 #region Physics proccess
 func _physics_process(delta: float) -> void:
+	if(!Paused):
+		LevelManager.world_timer_tick(delta)
+		LevelManager.calc_world_timer_mult()
+	
 	PositionDifference = global_position - LastPosition
 	#print(velocity)
 	if(!Moved):
