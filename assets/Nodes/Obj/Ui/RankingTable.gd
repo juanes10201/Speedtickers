@@ -18,10 +18,10 @@ func format(time : Vector2) -> String:
 	return str(int(time.x))+":"+str(int(round(time.y)))
 
 func _process(delta: float) -> void:
-	if(TextTime && TextTimeMult && TextAvgStyle && StyleSprite):
-		var Style : String = LevelManager.GetStyle(Global.TextAvgStyle)
-		TextAvgStyle.text = OriginalTextAvgStyle + Style
-		StyleSprite.animation = Style
+	if(TextTime && TextTimeMult && TextAvgStyle && StyleSprite): 
+		var LetterStyle : String = LevelManager.GetStyle(Global.TextAvgStyle)
+		TextAvgStyle.text = OriginalTextAvgStyle + str(Global.TextAvgStyle)
+		StyleSprite.animation = LetterStyle
 		
 		TextTime.text = OriginalTextTime + str(format(Global.WorldTimeMin))
 		TextTimeMult.text = OriginalTextTimeMult + str(Global.WorldTimeMult)
