@@ -147,6 +147,10 @@ func _on_pressed() -> void:
 		#deprecated. q codigo d mrd xdios. se nota q mejore(algo)
 		#ya me da paja rehacer tds estos enums pero bn muy triste el q tenga q entender esto. rip
 		LevelManager.change_to_level(int(text)-1, 0)
+	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.change_to_next_level):
+		LevelManager.change_to_next_level()
+	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.change_to_prev_level):
+		LevelManager.change_to_prev_level()
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_number_in_world):
 		LevelManager.change_to_level_world_string(int(text)-1, ADITIONAL_ARGUMENT, get_parent().Bside)
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.play_replay_from_scene):

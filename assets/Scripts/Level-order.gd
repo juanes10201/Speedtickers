@@ -169,6 +169,12 @@ func change_to_next_level() -> void:
 	else:
 		change_to_level(Global.Level+1, Global.World, Global.BSide)
 
+func change_to_prev_level() -> void:
+	if(Global.Level-1 < 0):
+		change_to_level(get_world_by_number(Global.World-1).size()-1, Global.World-1, Global.BSide)
+	else:
+		change_to_level(Global.Level-1, Global.World, Global.BSide)
+
 func get_level() -> int:
 	return Global.Level
 

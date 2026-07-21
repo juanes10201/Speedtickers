@@ -25,7 +25,9 @@ enum BUTTON_ACTIONS{
 	move_to_level_starting_with,
 	quit,
 	move_to_level_number_in_world,
-	play_replay_from_scene
+	play_replay_from_scene,
+	change_to_next_level,
+	change_to_prev_level
 }
 enum GravityDirections{
 	INVERTED = -1,
@@ -54,7 +56,7 @@ var DebugLevelVal : int = -99
 var World : int = 0
 var BSide : bool = false
 
-var LoadingReplay : bool = false
+var LoadingReplay : bool = true
 var ReplayLocation : String = ""
 
 var WorldTimeSec : float = 0.0

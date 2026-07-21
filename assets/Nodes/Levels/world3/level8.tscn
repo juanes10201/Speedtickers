@@ -93,7 +93,7 @@ position = Vector2(440, -47)
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1827652779 groups=["Tileset"]]
 position = Vector2(89, 79)
 scale = Vector2(1.00384, 1)
-tile_map_data = PackedByteArray("AADg//b/AAAAAAcAAADh//b/AAABAAcAAADi//b/AAABAAcAAADj//b/AAABAAcAAADk//b/AAABAAcAAADl//b/AAACAAcAAADh//v/AAABAAAAAADh//z/AAABAAEAAADh//3/AAABAAIAAADi//v/AAABAAAAAADi//z/AAABAAEAAADi//3/AAABAAIAAADj//v/AAABAAAAAADj//z/AAABAAEAAADj//3/AAABAAIAAADk//v/AAACAAAAAADk//z/AAACAAEAAADk//3/AAACAAIAAADg//v/AAAAAAAAAADg//z/AAAAAAEAAADg//3/AAAAAAIAAADu/+3/AAALAAEAADDv/+3/AAAMAAAAADDy/+3/AAAMAAAAACDz/+3/AAALAAEAACDu/+z/AAABAAEAAADv/+z/AAAMAAEAADDw/+z/AAABAAAAACDx/+z/AAABAAAAACDy/+z/AAAMAAEAACDz/+z/AAABAAEAAADp/wAAAAAAAAAAAADp/wEAAAAAAAIAAADq/wAAAAABAAAAAADq/wEAAAABAAIAAADr/wAAAAABAAAAAADr/wEAAAABAAIAAADs/wAAAAACAAAAAADs/wEAAAACAAIAAADh/+z/AAAAAAAAACDi/+z/AAABAAAAACDj/+z/AAABAAAAACDk/+z/AAABAAAAACDl/+z/AAACAAAAACDh/+r/AAAAAAIAACDh/+v/AAAAAAEAAADi/+r/AAABAAIAACDi/+v/AAABAAEAAADj/+r/AAABAAIAACDj/+v/AAABAAEAAADk/+r/AAABAAIAACDk/+v/AAABAAEAAADl/+r/AAACAAIAACDl/+v/AAACAAEAAADw//3/AAAAAAcAAADx//3/AAABAAcAAADy//3/AAABAAcAAADz//3/AAACAAcAAAA=")
+tile_map_data = PackedByteArray("AADg//b/AAAAAAcAAADh//b/AAABAAcAAADi//b/AAABAAcAAADj//b/AAABAAcAAADk//b/AAABAAcAAADl//b/AAACAAcAAADh//v/AAABAAAAAADh//z/AAABAAEAAADh//3/AAABAAIAAADi//v/AAABAAAAAADi//z/AAABAAEAAADi//3/AAABAAIAAADj//v/AAABAAAAAADj//z/AAABAAEAAADj//3/AAABAAIAAADk//v/AAACAAAAAADk//z/AAACAAEAAADk//3/AAACAAIAAADg//v/AAAAAAAAAADg//z/AAAAAAEAAADg//3/AAAAAAIAAADu/+3/AAALAAEAADDv/+3/AAAMAAAAADDy/+3/AAAMAAAAACDz/+3/AAALAAEAACDu/+z/AAABAAEAAADv/+z/AAAMAAEAADDw/+z/AAABAAAAACDx/+z/AAABAAAAACDy/+z/AAAMAAEAACDz/+z/AAABAAEAAADp/wAAAAAAAAAAAADp/wEAAAAAAAIAAADq/wAAAAABAAAAAADq/wEAAAABAAIAAADr/wAAAAABAAAAAADr/wEAAAABAAIAAADs/wAAAAACAAAAAADs/wEAAAACAAIAAADh/+z/AAAAAAAAACDi/+z/AAABAAAAACDj/+z/AAABAAAAACDk/+z/AAABAAAAACDl/+z/AAACAAAAACDh/+r/AAAAAAIAACDh/+v/AAAAAAEAAADi/+r/AAABAAIAACDi/+v/AAABAAEAAADj/+r/AAABAAIAACDj/+v/AAABAAEAAADk/+r/AAABAAIAACDk/+v/AAABAAEAAADl/+r/AAACAAIAACDl/+v/AAACAAEAAADw//3/AAAAAAcAAADx//3/AAABAAcAAADy//3/AAABAAcAAADz//3/AAACAAcAAADv/wUAAAADAAIAAADv/wQAAAADAAEAAADv/wMAAAADAAEAAADv/wIAAAADAAEAAADv/wEAAAADAAEAAADv/wAAAAADAAEAAADv////AAADAAEAAADv//7/AAADAAEAAADv//3/AAADAAAAAAD0//3/AAADAAAAAAD0/wUAAAADAAIAAAD0/wQAAAADAAEAAAD0/wMAAAADAAEAAAD0/wIAAAADAAEAAAD0/wEAAAADAAEAAAD0/wAAAAADAAEAAAD0////AAADAAEAAAD0//7/AAADAAEAAAA=")
 tile_set = ExtResource("6_5uqyg")
 
 [node name="WorldEnvironment" parent="." unique_id=534785055 instance=ExtResource("7_l4k58")]
@@ -114,8 +114,8 @@ Visible = false
 position = Vector2(-136, -223)
 
 [node name="StaticBody2D" parent="." unique_id=2099789688 instance=ExtResource("13_rx1bj")]
-position = Vector2(-159, -182)
-scale = Vector2(6.535, 1)
+position = Vector2(-155.00002, -182)
+scale = Vector2(6.765, 1.035)
 
 [node name="Key2" parent="." unique_id=853161413 instance=ExtResource("11_2ydrp")]
 position = Vector2(568, -159)
@@ -150,13 +150,13 @@ position = Vector2(464, -47)
 scale = Vector2(2, 23.76)
 
 [node name="Key6" parent="." unique_id=1312053194 instance=ExtResource("11_2ydrp")]
-position = Vector2(-140, -147)
+position = Vector2(-141, -147)
 AnotherAction = 2
 Respawn = false
 RespawnTime = 0.2
 
 [node name="Key7" parent="." unique_id=952137115 instance=ExtResource("11_2ydrp")]
-position = Vector2(-262, -137)
+position = Vector2(-263, -115)
 AnotherAction = 2
 Respawn = false
 RespawnTime = 0.2
@@ -165,7 +165,7 @@ RespawnTime = 0.2
 position = Vector2(-383, -55)
 
 [node name="Key8" parent="." unique_id=1453143128 instance=ExtResource("11_2ydrp")]
-position = Vector2(-372, -202)
+position = Vector2(-382, -203)
 Respawn = false
 
 [node name="Key9" parent="." unique_id=68694976 instance=ExtResource("11_2ydrp")]
@@ -173,39 +173,51 @@ position = Vector2(-383, -23)
 Respawn = false
 
 [node name="KillBox4" parent="." unique_id=2103914275 instance=ExtResource("8_ook7l")]
-position = Vector2(-182, 117.00001)
-scale = Vector2(2, 13)
+position = Vector2(-185, 117.000015)
+scale = Vector2(1.71, 13)
 
 [node name="KillBox14" parent="." unique_id=1213394176 instance=ExtResource("8_ook7l")]
-position = Vector2(-446, -164)
-scale = Vector2(2, 10.935)
+position = Vector2(-446, -136)
+scale = Vector2(2, 16.575)
 
 [node name="KillBox17" parent="." unique_id=1386857898 instance=ExtResource("8_ook7l")]
 position = Vector2(-312, 12.999999)
 scale = Vector2(2, 10.935)
 
+[node name="KillBox18" parent="." unique_id=1721636784 instance=ExtResource("8_ook7l")]
+position = Vector2(-332, -34)
+scale = Vector2(2, 3.83)
+
+[node name="KillBox19" parent="." unique_id=1611199299 instance=ExtResource("8_ook7l")]
+position = Vector2(-427.00003, -34)
+scale = Vector2(2, 3.83)
+
 [node name="KillBox10" parent="." unique_id=351719857 instance=ExtResource("8_ook7l")]
-position = Vector2(-88, -71)
+position = Vector2(-83, -71)
 scale = Vector2(2, 39.91)
 
 [node name="KillBox5" parent="." unique_id=1978477928 instance=ExtResource("8_ook7l")]
-position = Vector2(-259, -94)
+position = Vector2(-261, -72.99999)
 scale = Vector2(2.175, 1.385)
 
 [node name="KillBox8" parent="." unique_id=1812174176 instance=ExtResource("8_ook7l")]
-position = Vector2(-260, -197.00002)
-scale = Vector2(2.175, 3.66)
+position = Vector2(-263, -192.00002)
+scale = Vector2(2.175, 4.71)
+
+[node name="KillBox21" parent="." unique_id=1036335989 instance=ExtResource("8_ook7l")]
+position = Vector2(-219.99997, -209.99998)
+scale = Vector2(1.38, 4.71)
 
 [node name="KillBox12" parent="." unique_id=1352069086 instance=ExtResource("8_ook7l")]
-position = Vector2(-268.53006, -226.00003)
-scale = Vector2(7.57, 2.855)
+position = Vector2(-268.5301, -241.00003)
+scale = Vector2(7.57, 4.135)
 
 [node name="KillBox16" parent="." unique_id=1720643361 instance=ExtResource("8_ook7l")]
-position = Vector2(-250.99998, -86)
-scale = Vector2(9.615, 1.515)
+position = Vector2(-286, -64)
+scale = Vector2(5.355, 1.515)
 
 [node name="KillBox15" parent="." unique_id=1179655674 instance=ExtResource("8_ook7l")]
-position = Vector2(-336, -256)
+position = Vector2(-336.00003, -273)
 scale = Vector2(15.775, 1.03)
 
 [node name="KillBox13" parent="." unique_id=498759228 instance=ExtResource("12_m2vq2")]
@@ -216,9 +228,9 @@ position = Vector2(-152, -209)
 
 [node name="Rail" parent="." unique_id=607275562 instance=ExtResource("15_m07j1")]
 position = Vector2(-163, 11)
-points = PackedVector2Array(-6, 51, 1, 43, 3, 102, 55, 45, 50, -170, 39, -160)
+points = PackedVector2Array(-2, 52, 3, 45, 3, 102, 55, 45, 50, -148, 42, -131, 34, -130)
 KickMult = 50.0
 
 [node name="Key3" parent="." unique_id=1976609412 instance=ExtResource("11_2ydrp")]
-position = Vector2(-138, 51)
+position = Vector2(-139, 70)
 AnotherAction = 2

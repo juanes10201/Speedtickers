@@ -269,7 +269,15 @@ func array_to_vec3(arr: Array) -> Array[Vector3]:
 		out.append(Vector3(a[0], a[1], a[2]))
 	return out
 
+var ResUiReplay = preload("res://assets/Nodes/Ui/ui_replay.tscn")
+
+func _load_replay_ui() -> void:	
+	if (ResUiReplay != null):
+		var ResUiReplayInstance = ResUiReplay.instantiate()
+		if(ResUiReplayInstance != null): UI.add_child(ResUiReplayInstance)
+
 func _load_replay(Location : String) -> void:
+	_load_replay_ui()
 	var file = FileAccess.open(Location, FileAccess.READ)
 	print("Loaded Replay from path: " + Location)
 	if file:
