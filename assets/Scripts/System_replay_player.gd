@@ -26,6 +26,7 @@ func _ready() -> void:
 	CurrentTime = 0
 
 func Reset() -> void:
+	InitialTime = Time.get_ticks_msec()
 	Player.position = Player.OriginalPos
 	ReplayCurrentAction = -1
 	CurrentTime = -0.5
@@ -34,7 +35,7 @@ func Reset() -> void:
 
 func Play_action(A : String, Press : int):
 	print("Simulating Press of Action of type: " + str(A) + ", Condition: " + str(Press))
-	if(A == "reset"):
+	if(A == "player_reset"):
 		Reset()
 		return
 	if(Press == 1):

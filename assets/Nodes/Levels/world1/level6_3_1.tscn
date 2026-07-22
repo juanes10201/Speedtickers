@@ -41,6 +41,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_y3i1q"]
 resource_name = "move"
 length = 40.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,6 +58,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_b10uo"]
 resource_name = "move2"
 length = 40.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

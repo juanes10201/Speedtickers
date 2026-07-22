@@ -294,7 +294,7 @@ top_level = true
 position = Vector2(-630, -86)
 
 [node name="Enemy_Fish4" parent="." unique_id=2025301304 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("17_eyboq")]
-position = Vector2(120, 145)
+position = Vector2(87, 146)
 Activate_on_color = 1
 InitialMarker = NodePath("InitialMarkerCustom")
 EndMarker = NodePath("EndMarkerCustom")

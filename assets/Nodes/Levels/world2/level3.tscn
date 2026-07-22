@@ -334,6 +334,10 @@ MAX_SPEED = 800.0
 position = Vector2(213.00002, 333)
 scale = Vector2(1.135, 34.152)
 
+[node name="KillBox6" parent="." unique_id=564321000 instance=ExtResource("11_5f23v")]
+position = Vector2(213, -286.99997)
+scale = Vector2(1.135, 34.152)
+
 [node name="KillBox8" parent="." unique_id=978248748 instance=ExtResource("11_5f23v")]
 position = Vector2(303, 284)
 scale = Vector2(1.27, 2.355)
@@ -341,7 +345,3 @@ scale = Vector2(1.27, 2.355)
 [node name="KillBox9" parent="." unique_id=1626786048 instance=ExtResource("11_5f23v")]
 position = Vector2(303, 172.285)
 scale = Vector2(1.27, 1.255)
-
-[node name="KillBox6" parent="." unique_id=689861341 instance=ExtResource("11_5f23v")]
-position = Vector2(208, -219.885)
-scale = Vector2(1.61, 30.09)

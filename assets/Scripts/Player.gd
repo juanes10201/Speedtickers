@@ -827,7 +827,7 @@ func DoJump(delta : float = 1/60) -> void:
 		if(!WallJumped && abs(PositionDifference.x) > 1.0):
 			WallJumped = true
 			Speed.x = _vel_walljump
-			var _vel_dif = PositionDifference.x/delta/delta
+			var _vel_dif = PositionDifference.x/delta/60
 			if((WallJumpPreviousSide == Sides.RIGHT && _vel_dif < 0) || (WallJumpPreviousSide == Sides.LEFT && _vel_dif > 0)):
 				Speed.x += _vel_dif*.4
 			else: Speed.x += _vel_dif
@@ -890,6 +890,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	#if(OnWater && Slide):
 	#	Reset_Slide()
 	#print(PressingGroundSmash)
+	#print(Engine.get_frames_per_second())
 	if(JumpedUmbrella):
 		_Destroy_Tiles_Umbrella()
 	if(GroundSmash):
@@ -938,10 +939,11 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 			set_collision_mask_value(3, false)
 		#elif(Slide && velocity.y < 0):
 		#	Speed.x = SlideVelocity * Sliding
-	elif(PressedSlide):
+	if(PressedSlide && !is_action_pressed("player_slide")):
 		Reset_Slide()
 		Speed.x = 0
-	if(!is_action_pressed("player_slide")): PressedSlide = false
+		PressedSlide = false
+		print("reseted")
 	
 	#if(!SlidingInAir):
 		#strech_size(1, 1)
@@ -1098,7 +1100,7 @@ func On_Death():
 			ParticlesDeathAir.emitting = false
 			ParticlesDeathFloor.emitting = false
 			#get_parent()._play_state_tick(true)
-		if(!Edition.Is_in_editor && !ReplayStyle && !Global.LoadingReplay):# && ReplayAction == Global.ReplayStates.STOPPED):
+		if(!Edition.Is_in_editor && !ReplayStyle && !Global.LoadingReplay && ReplayAction != Global.ReplayStates.REPLAY):# && ReplayAction == Global.ReplayStates.STOPPED):
 			await(get_tree().create_timer(TimeDeath).timeout)
 			if get_tree():
 				get_tree().reload_current_scene() 

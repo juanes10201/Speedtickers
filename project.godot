@@ -41,6 +41,7 @@ SteamIntegration="*uid://te1b8a1y4six"
 [debug]
 
 file_logging/enable_file_logging=true
+gdscript/max_fps=60
 
 [dialogic]
 

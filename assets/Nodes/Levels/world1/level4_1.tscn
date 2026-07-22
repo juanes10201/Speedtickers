@@ -39,6 +39,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_6ubuh"]
 resource_name = "move"
 length = 40.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -427,7 +428,7 @@ position = Vector2(12.9999, -173)
 [node name="Key" parent="." unique_id=1065114445 instance=ExtResource("11_0c2tm")]
 position = Vector2(-24, -67)
 
-[node name="CollisionShape2D" parent="Key" index="1"]
+[node name="CollisionShape2D" parent="Key" index="1" unique_id=1250312501]
 position = Vector2(-0.5, 3)
 shape = SubResource("CapsuleShape2D_0c2tm")
 
