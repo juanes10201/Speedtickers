@@ -254,7 +254,7 @@ position = Vector2(-487.99997, -478.99997)
 position = Vector2(720, -535)
 
 [node name="WindSand2" type="Line2D" parent="." unique_id=1309318902 node_paths=PackedStringArray("Path", "RailedNodes") groups=["RailNodes"]]
-position = Vector2(42, -200)
+position = Vector2(80, -455)
 points = PackedVector2Array(-2, -31, -178.83499, 30.330002)
 width = 4.835
 width_curve = SubResource("Curve_wtfx3")

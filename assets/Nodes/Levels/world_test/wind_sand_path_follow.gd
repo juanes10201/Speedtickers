@@ -39,6 +39,8 @@ var Falling : bool = false
 @export var VisualInteracted : bool = false
 @export var VisualYOffsetWhenInteracted : float = -26.0
 
+@export var MoveBodiesAlong : bool = true
+
 func _ready() -> void:
 	if(Enabled):
 		restart()
@@ -233,7 +235,7 @@ func _block_speed_tick(delta: float) -> void:
 func _block_movement_tick(delta : float) -> void:
 	VelocityPosition = global_position - LastPosition
 	LastPosition = global_position
-	if(VelocityPosition.x != 0.0):
+	if(VelocityPosition.x != 0.0 && MoveBodiesAlong):
 		if(InteractingBodies.size() > 0):
 			for Body in InteractingBodies:
 				if(!Body.is_in_group("Player")):
