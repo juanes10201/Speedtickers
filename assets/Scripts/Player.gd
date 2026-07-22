@@ -277,7 +277,7 @@ func _load_replay_ui() -> void:
 		if(ResUiReplayInstance != null): UI.add_child(ResUiReplayInstance)
 
 func _load_replay(Location : String) -> void:
-	_load_replay_ui()
+	if(Global.LoadingReplay): _load_replay_ui()
 	var file = FileAccess.open(Location, FileAccess.READ)
 	print("Loaded Replay from path: " + Location)
 	if file:
@@ -643,6 +643,7 @@ func _pause_game() -> void:
 		_pause_game_no_menu()
 	else: 
 		_unpause_game()
+	
 
 func _pause_game_no_menu(State : bool = true) -> void:
 	print("Pause: " + str(State))
@@ -657,10 +658,22 @@ func _unpause_game() -> void:
 	pause_menu_instance.Transition.Anim.play("fade_movement")
 	ReturnToGameTime.start()
 	Pause_fadeout = true
-	
-	
+
+const pause_menu_path : String = "res://assets/Nodes/Obj/Ui/pause_menu.tscn"
+const next_world_ui_path : String = "res://assets/Nodes/Obj/Ui/next_world_menu.tscn"
+
+func spawn_next_world_ui() -> void:
+	_pause_game_no_menu(true)
+	spawn_ui_element(next_world_ui_path)
+
+func spawn_ui_element(path : String) -> void:
+	var load_node = load(path)
+	if (load_node):
+		var load_node_instance = load_node.instantiate()
+		UI.add_child(load_node_instance)
+
 func _spawn_pause_menu() -> void:
-	var pause_menu = preload("res://assets/Nodes/Obj/Ui/pause_menu.tscn")
+	var pause_menu = preload(pause_menu_path)
 	if (pause_menu):
 		pause_menu_instance = pause_menu.instantiate()
 		UI.add_child(pause_menu_instance)
@@ -1085,7 +1098,7 @@ func On_Death():
 			ParticlesDeathAir.emitting = false
 			ParticlesDeathFloor.emitting = false
 			#get_parent()._play_state_tick(true)
-		if(!Edition.Is_in_editor && !ReplayStyle):# && ReplayAction == Global.ReplayStates.STOPPED):
+		if(!Edition.Is_in_editor && !ReplayStyle && !Global.LoadingReplay):# && ReplayAction == Global.ReplayStates.STOPPED):
 			await(get_tree().create_timer(TimeDeath).timeout)
 			if get_tree():
 				get_tree().reload_current_scene() 

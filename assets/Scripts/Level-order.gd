@@ -163,8 +163,16 @@ func get_level_time(BSide : bool = false):
 	var Player = get_tree().get_nodes_in_group("GameTimer")[0] if get_tree().get_nodes_in_group("GameTimer").size() else null
 	return Player
 
+func change_to_next_level_with_completion_ui() -> void:
+	if(Global.Level+1 >= get_level_paths(Global.BSide)[get_world_order(Global.BSide)[Global.World]].size() ):
+		var _player = SaveGame.get_player()
+		if(_player):
+			_player.spawn_next_world_ui()
+	else:
+		change_to_next_level()
+
 func change_to_next_level() -> void:
-	if(Global.Level+1 > get_level_paths(Global.BSide)[get_world_order(Global.BSide)[Global.World]].size() ):
+	if(Global.Level+1 >= get_level_paths(Global.BSide)[get_world_order(Global.BSide)[Global.World]].size() ):
 		change_to_level(0, Global.World + 1, Global.BSide)
 	else:
 		change_to_level(Global.Level+1, Global.World, Global.BSide)
@@ -185,12 +193,15 @@ func change_to_level(Level : int , World : int, BSide : bool = false) -> void:
 		change_to_level_world_string(Level, CurrentWorld, BSide)
 
 func get_level_path(Level : int, World : String, BSide : bool) -> String:
-	return Prefix + str(World) + "/" + str(get_level_paths(BSide)[World][Level])
+	var _world_array : Array = get_level_paths(BSide)[World]
+	if(Level < _world_array.size()):
+		return Prefix + str(World) + "/" + str(_world_array[Level])
+	return ""
 
 func change_to_level_world_string(Level : int, World : String, BSide : bool = false) -> void:
 	Global.Level = Level
 	Global.World = get_world_number(World, BSide)
-	if(Level <= 0): Global.Level = 1
+	if(Level < 0): Global.Level = 1
 	if(Level >= get_level_paths(BSide)[World].size()):
 		Level = 0
 		World = get_world_order(BSide)[get_world_number(World, BSide)+1]

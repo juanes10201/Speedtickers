@@ -21,6 +21,14 @@ metadata/_edit_vertical_guides_ = [634.0]
 scale = Vector2(0.3, 0.3)
 transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
 
+[node name="Bg" type="Sprite2D" parent="CanvasLayer" unique_id=548554044]
+position = Vector2(670, 2056.6665)
+texture = ExtResource("6_88iya")
+
+[node name="TextReplay" type="Sprite2D" parent="CanvasLayer" unique_id=141363]
+position = Vector2(595.333, 1940.0039)
+texture = ExtResource("7_ghy84")
+
 [node name="ButtonNextPage" type="Button" parent="CanvasLayer" unique_id=1397729651]
 z_index = 1
 anchors_preset = 1
@@ -79,14 +87,6 @@ script = ExtResource("3_ips6y")
 BUTTON_ACTION = 10
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world2.tscn"
 HoverDif = 60.0
-
-[node name="Bg" type="Sprite2D" parent="CanvasLayer" unique_id=548554044]
-position = Vector2(670, 2056.6665)
-texture = ExtResource("6_88iya")
-
-[node name="TextReplay" type="Sprite2D" parent="CanvasLayer" unique_id=141363]
-position = Vector2(595.333, 1940.0039)
-texture = ExtResource("7_ghy84")
 
 [connection signal="button_down" from="CanvasLayer/ButtonNextPage" to="CanvasLayer/ButtonNextPage" method="_on_button_down"]
 [connection signal="pressed" from="CanvasLayer/ButtonNextPage" to="CanvasLayer/ButtonNextPage" method="_on_pressed"]

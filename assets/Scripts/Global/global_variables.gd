@@ -56,7 +56,7 @@ var DebugLevelVal : int = -99
 var World : int = 0
 var BSide : bool = false
 
-var LoadingReplay : bool = true
+var LoadingReplay : bool = false
 var ReplayLocation : String = ""
 
 var WorldTimeSec : float = 0.0

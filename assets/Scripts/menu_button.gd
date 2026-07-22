@@ -46,6 +46,8 @@ var tween_normal = null
 
 @onready var Parent = get_parent()
 
+@export var WaitTime : float
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#if(text == "1"):
@@ -66,6 +68,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(disabled): return
 	if(DiscShader):
 		if(!DiscShaderInitialTilt):
 			DiscShaderInitialTilt = material.get_shader_parameter("max_tilt")
@@ -140,6 +143,8 @@ func _on_pressed() -> void:
 		Transition = $"../Transition" if $"../Transition" else $"../../Transition"
 		Transition.Anim.play("fade_movement")
 		await get_tree().create_timer(1.4).timeout
+	if(WaitTime):
+		await get_tree().create_timer(WaitTime).timeout
 	if(BUTTON_ACTION == Global.BUTTON_ACTIONS.resume_game && Player):
 		Player._pause_game()
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_starting_with):

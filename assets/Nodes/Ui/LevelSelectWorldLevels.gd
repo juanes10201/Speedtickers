@@ -93,6 +93,7 @@ func _reload_page() -> void:
 		button.ADITIONAL_ARGUMENT = LevelManager.get_world_order(Bside)[CurrentWorld]
 		if(_count >= LevelManager.get_amount_levels_in_world(CurrentWorld, Bside) ):
 			button.hide()
+			button.disabled = true
 			if(HasBossInPage && !PlacedBossButton):
 				PlacedBossButton = true
 				if(BossLevelSelectButton):
@@ -100,6 +101,7 @@ func _reload_page() -> void:
 					BossLevelSelectButton.ADITIONAL_ARGUMENT = LevelManager.BossesLevelPath[CurrentWorld]
 		else:
 			button.show()
+			button.disabled = false
 			if(AmountLevelsLabel):
 				AmountLevelsLabel.text = str(LevelManager.get_total_number_level(Page*AmountButtons+_internal_count+1, CurrentWorld, Bside) ) + "/" + str(LevelManager.get_amount_total_levels(Bside)+1)
 				if(ReplayEnabled):
@@ -109,6 +111,7 @@ func _reload_page() -> void:
 		_internal_count += 1
 		_count += 1
 	BossLevelSelectButton.visible = PlacedBossButton
+	Global.BSide = Bside
 
 func _process(delta: float) -> void:
 	replay_tick()

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dmxctc5pabvlj"]
+
+[ext_resource type="PackedScene" uid="uid://l4jvo6ayxlkp" path="res://assets/Nodes/Obj/Ui/pause_menu.tscn" id="1_cdhi3"]
+
+[node name="NextWorldMenu" type="Control" unique_id=1019743494]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pause_menu" parent="." unique_id=1035125080 instance=ExtResource("1_cdhi3")]
+
+[node name="Transition2" parent="pause_menu" index="1" unique_id=2040440450]
+visible = true
+
+[node name="PauseMenuButton2" parent="pause_menu" index="8" unique_id=1844969190]
+BUTTON_ACTION = 9
+
+[editable path="pause_menu"]

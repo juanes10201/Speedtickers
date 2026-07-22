@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b40hrfks2w7u6" path="res://assets/Scripts/PauseMenuLogic.gd" id="1_lmvks"]
 [ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://assets/Sprites/screenshot.png" id="2_p57sw"]
+[ext_resource type="Texture2D" uid="uid://47858xfywjlf" path="res://md_images/SteamImages/Screenshots/1.png" id="2_ud0gp"]
+[ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="3_aiwrn"]
 [ext_resource type="Texture2D" uid="uid://b60whtdipdvhj" path="res://assets/Sprites/menus/Pause/bg.png" id="3_k4rge"]
 [ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Scripts/PauseMenuTransition.gd" id="4_37ts2"]
 [ext_resource type="FontFile" uid="uid://d3ebca3t4i171" path="res://assets/Fonts/Ace Futurism.ttf" id="5_rmh30"]
@@ -281,6 +283,30 @@ tracks/20/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Transition2:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-807, 448)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("../Transition2:self_modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1jvlq"]
 resource_name = "fade_movement"
@@ -523,6 +549,30 @@ tracks/19/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../Transition2:position")
+tracks/20/interp = 2
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-807, 448), Vector2(470.14282, 405.2576), Vector2(687, 398)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Transition2:self_modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_fmfnn"]
@@ -958,6 +1008,16 @@ animations = [{
 layer = 2
 script = ExtResource("1_lmvks")
 
+[node name="1" type="Sprite2D" parent="." unique_id=242848483]
+visible = false
+position = Vector2(655, 346)
+texture = ExtResource("2_ud0gp")
+
+[node name="Transition2" type="Sprite2D" parent="." unique_id=2040440450]
+visible = false
+position = Vector2(-807, 448)
+texture = ExtResource("3_aiwrn")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1337696596]
 visible = false
 position = Vector2(589, 323)
@@ -1027,8 +1087,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1096.0
 offset_top = 424.0
-offset_right = -754.9844
-offset_bottom = 619.99866
+offset_right = -754.98486
+offset_bottom = 619.99854
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("9_cas78")
 icon = ExtResource("11_xu5ud")
@@ -1046,8 +1106,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -744.0
 offset_top = 519.0
-offset_right = -449.33203
-offset_bottom = 622.9991
+offset_right = -449.3318
+offset_bottom = 622.99994
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_yw3r3")
 icon = ExtResource("12_r64v8")
@@ -1066,8 +1126,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -744.0
 offset_top = 419.0
-offset_right = -448.7693
-offset_bottom = 520.00134
+offset_right = -448.7683
+offset_bottom = 520.00146
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_0ptwe")
 icon = ExtResource("8_m3xkk")
