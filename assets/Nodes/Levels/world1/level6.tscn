@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_7x4em"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="5_fb7hv"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="6_07box"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="8_kaffo"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="8_ufar1"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="10_tsdul"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="12_2ywyj"]
@@ -178,6 +179,8 @@ script = ExtResource("3_my8pa")
 wait_time = 8.0
 one_shot = true
 autostart = true
+script = ExtResource("8_kaffo")
+SpeedrunWaitTime = 3.5
 
 [node name="Flag" parent="." unique_id=1405082742 instance=ExtResource("5_7x4em")]
 position = Vector2(68, -178)
@@ -327,3 +330,8 @@ texture_scale = 1.17
 height = 13.0
 script = ExtResource("13_d4cgy")
 CurrentAnimation = 1
+
+[node name="KillBox2" parent="." unique_id=1386857898 instance=ExtResource("5_fb7hv")]
+position = Vector2(-91, -272)
+scale = Vector2(9999, 1)
+Visible = false

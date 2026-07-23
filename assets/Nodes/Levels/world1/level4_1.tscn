@@ -617,6 +617,11 @@ height = 13.0
 script = ExtResource("5_a4wmf")
 CurrentAnimation = 1
 
+[node name="KillBox2" parent="." unique_id=1386857898 instance=ExtResource("12_obget")]
+position = Vector2(-91, -272)
+scale = Vector2(9999, 1)
+Visible = false
+
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]
 [connection signal="body_entered" from="TextArea/EraseText" to="TextArea" method="_on_erase_text_body_entered"]
 [connection signal="body_entered" from="TextArea2" to="TextArea2" method="_on_body_entered"]

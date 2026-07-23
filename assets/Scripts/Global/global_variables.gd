@@ -46,6 +46,14 @@ enum LASER_COLORS{
 	YELLOW = 5
 }
 
+enum CHALLENGES{
+	none = 0,
+	inverted_gravity,
+	no_restart,
+	speedrun
+}
+var Selected_Challenge : CHALLENGES = CHALLENGES.speedrun
+
 var Player = null
 
 #Order of levels

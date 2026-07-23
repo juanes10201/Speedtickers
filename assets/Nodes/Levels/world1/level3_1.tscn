@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_k0btq"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_qsjwe"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="6_76ppp"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="6_mmydu"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="7_njdfe"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="8_4jr87"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="9_a53cf"]
@@ -203,6 +204,8 @@ script = ExtResource("4_k0btq")
 wait_time = 8.0
 one_shot = true
 autostart = true
+script = ExtResource("6_mmydu")
+SpeedrunWaitTime = 3.0
 
 [node name="Flag" parent="." unique_id=456376117 instance=ExtResource("5_qsjwe")]
 position = Vector2(193, -163)
@@ -238,6 +241,7 @@ position = Vector2(-62, -231)
 
 [node name="Player3" parent="." unique_id=727626809 groups=["PlayerReplay"] instance=ExtResource("12_njdfe")]
 position = Vector2(-319.00003, -22)
+IsMainPlayer = false
 CountTime = false
 ReplayAction = 0
 ReplayStyle = true
@@ -463,3 +467,8 @@ energy = 0.8
 texture = SubResource("GradientTexture2D_4jr87")
 texture_scale = 1.6
 height = 13.0
+
+[node name="KillBox2" parent="." unique_id=1386857898 instance=ExtResource("9_a53cf")]
+position = Vector2(-91, -272)
+scale = Vector2(9999, 1)
+Visible = false

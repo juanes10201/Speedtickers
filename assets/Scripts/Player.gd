@@ -63,6 +63,7 @@ var DoubleJumpEnabled : bool = false
 var DoubleJumped : bool = false
 
 #region Export variables
+@export var IsMainPlayer : bool = true
 @export var EnableParticles : bool = true
 @export var RetroStyle : bool = false
 @export var PlayIntro : bool = false
@@ -613,7 +614,7 @@ func _fade_sound(body):
 func _set_time_state(State : bool):
 	if(State):
 		Time_Left.paused = false
-	else:
+	elif(Global.Selected_Challenge != Global.CHALLENGES.speedrun):
 		Time_Left.wait_time = 999999.0
 		Time_Left.start()
 

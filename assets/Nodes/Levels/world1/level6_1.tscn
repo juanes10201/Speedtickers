@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Scripts/DynamicLightAnimation.gd" id="6_0svnx"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="6_l234x"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="7_0svnx"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="8_ks4qq"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="8_udtjn"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="9_gs45k"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="10_1o07k"]
@@ -427,6 +428,8 @@ script = ExtResource("7_0svnx")
 wait_time = 8.0
 one_shot = true
 autostart = true
+script = ExtResource("8_ks4qq")
+SpeedrunWaitTime = 3.5
 
 [node name="Flag" parent="." unique_id=1575825407 instance=ExtResource("8_udtjn")]
 position = Vector2(160, -119)
@@ -529,6 +532,7 @@ position = Vector2(-528, -391)
 
 [node name="Player3" parent="." unique_id=1280739183 groups=["PlayerReplay"] instance=ExtResource("17_l234x")]
 position = Vector2(-288.00003, -279)
+IsMainPlayer = false
 CountTime = false
 ReplayAction = 0
 ReplayStyle = true
@@ -700,5 +704,10 @@ texture_scale = 1.17
 height = 13.0
 script = ExtResource("6_0svnx")
 CurrentAnimation = 1
+
+[node name="KillBox4" parent="." unique_id=1386857898 instance=ExtResource("4_7hvvm")]
+position = Vector2(-49, -436)
+scale = Vector2(9999, 1)
+Visible = false
 
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]

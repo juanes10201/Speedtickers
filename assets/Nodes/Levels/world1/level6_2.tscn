@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="4_0ax2o"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="5_v62b1"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="6_kg7ln"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="7_8vb7y"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="7_bme14"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="8_qfcf4"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="9_amwd2"]
@@ -230,7 +231,7 @@ script = ExtResource("2_trt81")
 libraries/ = SubResource("AnimationLibrary_klj0i")
 
 [node name="KillBox" parent="." unique_id=1108455513 instance=ExtResource("4_0ax2o")]
-position = Vector2(-19.000061, 88)
+position = Vector2(-66, -29)
 scale = Vector2(54.01218, 1)
 Visible = false
 CanChange = false
@@ -320,6 +321,8 @@ script = ExtResource("7_bme14")
 wait_time = 8.0
 one_shot = true
 autostart = true
+script = ExtResource("7_8vb7y")
+SpeedrunWaitTime = 3.3
 
 [node name="Flag" parent="." unique_id=1007730701 instance=ExtResource("8_qfcf4")]
 position = Vector2(160, -151)
@@ -568,5 +571,10 @@ texture = SubResource("GradientTexture2D_qfcf4")
 texture_scale = 1.17
 height = 13.0
 script = ExtResource("17_v62b1")
+
+[node name="KillBox4" parent="." unique_id=1386857898 instance=ExtResource("4_0ax2o")]
+position = Vector2(-78, -437)
+scale = Vector2(9999, 1)
+Visible = false
 
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]

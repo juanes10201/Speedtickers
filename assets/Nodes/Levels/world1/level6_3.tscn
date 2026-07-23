@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="5_f5bsi"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="6_7cmh8"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="7_a2p30"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="8_0xq1b"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="8_v138t"]
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="9_c6omg"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="10_1l7hu"]
@@ -439,6 +440,8 @@ script = ExtResource("7_a2p30")
 wait_time = 8.0
 one_shot = true
 autostart = true
+script = ExtResource("8_0xq1b")
+SpeedrunWaitTime = 4.0
 
 [node name="Flag" parent="." unique_id=31697113 instance=ExtResource("8_v138t")]
 position = Vector2(192, 17)
@@ -711,5 +714,10 @@ texture = SubResource("GradientTexture2D_v138t")
 texture_scale = 2.6
 height = 13.0
 script = ExtResource("16_eqw1s")
+
+[node name="KillBox2" parent="." unique_id=1386857898 instance=ExtResource("4_yf4j3")]
+position = Vector2(-91, -272)
+scale = Vector2(9999, 1)
+Visible = false
 
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]
