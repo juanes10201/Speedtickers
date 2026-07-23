@@ -9,7 +9,7 @@ func _ready() -> void:
 	elif(Global.Selected_Challenge == Global.CHALLENGES.speedrun):
 		Player.CountTime = true
 		var TimeLeft : Timer = $"../../Time_Left"
-		if(TimeLeft.SpeedrunWaitTime != -1):
+		if("SpeedrunWaitTime" in TimeLeft && TimeLeft.SpeedrunWaitTime != -1):
 			TimeLeft.wait_time = TimeLeft.SpeedrunWaitTime
 			TimeLeft.start()
 

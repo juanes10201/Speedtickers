@@ -196,6 +196,7 @@ wait_time = 12.0
 one_shot = true
 autostart = true
 script = ExtResource("7_h48im")
+SpeedrunWaitTime = 5.0
 
 [node name="CanvasLayer" parent="." unique_id=1752908476 instance=ExtResource("7_l4ctg")]
 
@@ -229,19 +230,19 @@ is_falling = true
 MAX_SPEED = 100.0
 
 [node name="KillBox7" parent="." unique_id=1142266151 instance=ExtResource("10_pj0ol")]
-position = Vector2(-176.925, -195)
-scale = Vector2(2, 1)
+position = Vector2(-183.925, -210)
+scale = Vector2(0.995, 1)
 
 [node name="KillBox9" parent="." unique_id=611375000 instance=ExtResource("10_pj0ol")]
 position = Vector2(-144, -98)
 scale = Vector2(3, 2.5)
 
 [node name="KillBox11" parent="." unique_id=610312102 instance=ExtResource("10_pj0ol")]
-position = Vector2(-183, 13)
+position = Vector2(-183, 8)
 scale = Vector2(0.945, 1)
 
 [node name="KillBox12" parent="." unique_id=781199417 instance=ExtResource("10_pj0ol")]
-position = Vector2(-104, 13)
+position = Vector2(-104, 8)
 scale = Vector2(0.945, 1)
 
 [node name="KillBox14" parent="." unique_id=250738089 instance=ExtResource("10_pj0ol")]
@@ -261,8 +262,8 @@ position = Vector2(-126, 319)
 scale = Vector2(1.72, 1)
 
 [node name="KillBox8" parent="." unique_id=1997273709 instance=ExtResource("10_pj0ol")]
-position = Vector2(-110.75499, -195)
-scale = Vector2(2.045, 1)
+position = Vector2(-101.75499, -210)
+scale = Vector2(0.87, 1)
 
 [node name="AmbientParticles" parent="." unique_id=271991172 instance=ExtResource("12_g843m")]
 position = Vector2(-139, -427)

@@ -182,6 +182,7 @@ wait_time = 18.0
 one_shot = true
 autostart = true
 script = ExtResource("5_f1b55")
+SpeedrunWaitTime = 10.0
 
 [node name="CanvasLayer" parent="." unique_id=1062130505 instance=ExtResource("7_wuwcv")]
 
