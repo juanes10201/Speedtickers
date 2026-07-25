@@ -560,6 +560,10 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("3_mr0pl")
 
+[node name="InvertedGravityInitialPosMarker" type="Marker2D" parent="Player" unique_id=1081810175]
+top_level = true
+position = Vector2(-280, -183)
+
 [node name="KillBox4" parent="." unique_id=1386857898 instance=ExtResource("11_1dasu")]
 position = Vector2(-95, -401)
 scale = Vector2(58.64, 1)

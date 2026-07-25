@@ -60,6 +60,60 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
+[sub_resource type="Gradient" id="Gradient_vmlh1"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oq6ls"]
+gradient = SubResource("Gradient_vmlh1")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_oq6ls"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kdsa1"]
+gradient = SubResource("Gradient_oq6ls")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_8vuuc"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8fc2q"]
+gradient = SubResource("Gradient_8vuuc")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_lhkcl"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jlc0c"]
+gradient = SubResource("Gradient_lhkcl")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_jfyc5"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e44cq"]
+gradient = SubResource("Gradient_jfyc5")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_y6xr4"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jfyc5"]
+gradient = SubResource("Gradient_y6xr4")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
 [sub_resource type="GDScript" id="GDScript_kdu5x"]
 script/source = "extends CanvasLayer
 @export var ShowFadeIn : bool = true
@@ -146,60 +200,6 @@ animations = [{
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kdsa1"]
 light_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_vmlh1"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_oq6ls"]
-gradient = SubResource("Gradient_vmlh1")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_oq6ls"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kdsa1"]
-gradient = SubResource("Gradient_oq6ls")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_8vuuc"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8fc2q"]
-gradient = SubResource("Gradient_8vuuc")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_lhkcl"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jlc0c"]
-gradient = SubResource("Gradient_lhkcl")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_jfyc5"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e44cq"]
-gradient = SubResource("Gradient_jfyc5")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_y6xr4"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jfyc5"]
-gradient = SubResource("Gradient_y6xr4")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
 [node name="Node2D" type="Node2D" unique_id=703607873]
 position = Vector2(0, -1)
 
@@ -238,123 +238,6 @@ texture_repeat = 2
 tile_map_data = PackedByteArray("AAAEAPb/AQABAAYAABAEAPf/AQABAAcAABA=")
 tile_set = ExtResource("3_2oxv3")
 script = ExtResource("4_diu55")
-
-[node name="Player2" parent="." unique_id=2118202318 groups=["PlayerReplay"] instance=ExtResource("5_jfyc5")]
-position = Vector2(-328, -66)
-IsMainPlayer = false
-CountTime = false
-ReplayAction = 0
-ReplayStyle = true
-
-[node name="Player" parent="." unique_id=1019365591 instance=ExtResource("5_cyxtg")]
-position = Vector2(-317.00003, -65)
-CountTime = false
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=473842809]
-position = Vector2(34.72986, -104.212326)
-offset = Vector2(-28.055, 23.85)
-zoom = Vector2(2.12, 2.12)
-limit_left = -378
-limit_top = -360
-limit_right = 158
-limit_bottom = 0
-limit_smoothed = true
-script = ExtResource("6_a5x1v")
-
-[node name="CanvasLayer" parent="." unique_id=407845698 instance=ExtResource("7_n014a")]
-script = SubResource("GDScript_kdu5x")
-
-[node name="Time_Left" type="Timer" parent="." unique_id=2147052346 groups=["GameTimer"]]
-wait_time = 10.0
-one_shot = true
-autostart = true
-script = ExtResource("9_iw150")
-SpeedrunWaitTime = 5.0
-
-[node name="WorldEnvironment" parent="." unique_id=608638154 instance=ExtResource("9_6deub")]
-environment = SubResource("Environment_vmlh1")
-
-[node name="AmbientParticles" parent="." unique_id=315233368 instance=ExtResource("10_rqqp7")]
-position = Vector2(-103, -242)
-
-[node name="KillBox" parent="." unique_id=1273952108 instance=ExtResource("11_k2ily")]
-position = Vector2(-108, 34)
-scale = Vector2(58.64, 1)
-Visible = false
-
-[node name="KillBox" parent="KillBox" unique_id=1386857898 instance=ExtResource("11_k2ily")]
-position = Vector2(-108.42428, -446)
-scale = Vector2(58.64, 1)
-Visible = false
-
-[node name="Tutorial" type="Node2D" parent="." unique_id=898310837]
-material = ExtResource("12_oq6ls")
-position = Vector2(-188, -205)
-
-[node name="DashButton2" type="AnimatedSprite2D" parent="Tutorial" unique_id=823325995]
-self_modulate = Color(1, 1, 1, 0.8627451)
-use_parent_material = true
-position = Vector2(-29, -1)
-sprite_frames = SubResource("SpriteFrames_kdsa1")
-script = ExtResource("14_oq6ls")
-ReadFromReplay = true
-ButtonToPress = "ui_right"
-
-[node name="DashButton" type="AnimatedSprite2D" parent="Tutorial" unique_id=169715356]
-self_modulate = Color(1, 1, 1, 0.8627451)
-use_parent_material = true
-position = Vector2(-14.38501, -8.650604)
-sprite_frames = SubResource("SpriteFrames_8fc2q")
-script = ExtResource("14_oq6ls")
-ReadFromReplay = true
-
-[node name="DashTutorial2" type="RichTextLabel" parent="Tutorial" unique_id=669944912 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
-material = SubResource("CanvasItemMaterial_kdsa1")
-offset_left = -117.38501
-offset_top = -21.650604
-offset_right = 24.61499
-offset_bottom = 15.349396
-theme_override_fonts/normal_font = ExtResource("12_fneve")
-text = "
-Try mastering
-Wallclimbing
-
-Try keeping pressed both to scale further"
-fit_content = true
-script = ExtResource("16_8fc2q")
-Animate = true
-TextDelay = NodePath("TextDelay")
-VoiceDelay = NodePath("VoiceDelay")
-Voice = NodePath("Voice")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextDelay" type="Timer" parent="Tutorial/DashTutorial2" unique_id=1039926505]
-wait_time = 0.00999999999999999
-one_shot = true
-
-[node name="VoiceDelay" type="Timer" parent="Tutorial/DashTutorial2" unique_id=515393732]
-wait_time = 0.05
-one_shot = true
-
-[node name="Voice" type="AudioStreamPlayer" parent="Tutorial/DashTutorial2" unique_id=1453773123]
-stream = ExtResource("17_jlc0c")
-volume_db = -20.0
-
-[node name="falling_sand" parent="." unique_id=280544768 instance=ExtResource("16_oq6ls")]
-position = Vector2(-42, -232)
-MAX_SPEED = 200.0
-
-[node name="falling_sand2" parent="." unique_id=1226261545 instance=ExtResource("16_oq6ls")]
-position = Vector2(-26, -232)
-MAX_SPEED = 200.0
-
-[node name="falling_sand3" parent="." unique_id=420639614 instance=ExtResource("16_oq6ls")]
-position = Vector2(-10, -232)
-MAX_SPEED = 200.0
-
-[node name="falling_sand4" parent="." unique_id=888209280 instance=ExtResource("16_oq6ls")]
-position = Vector2(6, -232)
-MAX_SPEED = 200.0
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=257632380]
 position = Vector2(54.000015, -72)
@@ -534,3 +417,124 @@ CurrentAnimation = 1
 [node name="Flag" parent="PointLight2D47" unique_id=958854612 instance=ExtResource("8_r8e1x")]
 position = Vector2(28.833908, 47.68403)
 scale = Vector2(0.6663385, 0.7012358)
+
+[node name="Player2" parent="." unique_id=2118202318 groups=["PlayerReplay"] instance=ExtResource("5_jfyc5")]
+position = Vector2(-328, -66)
+IsMainPlayer = false
+CountTime = false
+ReplayAction = 0
+ReplayStyle = true
+
+[node name="Player" parent="." unique_id=1019365591 instance=ExtResource("5_cyxtg")]
+position = Vector2(-317.00003, -65)
+CountTime = false
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=473842809]
+position = Vector2(34.72986, -104.212326)
+offset = Vector2(-28.055, 23.85)
+zoom = Vector2(2.12, 2.12)
+limit_left = -378
+limit_top = -360
+limit_right = 158
+limit_bottom = 0
+limit_smoothed = true
+script = ExtResource("6_a5x1v")
+
+[node name="InvertedGravityInitialPosMarker" type="Marker2D" parent="Player" unique_id=332868685]
+top_level = true
+position = Vector2(-323, -97)
+
+[node name="CanvasLayer" parent="." unique_id=407845698 instance=ExtResource("7_n014a")]
+script = SubResource("GDScript_kdu5x")
+
+[node name="Time_Left" type="Timer" parent="." unique_id=2147052346 groups=["GameTimer"]]
+wait_time = 10.0
+one_shot = true
+autostart = true
+script = ExtResource("9_iw150")
+SpeedrunWaitTime = 5.0
+
+[node name="WorldEnvironment" parent="." unique_id=608638154 instance=ExtResource("9_6deub")]
+environment = SubResource("Environment_vmlh1")
+
+[node name="AmbientParticles" parent="." unique_id=315233368 instance=ExtResource("10_rqqp7")]
+position = Vector2(-103, -242)
+
+[node name="KillBox" parent="." unique_id=1273952108 instance=ExtResource("11_k2ily")]
+position = Vector2(-108, 34)
+scale = Vector2(58.64, 1)
+Visible = false
+
+[node name="KillBox" parent="KillBox" unique_id=1386857898 instance=ExtResource("11_k2ily")]
+position = Vector2(-108.42428, -446)
+scale = Vector2(58.64, 1)
+Visible = false
+
+[node name="Tutorial" type="Node2D" parent="." unique_id=898310837]
+material = ExtResource("12_oq6ls")
+position = Vector2(-188, -205)
+
+[node name="DashButton2" type="AnimatedSprite2D" parent="Tutorial" unique_id=823325995]
+self_modulate = Color(1, 1, 1, 0.8627451)
+use_parent_material = true
+position = Vector2(-29, -1)
+sprite_frames = SubResource("SpriteFrames_kdsa1")
+script = ExtResource("14_oq6ls")
+ReadFromReplay = true
+ButtonToPress = "ui_right"
+
+[node name="DashButton" type="AnimatedSprite2D" parent="Tutorial" unique_id=169715356]
+self_modulate = Color(1, 1, 1, 0.8627451)
+use_parent_material = true
+position = Vector2(-14.38501, -8.650604)
+sprite_frames = SubResource("SpriteFrames_8fc2q")
+script = ExtResource("14_oq6ls")
+ReadFromReplay = true
+
+[node name="DashTutorial2" type="RichTextLabel" parent="Tutorial" unique_id=669944912 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_kdsa1")
+offset_left = -117.38501
+offset_top = -21.650604
+offset_right = 24.61499
+offset_bottom = 15.349396
+theme_override_fonts/normal_font = ExtResource("12_fneve")
+text = "
+Try mastering
+Wallclimbing
+
+Try keeping pressed both to scale further"
+fit_content = true
+script = ExtResource("16_8fc2q")
+Animate = true
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="Tutorial/DashTutorial2" unique_id=1039926505]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="Tutorial/DashTutorial2" unique_id=515393732]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="Tutorial/DashTutorial2" unique_id=1453773123]
+stream = ExtResource("17_jlc0c")
+volume_db = -20.0
+
+[node name="falling_sand" parent="." unique_id=280544768 instance=ExtResource("16_oq6ls")]
+position = Vector2(-42, -232)
+MAX_SPEED = 200.0
+
+[node name="falling_sand2" parent="." unique_id=1226261545 instance=ExtResource("16_oq6ls")]
+position = Vector2(-26, -232)
+MAX_SPEED = 200.0
+
+[node name="falling_sand3" parent="." unique_id=420639614 instance=ExtResource("16_oq6ls")]
+position = Vector2(-10, -232)
+MAX_SPEED = 200.0
+
+[node name="falling_sand4" parent="." unique_id=888209280 instance=ExtResource("16_oq6ls")]
+position = Vector2(6, -232)
+MAX_SPEED = 200.0

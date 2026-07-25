@@ -388,20 +388,6 @@ tile_set = ExtResource("4_y6xr4")
 tile_map_data = PackedByteArray("AAD//wcAAQAJABMAAAD//wgAAQAJABQAAAD//wkAAQAJABUAAAAAAAcAAQAKABMAAAAAAAgAAQAKABQAAAAAAAkAAQAKABUAAAABAAcAAQALABMAAAABAAgAAQALABQAAAABAAkAAQALABUAAAACAAcAAQAMABMAAAACAAgAAQAMABQAAAACAAkAAQAMABUAAAADAAcAAQANABMAAAADAAgAAQANABQAAAADAAkAAQANABUAAAAEAAcAAQAOABMAAAAEAAgAAQAOABQAAAAEAAkAAQAOABUAAAD6//P/AQAJABYAAAD7//P/AQAKABYAAAD8//P/AQALABYAAAD9//P/AQAMABYAAAD6/wcAAQAKAA4AAAD7/wcAAQALAA4AAAD8/wcAAQAMAA4AAAD2//X/AQAKAA8AAAD3//X/AQALAA8AAAD4//X/AQAMAA8AAAD5//X/AQANAA8AAAABAAwAAQAYAAYAAAABAA0AAQAYAAcAAAACAAwAAQAZAAYAAAACAA0AAQAZAAcAAADu//b/AQAcABMAAADu//f/AQAcABQAAADv//b/AQAdABMAAADv//f/AQAdABQAAADw//b/AQAeABMAAADw//f/AQAeABQAAADu//X/AQABAAsAAADv//X/AQACAAsAAADw//X/AQACAAsAAADx//X/AQADAAsAAAA=")
 tile_set = ExtResource("4_y6xr4")
 
-[node name="Player" parent="." unique_id=950530601 instance=ExtResource("5_ex3gg")]
-position = Vector2(-285, -18)
-CountTime = false
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1835686351]
-position = Vector2(30, 26.053)
-zoom = Vector2(2.08, 2.08)
-limit_left = -403
-limit_right = 170
-limit_bottom = 299
-limit_smoothed = true
-position_smoothing_enabled = true
-script = ExtResource("6_vfkf5")
-
 [node name="Time_Left" type="Timer" parent="." unique_id=238295786 groups=["GameTimer"]]
 wait_time = 10.0
 one_shot = true
@@ -860,6 +846,24 @@ texture = SubResource("GradientTexture2D_e34pc")
 texture_scale = 2.57
 height = 13.0
 script = ExtResource("23_2utor")
+
+[node name="Player" parent="." unique_id=950530601 instance=ExtResource("5_ex3gg")]
+position = Vector2(-285, -18)
+CountTime = false
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1835686351]
+position = Vector2(30, 26.053)
+zoom = Vector2(2.08, 2.08)
+limit_left = -403
+limit_right = 170
+limit_bottom = 299
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("6_vfkf5")
+
+[node name="InvertedGravityInitialPosMarker" type="Marker2D" parent="Player" unique_id=1135333241]
+top_level = true
+position = Vector2(-31, 39)
 
 [connection signal="body_entered" from="TimeStop" to="TimeStop" method="_on_body_entered"]
 [connection signal="body_entered" from="TimeStop/StopRemover" to="TimeStop" method="_on_stop_remover_body_entered"]

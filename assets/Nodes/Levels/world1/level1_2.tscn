@@ -55,40 +55,6 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
-[sub_resource type="GDScript" id="GDScript_kdu5x"]
-script/source = "extends CanvasLayer
-@export var ShowFadeIn : bool = true
-@export var ShowFadeOut : bool = false
-@export var ShowTimer : bool = true
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
-[sub_resource type="Environment" id="Environment_vmlh1"]
-background_mode = 3
-glow_enabled = true
-glow_levels/3 = 0.0
-glow_levels/6 = 0.97
-glow_intensity = 0.21
-glow_strength = 1.27
-glow_bloom = 0.03
-glow_hdr_threshold = 1.29
-adjustment_enabled = true
-adjustment_brightness = 1.05
-adjustment_saturation = 1.15
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oq6ls"]
-shader = ExtResource("12_dyhps")
-shader_parameter/jiggle = 0.515
-shader_parameter/speed = 2.21
-
 [sub_resource type="Gradient" id="Gradient_vmlh1"]
 offsets = PackedFloat32Array(0, 0.65238094)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -152,6 +118,40 @@ gradient = SubResource("Gradient_jfyc5")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
 
+[sub_resource type="GDScript" id="GDScript_kdu5x"]
+script/source = "extends CanvasLayer
+@export var ShowFadeIn : bool = true
+@export var ShowFadeOut : bool = false
+@export var ShowTimer : bool = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Environment" id="Environment_vmlh1"]
+background_mode = 3
+glow_enabled = true
+glow_levels/3 = 0.0
+glow_levels/6 = 0.97
+glow_intensity = 0.21
+glow_strength = 1.27
+glow_bloom = 0.03
+glow_hdr_threshold = 1.29
+adjustment_enabled = true
+adjustment_brightness = 1.05
+adjustment_saturation = 1.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oq6ls"]
+shader = ExtResource("12_dyhps")
+shader_parameter/jiggle = 0.515
+shader_parameter/speed = 2.21
+
 [node name="Node2D" type="Node2D" unique_id=899246366]
 position = Vector2(0, -1)
 
@@ -183,58 +183,6 @@ texture_repeat = 2
 tile_map_data = PackedByteArray("AADw/+v/AQABAAsAAADu//n/AQAbABEAAADu//r/AQAbABIAAADu//v/AQAJABIAAADt//n/AQAaABEAAADt//r/AQAaABIAAADt//v/AQAIABIAAADy/+v/AQADAAsAAADy/+z/AQAJAAsAAADy/+3/AQAJAAwAAADy/+7/AQAJAA0AAADy/+//AQAJAA4AAADy//D/AQAJAA8AAADx/+v/AQACAAsAAADx/+z/AQAIAAsAAADx/+3/AQAIAAwAAADx/+7/AQAIAA0AAADx/+//AQAIAA4AAADx//D/AQAIAA8AAAA=")
 tile_set = ExtResource("3_3av5j")
 script = ExtResource("4_w44gu")
-
-[node name="Player3" parent="." unique_id=1669882041 groups=["PlayerReplay"] instance=ExtResource("5_cshvh")]
-position = Vector2(-317, -67)
-IsMainPlayer = false
-CountTime = false
-ReplayAction = 0
-ReplayStyle = true
-RecordedLocation = "res://assets/Replays/tutorial_level1_2.json"
-
-[node name="Player" parent="." unique_id=355966062 instance=ExtResource("5_884pn")]
-position = Vector2(-278, -67)
-CountTime = false
-jump_height = 65.0
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=996074277]
-position = Vector2(131.985, -95.66)
-zoom = Vector2(2.12, 2.12)
-limit_left = -383
-limit_top = -388
-limit_right = 153
-limit_bottom = 13
-limit_smoothed = true
-script = ExtResource("6_7ulu0")
-
-[node name="CanvasLayer" parent="." unique_id=1540651817 instance=ExtResource("7_s26qe")]
-script = SubResource("GDScript_kdu5x")
-
-[node name="Time_Left" type="Timer" parent="." unique_id=2101749522 groups=["GameTimer"]]
-wait_time = 15.0
-one_shot = true
-autostart = true
-script = ExtResource("9_f2rnl")
-SpeedrunWaitTime = 3.0
-
-[node name="Flag" parent="." unique_id=2060433318 instance=ExtResource("8_oghcr")]
-position = Vector2(-66, -290)
-scale = Vector2(1.01682, 1)
-
-[node name="WorldEnvironment" parent="." unique_id=345709950 instance=ExtResource("9_2vnwu")]
-environment = SubResource("Environment_vmlh1")
-
-[node name="AmbientParticles" parent="." unique_id=764451699 instance=ExtResource("10_c13u2")]
-position = Vector2(-128, -319)
-
-[node name="KillBox" parent="." unique_id=9263047 instance=ExtResource("11_uxdt6")]
-position = Vector2(-108, 34)
-scale = Vector2(58.64, 1)
-Visible = false
-
-[node name="Tutorial" type="Node2D" parent="." unique_id=1976593334]
-material = SubResource("ShaderMaterial_oq6ls")
-position = Vector2(-187.61499, -148.3494)
 
 [node name="falling_sand" parent="." unique_id=754028737 instance=ExtResource("13_cg276")]
 position = Vector2(-108, -263)
@@ -392,3 +340,59 @@ CurrentAnimation = 1
 position = Vector2(-123, -421)
 scale = Vector2(58.64, 1)
 Visible = false
+
+[node name="Player3" parent="." unique_id=1669882041 groups=["PlayerReplay"] instance=ExtResource("5_cshvh")]
+position = Vector2(-317, -67)
+IsMainPlayer = false
+CountTime = false
+ReplayAction = 0
+ReplayStyle = true
+RecordedLocation = "res://assets/Replays/tutorial_level1_2.json"
+
+[node name="Player" parent="." unique_id=355966062 instance=ExtResource("5_884pn")]
+position = Vector2(-278, -67)
+CountTime = false
+jump_height = 65.0
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=996074277]
+position = Vector2(131.985, -95.66)
+zoom = Vector2(2.12, 2.12)
+limit_left = -383
+limit_top = -388
+limit_right = 153
+limit_bottom = 13
+limit_smoothed = true
+script = ExtResource("6_7ulu0")
+
+[node name="InvertedGravityInitialPosMarker" type="Marker2D" parent="Player" unique_id=229593085]
+top_level = true
+position = Vector2(-277, -166)
+
+[node name="CanvasLayer" parent="." unique_id=1540651817 instance=ExtResource("7_s26qe")]
+script = SubResource("GDScript_kdu5x")
+
+[node name="Time_Left" type="Timer" parent="." unique_id=2101749522 groups=["GameTimer"]]
+wait_time = 15.0
+one_shot = true
+autostart = true
+script = ExtResource("9_f2rnl")
+SpeedrunWaitTime = 3.0
+
+[node name="Flag" parent="." unique_id=2060433318 instance=ExtResource("8_oghcr")]
+position = Vector2(-66, -290)
+scale = Vector2(1.01682, 1)
+
+[node name="WorldEnvironment" parent="." unique_id=345709950 instance=ExtResource("9_2vnwu")]
+environment = SubResource("Environment_vmlh1")
+
+[node name="AmbientParticles" parent="." unique_id=764451699 instance=ExtResource("10_c13u2")]
+position = Vector2(-128, -319)
+
+[node name="KillBox" parent="." unique_id=9263047 instance=ExtResource("11_uxdt6")]
+position = Vector2(-108, 34)
+scale = Vector2(58.64, 1)
+Visible = false
+
+[node name="Tutorial" type="Node2D" parent="." unique_id=1976593334]
+material = SubResource("ShaderMaterial_oq6ls")
+position = Vector2(-187.61499, -148.3494)

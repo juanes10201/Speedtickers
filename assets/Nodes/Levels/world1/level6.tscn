@@ -162,19 +162,6 @@ tile_set = ExtResource("4_1gx74")
 tile_map_data = PackedByteArray("AAA1ACgAAQAGAA0AAAA1ACkAAQAGAA4AAAA2ACgAAQAHAA0AAAA2ACkAAQAHAA4AAAAuAC8AAQAHABAAAAAuADAAAQAHABAAAAAuADEAAQAHABAAAAAuADIAAQAHABAAAAAzAC8AAQAHABEAAAAzADAAAQAHABEAAAAzADEAAQAHABEAAAAzADIAAQAHABEAAAAzAC4AAQAHABEAAAAzAC0AAQAHABEAAAAzACwAAQAHABEAAAAzACsAAQAHABEAAAAnADQAAQAJABMAAAAnADUAAQAJABQAAAAnADYAAQAJABUAAAAoADQAAQAKABMAAAAoADUAAQAKABQAAAAoADYAAQAKABUAAAApADQAAQALABMAAAApADUAAQALABQAAAApADYAAQALABUAAAAqADQAAQAMABMAAAAqADUAAQAMABQAAAAqADYAAQAMABUAAAArADQAAQANABMAAAArADUAAQANABQAAAArADYAAQANABUAAAAsADQAAQAOABMAAAAsADUAAQAOABQAAAAsADYAAQAOABUAAAAmAC0AAQAIAAMAAAA=")
 tile_set = ExtResource("4_1gx74")
 
-[node name="Player" parent="." unique_id=136369538 instance=ExtResource("2_km85v")]
-position = Vector2(-287.00003, -93.00001)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=932814615]
-position = Vector2(14.5308, -32.8497)
-zoom = Vector2(2.08, 2.08)
-limit_left = -370
-limit_top = -266
-limit_right = 120
-limit_bottom = 46
-position_smoothing_enabled = true
-script = ExtResource("3_my8pa")
-
 [node name="Time_Left" type="Timer" parent="." unique_id=546518780 groups=["GameTimer"]]
 wait_time = 8.0
 one_shot = true
@@ -335,3 +322,20 @@ CurrentAnimation = 1
 position = Vector2(-91, -272)
 scale = Vector2(9999, 1)
 Visible = false
+
+[node name="Player" parent="." unique_id=136369538 instance=ExtResource("2_km85v")]
+position = Vector2(-287.00003, -93.00001)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=932814615]
+position = Vector2(14.5308, -32.8497)
+zoom = Vector2(2.08, 2.08)
+limit_left = -370
+limit_top = -266
+limit_right = 120
+limit_bottom = 46
+position_smoothing_enabled = true
+script = ExtResource("3_my8pa")
+
+[node name="InvertedGravityInitialPosMarker" type="Marker2D" parent="Player" unique_id=1710342745]
+top_level = true
+position = Vector2(-201, -144)

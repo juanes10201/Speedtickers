@@ -125,22 +125,6 @@ tile_set = ExtResource("4_emvwx")
 tile_map_data = PackedByteArray("AAD+//3/AQARABEAAAD8//v/AQAPAA8AAAD8//z/AQAPABAAAAD9//v/AQAQAA8AAAD9//z/AQAQABAAAAD+//v/AQARAA8AAAD+//z/AQARABAAAAD8//3/AQAPABEAAAD9//3/AQAQABEAAAD///j/AQAMABIAAAD///n/AQAFAA0AAAAGAAEAAQAYAAYAAAAGAAIAAQAYAAcAAAAHAAEAAQAZAAYAAAAHAAIAAQAZAAcAAAA=")
 tile_set = ExtResource("4_emvwx")
 
-[node name="Player" parent="." unique_id=1624442490 instance=ExtResource("5_w3txa")]
-position = Vector2(-210, -69)
-CountTime = false
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=173703795]
-position = Vector2(39.8863, 30.5841)
-offset = Vector2(-7.5, 50.885)
-zoom = Vector2(2.12, 2.12)
-limit_left = -318
-limit_top = -240
-limit_right = 236
-limit_bottom = 122
-limit_smoothed = true
-position_smoothing_enabled = true
-script = ExtResource("6_08s5k")
-
 [node name="Time_Left" type="Timer" parent="." unique_id=1654538596 groups=["GameTimer"]]
 wait_time = 7.0
 one_shot = true
@@ -299,3 +283,23 @@ height = 13.0
 position = Vector2(-96, -233.00002)
 scale = Vector2(58.64, 1)
 Visible = false
+
+[node name="Player" parent="." unique_id=1624442490 instance=ExtResource("5_w3txa")]
+position = Vector2(-210, -69)
+CountTime = false
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=173703795]
+position = Vector2(39.8863, 30.5841)
+offset = Vector2(-7.5, 50.885)
+zoom = Vector2(2.12, 2.12)
+limit_left = -318
+limit_top = -240
+limit_right = 236
+limit_bottom = 122
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("6_08s5k")
+
+[node name="InvertedGravityInitialPosMarker" type="Marker2D" parent="Player" unique_id=1544846342]
+top_level = true
+position = Vector2(-234, 7)

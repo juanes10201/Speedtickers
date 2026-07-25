@@ -146,21 +146,6 @@ tile_set = ExtResource("3_1yg1q")
 position = Vector2(-19.923496, 0)
 tile_set = ExtResource("3_1yg1q")
 
-[node name="Player" parent="." unique_id=909216425 instance=ExtResource("2_igmiy")]
-position = Vector2(-268, -91)
-CountTime = false
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=494694099]
-position = Vector2(87.775, 87.221)
-zoom = Vector2(2.08, 2.08)
-limit_left = -409
-limit_top = -186
-limit_right = 215
-limit_bottom = 238
-limit_smoothed = true
-position_smoothing_enabled = true
-script = ExtResource("3_63h1i")
-
 [node name="Time_Left" type="Timer" parent="." unique_id=881238026 groups=["GameTimer"]]
 wait_time = 9.0
 one_shot = true
@@ -395,3 +380,22 @@ script = ExtResource("12_txvqh")
 position = Vector2(-90, -256)
 scale = Vector2(9999, 1)
 Visible = false
+
+[node name="Player" parent="." unique_id=909216425 instance=ExtResource("2_igmiy")]
+position = Vector2(-268, -91)
+CountTime = false
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=494694099]
+position = Vector2(87.775, 87.221)
+zoom = Vector2(2.08, 2.08)
+limit_left = -409
+limit_top = -186
+limit_right = 215
+limit_bottom = 238
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("3_63h1i")
+
+[node name="InvertedGravityInitialPosMarker" type="Marker2D" parent="Player" unique_id=1053946494]
+top_level = true
+position = Vector2(-186, 19)

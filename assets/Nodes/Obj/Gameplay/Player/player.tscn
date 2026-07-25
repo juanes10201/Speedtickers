@@ -1253,6 +1253,12 @@ scale = Vector2(2.675, 1)
 target_position = Vector2(0, 18.12388)
 collision_mask = 8
 
+[node name="SlamJumpDestroyTiles" type="RayCast2D" parent="." unique_id=2117299126]
+position = Vector2(-1.0000002, -9.061937)
+scale = Vector2(2.675, 1)
+target_position = Vector2(0, -24.089)
+collision_mask = 8
+
 [node name="UmbrellaDestroyTiles" type="RayCast2D" parent="." unique_id=1221490514]
 position = Vector2(-1.0000002, -31.061937)
 scale = Vector2(2.675, 1)

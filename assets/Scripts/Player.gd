@@ -892,6 +892,9 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	#	Reset_Slide()
 	#print(PressingGroundSmash)
 	#print(Engine.get_frames_per_second())
+	print(JumpGroundsmashMultiplier.is_stopped())
+	if(!JumpGroundsmashMultiplier.is_stopped()):
+		_Destroy_Tiles_SlamJump()
 	if(JumpedUmbrella):
 		_Destroy_Tiles_Umbrella()
 	if(GroundSmash):
@@ -900,6 +903,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 		SlidingInAir = false
 		SlideVelocity = 0
 		#LevelManager.ExpoMoveTimeout.start()
+	set_collision_mask_value(4, !(GroundSmash || !JumpGroundsmashMultiplier.is_stopped() || JumpedUmbrella ) )
 	if((is_action_pressed("player_slide") || PressingGroundSmash || PressedSlide)):
 		LevelManager.ExpoMoveTimeout.start()
 		#Groundsmash/Slam
@@ -919,7 +923,6 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 				LevelManager.AddStyle(0, "Diagonal Groundsmash")
 				DidDiagonalSlam = true
 			PressingGroundSmash = true
-			set_collision_mask_value(4, false)
 		#Slide
 		elif(!SlidingInAir && !PressingGroundSmash):
 			if(!PressedSlide):
@@ -949,7 +952,7 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	#if(!SlidingInAir):
 		#strech_size(1, 1)
 	if(!Slide && !JumpedUmbrella): set_collision_mask_value(3, true)
-	if(!GroundSmash && !JumpedUmbrella): set_collision_mask_value(4, true)
+	#if(!GroundSmash && !JumpedUmbrella): set_collision_mask_value(4, true)
 	if(!is_action_pressed("player_slide") && _is_on_floor() ):
 		PressingGroundSmash = false
 
@@ -1106,6 +1109,12 @@ func On_Death():
 			if get_tree():
 				get_tree().reload_current_scene() 
 #endregion
+
+@onready var SlamJumpDestroyTiles : RayCast2D = $SlamJumpDestroyTiles
+func _Destroy_Tiles_SlamJump() -> void:
+	if(!SlamJumpDestroyTiles): return
+	SlamJumpDestroyTiles.target_position.y = abs(SlamJumpDestroyTiles.target_position.y)*GravityDirection*(-1)
+	_Raycast_Destroy_Tiles(SlamJumpDestroyTiles)
 
 func _Destroy_Tiles_Rail() -> void:
 	_Raycast_Destroy_Tiles(RailDestroyTiles)

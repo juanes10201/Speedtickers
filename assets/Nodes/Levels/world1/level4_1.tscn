@@ -392,20 +392,6 @@ energy = 0.55
 texture = SubResource("GradientTexture2D_4bv7n")
 height = 13.0
 
-[node name="Player" parent="." unique_id=1028629522 instance=ExtResource("2_snkaw")]
-position = Vector2(-285, -18)
-CountTime = false
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1011893001]
-position = Vector2(30, 26.053)
-zoom = Vector2(2.08, 2.08)
-limit_left = -403
-limit_right = 170
-limit_bottom = 299
-limit_smoothed = true
-position_smoothing_enabled = true
-script = ExtResource("3_dqsa5")
-
 [node name="Time_Left" type="Timer" parent="." unique_id=2065324299 groups=["GameTimer"]]
 wait_time = 12.0
 one_shot = true
@@ -621,6 +607,24 @@ CurrentAnimation = 1
 position = Vector2(-91, -272)
 scale = Vector2(9999, 1)
 Visible = false
+
+[node name="Player" parent="." unique_id=1028629522 instance=ExtResource("2_snkaw")]
+position = Vector2(-285, -18)
+CountTime = false
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1011893001]
+position = Vector2(30, 26.053)
+zoom = Vector2(2.08, 2.08)
+limit_left = -403
+limit_right = 170
+limit_bottom = 299
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("3_dqsa5")
+
+[node name="InvertedGravityInitialPosMarker" type="Marker2D" parent="Player" unique_id=1476513233]
+top_level = true
+position = Vector2(47, 60)
 
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]
 [connection signal="body_entered" from="TextArea/EraseText" to="TextArea" method="_on_erase_text_body_entered"]
