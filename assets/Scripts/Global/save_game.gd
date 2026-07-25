@@ -148,9 +148,10 @@ func get_boss():
 func get_player():
 	if(get_tree()):
 		var Players = get_tree().get_nodes_in_group("Player") if get_tree().get_nodes_in_group("Player").size() else null
-		for Player in Players:
-			if("IsMainPlayer" in Player && Player.IsMainPlayer):
-				return Player
+		if(Players):
+			for Player in Players:
+				if("IsMainPlayer" in Player && Player.IsMainPlayer):
+					return Player
 	else:
 		print("WARNING: Tried loading Player before the scene is loaded.")
 

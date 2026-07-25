@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_n0mbf"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="3_l47q2"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_gsqyd"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="5_k7rg0"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="5_txbw7"]
 [ext_resource type="Texture2D" uid="uid://cvdsaeuured5y" path="res://assets/Sprites/particles/bright_particles.png" id="6_b8dc8"]
 [ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="7_0tlkf"]
@@ -107,6 +108,7 @@ script = ExtResource("4_gsqyd")
 wait_time = 8.0
 one_shot = true
 autostart = true
+script = ExtResource("5_k7rg0")
 
 [node name="AmbientParticles2" parent="." unique_id=1270376781 instance=ExtResource("5_txbw7")]
 position = Vector2(-96, -160)

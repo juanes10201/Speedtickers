@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="6_6acan"]
 [ext_resource type="PackedScene" uid="uid://cm8ckym2tb2eh" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_piston_move.tscn" id="6_7oj5y"]
 [ext_resource type="Texture2D" uid="uid://cvdsaeuured5y" path="res://assets/Sprites/particles/bright_particles.png" id="7_7oj5y"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="8_aqxfu"]
 [ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="8_p3u8v"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="9_2pjbg"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="10_nu7g1"]
@@ -141,6 +142,7 @@ script = ExtResource("17_2pjbg")
 wait_time = 8.0
 one_shot = true
 autostart = true
+script = ExtResource("8_aqxfu")
 
 [node name="Flag" parent="." unique_id=1305615115 instance=ExtResource("5_nlghw")]
 position = Vector2(45.000008, -93)

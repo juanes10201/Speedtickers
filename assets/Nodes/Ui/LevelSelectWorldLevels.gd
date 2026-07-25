@@ -113,8 +113,14 @@ func _reload_page() -> void:
 	BossLevelSelectButton.visible = PlacedBossButton
 	Global.BSide = Bside
 
+const ChallengesPath : String = "res://assets/Nodes/Ui/ui_challenges.tscn"
+
 func _process(delta: float) -> void:
 	replay_tick()
+	if(Input.is_action_just_pressed("ui_load_challenge")):
+		Transition.Anim.play("fade_movement")
+		await get_tree().create_timer(1.5).timeout
+		LevelManager.change_scene(ChallengesPath)
 
 func _change_buttons_anim() -> void:
 	if(Transition): Transition.Anim.play("change_select_buttons")

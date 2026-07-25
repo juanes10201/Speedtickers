@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Scripts/tile_map_layer.gd" id="7_yqpsj"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="8_kr5fu"]
 [ext_resource type="PackedScene" uid="uid://mwwwugaaoyiw" path="res://assets/Nodes/Obj/Gameplay/key.tscn" id="9_8iqda"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="9_8yqsp"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="10_n7a8j"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="11_mobwh"]
 [ext_resource type="PackedScene" uid="uid://cqqh8fidhrwc3" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn" id="14_1xrpc"]
@@ -200,6 +201,7 @@ script = ExtResource("7_yqpsj")
 wait_time = 10.0
 one_shot = true
 autostart = true
+script = ExtResource("9_8yqsp")
 
 [node name="CanvasLayer" parent="." unique_id=19458842 instance=ExtResource("5_udqxc")]
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_5bs5x"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_13mx3"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="5_eqxcj"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="5_of3sb"]
 [ext_resource type="PackedScene" uid="uid://cjwpb8ragihkh" path="res://assets/Nodes/Obj/Gameplay/laser.tscn" id="5_svf3u"]
 [ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="6_5ylga"]
@@ -84,6 +85,7 @@ script = ExtResource("10_decpx")
 wait_time = 12.0
 one_shot = true
 autostart = true
+script = ExtResource("5_eqxcj")
 
 [node name="KillBox2" parent="." unique_id=1255027827 instance=ExtResource("5_svf3u")]
 position = Vector2(-332, -255)

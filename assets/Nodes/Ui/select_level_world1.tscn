@@ -1391,6 +1391,42 @@ tracks/84/keys = {
 "update": 0,
 "values": [Vector2(80, 2133.3333)]
 }
+tracks/85/type = "value"
+tracks/85/imported = false
+tracks/85/enabled = true
+tracks/85/path = NodePath("../selectBoss2:position")
+tracks/85/interp = 1
+tracks/85/loop_wrap = true
+tracks/85/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2266.6665, 933.3333)]
+}
+tracks/86/type = "value"
+tracks/86/imported = false
+tracks/86/enabled = true
+tracks/86/path = NodePath("../selectBoss2:self_modulate")
+tracks/86/interp = 1
+tracks/86/loop_wrap = true
+tracks/86/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/87/type = "value"
+tracks/87/imported = false
+tracks/87/enabled = true
+tracks/87/path = NodePath("../bg1:modulate")
+tracks/87/interp = 1
+tracks/87/loop_wrap = true
+tracks/87/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7qti3"]
 resource_name = "change_select_buttons"
@@ -2322,6 +2358,42 @@ tracks/59/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0.75686276), Color(1, 1, 1, 0)]
 }
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("../selectBoss2:position")
+tracks/60/interp = 2
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(-0.033333335, 0.53333336, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2266.6665, 933.3333), Vector2(3386.2014, 958.3636), Vector2(3906.6665, 970)]
+}
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("../selectBoss2:self_modulate")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(-0.033333335, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("../bg1:modulate")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0.46666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ec4ib"]
 resource_name = "idle"
@@ -3135,6 +3207,54 @@ tracks/59/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.46660626), Color(1, 1, 1, 1)]
 }
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("../DiscBside:position")
+tracks/60/interp = 2
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3920, 483.3333), Vector2(3224.504, 366.58945), Vector2(2986.666, 326.66675)]
+}
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("../DiscReturnBside:position")
+tracks/61/interp = 2
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4026.6665, 293.3333), Vector2(4026.6665, 293.3333)]
+}
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("../selectBoss2:position")
+tracks/62/interp = 2
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3829.9998, 1036.6666), Vector2(2665.0444, 959.6653), Vector2(2266.6665, 933.3333)]
+}
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("../selectBoss2:self_modulate")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0.06666666, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k8t8m"]
 _data = {
@@ -3473,6 +3593,13 @@ metadata/_edit_vertical_guides_ = [634.0]
 scale = Vector2(0.3, 0.3)
 transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
 script = ExtResource("1_7qti3")
+
+[node name="bg1" type="Sprite2D" parent="CanvasLayer" unique_id=91443946]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+position = Vector2(2426.6665, 783.33325)
+scale = Vector2(2.604, 2.604)
+texture = ExtResource("4_lv8yh")
 
 [node name="BackgroundBside" type="Sprite2D" parent="CanvasLayer" unique_id=1635184685]
 z_index = -1
@@ -4011,8 +4138,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 1114.6665
 offset_top = 933.3333
-offset_right = 1674.6665
-offset_bottom = 1152.5112
+offset_right = 1674.6777
+offset_bottom = 1152.517
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("68_wfqlv")
 theme_override_font_sizes/font_size = 120
@@ -4086,13 +4213,13 @@ theme_override_font_sizes/normal_font_size = 95
 text = "Tickers"
 
 [node name="placeholder" type="RichTextLabel" parent="CanvasLayer" unique_id=1458900384]
-offset_left = 1026.6665
+offset_left = 836.6666
 offset_top = 2003.3335
 offset_right = 3786.6665
 offset_bottom = 2190.0005
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")
 theme_override_font_sizes/normal_font_size = 136
-text = "Press 'r' to load the replay"
+text = "Press 'r' to load the replay - Press 'c' for Challenges"
 horizontal_alignment = 2
 
 [node name="BestTimes" type="Sprite2D" parent="CanvasLayer" unique_id=240768865]
@@ -4107,8 +4234,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 4.666626
 offset_top = 1440.0
-offset_right = 797.06213
-offset_bottom = 1896.5659
+offset_right = 797.0653
+offset_bottom = 1896.564
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("80_q8y2j")
 icon = ExtResource("81_au3go")
@@ -4126,8 +4253,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -982.0
 offset_top = 1450.0
-offset_right = -189.69092
-offset_bottom = 1906.6658
+offset_right = -189.6914
+offset_bottom = 1906.6599
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("80_q8y2j")
 icon = ExtResource("82_btbrx")
@@ -4157,7 +4284,7 @@ texture = ExtResource("85_gltq7")
 [node name="WorldLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1741512740]
 offset_left = 2795.878
 offset_top = 43.333
-offset_right = 4902.539
+offset_right = 4902.547
 offset_bottom = 326.66638
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("77_q7of2")
@@ -4170,7 +4297,7 @@ vertical_alignment = 1
 offset_left = 80.0
 offset_top = 1866.6666
 offset_right = 1403.3333
-offset_bottom = 2183.1367
+offset_bottom = 2183.1318
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("77_q7of2")
 theme_override_font_sizes/normal_font_size = 321
@@ -4228,6 +4355,8 @@ script = ExtResource("87_uf3ji")
 Scene = "level_lobby"
 
 [node name="DiscBside" type="Button" parent="CanvasLayer" unique_id=1379308233]
+modulate = Color(1, 1, 1, 0.27999997)
+self_modulate = Color(1, 1, 1, 0.26666665)
 z_index = 1
 material = SubResource("ShaderMaterial_xkuxm")
 anchors_preset = 1
@@ -4235,8 +4364,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 1834.666
 offset_top = 326.66675
-offset_right = 2847.9917
-offset_bottom = 1286.6536
+offset_right = 2847.991
+offset_bottom = 1286.6523
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("80_q8y2j")
 icon = ExtResource("90_xkuxm")
@@ -4249,6 +4378,7 @@ DiscShader = true
 HoverDif = 60.0
 
 [node name="DiscReturnBside" type="Button" parent="CanvasLayer" unique_id=1984114350]
+self_modulate = Color(1, 1, 1, 0.26666665)
 z_index = 1
 material = SubResource("ShaderMaterial_iytug")
 anchors_preset = 1
@@ -4311,8 +4441,8 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 340.0
 offset_top = 749.99994
-offset_right = 2293.3347
-offset_bottom = 983.3458
+offset_right = 2293.338
+offset_bottom = 983.34827
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")
 theme_override_font_sizes/normal_font_size = 181
@@ -4335,8 +4465,8 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 446.66666
 offset_top = 983.33325
-offset_right = 2293.3372
-offset_bottom = 1216.602
+offset_right = 2293.3386
+offset_bottom = 1216.5977
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")
 theme_override_font_sizes/normal_font_size = 181
@@ -4359,7 +4489,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = 513.3333
 offset_top = 1200.0
-offset_right = 2319.999
+offset_right = 2320.001
 offset_bottom = 1433.3334
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("78_ivuwd")

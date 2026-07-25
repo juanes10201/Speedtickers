@@ -108,9 +108,9 @@ func _groundsmash_player_sound() -> void:
 #endregion
 
 #region Jumping
-func _jump(_jump_velocity) -> void:
+func _jump(_jump_velocity, need_to_be_on_floor : bool = true) -> void:
 	#The idea is for the enemies to jump when the player does a ground-smash
-	if(_is_on_floor()): velocity.y = _jump_velocity * GravityDirection*Player.GlobalGravityDirection# * randf_range(1, 1.2)
+	if(_is_on_floor() || !need_to_be_on_floor): velocity.y = _jump_velocity * GravityDirection*Player.GlobalGravityDirection# * randf_range(1, 1.2)
 #endregion
 
 #region Player GroundSmash 
@@ -128,6 +128,10 @@ func _on_player_ground_smash_signal(player_instance : CharacterBody2D = Player, 
 				player_instance.Controller_Vibrate_Player_Movement(1)
 				_groundsmash_player_sound()
 #endregion
+
+func on_player_destroy_float(player_instance : CharacterBody2D = Player) -> void:
+	_jump(JUMP_VELOCITY, false)
+	velocity.x = Enemy_burst_speed if player_instance.position.x < position.x else Enemy_burst_speed*-1
 
 #region Player Slide 
 func _on_player_slide_signal() -> void:

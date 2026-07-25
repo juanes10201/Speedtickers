@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="7_xak5l"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="8_caq0x"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="9_43hag"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="9_v8qg7"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="10_g8iab"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="11_yjhi8"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="12_yqxb2"]
@@ -127,6 +128,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mr8aa"]
 shader = ExtResource("4_ye643")
+shader_parameter/opacity_post_border = 0.0
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_x6y5w")
 shader_parameter/refraction_stretch = Vector2(1, 1)
 shader_parameter/refraction_strength = 0.02
@@ -197,6 +199,7 @@ tile_set = ExtResource("4_ye2lq")
 wait_time = 15.0
 one_shot = true
 autostart = true
+script = ExtResource("9_v8qg7")
 
 [node name="CanvasLayer" parent="." unique_id=1064856901 instance=ExtResource("5_7pwfh")]
 

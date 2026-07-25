@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="3_w0c7c"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_l5om3"]
 [ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="5_2j4yo"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="5_3ox5u"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="6_x7wlt"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="7_b6dvt"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="8_mw4ek"]
@@ -50,10 +51,10 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=1580002833]
 position = Vector2(0, -1)
 
-[node name="Bg" type="Sprite2D" parent="."]
+[node name="Bg" type="Sprite2D" parent="." unique_id=1548270178]
 visible = false
 texture_repeat = 2
 position = Vector2(-755, -863)
@@ -63,15 +64,13 @@ region_enabled = true
 region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
 script = ExtResource("2_fqohs")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
-libraries = {
-&"": SubResource("AnimationLibrary_0i2pc")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg" unique_id=591542308]
+libraries/ = SubResource("AnimationLibrary_0i2pc")
 
-[node name="Player" parent="." instance=ExtResource("3_w0c7c")]
+[node name="Player" parent="." unique_id=2132576283 instance=ExtResource("3_w0c7c")]
 position = Vector2(-360, 73)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1461486586]
 position = Vector2(14.455, -64.442)
 zoom = Vector2(2.08, 2.08)
 limit_left = -448
@@ -80,109 +79,110 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_l5om3")
 
-[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+[node name="Time_Left" type="Timer" parent="." unique_id=1024447137 groups=["GameTimer"]]
 wait_time = 8.0
 one_shot = true
 autostart = true
+script = ExtResource("5_3ox5u")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1379483234 groups=["Tileset"]]
 position = Vector2(89, 79)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AADk/wAAAAABAAAAAADk/wEAAAABAAIAAADl/wAAAAABAAAAAADl/wEAAAABAAIAAADm/wAAAAABAAAAAADm/wEAAAABAAIAAADj/wAAAAAAAAAAAADj/wEAAAAAAAIAAADo/wEAAAACAAIAAADo/wAAAAACAAAAAADn/wEAAAABAAIAAADn/wAAAAABAAAAAADo//3/AAADAAQAAADo//7/AAADAAUAAADo////AAADAAYAAADj//v/AAAAAAAAAADj//z/AAAAAAIAAADk//v/AAABAAAAAADk//z/AAABAAIAAADl//v/AAABAAAAAADl//z/AAABAAIAAADm//v/AAABAAAAAADm//z/AAABAAIAAADn//v/AAABAAAAAADn//z/AAABAAIAAADo//v/AAACAAAAAADo//z/AAACAAIAAAD6//P/AAAAAAAAAAD6//T/AAAAAAEAAAD6//X/AAAAAAEAAAD6//b/AAAAAAEAAAD6//f/AAAAAAEAAAD7//P/AAACAAAAAAD7//T/AAACAAEAAAD7//X/AAACAAEAAAD7//b/AAACAAEAAAD7//f/AAACAAEAAAD6//j/AAAAAAIAAAD7//j/AAACAAIAAAD6//3/AAAAAAEAAAD6//7/AAAAAAEAAAD6////AAAAAAEAAAD6/wAAAAAAAAEAAAD6/wEAAAAAAAIAAAD7//3/AAACAAEAAAD7//7/AAACAAEAAAD7////AAACAAEAAAD7/wAAAAACAAEAAAD7/wEAAAACAAIAAAD6//z/AAAAAAAAAAD7//z/AAACAAAAAAD6//n/AAADAAQAAAD6//r/AAADAAUAAAD6//v/AAADAAYAAAAAAAQAAAACAAEAAAAAAAMAAAACAAEAAAAAAAIAAAACAAEAAAAAAAEAAAACAAEAAAAAAAAAAAACAAEAAAAAAP//AAACAAEAAAAAAP7/AAACAAEAAAAAAP3/AAACAAEAAAAAAPz/AAACAAEAAAAAAPv/AAACAAEAAAAAAPr/AAACAAEAAAAAAPn/AAACAAEAAAAAAPj/AAACAAEAAAAAAPf/AAACAAEAAAAAAPb/AAACAAEAAAAAAPX/AAACAAEAAAAAAPT/AAACAAEAAAAAAPP/AAACAAAAAAD//wQAAAAAAAEAAAD//wMAAAAAAAEAAAD//wIAAAAAAAEAAAD//wEAAAAAAAEAAAD//wAAAAAAAAEAAAD/////AAAAAAEAAAD///7/AAAAAAEAAAD///3/AAAAAAEAAAD///z/AAAAAAEAAAD///v/AAAAAAEAAAD///r/AAAAAAEAAAD///n/AAAAAAEAAAD///j/AAAAAAEAAAD///f/AAAAAAEAAAD///b/AAAAAAEAAAD///X/AAAAAAEAAAD///T/AAAAAAEAAAD///P/AAAAAAAAAAAAAA8AAAACAAEAAAAAAA4AAAACAAEAAAAAAA0AAAACAAEAAAAAAAwAAAACAAEAAAAAAAsAAAACAAEAAAAAAAoAAAACAAEAAAAAAAkAAAACAAEAAAAAAAgAAAACAAEAAAAAAAcAAAACAAEAAAAAAAYAAAACAAEAAAAAAAUAAAACAAEAAAD//w8AAAAAAAEAAAD//w4AAAAAAAEAAAD//w0AAAAAAAEAAAD//wwAAAAAAAEAAAD//wsAAAAAAAEAAAD//woAAAAAAAEAAAD//wkAAAAAAAEAAAD//wgAAAAAAAEAAAD//wcAAAAAAAEAAAD//wYAAAAAAAEAAAD//wUAAAAAAAEAAAD8////AAAAAAcAAAD9////AAABAAcAAAD+////AAACAAcAAAAAAB4AAAACAAIAAAAAAB0AAAACAAEAAAAAABwAAAACAAEAAAAAABsAAAACAAEAAAAAABoAAAACAAEAAAAAABkAAAACAAEAAAAAABgAAAACAAEAAAAAABcAAAACAAEAAAAAABYAAAACAAEAAAAAABUAAAACAAEAAAAAABQAAAACAAEAAAAAABMAAAACAAEAAAAAABIAAAACAAEAAAAAABEAAAACAAEAAAAAABAAAAACAAEAAAD//x4AAAAAAAIAAAD//x0AAAAAAAEAAAD//xwAAAAAAAEAAAD//xsAAAAAAAEAAAD//xoAAAAAAAEAAAD//xkAAAAAAAEAAAD//xgAAAAAAAEAAAD//xcAAAAAAAEAAAD//xYAAAAAAAEAAAD//xUAAAAAAAEAAAD//xQAAAAAAAEAAAD//xMAAAAAAAEAAAD//xIAAAAAAAEAAAD//xEAAAAAAAEAAAD//xAAAAAAAAEAAAA=")
 tile_set = ExtResource("5_2j4yo")
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("6_x7wlt")]
+[node name="WorldEnvironment" parent="." unique_id=356523961 instance=ExtResource("6_x7wlt")]
 
-[node name="KillBox" parent="." instance=ExtResource("7_b6dvt")]
+[node name="KillBox" parent="." unique_id=605105077 instance=ExtResource("7_b6dvt")]
 position = Vector2(-88.00001, 937)
 scale = Vector2(99.32, 1)
 Visible = false
 
-[node name="KillBox9" parent="." instance=ExtResource("7_b6dvt")]
+[node name="KillBox9" parent="." unique_id=1028795586 instance=ExtResource("7_b6dvt")]
 position = Vector2(208, -279)
 scale = Vector2(99.32, 1)
 Visible = false
 
-[node name="CanvasLayer" parent="." instance=ExtResource("8_mw4ek")]
+[node name="CanvasLayer" parent="." unique_id=716201780 instance=ExtResource("8_mw4ek")]
 
-[node name="AmbientParticles" parent="." instance=ExtResource("9_ryrgj")]
+[node name="AmbientParticles" parent="." unique_id=1016470743 instance=ExtResource("9_ryrgj")]
 position = Vector2(-136, -223)
 
-[node name="Key3" parent="." instance=ExtResource("10_00032")]
+[node name="Key3" parent="." unique_id=1656776110 instance=ExtResource("10_00032")]
 position = Vector2(-256, 49)
 Respawn = false
 
-[node name="Key4" parent="." instance=ExtResource("10_00032")]
+[node name="Key4" parent="." unique_id=1040634236 instance=ExtResource("10_00032")]
 position = Vector2(38, -8)
 Respawn = false
 
-[node name="KillBox13" parent="." instance=ExtResource("7_b6dvt")]
+[node name="KillBox13" parent="." unique_id=399416430 instance=ExtResource("7_b6dvt")]
 position = Vector2(-288.00003, 399.99997)
 scale = Vector2(17.5, 36.515)
 
-[node name="KillBox18" parent="." instance=ExtResource("7_b6dvt")]
+[node name="KillBox18" parent="." unique_id=931034192 instance=ExtResource("7_b6dvt")]
 position = Vector2(8, 462.99997)
 scale = Vector2(2, 36.515)
 
-[node name="KillBox14" parent="." instance=ExtResource("7_b6dvt")]
+[node name="KillBox14" parent="." unique_id=521289016 instance=ExtResource("7_b6dvt")]
 position = Vector2(-55.00001, 313)
 scale = Vector2(6, 2)
 
-[node name="KillBox17" parent="." instance=ExtResource("7_b6dvt")]
+[node name="KillBox17" parent="." unique_id=1447476691 instance=ExtResource("7_b6dvt")]
 position = Vector2(-144, 97)
 scale = Vector2(19.725, 1.62)
 
-[node name="KillBox15" parent="." instance=ExtResource("7_b6dvt")]
+[node name="KillBox15" parent="." unique_id=1054272262 instance=ExtResource("7_b6dvt")]
 position = Vector2(-101.00001, 393)
 scale = Vector2(6, 2)
 
-[node name="KillBox16" parent="." instance=ExtResource("7_b6dvt")]
+[node name="KillBox16" parent="." unique_id=1573856314 instance=ExtResource("7_b6dvt")]
 position = Vector2(-55.000004, 473)
 scale = Vector2(6, 2)
 
-[node name="Flag2" parent="." instance=ExtResource("11_e78lc")]
+[node name="Flag2" parent="." unique_id=660674564 instance=ExtResource("11_e78lc")]
 position = Vector2(-128, 513)
 
-[node name="falling_sand17" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand17" parent="." unique_id=1997243171 instance=ExtResource("12_vflhf")]
 position = Vector2(-104, -31)
 MAX_SPEED = 120.0
 
-[node name="falling_sand18" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand18" parent="." unique_id=794424419 instance=ExtResource("12_vflhf")]
 position = Vector2(-88, -31)
 MAX_SPEED = 120.0
 
-[node name="falling_sand19" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand19" parent="." unique_id=1030910217 instance=ExtResource("12_vflhf")]
 position = Vector2(-72, -31)
 MAX_SPEED = 120.0
 
-[node name="falling_sand20" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand20" parent="." unique_id=296646719 instance=ExtResource("12_vflhf")]
 position = Vector2(-56, -31)
 MAX_SPEED = 120.0
 
-[node name="falling_sand21" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand21" parent="." unique_id=2107361630 instance=ExtResource("12_vflhf")]
 position = Vector2(-40, -31)
 MAX_SPEED = 120.0
 
-[node name="falling_sand22" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand22" parent="." unique_id=756294627 instance=ExtResource("12_vflhf")]
 position = Vector2(-24, -31)
 MAX_SPEED = 120.0
 
-[node name="falling_sand26" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand26" parent="." unique_id=1494389423 instance=ExtResource("12_vflhf")]
 position = Vector2(41, 49)
 MAX_SPEED = 80.0
 
-[node name="falling_sand27" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand27" parent="." unique_id=1171334796 instance=ExtResource("12_vflhf")]
 position = Vector2(57, 49)
 MAX_SPEED = 80.0
 
-[node name="falling_sand23" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand23" parent="." unique_id=1466474794 instance=ExtResource("12_vflhf")]
 position = Vector2(-152, -31)
 MAX_SPEED = 120.0
 
-[node name="falling_sand24" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand24" parent="." unique_id=1252401553 instance=ExtResource("12_vflhf")]
 position = Vector2(-136, -31)
 MAX_SPEED = 120.0
 
-[node name="falling_sand25" parent="." instance=ExtResource("12_vflhf")]
+[node name="falling_sand25" parent="." unique_id=1473694927 instance=ExtResource("12_vflhf")]
 position = Vector2(-120, -31)
 MAX_SPEED = 120.0

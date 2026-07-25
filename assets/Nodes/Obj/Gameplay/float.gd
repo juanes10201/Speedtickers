@@ -16,6 +16,8 @@ var SlamDisabledCollision : bool = false
 @onready var Sprite = $Sprite
 @export var WaterFloatLogic : Node2D
 
+var CollidingEnemies : Array[Node2D] = []
+
 func _ready() -> void:
 	if(TimerRespawn):
 		TimerRespawn.wait_time = TimeRespawn
@@ -44,7 +46,7 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
 	if(body.is_in_group("Player")):
 		if(Player.GroundSmash || Player.Slide):
-			Player.throw_enemies(false)
+			#Player.throw_enemies(false)
 			TimerRespawn.start()
 			print("Explode with Slam")
 			_explode(true)
@@ -66,6 +68,9 @@ func _explode(State : bool = true) -> void:
 		hide()
 		$AnimationPlayer.play("RESET")
 		Player._play_sound($AudioPop)
+		print(CollidingEnemies)
+		for Enemy in CollidingEnemies:
+			Enemy.on_player_destroy_float(Player)
 	else:
 		show()
 
@@ -80,6 +85,8 @@ func _on_timer_respawn_timeout() -> void:
 
 func _on_area_disable_slam_body_entered(body: Node2D) -> void:
 	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
+	if(body.is_in_group("Enemie")):
+		CollidingEnemies.append(body)
 	if(body.is_in_group("Player") && (Player.GroundSmash || Player.Slide)):
 		set_collision_layer_value(9, false)
 		SlamDisabledCollision = true
@@ -87,6 +94,8 @@ func _on_area_disable_slam_body_entered(body: Node2D) -> void:
 
 func _on_area_disable_slam_body_exited(body: Node2D) -> void:
 	if(Edition.Is_in_editor && !Edition.Is_playing_in_editor): return
+	if(body.is_in_group("Enemie")):
+		CollidingEnemies.erase(body)
 	if(body.is_in_group("Player") && SlamDisabledCollision):
 		set_collision_layer_value(9, true)
 		SlamDisabledCollision = false

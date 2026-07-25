@@ -1,0 +1,450 @@
+[gd_scene format=3 uid="uid://dr8ikr1h0wkg7"]
+
+[ext_resource type="Texture2D" uid="uid://dwis6q21e8fa8" path="res://assets/Sprites/menus/LevelSelect/backgrounds/Background.png" id="1_6j1n2"]
+[ext_resource type="Texture2D" uid="uid://vd45rnesa0r8" path="res://assets/Sprites/menus/Challenges/selectChallenge.png" id="2_hfnad"]
+[ext_resource type="Texture2D" uid="uid://kbc3ci8pt48" path="res://assets/Sprites/menus/Challenges/challengesText.png" id="3_rqai6"]
+[ext_resource type="FontFile" uid="uid://c3i7air7h1h2p" path="res://assets/Fonts/Glitch Slap.otf" id="4_4jx20"]
+[ext_resource type="Script" uid="uid://d2mxkmup07kcp" path="res://assets/Nodes/Ui/button_challenge.gd" id="5_6r73g"]
+[ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="5_x20i0"]
+[ext_resource type="Texture2D" uid="uid://b1ifl8spiqdmv" path="res://assets/Sprites/menus/buttonSelect2.png" id="6_4jx20"]
+[ext_resource type="Texture2D" uid="uid://c0c3m8uwkh35y" path="res://assets/Sprites/menus/Pause/Button_Back.png" id="7_6r73g"]
+[ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/bg.png" id="9_0mp1d"]
+[ext_resource type="Script" uid="uid://vy45jgrig202" path="res://assets/Nodes/Obj/Ui/transitionLevelSelect.gd" id="10_x20i0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0mp1d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x20i0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vkgan"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uijvl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4gwn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0mp1d"]
+texture = ExtResource("6_4jx20")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="Animation" id="Animation_vkgan"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2320, 1033.3334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, 1750)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SelectChallenge:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1889.9999, 1150)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SelectChallenge:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ChallengesText:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1156.6666, 290)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../ChallengesText:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0mp1d"]
+resource_name = "fade_movement"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666666, 0.4, 0.93333346),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-2396.666, 1239.9999), Vector2(-1398.2915, 1196.2549), Vector2(2320, 1033.3334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666666, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.972549)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.03333333, 0.61, 0.9333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(80, 1750), Vector2(-16.049194, 1831.5154), Vector2(-426.66663, 2180)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SelectChallenge:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666669, 0.8100001, 1.1000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1889.9999, 1150), Vector2(1146.96, 1103.92), Vector2(-1549.9999, 936.66656)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SelectChallenge:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.03333336, 0.6766668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ChallengesText:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6433334, 0.9000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1156.6666, 290), Vector2(719.52374, 244.46428), Vector2(-283.33337, 140)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../ChallengesText:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0333333, 0.43333346),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uijvl"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2320, 1033.3334), Vector2(-1398.2915, 1196.2549), Vector2(-2396.666, 1239.9999)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.26666668, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.972549), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PauseMenuConfigButton2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.06666667, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-426.66663, 2180), Vector2(-16.049194, 1831.5154), Vector2(80, 1750)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SelectChallenge:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1549.9999, 936.66656), Vector2(1146.96, 1103.92), Vector2(1889.9999, 1150)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SelectChallenge:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.23333333, 0.76666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ChallengesText:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-283.33337, 140), Vector2(719.52374, 244.46428), Vector2(1156.6666, 290)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../ChallengesText:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.19, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4gwn"]
+_data = {
+&"RESET": SubResource("Animation_vkgan"),
+&"fade_movement": SubResource("Animation_0mp1d"),
+&"start": SubResource("Animation_uijvl")
+}
+
+[node name="control_level_select" type="Control" unique_id=1118240205]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 41.0
+focus_mode = 2
+metadata/_edit_vertical_guides_ = [634.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=336245842]
+scale = Vector2(0.3, 0.3)
+transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer" unique_id=367715391]
+z_index = -1
+position = Vector2(1920.476, 1084.3333)
+scale = Vector2(2.6724281, 2.672428)
+texture = ExtResource("1_6j1n2")
+
+[node name="bg1" type="Sprite2D" parent="CanvasLayer" unique_id=1574628089]
+self_modulate = Color(1, 1, 1, 0.75686276)
+z_index = -1
+position = Vector2(2026.6666, 1780.0001)
+scale = Vector2(2.104, 2.104)
+texture = ExtResource("9_0mp1d")
+
+[node name="SelectChallenge" type="Sprite2D" parent="CanvasLayer" unique_id=1059219182]
+z_index = -1
+position = Vector2(1889.9999, 1150)
+scale = Vector2(1.0504473, 1.0504473)
+texture = ExtResource("2_hfnad")
+
+[node name="ButtonChallengeNone" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=313778905]
+offset_left = -1291.5134
+offset_top = -298.28558
+offset_right = 1451.8201
+offset_bottom = -154.95233
+theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
+theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
+theme_override_fonts/font = ExtResource("4_4jx20")
+theme_override_font_sizes/font_size = 84
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0mp1d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x20i0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vkgan")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uijvl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q4gwn")
+text = "None"
+alignment = 0
+script = ExtResource("5_6r73g")
+
+[node name="ButtonChallenge1" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=121340417]
+offset_left = -1291.5132
+offset_top = -123.756836
+offset_right = 1451.8201
+offset_bottom = 19.576416
+theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
+theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
+theme_override_fonts/font = ExtResource("4_4jx20")
+theme_override_font_sizes/font_size = 84
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0mp1d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x20i0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vkgan")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uijvl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q4gwn")
+text = "1. Speedtickers - Inverted Gravity - Player starts in Inverted Gravity"
+alignment = 0
+script = ExtResource("5_6r73g")
+Challenge = 1
+
+[node name="ButtonChallenge2" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=1648573128]
+offset_left = -1291.5132
+offset_top = -19.03955
+offset_right = 1451.8201
+offset_bottom = 124.2937
+theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
+theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
+theme_override_fonts/font = ExtResource("4_4jx20")
+theme_override_font_sizes/font_size = 84
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0mp1d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x20i0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vkgan")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uijvl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q4gwn")
+text = "2. Speedtickers - No Restart - Can't die"
+alignment = 0
+script = ExtResource("5_6r73g")
+Challenge = 2
+
+[node name="ButtonChallenge3" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=692309301]
+offset_left = -1291.5132
+offset_top = 92.02429
+offset_right = 1451.8201
+offset_bottom = 235.35754
+theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
+theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
+theme_override_fonts/font = ExtResource("4_4jx20")
+theme_override_font_sizes/font_size = 84
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0mp1d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x20i0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vkgan")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uijvl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q4gwn")
+text = "3. Speedtickers - Speedrun - Time significatively reduced"
+alignment = 0
+script = ExtResource("5_6r73g")
+Challenge = 3
+
+[node name="ChallengesText" type="Sprite2D" parent="CanvasLayer" unique_id=166861188]
+position = Vector2(1156.6666, 290)
+texture = ExtResource("3_rqai6")
+
+[node name="PauseMenuConfigButton2" type="Button" parent="CanvasLayer" unique_id=907887081]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1072.0
+offset_top = 1750.0
+offset_right = -87.90845
+offset_bottom = 2086.666
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxTexture_0mp1d")
+icon = ExtResource("7_6r73g")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_x20i0")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world1.tscn"
+FadeTransition = true
+ShowOnExpo = false
+
+[node name="Transition" type="Sprite2D" parent="CanvasLayer" unique_id=103331453]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
+position = Vector2(2320, 1033.3334)
+scale = Vector2(2.454, 2.454)
+texture = ExtResource("9_0mp1d")
+script = ExtResource("10_x20i0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Transition" unique_id=792057343]
+libraries/ = SubResource("AnimationLibrary_q4gwn")
+
+[connection signal="pressed" from="CanvasLayer/SelectChallenge/ButtonChallengeNone" to="CanvasLayer/SelectChallenge/ButtonChallengeNone" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/SelectChallenge/ButtonChallenge1" to="CanvasLayer/SelectChallenge/ButtonChallenge1" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/SelectChallenge/ButtonChallenge2" to="CanvasLayer/SelectChallenge/ButtonChallenge2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/SelectChallenge/ButtonChallenge3" to="CanvasLayer/SelectChallenge/ButtonChallenge3" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenuConfigButton2" to="CanvasLayer/PauseMenuConfigButton2" method="_on_pressed"]

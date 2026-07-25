@@ -35,7 +35,8 @@ func float_logic(delta: float) -> void:
 			#region Gravity
 			if(!NotOnWaterRay.is_colliding() || NotOnWaterRay.global_position.y+NotOnWaterRay.target_position.y < WaterTileset.WaterLevel):
 				if(FallWhenNoWater && (FallBelowWaterLevel || Parent.global_position.y < WaterTileset.WaterLevel) ):
-					if(NotOnWaterRay.get_collider() is TileMapLayer):
+					var _collided_node : Node2D = NotOnWaterRay.get_collider()
+					if(_collided_node is TileMapLayer && ! _collided_node.is_in_group("WaterTileset")):
 						return
 					Velocity.y -= AccEscapeWater
 					Parent.position.y += delta*Velocity.y

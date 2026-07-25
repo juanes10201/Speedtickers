@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_ogee0"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="3_8opo4"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_lka2r"]
+[ext_resource type="Script" uid="uid://cq42f2j2x22je" path="res://assets/Scripts/time_left.gd" id="5_mpel3"]
 [ext_resource type="TileSet" uid="uid://d2pgcpmg250nu" path="res://assets/Nodes/Obj/Tileset/tiles_alt1.tres" id="5_wp5th"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="6_vxclo"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="7_knc1s"]
@@ -50,10 +51,10 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=1280015673]
 position = Vector2(0, -1)
 
-[node name="Bg" type="Sprite2D" parent="."]
+[node name="Bg" type="Sprite2D" parent="." unique_id=638539251]
 visible = false
 texture_repeat = 2
 position = Vector2(-755, -863)
@@ -63,15 +64,13 @@ region_enabled = true
 region_rect = Rect2(0.078, 0.149, 1200, 1273.48)
 script = ExtResource("2_ogee0")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg"]
-libraries = {
-&"": SubResource("AnimationLibrary_0i2pc")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bg" unique_id=1547130334]
+libraries/ = SubResource("AnimationLibrary_0i2pc")
 
-[node name="Player" parent="." instance=ExtResource("3_8opo4")]
+[node name="Player" parent="." unique_id=402319850 instance=ExtResource("3_8opo4")]
 position = Vector2(-336, 169)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2049364306]
 position = Vector2(14.455, -4.4066467)
 zoom = Vector2(2.08, 2.08)
 limit_left = -448
@@ -80,219 +79,220 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_lka2r")
 
-[node name="Time_Left" type="Timer" parent="." groups=["GameTimer"]]
+[node name="Time_Left" type="Timer" parent="." unique_id=1846248757 groups=["GameTimer"]]
 wait_time = 12.0
 one_shot = true
 autostart = true
+script = ExtResource("5_mpel3")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Tileset"]]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=982086801 groups=["Tileset"]]
 position = Vector2(89, 79)
 scale = Vector2(1.00384, 1)
 tile_map_data = PackedByteArray("AADk/wYAAAAAAAAAAADk/wcAAAAAAAEAAADk/wgAAAAAAAEAAADk/wkAAAAAAAEAAADk/woAAAAAAAEAAADk/wsAAAAAAAEAAADk/wwAAAAAAAEAAADk/w0AAAAAAAEAAADk/w4AAAAAAAEAAADk/w8AAAAAAAEAAADk/xAAAAAAAAEAAADk/xEAAAAAAAEAAADk/xIAAAAAAAEAAADk/xMAAAAAAAEAAADk/xQAAAAAAAEAAADk/xUAAAAAAAIAAADl/wYAAAABAAAAAADl/wcAAAABAAEAAADl/wgAAAABAAEAAADl/wkAAAABAAEAAADl/woAAAABAAEAAADl/wsAAAABAAEAAADl/wwAAAABAAEAAADl/w0AAAABAAEAAADl/w4AAAABAAEAAADl/w8AAAABAAEAAADl/xAAAAABAAEAAADl/xEAAAABAAEAAADl/xIAAAABAAEAAADl/xMAAAABAAEAAADl/xQAAAABAAEAAADl/xUAAAABAAIAAADm/wYAAAACAAAAAADm/wcAAAACAAEAAADm/wgAAAACAAEAAADm/wkAAAACAAEAAADm/woAAAACAAEAAADm/wsAAAACAAEAAADm/wwAAAACAAEAAADm/w0AAAACAAEAAADm/w4AAAACAAEAAADm/w8AAAACAAEAAADm/xAAAAACAAEAAADm/xEAAAACAAEAAADm/xIAAAACAAEAAADm/xMAAAACAAEAAADm/xQAAAACAAEAAADm/xUAAAACAAIAAADw/yQAAAACAAIAAADw/yMAAAACAAAAAADv/yQAAAABAAIAAADv/yMAAAABAAAAAADu/yQAAAAAAAIAAADu/yMAAAAAAAAAAAA=")
 tile_set = ExtResource("5_wp5th")
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("6_vxclo")]
+[node name="WorldEnvironment" parent="." unique_id=1744692426 instance=ExtResource("6_vxclo")]
 
-[node name="KillBox" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox" parent="." unique_id=1124413861 instance=ExtResource("7_knc1s")]
 position = Vector2(-88.00001, 937)
 scale = Vector2(99.32, 1)
 Visible = false
 
-[node name="KillBox9" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox9" parent="." unique_id=2134445173 instance=ExtResource("7_knc1s")]
 position = Vector2(208, -279)
 scale = Vector2(99.32, 1)
 Visible = false
 
-[node name="KillBox11" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox11" parent="." unique_id=218765872 instance=ExtResource("7_knc1s")]
 position = Vector2(-128, 193)
 scale = Vector2(13.575, 2)
 
-[node name="KillBox15" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox15" parent="." unique_id=474188902 instance=ExtResource("7_knc1s")]
 position = Vector2(-104, 353)
 scale = Vector2(9, 2)
 
-[node name="KillBox18" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox18" parent="." unique_id=1144618359 instance=ExtResource("7_knc1s")]
 position = Vector2(-128, 689)
 scale = Vector2(13.545, 2)
 
-[node name="KillBox17" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox17" parent="." unique_id=552969217 instance=ExtResource("7_knc1s")]
 position = Vector2(-144, 545)
 scale = Vector2(9, 2)
 
-[node name="KillBox12" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox12" parent="." unique_id=1935624722 instance=ExtResource("7_knc1s")]
 position = Vector2(-680, -319)
 scale = Vector2(3, 1)
 
-[node name="CanvasLayer" parent="." instance=ExtResource("8_lio33")]
+[node name="CanvasLayer" parent="." unique_id=1596603511 instance=ExtResource("8_lio33")]
 
-[node name="AmbientParticles" parent="." instance=ExtResource("9_mbsns")]
+[node name="AmbientParticles" parent="." unique_id=423156288 instance=ExtResource("9_mbsns")]
 position = Vector2(-136, -223)
 
-[node name="Key4" parent="." instance=ExtResource("10_176rp")]
+[node name="Key4" parent="." unique_id=1870721352 instance=ExtResource("10_176rp")]
 position = Vector2(-236, 102)
 Respawn = false
 
-[node name="KillBox13" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox13" parent="." unique_id=1924835595 instance=ExtResource("7_knc1s")]
 position = Vector2(-235, -265.035)
 scale = Vector2(2.5, 43.185)
 
-[node name="KillBox16" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox16" parent="." unique_id=401332079 instance=ExtResource("7_knc1s")]
 position = Vector2(-24, 33)
 scale = Vector2(2, 83.985)
 
-[node name="KillBox14" parent="." instance=ExtResource("7_knc1s")]
+[node name="KillBox14" parent="." unique_id=2124608080 instance=ExtResource("7_knc1s")]
 position = Vector2(-232, 414.345)
 scale = Vector2(2.5, 36.015)
 
-[node name="Flag2" parent="." instance=ExtResource("11_h51q0")]
+[node name="Flag2" parent="." unique_id=1264523022 instance=ExtResource("11_h51q0")]
 position = Vector2(-176, 617)
 
-[node name="falling_sand17" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand17" parent="." unique_id=1134502632 instance=ExtResource("12_vc2km")]
 position = Vector2(-160, -15)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand19" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand19" parent="." unique_id=328627336 instance=ExtResource("12_vc2km")]
 position = Vector2(-192, -15)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand20" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand20" parent="." unique_id=425083376 instance=ExtResource("12_vc2km")]
 position = Vector2(-208, -15)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand18" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand18" parent="." unique_id=1868817346 instance=ExtResource("12_vc2km")]
 position = Vector2(-176, -15)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand38" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand38" parent="." unique_id=1486377956 instance=ExtResource("12_vc2km")]
 position = Vector2(-144, -15)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand39" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand39" parent="." unique_id=1649993870 instance=ExtResource("12_vc2km")]
 position = Vector2(-128, -15)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand21" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand21" parent="." unique_id=1758677086 instance=ExtResource("12_vc2km")]
 position = Vector2(-48, -103)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand22" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand22" parent="." unique_id=2069591823 instance=ExtResource("12_vc2km")]
 position = Vector2(-80, -103)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand23" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand23" parent="." unique_id=1577100164 instance=ExtResource("12_vc2km")]
 position = Vector2(-96, -103)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand24" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand24" parent="." unique_id=2048712038 instance=ExtResource("12_vc2km")]
 position = Vector2(-64, -103)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand40" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand40" parent="." unique_id=1742810055 instance=ExtResource("12_vc2km")]
 position = Vector2(-128, -103)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand42" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand42" parent="." unique_id=4970126 instance=ExtResource("12_vc2km")]
 position = Vector2(-112, -103)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand25" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand25" parent="." unique_id=1309222032 instance=ExtResource("12_vc2km")]
 position = Vector2(-160, -207)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand26" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand26" parent="." unique_id=38224603 instance=ExtResource("12_vc2km")]
 position = Vector2(-192, -207)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand27" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand27" parent="." unique_id=1470128964 instance=ExtResource("12_vc2km")]
 position = Vector2(-208, -207)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand28" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand28" parent="." unique_id=1142443916 instance=ExtResource("12_vc2km")]
 position = Vector2(-176, -207)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand44" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand44" parent="." unique_id=157494000 instance=ExtResource("12_vc2km")]
 position = Vector2(-144, -207)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand45" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand45" parent="." unique_id=777912998 instance=ExtResource("12_vc2km")]
 position = Vector2(-128, -207)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand29" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand29" parent="." unique_id=1664337405 instance=ExtResource("12_vc2km")]
 position = Vector2(-48, -351)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand30" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand30" parent="." unique_id=628733018 instance=ExtResource("12_vc2km")]
 position = Vector2(-80, -351)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand31" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand31" parent="." unique_id=441040559 instance=ExtResource("12_vc2km")]
 position = Vector2(-96, -351)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand32" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand32" parent="." unique_id=799754325 instance=ExtResource("12_vc2km")]
 position = Vector2(-64, -351)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand46" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand46" parent="." unique_id=1971894124 instance=ExtResource("12_vc2km")]
 position = Vector2(-128, -351)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand48" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand48" parent="." unique_id=650900461 instance=ExtResource("12_vc2km")]
 position = Vector2(-112, -351)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand33" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand33" parent="." unique_id=1954464382 instance=ExtResource("12_vc2km")]
 position = Vector2(-160, -455)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand34" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand34" parent="." unique_id=1281769332 instance=ExtResource("12_vc2km")]
 position = Vector2(-192, -455)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand35" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand35" parent="." unique_id=1098861569 instance=ExtResource("12_vc2km")]
 position = Vector2(-208, -455)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand36" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand36" parent="." unique_id=1552571487 instance=ExtResource("12_vc2km")]
 position = Vector2(-176, -455)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand50" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand50" parent="." unique_id=1541539064 instance=ExtResource("12_vc2km")]
 position = Vector2(-144, -455)
 is_falling = true
 MAX_SPEED = 90.0
 
-[node name="falling_sand51" parent="." instance=ExtResource("12_vc2km")]
+[node name="falling_sand51" parent="." unique_id=1318831828 instance=ExtResource("12_vc2km")]
 position = Vector2(-128, -455)
 is_falling = true
 MAX_SPEED = 90.0
