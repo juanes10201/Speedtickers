@@ -101,6 +101,39 @@ func GetLevelTime(Level : int, World : int) -> float:
 #
 #}
 
+func get_leaderboard_key_name(level : int, world : int) -> String:
+	return "world" + str(world) + "_level" + str(level)
+
+func leaderboard_submit_level_time(sec : int, level : int, world : int) -> void:
+	var key = get_leaderboard_key_name(level, world)
+	#var handle = get_leaderboard_handle(key)
+	Steam.findOrCreateLeaderboard(key, Steam.LEADERBOARD_SORT_METHOD_DESCENDING, Steam.LEADERBOARD_DISPLAY_TYPE_NUMERIC)
+	await Steam.leaderboard_find_result
+	Steam.uploadLeaderboardScore(sec, true, [], key)
+	Steam.downloadLeaderboardEntries(0, 2, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, key)
+
+func leaderboard_load_level_time(level : int, world : int, amount : int) -> void:
+	var key = get_leaderboard_key_name(level, world)
+	Steam.downloadLeaderboardEntries(0, amount-1, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, key)
+
+func leaderboard_load_level_top_3(level : int, world : int) -> void:
+	leaderboard_load_level_time(level, world, 3)
+
+func _on_leaderboard_scores_downloaded(message: String, this_handle: int, results: Array) -> void:
+	print(message)
+	for entry in results:
+		print("#%d - %s - score: %d" % [
+			entry["global_rank"],
+			Steam.getFriendPersonaName(entry["steam_id"]),
+			entry["score"]
+		])
+
+#func leaderboard_get_level_time(level : int, world : int) -> void:
+#	
+
+#func get_leaderboard_handle(key: String) -> void:
+#	Steam.findOrCreateLeaderboard(key, Steam.LEADERBOARD_SORT_METHOD_DESCENDING, Steam.LEADERBOARD_DISPLAY_TYPE_NUMERIC)
+
 #Asumimos que estan sorteados en tiempo
 var UserTimes : Dictionary = {
 	"level0" : {

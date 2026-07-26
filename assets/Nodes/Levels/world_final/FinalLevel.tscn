@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="13_5mbuw"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="14_n8hp6"]
 [ext_resource type="PackedScene" uid="uid://wc0c7accnujm" path="res://assets/Nodes/Obj/Gameplay/orb.tscn" id="15_4qhfp"]
-[ext_resource type="Script" uid="uid://ijql1uko5ha5" path="res://assets/Nodes/Levels/level_final/fire.gd" id="16_gb4bu"]
+[ext_resource type="Script" uid="uid://ijql1uko5ha5" path="res://assets/Nodes/Levels/world_final/fire.gd" id="16_gb4bu"]
 [ext_resource type="PackedScene" uid="uid://bpcyg6vqonftj" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish.tscn" id="16_ldjxg"]
 [ext_resource type="PackedScene" uid="uid://bpmqbjj1pfwxd" path="res://assets/Nodes/Obj/Gameplay/clock.tscn" id="17_gdych"]
 [ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="18_nuc34"]

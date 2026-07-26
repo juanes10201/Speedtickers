@@ -52,7 +52,7 @@ enum CHALLENGES{
 	no_restart,
 	speedrun
 }
-var Selected_Challenge : CHALLENGES = CHALLENGES.inverted_gravity
+var Selected_Challenge : CHALLENGES = CHALLENGES.none
 
 var Player = null
 
