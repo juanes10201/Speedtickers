@@ -1,10 +1,7 @@
 extends Control
-@export var User1 : RichTextLabel
-@export var Place1 : RichTextLabel
-@export var User2 : RichTextLabel
-@export var Place2 : RichTextLabel
-@export var User3 : RichTextLabel
-@export var Place3 : RichTextLabel
+
+@export var Users : Array[RichTextLabel]
+
 @export var UserPlayer : RichTextLabel
 @export var PlacePlayer : RichTextLabel
 
@@ -16,18 +13,44 @@ func _round_time_number(time : float) -> float:
 func _set_text_pos(Name : String, time : float) -> String:
 	return str(Name)+": "+str(time)+" seg"
 
-func _set_data(Level : int, IndexUser : int, TextUser : RichTextLabel):#, TextPlace : RichTextEffect):
-	var UserDic : Dictionary = SaveGame.GetUserLevelDiccionary(Level, IndexUser)
+func _set_data(Username : String, UserTime : float, TextUser : RichTextLabel):#, TextPlace : RichTextEffect):
 	#Si no esta vacio
-	if(!UserDic.is_empty()):
-		TextUser.text = _set_text_pos(UserDic.name, UserDic.time)
+	TextUser.text = _set_text_pos(Username, UserTime)
 
 func _update_best_scores(Level : int, World : int) -> void:
 	var PlayerTime : float = _round_time_number(SaveGame.GetLevelTime(Level-1, World))
 	if(UserPlayer): UserPlayer.text = _set_text_pos(SaveGame.GetPlayerUserName(), PlayerTime)
-	_set_data(Level, 0, User1)
-	_set_data(Level, 1, User2)
-	_set_data(Level, 2, User3)
+	
+	#obtenemos el resultado del savegame, la idea es que ya esta previamente cacheado
+	#esto se hace con un await, lo cual no es una buena idea
+	#se tendria que hacer en paralelo de alguna forma
+	#TODO: investigar sobre como hacer en paralelo esto
+	var res : Array = await SaveGame.leaderboard_load_level_parse_to_ingame_ui(Level, World, Users.size())
+	
+	var PlayerData = await SaveGame.leaderboard_get_user_parsed_ui(Level, World)
+	print(PlayerData)
+	if(PlayerData && PlayerData.has("rank") && PlayerData["rank"] > 3):
+		PlacePlayer.text = " " + str(PlayerData["rank"]) + "."
+		PlacePlayer.show()
+		UserPlayer.show()
+	else:
+		PlacePlayer.hide()
+		UserPlayer.hide()
+	
+	for i in range(Users.size()):
+		if(i < res.size()):
+			Users[i].visible = true
+			Users[i].get_parent().visible = true
+			Users[i].get_parent().text = str(i+1)
+			_set_data(res[i]["name"], res[i]["score"], Users[i])
+		else:
+			Users[i].visible = false
+			Users[i].get_parent().visible = false
+	if(res.size() <= 0):
+		Users[0].visible = true
+		Users[0].get_parent().visible = true
+		Users[0].get_parent().text = ""
+		Users[0].text = "No results found"
 	
 func _ready() -> void:
 	_update_best_scores(0, 0)

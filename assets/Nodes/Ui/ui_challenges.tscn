@@ -329,10 +329,10 @@ scale = Vector2(1.0504473, 1.0504473)
 texture = ExtResource("2_hfnad")
 
 [node name="ButtonChallengeNone" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=313778905]
-offset_left = -1291.5134
-offset_top = -298.28558
-offset_right = 1451.8201
-offset_bottom = -154.95233
+offset_left = -1291.5132
+offset_top = -301.45898
+offset_right = 1451.8203
+offset_bottom = -158.12573
 theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
 theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
 theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
@@ -349,9 +349,9 @@ script = ExtResource("5_6r73g")
 
 [node name="ButtonChallenge1" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=121340417]
 offset_left = -1291.5132
-offset_top = -123.756836
+offset_top = -149.14294
 offset_right = 1451.8201
-offset_bottom = 19.576416
+offset_bottom = -5.8096924
 theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
 theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
 theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
@@ -369,9 +369,9 @@ Challenge = 1
 
 [node name="ButtonChallenge2" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=1648573128]
 offset_left = -1291.5132
-offset_top = -19.03955
+offset_top = -44.42566
 offset_right = 1451.8201
-offset_bottom = 124.2937
+offset_bottom = 98.90759
 theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
 theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
 theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
@@ -389,9 +389,9 @@ Challenge = 2
 
 [node name="ButtonChallenge3" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=692309301]
 offset_left = -1291.5132
-offset_top = 92.02429
+offset_top = 66.63818
 offset_right = 1451.8201
-offset_bottom = 235.35754
+offset_bottom = 209.97144
 theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
 theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
 theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
@@ -403,6 +403,26 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_vkgan")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_uijvl")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q4gwn")
 text = "3. Speedtickers - Speedrun - Time significatively reduced"
+alignment = 0
+script = ExtResource("5_6r73g")
+Challenge = 3
+
+[node name="ButtonChallenge4" type="Button" parent="CanvasLayer/SelectChallenge" unique_id=83724579]
+offset_left = -1291.5132
+offset_top = 174.52856
+offset_right = 1451.8201
+offset_bottom = 317.86182
+theme_override_colors/font_focus_color = Color(0.76101106, 0.39861044, 0.955303, 1)
+theme_override_colors/font_pressed_color = Color(0.60882187, 0.6744009, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7607843, 0.4, 0.95686275, 1)
+theme_override_fonts/font = ExtResource("4_4jx20")
+theme_override_font_sizes/font_size = 84
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0mp1d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x20i0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vkgan")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uijvl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q4gwn")
+text = "4. Speedtickers - x2 Speed"
 alignment = 0
 script = ExtResource("5_6r73g")
 Challenge = 3
@@ -447,4 +467,5 @@ libraries/ = SubResource("AnimationLibrary_q4gwn")
 [connection signal="pressed" from="CanvasLayer/SelectChallenge/ButtonChallenge1" to="CanvasLayer/SelectChallenge/ButtonChallenge1" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/SelectChallenge/ButtonChallenge2" to="CanvasLayer/SelectChallenge/ButtonChallenge2" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/SelectChallenge/ButtonChallenge3" to="CanvasLayer/SelectChallenge/ButtonChallenge3" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/SelectChallenge/ButtonChallenge4" to="CanvasLayer/SelectChallenge/ButtonChallenge4" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenuConfigButton2" to="CanvasLayer/PauseMenuConfigButton2" method="_on_pressed"]

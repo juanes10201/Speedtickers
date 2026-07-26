@@ -68,6 +68,7 @@ func setup_default_values() -> void:
 
 #La idea es parsear un json a un diccionario en godot.
 func SaveLevelPersonalRecord(Level : int = 1, World : int = 1, RealTime : float = 0) -> void:
+	if(Global.Selected_Challenge != Global.CHALLENGES.none): return
 	loadgamedata()
 	setup_default_values()
 	
@@ -81,7 +82,7 @@ func SaveLevelPersonalRecord(Level : int = 1, World : int = 1, RealTime : float 
 		if(_player && _player.ReplayAction == Global.ReplayStates.RECORD):
 			#TODO: se tiene que subir a steam el replay, d forma d q se pueda acceder por el sistema d leaderboards
 			_player._save_level_replay()
-		set_save_value(_world_name, str(Level), RealTime)
+		set_save_value(_world_name, str(Level), RealTime/1000.0)
 
 func SaveLevelRecord(Level : int = 1, World : int = 0, RealTime : float = 0) -> void:
 	SaveLevelPersonalRecord(Level, World, RealTime)
@@ -124,15 +125,17 @@ func get_leaderboard_handle(key : String) -> int:
 	Cache_Leaderboard_Handles[key] = handle
 	return handle
 
-#func _ready() -> void:
+func _ready() -> void:
+	#Espero a que se inicie steam
+	await get_tree().create_timer(1.0).timeout
+	print(await leaderboard_load_level_parse_to_ingame_ui(7, 0, 3))
 	#print("DEBUGGING")
-	#print(await SaveGame.leaderboard_load_level_top_3(0, 0 ))
+	#print(await SaveGame.leaderboard_load_level_top_3(7, 0))
 
 func get_leaderboard_key_name(level : int, world : int) -> String:
 	return "world" + str(world) + "_level" + str(level)
 
 func leaderboard_submit_level_time(sec : int, level : int, world : int) -> void:
-	print("Submitting to leaderboard time!")
 	var key = get_leaderboard_key_name(level, world)
 	var handle : int = await get_leaderboard_handle(key)
 	if(handle == -1): return
@@ -141,7 +144,6 @@ func leaderboard_submit_level_time(sec : int, level : int, world : int) -> void:
 	
 	#TODO: me parece que lo mas logico es agregar los datos "ghost" del jugador como dato extra al leaderboard. quedaria clean si se puede
 	#await Steam.leaderboard_find_result
-	print("Obtenido handle, subiendo el resultado...")
 	Steam.uploadLeaderboardScore(sec, true, [], handle)
 	Steam.downloadLeaderboardEntries(0, 2, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, handle)
 
@@ -149,6 +151,8 @@ func leaderboard_load_level_time(level : int, world : int, amount : int) -> Arra
 	var key = get_leaderboard_key_name(level, world)
 	#se agrega el await porque la puta funcion es coroutine
 	var handle : int = await get_leaderboard_handle(key)
+	print("HANDLE:")
+	print(handle)
 	if(handle == -1): return []
 	Steam.downloadLeaderboardEntries(0, amount-1, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, handle)
 	var result = await Steam.leaderboard_scores_downloaded
@@ -158,18 +162,107 @@ func leaderboard_load_level_time(level : int, world : int, amount : int) -> Arra
 	var entries : Array = result[2]
 	return entries
 
+#func leaderboard_load_level_top_3(level : int, world : int) -> Array:
+#	return await leaderboard_load_level_time(level, world, 3)
 
-func leaderboard_load_level_top_3(level : int, world : int) -> Array:
-	return await leaderboard_load_level_time(level, world, 3)
+#El tipo de dato es un diccionario, que dentro guarda una lista que contiene diccionarios
+#Osea: Dictionary[String, Array[Dictionary] ]
+var leaderboard_level_worlds_cache : Dictionary = {}
+
+func leaderboard_check_if_caches_is_stored(path : String) -> Array:
+	if(path in leaderboard_level_worlds_cache):
+		return leaderboard_level_worlds_cache[path]
+	return []
+func leaderboard_store_cache_res(res : Array, path : String) -> void:
+	leaderboard_level_worlds_cache[path] = res
 
 func _on_leaderboard_scores_downloaded(message: String, this_handle: int, results: Array) -> void:
 	print(message)
 	for entry in results:
+		#me gusta como se usa el %d con la onda de c. igual me da paja codear asi
 		print("#%d - %s - score: %d" % [
 			entry["global_rank"],
 			Steam.getFriendPersonaName(entry["steam_id"]),
 			entry["score"]
 		])
+
+func get_username_from_uuid(uuid : int) -> String:
+	#1ro me fijo si esta el nombre ya cacheado como parte de los amigos u otro
+	var name := Steam.getFriendPersonaName(uuid)
+	if(name != ""): return name
+	#Si no lo pido al servidor
+	Steam.requestUserInformation(uuid, true)
+	#Esto puede crashear el juego
+	#Es una solucion temporal, para evitar usar señales
+	#TODO: cambiar un while true infinito. es muy mala practica
+	while true:
+		var result = await Steam.persona_state_change
+		var changed_id : int = result[0]
+		if(changed_id == uuid):return Steam.getFriendPersonaName(uuid)
+	return ""
+
+#Convierto los tiempos a segundos
+#Convierto los uuid de los usuarios a los nombres
+#Los ordeno por puesto de forma ascendente
+func leaderboard_parse_to_ingame_ui(steam_leaderboard : Array, path : String) -> Array:
+	var parse_res : Array = []
+	if(!steam_leaderboard): return []
+	#1ro itero por cada usuario
+	for User in steam_leaderboard:
+		var _dicc = await leaderboard_parse_user_to_ingame_ui(User)
+		parse_res.append(_dicc)
+	leaderboard_store_cache_res(parse_res, path)
+	return parse_res
+
+func leaderboard_parse_user_to_ingame_ui(User : Dictionary) -> Dictionary:
+	var _dicc : Dictionary = {}
+	_dicc["name"] = await get_username_from_uuid(User["steam_id"])
+	_dicc["score"] = User["score"]/1000.0
+	_dicc["rank"] = User["global_rank"]
+	return _dicc
+
+func leaderboard_load_level_parse_to_ingame_ui(level : int, world : int, amount : int) -> Array:
+	#se fija si esta cacheado el res y lo devuelve si es el caso
+	var _cache : Array = leaderboard_check_if_caches_is_stored(get_leaderboard_key_name(level, world) )
+	if(_cache): return _cache
+	
+	var _leaderboard = await leaderboard_load_level_time(level, world, amount)
+	if(_leaderboard): return await leaderboard_parse_to_ingame_ui(_leaderboard, get_leaderboard_key_name(level, world))
+	return []
+
+func leaderboard_get_user_parsed_ui(level : int, world : int) -> Dictionary:
+	if(level < 0 || world < 0): return {}
+	var Username : String = GetPlayerUserName()
+	var LevelKeyName : String = get_leaderboard_key_name(level, world)
+	if(leaderboard_level_worlds_cache.has(LevelKeyName) ):
+		for User in leaderboard_level_worlds_cache[LevelKeyName]:
+			if(User.has("name") && User["name"] == Username):
+				return User
+		var Steam_UserData = await get_leaderboard_user_position(level, world)
+		if(Steam_UserData):
+			var Parsed_UserData = await leaderboard_parse_user_to_ingame_ui(Steam_UserData)
+			leaderboard_level_worlds_cache[LevelKeyName].append(Parsed_UserData)
+			print("Parsed userdata: " + str(Parsed_UserData))
+			return Parsed_UserData
+	return {}
+
+func get_leaderboard_user_position(level : int, world : int) -> Dictionary:
+	var key = get_leaderboard_key_name(level, world)
+	#se agrega el await porque la puta funcion es coroutine
+	var handle : int = await get_leaderboard_handle(key)
+	print("HANDLE:")
+	print(handle)
+	if(handle == -1): return {}
+	Steam.downloadLeaderboardEntries(0, 0, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL_AROUND_USER, handle)
+	var result = await Steam.leaderboard_scores_downloaded
+	#Agrego variables debug que no se usan por las dudas: message y this_handle
+	var message : String = result[0]
+	var this_handle : int = result[1]
+	var entries : Array = result[2]
+	if(entries.is_empty()):
+		print("Player hasn't submitted yet to the Scoreboard: " + str(level) + ", world: " + str(world))
+		return {}
+	return entries[0]
 
 #func leaderboard_get_level_time(level : int, world : int) -> void:
 #	
@@ -178,33 +271,33 @@ func _on_leaderboard_scores_downloaded(message: String, this_handle: int, result
 #	Steam.findOrCreateLeaderboard(key, Steam.LEADERBOARD_SORT_METHOD_DESCENDING, Steam.LEADERBOARD_DISPLAY_TYPE_NUMERIC)
 
 #Asumimos que estan sorteados en tiempo
-var UserTimes : Dictionary = {
-	"level0" : {
-		"users" : [
-			{
-				"time": 0.05,
-				"name": "pla1",
-				"uuid": ""
-			},
-			{
-				"time": 1.00,
-				"name": "pla2",
-				"uuid": ""
-			}
-		]
-	}
-}
+#var UserTimes : Dictionary = {
+#	"level0" : {
+#		"users" : [
+#			{
+#				"time": 0.05,
+#				"name": "pla1",
+#				"uuid": ""
+#			},
+#			{
+#				"time": 1.00,
+#				"name": "pla2",
+#				"uuid": ""
+#			}
+#		]
+#	}
+#}
 
-func GetLevelTimeDiccionary(level : int) -> Dictionary:
-	var s : String = "level"+str(level)
-	if(UserTimes.has(s)): return UserTimes[s]
-	return {}
+#func GetLevelTimeDiccionary(level : int) -> Dictionary:
+#	var s : String = "level"+str(level)
+#	if(UserTimes.has(s)): return UserTimes[s]
+#	return {}
 
-func GetUserLevelDiccionary(level : int, index : int) -> Dictionary:
-	var LevelDic : Dictionary = GetLevelTimeDiccionary(level)
-	if(LevelDic.has("users") && LevelDic["users"].size()-1 >= index):
-		return LevelDic["users"][index]
-	return {}
+#func GetUserLevelDiccionary(level : int, index : int) -> Dictionary:
+#	var LevelDic : Dictionary = GetLevelTimeDiccionary(level)
+#	if(LevelDic.has("users") && LevelDic["users"].size()-1 >= index):
+#		return LevelDic["users"][index]
+#	return {}
 
 func GetPlayerUserName() -> String:
 	var name = Steam.getPersonaName()

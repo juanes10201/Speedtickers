@@ -3,6 +3,8 @@ extends Area2D
 @export var BSide : bool = false
 @export var Gb : bool = false
 
+@onready var InitialTime = Time.get_ticks_msec()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.body_entered.connect(_on_body_entered)
@@ -38,6 +40,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body):
 	if(body.is_in_group("Player") && !body.Dead):# && body.ReplayAction == Global.ReplayStates.STOPPED):
+		var completed_time = Time.get_ticks_msec()-InitialTime
 		var StyleRatio : float = 1.0
 		if(body.ReplayStyle): return
 		if(LevelManager.get_level_time()):
@@ -52,8 +55,8 @@ func _on_body_entered(body):
 		#endregion
 		#region Change level
 		if(!Global.LoadingReplay):
-			var _completed_time : float = $"../Time_Left".wait_time - $"../Time_Left".time_left if $"../Time_Left" else 0.00
+			#var _completed_time : float = $"../Time_Left".wait_time - $"../Time_Left".time_left if $"../Time_Left" else 0.00
 			#print(_completed_time)
-			SaveGame.SaveLevelRecord(_lvl, _world, _completed_time)
+			SaveGame.SaveLevelRecord(_lvl, _world, completed_time)
 			LevelManager.change_to_next_level_with_completion_ui()
 		#endregion

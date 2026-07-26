@@ -4416,18 +4416,13 @@ ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world2.tscn"
 DiscShader = true
 HoverDif = 60.0
 
-[node name="ranking" type="Control" parent="CanvasLayer" unique_id=334064905 node_paths=PackedStringArray("User1", "Place1", "User2", "Place2", "User3", "Place3", "UserPlayer", "PlacePlayer")]
+[node name="ranking" type="Control" parent="CanvasLayer" unique_id=334064905 node_paths=PackedStringArray("Users", "UserPlayer", "PlacePlayer")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("88_se4jc")
-User1 = NodePath("place1/user1")
-Place1 = NodePath("place1")
-User2 = NodePath("place2/user2")
-Place2 = NodePath("place2")
-User3 = NodePath("place3/user3")
-Place3 = NodePath("place3")
+Users = [NodePath("place1/user1"), NodePath("place2/user2"), NodePath("place3/user3")]
 UserPlayer = NodePath("placeplayer/nameplayer")
 PlacePlayer = NodePath("placeplayer")
 
@@ -4451,7 +4446,7 @@ offset_bottom = 233.33337
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("89_u0tr1")
 theme_override_font_sizes/normal_font_size = 161
-text = "placeceholder"
+text = "juanes: 10 seg"
 vertical_alignment = 1
 
 [node name="place2" type="RichTextLabel" parent="CanvasLayer/ranking" unique_id=786058682]
@@ -4475,7 +4470,7 @@ offset_bottom = 226.66675
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("89_u0tr1")
 theme_override_font_sizes/normal_font_size = 161
-text = "placeceholder"
+text = "test: 20 seg"
 vertical_alignment = 1
 
 [node name="place3" type="RichTextLabel" parent="CanvasLayer/ranking" unique_id=905818219]
@@ -4499,7 +4494,7 @@ offset_bottom = 226.66675
 theme_override_constants/outline_size = 60
 theme_override_fonts/normal_font = ExtResource("89_u0tr1")
 theme_override_font_sizes/normal_font_size = 161
-text = "placeceholder"
+text = "test1: 20 seg"
 vertical_alignment = 1
 
 [node name="placeplayer" type="RichTextLabel" parent="CanvasLayer/ranking" unique_id=1887901243]
