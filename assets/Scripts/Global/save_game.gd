@@ -76,9 +76,11 @@ func SaveLevelPersonalRecord(Level : int = 1, World : int = 1, RealTime : float 
 	var _world_name = LevelManager.get_world_name_by_number(World)
 	var CurrentBest = get_value(_world_name, str(Level))
 	var _player = SaveGame.get_player()
-	if(_player && _player.ReplayAction == Global.ReplayStates.RECORD):
-		_player._save_level_replay()
+	leaderboard_submit_level_time(RealTime, Level, World)
 	if(!CurrentBest || RealTime < CurrentBest):
+		if(_player && _player.ReplayAction == Global.ReplayStates.RECORD):
+			#TODO: se tiene que subir a steam el replay, d forma d q se pueda acceder por el sistema d leaderboards
+			_player._save_level_replay()
 		set_save_value(_world_name, str(Level), RealTime)
 
 func SaveLevelRecord(Level : int = 1, World : int = 0, RealTime : float = 0) -> void:
@@ -101,23 +103,64 @@ func GetLevelTime(Level : int, World : int) -> float:
 #
 #}
 
+var Cache_Leaderboard_Handles : Dictionary[String, int] = {}
+
+func _process(delta: float) -> void:
+	Steam.run_callbacks()
+
+#tener en cuenta que la funcion get_leaderboard_handle es de tipo coroutine
+#hay que agregar un await al usarla
+func get_leaderboard_handle(key : String) -> int:
+	if(key in Cache_Leaderboard_Handles):
+		return Cache_Leaderboard_Handles[key]
+	Steam.findOrCreateLeaderboard(key, Steam.LEADERBOARD_SORT_METHOD_ASCENDING, Steam.LEADERBOARD_DISPLAY_TYPE_NUMERIC)
+	var result = await Steam.leaderboard_find_result
+	var handle : int = result[0]
+	var was_found : bool = result[1]
+	if(!was_found):
+		print("Leadeboard named " + key + " wasn't found")
+		return -1
+	print("Leadeboard named " + key + " was found with handle id: " + str(handle))
+	Cache_Leaderboard_Handles[key] = handle
+	return handle
+
+#func _ready() -> void:
+	#print("DEBUGGING")
+	#print(await SaveGame.leaderboard_load_level_top_3(0, 0 ))
+
 func get_leaderboard_key_name(level : int, world : int) -> String:
 	return "world" + str(world) + "_level" + str(level)
 
 func leaderboard_submit_level_time(sec : int, level : int, world : int) -> void:
+	print("Submitting to leaderboard time!")
 	var key = get_leaderboard_key_name(level, world)
+	var handle : int = await get_leaderboard_handle(key)
+	if(handle == -1): return
 	#var handle = get_leaderboard_handle(key)
-	Steam.findOrCreateLeaderboard(key, Steam.LEADERBOARD_SORT_METHOD_DESCENDING, Steam.LEADERBOARD_DISPLAY_TYPE_NUMERIC)
-	await Steam.leaderboard_find_result
-	Steam.uploadLeaderboardScore(sec, true, [], key)
-	Steam.downloadLeaderboardEntries(0, 2, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, key)
+	#Steam.findOrCreateLeaderboard(key, Steam.LEADERBOARD_SORT_METHOD_DESCENDING, Steam.LEADERBOARD_DISPLAY_TYPE_NUMERIC)
+	
+	#TODO: me parece que lo mas logico es agregar los datos "ghost" del jugador como dato extra al leaderboard. quedaria clean si se puede
+	#await Steam.leaderboard_find_result
+	print("Obtenido handle, subiendo el resultado...")
+	Steam.uploadLeaderboardScore(sec, true, [], handle)
+	Steam.downloadLeaderboardEntries(0, 2, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, handle)
 
-func leaderboard_load_level_time(level : int, world : int, amount : int) -> void:
+func leaderboard_load_level_time(level : int, world : int, amount : int) -> Array:
 	var key = get_leaderboard_key_name(level, world)
-	Steam.downloadLeaderboardEntries(0, amount-1, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, key)
+	#se agrega el await porque la puta funcion es coroutine
+	var handle : int = await get_leaderboard_handle(key)
+	if(handle == -1): return []
+	Steam.downloadLeaderboardEntries(0, amount-1, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, handle)
+	var result = await Steam.leaderboard_scores_downloaded
+	#Agrego variables debug que no se usan por las dudas: message y this_handle
+	var message : String = result[0]
+	var this_handle : int = result[1]
+	var entries : Array = result[2]
+	return entries
 
-func leaderboard_load_level_top_3(level : int, world : int) -> void:
-	leaderboard_load_level_time(level, world, 3)
+
+func leaderboard_load_level_top_3(level : int, world : int) -> Array:
+	return await leaderboard_load_level_time(level, world, 3)
 
 func _on_leaderboard_scores_downloaded(message: String, this_handle: int, results: Array) -> void:
 	print(message)

@@ -890,9 +890,6 @@ var DidDiagonalSlam : bool = false
 func _physics_slide_and_groundsmash(delta: float) -> void:
 	#if(OnWater && Slide):
 	#	Reset_Slide()
-	#print(PressingGroundSmash)
-	#print(Engine.get_frames_per_second())
-	print(JumpGroundsmashMultiplier.is_stopped())
 	if(!JumpGroundsmashMultiplier.is_stopped()):
 		_Destroy_Tiles_SlamJump()
 	if(JumpedUmbrella):
