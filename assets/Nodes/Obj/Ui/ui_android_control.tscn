@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://by7rcw3ldgdq6"]
 
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_7hqbc"]
-[ext_resource type="Texture2D" uid="uid://c5rx8ecmsx5l2" path="res://assets/Sprites/menus/AndroidButtons/ButtonJump.png" id="2_82bsh"]
-[ext_resource type="Texture2D" uid="uid://ceb3jtjexfnw5" path="res://assets/Sprites/menus/AndroidButtons/ButtonJumpPressed.png" id="3_08yyf"]
+[ext_resource type="Texture2D" uid="uid://c5rx8ecmsx5l2" path="res://assets/Sprites/Ui/Button/AndroidButtons/ButtonJump.png" id="2_82bsh"]
+[ext_resource type="Texture2D" uid="uid://ceb3jtjexfnw5" path="res://assets/Sprites/Ui/Button/AndroidButtons/ButtonJumpPressed.png" id="3_08yyf"]
 [ext_resource type="Script" uid="uid://det3fveu663sp" path="res://assets/Nodes/Obj/Ui/AndroidButton.gd" id="3_toacd"]
-[ext_resource type="Texture2D" uid="uid://cl8euwk7sg8jy" path="res://assets/Sprites/menus/AndroidButtons/ButtonSlide.png" id="4_82bsh"]
-[ext_resource type="Texture2D" uid="uid://jwsjhcejixp2" path="res://assets/Sprites/menus/AndroidButtons/ButtonDash.png" id="5_toacd"]
-[ext_resource type="Texture2D" uid="uid://dwjvykbnpa5c" path="res://assets/Sprites/menus/AndroidButtons/ButtonSlidePressed.png" id="6_oyh0g"]
+[ext_resource type="Texture2D" uid="uid://cl8euwk7sg8jy" path="res://assets/Sprites/Ui/Button/AndroidButtons/ButtonSlide.png" id="4_82bsh"]
+[ext_resource type="Texture2D" uid="uid://jwsjhcejixp2" path="res://assets/Sprites/Ui/Button/AndroidButtons/ButtonDash.png" id="5_toacd"]
+[ext_resource type="Texture2D" uid="uid://dwjvykbnpa5c" path="res://assets/Sprites/Ui/Button/AndroidButtons/ButtonSlidePressed.png" id="6_oyh0g"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

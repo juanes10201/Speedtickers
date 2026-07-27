@@ -19,7 +19,7 @@
 &"portraits": {
 "Angry": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Angry.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Player/Angry.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -28,7 +28,7 @@
 },
 "Clay": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Clay.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Player/Clay.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -37,7 +37,7 @@
 },
 "Dark": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Dark.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Player/Dark.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -46,7 +46,7 @@
 },
 "Idle": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Player.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Player/Player.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -55,7 +55,7 @@
 },
 "Lol": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/lol.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Player/lol.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -64,7 +64,7 @@
 },
 "Mmm": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Mmm.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Player/Mmm.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -73,7 +73,7 @@
 },
 "Sad": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Sad.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Player/Sad.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -82,7 +82,7 @@
 },
 "Surprised": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Surprised.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Player/Surprised.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://30vlnpw4vxkh" path="res://assets/Nodes/Obj/Gameplay/Piston.gd" id="1_210bg"]
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_h7kks"]
-[ext_resource type="Texture2D" uid="uid://b5dgnadnkajsr" path="res://assets/Sprites/killbox_gray.png" id="3_210bg"]
+[ext_resource type="Texture2D" uid="uid://b5dgnadnkajsr" path="res://assets/Sprites/Gameplay/Items/Killbox/killbox_gray.png" id="3_210bg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1fxfy"]
 shader = ExtResource("2_h7kks")

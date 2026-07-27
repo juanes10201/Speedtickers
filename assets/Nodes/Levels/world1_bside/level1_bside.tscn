@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://ce77javdcpg80"]
 
-[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_ctlxa"]
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/Gameplay/Bg/grid.png" id="1_ctlxa"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_g7nqx"]
-[ext_resource type="Texture2D" uid="uid://c40o3wnude1dr" path="res://assets/Sprites/tiles_neon.png" id="3_aamqn"]
+[ext_resource type="Texture2D" uid="uid://c40o3wnude1dr" path="res://assets/Sprites/Gameplay/Tilesets/tiles_neon.png" id="3_aamqn"]
 [ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Scripts/tile_map_layer.gd" id="4_ns2ee"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="5_4t6wb"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="6_dg2xi"]

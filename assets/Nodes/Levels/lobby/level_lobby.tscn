@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c64nuqy3nox00"]
 
-[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_sdeve"]
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/Gameplay/Bg/grid.png" id="1_sdeve"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_wsgti"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="3_aqykh"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="4_7hf1d"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://b70n1us6src5o" path="res://assets/Nodes/Obj/Dialogue/dialog_text_area.gd" id="16_7hf1d"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="16_eg6oa"]
 [ext_resource type="Script" uid="uid://cemn5v31uprsc" path="res://assets/tutorial_time_stop.gd" id="17_lpqvr"]
-[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="17_s7htf"]
+[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Gameplay/player/hologram.png" id="17_s7htf"]
 [ext_resource type="Script" uid="uid://6216kh0o2v0m" path="res://assets/Nodes/Obj/hologram.gd" id="18_7uw4i"]
 [ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="19_p1iso"]
 [ext_resource type="PackedScene" uid="uid://cjdqb7io2svh1" path="res://assets/Nodes/Obj/Gameplay/rail.tscn" id="20_aqykh"]

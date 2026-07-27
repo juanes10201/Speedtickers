@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cpwuqqfne188f"]
 
-[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="1_t4kx7"]
+[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/Gameplay/Tilesets/tiles_1.png" id="1_t4kx7"]
 [ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Scripts/tile_map_layer.gd" id="2_ec4an"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="3_5iw26"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="4_01tod"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://djqwajvc8m3td" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn" id="5_c26jv"]
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="7_bwq2j"]
 [ext_resource type="Script" uid="uid://yi71cshxkfnc" path="res://assets/Scripts/key.gd" id="9_4bxq2"]
-[ext_resource type="Texture2D" uid="uid://frgvamgpi0lw" path="res://assets/Sprites/key-Sheet.png" id="10_hy6po"]
+[ext_resource type="Texture2D" uid="uid://frgvamgpi0lw" path="res://assets/Sprites/Gameplay/Items/key/key-Sheet.png" id="10_hy6po"]
 [ext_resource type="PackedScene" uid="uid://c1ytdkacld0nb" path="res://assets/Nodes/Obj/Gameplay/open_box.tscn" id="11_22588"]
 [ext_resource type="PackedScene" uid="uid://cfa7sxsc3ppdn" path="res://assets/Nodes/Levels/Preload/UiCanvasLayer.tscn" id="12_enu8e"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="13_75oqa"]

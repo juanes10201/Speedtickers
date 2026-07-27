@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bgk0oiktjml4b" path="res://assets/Scripts/open_box.gd" id="1_5cidy"]
 [ext_resource type="Shader" uid="uid://bdshb7ecjuhu2" path="res://assets/Shader/open_box.gdshader" id="2_1dae4"]
-[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="2_lrgft"]
+[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/Gameplay/Tilesets/tiles_1.png" id="2_lrgft"]
 [ext_resource type="Script" uid="uid://ci1e7hh0lpd48" path="res://assets/Nodes/Obj/Gameplay/expandable_collision_editor.gd" id="4_44lbd"]
-[ext_resource type="Texture2D" uid="uid://c8rrngho2ach4" path="res://assets/Sprites/Tileset/Editor/Expand-Upper.png" id="5_etubt"]
-[ext_resource type="Texture2D" uid="uid://cmcqc73vrfdeu" path="res://assets/Sprites/Tileset/Editor/Expand-Down.png" id="6_ebkwx"]
+[ext_resource type="Texture2D" uid="uid://c8rrngho2ach4" path="res://assets/Sprites/Gameplay/Editor/Expand-Upper.png" id="5_etubt"]
+[ext_resource type="Texture2D" uid="uid://cmcqc73vrfdeu" path="res://assets/Sprites/Gameplay/Editor/Expand-Down.png" id="6_ebkwx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g70l8"]
 size = Vector2(13.4529, 12.931)

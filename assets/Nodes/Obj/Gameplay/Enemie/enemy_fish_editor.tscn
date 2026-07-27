@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bclniw1yo1m6k" path="res://assets/Sprites/particles/Slime-hit-particle2.png" id="3_5gu5v"]
 [ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="4_x2l0s"]
 [ext_resource type="Shader" uid="uid://8y1wwmi7dikk" path="res://assets/Shader/enemy_fish.gdshader" id="5_bxtle"]
-[ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/enemies/fish/fish.png" id="6_veryc"]
+[ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/Gameplay/enemies/fish/fish.png" id="6_veryc"]
 [ext_resource type="Script" uid="uid://dwdcgo564kwae" path="res://assets/Nodes/Obj/water_float_logic.gd" id="7_nor2h"]
-[ext_resource type="Texture2D" uid="uid://i24m8jfh7at7" path="res://assets/Sprites/Tileset/Editor/Reference.png" id="8_5gu5v"]
+[ext_resource type="Texture2D" uid="uid://i24m8jfh7at7" path="res://assets/Sprites/Gameplay/Editor/Reference.png" id="8_5gu5v"]
 [ext_resource type="Script" uid="uid://d0hv5l08shw0c" path="res://assets/Nodes/Obj/Gameplay/Enemie/editor_reference.gd" id="9_x2l0s"]
 
 [sub_resource type="Curve" id="Curve_c0bgn"]

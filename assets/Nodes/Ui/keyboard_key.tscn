@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cb30kjms5xe70"]
 
 [ext_resource type="Script" uid="uid://68wvhrjuv6fp" path="res://assets/Nodes/Ui/keyboard_key.gd" id="1_eqrk8"]
-[ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Keyboard White.png" id="2_vapq4"]
+[ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Ui/Input/Keyboard White.png" id="2_vapq4"]
 [ext_resource type="FontFile" uid="uid://dfigptrdw0fg2" path="res://assets/Fonts/pixelart/Gossamer Girls.ttf" id="3_co6br"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqrk8"]

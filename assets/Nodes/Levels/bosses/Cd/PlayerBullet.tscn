@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0anqhecb4jfa"]
 
-[ext_resource type="Texture2D" uid="uid://i24m8jfh7at7" path="res://assets/Sprites/Tileset/Editor/Reference.png" id="1_q6fhn"]
+[ext_resource type="Texture2D" uid="uid://i24m8jfh7at7" path="res://assets/Sprites/Gameplay/Editor/Reference.png" id="1_q6fhn"]
 [ext_resource type="Script" uid="uid://c5fs6perpf1ym" path="res://assets/Nodes/Levels/bosses/Cd/player_bullet.gd" id="1_uogfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj2ym"]

@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://vuuthlna3tf0"]
 
 [ext_resource type="Script" uid="uid://c4qc6p8wu02yx" path="res://assets/Nodes/Obj/Gameplay/Boss/Slimo/BossBomb.gd" id="1_bmav0"]
-[ext_resource type="Texture2D" uid="uid://crculis17cciv" path="res://assets/Sprites/Bosses/bomb.png" id="2_bmav0"]
+[ext_resource type="Texture2D" uid="uid://crculis17cciv" path="res://assets/Sprites/Gameplay/Bosses/bomb.png" id="2_bmav0"]
 [ext_resource type="Shader" uid="uid://iw5feb5imghw" path="res://assets/Shader/BossBombClockShape.gdshader" id="2_c0442"]
-[ext_resource type="Texture2D" uid="uid://bumhnvl6cb7tk" path="res://assets/Sprites/Bosses/ExplosionRadius.png" id="3_hra8k"]
-[ext_resource type="Texture2D" uid="uid://c2rbkkhcnpsjw" path="res://assets/Sprites/Bosses/bomb-slimey.png" id="5_x255c"]
-[ext_resource type="Texture2D" uid="uid://b5f287rcpp5i8" path="res://assets/Sprites/Bosses/bomb-explode.png" id="6_fmyot"]
-[ext_resource type="Texture2D" uid="uid://k41hdeu3lifo" path="res://assets/Sprites/Bosses/bomb-slimey-explode.png" id="7_c0442"]
+[ext_resource type="Texture2D" uid="uid://bumhnvl6cb7tk" path="res://assets/Sprites/Gameplay/Bosses/ExplosionRadius.png" id="3_hra8k"]
+[ext_resource type="Texture2D" uid="uid://c2rbkkhcnpsjw" path="res://assets/Sprites/Gameplay/Bosses/bomb-slimey.png" id="5_x255c"]
+[ext_resource type="Texture2D" uid="uid://b5f287rcpp5i8" path="res://assets/Sprites/Gameplay/Bosses/bomb-explode.png" id="6_fmyot"]
+[ext_resource type="Texture2D" uid="uid://k41hdeu3lifo" path="res://assets/Sprites/Gameplay/Bosses/bomb-slimey-explode.png" id="7_c0442"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o6gnl"]
 shader = ExtResource("2_c0442")

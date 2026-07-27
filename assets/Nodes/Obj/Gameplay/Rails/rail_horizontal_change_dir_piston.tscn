@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="1_ns8ob"]
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_20rdv"]
-[ext_resource type="Texture2D" uid="uid://dccpaqq43k5vl" path="res://assets/Sprites/enemies/world4/platform/platform.png" id="3_k5uou"]
-[ext_resource type="Texture2D" uid="uid://p0ejgs0e0h6t" path="res://assets/Sprites/enemies/world4/platform/platform-move-right.png" id="4_cxvkp"]
-[ext_resource type="Texture2D" uid="uid://ceiwrjtltluym" path="res://assets/Sprites/enemies/world4/platform/platform-move-left.png" id="4_d663u"]
+[ext_resource type="Texture2D" uid="uid://dccpaqq43k5vl" path="res://assets/Sprites/Gameplay/enemies/machines_world4/platform/platform.png" id="3_k5uou"]
+[ext_resource type="Texture2D" uid="uid://p0ejgs0e0h6t" path="res://assets/Sprites/Gameplay/enemies/machines_world4/platform/platform-move-right.png" id="4_cxvkp"]
+[ext_resource type="Texture2D" uid="uid://ceiwrjtltluym" path="res://assets/Sprites/Gameplay/enemies/machines_world4/platform/platform-move-left.png" id="4_d663u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pknad"]
 size = Vector2(130, 43)

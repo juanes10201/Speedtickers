@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cykeyxkv73jjt"]
 
 [ext_resource type="Script" uid="uid://fce3hghglf5u" path="res://assets/Scripts/falling_sand.gd" id="1_8diny"]
-[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="2_ol8f7"]
-[ext_resource type="Texture2D" uid="uid://c0r64yavno4pi" path="res://assets/Sprites/tiles_expose.png" id="3_bn0sm"]
+[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Gameplay/Tilesets/World1/tiles.png" id="2_ol8f7"]
+[ext_resource type="Texture2D" uid="uid://c0r64yavno4pi" path="res://assets/Sprites/Gameplay/Tilesets/tiles_expose.png" id="3_bn0sm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bujpq"]
 size = Vector2(8, 5.7561)

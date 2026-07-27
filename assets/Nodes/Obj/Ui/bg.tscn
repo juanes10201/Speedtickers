@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c40dutwxhopjs"]
 
-[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_ufnke"]
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/Gameplay/Bg/grid.png" id="1_ufnke"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_nn61k"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]

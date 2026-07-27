@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bu7g8iopkl260" path="res://assets/Nodes/Levels/world_test/wind_sand_path_follow.gd" id="1_yyrom"]
 [ext_resource type="Shader" uid="uid://ct14qehaxyq0l" path="res://assets/Shader/enemie_skeleton.gdshader" id="2_4772k"]
-[ext_resource type="Texture2D" uid="uid://cmqy63g3551i5" path="res://assets/Sprites/enemies/world4/piston/piston-down.png" id="3_b0nf5"]
-[ext_resource type="Texture2D" uid="uid://bulg4hxtrjvan" path="res://assets/Sprites/enemies/world4/piston/piston-down-tired.png" id="4_hx5b4"]
-[ext_resource type="Texture2D" uid="uid://t0cu3wjx4ibo" path="res://assets/Sprites/enemies/world4/piston/piston-left.png" id="5_l85yd"]
-[ext_resource type="Texture2D" uid="uid://cnr30h6mc6bh7" path="res://assets/Sprites/enemies/world4/piston/piston-left-tired.png" id="6_w0vks"]
+[ext_resource type="Texture2D" uid="uid://cmqy63g3551i5" path="res://assets/Sprites/Gameplay/enemies/machines_world4/piston/piston-down.png" id="3_b0nf5"]
+[ext_resource type="Texture2D" uid="uid://bulg4hxtrjvan" path="res://assets/Sprites/Gameplay/enemies/machines_world4/piston/piston-down-tired.png" id="4_hx5b4"]
+[ext_resource type="Texture2D" uid="uid://t0cu3wjx4ibo" path="res://assets/Sprites/Gameplay/enemies/machines_world4/piston/piston-left.png" id="5_l85yd"]
+[ext_resource type="Texture2D" uid="uid://cnr30h6mc6bh7" path="res://assets/Sprites/Gameplay/enemies/machines_world4/piston/piston-left-tired.png" id="6_w0vks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffsya"]
 size = Vector2(82, 115)

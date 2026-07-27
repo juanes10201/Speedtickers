@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://i5uabkc2skjd" path="res://assets/Nodes/Obj/Npc/npc_moveto.gd" id="1_1jsqm"]
 [ext_resource type="Script" uid="uid://f857f6q36vlf" path="res://assets/Nodes/Obj/Dialogue/dialogue_trigger.gd" id="2_dnd8x"]
-[ext_resource type="Texture2D" uid="uid://ckwush3wop150" path="res://assets/Sprites/npc/citizen1.png" id="3_hcrcn"]
-[ext_resource type="Texture2D" uid="uid://dxnfo72jg4kqw" path="res://assets/Sprites/npc/citizen1_move.png" id="4_3vj1t"]
+[ext_resource type="Texture2D" uid="uid://ckwush3wop150" path="res://assets/Sprites/Gameplay/npc/citizen1.png" id="3_hcrcn"]
+[ext_resource type="Texture2D" uid="uid://dxnfo72jg4kqw" path="res://assets/Sprites/Gameplay/npc/citizen1_move.png" id="4_3vj1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v437"]
 size = Vector2(70.7284, 59)

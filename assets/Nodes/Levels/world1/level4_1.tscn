@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://qw4dpb57t7yw"]
 
-[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_bi0fk"]
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/Gameplay/Bg/grid.png" id="1_bi0fk"]
 [ext_resource type="PackedScene" uid="uid://chat6jxc63bfj" path="res://assets/Nodes/Obj/Gameplay/Player/player.tscn" id="2_snkaw"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_u03ck"]
 [ext_resource type="Script" uid="uid://db87exh6jetnl" path="res://assets/Scripts/Player_camera.gd" id="3_dqsa5"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cykeyxkv73jjt" path="res://assets/Nodes/Obj/Gameplay/falling_sand.tscn" id="12_33jjf"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="12_obget"]
 [ext_resource type="Script" uid="uid://b70n1us6src5o" path="res://assets/Nodes/Obj/Dialogue/dialog_text_area.gd" id="15_y6xr4"]
-[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="16_ex3gg"]
+[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Gameplay/player/hologram.png" id="16_ex3gg"]
 [ext_resource type="Script" uid="uid://6216kh0o2v0m" path="res://assets/Nodes/Obj/hologram.gd" id="17_vfkf5"]
 [ext_resource type="PackedScene" uid="uid://d1ji315fcqjjv" path="res://assets/Nodes/Particles/ambientparticles.tscn" id="18_6522k"]
 [ext_resource type="FontFile" uid="uid://du1fhb4w0oxp8" path="res://assets/Fonts/pixelart/Coder's Crux.otf" id="18_myvs5"]

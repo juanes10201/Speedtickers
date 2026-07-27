@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i5uabkc2skjd" path="res://assets/Nodes/Obj/Npc/npc_moveto.gd" id="1_yi6w4"]
 [ext_resource type="Script" uid="uid://f857f6q36vlf" path="res://assets/Nodes/Obj/Dialogue/dialogue_trigger.gd" id="2_gy8g8"]
-[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Player/hologram.png" id="3_w0jks"]
+[ext_resource type="Texture2D" uid="uid://pjki5nu48c5" path="res://assets/Sprites/Gameplay/player/hologram.png" id="3_w0jks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v437"]
 size = Vector2(95.63277, 59)

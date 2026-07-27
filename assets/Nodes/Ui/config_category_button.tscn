@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b766pkykefx8o"]
 
 [ext_resource type="Script" uid="uid://doss4vryubdlk" path="res://assets/Nodes/Ui/category_button.gd" id="1_1o47x"]
-[ext_resource type="Texture2D" uid="uid://vq8julpyjdrx" path="res://assets/Sprites/menus/Config/Categories/CategoryButtonSelected.png" id="2_oadah"]
-[ext_resource type="Texture2D" uid="uid://ckomc1d8xfuyt" path="res://assets/Sprites/menus/Config/Categories/CategoryButtonUnselected.png" id="3_7mtpb"]
-[ext_resource type="Texture2D" uid="uid://b4abby6iu2es" path="res://assets/Sprites/menus/Config/Categories/Text/TextAudio.png" id="4_3i5sn"]
+[ext_resource type="Texture2D" uid="uid://vq8julpyjdrx" path="res://assets/Sprites/Ui/Button/Config/Categories/CategoryButtonSelected.png" id="2_oadah"]
+[ext_resource type="Texture2D" uid="uid://ckomc1d8xfuyt" path="res://assets/Sprites/Ui/Button/Config/Categories/CategoryButtonUnselected.png" id="3_7mtpb"]
+[ext_resource type="Texture2D" uid="uid://b4abby6iu2es" path="res://assets/Sprites/Ui/Button/Config/Categories/Text/TextAudio.png" id="4_3i5sn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flhvl"]
 

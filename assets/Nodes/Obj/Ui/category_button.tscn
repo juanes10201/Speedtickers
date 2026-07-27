@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c76f7ijliyaxi"]
 
-[ext_resource type="Texture2D" uid="uid://beprealj0qs6q" path="res://assets/Sprites/menus/Config/CategoryButton.png" id="2_vbm3d"]
-[ext_resource type="Texture2D" uid="uid://dw0ncpljn2flf" path="res://assets/Sprites/menus/Config/CategorySelectedButton.png" id="3_flfk0"]
+[ext_resource type="Texture2D" uid="uid://beprealj0qs6q" path="res://assets/Sprites/Ui/Button/Config/CategoryButton.png" id="2_vbm3d"]
+[ext_resource type="Texture2D" uid="uid://dw0ncpljn2flf" path="res://assets/Sprites/Ui/Button/Config/CategorySelectedButton.png" id="3_flfk0"]
 [ext_resource type="Script" uid="uid://dr01tagft84hb" path="res://assets/Nodes/Obj/Ui/button_category_config.gd" id="4_6nxjj"]
 [ext_resource type="FontFile" uid="uid://c2f44214fpbiv" path="res://assets/Fonts/pixelart/Vermin Vibes 1989.ttf" id="5_2pimt"]
 [ext_resource type="FontFile" uid="uid://bphx4hxrs7qgv" path="res://assets/Fonts/AudioNugget.ttf" id="6_6sn1y"]
-[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/tiles_1.png" id="7_6pwn8"]
-[ext_resource type="Texture2D" uid="uid://cwrmu6xw4jjlj" path="res://assets/Sprites/menus/Config/CategorySelectedButton_border.png" id="7_rb6nj"]
+[ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/Gameplay/Tilesets/tiles_1.png" id="7_6pwn8"]
+[ext_resource type="Texture2D" uid="uid://cwrmu6xw4jjlj" path="res://assets/Sprites/Ui/Button/Config/CategorySelectedButton_border.png" id="7_rb6nj"]
 
 [sub_resource type="Shader" id="Shader_rbx0e"]
 code = "shader_type canvas_item;

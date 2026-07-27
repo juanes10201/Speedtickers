@@ -70,7 +70,7 @@
 &"portraits": {
 "Angry": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Angry.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Angry.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -79,7 +79,7 @@
 },
 "AngryAngry": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/AngryAngry.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/AngryAngry.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -88,7 +88,7 @@
 },
 "Chad1": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Chad1png.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Chad1png.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -97,7 +97,7 @@
 },
 "Chad2": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Chad2.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Chad2.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -106,7 +106,7 @@
 },
 "Confused": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Confused.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Confused.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -115,7 +115,7 @@
 },
 "Cry": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Cry.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Cry.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -124,7 +124,7 @@
 },
 "Cry1": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Cry1.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Cry1.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -133,7 +133,7 @@
 },
 "Depresed": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Depresed.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Depresed.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -142,7 +142,7 @@
 },
 "Doubt": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Doubt.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Doubt.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -151,7 +151,7 @@
 },
 "Earing": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Earing.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Earing.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -160,7 +160,7 @@
 },
 "Excited": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Excited.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Excited.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -169,7 +169,7 @@
 },
 "Happy": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Happy.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Happy.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -178,7 +178,7 @@
 },
 "Idle": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Idle.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Idle.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -188,7 +188,7 @@
 },
 "Surprised": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Surprised.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Surprised.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

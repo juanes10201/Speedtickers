@@ -50,7 +50,7 @@ func _update_best_scores(Level : int, World : int) -> void:
 		Users[0].visible = true
 		Users[0].get_parent().visible = true
 		Users[0].get_parent().text = ""
-		Users[0].text = "No results found"
+		Users[0].text = "No scores submitted yet"
 	
 func _ready() -> void:
 	_update_best_scores(0, 0)

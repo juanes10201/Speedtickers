@@ -30,7 +30,7 @@
 &"portraits": {
 "Chad": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Chad1png.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Chad1png.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -39,7 +39,7 @@
 },
 "Confused": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Confused.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Confused.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -48,7 +48,7 @@
 },
 "Doubt": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Doubt.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Doubt.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -57,7 +57,7 @@
 },
 "Earing": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Earing.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Earing.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
@@ -66,7 +66,7 @@
 },
 "Regular": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/menus/Dialogues/Npc/Idle.png\""
+"image": "\"res://assets/Sprites/Ui/Dialogues/Npc/Idle.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

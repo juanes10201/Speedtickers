@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://l54qcoh7q0nf"]
 
-[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/grid.png" id="1_eedxq"]
+[ext_resource type="Texture2D" uid="uid://l5gcewxed7vs" path="res://assets/Sprites/Gameplay/Bg/grid.png" id="1_eedxq"]
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="2_1k25g"]
-[ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/grid2.png" id="3_y62eg"]
+[ext_resource type="Texture2D" uid="uid://krk3i3gy70sb" path="res://assets/Sprites/Gameplay/Bg/grid2.png" id="3_y62eg"]
 [ext_resource type="Shader" uid="uid://bfnyn2mcfcjby" path="res://assets/Shader/Water2.gdshader" id="4_yrldp"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="5_bnrfy"]
 [ext_resource type="Script" uid="uid://cekeslpashr8u" path="res://assets/Nodes/Obj/Tileset/tile_map_layer_water.gd" id="6_unk4q"]

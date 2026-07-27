@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5wgsndvnte8"]
 
 [ext_resource type="Script" uid="uid://cuo85uam6d03p" path="res://assets/Nodes/Obj/Gameplay/float.gd" id="1_meotq"]
-[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Tileset/tiles_SPEED_TICKERS.png" id="1_wb8lm"]
+[ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Gameplay/Tilesets/World1/tiles.png" id="1_wb8lm"]
 [ext_resource type="AudioStream" uid="uid://kyhbhitly8g" path="res://assets/Sounds/popballoon_proccessed.wav" id="3_lugg0"]
 [ext_resource type="AudioStream" uid="uid://ltupmd82lp5b" path="res://assets/Sounds/Balloon_Inflate_Proccesed.wav" id="4_nkcm8"]
 [ext_resource type="Script" uid="uid://dwdcgo564kwae" path="res://assets/Nodes/Obj/water_float_logic.gd" id="5_ujmy2"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bclniw1yo1m6k" path="res://assets/Sprites/particles/Slime-hit-particle2.png" id="3_u121d"]
 [ext_resource type="Texture2D" uid="uid://cml6lac8kdyt5" path="res://assets/Sprites/particles/Slime-hit-particle.png" id="4_sqnti"]
 [ext_resource type="Shader" uid="uid://8y1wwmi7dikk" path="res://assets/Shader/enemy_fish.gdshader" id="5_meytl"]
-[ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/enemies/fish/fish.png" id="6_ka7d3"]
+[ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/Gameplay/enemies/fish/fish.png" id="6_ka7d3"]
 [ext_resource type="Script" uid="uid://dwdcgo564kwae" path="res://assets/Nodes/Obj/water_float_logic.gd" id="7_lusbw"]
 
 [sub_resource type="Curve" id="Curve_c0bgn"]
