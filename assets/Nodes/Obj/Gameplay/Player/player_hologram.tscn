@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bkftsb7o3388s" path="res://assets/Sprites/Gameplay/player/hologram_move-jump.png" id="8_c2udr"]
 [ext_resource type="Texture2D" uid="uid://d1ms4i0rw4sl5" path="res://assets/Sprites/Gameplay/player/hologram_move-inverted.png" id="8_vcsd7"]
 [ext_resource type="Texture2D" uid="uid://ddhdv5top55om" path="res://assets/Sprites/Gameplay/player/hologram_move-inverted2.png" id="9_q5b7p"]
-[ext_resource type="Texture2D" uid="uid://bcv820hqp60jd" path="res://original_assets/Art/Deprecated/player_deprecated/knightdash-Sheet.png" id="10_ob62c"]
+[ext_resource type="Texture2D" uid="uid://bcv820hqp60jd" path="res://assets/Sprites/Deprecated/player_deprecated/knightdash-Sheet.png" id="10_ob62c"]
 [ext_resource type="Script" uid="uid://dj3qnpf8vf8o3" path="res://assets/Nodes/Obj/Gameplay/Player/Player_Sprite.gd" id="13_c4t5u"]
 [ext_resource type="Texture2D" uid="uid://d2hw4c4hq34qe" path="res://assets/Sprites/particles/particles-Sheet.png" id="14_2aaru"]
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/Ui/Input/kenney_inputs.png" id="15_nl6rk"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cba0dn710x26"]
 
 [ext_resource type="Script" uid="uid://dkxnggsy0tpc" path="res://assets/Scripts/flag.gd" id="1_gl5pl"]
-[ext_resource type="Texture2D" uid="uid://dj6fpitwbxqbk" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="2_5d660"]
+[ext_resource type="Texture2D" uid="uid://dj6fpitwbxqbk" path="res://assets/Premade/brackeys_platformer_assets/sprites/coin.png" id="2_5d660"]
 [ext_resource type="Texture2D" uid="uid://cc6sao5m1uf1p" path="res://assets/Sprites/particles/light3.png" id="3_klgg3"]
 [ext_resource type="Shader" uid="uid://c2lmrj8xyngdv" path="res://assets/Shader/Godray.gdshader" id="4_arfwt"]
 

@@ -10,9 +10,12 @@ func _ready() -> void:
 	initialize_steam()
 	leaderbord_find("LowestTimes")
 
+var DidSteamInitialize : bool = false
+
 func initialize_steam() -> void:
 	var initialize_response: Dictionary = Steam.steamInitEx()
 	print("Did Steam initialize?: %s " % initialize_response)
+	DidSteamInitialize = !initialize_response["status"]
 
 func leaderbord_find(handle : String):
 	Steam.findLeaderboard(handle)

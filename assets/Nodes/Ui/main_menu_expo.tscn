@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cog43u1t7ej48"]
 
 [ext_resource type="Script" uid="uid://b40hrfks2w7u6" path="res://assets/Scripts/PauseMenuLogic.gd" id="1_ugg8d"]
-[ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://original_assets/Art/Deprecated/screenshot.png" id="2_6b00t"]
+[ext_resource type="Texture2D" uid="uid://be1h2ja4pyni1" path="res://assets/Sprites/Deprecated/screenshot.png" id="2_6b00t"]
 [ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/Ui/Bg/Transition.png" id="3_r1bum"]
 [ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Scripts/PauseMenuTransition.gd" id="4_6mak4"]
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="7_otm67"]

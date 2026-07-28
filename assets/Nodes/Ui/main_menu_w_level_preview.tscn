@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bfjuhdt66v471" path="res://assets/Scripts/grid_bg.gd" id="3_gqmbm"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="4_20d3d"]
 [ext_resource type="PackedScene" uid="uid://cba0dn710x26" path="res://assets/Nodes/Obj/Gameplay/flag.tscn" id="5_bpyiq"]
-[ext_resource type="Texture2D" uid="uid://csqkhgwc5nj2t" path="res://original_assets/placeholder.png" id="7_v3xe4"]
+[ext_resource type="Texture2D" uid="uid://csqkhgwc5nj2t" path="res://assets/Sprites/Deprecated/placeholder.png" id="7_v3xe4"]
 [ext_resource type="PackedScene" uid="uid://bygxx5ppwysc3" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemie_special.tscn" id="7_xs2jx"]
 [ext_resource type="PackedScene" uid="uid://xjx2k63akbn3" path="res://assets/Nodes/Levels/Preload/levels_default.tscn" id="8_rp1pk"]
 [ext_resource type="PackedScene" uid="uid://dmnyy0uuvc0jk" path="res://assets/Nodes/Obj/Gameplay/kill_box.tscn" id="9_v3xe4"]

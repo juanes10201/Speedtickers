@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dfxj00uyktfa7" path="res://assets/Sprites/Gameplay/enemies/slime/regular/slime-Sheet.png" id="14_3su7g"]
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/Gameplay/Tilesets/tiles_1.png" id="14_fmanp"]
 [ext_resource type="Texture2D" uid="uid://frgvamgpi0lw" path="res://assets/Sprites/Gameplay/Items/key/key-Sheet.png" id="15_3su7g"]
-[ext_resource type="Texture2D" uid="uid://dj6fpitwbxqbk" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="16_rcrhl"]
+[ext_resource type="Texture2D" uid="uid://dj6fpitwbxqbk" path="res://assets/Premade/brackeys_platformer_assets/sprites/coin.png" id="16_rcrhl"]
 [ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/Ui/Input/kenney_inputs.png" id="17_jq3pr"]
 [ext_resource type="Texture2D" uid="uid://ccvnmxojr4xgl" path="res://assets/Sprites/Gameplay/Items/Killbox/killbox.png" id="17_rcrhl"]
 [ext_resource type="Texture2D" uid="uid://bkqxujelg0y5" path="res://assets/Sprites/Gameplay/Items/Killbox/killbox-blue.png" id="18_jq3pr"]

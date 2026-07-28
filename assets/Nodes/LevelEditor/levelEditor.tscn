@@ -70,7 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/Gameplay/Tilesets/tiles_1.png" id="54_kwd4c"]
 [ext_resource type="Texture2D" uid="uid://bt7hwj175tx1b" path="res://assets/Sprites/Gameplay/Editor/laser-icon.png" id="56_crete"]
 [ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/Gameplay/enemies/fish/fish.png" id="58_57dd7"]
-[ext_resource type="Texture2D" uid="uid://dj6fpitwbxqbk" path="res://assets/brackeys_platformer_assets/sprites/coin.png" id="60_5mkwl"]
+[ext_resource type="Texture2D" uid="uid://dj6fpitwbxqbk" path="res://assets/Premade/brackeys_platformer_assets/sprites/coin.png" id="60_5mkwl"]
 [ext_resource type="Texture2D" uid="uid://bdjw0a04khk1c" path="res://assets/Sprites/Gameplay/Items/clock-sheet.png" id="61_5mcbv"]
 [ext_resource type="Script" uid="uid://dwb6qrpd7mion" path="res://assets/Nodes/LevelEditor/editor_level_data.gd" id="67_aueqc"]
 [ext_resource type="Script" uid="uid://cpevb4sucnhyw" path="res://assets/Nodes/LevelEditor/editor_ui_selecting_multiple.gd" id="67_j3kmy"]

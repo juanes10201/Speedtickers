@@ -126,7 +126,10 @@ func load_level_csv(csv : String, levelpaths : Dictionary, worldorder : Array[St
 					AmountLevelsBSide += 1
 				levelpaths[worldorder[l]].append(_value)
 	print("Reloaded level paths csv file")
-	#print(LevelPaths)
+	print("Does file exists: ")
+	print(str(FileAccess.file_exists(csv)))
+	print(filetxt)
+	print(LevelPaths)
 
 func get_world_name_by_number(Number : int) -> String:
 	return get_world_order()[Number]

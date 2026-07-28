@@ -107,11 +107,13 @@ func GetLevelTime(Level : int, World : int) -> float:
 var Cache_Leaderboard_Handles : Dictionary[String, int] = {}
 
 func _process(delta: float) -> void:
-	Steam.run_callbacks()
+	if(SteamIntegration.initialize_steam):
+		Steam.run_callbacks()
 
 #tener en cuenta que la funcion get_leaderboard_handle es de tipo coroutine
 #hay que agregar un await al usarla
 func get_leaderboard_handle(key : String) -> int:
+	if(!SteamIntegration.initialize_steam): return 0 
 	if(key in Cache_Leaderboard_Handles):
 		return Cache_Leaderboard_Handles[key]
 	Steam.findOrCreateLeaderboard(key, Steam.LEADERBOARD_SORT_METHOD_ASCENDING, Steam.LEADERBOARD_DISPLAY_TYPE_NUMERIC)
@@ -126,9 +128,12 @@ func get_leaderboard_handle(key : String) -> int:
 	return handle
 
 func _ready() -> void:
+	pass
 	#Espero a que se inicie steam
-	await get_tree().create_timer(1.0).timeout
-	print(await leaderboard_load_level_parse_to_ingame_ui(7, 0, 3))
+	
+	#await get_tree().create_timer(1.0).timeout
+	#print(await leaderboard_load_level_parse_to_ingame_ui(7, 0, 3))
+	
 	#print("DEBUGGING")
 	#print(await SaveGame.leaderboard_load_level_top_3(7, 0))
 
@@ -136,6 +141,7 @@ func get_leaderboard_key_name(level : int, world : int) -> String:
 	return "world" + str(world) + "_level" + str(level)
 
 func leaderboard_submit_level_time(sec : int, level : int, world : int) -> void:
+	if(!SteamIntegration.initialize_steam): return
 	var key = get_leaderboard_key_name(level, world)
 	var handle : int = await get_leaderboard_handle(key)
 	if(handle == -1): return
@@ -148,6 +154,7 @@ func leaderboard_submit_level_time(sec : int, level : int, world : int) -> void:
 	Steam.downloadLeaderboardEntries(0, 2, Steam.LEADERBOARD_DATA_REQUEST_GLOBAL, handle)
 
 func leaderboard_load_level_time(level : int, world : int, amount : int) -> Array:
+	if(!SteamIntegration.initialize_steam): return []
 	var key = get_leaderboard_key_name(level, world)
 	#se agrega el await porque la puta funcion es coroutine
 	var handle : int = await get_leaderboard_handle(key)
@@ -170,14 +177,16 @@ func leaderboard_load_level_time(level : int, world : int, amount : int) -> Arra
 var leaderboard_level_worlds_cache : Dictionary = {}
 
 func leaderboard_check_if_caches_is_stored(path : String) -> Array:
+	if(!SteamIntegration.initialize_steam): return []
 	if(path in leaderboard_level_worlds_cache):
 		return leaderboard_level_worlds_cache[path]
 	return []
 func leaderboard_store_cache_res(res : Array, path : String) -> void:
+	if(!SteamIntegration.initialize_steam): return
 	leaderboard_level_worlds_cache[path] = res
 
 func _on_leaderboard_scores_downloaded(message: String, this_handle: int, results: Array) -> void:
-	print(message)
+	if(!SteamIntegration.initialize_steam): return
 	for entry in results:
 		#me gusta como se usa el %d con la onda de c. igual me da paja codear asi
 		print("#%d - %s - score: %d" % [
@@ -187,6 +196,7 @@ func _on_leaderboard_scores_downloaded(message: String, this_handle: int, result
 		])
 
 func get_username_from_uuid(uuid : int) -> String:
+	if(!SteamIntegration.initialize_steam): return ""
 	#1ro me fijo si esta el nombre ya cacheado como parte de los amigos u otro
 	var name := Steam.getFriendPersonaName(uuid)
 	if(name != ""): return name
@@ -205,6 +215,7 @@ func get_username_from_uuid(uuid : int) -> String:
 #Convierto los uuid de los usuarios a los nombres
 #Los ordeno por puesto de forma ascendente
 func leaderboard_parse_to_ingame_ui(steam_leaderboard : Array, path : String) -> Array:
+	if(!SteamIntegration.initialize_steam): return []
 	var parse_res : Array = []
 	if(!steam_leaderboard): return []
 	#1ro itero por cada usuario
@@ -215,6 +226,7 @@ func leaderboard_parse_to_ingame_ui(steam_leaderboard : Array, path : String) ->
 	return parse_res
 
 func leaderboard_parse_user_to_ingame_ui(User : Dictionary) -> Dictionary:
+	if(!SteamIntegration.initialize_steam): return {}
 	var _dicc : Dictionary = {}
 	_dicc["name"] = await get_username_from_uuid(User["steam_id"])
 	_dicc["score"] = User["score"]/1000.0
@@ -222,6 +234,7 @@ func leaderboard_parse_user_to_ingame_ui(User : Dictionary) -> Dictionary:
 	return _dicc
 
 func leaderboard_load_level_parse_to_ingame_ui(level : int, world : int, amount : int) -> Array:
+	if(!SteamIntegration.initialize_steam): return []
 	#se fija si esta cacheado el res y lo devuelve si es el caso
 	var _cache : Array = leaderboard_check_if_caches_is_stored(get_leaderboard_key_name(level, world) )
 	if(_cache): return _cache
@@ -231,6 +244,7 @@ func leaderboard_load_level_parse_to_ingame_ui(level : int, world : int, amount 
 	return []
 
 func leaderboard_get_user_parsed_ui(level : int, world : int) -> Dictionary:
+	if(!SteamIntegration.initialize_steam): return {}
 	if(level < 0 || world < 0): return {}
 	var Username : String = GetPlayerUserName()
 	var LevelKeyName : String = get_leaderboard_key_name(level, world)
@@ -247,6 +261,7 @@ func leaderboard_get_user_parsed_ui(level : int, world : int) -> Dictionary:
 	return {}
 
 func get_leaderboard_user_position(level : int, world : int) -> Dictionary:
+	if(!SteamIntegration.initialize_steam): return {}
 	var key = get_leaderboard_key_name(level, world)
 	#se agrega el await porque la puta funcion es coroutine
 	var handle : int = await get_leaderboard_handle(key)
@@ -300,6 +315,7 @@ func get_leaderboard_user_position(level : int, world : int) -> Dictionary:
 #	return {}
 
 func GetPlayerUserName() -> String:
+	if(!SteamIntegration.initialize_steam): return "Player: "
 	var name = Steam.getPersonaName()
 	if(!name): name = "Player: "
 	return name

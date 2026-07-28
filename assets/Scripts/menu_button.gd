@@ -16,7 +16,7 @@ extends Button
 
 @export var FadeTransition : bool = false
 
-@export var tex_selected : Texture = preload("res://assets/Sprites/levelnote-selected.png") if IsPixelartButton else null
+@export var tex_selected : Texture = preload("res://assets/Sprites/Ui/Button/Pixelart/levelnote-selected.png") if IsPixelartButton else null
 @onready var tex_unselected : Texture = self.icon
 
 @onready var hover_size : Vector2 = Vector2(original_size.x+HoverDif, original_size.y+HoverDif)
