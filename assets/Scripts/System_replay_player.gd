@@ -12,6 +12,10 @@ var Actions : Array[String] = ["player_jump", "player_slide", "player_dash", "ui
 
 var TimeMargin : float = 10.0
 
+var CurrentPositionIndex = 1
+
+var RecordCatchupPositionTime : int = 1000
+
 var ReplayActions = {
 	"player_jump": false,
 	"player_slide": false,
@@ -58,6 +62,12 @@ func Record_Actions() -> void:
 			var RecordedAction : Vector3 = Vector3(CurrentTime, i, 0)
 			Player.RecordedActions.append(RecordedAction)
 			#print("Vector3" +str(RecordedAction) + ",")
+	#print(Player.RecordedPositions)
+	#print(RecordCatchupPositionTime)
+	#print(CurrentTime)
+	if(CurrentTime >= CurrentPositionIndex*RecordCatchupPositionTime):
+		Player.RecordedPositions.append(Vector3(Player.global_position.x, Player.global_position.y, CurrentTime) )
+		CurrentPositionIndex += 1
 
 func Replay_Actions() -> void:
 	#Check if the action time is the same(Or less) as the current
@@ -65,12 +75,16 @@ func Replay_Actions() -> void:
 		if(abs(CurrentTime-Player.RecordedActions[ReplayCurrentAction].x) <= TimeMargin || CurrentTime >= Player.RecordedActions[ReplayCurrentAction].x):
 			Play_action(Actions[Player.RecordedActions[ReplayCurrentAction].y], Player.RecordedActions[ReplayCurrentAction].z)
 			ReplayCurrentAction += 1
+	if(CurrentPositionIndex < Player.RecordedPositions.size() && CurrentTime >= Player.RecordedPositions[CurrentPositionIndex].z):
+		Player.global_position = Vector2(Player.RecordedPositions[CurrentPositionIndex].x, Player.RecordedPositions[CurrentPositionIndex].y)
+		CurrentPositionIndex += 1
 
 @onready var InitialTime = Time.get_ticks_msec()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	State = Player.ReplayAction
 	#print(Input.is_action_pressed("replay_player_jump"))
-	CurrentTime = Time.get_ticks_msec()-InitialTime
+	CurrentTime += 1000*delta
+	#CurrentTime = Time.get_ticks_msec()-InitialTime
 	if(State == Global.ReplayStates.RECORD): Record_Actions()
 	elif(State == Global.ReplayStates.REPLAY): Replay_Actions()

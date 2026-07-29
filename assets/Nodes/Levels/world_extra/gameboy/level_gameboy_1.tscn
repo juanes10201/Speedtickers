@@ -34,17 +34,17 @@ theme_override_font_sizes/normal_font_size = 44
 text = " seg"
 metadata/_edit_use_anchors_ = true
 
-[node name="ui_text_timeleft" parent="CanvasLayer" index="4" unique_id=2102879422]
+[node name="ui_text_timeleft" parent="CanvasLayer" index="6" unique_id=2102879422]
 theme_override_fonts/normal_font = ExtResource("2_qt2kd")
 metadata/_edit_use_anchors_ = true
 
-[node name="ProgressBar" parent="CanvasLayer" index="5" unique_id=318457104]
+[node name="ProgressBar" parent="CanvasLayer" index="7" unique_id=318457104]
 metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel" parent="CanvasLayer" index="9" unique_id=1943670024]
+[node name="RichTextLabel" parent="CanvasLayer" index="11" unique_id=1943670024]
 metadata/_edit_use_anchors_ = true
 
-[node name="LogoText" parent="CanvasLayer" index="10" unique_id=1669258455]
+[node name="LogoText" parent="CanvasLayer" index="12" unique_id=1669258455]
 metadata/_edit_use_anchors_ = true
 
 [node name="StyleBar" parent="CanvasLayer/Style" parent_id_path=PackedInt32Array(813255011, 1989216175) index="5" unique_id=440521956]

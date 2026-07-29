@@ -230,6 +230,7 @@ func _stop_slam_particles():
 @export var ReplayAction : Global.ReplayStates = Global.ReplayStates.RECORD
 @export var ReplayStyle : bool = false
 var RecordedActions : Array[Vector3] = []
+var RecordedPositions : Array[Vector3] = []
 @export var RecordedLocation : String = "res://assets/Replays/tutorial_level1_1.json"
 
 var Moved : bool = false
@@ -270,6 +271,12 @@ func array_to_vec3(arr: Array) -> Array[Vector3]:
 		out.append(Vector3(a[0], a[1], a[2]))
 	return out
 
+func array_to_vec2(arr: Array) -> Array[Vector2]:
+	var out: Array[Vector2] = []
+	for a in arr:
+		out.append(Vector2(a[0], a[1]))
+	return out
+
 var ResUiReplay = preload("res://assets/Nodes/Ui/ui_replay.tscn")
 
 func _load_replay_ui() -> void:	
@@ -285,6 +292,9 @@ func _load_replay(Location : String) -> void:
 		var data = JSON.parse_string(file.get_as_text())
 		if typeof(data) == TYPE_ARRAY:
 			RecordedActions = array_to_vec3(data)
+		elif typeof(data) == TYPE_DICTIONARY:
+			RecordedActions = array_to_vec3(data["actions"])
+			RecordedPositions = array_to_vec3( data["positions"] )
 		else:
 			push_error("Invalid JSON structure")
 	else:
@@ -295,10 +305,13 @@ func _save_level_replay() -> void:
 	_save_replay(LevelManager.get_level_record_replay_pos(Global.Level, Global.World))
 
 func _save_replay(Location : String) -> void:
-	var json_array = RecordedActions.map(func(v): return [v.x, v.y, v.z])
+	var json_data : Dictionary = {
+		"actions": RecordedActions.map(func(v): return [v.x, v.y, v.z]),
+		"positions": RecordedPositions.map(func(v): return [v.x, v.y, v.z])
+	}
 
 	var file := FileAccess.open(Location, FileAccess.WRITE)
-	file.store_string(JSON.stringify(json_array, "\t"))
+	file.store_string(JSON.stringify(json_data, "\t"))
 	print("Saved Replay Json; Location: " + str(Location))
 
 #region Debug

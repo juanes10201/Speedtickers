@@ -4147,6 +4147,7 @@ LevelBg = NodePath("../Bg")
 LevelRanking = NodePath("../ranking")
 
 [node name="selectBoss2" type="Button" parent="CanvasLayer" unique_id=2126151394 node_paths=PackedStringArray("LevelBg", "LevelRanking")]
+visible = false
 z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -4159,6 +4160,7 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("68_wfqlv")
 theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ohwaj")
+disabled = true
 text = "LOBBY"
 icon = ExtResource("69_ber5a")
 flat = true
