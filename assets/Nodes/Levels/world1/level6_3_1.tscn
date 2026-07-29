@@ -389,12 +389,10 @@ CanChange = false
 [node name="Rail" parent="." unique_id=1238539550 instance=ExtResource("4_orcjn")]
 position = Vector2(-149, -101)
 points = PackedVector2Array(-11, 9, -6, 3, 122, 2, 130, -4)
-MoveSpeed = 500
 
 [node name="Rail2" parent="." unique_id=2046374964 instance=ExtResource("4_orcjn")]
 position = Vector2(52, 72)
 points = PackedVector2Array(-8, 10, -8, 6, 0, 2, 47, -6, 54, -97, 81, -89, 116, -92, 123, -97)
-MoveSpeed = 500
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1709136984 groups=["Tileset"]]
 position = Vector2(-757.008, -830)

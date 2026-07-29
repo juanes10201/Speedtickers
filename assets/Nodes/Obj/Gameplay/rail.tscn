@@ -14,6 +14,9 @@ metadata/_snap_count = 2
 [sub_resource type="Curve2D" id="Curve2D_u35qx"]
 resource_local_to_scene = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kral6"]
+resource_local_to_scene = true
+
 [node name="Rail" type="Line2D" unique_id=607275562 node_paths=PackedStringArray("FallCooldown", "MoveRef", "Path", "PathFollow")]
 points = PackedVector2Array(-6, 6, 0, 2, 270, 2, 274, 5)
 width = 4.835
@@ -40,3 +43,13 @@ texture = ExtResource("2_pxxnd")
 [node name="FallCooldown" type="Timer" parent="." unique_id=617978959]
 wait_time = 0.5
 one_shot = true
+
+[node name="InitialCollisionArea" type="Area2D" parent="." unique_id=1931260818]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InitialCollisionArea" unique_id=1235819047]
+shape = SubResource("RectangleShape2D_kral6")
+debug_color = Color(0.9254215, 0.27351406, 0, 0.41960785)
+
+[connection signal="body_entered" from="InitialCollisionArea" to="." method="_on_initial_collision_area_body_entered"]
+[connection signal="body_exited" from="InitialCollisionArea" to="." method="_on_initial_collision_area_body_exited"]
