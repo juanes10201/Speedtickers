@@ -624,11 +624,17 @@ func _fade_sound(body):
 	tween_fade_sound.tween_callback(body.stop)
 #endregion
 
+@onready var OriginalWaitTime : float = Time_Left.wait_time
+const MaxWaitTime : float = 999999.0
+
 func _set_time_state(State : bool):
 	if(State):
 		Time_Left.paused = false
+		if(Time_Left.wait_time > OriginalWaitTime):
+			Time_Left.wait_time = OriginalWaitTime
+			Time_Left.start()
 	elif(Global.Selected_Challenge != Global.CHALLENGES.speedrun):
-		Time_Left.wait_time = 999999.0
+		Time_Left.wait_time = MaxWaitTime
 		Time_Left.start()
 
 #region Pause and menu

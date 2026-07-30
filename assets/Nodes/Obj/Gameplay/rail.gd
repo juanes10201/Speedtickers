@@ -82,9 +82,10 @@ func _process(delta: float) -> void:
 				print("Player snapped on rail")
 		if(Player.SnappedOnRail && PlayerSnapped):				
 			Player.strech_size(1.0, 1.0, true, 20)
-			#Player.Reset_Slide()
+			Player.Reset_Slide()
 			Player.PressedSlide = false
 			Player.LastDirection = 1 if NormalizedVel.x > 0 else -1
+			Player.direction = 1 if NormalizedVel.x > 0 else -1
 			Player.global_position = MoveRef.global_position + PlayerMovOffset
 			Player.Sprite.rotation_degrees = PathFollow.rotation_degrees
 			if(Input.is_action_just_pressed("player_jump")):
@@ -102,15 +103,15 @@ func _calc_player_velocity(velocity : float, angle : float) -> Vector2:
 	return Vector2(x, y)
 
 func EndPlayerRail(EndSlam : bool = false, EndSpeed : float = 100.0, Angle : float = 45.0, MoveX : bool = true, InvertXMovement : bool = false, InvertYMovement : bool = false) -> void:
-	var _direction = 1 if NormalizedVel.x >= 0 else -1
-	if Player.Slide && (_direction != Player.SlidingDirection) :
-		print("INVERT")
-		print("Dir: " + str(Player.Sides.LEFT))
-		print("Normalized: " + str(NormalizedVel.x))
-		InvertXMovement = !InvertXMovement
-	
+	#var _direction = 1 if NormalizedVel.x >= 0 else -1
+	#var InvertSlide : int = 1
+	#if Player.Slide && (_direction != Player.SlidingDirection) :
+		#print("INVERT")
+		#print("Dir: " + str(Player.Sides.LEFT))
+		#print("Normalized: " + str(NormalizedVel.x))
+		#InvertSlide = -1
 	#print(Player.SlidingDirection)
-	print("Invert: " + str(_direction) )
+	#print("Invert: " + str(_direction) )
 	
 	Player.global_position = MoveRef.global_position + PlayerMovOffset
 	Player.SnappedOnRail = false
@@ -127,9 +128,10 @@ func EndPlayerRail(EndSlam : bool = false, EndSpeed : float = 100.0, Angle : flo
 		Player.velocity.y = _velocity.y
 		if(InvertYMovement): Player.velocity.y *= -1
 		if(MoveX):
-			Player.KickTimer.start()
-			Player.KickSpeed.x = _velocity.x*KickMult * KickDirection
-			if(InvertXMovement): Player.KickSpeed.x *= -1
+			#Player.Speed.x = 0.0
+			#Player.KickTimer.start()
+			Player.Speed.x = _velocity.x*KickMult * KickDirection
+			if(InvertXMovement): Player.Speed.x *= -1
 			#if(PathFollow.rotation_degrees >= 100.0): Player.KickSpeed.x *= -1
 		else:
 			Player.Speed.x = 0

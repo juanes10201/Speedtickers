@@ -110,6 +110,7 @@ func Switch_Gravity_Remix(Dir = null) -> void:
 
 func Restart_Time(Arg = null) -> void:
 	var Player : Node2D = _get_player()
+	Player._set_time_state(true)
 	Player.CountTime = true
 	Player.Time_Left.start()
 	Player.Dashed = false

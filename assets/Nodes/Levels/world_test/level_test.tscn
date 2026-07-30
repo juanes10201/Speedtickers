@@ -269,23 +269,9 @@ position = Vector2(-318, -256)
 [node name="Rail" parent="." unique_id=607275562 instance=ExtResource("14_me14y")]
 position = Vector2(-134, -596)
 points = PackedVector2Array(-6, 6, 0, 2, 216, -139, 183, -193)
-DistanceCollide = null
-MoveSpeed = null
-OnWaterSpeedMult = null
-PlayerMovOffset = null
-EndWithSlam = null
-KickDirection = null
 KickMult = 40.0
-EndSpeed = null
 
 [node name="Rail2" parent="." unique_id=214339048 instance=ExtResource("14_me14y")]
 position = Vector2(-285.61, -596)
 points = PackedVector2Array(-6, 6, 0, 2, 119.609985, -141, 140.60999, -91)
-DistanceCollide = null
-MoveSpeed = null
-OnWaterSpeedMult = null
-PlayerMovOffset = null
-EndWithSlam = null
-KickDirection = null
 KickMult = 40.0
-EndSpeed = null
