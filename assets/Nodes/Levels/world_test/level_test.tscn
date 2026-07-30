@@ -21,9 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://btcq3hbvmog5t" path="res://assets/Nodes/Obj/Gameplay/umbrella.tscn" id="19_i7kmg"]
 [ext_resource type="PackedScene" uid="uid://b3jlq8xohxw3c" path="res://assets/Nodes/Obj/Gameplay/moving_platform.tscn" id="20_igmjh"]
 [ext_resource type="PackedScene" uid="uid://bpcyg6vqonftj" path="res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish.tscn" id="21_o6cpg"]
-[ext_resource type="Script" uid="uid://c4bjch51072k0" path="res://assets/Nodes/Levels/world_test/wind_charge.gd" id="22_c70bu"]
-[ext_resource type="PackedScene" uid="uid://dkyfw4w4irwm0" path="res://assets/Nodes/Obj/Gameplay/Rails/rail_horizontal_change_dir_piston.tscn" id="23_c70bu"]
-[ext_resource type="Script" uid="uid://cdad8a6tforel" path="res://assets/Nodes/Levels/world_test/air_railed_nodes.gd" id="24_7liu2"]
 
 [sub_resource type="Animation" id="Animation_wh1ld"]
 length = 0.001
@@ -120,23 +117,6 @@ glow_hdr_threshold = 1.29
 adjustment_enabled = true
 adjustment_brightness = 1.05
 adjustment_saturation = 1.15
-
-[sub_resource type="Curve" id="Curve_d77xg"]
-_data = [Vector2(0, 0.7821012), 0.0, 0.0, 0, 0, Vector2(1, 0.6731518), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_75dy6"]
-colors = PackedColorArray(0.16082096, 0.10031984, 0.27544695, 1, 0.91397053, 0.60972846, 0.8570899, 1)
-metadata/_snap_count = 2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c70bu"]
-
-[sub_resource type="Curve2D" id="Curve2D_pknad"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 33, 35, 0, 0, 0, 0, 516, -52, 0, 0, 0, 0, 94, -200, 0, 0, 0, 0, 109, -174, 0, 0, 0, 0, 33, 35)
-}
-point_count = 5
 
 [node name="Node2D" type="Node2D" unique_id=782773658]
 position = Vector2(0, -1)
@@ -255,7 +235,7 @@ AditionalActionArgument = -287.2
 position = Vector2(-463, -623)
 
 [node name="Player" parent="." unique_id=1683755303 instance=ExtResource("5_ljyct")]
-position = Vector2(-131, -856)
+position = Vector2(-195, -601)
 CountTime = false
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=292185324]
@@ -273,10 +253,6 @@ script = ExtResource("6_u6rfp")
 position = Vector2(-86, -966)
 XSpeed = 500.0
 
-[node name="Rail2" parent="." unique_id=1020545274 instance=ExtResource("14_me14y")]
-position = Vector2(-108, -568)
-points = PackedVector2Array(-6, 6, 0, 2, 56, 11, 64, 108, 360, 102, 345, 25, 353, 22)
-
 [node name="Enemy_Fish" parent="." unique_id=455147022 node_paths=PackedStringArray("InitialMarker", "EndMarker") instance=ExtResource("21_o6cpg")]
 position = Vector2(-295, -255)
 InitialMarker = NodePath("InitialMarker2")
@@ -290,30 +266,26 @@ position = Vector2(-229, -256)
 top_level = true
 position = Vector2(-318, -256)
 
-[node name="WindSand" type="Line2D" parent="." unique_id=529875395 node_paths=PackedStringArray("Path", "RailedNodes")]
-position = Vector2(-406, -631)
-points = PackedVector2Array(33, 35, 516, -52, 94, -200, 109, -174)
-width = 4.835
-width_curve = SubResource("Curve_d77xg")
-default_color = Color(0.9597251, 0.5843025, 1, 1)
-gradient = SubResource("Gradient_75dy6")
-script = ExtResource("22_c70bu")
-Closed = false
-Path = NodePath("Path2D")
-RailedNodes = NodePath("RailedNodes")
+[node name="Rail" parent="." unique_id=607275562 instance=ExtResource("14_me14y")]
+position = Vector2(-134, -596)
+points = PackedVector2Array(-6, 6, 0, 2, 216, -139, 183, -193)
+DistanceCollide = null
+MoveSpeed = null
+OnWaterSpeedMult = null
+PlayerMovOffset = null
+EndWithSlam = null
+KickDirection = null
+KickMult = 40.0
+EndSpeed = null
 
-[node name="Path2D" type="Path2D" parent="WindSand" unique_id=182914977]
-material = SubResource("ShaderMaterial_c70bu")
-curve = SubResource("Curve2D_pknad")
-
-[node name="rail_horizontal_change_dir_piston" parent="WindSand/Path2D" unique_id=1346571215 instance=ExtResource("23_c70bu")]
-position = Vector2(213.39146, -158.12813)
-progress = 811.45
-
-[node name="FallCooldown" type="Timer" parent="WindSand" unique_id=685187114]
-wait_time = 0.5
-one_shot = true
-
-[node name="RailedNodes" type="Node2D" parent="WindSand" unique_id=623492847]
-top_level = true
-script = ExtResource("24_7liu2")
+[node name="Rail2" parent="." unique_id=214339048 instance=ExtResource("14_me14y")]
+position = Vector2(-285.61, -596)
+points = PackedVector2Array(-6, 6, 0, 2, 119.609985, -141, 140.60999, -91)
+DistanceCollide = null
+MoveSpeed = null
+OnWaterSpeedMult = null
+PlayerMovOffset = null
+EndWithSlam = null
+KickDirection = null
+KickMult = 40.0
+EndSpeed = null
