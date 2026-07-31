@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://da2a3o3gvsn3j" path="res://assets/Sprites/Gameplay/player/jump.png" id="8_3c4ps"]
 [ext_resource type="Texture2D" uid="uid://bqmstua3pshg1" path="res://assets/Sprites/Gameplay/player/landinghero.png" id="8_f6fi2"]
 [ext_resource type="AudioStream" uid="uid://bp0r66nyk5ajk" path="res://assets/Sounds/dash4.wav" id="8_ndawj"]
-[ext_resource type="Texture2D" uid="uid://wcmkhx0w1ghi" path="res://assets/Sprites/Gameplay/player/slide.png" id="9_ckcmk"]
 [ext_resource type="Texture2D" uid="uid://b1pqjeytvkeo5" path="res://assets/Sprites/Gameplay/player/skate-rail.png" id="9_gu8yx"]
 [ext_resource type="AudioStream" uid="uid://kugth1ul3tvv" path="res://assets/Sounds/dash5.wav" id="9_jbnmf"]
 [ext_resource type="Script" uid="uid://dj3qnpf8vf8o3" path="res://assets/Nodes/Obj/Gameplay/Player/Player_Sprite.gd" id="9_rsv67"]
@@ -24,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://ds4orkikk3nav" path="res://assets/Sounds/jump.wav" id="11_f6d5f"]
 [ext_resource type="Texture2D" uid="uid://cefaso74wwufu" path="res://assets/Sprites/Gameplay/player/walljump.png" id="11_gu8yx"]
 [ext_resource type="AudioStream" uid="uid://b53kcu1sjusbk" path="res://assets/Sounds/slide.wav" id="12_mayjg"]
+[ext_resource type="Texture2D" uid="uid://gs5i8fwvbr1f" path="res://assets/Sprites/Gameplay/player/slideanin.png" id="12_yinjy"]
 [ext_resource type="AudioStream" uid="uid://dpxr2ky640n13" path="res://assets/Sounds/groundsmash.wav" id="13_6xtp5"]
 [ext_resource type="AudioStream" uid="uid://bgb5h0wh5v6uq" path="res://assets/Sounds/sand_walking.wav" id="13_ltsn2"]
 [ext_resource type="Texture2D" uid="uid://opi65j0wspy8" path="res://assets/Sprites/Gameplay/player/change_gravity.png" id="13_q6rov"]
@@ -307,6 +307,22 @@ region = Rect2(0, 0, 23, 29)
 atlas = ExtResource("8_3c4ps")
 region = Rect2(23, 0, 23, 29)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_emhib"]
+atlas = ExtResource("12_yinjy")
+region = Rect2(0, 0, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngcqy"]
+atlas = ExtResource("12_yinjy")
+region = Rect2(28, 0, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opw6d"]
+atlas = ExtResource("12_yinjy")
+region = Rect2(56, 0, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqoun"]
+atlas = ExtResource("12_yinjy")
+region = Rect2(84, 0, 28, 27)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yinjy"]
 atlas = ExtResource("13_q6rov")
 region = Rect2(0, 0, 34, 31)
@@ -417,11 +433,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_ckcmk")
+"texture": SubResource("AtlasTexture_emhib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngcqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opw6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqoun")
 }],
 "loop": true,
 "name": &"Slide",
-"speed": 2.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,

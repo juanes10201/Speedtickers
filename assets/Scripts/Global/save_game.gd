@@ -16,7 +16,7 @@ func PlayedIntro() -> bool:
 
 func IfPlayedFirstTime() -> bool:
 	loadgamedata()
-	var playedbefore = config.get_value("Game", "PlayedBefore")
+	var playedbefore = get_value("Game", "PlayedBefore")
 	if(playedbefore == "true"):
 		return true
 	else:
@@ -32,7 +32,7 @@ func set_config_value(id : String, Val) -> void:
 	set_save_value("Config", id, Val)
 
 func get_value(sc: String, id : String):
-	if(config.get_value(sc, id) != null):
+	if(config.has_section_key(sc, id) && config.get_value(sc, id) != null):
 		return config.get_value(sc, id)
 	else: return null
 
