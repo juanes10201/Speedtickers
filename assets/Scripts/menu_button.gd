@@ -60,7 +60,7 @@ func _ready() -> void:
 		if(TouchButton):
 			add_child(TouchButton.instantiate())
 		
-	if(!ShowOnExpo && Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_shangai):
+	if(!ShowOnExpo && Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo):
 		queue_free()
 	_set_text_size(original_size.y)
 
@@ -134,9 +134,10 @@ func _set_text_size(X : float):
 	var tosize = X-140
 	#if(get_theme_font_size("font_size") < tosize && get_theme_font_size("font_size") < 140):
 	#	add_theme_font_size_override('font_size', X-140)
-@export var ExpoButton : bool = false
+@export var ExpoButton : bool = true
 
 func _on_pressed() -> void:
+	LevelManager.ExpoMoveTimeout.start()
 	print("Button pressed!")
 	if(FadeTransition):
 		var Transition
@@ -169,10 +170,10 @@ func _on_pressed() -> void:
 		Edition.CrtFilter = !Edition.CrtFilter
 		#print("TO-DO: Lazy developer didn't implement config menu...")
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_scene):
-		if(ExpoButton && Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
-			var _scene_string : String = "res://assets/Levels/world1/level1.tscn"
-			get_tree().change_scene_to_file(_scene_string)
-		elif(Edition.Mobile):
+		#if(ExpoButton && Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo):
+		#	var _scene_string : String = "res://assets/Levels/world1/level1.tscn"
+		#	get_tree().change_scene_to_file(_scene_string)
+		if(Edition.Mobile):
 			var _scene_string : String = "res://assets/Levels/world1/level1.tscn"
 			get_tree().change_scene_to_file(_scene_string)
 		else:

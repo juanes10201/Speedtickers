@@ -805,7 +805,6 @@ BUTTON_ACTION = 4
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world1.tscn"
 HoverDif = 20.0
 FadeTransition = true
-ExpoButton = true
 
 [node name="Stars" type="Sprite2D" parent="." unique_id=1948636821]
 z_index = 1

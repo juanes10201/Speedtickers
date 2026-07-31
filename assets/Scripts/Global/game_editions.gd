@@ -2,12 +2,13 @@ extends Node
 
 enum ALL_GAME_STATUS{
 	retail,
-	expo_shangai,
-	expo_cbb
+	expo
 }
+var ExpoLimitedTime : bool = true
+
 var CrtFilter : bool = true
 
-var GAME_STATUS = ALL_GAME_STATUS.retail
+var GAME_STATUS = ALL_GAME_STATUS.expo
 
 var Is_in_editor : bool = false
 

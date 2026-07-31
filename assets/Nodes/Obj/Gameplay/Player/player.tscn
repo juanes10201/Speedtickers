@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cnosef6e73jou" path="res://assets/Sprites/Gameplay/player/slam.png" id="6_0s4h5"]
 [ext_resource type="AudioStream" uid="uid://by8wq0dg0h5ks" path="res://assets/Sounds/dash2.wav" id="6_k7csp"]
 [ext_resource type="Texture2D" uid="uid://c28ps7ruerkud" path="res://assets/Sprites/Gameplay/player/float-left2.png" id="7_0hfwl"]
-[ext_resource type="Texture2D" uid="uid://c31cfgkgkeuyw" path="res://assets/Sprites/Gameplay/player/player.png" id="7_2dlrs"]
+[ext_resource type="Texture2D" uid="uid://co5d7ermdn66a" path="res://assets/Sprites/Gameplay/player/player.png" id="7_2dlrs"]
 [ext_resource type="AudioStream" uid="uid://bgkh2ktpjw7di" path="res://assets/Sounds/dash3.wav" id="7_a27l2"]
 [ext_resource type="Texture2D" uid="uid://olqoumuursc6" path="res://assets/Sprites/Gameplay/player/Float-Right.png" id="8_2ritr"]
 [ext_resource type="Texture2D" uid="uid://da2a3o3gvsn3j" path="res://assets/Sprites/Gameplay/player/jump.png" id="8_3c4ps"]

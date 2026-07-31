@@ -322,12 +322,12 @@ func _input(event):
 		elif event.keycode == KEY_F9:
 			get_tree().reload_current_scene()
 		elif event.keycode == KEY_F10:
-			LevelManager.ExpoMoveTimeout.start()
+			expo_did_action()
 			LevelManager.ExpoMoveTimeout.paused = true
 			var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
 			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F11:
-			LevelManager.ExpoMoveTimeout.start()
+			expo_did_action()
 			LevelManager.ExpoMoveTimeout.paused = true
 			var _scene_string = "res://assets/Levels/world1/select_level_world1.tscn"
 			get_tree().change_scene_to_file(_scene_string)
@@ -343,7 +343,6 @@ func _input(event):
 #endregion
 
 func _ready() -> void:
-	
 	#Time_Left.paused = true
 	MaxAcc.x *= Max_Velocity_Multiplier
 	_set_time_state(CountTime)
@@ -376,10 +375,10 @@ func _ready() -> void:
 		if (MobileControls != null):
 			var MobileControlsInstance = MobileControls.instantiate()
 			if(MobileControlsInstance != null): UI.add_child(MobileControlsInstance)
-	if(SaveGame.PlayedIntro() && Edition.GAME_STATUS != Edition.ALL_GAME_STATUS.expo_cbb): PlayIntro = false
+	if(SaveGame.PlayedIntro() && Edition.GAME_STATUS != Edition.ALL_GAME_STATUS.expo): PlayIntro = false
 	if(PlayIntro):
 		#If level is not identified search for it
-		SaveGame.PlayedIntroBool = true
+		#SaveGame.PlayedIntroBool = true
 		Global.Level = 0
 		$TimerIntroSlam.start()
 		Physics = false
@@ -428,8 +427,8 @@ func _physics_process(delta: float) -> void:
 		$WaterParticles2.emitting = OnWater
 	#if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb):
 	#	print("time left: " + str(LevelManager.ExpoMoveTimeout.time_left))
-	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo_cbb && LevelManager.ExpoMoveTimeout.is_stopped()):
-		LevelManager.ExpoMoveTimeout.start()
+	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo && LevelManager.ExpoMoveTimeout.is_stopped()):
+		expo_did_action()
 		LevelManager.ExpoMoveTimeout.paused = true
 		var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
 		get_tree().change_scene_to_file(_scene_string)
@@ -667,6 +666,7 @@ func _pause_game() -> void:
 
 func _pause_game_no_menu(State : bool = true) -> void:
 	print("Pause: " + str(State))
+	LevelManager.ExpoMoveTimeout.start()
 	Time_Left.paused = State
 	#Stop player movement
 	Physics = !State
@@ -797,7 +797,7 @@ func _physics_jump(delta: float) -> void:
 		if(CanJump):
 			SnappedOnRail = false
 			DoJump(delta)
-		LevelManager.ExpoMoveTimeout.start()
+		expo_did_action()
 	#Cancel jump
 	if(CanJump && ( velocity.y < 0 && !is_action_pressed("player_jump") && !DashWithJump)):
 		velocity.y += JumpCancelAcc * GravityDirection
@@ -805,11 +805,16 @@ func _physics_jump(delta: float) -> void:
 		velocity.y += JumpCancelAcc * GravityDirection * .5
 	if(is_action_pressed("player_jump")):
 		SnappedOnRail = false
-		LevelManager.ExpoMoveTimeout.start()
+		expo_did_action()
 		PreJumpTime.start()
 	
 	#Pre-detect jump
 #endregion
+
+func expo_did_action() -> void:
+	if(ReplayAction != Global.ReplayStates.REPLAY):
+		LevelManager.ExpoMoveTimeout.start()
+		LevelManager.ExpoMoveTimeout.paused = false
 
 var WallJumped : bool = false
 
@@ -875,7 +880,7 @@ var MinXVelocity : float = 9.0
 #region Horizontal movement
 func _physics_h_movement(delta: float) -> void:
 	var direction = get_axis()
-	if(abs(direction) > 0.4): LevelManager.ExpoMoveTimeout.start()
+	if(abs(direction) > 0.4): expo_did_action()
 	# Fix the Movement Speed accumulating in the side touching a wall
 	if(WallJump && WallJumpSide == Sides.RIGHT && Speed.x > 0): Speed.x = 0
 	if(WallJump && WallJumpSide == Sides.LEFT && Speed.x < 0): Speed.x = 0
@@ -918,10 +923,10 @@ func _physics_slide_and_groundsmash(delta: float) -> void:
 	if(!is_action_pressed("player_slide")):
 		SlidingInAir = false
 		SlideVelocity = 0
-		#LevelManager.ExpoMoveTimeout.start()
+		#expo_did_action()
 	set_collision_mask_value(4, !(GroundSmash || !JumpGroundsmashMultiplier.is_stopped() || JumpedUmbrella ) )
 	if((is_action_pressed("player_slide") || PressingGroundSmash || PressedSlide)):
-		LevelManager.ExpoMoveTimeout.start()
+		expo_did_action()
 		#Groundsmash/Slam
 		if(!_gravity_is_on_floor_raycast() && !Slide && !SlidingInAir && !PressedSlide ):# || velocity.y < jump_height+10)):
 			if(!GravityDirection): GravityDirection = Global.GravityDirections.MAIN
@@ -990,7 +995,7 @@ func _physics_dash(delta: float) -> void:
 	if(is_action_pressed("player_dash") && !Dashed && DashCooldownTimer.is_stopped()):
 		DashCooldownTimer.start()
 		if(Slide): LevelManager.AddStyle(0, "Slide Dash")
-		LevelManager.ExpoMoveTimeout.start()
+		expo_did_action()
 		velocity.y = 0
 		Dashed = true
 		AudioDash.pitch_scale = randf_range(0.8, 1.2)

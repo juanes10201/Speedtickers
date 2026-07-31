@@ -5,5 +5,6 @@ extends Area2D
 @onready var HitboxDash : CollisionShape2D = $CollisionShapeDash
 
 func _physics_process(delta: float) -> void:
-	HitboxDash.disabled = Player.DashTime.is_stopped()
-	HitboxMain.disabled = !Player.DashTime.is_stopped()
+	if(HitboxDash && Player):
+		HitboxDash.disabled = Player.DashTime.is_stopped()
+		HitboxMain.disabled = !Player.DashTime.is_stopped()

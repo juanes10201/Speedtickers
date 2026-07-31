@@ -90,7 +90,8 @@ func Replay_Actions() -> void:
 @onready var InitialTime = Time.get_ticks_msec()
 
 func _physics_process(delta: float) -> void:
-	State = Player.ReplayAction
+	if(!Player): return
+	if("ReplayAction" in Player): State = Player.ReplayAction
 	#print(Input.is_action_pressed("replay_player_jump"))
 	CurrentTime += 1000*delta
 	#CurrentTime = Time.get_ticks_msec()-InitialTime

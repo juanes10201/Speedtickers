@@ -43,6 +43,9 @@
 [ext_resource type="FontFile" uid="uid://b3smkep4lbwtq" path="res://assets/Fonts/Blessings of Babylon.otf" id="41_emygd"]
 [ext_resource type="FontFile" uid="uid://c2f44214fpbiv" path="res://assets/Fonts/pixelart/Vermin Vibes 1989.ttf" id="42_fdwdo"]
 [ext_resource type="Script" uid="uid://bln4k4jkwrgb6" path="res://assets/Scripts/expo.gd" id="43_ymxs3"]
+[ext_resource type="Texture2D" uid="uid://b7i0jjcu3c1du" path="res://assets/Sprites/Ui/menus/InGame/ExpoDialog.png" id="44_mqpl3"]
+[ext_resource type="Texture2D" uid="uid://bguoq757clo1w" path="res://assets/Sprites/Ui/menus/InGame/WillReturnToMenu.png" id="46_1c8j7"]
+[ext_resource type="Texture2D" uid="uid://m4plyp6a4a3t" path="res://assets/Sprites/Ui/menus/InGame/inactivitytext.png" id="46_xuunc"]
 
 [sub_resource type="GDScript" id="GDScript_4cp2g"]
 script/source = "extends Sprite2D
@@ -814,10 +817,19 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd35p"]
-bg_color = Color(0.03529412, 0, 0.12156863, 0.6666667)
+bg_color = Color(0.64705884, 0.53333336, 1, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 56
+corner_radius_top_right = 56
+corner_radius_bottom_right = 56
+corner_radius_bottom_left = 56
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gu5b"]
-bg_color = Color(0.61960787, 0.47843137, 1, 0.3372549)
+bg_color = Color(0.61960787, 0.47843137, 1, 0.5921569)
+corner_radius_top_left = 52
+corner_radius_top_right = 52
+corner_radius_bottom_right = 52
+corner_radius_bottom_left = 52
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1210512174]
 layer = 2
@@ -1114,29 +1126,11 @@ horizontal_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Style" unique_id=168354109]
 libraries/ = SubResource("AnimationLibrary_1ffli")
 
-[node name="expo" type="Node" parent="." unique_id=284285506]
+[node name="expo" type="Node2D" parent="." unique_id=206937599 node_paths=PackedStringArray("NodeLimitedtimeUi", "NodeInactiveUi")]
+visible = false
 script = ExtResource("43_ymxs3")
-
-[node name="ProgressBar2" type="ProgressBar" parent="expo" unique_id=240453789]
-visible = false
-offset_left = 963.0
-offset_top = 41.0
-offset_right = 1153.0
-offset_bottom = 105.0
-show_percentage = false
-
-[node name="PlaytimeText" type="RichTextLabel" parent="expo" unique_id=115759518]
-visible = false
-offset_left = 954.0
-offset_top = 32.0
-offset_right = 1227.0
-offset_bottom = 116.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.619608, 0.478431, 1, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/normal_font = ExtResource("2_2ft35")
-theme_override_font_sizes/normal_font_size = 80
-text = " 07:59"
+NodeLimitedtimeUi = NodePath("LimitedTimeUi")
+NodeInactiveUi = NodePath("InactiveUi")
 
 [node name="PlaytimeTimer" type="Timer" parent="expo" unique_id=1371466286]
 wait_time = 420.0
@@ -1144,39 +1138,84 @@ one_shot = true
 autostart = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="expo" unique_id=57954122]
-visible = false
-offset_left = 967.0
-offset_top = 24.0
-offset_right = 1160.0
-offset_bottom = 67.0
+offset_left = 938.0
+offset_top = -74.0
+offset_right = 1131.0
+offset_bottom = -31.0
 theme_override_fonts/normal_font = ExtResource("36_ke2n3")
 theme_override_font_sizes/normal_font_size = 32
 text = "REG Indie Space"
 
-[node name="inactive_bar" type="ProgressBar" parent="expo" unique_id=543541003]
+[node name="LimitedTimeUi" type="Node2D" parent="expo" unique_id=1593580310]
+
+[node name="ExpoDialog" type="Sprite2D" parent="expo/LimitedTimeUi" unique_id=2056295277]
+position = Vector2(1037, 43.79)
+scale = Vector2(0.12622882, 0.12622881)
+texture = ExtResource("44_mqpl3")
+
+[node name="ProgressBar2" type="ProgressBar" parent="expo/LimitedTimeUi" unique_id=240453789]
 visible = false
-offset_left = 99.0
-offset_top = 201.0
-offset_right = 1043.0
-offset_bottom = 458.0
+offset_left = 1065.0
+offset_top = 25.0
+offset_right = 1148.0
+offset_bottom = 91.0
+show_percentage = false
+
+[node name="PlaytimeText" type="RichTextLabel" parent="expo/LimitedTimeUi" unique_id=115759518]
+offset_left = 832.0
+offset_top = 28.0
+offset_right = 1224.0
+offset_bottom = 156.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.619608, 0.478431, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_outline_size = 1
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("36_ke2n3")
+theme_override_font_sizes/normal_font_size = 60
+text = " 07:59"
+horizontal_alignment = 1
+
+[node name="InactiveUi" type="Node2D" parent="expo" unique_id=1705354263]
+visible = false
+position = Vector2(81.00001, 46.000004)
+scale = Vector2(0.85, 0.85)
+
+[node name="Sprite2D" type="Sprite2D" parent="expo/InactiveUi" unique_id=928169067]
+modulate = Color(1, 1, 1, 0.56078434)
+position = Vector2(581.7036, 323.8429)
+scale = Vector2(0.28900525, 0.28900525)
+texture = ExtResource("46_1c8j7")
+
+[node name="inactive_bar" type="ProgressBar" parent="expo/InactiveUi" unique_id=543541003]
+offset_left = 125.0
+offset_top = 222.0
+offset_right = 1039.0
+offset_bottom = 428.0
 theme_override_styles/background = SubResource("StyleBoxFlat_fd35p")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1gu5b")
 max_value = 10.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
-[node name="inactive_time" type="RichTextLabel" parent="expo" unique_id=1870828848]
-visible = false
-offset_left = 96.0
-offset_top = 207.0
-offset_right = 1044.0
-offset_bottom = 483.0
-theme_override_colors/default_color = Color(0.61960787, 0.47843137, 1, 1)
-theme_override_fonts/normal_font = ExtResource("2_2ft35")
-theme_override_font_sizes/normal_font_size = 300
+[node name="inactive_time" type="RichTextLabel" parent="expo/InactiveUi" unique_id=1870828848]
+offset_left = 120.0
+offset_top = 262.0
+offset_right = 1068.0
+offset_bottom = 538.0
+theme_override_colors/default_color = Color(0.902307, 0.9047067, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.9019608, 0.90588236, 1, 1)
+theme_override_constants/shadow_outline_size = 63
+theme_override_constants/outline_size = 43
+theme_override_fonts/normal_font = ExtResource("4_1c8j7")
+theme_override_font_sizes/normal_font_size = 162
 text = "10"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="inactive_text" type="RichTextLabel" parent="expo" unique_id=1548005272]
+[node name="inactive_text" type="RichTextLabel" parent="expo/InactiveUi" unique_id=1548005272]
 visible = false
 offset_left = 185.0
 offset_top = 238.0
@@ -1186,5 +1225,10 @@ theme_override_colors/default_color = Color(0.61960787, 0.47843137, 1, 1)
 theme_override_fonts/normal_font = ExtResource("36_ke2n3")
 theme_override_font_sizes/normal_font_size = 55
 text = "Se retornara al menu por inactividad!"
+
+[node name="Inactivitytext" type="Sprite2D" parent="expo/InactiveUi" unique_id=910974816]
+position = Vector2(587.05884, 270.58823)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("46_xuunc")
 
 [connection signal="timeout" from="expo/PlaytimeTimer" to="expo" method="_on_playtime_timeout"]
