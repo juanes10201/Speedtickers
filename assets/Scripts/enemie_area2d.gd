@@ -15,7 +15,7 @@ func _on_area_entered(area: Area2D) -> void:
 				#If sliding and enemy type's == 0 then do slide action 
 				if(playerbody.Slide || playerbody.SnappedOnRail ):
 					get_parent()._on_player_slide_signal()
-			elif(area.is_in_group("PlayerHitBox") && (get_parent().enemy_type != 0 || !playerbody.Slide)):
+			elif(!playerbody.SnappedOnRail && area.is_in_group("PlayerHitBox") && (get_parent().enemy_type != 0 || !playerbody.Slide)):
 				playerbody.On_Death()
 		else:
 			if(!get_parent().check_collision()): get_parent().enable_collision()

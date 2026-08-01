@@ -386,7 +386,7 @@ height = 13.0
 
 [node name="Rail" parent="." unique_id=1438899061 instance=ExtResource("15_hx4cf")]
 position = Vector2(-266, -296)
-points = PackedVector2Array(-6, 6, 0, 2, 55, 8, 60, 76, 34, 81)
+points = PackedVector2Array(-6, 6, 0, 2, 55, 8, 60, 76, 39, 108, 17, 106)
 
 [node name="KillBox15" parent="." unique_id=1386857898 instance=ExtResource("10_wbcye")]
 position = Vector2(-81, -473)

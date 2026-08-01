@@ -30,7 +30,7 @@ func _ready() -> void:
 	CurrentTime = 0
 
 func Reset() -> void:
-	InitialTime = Time.get_ticks_msec()
+	InitialTime = 0.0
 	Player.position = Player.OriginalPos
 	ReplayCurrentAction = -1
 	CurrentTime = -0.5

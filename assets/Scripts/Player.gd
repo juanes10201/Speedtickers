@@ -319,27 +319,39 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_F1:
 			LevelManager.change_to_next_level()
-		elif event.keycode == KEY_F9:
+		elif event.keycode == KEY_R:
 			get_tree().reload_current_scene()
-		elif event.keycode == KEY_F10:
-			expo_did_action()
-			LevelManager.ExpoMoveTimeout.paused = true
-			var _scene_string = "res://assets/Levels/world1/main_menu_w_level_preview.tscn"
-			get_tree().change_scene_to_file(_scene_string)
-		elif event.keycode == KEY_F11:
-			expo_did_action()
-			LevelManager.ExpoMoveTimeout.paused = true
-			var _scene_string = "res://assets/Levels/world1/select_level_world1.tscn"
-			get_tree().change_scene_to_file(_scene_string)
-		elif event.keycode == KEY_F12:
-			LevelManager.ReturnAfterTimerInExpo = !LevelManager.ReturnAfterTimerInExpo
 		elif event.keycode == KEY_F2:
-			LevelManager.StyloMetter += 100
+			expo_did_action()
+			LevelManager.ExpoMoveTimeout.paused = true
+			var _scene_string = "res://assets/Nodes/Ui/main_menu_w_level_preview.tscn"
+			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F3:
-			LevelManager.StyloMetter -= 100
+			expo_did_action()
+			LevelManager.ExpoMoveTimeout.paused = true
+			var _scene_string = "res://assets/Nodes/Ui/select_level_world1.tscn"
+			get_tree().change_scene_to_file(_scene_string)
 		elif event.keycode == KEY_F4:
-			if(ReplayAction != Global.ReplayStates.STOPPED):
-				_save_replay("res://assets/Replays/saved_replay.json")
+			LevelManager.ExpoTimer.wait_time -= 60.0
+			Edition.reset_expo()
+		elif event.keycode == KEY_F5:
+			LevelManager.ExpoTimer.wait_time += 60.0
+			Edition.reset_expo()
+		elif event.keycode == KEY_F9:
+			Edition.ExpoLimitedTime = !Edition.ExpoLimitedTime
+		elif event.keycode == KEY_F10:
+			if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.retail):
+				Edition.GAME_STATUS = Edition.ALL_GAME_STATUS.expo
+			else:
+				Edition.GAME_STATUS = Edition.ALL_GAME_STATUS.retail
+			Edition.reset_expo()
+		elif event.keycode == KEY_F11:
+			Edition.reset_expo()
+		elif event.keycode == KEY_F12:
+			Edition.LimitWorlds = !Edition.LimitWorlds
+		#elif event.keycode == KEY_F4:
+		#	if(ReplayAction != Global.ReplayStates.STOPPED):
+		#		_save_replay("res://assets/Replays/saved_replay.json")
 #endregion
 
 func _ready() -> void:

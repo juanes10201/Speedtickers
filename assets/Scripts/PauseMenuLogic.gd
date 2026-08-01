@@ -31,9 +31,9 @@ func _process(delta: float) -> void:
 		elif(SelectedButton == PauseButtons.CONFIG): SelectedButton = PauseButtons.RESUME_GAME
 		else: SelectedButton = PauseButtons.CONFIG
 	if(SelectedButton != null):
-		if(SelectedButton == PauseButtons.RESUME_GAME): $PauseMenuButton2.grab_focus()
-		elif(SelectedButton == PauseButtons.CONFIG): $PauseMenuConfigButton2.grab_focus()
-		else: $PauseMenuGoBackButton2.grab_focus()
+		if(SelectedButton == PauseButtons.RESUME_GAME && $PauseMenuButton2): $PauseMenuButton2.grab_focus()
+		elif(SelectedButton == PauseButtons.CONFIG && $PauseMenuConfigButton2): $PauseMenuConfigButton2.grab_focus()
+		elif($PauseMenuGoBackButton2): $PauseMenuGoBackButton2.grab_focus()
 
 
 func _on_pause_menu_button_2_button_down() -> void:

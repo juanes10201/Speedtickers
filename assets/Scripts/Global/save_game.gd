@@ -78,11 +78,12 @@ func SaveLevelPersonalRecord(Level : int = 1, World : int = 1, RealTime : float 
 	var CurrentBest = get_value(_world_name, str(Level))
 	var _player = SaveGame.get_player()
 	leaderboard_submit_level_time(RealTime, Level, World)
-	#_player._save_level_replay()
+	_player._save_level_replay()
 	if(!CurrentBest || RealTime < CurrentBest):
 		if(_player && _player.ReplayAction == Global.ReplayStates.RECORD):
 			#TODO: se tiene que subir a steam el replay, d forma d q se pueda acceder por el sistema d leaderboards
-			_player._save_level_replay()
+			pass
+			#_player._save_level_replay()
 		set_save_value(_world_name, str(Level), RealTime/1000.0)
 
 func SaveLevelRecord(Level : int = 1, World : int = 0, RealTime : float = 0) -> void:

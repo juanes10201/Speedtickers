@@ -59,6 +59,9 @@ func _ready() -> void:
 var HasBossInPage : bool = false 
 
 func _reload_page() -> void:
+	var AmountWorlds = LevelManager.get_world_order(Bside).size()-1
+	if(Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo && Edition.LimitWorlds):
+		AmountWorlds = Edition.AmountLimitedWorlds
 	if(Page < 0):
 		CurrentWorld -= 1
 		#Page = floor(LevelManager.get_amount_levels_in_world(CurrentWorld, Bside)/AmountButtons
@@ -75,7 +78,7 @@ func _reload_page() -> void:
 	HasBossInPage = CurrentWorld < LevelManager.BossesLevelPath.size() && LastPageInWorld && !Bside
 	
 	PreviousButton.visible = !(CurrentWorld == 0 && Page == 0)
-	NextButton.visible = !(CurrentWorld == LevelManager.get_world_order(Bside).size()-1 && LastPageInWorld)
+	NextButton.visible = !(CurrentWorld == AmountWorlds && LastPageInWorld)
 	
 	#print(CurrentWorld == LevelManager.WorldOrder.size()-1)
 	#print(Page*AmountButtons)

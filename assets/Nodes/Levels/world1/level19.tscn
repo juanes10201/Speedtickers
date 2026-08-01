@@ -240,27 +240,27 @@ script = ExtResource("11_48axd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlideRampArea2D3" unique_id=439116100]
 shape = SubResource("SegmentShape2D_b1tps")
 
-[node name="Enemie4" parent="." unique_id=2023593824 instance=ExtResource("12_46umu")]
-position = Vector2(-207, -281)
-floor_max_angle = 1.39626
-EnemyDirection = 2
-
 [node name="StaticBody2D" parent="." unique_id=1358427438 instance=ExtResource("13_0cqak")]
 position = Vector2(-71, -192)
 scale = Vector2(3.01152, 2)
 
+[node name="Enemie8" parent="." unique_id=1894358595 instance=ExtResource("12_46umu")]
+position = Vector2(-92, -487)
+floor_max_angle = 1.39626
+EnemyDirection = 2
+
+[node name="Enemie4" parent="." unique_id=2023593824 instance=ExtResource("12_46umu")]
+position = Vector2(-182, -279)
+floor_max_angle = 1.39626
+EnemyDirection = 2
+
 [node name="Enemie5" parent="." unique_id=1701567310 instance=ExtResource("12_46umu")]
-position = Vector2(-189, -273)
+position = Vector2(-164, -271)
 floor_max_angle = 1.39626
 EnemyDirection = 2
 
 [node name="Enemie6" parent="." unique_id=440031893 instance=ExtResource("12_46umu")]
-position = Vector2(-172, -264)
-floor_max_angle = 1.39626
-EnemyDirection = 2
-
-[node name="Enemie8" parent="." unique_id=1894358595 instance=ExtResource("12_46umu")]
-position = Vector2(-92, -487)
+position = Vector2(-147, -262)
 floor_max_angle = 1.39626
 EnemyDirection = 2
 

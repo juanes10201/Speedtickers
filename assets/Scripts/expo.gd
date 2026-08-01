@@ -61,9 +61,7 @@ var InRiskTimeout : bool = true
 func _reset_expo() -> void:
 	print("Reset Expo")
 	var _scene_string = "res://assets/Nodes/Ui/main_menu_w_level_preview.tscn"
-	LevelManager.ExpoTimer.start()
-	LevelManager.PlayedExpo = false
-	LevelManager.ExpoTimer.paused = true
+	Edition.reset_expo()
 	get_tree().change_scene_to_file(_scene_string)
 
 func _on_playtime_timeout() -> void:
