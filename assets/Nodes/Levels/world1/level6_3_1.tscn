@@ -80,89 +80,6 @@ _data = {
 &"move2": SubResource("Animation_b10uo")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rebgq"]
-atlas = ExtResource("18_fsnpq")
-region = Rect2(0, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xt7kr"]
-atlas = ExtResource("18_fsnpq")
-region = Rect2(60, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dlc2f"]
-atlas = ExtResource("18_fsnpq")
-region = Rect2(20, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_orcjn"]
-atlas = ExtResource("18_fsnpq")
-region = Rect2(0, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_71i5c"]
-atlas = ExtResource("18_fsnpq")
-region = Rect2(20, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nd7jk"]
-atlas = ExtResource("18_fsnpq")
-region = Rect2(40, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8m4oy"]
-atlas = ExtResource("18_fsnpq")
-region = Rect2(60, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1h32"]
-atlas = ExtResource("18_fsnpq")
-region = Rect2(80, 0, 20, 20)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_joe7h"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rebgq")
-}],
-"loop": true,
-"name": &"disabled",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_xt7kr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dlc2f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rebgq")
-}],
-"loop": false,
-"name": &"hide",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_orcjn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_71i5c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nd7jk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8m4oy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f1h32")
-}],
-"loop": false,
-"name": &"show",
-"speed": 5.0
-}]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d6wll"]
-light_mode = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu52k"]
-size = Vector2(249, 61.25)
-
 [sub_resource type="Gradient" id="Gradient_d4cgy"]
 offsets = PackedFloat32Array(0, 0.65238094)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -271,6 +188,15 @@ gradient = SubResource("Gradient_eqw1s")
 fill = 1
 fill_from = Vector2(0.48290598, 0.517094)
 
+[sub_resource type="Gradient" id="Gradient_rebgq"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xt7kr"]
+gradient = SubResource("Gradient_rebgq")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7ae7"]
 atlas = ExtResource("18_fsnpq")
 region = Rect2(0, 0, 20, 20)
@@ -354,14 +280,88 @@ light_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elnin"]
 size = Vector2(134.625, 31.625)
 
-[sub_resource type="Gradient" id="Gradient_rebgq"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rebgq"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(0, 0, 20, 20)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xt7kr"]
-gradient = SubResource("Gradient_rebgq")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt7kr"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlc2f"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orcjn"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71i5c"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd7jk"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m4oy"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h32"]
+atlas = ExtResource("18_fsnpq")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_joe7h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rebgq")
+}],
+"loop": true,
+"name": &"disabled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_xt7kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlc2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rebgq")
+}],
+"loop": false,
+"name": &"hide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orcjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71i5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd7jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m4oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h32")
+}],
+"loop": false,
+"name": &"show",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d6wll"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu52k"]
+size = Vector2(249, 61.25)
 
 [node name="Node2D" type="Node2D" unique_id=624614125]
 position = Vector2(0, -1)
@@ -385,50 +385,6 @@ position = Vector2(-8, 237)
 scale = Vector2(54.01218, 1)
 Visible = false
 CanChange = false
-
-[node name="TextArea2" type="Area2D" parent="." unique_id=1267790026 node_paths=PackedStringArray("Text")]
-position = Vector2(-116, -28)
-script = ExtResource("17_ehuiy")
-Text = NodePath("DashTutorial2")
-
-[node name="Hologram" type="AnimatedSprite2D" parent="TextArea2" unique_id=653802877]
-modulate = Color(1, 1, 1, 0.77254903)
-position = Vector2(-19, -75)
-sprite_frames = SubResource("SpriteFrames_joe7h")
-animation = &"disabled"
-script = ExtResource("19_gn07k")
-
-[node name="DashTutorial2" type="RichTextLabel" parent="TextArea2" unique_id=1468308842 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
-material = SubResource("CanvasItemMaterial_d6wll")
-offset_left = -56.0
-offset_top = -123.0
-offset_right = 86.0
-offset_bottom = -69.0
-theme_override_fonts/normal_font = ExtResource("20_3va60")
-text = "
-Perform a Slide or Slam to use a rail"
-fit_content = true
-script = ExtResource("21_h6i6q")
-TextDelay = NodePath("TextDelay")
-VoiceDelay = NodePath("VoiceDelay")
-Voice = NodePath("Voice")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextDelay" type="Timer" parent="TextArea2/DashTutorial2" unique_id=1665001120]
-wait_time = 0.00999999999999999
-one_shot = true
-
-[node name="VoiceDelay" type="Timer" parent="TextArea2/DashTutorial2" unique_id=1097282402]
-wait_time = 0.05
-one_shot = true
-
-[node name="Voice" type="AudioStreamPlayer" parent="TextArea2/DashTutorial2" unique_id=1939711777]
-stream = ExtResource("22_jkn52")
-volume_db = -20.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea2" unique_id=403483908]
-position = Vector2(-17.5, -96.375)
-shape = SubResource("RectangleShape2D_tu52k")
 
 [node name="Rail" parent="." unique_id=1238539550 instance=ExtResource("4_orcjn")]
 position = Vector2(-149, -101)
@@ -668,51 +624,6 @@ energy = 0.7
 texture = SubResource("GradientTexture2D_05rqf")
 height = 13.0
 
-[node name="TextArea" type="Area2D" parent="." unique_id=1323099829 node_paths=PackedStringArray("Text")]
-position = Vector2(107, 228)
-script = ExtResource("17_ehuiy")
-Text = NodePath("DashTutorial2")
-
-[node name="Hologram" type="AnimatedSprite2D" parent="TextArea" unique_id=1221733875]
-modulate = Color(1, 1, 1, 0.77254903)
-position = Vector2(-119, -155)
-sprite_frames = SubResource("SpriteFrames_gjf13")
-animation = &"disabled"
-script = ExtResource("19_gn07k")
-
-[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" unique_id=2079091200 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
-material = SubResource("CanvasItemMaterial_7b3gs")
-offset_left = -182.0
-offset_top = -222.0
-offset_right = -40.0
-offset_bottom = -168.0
-theme_override_fonts/normal_font = ExtResource("20_3va60")
-text = "
-Don't get cocky just yet, any racer can do that
-"
-fit_content = true
-script = ExtResource("21_h6i6q")
-TextDelay = NodePath("TextDelay")
-VoiceDelay = NodePath("VoiceDelay")
-Voice = NodePath("Voice")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2" unique_id=995248056]
-wait_time = 0.00999999999999999
-one_shot = true
-
-[node name="VoiceDelay" type="Timer" parent="TextArea/DashTutorial2" unique_id=1848340671]
-wait_time = 0.05
-one_shot = true
-
-[node name="Voice" type="AudioStreamPlayer" parent="TextArea/DashTutorial2" unique_id=446844495]
-stream = ExtResource("22_jkn52")
-volume_db = -20.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea" unique_id=1428940556]
-position = Vector2(-63.3125, -160.1875)
-shape = SubResource("RectangleShape2D_elnin")
-
 [node name="KillBox2" parent="." unique_id=1294445838 instance=ExtResource("3_dlc2f")]
 position = Vector2(-104, -69)
 scale = Vector2(3, 2)
@@ -763,5 +674,94 @@ position = Vector2(-91, -272)
 scale = Vector2(9999, 1)
 Visible = false
 
-[connection signal="body_entered" from="TextArea2" to="TextArea2" method="_on_body_entered"]
+[node name="TextArea" type="Area2D" parent="." unique_id=1323099829 node_paths=PackedStringArray("Text")]
+position = Vector2(107, 228)
+script = ExtResource("17_ehuiy")
+Text = NodePath("DashTutorial2")
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TextArea" unique_id=1221733875]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-119, -155)
+sprite_frames = SubResource("SpriteFrames_gjf13")
+animation = &"disabled"
+script = ExtResource("19_gn07k")
+
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" unique_id=2079091200 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_7b3gs")
+offset_left = -182.0
+offset_top = -222.0
+offset_right = -40.0
+offset_bottom = -168.0
+theme_override_fonts/normal_font = ExtResource("20_3va60")
+text = "
+Don't get cocky just yet, any racer can do that
+"
+fit_content = true
+script = ExtResource("21_h6i6q")
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2" unique_id=995248056]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea/DashTutorial2" unique_id=1848340671]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TextArea/DashTutorial2" unique_id=446844495]
+stream = ExtResource("22_jkn52")
+volume_db = -20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea" unique_id=1428940556]
+position = Vector2(-63.3125, -160.1875)
+shape = SubResource("RectangleShape2D_elnin")
+
+[node name="TextArea2" type="Area2D" parent="." unique_id=1267790026 node_paths=PackedStringArray("Text")]
+position = Vector2(-116, -28)
+script = ExtResource("17_ehuiy")
+Text = NodePath("DashTutorial2")
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TextArea2" unique_id=653802877]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-19, -75)
+sprite_frames = SubResource("SpriteFrames_joe7h")
+animation = &"disabled"
+script = ExtResource("19_gn07k")
+
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea2" unique_id=1468308842 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_d6wll")
+offset_left = -60.0
+offset_top = -142.0
+offset_right = 82.0
+offset_bottom = -88.0
+theme_override_fonts/normal_font = ExtResource("20_3va60")
+text = "
+Deslizate o uso un Slam para acoplarte a un Rail."
+fit_content = true
+script = ExtResource("21_h6i6q")
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TextArea2/DashTutorial2" unique_id=1665001120]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea2/DashTutorial2" unique_id=1097282402]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TextArea2/DashTutorial2" unique_id=1939711777]
+stream = ExtResource("22_jkn52")
+volume_db = -20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea2" unique_id=403483908]
+position = Vector2(-17.5, -96.375)
+shape = SubResource("RectangleShape2D_tu52k")
+
 [connection signal="body_entered" from="TextArea" to="TextArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TextArea2" to="TextArea2" method="_on_body_entered"]

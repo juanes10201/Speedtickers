@@ -132,6 +132,7 @@ func load_level_csv(csv : String, levelpaths : Dictionary, worldorder : Array[St
 	#print(LevelPaths)
 
 func get_world_name_by_number(Number : int) -> String:
+	if(Number >= get_world_order().size()): return "world1"
 	return get_world_order()[Number]
 
 func get_amount_total_levels(BSide : bool = false) -> int:
@@ -167,6 +168,8 @@ func get_level_time(BSide : bool = false):
 	return Player
 
 func change_to_next_level_with_completion_ui() -> void:
+	print("Global level: " + str(Global.Level))
+	print("Bside: " + str(Global.BSide))
 	if(Global.Level+1 >= get_level_paths(Global.BSide)[get_world_order(Global.BSide)[Global.World]].size() ):
 		var _player = SaveGame.get_player()
 		if(_player):
@@ -176,7 +179,11 @@ func change_to_next_level_with_completion_ui() -> void:
 
 func change_to_next_level() -> void:
 	if(Global.Level+1 >= get_level_paths(Global.BSide)[get_world_order(Global.BSide)[Global.World]].size() ):
-		change_to_level(0, Global.World + 1, Global.BSide)
+		if(Global.World < BossesLevelPath.size()):
+			change_scene(BossesLevelPath[Global.World])
+			Global.Level += 1
+		else:
+			change_to_level(0, Global.World + 1, Global.BSide)
 	else:
 		change_to_level(Global.Level+1, Global.World, Global.BSide)
 

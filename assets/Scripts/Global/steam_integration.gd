@@ -13,9 +13,14 @@ func _ready() -> void:
 var DidSteamInitialize : bool = false
 
 func initialize_steam() -> void:
-	var initialize_response: Dictionary = Steam.steamInitEx()
-	print("Did Steam initialize?: %s " % initialize_response)
-	DidSteamInitialize = !initialize_response["status"]
+	if(!Edition.SteamEnabled):
+		print("EDITION: DOES NOT HAVE STEAM ENABLED")
+		DidSteamInitialize = false
+		return
+	else:
+		var initialize_response: Dictionary = Steam.steamInitEx()
+		print("Did Steam initialize?: %s " % initialize_response)
+		DidSteamInitialize = !initialize_response["status"]
 
 func leaderbord_find(handle : String):
 	Steam.findLeaderboard(handle)

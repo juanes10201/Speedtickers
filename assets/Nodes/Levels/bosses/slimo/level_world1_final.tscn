@@ -2831,14 +2831,15 @@ position = Vector2(-137, 290)
 position = Vector2(-645, 69)
 
 [node name="CharacterBody2D2" parent="." unique_id=1645044191 instance=ExtResource("34_lxrh3")]
-position = Vector2(-626, -310)
+position = Vector2(-1095, -373)
 NeedToInteract = false
 Dialogue_Action = "npc_boss1_holo2"
 RecordDialogueId = 1
 RecordOnlyOnce = true
+Enabled = false
 
 [node name="CharacterBody2D3" parent="." unique_id=1945689064 instance=ExtResource("34_lxrh3")]
-position = Vector2(387, -309)
+position = Vector2(-1090, -222)
 NeedToInteract = false
 Dialogue_Action = "npc_boss1_holo3"
 RecordDialogueId = 2
@@ -2961,7 +2962,7 @@ shape = SubResource("RectangleShape2D_lxrh3")
 libraries/ = SubResource("AnimationLibrary_uxdvm")
 
 [node name="SlimeRingIntro2" type="Area2D" parent="." unique_id=1115626774]
-position = Vector2(-712, -299)
+position = Vector2(-1172, -440)
 script = ExtResource("35_fyk5b")
 CutOnDistance = true
 OnlyOnce = true
@@ -3018,7 +3019,7 @@ position = Vector2(13.5, 40.5)
 shape = SubResource("RectangleShape2D_n4b3u")
 
 [node name="Flag2" parent="." unique_id=103660052 instance=ExtResource("9_sw0pm")]
-position = Vector2(929, -311)
+position = Vector2(-1206, -290)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1166900518]
 position = Vector2(218, 281)
@@ -3069,8 +3070,8 @@ position = Vector2(1085, -331)
 texture = ExtResource("42_vef5d")
 
 [node name="KillBox18" parent="." unique_id=730018019 instance=ExtResource("49_orvnp")]
-position = Vector2(87, 222)
-scale = Vector2(2.61, 1.88)
+position = Vector2(82, 227)
+scale = Vector2(1.635, 1.88)
 
 [node name="KillBox21" parent="." unique_id=1893542193 instance=ExtResource("49_orvnp")]
 position = Vector2(-509, 366)
@@ -3081,8 +3082,8 @@ position = Vector2(-519, 181.99997)
 scale = Vector2(3.25, 0.65)
 
 [node name="KillBox20" parent="." unique_id=1478938683 instance=ExtResource("49_orvnp")]
-position = Vector2(127, 123.00001)
-scale = Vector2(2.82, 1.55)
+position = Vector2(135.00002, 123)
+scale = Vector2(1.91, 1.55)
 
 [node name="Key7" parent="." unique_id=1906301517 instance=ExtResource("13_f6viy")]
 position = Vector2(-552, 270)

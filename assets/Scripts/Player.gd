@@ -638,15 +638,18 @@ func _fade_sound(body):
 @onready var OriginalWaitTime : float = Time_Left.wait_time
 const MaxWaitTime : float = 999999.0
 
-func _set_time_state(State : bool):
+func _set_time_state(State : bool, ChangeWaitTime : bool = true):
 	if(State):
 		Time_Left.paused = false
 		if(Time_Left.wait_time > OriginalWaitTime):
 			Time_Left.wait_time = OriginalWaitTime
 			Time_Left.start()
 	elif(Global.Selected_Challenge != Global.CHALLENGES.speedrun):
-		Time_Left.wait_time = MaxWaitTime
-		Time_Left.start()
+		if(ChangeWaitTime):
+			Time_Left.wait_time = MaxWaitTime
+			Time_Left.start()
+		else:
+			Time_Left.paused = true
 
 #region Pause and menu
 func _pause_menu_end_tick() -> void:

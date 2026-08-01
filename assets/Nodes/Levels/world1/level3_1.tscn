@@ -235,15 +235,15 @@ RecordedLocation = "res://assets/Replays/tutorial_level_3_1.json"
 
 [node name="Text" type="RichTextLabel" parent="." unique_id=1798673003 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
 material = SubResource("CanvasItemMaterial_a53cf")
-offset_left = -274.0
+offset_left = -275.0
 offset_top = -96.0
-offset_right = -105.600006
+offset_right = -106.600006
 offset_bottom = -59.0
 theme_override_fonts/normal_font = ExtResource("13_k0btq")
 text = "
-Keep pressed        to
+Mantene apretado      para 
 
-perform a higher jump"
+hacer un salto mas alto"
 fit_content = true
 script = ExtResource("13_njdfe")
 Animate = true
@@ -267,7 +267,7 @@ volume_db = -20.0
 [node name="DashButton2" type="AnimatedSprite2D" parent="Text" unique_id=1339872294]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
-position = Vector2(89, 15.650604)
+position = Vector2(107, 16.650604)
 sprite_frames = SubResource("SpriteFrames_4jr87")
 script = ExtResource("15_76ppp")
 ReadFromReplay = true
@@ -276,7 +276,7 @@ ButtonToPress = "ui_right"
 [node name="DashButton" type="AnimatedSprite2D" parent="Text" unique_id=689495509]
 self_modulate = Color(1, 1, 1, 0.8627451)
 use_parent_material = true
-position = Vector2(103.61499, 8)
+position = Vector2(121.61499, 9)
 sprite_frames = SubResource("SpriteFrames_a53cf")
 script = ExtResource("15_76ppp")
 ReadFromReplay = true

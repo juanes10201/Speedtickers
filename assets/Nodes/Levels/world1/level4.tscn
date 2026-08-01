@@ -63,6 +63,70 @@ _data = {
 &"move": SubResource("Animation_6ubuh")
 }
 
+[sub_resource type="Gradient" id="Gradient_2utor"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e34pc"]
+gradient = SubResource("Gradient_2utor")
+fill = 1
+fill_from = Vector2(0.5144382, 0.5037434)
+fill_to = Vector2(0.53048104, 0.53582895)
+
+[sub_resource type="Gradient" id="Gradient_4bv7n"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8vuuc"]
+gradient = SubResource("Gradient_4bv7n")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_8vuuc"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_reu32"]
+gradient = SubResource("Gradient_8vuuc")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_e7a5q"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b5voc"]
+gradient = SubResource("Gradient_e7a5q")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_reu32"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6niov"]
+gradient = SubResource("Gradient_reu32")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_b5voc"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmt3o"]
+gradient = SubResource("Gradient_b5voc")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
+[sub_resource type="Gradient" id="Gradient_cn2ev"]
+offsets = PackedFloat32Array(0, 0.65238094)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4bv7n"]
+gradient = SubResource("Gradient_cn2ev")
+fill = 1
+fill_from = Vector2(0.48290598, 0.517094)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7ae7"]
 atlas = ExtResource("20_6niov")
 region = Rect2(0, 0, 20, 20)
@@ -170,15 +234,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_np4up"]
-size = Vector2(30.7479, 28.6468)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhkcl"]
-size = Vector2(77.1953, 132)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bv7n"]
-size = Vector2(53.418, 8.167)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_reu32"]
 atlas = ExtResource("16_tprg3")
 region = Rect2(15, 80, 23, 16)
@@ -206,59 +261,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_4bv7n"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_np4up"]
+size = Vector2(30.7479, 28.6468)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8vuuc"]
-gradient = SubResource("Gradient_4bv7n")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhkcl"]
+size = Vector2(77.1953, 132)
 
-[sub_resource type="Gradient" id="Gradient_8vuuc"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_reu32"]
-gradient = SubResource("Gradient_8vuuc")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_e7a5q"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_b5voc"]
-gradient = SubResource("Gradient_e7a5q")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_reu32"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6niov"]
-gradient = SubResource("Gradient_reu32")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_b5voc"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmt3o"]
-gradient = SubResource("Gradient_b5voc")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
-
-[sub_resource type="Gradient" id="Gradient_cn2ev"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4bv7n"]
-gradient = SubResource("Gradient_cn2ev")
-fill = 1
-fill_from = Vector2(0.48290598, 0.517094)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bv7n"]
+size = Vector2(53.418, 8.167)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7mxp"]
 atlas = ExtResource("20_6niov")
@@ -343,16 +353,6 @@ light_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afpxl"]
 size = Vector2(62.75, 33.25)
 
-[sub_resource type="Gradient" id="Gradient_2utor"]
-offsets = PackedFloat32Array(0, 0.65238094)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e34pc"]
-gradient = SubResource("Gradient_2utor")
-fill = 1
-fill_from = Vector2(0.5144382, 0.5037434)
-fill_to = Vector2(0.53048104, 0.53582895)
-
 [node name="Node2D2" type="Node2D" unique_id=84872882]
 position = Vector2(0, -1)
 
@@ -395,186 +395,75 @@ autostart = true
 script = ExtResource("7_y33gm")
 SpeedrunWaitTime = 4.0
 
-[node name="Enemie2" parent="." unique_id=1073910296 instance=ExtResource("7_myvs5")]
-position = Vector2(-162, -24)
-EnemyDirection = 2
-Enemy_burst_speed = 400.0
+[node name="PointLight2D48" type="PointLight2D" parent="." unique_id=329991227]
+position = Vector2(-233, -58)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("23_2utor")
 
-[node name="Enemie" parent="." unique_id=598490085 instance=ExtResource("7_myvs5")]
-position = Vector2(-144, -24)
-EnemyDirection = 2
-Enemy_burst_speed = 400.0
+[node name="PointLight2D59" type="PointLight2D" parent="." unique_id=1416894719]
+position = Vector2(-249, -95.99999)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 1.02
+height = 13.0
+script = ExtResource("23_2utor")
 
-[node name="Enemie3" parent="." unique_id=376333206 instance=ExtResource("7_myvs5")]
-position = Vector2(-126, -24)
-EnemyDirection = 2
-Enemy_burst_speed = 400.0
+[node name="PointLight2D58" type="PointLight2D" parent="." unique_id=1321374691]
+position = Vector2(-162, -15)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.12424647, 0.796192, 1.1551381e-06, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 1.47
+height = 13.0
+script = ExtResource("23_2utor")
 
-[node name="Flag" parent="." unique_id=891608953 instance=ExtResource("8_khvyn")]
-position = Vector2(-37, 218)
+[node name="PointLight2D54" type="PointLight2D" parent="." unique_id=472118718]
+position = Vector2(-165, 131)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("23_2utor")
 
-[node name="Enemie9" parent="." unique_id=133346576 instance=ExtResource("7_myvs5")]
-position = Vector2(-95, 86.26)
-EnemyDirection = 2
+[node name="PointLight2D55" type="PointLight2D" parent="." unique_id=1410104563]
+position = Vector2(-104, 228)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9766763, 0.33209845, 0.99999994, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("23_2utor")
 
-[node name="Enemie10" parent="." unique_id=1308539175 instance=ExtResource("7_myvs5")]
-position = Vector2(-73.7199, 86)
-EnemyDirection = 2
+[node name="PointLight2D56" type="PointLight2D" parent="." unique_id=1287149777]
+position = Vector2(12.999996, 272)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.84822273, 0.6129843, 0, 1)
+energy = 0.9
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("23_2utor")
 
-[node name="Enemie11" parent="." unique_id=1669823092 instance=ExtResource("7_myvs5")]
-position = Vector2(-52.719902, 86)
-EnemyDirection = 2
-
-[node name="KillBox" parent="." unique_id=73564062 instance=ExtResource("9_uuxf6")]
-position = Vector2(-100, 336)
-scale = Vector2(99.32, 1)
-Visible = false
-CanChange = false
-
-[node name="AmbientParticles" parent="." unique_id=1108205302 instance=ExtResource("10_ow3ka")]
-position = Vector2(12.9999, -173)
-
-[node name="TimeStop" type="Area2D" parent="." unique_id=880611654]
-position = Vector2(-241, -26)
-script = ExtResource("11_8g546")
-StopAction = "player_slide"
-WaitAnimation = "Dash"
-PlayerHasToBeInGround = true
-
-[node name="Hologram" type="AnimatedSprite2D" parent="TimeStop" unique_id=852854732]
-modulate = Color(1, 1, 1, 0.77254903)
-position = Vector2(-70, -1)
-sprite_frames = SubResource("SpriteFrames_nmt3o")
-animation = &"disabled"
-
-[node name="Tutorial" type="Node2D" parent="TimeStop" unique_id=1869978012]
-material = ExtResource("12_t5o3b")
-position = Vector2(-32, -22)
-
-[node name="Text" type="RichTextLabel" parent="TimeStop/Tutorial" unique_id=1070945742 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
-material = SubResource("CanvasItemMaterial_nmt3o")
-offset_left = -58.0
-offset_top = -24.0
-offset_right = 84.0
-offset_bottom = 30.0
-theme_override_fonts/normal_font = ExtResource("15_drd3g")
-text = "Try skating with your
-
-shield with"
-fit_content = true
-script = ExtResource("16_b5voc")
-TextDelay = NodePath("TextDelay")
-VoiceDelay = NodePath("VoiceDelay")
-Voice = NodePath("Voice")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextDelay" type="Timer" parent="TimeStop/Tutorial/Text" unique_id=63204112]
-wait_time = 0.00999999999999999
-one_shot = true
-
-[node name="VoiceDelay" type="Timer" parent="TimeStop/Tutorial/Text" unique_id=1965213914]
-wait_time = 0.05
-one_shot = true
-
-[node name="Voice" type="AudioStreamPlayer" parent="TimeStop/Tutorial/Text" unique_id=15493176]
-stream = ExtResource("17_6niov")
-volume_db = -20.0
-
-[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop/Tutorial" unique_id=1289626703]
-use_parent_material = true
-position = Vector2(22, -1)
-sprite_frames = SubResource("SpriteFrames_8vuuc")
-script = ExtResource("14_igvnc")
-ButtonToPress = "player_slide"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop" unique_id=1499866367]
-position = Vector2(3, -3)
-shape = SubResource("RectangleShape2D_np4up")
-
-[node name="StopRemover" type="Area2D" parent="TimeStop" unique_id=315798064]
-position = Vector2(84.25, 7.625)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop/StopRemover" unique_id=2026137290]
-position = Vector2(3.75, -58.625)
-shape = SubResource("RectangleShape2D_lhkcl")
-
-[node name="TimeStop2" type="Area2D" parent="." unique_id=1425961965]
-position = Vector2(12, -47)
-script = ExtResource("11_8g546")
-StopAction = "player_slide"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop2" unique_id=667822774]
-position = Vector2(24, -41.999992)
-scale = Vector2(2.09, 2.22)
-shape = SubResource("RectangleShape2D_np4up")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TimeStop2" unique_id=2106558356]
-position = Vector2(5.999999, 4)
-scale = Vector2(1.29, 3.445)
-shape = SubResource("RectangleShape2D_4bv7n")
-
-[node name="StopRemover" type="Area2D" parent="TimeStop2" unique_id=1946484790]
-position = Vector2(84.25, 7.625)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop2/StopRemover" unique_id=422098250]
-position = Vector2(-79.25, 109.375)
-shape = SubResource("RectangleShape2D_lhkcl")
-
-[node name="Tutorial" type="Node2D" parent="TimeStop2" unique_id=1298939113]
-material = ExtResource("12_t5o3b")
-position = Vector2(-99, -45)
-
-[node name="Text" type="RichTextLabel" parent="TimeStop2/Tutorial" unique_id=806294957 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
-material = SubResource("CanvasItemMaterial_nmt3o")
-offset_left = -73.0
-offset_top = -13.0
-offset_right = 69.0
-offset_bottom = 24.0
-theme_override_fonts/normal_font = ExtResource("15_drd3g")
-text = "Not bad, but can you Slam trought ground?
-
-Try with:"
-fit_content = true
-script = ExtResource("16_b5voc")
-TextDelay = NodePath("TextDelay")
-VoiceDelay = NodePath("VoiceDelay")
-Voice = NodePath("Voice")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextDelay" type="Timer" parent="TimeStop2/Tutorial/Text" unique_id=393402825]
-wait_time = 0.00999999999999999
-one_shot = true
-
-[node name="VoiceDelay" type="Timer" parent="TimeStop2/Tutorial/Text" unique_id=1308288743]
-wait_time = 0.05
-one_shot = true
-
-[node name="Voice" type="AudioStreamPlayer" parent="TimeStop2/Tutorial/Text" unique_id=1109843202]
-stream = ExtResource("17_6niov")
-volume_db = -20.0
-
-[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop2/Tutorial" unique_id=91861213]
-use_parent_material = true
-position = Vector2(-11, 17)
-sprite_frames = SubResource("SpriteFrames_8vuuc")
-script = ExtResource("14_igvnc")
-ButtonToPress = "player_slide"
-
-[node name="DashButton2" type="AnimatedSprite2D" parent="TimeStop2/Tutorial" unique_id=1997357471]
-use_parent_material = true
-position = Vector2(11, 16)
-sprite_frames = SubResource("SpriteFrames_6niov")
-animation = &"pressed"
-script = ExtResource("14_igvnc")
-ButtonToPress = "player_slide"
-
-[node name="Hologram" type="AnimatedSprite2D" parent="TimeStop2" unique_id=192597762]
-modulate = Color(1, 1, 1, 0.77254903)
-position = Vector2(-61, -27)
-sprite_frames = SubResource("SpriteFrames_nmt3o")
-animation = &"disabled"
-
-[node name="WorldEnvironment" parent="." unique_id=556189083 instance=ExtResource("17_lf5tw")]
+[node name="PointLight2D57" type="PointLight2D" parent="." unique_id=454661138]
+position = Vector2(7, 202)
+scale = Vector2(1.5259811, 1.4260539)
+color = Color(0.9999997, 0.2979485, 0.9891551, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_e34pc")
+texture_scale = 2.57
+height = 13.0
+script = ExtResource("23_2utor")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1684159127]
 position = Vector2(25, -105)
@@ -671,120 +560,6 @@ color = Color(0.88741815, 0.49767113, 0.8530232, 1)
 texture = SubResource("GradientTexture2D_4bv7n")
 height = 13.0
 
-[node name="TextArea" type="Area2D" parent="." unique_id=186893387 node_paths=PackedStringArray("Text")]
-position = Vector2(-144, 29)
-script = ExtResource("21_w7ae7")
-Text = NodePath("DashTutorial2")
-
-[node name="Hologram" type="AnimatedSprite2D" parent="TextArea" unique_id=607856574]
-modulate = Color(1, 1, 1, 0.77254903)
-position = Vector2(113, 58)
-sprite_frames = SubResource("SpriteFrames_vv73s")
-animation = &"disabled"
-script = ExtResource("22_2utor")
-
-[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" unique_id=1543187159 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
-material = SubResource("CanvasItemMaterial_3n4vj")
-offset_left = -2.0
-offset_top = -10.0
-offset_right = 140.0
-offset_bottom = 44.0
-theme_override_fonts/normal_font = ExtResource("15_drd3g")
-text = "
-For some newbie you do crazy good. That won't mean nothin' in streets tho"
-fit_content = true
-script = ExtResource("16_b5voc")
-TextDelay = NodePath("TextDelay")
-VoiceDelay = NodePath("VoiceDelay")
-Voice = NodePath("Voice")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2" unique_id=1294354248]
-wait_time = 0.00999999999999999
-one_shot = true
-
-[node name="VoiceDelay" type="Timer" parent="TextArea/DashTutorial2" unique_id=1472578752]
-wait_time = 0.05
-one_shot = true
-
-[node name="Voice" type="AudioStreamPlayer" parent="TextArea/DashTutorial2" unique_id=268305601]
-stream = ExtResource("17_6niov")
-volume_db = -20.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea" unique_id=549413172]
-position = Vector2(158.625, -7.625)
-shape = SubResource("RectangleShape2D_afpxl")
-
-[node name="PointLight2D48" type="PointLight2D" parent="." unique_id=329991227]
-position = Vector2(-233, -58)
-scale = Vector2(1.5259811, 1.4260539)
-color = Color(0.9766763, 0.33209845, 0.99999994, 1)
-energy = 0.9
-texture = SubResource("GradientTexture2D_e34pc")
-texture_scale = 2.57
-height = 13.0
-script = ExtResource("23_2utor")
-
-[node name="PointLight2D59" type="PointLight2D" parent="." unique_id=1416894719]
-position = Vector2(-249, -95.99999)
-scale = Vector2(1.5259811, 1.4260539)
-color = Color(0.9766763, 0.33209845, 0.99999994, 1)
-energy = 0.9
-texture = SubResource("GradientTexture2D_e34pc")
-texture_scale = 1.02
-height = 13.0
-script = ExtResource("23_2utor")
-
-[node name="PointLight2D58" type="PointLight2D" parent="." unique_id=1321374691]
-position = Vector2(-162, -15)
-scale = Vector2(1.5259811, 1.4260539)
-color = Color(0.12424647, 0.796192, 1.1551381e-06, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_e34pc")
-texture_scale = 1.47
-height = 13.0
-script = ExtResource("23_2utor")
-
-[node name="PointLight2D54" type="PointLight2D" parent="." unique_id=472118718]
-position = Vector2(-165, 131)
-scale = Vector2(1.5259811, 1.4260539)
-color = Color(0.9766763, 0.33209845, 0.99999994, 1)
-energy = 0.9
-texture = SubResource("GradientTexture2D_e34pc")
-texture_scale = 2.57
-height = 13.0
-script = ExtResource("23_2utor")
-
-[node name="PointLight2D55" type="PointLight2D" parent="." unique_id=1410104563]
-position = Vector2(-104, 228)
-scale = Vector2(1.5259811, 1.4260539)
-color = Color(0.9766763, 0.33209845, 0.99999994, 1)
-energy = 0.9
-texture = SubResource("GradientTexture2D_e34pc")
-texture_scale = 2.57
-height = 13.0
-script = ExtResource("23_2utor")
-
-[node name="PointLight2D56" type="PointLight2D" parent="." unique_id=1287149777]
-position = Vector2(12.999996, 272)
-scale = Vector2(1.5259811, 1.4260539)
-color = Color(0.84822273, 0.6129843, 0, 1)
-energy = 0.9
-texture = SubResource("GradientTexture2D_e34pc")
-texture_scale = 2.57
-height = 13.0
-script = ExtResource("23_2utor")
-
-[node name="PointLight2D57" type="PointLight2D" parent="." unique_id=454661138]
-position = Vector2(7, 202)
-scale = Vector2(1.5259811, 1.4260539)
-color = Color(0.9999997, 0.2979485, 0.9891551, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_e34pc")
-texture_scale = 2.57
-height = 13.0
-script = ExtResource("23_2utor")
-
 [node name="PointLight2D49" type="PointLight2D" parent="." unique_id=604187178]
 position = Vector2(-6, -39.000004)
 scale = Vector2(1.5259811, 1.4260539)
@@ -846,6 +621,240 @@ texture = SubResource("GradientTexture2D_e34pc")
 texture_scale = 2.57
 height = 13.0
 script = ExtResource("23_2utor")
+
+[node name="Enemie2" parent="." unique_id=1073910296 instance=ExtResource("7_myvs5")]
+position = Vector2(-162, -24)
+EnemyDirection = 2
+Enemy_burst_speed = 400.0
+
+[node name="Enemie" parent="." unique_id=598490085 instance=ExtResource("7_myvs5")]
+position = Vector2(-144, -24)
+EnemyDirection = 2
+Enemy_burst_speed = 400.0
+
+[node name="Enemie3" parent="." unique_id=376333206 instance=ExtResource("7_myvs5")]
+position = Vector2(-126, -24)
+EnemyDirection = 2
+Enemy_burst_speed = 400.0
+
+[node name="Flag" parent="." unique_id=891608953 instance=ExtResource("8_khvyn")]
+position = Vector2(-37, 218)
+
+[node name="Enemie9" parent="." unique_id=133346576 instance=ExtResource("7_myvs5")]
+position = Vector2(-95, 86.26)
+EnemyDirection = 2
+
+[node name="Enemie10" parent="." unique_id=1308539175 instance=ExtResource("7_myvs5")]
+position = Vector2(-73.7199, 86)
+EnemyDirection = 2
+
+[node name="Enemie11" parent="." unique_id=1669823092 instance=ExtResource("7_myvs5")]
+position = Vector2(-52.719902, 86)
+EnemyDirection = 2
+
+[node name="KillBox" parent="." unique_id=73564062 instance=ExtResource("9_uuxf6")]
+position = Vector2(-100, 336)
+scale = Vector2(99.32, 1)
+Visible = false
+CanChange = false
+
+[node name="AmbientParticles" parent="." unique_id=1108205302 instance=ExtResource("10_ow3ka")]
+position = Vector2(12.9999, -173)
+
+[node name="TimeStop" type="Area2D" parent="." unique_id=880611654]
+position = Vector2(-241, -26)
+script = ExtResource("11_8g546")
+StopAction = "player_slide"
+WaitAnimation = "Dash"
+PlayerHasToBeInGround = true
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TimeStop" unique_id=852854732]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-70, -1)
+sprite_frames = SubResource("SpriteFrames_nmt3o")
+animation = &"disabled"
+
+[node name="Tutorial" type="Node2D" parent="TimeStop" unique_id=1869978012]
+material = ExtResource("12_t5o3b")
+position = Vector2(-32, -22)
+
+[node name="Text" type="RichTextLabel" parent="TimeStop/Tutorial" unique_id=1070945742 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_nmt3o")
+offset_left = -58.0
+offset_top = -24.0
+offset_right = 84.0
+offset_bottom = 30.0
+theme_override_fonts/normal_font = ExtResource("15_drd3g")
+text = "Intenta patinar con
+
+el escudo usando"
+fit_content = true
+script = ExtResource("16_b5voc")
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TimeStop/Tutorial/Text" unique_id=63204112]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TimeStop/Tutorial/Text" unique_id=1965213914]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TimeStop/Tutorial/Text" unique_id=15493176]
+stream = ExtResource("17_6niov")
+volume_db = -20.0
+
+[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop/Tutorial" unique_id=1289626703]
+use_parent_material = true
+position = Vector2(51, -2)
+sprite_frames = SubResource("SpriteFrames_8vuuc")
+script = ExtResource("14_igvnc")
+ButtonToPress = "player_slide"
+
+[node name="DashButton2" type="AnimatedSprite2D" parent="TimeStop/Tutorial" unique_id=778081777]
+use_parent_material = true
+position = Vector2(73, -4)
+sprite_frames = SubResource("SpriteFrames_6niov")
+animation = &"pressed"
+script = ExtResource("14_igvnc")
+ButtonToPress = "player_slide"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop" unique_id=1499866367]
+position = Vector2(3, -3)
+shape = SubResource("RectangleShape2D_np4up")
+
+[node name="StopRemover" type="Area2D" parent="TimeStop" unique_id=315798064]
+position = Vector2(84.25, 7.625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop/StopRemover" unique_id=2026137290]
+position = Vector2(3.75, -58.625)
+shape = SubResource("RectangleShape2D_lhkcl")
+
+[node name="TimeStop2" type="Area2D" parent="." unique_id=1425961965]
+position = Vector2(12, -47)
+script = ExtResource("11_8g546")
+StopAction = "player_slide"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop2" unique_id=667822774]
+position = Vector2(24, -41.999992)
+scale = Vector2(2.09, 2.22)
+shape = SubResource("RectangleShape2D_np4up")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TimeStop2" unique_id=2106558356]
+position = Vector2(5.999999, 4)
+scale = Vector2(1.29, 3.445)
+shape = SubResource("RectangleShape2D_4bv7n")
+
+[node name="StopRemover" type="Area2D" parent="TimeStop2" unique_id=1946484790]
+position = Vector2(84.25, 7.625)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TimeStop2/StopRemover" unique_id=422098250]
+position = Vector2(-79.25, 109.375)
+shape = SubResource("RectangleShape2D_lhkcl")
+
+[node name="Tutorial" type="Node2D" parent="TimeStop2" unique_id=1298939113]
+material = ExtResource("12_t5o3b")
+position = Vector2(-99, -45)
+
+[node name="Text" type="RichTextLabel" parent="TimeStop2/Tutorial" unique_id=806294957 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_nmt3o")
+offset_left = -73.0
+offset_top = -13.0
+offset_right = 69.0
+offset_bottom = 24.0
+theme_override_fonts/normal_font = ExtResource("15_drd3g")
+text = "Decente, ahora intenta hacer un Slam.
+
+Usando:"
+fit_content = true
+script = ExtResource("16_b5voc")
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TimeStop2/Tutorial/Text" unique_id=393402825]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TimeStop2/Tutorial/Text" unique_id=1308288743]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TimeStop2/Tutorial/Text" unique_id=1109843202]
+stream = ExtResource("17_6niov")
+volume_db = -20.0
+
+[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop2/Tutorial" unique_id=91861213]
+use_parent_material = true
+position = Vector2(-11, 17)
+sprite_frames = SubResource("SpriteFrames_8vuuc")
+script = ExtResource("14_igvnc")
+ButtonToPress = "player_slide"
+
+[node name="DashButton2" type="AnimatedSprite2D" parent="TimeStop2/Tutorial" unique_id=1997357471]
+use_parent_material = true
+position = Vector2(11, 16)
+sprite_frames = SubResource("SpriteFrames_6niov")
+animation = &"pressed"
+script = ExtResource("14_igvnc")
+ButtonToPress = "player_slide"
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TimeStop2" unique_id=192597762]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(-61, -27)
+sprite_frames = SubResource("SpriteFrames_nmt3o")
+animation = &"disabled"
+
+[node name="WorldEnvironment" parent="." unique_id=556189083 instance=ExtResource("17_lf5tw")]
+
+[node name="TextArea" type="Area2D" parent="." unique_id=186893387 node_paths=PackedStringArray("Text")]
+position = Vector2(-144, 29)
+script = ExtResource("21_w7ae7")
+Text = NodePath("DashTutorial2")
+
+[node name="Hologram" type="AnimatedSprite2D" parent="TextArea" unique_id=607856574]
+modulate = Color(1, 1, 1, 0.77254903)
+position = Vector2(113, 58)
+sprite_frames = SubResource("SpriteFrames_vv73s")
+animation = &"disabled"
+script = ExtResource("22_2utor")
+
+[node name="DashTutorial2" type="RichTextLabel" parent="TextArea" unique_id=1543187159 node_paths=PackedStringArray("TextDelay", "VoiceDelay", "Voice")]
+material = SubResource("CanvasItemMaterial_3n4vj")
+offset_left = -2.0
+offset_top = -10.0
+offset_right = 140.0
+offset_bottom = 44.0
+theme_override_fonts/normal_font = ExtResource("15_drd3g")
+text = "
+Para ser un principante
+no es mediocre. Segui intentando"
+fit_content = true
+script = ExtResource("16_b5voc")
+TextDelay = NodePath("TextDelay")
+VoiceDelay = NodePath("VoiceDelay")
+Voice = NodePath("Voice")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDelay" type="Timer" parent="TextArea/DashTutorial2" unique_id=1294354248]
+wait_time = 0.00999999999999999
+one_shot = true
+
+[node name="VoiceDelay" type="Timer" parent="TextArea/DashTutorial2" unique_id=1472578752]
+wait_time = 0.05
+one_shot = true
+
+[node name="Voice" type="AudioStreamPlayer" parent="TextArea/DashTutorial2" unique_id=268305601]
+stream = ExtResource("17_6niov")
+volume_db = -20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea" unique_id=549413172]
+position = Vector2(158.625, -7.625)
+shape = SubResource("RectangleShape2D_afpxl")
 
 [node name="Player" parent="." unique_id=950530601 instance=ExtResource("5_ex3gg")]
 position = Vector2(-285, -18)

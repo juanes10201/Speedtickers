@@ -18,6 +18,20 @@ func _set_data(Username : String, UserTime : float, TextUser : RichTextLabel):#,
 	TextUser.text = _set_text_pos(Username, UserTime)
 
 func _update_best_scores(Level : int, World : int) -> void:
+	print("STEAM: " + str(SteamIntegration.DidSteamInitialize))
+	if(!SteamIntegration.DidSteamInitialize):
+		for i in range(Users.size()):
+			Users[i].visible = false
+			Users[i].get_parent().visible = false
+		Users[0].visible = true
+		Users[0].get_parent().visible = true
+		Users[0].get_parent().text = ""
+		Users[0].text = "Scores Disabled"
+		UserPlayer.hide()
+		PlacePlayer.hide()
+		return
+	
+	
 	var PlayerTime : float = _round_time_number(SaveGame.GetLevelTime(Level-1, World))
 	if(UserPlayer): UserPlayer.text = _set_text_pos(SaveGame.GetPlayerUserName(), PlayerTime)
 	

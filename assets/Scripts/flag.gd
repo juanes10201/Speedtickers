@@ -57,6 +57,8 @@ func _on_body_entered(body):
 		if(!Global.LoadingReplay):
 			#var _completed_time : float = $"../Time_Left".wait_time - $"../Time_Left".time_left if $"../Time_Left" else 0.00
 			#print(_completed_time)
-			SaveGame.SaveLevelRecord(_lvl, _world, completed_time)
+			#print("A")
+			#SaveGame.SaveLevelRecord(_lvl, _world, completed_time)
+			print("Going to next level")
 			LevelManager.change_to_next_level_with_completion_ui()
 		#endregion

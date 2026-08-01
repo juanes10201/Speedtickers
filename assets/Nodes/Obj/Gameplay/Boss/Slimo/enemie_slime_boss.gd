@@ -270,7 +270,7 @@ func _process(delta: float) -> void:
 		position.x *= 8
 	if(!Enabled && Activate_on_color != Global.LASER_COLORS.NONE && SaveGame.get_player().LASERS_ENABLED[Activate_on_color]):
 		Enabled = true
-		Player._set_time_state(true)
+		Player._set_time_state(true, false)
 	
 	if(Player && Player.GlobalGravityDirection != PrevGravityDirection*GravityDirection):
 		PrevGravityDirection = Player.GlobalGravityDirection * GravityDirection

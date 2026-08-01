@@ -8,7 +8,7 @@ var ExpoLimitedTime : bool = true
 
 var CrtFilter : bool = true
 
-var GAME_STATUS = ALL_GAME_STATUS.retail
+var GAME_STATUS = ALL_GAME_STATUS.expo
 
 var Is_in_editor : bool = false
 
@@ -20,6 +20,8 @@ var IsErasingInEditor = false
 
 var LimitWorlds : bool = true
 var AmountLimitedWorlds : int = 0
+
+var SteamEnabled : bool = false
 
 @onready var Mobile : bool = true if OS.get_name() == "Android" else false
 

@@ -19,6 +19,9 @@
 [ext_resource type="Script" uid="uid://b7kp4oyo8y484" path="res://assets/Nodes/Obj/Ui/text_tutorial_anim.gd" id="17_v35s5"]
 [ext_resource type="Script" uid="uid://dbfv5o1s01x06" path="res://assets/Scripts/DynamicLightAnimation.gd" id="17_v62b1"]
 [ext_resource type="AudioStream" uid="uid://dsvfo3erylgm" path="res://assets/Sounds/Tutorial/voicetutorial.wav" id="18_oc802"]
+[ext_resource type="Texture2D" uid="uid://fxx14m4na3pt" path="res://assets/Sprites/Ui/Input/kenney_inputs.png" id="20_e7nep"]
+[ext_resource type="Script" uid="uid://dxswtkejq7e72" path="res://assets/Scripts/animated_button.gd" id="21_kl8q2"]
+[ext_resource type="Texture2D" uid="uid://c84avb2yr7nyv" path="res://assets/Sprites/Ui/Input/Keyboard White.png" id="22_seci8"]
 
 [sub_resource type="Animation" id="Animation_timnu"]
 length = 0.001
@@ -200,6 +203,60 @@ animations = [{
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tfggo"]
 light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbb0o"]
+atlas = ExtResource("20_e7nep")
+region = Rect2(80, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx7m1"]
+atlas = ExtResource("20_e7nep")
+region = Rect2(96, 224, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfcbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbb0o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx7m1")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jr0n"]
+atlas = ExtResource("22_seci8")
+region = Rect2(0, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usbao"]
+atlas = ExtResource("22_seci8")
+region = Rect2(0, 160, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nviea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jr0n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usbao")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2a1w"]
 size = Vector2(48.5, 34.5)
@@ -538,7 +595,7 @@ offset_right = 159.0
 offset_bottom = -108.0
 theme_override_fonts/normal_font = ExtResource("16_amwd2")
 text = "
-Let's see kid if you still remember dashing"
+Intenta dashear de vuelta. Usando "
 fit_content = true
 script = ExtResource("17_v35s5")
 TextDelay = NodePath("TextDelay")
@@ -557,6 +614,20 @@ one_shot = true
 [node name="Voice" type="AudioStreamPlayer" parent="TextArea/DashTutorial2" unique_id=1564316300]
 stream = ExtResource("18_oc802")
 volume_db = -20.0
+
+[node name="DashButton" type="AnimatedSprite2D" parent="TextArea/DashTutorial2" unique_id=682594889]
+use_parent_material = true
+position = Vector2(13, 36)
+sprite_frames = SubResource("SpriteFrames_sfcbr")
+script = ExtResource("21_kl8q2")
+ButtonToPress = "player_dash"
+
+[node name="DashButtonKeyboard" type="AnimatedSprite2D" parent="TextArea/DashTutorial2" unique_id=1200535751]
+use_parent_material = true
+position = Vector2(53, 37)
+sprite_frames = SubResource("SpriteFrames_nviea")
+script = ExtResource("21_kl8q2")
+ButtonToPress = "player_dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextArea" unique_id=902929278]
 position = Vector2(55, -66)
