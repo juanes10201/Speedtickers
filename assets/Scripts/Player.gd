@@ -241,6 +241,34 @@ var PositionDifference : Vector2
 #region Editor
 var EditorInitialPos : Vector2 = Vector2(0.0,0.0)
 
+const CornerCorrectionAmount : int = 3
+
+
+func _corner_correction_tick(amount : int, delta : float) -> void:
+	#El punto es si al moverse verticalmente con la velocidad que tiene toca algo
+	
+	#Deberia de implementarlo para el Slam? Si este el caso, entonces cambiar
+	#velocity.y < 0 a abs(velocity.y) > 0
+	
+	###Para el salto
+	if(velocity.y < 0.0 && test_move(global_transform, Vector2(0.0, velocity.y*delta))):
+		for i in range(1, amount+1):
+			for j in [-1.0, 1.0]:
+				if !test_move(global_transform.translated(Vector2(i*j, 0.0)) , Vector2(0.0, velocity.y*delta)):
+					translate( Vector2(i*j, 0.0) )
+					print("Corner Corrected Jump")
+					#global_position.x = round(global_position.x*16)*16 - 1.99*j
+					return
+	###Para el dash
+	if(!DashTime.is_stopped() && test_move(global_transform, Vector2(velocity.x*delta, 0.0)) ):
+		for i in range(1, amount*2+1):
+			for j in [-1.0, 1.0]:
+				if !test_move(global_transform.translated(Vector2(0.0, i*j)) , Vector2(velocity.x*delta, 0.0)):
+					translate( Vector2(0.0, i*j) )
+					print("Corner Corrected Dash")
+					#global_position.x = round(global_position.x*16)*16 - 1.99*j
+					return
+
 func cache_values_editor() -> void:
 	EditorInitialPos = position
 	_ready()
@@ -557,6 +585,7 @@ func _physics_process(delta: float) -> void:
 			ParticlesJump.emitting = true
 		#endregion
 		_strech_tick(delta)
+		_corner_correction_tick(CornerCorrectionAmount, delta)
 		_physics_water(delta)
 		_physics_walljump(delta) 
 		_physics_jump(delta)

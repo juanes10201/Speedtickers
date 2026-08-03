@@ -20,7 +20,7 @@ func _ready() -> void:
 	NextScene = LevelManager.get_level_path(Global.Level+1, LevelManager.get_world_order(Global.BSide)[Global.World], Global.BSide)
 	if(NextScene != ""):
 		ResourceLoader.load_threaded_request(NextScene)
-	print("NextScene" + str(NextScene) )
+	#print("NextScene" + str(NextScene) )
 
 
 var editable = preload("res://assets/Scripts/default_object.gd").new()

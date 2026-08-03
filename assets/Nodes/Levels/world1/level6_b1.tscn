@@ -133,7 +133,7 @@ CanChange = false
 
 [node name="Rail" parent="." unique_id=17377267 instance=ExtResource("14_ix66w")]
 position = Vector2(-248, -140)
-points = PackedVector2Array(-5, -18, -1, -19, 3, -4, 36, -8, 16, -54, 41, 58, 98, 58, 98, -48, 108, -47)
+points = PackedVector2Array(-5, -18, -1, -19, 3, -4, 36, -8, 16, -54, 41, 58, 98, 58, 99, -18, 123, -15, 115, -46, 121, -5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1613432224 groups=["Tileset"]]
 position = Vector2(-752, -831)
