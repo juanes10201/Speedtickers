@@ -8,7 +8,7 @@ var ExpoLimitedTime : bool = true
 
 var CrtFilter : bool = true
 
-var GAME_STATUS = ALL_GAME_STATUS.expo
+var GAME_STATUS = ALL_GAME_STATUS.retail
 
 var Is_in_editor : bool = false
 

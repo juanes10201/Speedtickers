@@ -3,10 +3,12 @@ extends Area2D
 @export var StopAction = "player_dash"
 var Done : bool = true
 var HadStopped : bool = false
-@onready var TutorialCanvas : CanvasModulate = $"../CanvasModulate"
+@onready var TutorialCanvas : CanvasModulate = $"../TutorialCanvasModulate"
 @onready var Player = SaveGame.get_player()
 @export var WaitAnimation = "Jump"
 @export var PlayerHasToBeInGround : bool = false
+@export var ChangePlayerDirection : bool = false
+@export var PlayerDirection : float = 1.0
 
 var WillDo : bool = false
 
@@ -30,9 +32,13 @@ func _stop() -> void:
 	if($Tutorial): ShowTutorial = true
 	Done = false
 	Player.Physics = false
-	TutorialCanvas.show()
-	Player.LastDirection = 1
-	Player.direction = 1
+	if(TutorialCanvas): TutorialCanvas.show()
+	if(!ChangePlayerDirection):
+		Player.LastDirection = 1
+		Player.direction = 1
+	else:
+		Player.LastDirection = PlayerDirection
+		Player.direction = PlayerDirection
 	Player.Sprite.play(WaitAnimation)
 
 func _resume_mov() -> void:

@@ -325,7 +325,7 @@ CanChange = false
 [node name="AmbientParticles" parent="." unique_id=1769579 instance=ExtResource("14_vwp2c")]
 position = Vector2(-223, -366)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=390565466]
+[node name="TutorialCanvasModulate" type="CanvasModulate" parent="." unique_id=390565466]
 visible = false
 position = Vector2(-755, -863)
 scale = Vector2(1.00384, 1)

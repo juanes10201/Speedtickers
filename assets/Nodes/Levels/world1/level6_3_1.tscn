@@ -694,7 +694,7 @@ offset_right = -40.0
 offset_bottom = -168.0
 theme_override_fonts/normal_font = ExtResource("20_3va60")
 text = "
-Don't get cocky just yet, any racer can do that
+Vas mejorando, no te creas tampoco
 "
 fit_content = true
 script = ExtResource("21_h6i6q")

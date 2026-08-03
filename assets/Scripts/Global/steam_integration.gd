@@ -23,7 +23,9 @@ func initialize_steam() -> void:
 		DidSteamInitialize = !initialize_response["status"]
 
 func leaderbord_find(handle : String):
-	Steam.findLeaderboard(handle)
+	if(DidSteamInitialize):
+		Steam.findLeaderboard(handle)
+	return ""
 
 func leaderboard_found(leadboard, found : bool) -> void:
 	if(found):
