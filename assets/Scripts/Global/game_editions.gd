@@ -21,7 +21,7 @@ var IsErasingInEditor = false
 var LimitWorlds : bool = true
 var AmountLimitedWorlds : int = 0
 
-var SteamEnabled : bool = false
+var SteamEnabled : bool = true
 
 @onready var Mobile : bool = true if OS.get_name() == "Android" else false
 

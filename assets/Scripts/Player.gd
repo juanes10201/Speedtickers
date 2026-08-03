@@ -254,6 +254,9 @@ func editor_reset() -> void:
 	position = EditorInitialPos
 	velocity = Vector2(0.0, 0.0)
 	Speed = Vector2(0.0, 0.0)
+#endregion
+
+func reset_dead() -> void:
 	strech_size(1.0, 1.0, true)
 	Sprite.play("Idle")
 	Reset_Slide()
@@ -263,7 +266,6 @@ func editor_reset() -> void:
 	EnabledKillBox = Global.KillBoxTypes.Red
 	MoveLava = false
 	Dashed = false
-#endregion
 
 func array_to_vec3(arr: Array) -> Array[Vector3]:
 	var out: Array[Vector3] = []

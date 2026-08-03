@@ -9,6 +9,7 @@ var HadStopped : bool = false
 @export var PlayerHasToBeInGround : bool = false
 @export var ChangePlayerDirection : bool = false
 @export var PlayerDirection : float = 1.0
+@export var PauseRestGame : bool = false
 
 var WillDo : bool = false
 
@@ -24,6 +25,8 @@ func _on_body_entered(body: Node2D) -> void:
 		_stop()
 
 func _stop() -> void:
+	if(PauseRestGame):
+		Player.Paused = true
 	if($Hologram): $Hologram.play("show")
 	if(PlayerHasToBeInGround && !Player._is_on_floor()):
 		WillDo = true
@@ -43,6 +46,8 @@ func _stop() -> void:
 
 func _resume_mov() -> void:
 	if($Tutorial): ShowTutorial = false
+	if(PauseRestGame):
+		Player.Paused = false
 	Done = true
 	TutorialCanvas.show()
 	Player.Physics = true

@@ -232,19 +232,19 @@ animations = [{
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mbwyb"]
 light_mode = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8vuuc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbb0o"]
 atlas = ExtResource("15_5ksjf")
-region = Rect2(160, 256, 16, 16)
+region = Rect2(80, 224, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ji8qf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx7m1"]
 atlas = ExtResource("15_5ksjf")
-region = Rect2(160, 272, 16, 16)
+region = Rect2(96, 224, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0wq5o"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_i26k5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8vuuc")
+"texture": SubResource("AtlasTexture_tbb0o")
 }],
 "loop": true,
 "name": &"default",
@@ -252,26 +252,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ji8qf")
+"texture": SubResource("AtlasTexture_jx7m1")
 }],
 "loop": true,
 "name": &"pressed",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_reu32"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jr0n"]
 atlas = ExtResource("24_35tpb")
-region = Rect2(15, 80, 23, 16)
+region = Rect2(0, 64, 48, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5voc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_usbao"]
 atlas = ExtResource("24_35tpb")
-region = Rect2(15, 176, 23, 16)
+region = Rect2(0, 160, 48, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gpkdl"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_f74q4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_reu32")
+"texture": SubResource("AtlasTexture_1jr0n")
 }],
 "loop": true,
 "name": &"default",
@@ -279,7 +279,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b5voc")
+"texture": SubResource("AtlasTexture_usbao")
 }],
 "loop": true,
 "name": &"pressed",
@@ -463,20 +463,19 @@ one_shot = true
 stream = ExtResource("23_0rvih")
 volume_db = -20.0
 
-[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop/Tutorial" unique_id=991065036]
+[node name="DashButton" type="AnimatedSprite2D" parent="TimeStop/Tutorial" unique_id=83063924]
 use_parent_material = true
-position = Vector2(51, -2)
-sprite_frames = SubResource("SpriteFrames_0wq5o")
+position = Vector2(32, 76)
+sprite_frames = SubResource("SpriteFrames_i26k5")
 script = ExtResource("16_mbwyb")
-ButtonToPress = "player_slide"
+ButtonToPress = "player_dash"
 
-[node name="DashButton2" type="AnimatedSprite2D" parent="TimeStop/Tutorial" unique_id=968885064]
+[node name="DashButtonKeyboard" type="AnimatedSprite2D" parent="TimeStop/Tutorial" unique_id=1938907098]
 use_parent_material = true
-position = Vector2(73, -4)
-sprite_frames = SubResource("SpriteFrames_gpkdl")
-animation = &"pressed"
+position = Vector2(72, 77)
+sprite_frames = SubResource("SpriteFrames_f74q4")
 script = ExtResource("16_mbwyb")
-ButtonToPress = "player_slide"
+ButtonToPress = "player_dash"
 
 [node name="StopRemover" type="Area2D" parent="TimeStop" unique_id=492835795]
 position = Vector2(84.25, 7.625)

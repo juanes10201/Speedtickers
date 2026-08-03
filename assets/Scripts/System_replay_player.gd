@@ -32,6 +32,7 @@ func _ready() -> void:
 func Reset() -> void:
 	InitialTime = 0.0
 	Player.position = Player.OriginalPos
+	Player.reset_dead()
 	ReplayCurrentAction = -1
 	CurrentTime = -0.5
 	for i in ReplayActions:

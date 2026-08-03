@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://l5elxqguto6h" path="res://assets/Sounds/walk.wav" id="11_dfg8f"]
 [ext_resource type="AudioStream" uid="uid://ds4orkikk3nav" path="res://assets/Sounds/jump.wav" id="11_f6d5f"]
 [ext_resource type="Texture2D" uid="uid://cefaso74wwufu" path="res://assets/Sprites/Gameplay/player/walljump.png" id="11_gu8yx"]
+[ext_resource type="Texture2D" uid="uid://wcmkhx0w1ghi" path="res://assets/Sprites/Gameplay/player/slide.png" id="12_8lo5w"]
 [ext_resource type="AudioStream" uid="uid://b53kcu1sjusbk" path="res://assets/Sounds/slide.wav" id="12_mayjg"]
 [ext_resource type="Texture2D" uid="uid://gs5i8fwvbr1f" path="res://assets/Sprites/Gameplay/player/slideanin.png" id="12_yinjy"]
 [ext_resource type="AudioStream" uid="uid://dpxr2ky640n13" path="res://assets/Sounds/groundsmash.wav" id="13_6xtp5"]
@@ -426,10 +427,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_gu8yx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8lo5w")
 }],
 "loop": true,
 "name": &"Rail",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
