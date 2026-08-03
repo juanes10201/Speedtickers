@@ -387,7 +387,8 @@ func _input(event):
 func _ready() -> void:
 	#Time_Left.paused = true
 	MaxAcc.x *= Max_Velocity_Multiplier
-	_set_time_state(CountTime)
+	if(!Edition.Is_in_editor):
+		_set_time_state(CountTime)
 	if(RetroStyle):
 		ParticlesSlide.fixed_fps = 15
 		ParticlesSlide.interpolate = false

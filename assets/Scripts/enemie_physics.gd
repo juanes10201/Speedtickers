@@ -281,12 +281,14 @@ func _process(delta: float) -> void:
 #region Scaling
 @onready var original_scale = Sprite.scale
 func strech_size(X, Y):
-	Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
-	Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
+	if(Sprite):
+		Sprite.scale = Vector2(original_scale.x*X, original_scale.y*Y)
+		Sprite.scale.y = abs(Sprite.scale.y)*GravityDirection*Player.GlobalGravityDirection
 
 func _strech_tick(delta : float):
-	Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 15 * delta
-	Sprite.scale.y += (original_scale.y*GravityDirection*Player.GlobalGravityDirection - Sprite.scale.y) * 15 * delta
+	if(Sprite):
+		Sprite.scale.x += (original_scale.x - Sprite.scale.x) * 15 * delta
+		Sprite.scale.y += (original_scale.y*GravityDirection*Player.GlobalGravityDirection - Sprite.scale.y) * 15 * delta
 #endregion
 
 #region toggle collision

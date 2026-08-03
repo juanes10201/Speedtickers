@@ -16,9 +16,88 @@ var IsTileMapSelected : bool = false
 @export var EditorPlayerTrail : Line2D
 var Paused : bool = false
 
+func _get_all_nodes(node: Node) -> Array:
+	var result = [node]
+	for child in node.get_children():
+		result += _get_all_nodes(child)
+	return result
+
+var LevelDataRecursiveNodePaths : Dictionary = {}
+
+func SaveSnapshotLevelDataPaths() -> void:
+	LevelDataRecursiveNodePaths = {}
+	var LevelDataChildNodes : Array = _get_all_nodes(self)
+	LevelDataChildNodes.append(self)
+	for _node in LevelDataChildNodes:
+		for prop in _node.get_property_list():
+			if prop.usage & PROPERTY_USAGE_SCRIPT_VARIABLE == 0:
+				continue
+			var _val = _node.get(prop.name)
+			if _val && _val is Node && _val.is_inside_tree() && !(_val in LevelDataRecursiveNodePaths):
+				var _path = _val.get_path()
+				#Se guarda que la posicion del asset del puntero dado es la del dicc
+				LevelDataRecursiveNodePaths[_val] = _path
+	#print("Saved Paths: " + str(LevelDataRecursiveNodePaths))
+
+func LoadSnapshotLevelDataPaths() -> void:
+	print("leveldata: " + str(LevelData))
+	var LevelDataChildNodes : Array = _get_all_nodes(self)
+	LevelDataChildNodes.append(self)
+	for _node in LevelDataChildNodes:
+		for prop in _node.get_property_list():
+			var _val = _node.get(prop.name)
+			if _val && _val is Node && _val in LevelDataRecursiveNodePaths:
+				var _new_node_ref : Node = get_node(LevelDataRecursiveNodePaths[_val])
+				_node.set(prop.name, _new_node_ref)
+				#print("Loaded node: "  + str(_new_node_ref) + " from " + str(_node))
+	for child in get_children():
+		if(child.is_in_group("LevelData")):
+			LevelData = child
+	LevelDataRecursiveNodePaths = {}
+	if(Player):
+		Player.Sprite.show()
+
+func get_level_data() -> Node:
+	return LevelData
+
+var SnapshotLevelData : Node2D
+
+func SaveSnapshotLevelData() -> void:
+	if(LevelData):
+		SnapshotLevelData = LevelData.duplicate(DUPLICATE_USE_INSTANTIATION)
+		SaveSnapshotLevelDataPaths()
+		print("Saved Snapshot: " + str(SnapshotLevelData))
+
+func _reset_play() -> void:
+	if(SnapshotLevelData):
+		if(LevelData):
+			var OldLevelData = LevelData
+			remove_child(OldLevelData)
+			LevelData = SnapshotLevelData.duplicate(DUPLICATE_USE_INSTANTIATION)
+			LevelData.name = "LevelData"
+			add_child(LevelData)
+			
+			OldLevelData.free()
+		LoadSnapshotLevelDataPaths()
+		print("Reloaded to original level data snapshot") 
+		if(SnapshotLevelData):
+			SnapshotLevelData.queue_free()
+		SnapshotLevelData = null
+	#for i in range(SaveGame.get_player().LASERS_ENABLED.size()):
+	#	SaveGame.get_player().LASERS_ENABLED[i] = false
+	#if(Player):
+	#	EditorCamera.position = Player.position
+	#	Player.editor_reset()
+	#for child in get_children():
+	#	if(child.is_in_group("Enemie") || child.is_in_group("sand") || child.is_in_group("Laser")):
+	#		child.editor_reset()
+
 func _ready() -> void:
 	Edition.Is_in_editor = true
+	Time_Left.start()
 	Time_Left.paused = true
+	if(Player):
+		Player._set_time_state(false, false)
 	
 func _process(delta: float) -> void:
 	_play_state_tick()
@@ -29,7 +108,8 @@ func _play_state_tick(ResetAll : bool = false) -> void:
 		if(!Edition.Is_playing_in_editor && Input.is_action_just_pressed("ui_editor_pause")):
 			return
 		if(!Paused && !Edition.Is_playing_in_editor && Input.is_action_just_pressed("ui_editor_play")):
-			_cache_editor_elements_values()
+			#_cache_editor_elements_values()
+			SaveSnapshotLevelData()
 		Edition.Is_playing_in_editor = !Edition.Is_playing_in_editor
 		Edition.Is_in_editor = true
 		EditorPlayerTrail.Activated = Edition.Is_playing_in_editor
@@ -53,20 +133,11 @@ func _play_state_tick(ResetAll : bool = false) -> void:
 			_reset_play()
 
 func _cache_editor_elements_values() -> void:
-	if(Player): Player.cache_values_editor()
-	for child in get_children():
-		if(child.is_in_group("Enemie") || child.is_in_group("sand")):
-			child.cache_values_editor()
-
-func _reset_play() -> void:
-	for i in range(SaveGame.get_player().LASERS_ENABLED.size()):
-		SaveGame.get_player().LASERS_ENABLED[i] = false
-	if(Player):
-		EditorCamera.position = Player.position
-		Player.editor_reset()
-	for child in get_children():
-		if(child.is_in_group("Enemie") || child.is_in_group("sand") || child.is_in_group("Laser")):
-			child.editor_reset()
+	pass
+	#if(Player): Player.cache_values_editor()
+	#for child in get_children():
+	#	if(child.is_in_group("Enemie") || child.is_in_group("sand")):
+	#		child.cache_values_editor()
 
 func _on_buttonplus_time_pressed() -> void:
 	Time_Left.wait_time += 1.0

@@ -203,6 +203,7 @@ func change_to_level(Level : int , World : int, BSide : bool = false) -> void:
 		change_to_level_world_string(Level, CurrentWorld, BSide)
 
 func get_level_path(Level : int, World : String, BSide : bool) -> String:
+	if(Edition.Is_in_editor): return ""
 	var _world_array : Array = get_level_paths(BSide)[World]
 	if(Level < _world_array.size()):
 		return Prefix + str(World) + "/" + str(_world_array[Level])

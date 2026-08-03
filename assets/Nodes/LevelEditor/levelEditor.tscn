@@ -61,7 +61,6 @@
 [ext_resource type="Texture2D" uid="uid://chjufwlg6kehq" path="res://assets/Sprites/Ui/menus/RankMenu/MultDiagonalBgx3.png" id="42_si8cv"]
 [ext_resource type="FontFile" uid="uid://b3smkep4lbwtq" path="res://assets/Fonts/Blessings of Babylon.otf" id="43_gm2v4"]
 [ext_resource type="FontFile" uid="uid://c2f44214fpbiv" path="res://assets/Fonts/pixelart/Vermin Vibes 1989.ttf" id="44_fvxto"]
-[ext_resource type="Script" uid="uid://bln4k4jkwrgb6" path="res://assets/Scripts/expo.gd" id="45_4pocn"]
 [ext_resource type="Shader" uid="uid://bfnyn2mcfcjby" path="res://assets/Shader/Water2.gdshader" id="48_pi8wn"]
 [ext_resource type="Script" uid="uid://cuph6qciwkto" path="res://assets/Nodes/LevelEditor/editor_tootlip_ui.gd" id="48_r3h5y"]
 [ext_resource type="Script" uid="uid://bmbuhneok5vd6" path="res://assets/Nodes/LevelEditor/ui_tooltip_sample_button.gd" id="49_ay4ap"]
@@ -848,12 +847,6 @@ _data = {
 &"Show": SubResource("Animation_pi2gu")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd35p"]
-bg_color = Color(0.03529412, 0, 0.12156863, 0.6666667)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gu5b"]
-bg_color = Color(0.61960787, 0.47843137, 1, 0.3372549)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ypha"]
 bg_color = Color(0.36850855, 0.11763162, 0.435367, 1)
 
@@ -1145,7 +1138,7 @@ Cursor = NodePath("EditorCursor")
 SelectableObjects = Array[Array]([["res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_special.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn"], ["res://assets/Nodes/Obj/Gameplay/falling_sand.tscn", "res://assets/Nodes/Obj/Gameplay/key.tscn", "res://assets/Nodes/Obj/Gameplay/open_box.tscn"], ["res://assets/Nodes/Obj/Gameplay/kill_box.tscn", "res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn", "res://assets/Nodes/Obj/Gameplay/laser.tscn"], ["res://assets/Nodes/Obj/Gameplay/float.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish_editor.tscn", "res://assets/Nodes/Obj/Gameplay/umbrella.tscn"], ["res://assets/Nodes/Obj/Gameplay/flag.tscn", "res://assets/Nodes/Obj/Gameplay/clock.tscn"]])
 SelectableAutotiles = Array[int]([0, 1])
 AutotileTilemapLayers = Array[int]([0, 1])
-TilesetLayers = [NodePath("LevelData/TileMapLayer0"), NodePath("LevelData/TileMapLayerWater"), NodePath("LevelData/TileMapLayer2")]
+TilesetLayers = [NodePath("LevelData/TileMapLayer0"), NodePath("LevelData/TileMapLayer2"), NodePath("LevelData/TileMapLayerWater")]
 EditorCamera = NodePath("EditorCamera")
 Time_Left = NodePath("LevelData/Time_Left")
 Player = NodePath("LevelData/Player")
@@ -1468,79 +1461,6 @@ horizontal_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LevelEditor/CanvasLayer/Style" unique_id=168354109]
 libraries/ = SubResource("AnimationLibrary_1ffli")
 
-[node name="expo" type="Node" parent="LevelEditor/CanvasLayer" unique_id=284285506]
-script = ExtResource("45_4pocn")
-
-[node name="ProgressBar2" type="ProgressBar" parent="LevelEditor/CanvasLayer/expo" unique_id=240453789]
-visible = false
-offset_left = 963.0
-offset_top = 41.0
-offset_right = 1153.0
-offset_bottom = 105.0
-show_percentage = false
-
-[node name="PlaytimeText" type="RichTextLabel" parent="LevelEditor/CanvasLayer/expo" unique_id=115759518]
-visible = false
-offset_left = 954.0
-offset_top = 32.0
-offset_right = 1227.0
-offset_bottom = 116.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.619608, 0.478431, 1, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/normal_font = ExtResource("4_i6xsk")
-theme_override_font_sizes/normal_font_size = 80
-text = " 07:59"
-
-[node name="PlaytimeTimer" type="Timer" parent="LevelEditor/CanvasLayer/expo" unique_id=1371466286]
-wait_time = 420.0
-one_shot = true
-autostart = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="LevelEditor/CanvasLayer/expo" unique_id=57954122]
-visible = false
-offset_left = 967.0
-offset_top = 24.0
-offset_right = 1160.0
-offset_bottom = 67.0
-theme_override_fonts/normal_font = ExtResource("38_cjgrg")
-theme_override_font_sizes/normal_font_size = 32
-text = "REG Indie Space"
-
-[node name="inactive_bar" type="ProgressBar" parent="LevelEditor/CanvasLayer/expo" unique_id=543541003]
-visible = false
-offset_left = 99.0
-offset_top = 201.0
-offset_right = 1043.0
-offset_bottom = 458.0
-theme_override_styles/background = SubResource("StyleBoxFlat_fd35p")
-theme_override_styles/fill = SubResource("StyleBoxFlat_1gu5b")
-max_value = 10.0
-show_percentage = false
-
-[node name="inactive_time" type="RichTextLabel" parent="LevelEditor/CanvasLayer/expo" unique_id=1870828848]
-visible = false
-offset_left = 96.0
-offset_top = 207.0
-offset_right = 1044.0
-offset_bottom = 483.0
-theme_override_colors/default_color = Color(0.61960787, 0.47843137, 1, 1)
-theme_override_fonts/normal_font = ExtResource("4_i6xsk")
-theme_override_font_sizes/normal_font_size = 300
-text = "10"
-horizontal_alignment = 1
-
-[node name="inactive_text" type="RichTextLabel" parent="LevelEditor/CanvasLayer/expo" unique_id=1548005272]
-visible = false
-offset_left = 185.0
-offset_top = 238.0
-offset_right = 978.0
-offset_bottom = 283.0
-theme_override_colors/default_color = Color(0.61960787, 0.47843137, 1, 1)
-theme_override_fonts/normal_font = ExtResource("38_cjgrg")
-theme_override_font_sizes/normal_font_size = 55
-text = "Se retornara al menu por inactividad!"
-
 [node name="AdvancedModeButton" type="Button" parent="LevelEditor/CanvasLayer" unique_id=195362456]
 offset_left = 1213.0
 offset_top = 39.0
@@ -1682,7 +1602,7 @@ script = ExtResource("17_r7lbo")
 EditorPlace = NodePath("../EditorPlace")
 Editor = NodePath("..")
 
-[node name="LevelData" type="Node2D" parent="LevelEditor" unique_id=220344016 node_paths=PackedStringArray("LevelEditor")]
+[node name="LevelData" type="Node2D" parent="LevelEditor" unique_id=220344016 node_paths=PackedStringArray("LevelEditor") groups=["LevelData"]]
 script = ExtResource("67_aueqc")
 LevelEditor = NodePath("..")
 
@@ -1773,7 +1693,6 @@ one_shot = true
 [connection signal="mouse_entered" from="LevelEditor/CanvasLayer/ButtonMinusTime" to="LevelEditor" method="_button_hovered"]
 [connection signal="mouse_exited" from="LevelEditor/CanvasLayer/ButtonMinusTime" to="LevelEditor" method="_button_not_hovered"]
 [connection signal="pressed" from="LevelEditor/CanvasLayer/ButtonMinusTime" to="LevelEditor" method="_on_button_minus_time_pressed"]
-[connection signal="timeout" from="LevelEditor/CanvasLayer/expo/PlaytimeTimer" to="LevelEditor/CanvasLayer/expo" method="_on_playtime_timeout"]
 [connection signal="mouse_entered" from="LevelEditor/CanvasLayer/AdvancedModeButton" to="LevelEditor" method="_button_hovered"]
 [connection signal="mouse_exited" from="LevelEditor/CanvasLayer/AdvancedModeButton" to="LevelEditor" method="_button_not_hovered"]
 [connection signal="pressed" from="LevelEditor/CanvasLayer/AdvancedModeButton" to="LevelEditor" method="_on_advanced_mode_button_pressed"]
