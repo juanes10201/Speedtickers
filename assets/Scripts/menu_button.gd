@@ -143,6 +143,11 @@ func _on_pressed() -> void:
 		var Transition
 		Transition = $"../Transition" if $"../Transition" else $"../../Transition"
 		Transition.Anim.play("fade_movement")
+		if(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_scene):
+			ResourceLoader.load_threaded_request(ADITIONAL_ARGUMENT)
+		if(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_number_in_world):
+			var _path = LevelManager.get_level_path(int(text)-1, ADITIONAL_ARGUMENT, get_parent().Bside)
+			ResourceLoader.load_threaded_request(_path)
 		await get_tree().create_timer(1.4).timeout
 	if(WaitTime):
 		await get_tree().create_timer(WaitTime).timeout
@@ -170,15 +175,19 @@ func _on_pressed() -> void:
 		Edition.CrtFilter = !Edition.CrtFilter
 		#print("TO-DO: Lazy developer didn't implement config menu...")
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_scene):
-		#if(ExpoButton && Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo):
-		#	var _scene_string : String = "res://assets/Levels/world1/level1.tscn"
-		#	get_tree().change_scene_to_file(_scene_string)
-		if(Edition.Mobile):
-			var _scene_string : String = "res://assets/Levels/world1/level1.tscn"
-			get_tree().change_scene_to_file(_scene_string)
+		var Scene = ResourceLoader.load_threaded_get(ADITIONAL_ARGUMENT)
+		if(Scene):
+			get_tree().change_scene_to_packed(Scene)
 		else:
 			var _scene_string : String = ADITIONAL_ARGUMENT
 			get_tree().change_scene_to_file(_scene_string)
+		#if(ExpoButton && Edition.GAME_STATUS == Edition.ALL_GAME_STATUS.expo):
+		#	var _scene_string : String = "res://assets/Levels/world1/level1.tscn"
+		#	get_tree().change_scene_to_file(_scene_string)
+		#if(Edition.Mobile):
+		#	var _scene_string : String = "res://assets/Levels/world1/level1.tscn"
+		#	get_tree().change_scene_to_file(_scene_string)
+		#else:
 	elif(BUTTON_ACTION == Global.BUTTON_ACTIONS.quit):
 		get_tree().quit()
 

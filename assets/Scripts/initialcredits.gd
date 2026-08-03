@@ -24,4 +24,4 @@ func _process(delta: float) -> void:
 		ProgressB.value = 0.0
 	if(NextTimer.is_stopped() && status == ResourceLoader.THREAD_LOAD_LOADED):
 		var scene = ResourceLoader.load_threaded_get(main_menu_scene)
-		get_tree().change_scene_to_file(main_menu_scene)
+		get_tree().change_scene_to_packed(scene)

@@ -216,9 +216,13 @@ func change_to_level_world_string(Level : int, World : String, BSide : bool = fa
 		Level = 0
 		World = get_world_order(BSide)[get_world_number(World, BSide)+1]
 	var SceneString : String = get_level_path(Level, World, BSide)
+	var Scene = ResourceLoader.load_threaded_get(SceneString)
 	print("Changing to level " + str(Level) + " World: " + str(World))
 	print("Path: " + SceneString)
-	change_scene(SceneString)
+	if(Scene):
+		get_tree().change_scene_to_packed(Scene)
+	else:
+		change_scene(SceneString)
 
 func change_scene(Scene : String) -> void:
 	get_tree().change_scene_to_file(Scene)

@@ -414,9 +414,9 @@ height = 13.0
 script = ExtResource("17_kdsa1")
 CurrentAnimation = 1
 
-[node name="Flag" parent="PointLight2D47" unique_id=958854612 instance=ExtResource("8_r8e1x")]
-position = Vector2(28.833908, 47.68403)
-scale = Vector2(0.6663385, 0.7012358)
+[node name="Flag" parent="." unique_id=958854612 instance=ExtResource("8_r8e1x")]
+position = Vector2(58.999996, -120.00001)
+scale = Vector2(1.01682, 1)
 
 [node name="Player2" parent="." unique_id=2118202318 groups=["PlayerReplay"] instance=ExtResource("5_jfyc5")]
 position = Vector2(-328, -66)

@@ -223,10 +223,22 @@ tracks/16/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../TitlemenuPlaceholder:self_modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_0d5a2"]
 resource_name = "fade_movement"
-length = 1.4145
+length = 1.5405
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -418,6 +430,30 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(575, 725.445), Vector2(575, 439.31824), Vector2(575, 290.77)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../BorderMainmenu:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.46666667, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../TitlemenuPlaceholder:self_modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0.96666664, 1.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_2b324"]
@@ -754,6 +790,7 @@ scale = Vector2(1.2926039, 1.2926037)
 texture = ExtResource("3_0d5a2")
 
 [node name="Transition" type="Sprite2D" parent="." unique_id=1752509263]
+position = Vector2(1929.24, 377)
 rotation = 1.33518
 scale = Vector2(-1.21884, 1.21061)
 texture = ExtResource("3_6l5tb")
@@ -774,7 +811,7 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1579.0
-offset_right = -1184.0082
+offset_right = -1184.008
 offset_bottom = 100.00018
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
@@ -792,8 +829,8 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1754.0
-offset_right = -1383.1083
-offset_bottom = 213.77066
+offset_right = -1383.1068
+offset_bottom = 213.77078
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("10_gopbp")
 icon = ExtResource("11_tsnyn")
@@ -819,8 +856,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1543.0
 offset_top = -4.0
-offset_right = -1174.9878
-offset_bottom = 111.998535
+offset_right = -1174.9861
+offset_bottom = 111.99902
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("9_yxylt")
@@ -860,6 +897,7 @@ text = "steam version prototype"
 [node name="Bg" type="Sprite2D" parent="." unique_id=1861380431]
 visible = false
 z_index = 2
+position = Vector2(520, 300)
 texture = ExtResource("3_6l5tb")
 flip_h = true
 

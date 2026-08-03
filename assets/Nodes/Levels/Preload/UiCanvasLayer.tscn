@@ -898,7 +898,7 @@ script = ExtResource("7_kcnvg")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=655376864]
 visible = false
-position = Vector2(424, -100)
+position = Vector2(565, 316)
 texture = ExtResource("8_m8rtq")
 
 [node name="ui_text_timeleft" type="RichTextLabel" parent="." unique_id=2102879422]

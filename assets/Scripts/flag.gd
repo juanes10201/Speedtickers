@@ -5,6 +5,10 @@ extends Area2D
 
 @onready var InitialTime = Time.get_ticks_msec()
 
+var NextScene : String = ""
+
+var progress : Array[float] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.body_entered.connect(_on_body_entered)
@@ -12,6 +16,11 @@ func _ready() -> void:
 	if(Global.Level == Global.DebugLevelVal || Global.Level == Global.DebugLevelVal+1):
 		var scene_path = get_tree().current_scene.scene_file_path
 		LevelManager.set_global_with_complete_level_path(scene_path)
+	
+	NextScene = LevelManager.get_level_path(Global.Level+1, LevelManager.get_world_order(Global.BSide)[Global.World], Global.BSide)
+	if(NextScene != ""):
+		ResourceLoader.load_threaded_request(NextScene)
+	print("NextScene" + str(NextScene) )
 
 
 var editable = preload("res://assets/Scripts/default_object.gd").new()
@@ -30,7 +39,20 @@ func _input(event):
 					Hovering = false
 
 @export var grab_grid : float = 8.0
+
+var CompletedLevel : bool = false
+
+@onready var FadeOut = $"../CanvasLayer/TransitionOut" if $"../CanvasLayer/TransitionOut" else $"../../CanvasLayer/TransitionOut"  
+
 func _process(delta: float) -> void:
+	var status = ResourceLoader.load_threaded_get_status(NextScene, progress)
+	if(NextScene != "" && CompletedLevel && !Edition.Is_in_editor):
+		if(status == ResourceLoader.THREAD_LOAD_LOADED):
+			#var scene = ResourceLoader.load_threaded_get(NextScene)
+			LevelManager.change_to_next_level_with_completion_ui()
+			#get_tree().change_scene_to_file(NextScene)
+		
+	
 	if(Edition.Is_in_editor && CanHover && Hovering):
 		if(Edition.IsErasingInEditor):
 			self.queue_free()
@@ -42,6 +64,7 @@ func _on_body_entered(body):
 	if(body.is_in_group("Player") && !body.Dead):# && body.ReplayAction == Global.ReplayStates.STOPPED):
 		var completed_time = Time.get_ticks_msec()-InitialTime
 		var StyleRatio : float = 1.0
+		
 		if(body.ReplayStyle): return
 		if(LevelManager.get_level_time()):
 			StyleRatio = LevelManager.get_level_time().time_left/LevelManager.get_level_time().wait_time
@@ -61,5 +84,8 @@ func _on_body_entered(body):
 			#print("A")
 			SaveGame.SaveLevelRecord(_lvl, _world, completed_time)
 			print("Going to next level")
-			LevelManager.change_to_next_level_with_completion_ui()
+			if(FadeOut):
+				FadeOut.FadeOut = true
+			CompletedLevel = true
+			#LevelManager.change_to_next_level_with_completion_ui()
 		#endregion
