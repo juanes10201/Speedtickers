@@ -23,11 +23,13 @@ func _get_all_nodes(node: Node) -> Array:
 	return result
 
 var LevelDataRecursiveNodePaths : Dictionary = {}
+var SelfRecursiveNodePaths : Dictionary = {}
 
 func SaveSnapshotLevelDataPaths() -> void:
 	LevelDataRecursiveNodePaths = {}
+	SelfRecursiveNodePaths = {}
 	var LevelDataChildNodes : Array = _get_all_nodes(self)
-	LevelDataChildNodes.append(self)
+	#LevelDataChildNodes.append(self)
 	for _node in LevelDataChildNodes:
 		for prop in _node.get_property_list():
 			if prop.usage & PROPERTY_USAGE_SCRIPT_VARIABLE == 0:
@@ -37,23 +39,38 @@ func SaveSnapshotLevelDataPaths() -> void:
 				var _path = _val.get_path()
 				#Se guarda que la posicion del asset del puntero dado es la del dicc
 				LevelDataRecursiveNodePaths[_val] = _path
-	#print("Saved Paths: " + str(LevelDataRecursiveNodePaths))
+	for prop in get_property_list():
+		#if(prop.usage & PROPERTY_USAGE_EDITOR && prop.usage & PROPERTY_USAGE_SCRIPT_VARIABLE):
+		var _val = get(prop.name)
+		if _val && _val is Node && _val.is_inside_tree() && !(_val in SelfRecursiveNodePaths):
+			var _path = _val.get_path()
+			SelfRecursiveNodePaths[_val] = _path
+	print("Saved Paths: " + str(SelfRecursiveNodePaths))
 
 func LoadSnapshotLevelDataPaths() -> void:
 	print("leveldata: " + str(LevelData))
 	var LevelDataChildNodes : Array = _get_all_nodes(self)
-	LevelDataChildNodes.append(self)
+	#LevelDataChildNodes.append(self)
 	for _node in LevelDataChildNodes:
 		for prop in _node.get_property_list():
 			var _val = _node.get(prop.name)
-			if _val && _val is Node && _val in LevelDataRecursiveNodePaths:
+			if _val && _val is Node && _val.is_inside_tree() && _val in LevelDataRecursiveNodePaths:
 				var _new_node_ref : Node = get_node(LevelDataRecursiveNodePaths[_val])
 				_node.set(prop.name, _new_node_ref)
 				#print("Loaded node: "  + str(_new_node_ref) + " from " + str(_node))
+	for prop in get_property_list():
+		var _val = get(prop.name)
+		if _val && _val is Node && _val in SelfRecursiveNodePaths:
+			var _new_node_ref : Node = get_node(SelfRecursiveNodePaths[_val])
+			set(prop.name, _new_node_ref)
+	
 	for child in get_children():
 		if(child.is_in_group("LevelData")):
 			LevelData = child
 	LevelDataRecursiveNodePaths = {}
+	#Player = get_node("LevelData/Player")
+	#Time_Left = get_node("LevelData/Time_Left")
+	#PlayerCamera = get_node()
 	if(Player):
 		Player.Sprite.show()
 
@@ -77,11 +94,13 @@ func _reset_play() -> void:
 			LevelData.name = "LevelData"
 			add_child(LevelData)
 			
-			OldLevelData.free()
-		LoadSnapshotLevelDataPaths()
+			LoadSnapshotLevelDataPaths()
+			
+			if(OldLevelData):
+				OldLevelData.free()
 		print("Reloaded to original level data snapshot") 
 		if(SnapshotLevelData):
-			SnapshotLevelData.queue_free()
+			SnapshotLevelData.free()
 		SnapshotLevelData = null
 	#for i in range(SaveGame.get_player().LASERS_ENABLED.size()):
 	#	SaveGame.get_player().LASERS_ENABLED[i] = false
@@ -100,6 +119,8 @@ func _ready() -> void:
 		Player._set_time_state(false, false)
 	
 func _process(delta: float) -> void:
+	if(Player && !Edition.Is_playing_in_editor && (!Time_Left.is_stopped() || !Time_Left.paused) ):
+		Player._set_time_state(false, false)
 	_play_state_tick()
 
 func _play_state_tick(ResetAll : bool = false) -> void:
@@ -113,6 +134,7 @@ func _play_state_tick(ResetAll : bool = false) -> void:
 		Edition.Is_playing_in_editor = !Edition.Is_playing_in_editor
 		Edition.Is_in_editor = true
 		EditorPlayerTrail.Activated = Edition.Is_playing_in_editor
+		
 		Player.Physics = Edition.Is_playing_in_editor
 		Player.EnemiesPhysics = Edition.Is_playing_in_editor
 		
