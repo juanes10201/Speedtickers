@@ -14,7 +14,13 @@ var IsTileMapSelected : bool = false
 @export var PlayerCamera : Camera2D
 @export var LevelData : Node2D
 @export var EditorPlayerTrail : Line2D
+
+@export var EditorPlace : Node2D
 var Paused : bool = false
+
+func get_level_data() -> Node2D:
+	if(!LevelData): LevelData = get_node("EditorPlace")
+	return LevelData
 
 func _get_all_nodes(node: Node) -> Array:
 	var result = [node]
@@ -45,10 +51,14 @@ func SaveSnapshotLevelDataPaths() -> void:
 		if _val && _val is Node && _val.is_inside_tree() && !(_val in SelfRecursiveNodePaths):
 			var _path = _val.get_path()
 			SelfRecursiveNodePaths[_val] = _path
-	print("Saved Paths: " + str(SelfRecursiveNodePaths))
+	for TilesetLayer in TilesetLayers:
+		if(TilesetLayer):
+			var _path = TilesetLayer.get_path()
+			SelfRecursiveNodePaths[TilesetLayer] = _path
+	#print("Saved Paths: " + str(SelfRecursiveNodePaths))
 
 func LoadSnapshotLevelDataPaths() -> void:
-	print("leveldata: " + str(LevelData))
+	#print("leveldata: " + str(LevelData))
 	var LevelDataChildNodes : Array = _get_all_nodes(self)
 	#LevelDataChildNodes.append(self)
 	for _node in LevelDataChildNodes:
@@ -67,6 +77,14 @@ func LoadSnapshotLevelDataPaths() -> void:
 	for child in get_children():
 		if(child.is_in_group("LevelData")):
 			LevelData = child
+	 
+	for i in range(TilesetLayers.size()):
+		var TilesetLayer : TileMapLayer = TilesetLayers[i]
+		if(TilesetLayer in SelfRecursiveNodePaths):
+			var _node = get_node(SelfRecursiveNodePaths[TilesetLayer] )
+			TilesetLayers[i] = _node
+	EditorPlace.SelectedTilemap = TilesetLayers[0]
+	
 	LevelDataRecursiveNodePaths = {}
 	#Player = get_node("LevelData/Player")
 	#Time_Left = get_node("LevelData/Time_Left")
@@ -74,16 +92,13 @@ func LoadSnapshotLevelDataPaths() -> void:
 	if(Player):
 		Player.Sprite.show()
 
-func get_level_data() -> Node:
-	return LevelData
-
 var SnapshotLevelData : Node2D
 
 func SaveSnapshotLevelData() -> void:
 	if(LevelData):
 		SnapshotLevelData = LevelData.duplicate(DUPLICATE_USE_INSTANTIATION)
 		SaveSnapshotLevelDataPaths()
-		print("Saved Snapshot: " + str(SnapshotLevelData))
+		#print("Saved Snapshot: " + str(SnapshotLevelData))
 
 func _reset_play() -> void:
 	if(SnapshotLevelData):
@@ -95,13 +110,18 @@ func _reset_play() -> void:
 			add_child(LevelData)
 			
 			LoadSnapshotLevelDataPaths()
-			
 			if(OldLevelData):
 				OldLevelData.free()
+			
+			Time_Left = get_node("LevelData/Time_Left")
+			print("Time_Left: " + str(Time_Left))
+			if(Time_Left):
+				Time_Left.start()
 		print("Reloaded to original level data snapshot") 
 		if(SnapshotLevelData):
 			SnapshotLevelData.free()
 		SnapshotLevelData = null
+		#print("\nNew tileset layers: " + str(TilesetLayers))
 	#for i in range(SaveGame.get_player().LASERS_ENABLED.size()):
 	#	SaveGame.get_player().LASERS_ENABLED[i] = false
 	#if(Player):
@@ -142,6 +162,8 @@ func _play_state_tick(ResetAll : bool = false) -> void:
 		PlayerCamera.enabled = Edition.Is_playing_in_editor
 		
 		if(Input.is_action_just_pressed("ui_editor_pause")):
+			if(Player):
+				Player.Paused = true
 			Paused = true
 			Time_Left.paused = true
 		else:

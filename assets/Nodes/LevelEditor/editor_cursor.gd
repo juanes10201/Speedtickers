@@ -42,6 +42,7 @@ func _change_subtile(amount : int = 0) -> void:
 	_update_tilemap_layer()
 
 func _update_tilemap_layer(layer : int = LevelEditor.AutotileTilemapLayers[SelectedSubTile]) -> void:
+	#print("TILESET LAYERS: " + str(LevelEditor.TilesetLayers))
 	EditorPlace.SelectedTilemap = LevelEditor.TilesetLayers[layer]
 	EditorPlace.CollidingBody = EditorPlace.SelectedTilemap
 	EditorPlace.LastCollidedBody = EditorPlace.SelectedTilemap

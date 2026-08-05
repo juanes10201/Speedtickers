@@ -45,6 +45,7 @@ func ProcessPosition() -> void:
 #endregion
 
 @onready var Player = SaveGame.get_player()
+@export var LevelEditorNode : Node2D
 
 var AddSize : float = 0
 
@@ -59,7 +60,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(Player && !Time_Left): Time_Left = Player.Time_Left
+	if(!Time_Left):
+		if(Player):
+			Time_Left = Player.Time_Left 
+		elif(LevelEditorNode && LevelEditorNode.Time_Left):
+			Time_Left = LevelEditorNode.Time_Left
+			Player = LevelEditorNode.Player
 	if(Player && Player.is_in_group("Player") && Player.CountTime && !self.visible):
 		AddSize = 30
 		RaySprite.show()
@@ -78,7 +84,7 @@ func _process(delta: float) -> void:
 		TimeRest = floor((Time_Left.time_left - CurrentSecond)*100)
 		self.text = str(CurrentSecond)+"[font_size={30}]"+str(TimeRest)+"[/font_size]"
 		#region Trigger death when timer runs out
-		if(!Time_Left.paused && Time_Left.time_left <= 0 && Player.is_in_group("Player") && Player.CountTime): Player.On_Death()
+		if(!Time_Left.paused && Time_Left.time_left <= 0 && Player && Player.is_in_group("Player") && Player.CountTime): Player.On_Death()
 		#endregion
 		
 		#region Change size juice

@@ -318,7 +318,7 @@ func AddStyle(Qt : int, Moto : String = "", Mult : float = 1.0):
 				var Player = SaveGame.get_player()
 				if(Player):
 					#Player._play_sound(Player.AudioUpgrade)
-					if(Player.Camera):
+					if(Player.Camera && "Shake" in Player.Camera):
 						Player.Camera.Shake(12.0, 12.0, true)
 	StyloMetter += StyleAmounts[Qt] * ScoreMult * Mult
 	StyleMoto = Moto

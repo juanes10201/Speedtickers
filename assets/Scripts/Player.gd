@@ -1285,7 +1285,7 @@ func Reset_Groundsmash(ThrowEnemies : bool = true, Visuals: bool = true, ResetVe
 		ParticlesLanding.play("groundsmash")
 		ParticlesLanding.show()
 		AudioGroundsmash.play()
-		if(Camera): Camera.Shake(10.0, 10.0)
+		if(Camera && "Shake" in Camera): Camera.Shake(10.0, 10.0)
 	PressingGroundSmash = Input.is_action_pressed("player_slide")
 	GroundSmash = false
 	DidSlamStorage = false

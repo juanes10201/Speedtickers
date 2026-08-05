@@ -1132,7 +1132,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 9999, 9999)
 script = ExtResource("2_denb7")
 
-[node name="LevelEditor" type="Node2D" parent="." unique_id=1375215272 node_paths=PackedStringArray("Cursor", "TilesetLayers", "EditorCamera", "Time_Left", "Player", "PlayerCamera", "LevelData", "EditorPlayerTrail")]
+[node name="LevelEditor" type="Node2D" parent="." unique_id=1375215272 node_paths=PackedStringArray("Cursor", "TilesetLayers", "EditorCamera", "Time_Left", "Player", "PlayerCamera", "LevelData", "EditorPlayerTrail", "EditorPlace")]
 script = ExtResource("1_qesh2")
 Cursor = NodePath("EditorCursor")
 SelectableObjects = Array[Array]([["res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_special.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn"], ["res://assets/Nodes/Obj/Gameplay/falling_sand.tscn", "res://assets/Nodes/Obj/Gameplay/key.tscn", "res://assets/Nodes/Obj/Gameplay/open_box.tscn"], ["res://assets/Nodes/Obj/Gameplay/kill_box.tscn", "res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn", "res://assets/Nodes/Obj/Gameplay/laser.tscn"], ["res://assets/Nodes/Obj/Gameplay/float.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish_editor.tscn", "res://assets/Nodes/Obj/Gameplay/umbrella.tscn"], ["res://assets/Nodes/Obj/Gameplay/flag.tscn", "res://assets/Nodes/Obj/Gameplay/clock.tscn"]])
@@ -1145,6 +1145,7 @@ Player = NodePath("LevelData/Player")
 PlayerCamera = NodePath("LevelData/Player/Camera2D")
 LevelData = NodePath("LevelData")
 EditorPlayerTrail = NodePath("EditorPlayerTrail")
+EditorPlace = NodePath("EditorPlace")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="LevelEditor" unique_id=1210512174]
 layer = 2
@@ -1198,7 +1199,7 @@ theme_override_fonts/normal_font = ExtResource("4_i6xsk")
 theme_override_font_sizes/normal_font_size = 34
 text = "seg"
 
-[node name="ui_text_timeleft2" type="RichTextLabel" parent="LevelEditor/CanvasLayer" unique_id=1338042429]
+[node name="ui_text_timeleft2" type="RichTextLabel" parent="LevelEditor/CanvasLayer" unique_id=1338042429 node_paths=PackedStringArray("LevelEditorNode")]
 material = SubResource("ShaderMaterial_b8w0x")
 anchors_preset = -1
 anchor_left = 0.447
@@ -1223,6 +1224,7 @@ bbcode_enabled = true
 text = "0"
 scroll_active = false
 script = ExtResource("7_57dd7")
+LevelEditorNode = NodePath("../..")
 
 [node name="Ray-time" type="Sprite2D" parent="LevelEditor/CanvasLayer" unique_id=1887769370]
 position = Vector2(1049.3433, 611.99994)
@@ -1235,7 +1237,7 @@ visible = false
 position = Vector2(424, -100)
 texture = ExtResource("10_v2tji")
 
-[node name="ui_text_timeleft" type="RichTextLabel" parent="LevelEditor/CanvasLayer" unique_id=2102879422]
+[node name="ui_text_timeleft" type="RichTextLabel" parent="LevelEditor/CanvasLayer" unique_id=2102879422 node_paths=PackedStringArray("LevelEditorNode")]
 material = SubResource("ShaderMaterial_261mj")
 anchors_preset = -1
 anchor_left = 0.447
@@ -1260,6 +1262,7 @@ bbcode_enabled = true
 text = "0"
 scroll_active = false
 script = ExtResource("7_57dd7")
+LevelEditorNode = NodePath("../..")
 
 [node name="ProgressBar" type="ProgressBar" parent="LevelEditor/CanvasLayer" unique_id=318457104]
 offset_left = 1.0
@@ -1558,10 +1561,9 @@ limit_right = 170
 position_smoothing_enabled = true
 script = ExtResource("5_0r4ld")
 
-[node name="EditorPlace" type="Node2D" parent="LevelEditor" unique_id=2086312139 node_paths=PackedStringArray("EditorCursor", "LevelData", "SpriteFill1", "SpriteFill2", "AreaSelectMultiple", "TilesetTempCopy", "EditorDataParser", "RewindTimer")]
+[node name="EditorPlace" type="Node2D" parent="LevelEditor" unique_id=2086312139 node_paths=PackedStringArray("EditorCursor", "SpriteFill1", "SpriteFill2", "AreaSelectMultiple", "TilesetTempCopy", "EditorDataParser", "RewindTimer")]
 script = ExtResource("7_2gbe2")
 EditorCursor = NodePath("../EditorCursor")
-LevelData = NodePath("../LevelData")
 SpriteFill1 = NodePath("SpriteFill1")
 SpriteFill2 = NodePath("SpriteFill2")
 AreaSelectMultiple = NodePath("EditorUiSelectingMultiple")

@@ -4,7 +4,6 @@ var SelectedTilemap : TileMapLayer
 @export var EditorCursor : Node2D
 
 @onready var LevelEditor = get_parent()
-@export var LevelData : Node2D
 
 @export var SpriteFill1 : Sprite2D
 @export var SpriteFill2 : Sprite2D
@@ -104,7 +103,6 @@ func _place_tile_terrain_local_pos(pos : Vector2i, tilemap : TileMapLayer = Sele
 	if(SelectedTilemap.get_cell_source_id(pos) == -1):
 		GlobalFunctions.record_action(GlobalFunctions.FUNCTIONS.Create_tile_local, pos, pos, SelectedTilemap)
 	tilemap.set_cells_terrain_connect([pos], subtile, 0, false)
-
 
 func _place_tile_terrain_global_pos(pos : Vector2):
 	var _pos_local = SelectedTilemap.to_local(pos)
@@ -378,7 +376,7 @@ func _tick_nodes(delta: float):
 			ExpandingY = false
 			ExpandingX = false
 			ExpandingOriginalPos = Vector2(0.0,0.0)
-			var NewNode = GlobalFunctions.Create_node2d(LevelEditor.SelectableObjects[EditorCursor.SelectedNode-1][EditorCursor.SelectedSubNode], LevelData)
+			var NewNode = GlobalFunctions.Create_node2d(LevelEditor.SelectableObjects[EditorCursor.SelectedNode-1][EditorCursor.SelectedSubNode], LevelEditor.get_level_data())
 			
 			NewNode.global_position = EditorCursor.global_position
 	#Selecting Node
