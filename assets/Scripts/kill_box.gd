@@ -3,7 +3,7 @@ extends Area2D
 @export var Visible : bool = true
 @onready var Sprite = $AnimatedSprite2D
 
-@onready var Player = $"../Player"
+@onready var Player = $"../Player" if $"../Player" else $"../../Player"
 @export var Type = Global.KillBoxTypes.Red
 @export var CanChange = true
 

@@ -363,6 +363,10 @@ func loadgamedata() -> void:
 	setup_default_values()
 	print("loaded game saved data!")
 
+func SaveJsonFile(Location : String, Data) -> void:
+	var file := FileAccess.open(Location, FileAccess.WRITE)
+	file.store_string(JSON.stringify(Data, "\t"))
+
 func SetDialogue(Id : int, Level : int = LevelManager.get_level()) -> void:
 	print("Set Dialogue")
 	if(Level != DialogueLevelId):

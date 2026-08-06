@@ -16,11 +16,16 @@ var IsTileMapSelected : bool = false
 @export var EditorPlayerTrail : Line2D
 
 @export var EditorPlace : Node2D
+var LevelDataGameplayObjects : Node2D
 var Paused : bool = false
 
 func get_level_data() -> Node2D:
 	if(!LevelData): LevelData = get_node("EditorPlace")
 	return LevelData
+
+func get_level_data_gameplay_objects_node() -> Node2D:
+	var _level_data = get_level_data()
+	return _level_data.get_node("GameplayObjects")
 
 func _get_all_nodes(node: Node) -> Array:
 	var result = [node]

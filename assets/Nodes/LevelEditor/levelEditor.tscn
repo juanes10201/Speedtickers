@@ -1126,7 +1126,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.38039216)
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(25, 8)
+position = Vector2(25, -8)
 texture = ExtResource("76_7uchq")
 region_enabled = true
 region_rect = Rect2(0, 0, 9999, 9999)
@@ -1487,7 +1487,6 @@ LevelEditor = NodePath("../..")
 EditorCursor = NodePath("../../EditorCursor")
 
 [node name="SampleButton" type="Button" parent="LevelEditor/CanvasLayer2/EditorTootlipUi" unique_id=1585450287 node_paths=PackedStringArray("Icon", "EditorCursor")]
-visible = false
 offset_right = 68.0
 offset_bottom = 69.0
 theme_override_font_sizes/font_size = 44
@@ -1659,17 +1658,19 @@ scale = Vector2(1.00384, 1)
 tile_set = ExtResource("2_iimnb")
 script = ExtResource("3_0r4ld")
 
-[node name="Killbox" parent="LevelEditor/LevelData" unique_id=1386857898 instance=ExtResource("19_i0mup")]
+[node name="Time_Left" type="Timer" parent="LevelEditor/LevelData" unique_id=30492087 groups=["GameTimer"]]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="GameplayObjects" type="Node2D" parent="LevelEditor/LevelData" unique_id=750971089]
+
+[node name="Killbox" parent="LevelEditor/LevelData/GameplayObjects" unique_id=1386857898 instance=ExtResource("19_i0mup")]
 position = Vector2(-3, 232)
 scale = Vector2(999, 1)
 collision_layer = 1025
 Visible = false
 CanChange = false
-
-[node name="Time_Left" type="Timer" parent="LevelEditor/LevelData" unique_id=30492087 groups=["GameTimer"]]
-wait_time = 7.0
-one_shot = true
-autostart = true
 
 [node name="EditorDataParser" type="Node2D" parent="LevelEditor" unique_id=1150111339 node_paths=PackedStringArray("EditorPlace")]
 script = ExtResource("75_6jsng")

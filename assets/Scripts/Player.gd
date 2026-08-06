@@ -339,9 +339,10 @@ func _save_replay(Location : String) -> void:
 		"actions": RecordedActions.map(func(v): return [v.x, v.y, v.z]),
 		"positions": RecordedPositions.map(func(v): return [v.x, v.y, v.z])
 	}
-
-	var file := FileAccess.open(Location, FileAccess.WRITE)
-	file.store_string(JSON.stringify(json_data, "\t"))
+	
+	SaveGame.SaveJsonFile(Location, json_data)
+	#var file := FileAccess.open(Location, FileAccess.WRITE)
+	#file.store_string(JSON.stringify(json_data, "\t"))
 	print("Saved Replay Json; Location: " + str(Location))
 
 #region Debug
@@ -703,6 +704,7 @@ func _pause_menu_end_tick() -> void:
 var pause_menu_instance = null
 
 func _pause_game() -> void:
+	if(Edition.Is_in_editor): return
 	if(!Paused):
 		_spawn_pause_menu()
 		#Get timer and pause

@@ -13,6 +13,9 @@ func _update_view() -> void:
 	#print("Update view")
 	for i in range(Buttons.size()):
 		for y in range(Buttons[i].size()):
+			Buttons[i][y].ButtonNode = i
+			Buttons[i][y].ButtonSubNode = y
+			
 			Buttons[i][y].Icon.play(str(i) + "_" + str(y))
 			#print(Buttons[i][y])
 			if(y == 0 || i == EditorCursor.SelectedNode): Buttons[i][y].show()
@@ -31,7 +34,6 @@ func _add_new_button(i: int, y: int) -> void:
 	New.ButtonSubNode = y
 
 func _setup_button() -> void:
-	
 	Buttons.append([])
 	for i in range(EditorCursor.TileTools.size()):
 		var New := SampleButton.duplicate()
@@ -48,6 +50,8 @@ func _setup_button() -> void:
 	#print(Buttons)
 
 func _ready() -> void:
+	if(SampleButton):
+		SampleButton.hide()
 	_setup_button()
 	_update_view()
 

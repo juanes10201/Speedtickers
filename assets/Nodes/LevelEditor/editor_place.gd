@@ -214,7 +214,17 @@ func _select_multiple_tileset(delta: float):
 				if(SelectedTilemap.get_cell_tile_data(Vector2i(x,y) )):
 					TilePos.append(Vector2i(x, y))
 		#print(TilePos)
-		EditorDataParser.SaveDataTiles(TilePos, SelectedTilemap, EditorDataParser.Clipboard)
+		EditorDataParser.SaveDataTileToClipboard(TilePos, SelectedTilemap, EditorDataParser.Clipboard)
+	if(SelectingMultiple && Input.is_action_just_pressed("ui_editor_save")):
+		var TilePos : Array[Vector2i] = []
+		var Pos1 : Vector2i = _convert_coordinates_to_local(SpriteFill1.global_position)
+		var Pos2 : Vector2i = _convert_coordinates_to_local(SpriteFill2.global_position)
+		for x in range(Pos1.x, Pos2.x):
+			for y in range(Pos1.y, Pos2.y):
+				if(SelectedTilemap.get_cell_tile_data(Vector2i(x,y) )):
+					TilePos.append(Vector2i(x, y))
+		#print(TilePos)
+		EditorDataParser.SaveTilesToFile("saveleveltest.json", TilePos, SelectedTilemap, EditorDataParser.Clipboard)
 	if(Input.is_action_pressed("ui_editor_place")):
 		if(MultipleMadeSelection && CollidingBody && CollidingBody.is_in_group("AreaSelectMultiple")):
 			if(!MultipleMovingSelecting):
