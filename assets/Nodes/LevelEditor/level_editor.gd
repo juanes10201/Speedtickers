@@ -39,7 +39,8 @@ var SelfRecursiveNodePaths : Dictionary = {}
 func SaveSnapshotLevelDataPaths() -> void:
 	LevelDataRecursiveNodePaths = {}
 	SelfRecursiveNodePaths = {}
-	var LevelDataChildNodes : Array = _get_all_nodes(self)
+	var LevelDataChildNodes : Array = _get_all_nodes(self) 
+	#LevelDataChildNodes.append(_get_all_nodes(get_level_data_gameplay_objects_node() ) )
 	#LevelDataChildNodes.append(self)
 	for _node in LevelDataChildNodes:
 		for prop in _node.get_property_list():
@@ -148,23 +149,29 @@ func _process(delta: float) -> void:
 		Player._set_time_state(false, false)
 	_play_state_tick()
 
+func set_play_state(state : bool) -> void:
+	if(!Paused):
+		if(state):
+			#_cache_editor_elements_values()
+			SaveSnapshotLevelData()
+		else:
+			_reset_play()
+	Edition.Is_playing_in_editor = state
+	Edition.Is_in_editor = true
+	EditorPlayerTrail.Activated = state
+	
+	Player.Physics = state
+	Player.EnemiesPhysics = state
+	
+	EditorCamera.set_enabled_camera(!state)
+	PlayerCamera.enabled = state
+
 func _play_state_tick(ResetAll : bool = false) -> void:
 	if(Input.is_action_just_pressed("ui_editor_play") || Input.is_action_just_pressed("ui_editor_pause") ):
 		print("Is playing in editor: " + str(Edition.Is_playing_in_editor))
 		if(!Edition.Is_playing_in_editor && Input.is_action_just_pressed("ui_editor_pause")):
 			return
-		if(!Paused && !Edition.Is_playing_in_editor && Input.is_action_just_pressed("ui_editor_play")):
-			#_cache_editor_elements_values()
-			SaveSnapshotLevelData()
-		Edition.Is_playing_in_editor = !Edition.Is_playing_in_editor
-		Edition.Is_in_editor = true
-		EditorPlayerTrail.Activated = Edition.Is_playing_in_editor
-		
-		Player.Physics = Edition.Is_playing_in_editor
-		Player.EnemiesPhysics = Edition.Is_playing_in_editor
-		
-		EditorCamera.set_enabled_camera(!Edition.Is_playing_in_editor)
-		PlayerCamera.enabled = Edition.Is_playing_in_editor
+		set_play_state(!Edition.Is_playing_in_editor)
 		
 		if(Input.is_action_just_pressed("ui_editor_pause")):
 			if(Player):
@@ -178,8 +185,8 @@ func _play_state_tick(ResetAll : bool = false) -> void:
 				Time_Left.paused = true
 			Paused = false
 		#Si es que quiere detener de jugar se resetea el estado del jugador
-		if((Input.is_action_just_pressed("ui_editor_play") && !Edition.Is_playing_in_editor) || ResetAll) :
-			_reset_play()
+		#if((Input.is_action_just_pressed("ui_editor_play") && !Edition.Is_playing_in_editor) || ResetAll) :
+		#	_reset_play()
 
 func _cache_editor_elements_values() -> void:
 	pass

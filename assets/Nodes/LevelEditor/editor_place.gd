@@ -186,10 +186,11 @@ func _copy_cell(FromPos : Vector2i, ToPos : Vector2i,  TileMapFrom : TileMapLaye
 	_place_tile_terrain_local_pos(ToPos, TileMapTo)
 
 func _copy_back_tiles(ToPos : Vector2i):
-	var TilesPos : Array[Vector2i] = TilesetTempCopy.get_used_cells() 
-	for Pos in TilesPos:
-		_copy_cell(Pos, ToPos+Pos, TilesetTempCopy, SelectedTilemap)
-	TilesetTempCopy.clear()
+	if(TilesetTempCopy):
+		var TilesPos : Array[Vector2i] = TilesetTempCopy.get_used_cells() 
+		for Pos in TilesPos:
+			_copy_cell(Pos, ToPos+Pos, TilesetTempCopy, SelectedTilemap)
+		TilesetTempCopy.clear()
 
 func _copy_tiles_to_temp(ReferencePos : Vector2i, TilePos : Array[Vector2i], Tilemap : TileMapLayer):
 	TilesetTempCopy.clear()
@@ -224,7 +225,8 @@ func _select_multiple_tileset(delta: float):
 				if(SelectedTilemap.get_cell_tile_data(Vector2i(x,y) )):
 					TilePos.append(Vector2i(x, y))
 		#print(TilePos)
-		EditorDataParser.SaveTilesToFile("saveleveltest.json", TilePos, SelectedTilemap, EditorDataParser.Clipboard)
+		var ChildrenNodes : Array = LevelEditor.get_level_data_gameplay_objects_node().get_children()
+		EditorDataParser.SaveTilesToFile("saveleveltest.json", ChildrenNodes,TilePos, SelectedTilemap, EditorDataParser.Clipboard)
 	if(Input.is_action_pressed("ui_editor_place")):
 		if(MultipleMadeSelection && CollidingBody && CollidingBody.is_in_group("AreaSelectMultiple")):
 			if(!MultipleMovingSelecting):
@@ -386,11 +388,10 @@ func _tick_nodes(delta: float):
 			ExpandingY = false
 			ExpandingX = false
 			ExpandingOriginalPos = Vector2(0.0,0.0)
-			var NewNode = GlobalFunctions.Create_node2d(LevelEditor.SelectableObjects[EditorCursor.SelectedNode-1][EditorCursor.SelectedSubNode], LevelEditor.get_level_data())
 			
-			NewNode.global_position = EditorCursor.global_position
+			create_node(EditorCursor.SelectedNode-1, EditorCursor.SelectedSubNode)
 	#Selecting Node
-	elif(Input.is_action_pressed("ui_editor_erase") ):
+	elif(Input.is_action_pressed("ui_editor_erase") && CollidingBody):
 		_delete_node(CollidingBody)
 	elif(CollidingBody && SelectingBody):
 		SelectingBody = false
@@ -408,8 +409,35 @@ func _tick_nodes(delta: float):
 	#print("Expanding X: " + str(ExpandXSelected))
 	#print("SelectingBody: " + str(SelectingBody))
 
+const NewNodeMetaNumber : String = "EditorNodeNumber"
+const NewNodeMetaSubNumber : String = "EditorSubNodeNumber"
+
+var SelectableNodesLoaded: Array[Array] = []
+
+func _initial_instatiate_nodes() -> void:
+	var category_n : int = 0
+	for category in LevelEditor.SelectableObjects:
+		SelectableNodesLoaded.append([])
+		for _path in category:
+			var _loadednode = load(_path)
+			if(_loadednode):
+				SelectableNodesLoaded[category_n].append(_loadednode)
+		category_n += 1
+	#print("Cache in memory of nodes: " + str(SelectableNodesLoaded))
+
+func create_node(NodeNumber : int, SubNodeNumber : int) -> void:
+	var _node = SelectableNodesLoaded[NodeNumber][SubNodeNumber]
+	#var NewNode = GlobalFunctions.Copy_and_Instatiate_node2d(_node, LevelEditor.get_level_data_gameplay_objects_node())
+	var NewNode = GlobalFunctions.Create_node2d(LevelEditor.SelectableObjects[NodeNumber][SubNodeNumber], LevelEditor.get_level_data_gameplay_objects_node())
+	
+	if(NewNode):
+		NewNode.global_position = EditorCursor.global_position
+		NewNode.set_meta(NewNodeMetaNumber, NodeNumber)
+		NewNode.set_meta(NewNodeMetaSubNumber, SubNodeNumber)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_initial_instatiate_nodes()
 	EditorCursor._update_tilemap_layer()
 
 var ExpandingY : bool = false
@@ -456,9 +484,9 @@ func _on_editor_cursor_body_exited(body: Node2D) -> void:
 func _on_editor_cursor_area_entered(area: Area2D) -> void:
 	if(!SelectingBody && !ExpandingY && !ExpandingX):
 		if(area.is_in_group("YExpandEditor")):
-			ExpandYSelected = area.get_parent()
+			ExpandYSelected = area.get_parent().get_parent()
 		if(area.is_in_group("XExpandEditor")):
-			ExpandXSelected = area.get_parent()
+			ExpandXSelected = area.get_parent().get_parent()
 		if(!area.is_in_group("XExpandEditor") && !area.is_in_group("YExpandEditor")):
 			CollidingBody = area
 			#LastCollidedBody = CollidingBody

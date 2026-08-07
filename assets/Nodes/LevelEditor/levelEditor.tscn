@@ -73,10 +73,16 @@
 [ext_resource type="Texture2D" uid="uid://bdjw0a04khk1c" path="res://assets/Sprites/Gameplay/Items/clock-sheet.png" id="61_5mcbv"]
 [ext_resource type="Script" uid="uid://dwb6qrpd7mion" path="res://assets/Nodes/LevelEditor/editor_level_data.gd" id="67_aueqc"]
 [ext_resource type="Script" uid="uid://cpevb4sucnhyw" path="res://assets/Nodes/LevelEditor/editor_ui_selecting_multiple.gd" id="67_j3kmy"]
+[ext_resource type="Texture2D" uid="uid://0s62gu0b77n1" path="res://assets/Sprites/Ui/Button/Square/PauseMenuGoBackButton.png" id="68_tiw5i"]
 [ext_resource type="Script" uid="uid://c61a1j6oepgig" path="res://assets/Nodes/LevelEditor/editor_tooltip_sub_tile_icon.gd" id="70_5mcbv"]
 [ext_resource type="Script" uid="uid://bj1n0pp1a8sc2" path="res://assets/Nodes/LevelEditor/editor_data_parser.gd" id="75_6jsng"]
 [ext_resource type="Texture2D" uid="uid://bpbooy4d8qxqx" path="res://assets/Sprites/Gameplay/Editor/TilesetGrid.png" id="76_7uchq"]
 [ext_resource type="Script" uid="uid://b4bm8emwrhku" path="res://assets/Nodes/LevelEditor/editor_player_trail.gd" id="78_jtl08"]
+[ext_resource type="Texture2D" uid="uid://dojpms1ru1qqq" path="res://assets/Sprites/Ui/menus/InGame/EditorBeware.png" id="78_se0cg"]
+[ext_resource type="StyleBox" uid="uid://dirm08jxjyusl" path="res://assets/Sprites/Ui/selectStylebox.tres" id="79_qteqr"]
+[ext_resource type="Script" uid="uid://cu5lkv57v8ymd" path="res://assets/Nodes/LevelEditor/bewaretext.gd" id="79_tiw5i"]
+[ext_resource type="Texture2D" uid="uid://c18sb46itjsso" path="res://assets/Sprites/Ui/Button/Button_Continue.png" id="80_tiw5i"]
+[ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="81_hytg7"]
 
 [sub_resource type="GDScript" id="GDScript_4cp2g"]
 script/source = "extends Sprite2D
@@ -1132,7 +1138,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 9999, 9999)
 script = ExtResource("2_denb7")
 
-[node name="LevelEditor" type="Node2D" parent="." unique_id=1375215272 node_paths=PackedStringArray("Cursor", "TilesetLayers", "EditorCamera", "Time_Left", "Player", "PlayerCamera", "LevelData", "EditorPlayerTrail", "EditorPlace")]
+[node name="LevelEditor" type="Node2D" parent="." unique_id=1375215272 node_paths=PackedStringArray("Cursor", "TilesetLayers", "EditorCamera", "Time_Left", "Player", "PlayerCamera", "LevelData", "EditorPlayerTrail", "EditorPlace") groups=["LevelEditor"]]
 script = ExtResource("1_qesh2")
 Cursor = NodePath("EditorCursor")
 SelectableObjects = Array[Array]([["res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_special.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn"], ["res://assets/Nodes/Obj/Gameplay/falling_sand.tscn", "res://assets/Nodes/Obj/Gameplay/key.tscn", "res://assets/Nodes/Obj/Gameplay/open_box.tscn"], ["res://assets/Nodes/Obj/Gameplay/kill_box.tscn", "res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn", "res://assets/Nodes/Obj/Gameplay/laser.tscn"], ["res://assets/Nodes/Obj/Gameplay/float.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish_editor.tscn", "res://assets/Nodes/Obj/Gameplay/umbrella.tscn"], ["res://assets/Nodes/Obj/Gameplay/flag.tscn", "res://assets/Nodes/Obj/Gameplay/clock.tscn"]])
@@ -1533,6 +1539,56 @@ centered = false
 script = ExtResource("70_5mcbv")
 EditorCursor = NodePath("../../EditorCursor")
 
+[node name="bewaretext" type="Sprite2D" parent="LevelEditor/CanvasLayer2" unique_id=826419488]
+visible = false
+z_index = 5
+position = Vector2(379.00003, 285.00003)
+scale = Vector2(0.17543074, 0.17543074)
+texture = ExtResource("78_se0cg")
+script = ExtResource("79_tiw5i")
+
+[node name="PlayButton" type="Button" parent="LevelEditor/CanvasLayer2/bewaretext" unique_id=307723154]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1887.7375
+offset_top = 1065.9474
+offset_right = -503.14038
+offset_bottom = 1863.983
+grow_horizontal = 0
+theme_override_styles/focus = ExtResource("79_qteqr")
+icon = ExtResource("80_tiw5i")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("81_hytg7")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/select_level_world1.tscn"
+HoverDif = 20.0
+FadeTransition = true
+
+[node name="PlayButton" type="Button" parent="LevelEditor/CanvasLayer2" unique_id=76719353]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1139.0
+offset_top = 440.0
+offset_right = -1072.0
+offset_bottom = 511.0
+grow_horizontal = 0
+theme_override_styles/focus = ExtResource("79_qteqr")
+icon = ExtResource("68_tiw5i")
+flat = true
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("81_hytg7")
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/main_menu_w_level_preview.tscn"
+HoverDif = 20.0
+FadeTransition = true
+
 [node name="EditorCursor" type="Area2D" parent="LevelEditor" unique_id=303845822 node_paths=PackedStringArray("EditorPlace", "TooltipUi")]
 self_modulate = Color(1, 1, 1, 0.8235294)
 collision_layer = 0
@@ -1566,7 +1622,7 @@ EditorCursor = NodePath("../EditorCursor")
 SpriteFill1 = NodePath("SpriteFill1")
 SpriteFill2 = NodePath("SpriteFill2")
 AreaSelectMultiple = NodePath("EditorUiSelectingMultiple")
-TilesetTempCopy = NodePath("../LevelData/TileMapTemp")
+TilesetTempCopy = NodePath("../TileMapTemp")
 EditorDataParser = NodePath("../EditorDataParser")
 RewindTimer = NodePath("RewindTimeout")
 
@@ -1632,14 +1688,6 @@ tile_map_data = PackedByteArray("AAAAAAEAAQAAAAAAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAI
 tile_set = ExtResource("2_iimnb")
 script = ExtResource("3_0r4ld")
 
-[node name="TileMapTemp" type="TileMapLayer" parent="LevelEditor/LevelData" unique_id=374456378 groups=["Tileset"]]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(16.999998, -16)
-scale = Vector2(1.00384, 1)
-tile_set = ExtResource("2_iimnb")
-script = ExtResource("3_0r4ld")
-
 [node name="TileMapLayerWater" type="TileMapLayer" parent="LevelEditor/LevelData" unique_id=603392375 groups=["Tileset", "WaterTileset"]]
 z_index = 2
 texture_filter = 1
@@ -1665,7 +1713,7 @@ autostart = true
 
 [node name="GameplayObjects" type="Node2D" parent="LevelEditor/LevelData" unique_id=750971089]
 
-[node name="Killbox" parent="LevelEditor/LevelData/GameplayObjects" unique_id=1386857898 instance=ExtResource("19_i0mup")]
+[node name="Killbox" parent="LevelEditor/LevelData" unique_id=1386857898 instance=ExtResource("19_i0mup")]
 position = Vector2(-3, 232)
 scale = Vector2(999, 1)
 collision_layer = 1025
@@ -1690,6 +1738,14 @@ PointCooldown = NodePath("PointCooldown")
 wait_time = 0.1
 one_shot = true
 
+[node name="TileMapTemp" type="TileMapLayer" parent="LevelEditor" unique_id=374456378 groups=["Tileset"]]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16.999998, -16)
+scale = Vector2(1.00384, 1)
+tile_set = ExtResource("2_iimnb")
+script = ExtResource("3_0r4ld")
+
 [connection signal="mouse_entered" from="LevelEditor/CanvasLayer/ButtonPlusTime" to="LevelEditor" method="_button_hovered"]
 [connection signal="mouse_exited" from="LevelEditor/CanvasLayer/ButtonPlusTime" to="LevelEditor" method="_button_not_hovered"]
 [connection signal="pressed" from="LevelEditor/CanvasLayer/ButtonPlusTime" to="LevelEditor" method="_on_buttonplus_time_pressed"]
@@ -1708,6 +1764,9 @@ one_shot = true
 [connection signal="mouse_entered" from="LevelEditor/CanvasLayer2/Button_Tile_Tooltip1" to="LevelEditor" method="_button_hovered"]
 [connection signal="mouse_exited" from="LevelEditor/CanvasLayer2/Button_Tile_Tooltip1" to="LevelEditor" method="_button_not_hovered"]
 [connection signal="pressed" from="LevelEditor/CanvasLayer2/Button_Tile_Tooltip1" to="LevelEditor/EditorCursor" method="_on_button_tile_tooltip_1_pressed"]
+[connection signal="button_down" from="LevelEditor/CanvasLayer2/bewaretext/PlayButton" to="LevelEditor/CanvasLayer2/bewaretext" method="_on_play_button_button_down"]
+[connection signal="button_down" from="LevelEditor/CanvasLayer2/PlayButton" to="LevelEditor/CanvasLayer2/PlayButton" method="_on_button_down"]
+[connection signal="pressed" from="LevelEditor/CanvasLayer2/PlayButton" to="LevelEditor/CanvasLayer2/PlayButton" method="_on_pressed"]
 [connection signal="area_entered" from="LevelEditor/EditorCursor" to="LevelEditor/EditorPlace" method="_on_editor_cursor_area_entered"]
 [connection signal="area_exited" from="LevelEditor/EditorCursor" to="LevelEditor/EditorPlace" method="_on_editor_cursor_area_exited"]
 [connection signal="body_entered" from="LevelEditor/EditorCursor" to="LevelEditor/EditorPlace" method="_on_editor_cursor_body_entered"]

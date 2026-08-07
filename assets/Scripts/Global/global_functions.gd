@@ -133,6 +133,12 @@ func Move_node(pos : Vector2 = Vector2(0.0, 0.0), node : Node2D = null):
 	
 	record_action(FUNCTIONS.Move_node, pos, LastOriginalvalue, node)
 
+func Copy_and_Instatiate_node2d(InitialNode : PackedScene, father) -> Node2D:
+	var NewNode = InitialNode.duplicate()
+	var InstanceNewNode = NewNode.instantiate()
+	father.add_child(InstanceNewNode)
+	return InstanceNewNode
+
 func Create_node2d(Location : String, father) -> Node2D:
 	var NewNode = load(Location)
 	var InstanceNode = NewNode.instantiate()

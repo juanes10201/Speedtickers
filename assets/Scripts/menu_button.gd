@@ -140,15 +140,15 @@ func _on_pressed() -> void:
 	LevelManager.ExpoMoveTimeout.start()
 	print("Button pressed!")
 	if(FadeTransition):
-		var Transition
-		Transition = $"../Transition" if $"../Transition" else $"../../Transition"
-		Transition.Anim.play("fade_movement")
-		if(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_scene):
-			ResourceLoader.load_threaded_request(ADITIONAL_ARGUMENT)
-		if(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_number_in_world):
-			var _path = LevelManager.get_level_path(int(text)-1, ADITIONAL_ARGUMENT, get_parent().Bside)
-			ResourceLoader.load_threaded_request(_path)
-		await get_tree().create_timer(1.4).timeout
+		var Transition = $"../Transition" if $"../Transition" else $"../../Transition"
+		if(Transition):
+			Transition.Anim.play("fade_movement")
+			if(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_scene):
+				ResourceLoader.load_threaded_request(ADITIONAL_ARGUMENT)
+			if(BUTTON_ACTION == Global.BUTTON_ACTIONS.move_to_level_number_in_world):
+				var _path = LevelManager.get_level_path(int(text)-1, ADITIONAL_ARGUMENT, get_parent().Bside)
+				ResourceLoader.load_threaded_request(_path)
+			await get_tree().create_timer(1.4).timeout
 	if(WaitTime):
 		await get_tree().create_timer(WaitTime).timeout
 	if(BUTTON_ACTION == Global.BUTTON_ACTIONS.resume_game && Player):

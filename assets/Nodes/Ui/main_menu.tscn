@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://0xbub3erkcxb" path="res://assets/Scripts/PauseMenuTransition.gd" id="4_i1blh"]
 [ext_resource type="Texture2D" uid="uid://cpkuxgr2hg7ll" path="res://assets/Sprites/Ui/Logo/logo.png" id="5_0d5a2"]
 [ext_resource type="Texture2D" uid="uid://c205qqsj7u75e" path="res://assets/Sprites/Ui/menus/MainMenu/border_mainmenu.png" id="6_gd86k"]
-[ext_resource type="Texture2D" uid="uid://cldi3f8m6wfqy" path="res://assets/Sprites/Ui/Button/quit.png" id="7_eqbku"]
 [ext_resource type="StyleBox" uid="uid://c1edtywsppgxy" path="res://assets/Sprites/Ui/selectStylebox2.tres" id="7_kynhk"]
+[ext_resource type="Texture2D" uid="uid://b4wo0a3mb8t1i" path="res://assets/Sprites/Ui/Button/editor.png" id="8_gd86k"]
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="9_itrmr"]
 [ext_resource type="Texture2D" uid="uid://84h5mqrn7esw" path="res://assets/Sprites/Ui/Button/config.png" id="9_yxylt"]
 [ext_resource type="StyleBox" uid="uid://dirm08jxjyusl" path="res://assets/Sprites/Ui/selectStylebox.tres" id="10_gopbp"]
@@ -790,7 +790,7 @@ scale = Vector2(1.2926039, 1.2926037)
 texture = ExtResource("3_0d5a2")
 
 [node name="Transition" type="Sprite2D" parent="." unique_id=1752509263]
-position = Vector2(1929.24, 377)
+position = Vector2(1930.465, 377)
 rotation = 1.33518
 scale = Vector2(-1.21884, 1.21061)
 texture = ExtResource("3_6l5tb")
@@ -815,13 +815,15 @@ offset_right = -1184.008
 offset_bottom = 100.00018
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
-icon = ExtResource("7_eqbku")
+icon = ExtResource("8_gd86k")
 flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("9_itrmr")
-BUTTON_ACTION = 6
+BUTTON_ACTION = 4
+ADITIONAL_ARGUMENT = "res://assets/Nodes/LevelEditor/levelEditor.tscn"
 HoverDif = 20.0
+FadeTransition = true
 
 [node name="PlayButton" type="Button" parent="." unique_id=792300202]
 z_index = 1
@@ -830,7 +832,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1754.0
 offset_right = -1383.1068
-offset_bottom = 213.77078
+offset_bottom = 213.77054
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("10_gopbp")
 icon = ExtResource("11_tsnyn")
@@ -857,7 +859,7 @@ anchor_right = 1.0
 offset_left = -1543.0
 offset_top = -4.0
 offset_right = -1174.9861
-offset_bottom = 111.99902
+offset_bottom = 111.99936
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("7_kynhk")
 icon = ExtResource("9_yxylt")

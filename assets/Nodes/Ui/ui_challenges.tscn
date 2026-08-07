@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d2mxkmup07kcp" path="res://assets/Nodes/Ui/button_challenge.gd" id="5_6r73g"]
 [ext_resource type="Script" uid="uid://3crm18ad88ys" path="res://assets/Scripts/menu_button.gd" id="5_x20i0"]
 [ext_resource type="Texture2D" uid="uid://b1ifl8spiqdmv" path="res://assets/Sprites/Ui/Button/Outline/buttonSelect2.png" id="6_4jx20"]
-[ext_resource type="Texture2D" uid="uid://c0c3m8uwkh35y" path="res://assets/Sprites/Ui/menus/Pause/Button_Back.png" id="7_6r73g"]
+[ext_resource type="Texture2D" uid="uid://c0c3m8uwkh35y" path="res://assets/Sprites/Ui/Button/Button_Back.png" id="7_6r73g"]
 [ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/Ui/Bg/Transition.png" id="9_0mp1d"]
 [ext_resource type="Script" uid="uid://vy45jgrig202" path="res://assets/Nodes/Obj/Ui/transitionLevelSelect.gd" id="10_x20i0"]
 

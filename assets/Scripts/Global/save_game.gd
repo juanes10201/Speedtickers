@@ -344,6 +344,9 @@ func get_player():
 	else:
 		print("WARNING: Tried loading Player before the scene is loaded.")
 
+func get_level_editor_node() -> Node2D:
+	return get_group_node("LevelEditor")
+
 func get_group_node(Group : String):
 	if(get_tree()):
 		var GroupTile = get_tree().get_nodes_in_group(Group)[0] if get_tree().get_nodes_in_group(Group).size() else null

@@ -17,9 +17,10 @@ func _ready() -> void:
 		var scene_path = get_tree().current_scene.scene_file_path
 		LevelManager.set_global_with_complete_level_path(scene_path)
 	
-	NextScene = LevelManager.get_level_path(Global.Level+1, LevelManager.get_world_order(Global.BSide)[Global.World], Global.BSide)
-	if(NextScene != ""):
-		ResourceLoader.load_threaded_request(NextScene)
+	if(!Edition.Is_in_editor):
+		NextScene = LevelManager.get_level_path(Global.Level+1, LevelManager.get_world_order(Global.BSide)[Global.World], Global.BSide)
+		if(NextScene != ""):
+			ResourceLoader.load_threaded_request(NextScene)
 	#print("NextScene" + str(NextScene) )
 
 
@@ -45,12 +46,13 @@ var CompletedLevel : bool = false
 @onready var FadeOut = $"../CanvasLayer/TransitionOut" if $"../CanvasLayer/TransitionOut" else $"../../CanvasLayer/TransitionOut"  
 
 func _process(delta: float) -> void:
-	var status = ResourceLoader.load_threaded_get_status(NextScene, progress)
-	if(NextScene != "" && CompletedLevel && !Edition.Is_in_editor):
-		if(status == ResourceLoader.THREAD_LOAD_LOADED):
-			#var scene = ResourceLoader.load_threaded_get(NextScene)
-			LevelManager.change_to_next_level_with_completion_ui()
-			#get_tree().change_scene_to_file(NextScene)
+	if(!Edition.Is_in_editor):
+		var status = ResourceLoader.load_threaded_get_status(NextScene, progress)
+		if(NextScene != "" && CompletedLevel && !Edition.Is_in_editor):
+			if(status == ResourceLoader.THREAD_LOAD_LOADED):
+				#var scene = ResourceLoader.load_threaded_get(NextScene)
+				LevelManager.change_to_next_level_with_completion_ui()
+				#get_tree().change_scene_to_file(NextScene)
 		
 	
 	if(Edition.Is_in_editor && CanHover && Hovering):
@@ -77,15 +79,20 @@ func _on_body_entered(body):
 		#region Save level
 		#endregion
 		#region Change level
-		if(!Global.LoadingReplay):
-			#var _completed_time : float = $"../Time_Left".wait_time - $"../Time_Left".time_left if $"../Time_Left" else 0.00
-			#print(_completed_time)
-			
-			#print("A")
-			SaveGame.SaveLevelRecord(_lvl, _world, completed_time)
-			print("Going to next level")
-			if(FadeOut):
-				FadeOut.FadeOut = true
-			CompletedLevel = true
-			#LevelManager.change_to_next_level_with_completion_ui()
+		if(!Edition.Is_in_editor):
+			if(!Global.LoadingReplay):
+				#var _completed_time : float = $"../Time_Left".wait_time - $"../Time_Left".time_left if $"../Time_Left" else 0.00
+				#print(_completed_time)
+				
+				#print("A")
+				SaveGame.SaveLevelRecord(_lvl, _world, completed_time)
+				print("Going to next level")
+				if(FadeOut):
+					FadeOut.FadeOut = true
+				CompletedLevel = true
+				#LevelManager.change_to_next_level_with_completion_ui()
+		else:
+			var _leveleditor = SaveGame.get_level_editor_node()
+			if(_leveleditor):
+				_leveleditor.set_play_state(false)
 		#endregion
