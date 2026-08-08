@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @onready var Player : ClassPlayer = $"../../Player"
-@onready var PosGoto : Vector2 = Player.position
+@onready var PosGoto : Vector2 = Player.position if Player else Vector2(0.0, 0.0)
 @onready var DeathTimer : Timer = $DeathTimer
 var tween = null
 var CanDie : bool = false
@@ -44,6 +44,6 @@ func _on_player_jump_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_player_death_area_2d_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Player")):
+	if(body.is_in_group("Player") && body):
 		Player.On_Death()
 		Destroy()

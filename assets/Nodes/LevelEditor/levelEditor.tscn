@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://dyst2yqy27yud" path="res://assets/Nodes/LevelEditor/EditorGrid.gd" id="2_denb7"]
 [ext_resource type="TileSet" uid="uid://defl28kc6mcu4" path="res://assets/Nodes/Obj/Tileset/tiles.tres" id="2_iimnb"]
 [ext_resource type="Script" uid="uid://bn0iulww64056" path="res://assets/Scripts/tile_map_layer.gd" id="3_0r4ld"]
-[ext_resource type="Texture2D" uid="uid://cog6tq7garoc0" path="res://assets/Sprites/Ui/Editor/ChangeTime.png" id="3_1pr77"]
 [ext_resource type="Texture2D" uid="uid://dk8qs15tgkthx" path="res://assets/Sprites/Ui/Bg/Transition.png" id="3_3ypha"]
+[ext_resource type="Texture2D" uid="uid://bwnugugn6osue" path="res://assets/Sprites/Ui/menus/Editor/ChangeTime.png" id="4_5s1o8"]
 [ext_resource type="FontFile" uid="uid://d3ebca3t4i171" path="res://assets/Fonts/Ace Futurism.ttf" id="4_i6xsk"]
 [ext_resource type="Texture2D" uid="uid://ss4fek4dagk1" path="res://assets/Sprites/Gameplay/Tilesets/World1/tiles.png" id="4_oksxi"]
 [ext_resource type="Script" uid="uid://c0slssdx0k325" path="res://assets/Nodes/LevelEditor/editor_camera.gd" id="5_0r4ld"]
@@ -61,9 +61,11 @@
 [ext_resource type="Texture2D" uid="uid://chjufwlg6kehq" path="res://assets/Sprites/Ui/menus/RankMenu/MultDiagonalBgx3.png" id="42_si8cv"]
 [ext_resource type="FontFile" uid="uid://b3smkep4lbwtq" path="res://assets/Fonts/Blessings of Babylon.otf" id="43_gm2v4"]
 [ext_resource type="FontFile" uid="uid://c2f44214fpbiv" path="res://assets/Fonts/pixelart/Vermin Vibes 1989.ttf" id="44_fvxto"]
+[ext_resource type="Texture2D" uid="uid://psjlxrv0lfp8" path="res://assets/Sprites/Ui/menus/Editor/NodeUnselectedSquareY2k.png" id="48_5s1o8"]
 [ext_resource type="Shader" uid="uid://bfnyn2mcfcjby" path="res://assets/Shader/Water2.gdshader" id="48_pi8wn"]
 [ext_resource type="Script" uid="uid://cuph6qciwkto" path="res://assets/Nodes/LevelEditor/editor_tootlip_ui.gd" id="48_r3h5y"]
 [ext_resource type="Script" uid="uid://bmbuhneok5vd6" path="res://assets/Nodes/LevelEditor/ui_tooltip_sample_button.gd" id="49_ay4ap"]
+[ext_resource type="Texture2D" uid="uid://w2gbao6lcmrp" path="res://assets/Sprites/Ui/menus/Editor/NodeSquareY2k.png" id="49_be7jv"]
 [ext_resource type="Script" uid="uid://cekeslpashr8u" path="res://assets/Nodes/Obj/Tileset/tile_map_layer_water.gd" id="49_j3kmy"]
 [ext_resource type="Texture2D" uid="uid://3x6g56fvrojo" path="res://assets/Sprites/Gameplay/enemies/slime/shoot/slime-bullet-sheet.png" id="52_i6xsk"]
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/Gameplay/Tilesets/tiles_1.png" id="54_kwd4c"]
@@ -859,14 +861,20 @@ bg_color = Color(0.36850855, 0.11763162, 0.435367, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6xsk"]
 bg_color = Color(0.7411765, 0.38039216, 0.84313726, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay4ap"]
-bg_color = Color(0.105882354, 0.043137256, 0.29803923, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wcgsb"]
+texture = ExtResource("48_5s1o8")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2tji"]
-bg_color = Color(0.61960787, 0.47843137, 1, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_be7jv"]
+texture = ExtResource("49_be7jv")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mkwl"]
-bg_color = Color(0.61960787, 0.47843137, 1, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oadh4"]
+texture = ExtResource("48_5s1o8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x6v6g"]
+texture = ExtResource("48_5s1o8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ej6vm"]
+texture = ExtResource("49_be7jv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5mkwl"]
 
@@ -932,6 +940,14 @@ region = Rect2(48, 272, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3sq2j"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goktm")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_goktm")
@@ -1171,9 +1187,9 @@ offset_right = 980.0
 offset_bottom = 626.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="LevelEditor/CanvasLayer" unique_id=900251817]
-position = Vector2(931.7807, 583.00006)
-scale = Vector2(0.12223063, 0.12223063)
-texture = ExtResource("3_1pr77")
+position = Vector2(932.123, 579.53546)
+scale = Vector2(0.34224057, 0.3422406)
+texture = ExtResource("4_5s1o8")
 
 [node name="TransitionOut" type="Sprite2D" parent="LevelEditor/CanvasLayer" unique_id=311747729]
 visible = false
@@ -1493,12 +1509,14 @@ LevelEditor = NodePath("../..")
 EditorCursor = NodePath("../../EditorCursor")
 
 [node name="SampleButton" type="Button" parent="LevelEditor/CanvasLayer2/EditorTootlipUi" unique_id=1585450287 node_paths=PackedStringArray("Icon", "EditorCursor")]
-offset_right = 68.0
-offset_bottom = 69.0
+offset_right = 81.0
+offset_bottom = 81.0
 theme_override_font_sizes/font_size = 44
-theme_override_styles/normal = SubResource("StyleBoxFlat_ay4ap")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v2tji")
-theme_override_styles/focus = SubResource("StyleBoxFlat_5mkwl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wcgsb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_be7jv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oadh4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x6v6g")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ej6vm")
 script = ExtResource("49_ay4ap")
 Icon = NodePath("icon")
 EditorCursor = NodePath("../../../EditorCursor")
@@ -1506,7 +1524,7 @@ EditorCursor = NodePath("../../../EditorCursor")
 [node name="icon" type="AnimatedSprite2D" parent="LevelEditor/CanvasLayer2/EditorTootlipUi/SampleButton" unique_id=1095463373]
 z_index = 2
 material = SubResource("ShaderMaterial_5mkwl")
-position = Vector2(18, 19)
+position = Vector2(23, 23)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3sq2j")
 animation = &"0_0"
@@ -1605,7 +1623,7 @@ shape = SubResource("RectangleShape2D_3sq2j")
 self_modulate = Color(1, 1, 1, 0.654902)
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3sq2j")
-animation = &"0_0"
+animation = &"0"
 centered = false
 
 [node name="EditorCamera" type="Camera2D" parent="LevelEditor" unique_id=687561907]

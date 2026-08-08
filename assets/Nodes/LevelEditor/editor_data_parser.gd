@@ -31,17 +31,24 @@ func GetSaveDataNodes(Nodes : Array) -> Array:
 	print("Nodes: " + str(Nodes))
 	var _result : Array = []
 	for _node in Nodes:
-		var _node_number = _node.get_meta(EditorPlace.NewNodeMetaNumber) if has_meta(EditorPlace.NewNodeMetaNumber) else -1
-		var _node_subnumber = _node.get_meta(EditorPlace.NewNodeMetaSubNumber) if has_meta(EditorPlace.NewNodeMetaSubNumber) else -1
-		if(_node_number == -1 || _node_subnumber == -1 ): continue
-		
-		var _original_packed_scene = EditorPlace.SelectableNodesLoaded[_node_number][_node_subnumber]
-		var _original_scene_state = _original_packed_scene.get_state()
-		
-		for property in _node.get_property_list():
-			print(property)
-		
-		print("!!!!!: " + str(_original_packed_scene))
+		if(_node.has_meta(EditorPlace.NewNodeMetaNumber) && _node.has_meta(EditorPlace.NewNodeMetaSubNumber)):
+			var _node_number = _node.get_meta(EditorPlace.NewNodeMetaNumber)
+			var _node_subnumber = _node.get_meta(EditorPlace.NewNodeMetaSubNumber)
+			print("node number: " + str(_node_number))
+			print("node subnumber: " + str(_node_subnumber))
+			
+			var _original_packed_scene = EditorPlace.SelectableNodesLoaded[_node_number][_node_subnumber]
+			var _original_scene_state = _original_packed_scene.get_state()
+			
+			var MainNodeId = 0
+			for i in _original_scene_state.get_node_property_count(MainNodeId): #_original_scene_state.get_property_list():
+				var _property_value = _original_scene_state.get_node_property_value(MainNodeId, i)
+				var _property_name = _original_scene_state.get_node_property_name(MainNodeId, i)
+				#if(property.name in _original_scene_state && _node.get(property.name) != _original_scene_state.get(property.name)):
+				print("Property name: " + str(_property_name))
+				print("Property value: " + str(_property_value))
+			
+			print("!!!!!: " + str(_original_scene_state))
 	return _result
 
 func GetSaveDataTiles(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
