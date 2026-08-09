@@ -1,3 +1,38 @@
 {
-
+	"Nodes": [
+		{
+			"EditorId": "(0, 0)",
+			"Properties": {
+				"global_position": "(185.2883, -5.480774)",
+				"global_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (185.2883, -5.480774)]",
+				"position": "(185.2883, -5.480774)",
+				"transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (185.2883, -5.480774)]"
+			}
+		},
+		{
+			"EditorId": "(1, 0)",
+			"Properties": {
+				"OldVel": "(17770.38, 8035.384)",
+				"OriginalPos": "(233.173, -8.07692)",
+				"global_position": "(233.173, -8.07692)",
+				"global_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (233.173, -8.07692)]",
+				"position": "(233.173, -8.07692)",
+				"transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (233.173, -8.07692)]"
+			}
+		},
+		{
+			"EditorId": "(2, 0)",
+			"Properties": {
+				"global_position": "(212.9807, -42.69231)",
+				"global_transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (212.9807, -42.69231)]",
+				"position": "(212.9807, -42.69231)",
+				"transform": "[X: (1.0, 0.0), Y: (0.0, 1.0), O: (212.9807, -42.69231)]"
+			}
+		}
+	],
+	"Tileset": {
+		"(0, 0)": "ZZZZZZZZZZZZZZZZZZZZZZAAZZZZZZAAZZZZZZAAZZZZZZAAZZZZZZAAZZZZZZAA",
+		"(1, 0)": "ZZZZZZZZZZZZZZZZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+		"(2, 0)": "ZZZZZZZZZZZZZZZZAAZZZZZZAAZZZZZZAAZZZZZZAAZZZZZZAAZZZZZZAAZZZZZZ"
+	}
 }

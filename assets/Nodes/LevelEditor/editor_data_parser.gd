@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var EditorPlace : Node2D
+@export var LevelEditor : Node2D
 
 #Los datos se guardan todos en diccionarios y sub-diccionarios/sub-arrays ahi,
 #todo lo que se guarda en json o archivo es un diccionario basicamente
@@ -27,28 +28,52 @@ var Clipboard : Dictionary = { Vector2i(0, 0): "AAAAAAAAAZZZZZZZZZZZZZZZZZZZZZZZ
 const ChunkSize : int = 8
 const ChunkDefaultValue : String = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
 
+@export var ParentOriginalNodes : Node2D
+var OriginalNodesLoaded : Dictionary = {}
+
 func GetSaveDataNodes(Nodes : Array) -> Array:
 	print("Nodes: " + str(Nodes))
 	var _result : Array = []
 	for _node in Nodes:
+		var _node_result : Dictionary = {}
 		if(_node.has_meta(EditorPlace.NewNodeMetaNumber) && _node.has_meta(EditorPlace.NewNodeMetaSubNumber)):
 			var _node_number = _node.get_meta(EditorPlace.NewNodeMetaNumber)
 			var _node_subnumber = _node.get_meta(EditorPlace.NewNodeMetaSubNumber)
 			print("node number: " + str(_node_number))
 			print("node subnumber: " + str(_node_subnumber))
 			
-			var _original_packed_scene = EditorPlace.SelectableNodesLoaded[_node_number][_node_subnumber]
-			var _original_scene_state = _original_packed_scene.get_state()
+			var _original_scene_path = LevelEditor.SelectableObjects[_node_number][_node_subnumber]
+			var _original_scene = null
+			var DictionaryId : Vector2i = Vector2i(_node_number, _node_subnumber)
+			_node_result["EditorId"] = DictionaryId
+			if(DictionaryId in OriginalNodesLoaded):
+				_original_scene = OriginalNodesLoaded[DictionaryId]
+			else:
+				_original_scene = GlobalFunctions.Create_node2d(_original_scene_path, ParentOriginalNodes) #_original_packed_scene.get_state()
+				OriginalNodesLoaded[DictionaryId] = _original_scene
 			
-			var MainNodeId = 0
-			for i in _original_scene_state.get_node_property_count(MainNodeId): #_original_scene_state.get_property_list():
-				var _property_value = _original_scene_state.get_node_property_value(MainNodeId, i)
-				var _property_name = _original_scene_state.get_node_property_name(MainNodeId, i)
-				#if(property.name in _original_scene_state && _node.get(property.name) != _original_scene_state.get(property.name)):
-				print("Property name: " + str(_property_name))
-				print("Property value: " + str(_property_value))
-			
-			print("!!!!!: " + str(_original_scene_state))
+			var Properties : Dictionary = {}
+			for property in _original_scene.get_property_list():
+				var property_name = property.name
+				var property_value = _original_scene.get(property_name)
+				var changed_property_value = _node.get(property_name)
+				if(property_name in _node && property_value != changed_property_value):
+					if !(changed_property_value is Node):
+						Properties[property_name] = changed_property_value
+					#print("Value difference!: Name: " + str(property_name) + "; Value: " + str(property_value))
+			_node_result["Properties"] = Properties
+			_result.append(_node_result)
+			#var MainNodeId = 0
+			#for i in _original_scene_state.get_node_property_count(MainNodeId): #_original_scene_state.get_property_list():
+			#	var _property_value = _original_scene_state.get_node_property_value(MainNodeId, i)
+			#	var _property_name = _original_scene_state.get_node_property_name(MainNodeId, i)
+			#	#if(property.name in _original_scene_state && _node.get(property.name) != _original_scene_state.get(property.name)):
+			#	print("Property name: " + str(_property_name))
+			#	print("Property value: " + str(_property_value))
+			#print("!!!!!: " + str(_original_scene_state))
+	OriginalNodesLoaded = {}
+	for OriginalChild in ParentOriginalNodes.get_children():
+		OriginalChild.queue_free()
 	return _result
 
 func GetSaveDataTiles(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
@@ -78,8 +103,12 @@ func GetSaveDataTiles(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictiona
 const SaveLocation : String = "res://assets/Saved/LevelEditor/"
 
 func SaveTilesToFile(FileName : String, Nodes : Array, Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
-	var Saved = GetSaveDataTiles(Tiles, Tilemap, SaveData)
-	GetSaveDataNodes(Nodes)
+	var SavedTileset = GetSaveDataTiles(Tiles, Tilemap, SaveData)
+	var SavedNodes = GetSaveDataNodes(Nodes)
+	var Saved : Dictionary = {
+		"Tileset" = SavedTileset,
+		"Nodes" = SavedNodes
+	}
 	SaveGame.SaveJsonFile(SaveLocation + FileName, Saved)
 	print("Saved!")
 

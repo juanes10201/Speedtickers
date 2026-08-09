@@ -1838,9 +1838,13 @@ collision_layer = 1025
 Visible = false
 CanChange = false
 
-[node name="EditorDataParser" type="Node2D" parent="LevelEditor" unique_id=1150111339 node_paths=PackedStringArray("EditorPlace")]
+[node name="EditorDataParser" type="Node2D" parent="LevelEditor" unique_id=1150111339 node_paths=PackedStringArray("EditorPlace", "LevelEditor", "ParentOriginalNodes")]
 script = ExtResource("75_6jsng")
 EditorPlace = NodePath("../EditorPlace")
+LevelEditor = NodePath("..")
+ParentOriginalNodes = NodePath("ParentOriginalNodes")
+
+[node name="ParentOriginalNodes" type="Node2D" parent="LevelEditor/EditorDataParser" unique_id=1414294560]
 
 [node name="EditorPlayerTrail" type="Line2D" parent="LevelEditor" unique_id=1954549939 node_paths=PackedStringArray("Player", "PointCooldown")]
 visible = false
