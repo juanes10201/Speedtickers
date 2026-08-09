@@ -67,7 +67,9 @@
 [ext_resource type="Script" uid="uid://bmbuhneok5vd6" path="res://assets/Nodes/LevelEditor/ui_tooltip_sample_button.gd" id="49_ay4ap"]
 [ext_resource type="Texture2D" uid="uid://w2gbao6lcmrp" path="res://assets/Sprites/Ui/menus/Editor/NodeSquareY2k.png" id="49_be7jv"]
 [ext_resource type="Script" uid="uid://cekeslpashr8u" path="res://assets/Nodes/Obj/Tileset/tile_map_layer_water.gd" id="49_j3kmy"]
+[ext_resource type="Texture2D" uid="uid://beswk1qtp7tad" path="res://assets/Sprites/Ui/menus/Editor/Icons/SLAM.png" id="52_ej6vm"]
 [ext_resource type="Texture2D" uid="uid://3x6g56fvrojo" path="res://assets/Sprites/Gameplay/enemies/slime/shoot/slime-bullet-sheet.png" id="52_i6xsk"]
+[ext_resource type="Texture2D" uid="uid://c26ujmb2706pv" path="res://assets/Sprites/Ui/menus/Editor/Icons/SLIDE.png" id="53_oadh4"]
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/Gameplay/Tilesets/tiles_1.png" id="54_kwd4c"]
 [ext_resource type="Texture2D" uid="uid://bt7hwj175tx1b" path="res://assets/Sprites/Gameplay/Editor/laser-icon.png" id="56_crete"]
 [ext_resource type="Texture2D" uid="uid://b6awipy2bgvln" path="res://assets/Sprites/Gameplay/enemies/fish/fish.png" id="58_57dd7"]
@@ -77,6 +79,7 @@
 [ext_resource type="Script" uid="uid://cpevb4sucnhyw" path="res://assets/Nodes/LevelEditor/editor_ui_selecting_multiple.gd" id="67_j3kmy"]
 [ext_resource type="Texture2D" uid="uid://0s62gu0b77n1" path="res://assets/Sprites/Ui/Button/Square/PauseMenuGoBackButton.png" id="68_tiw5i"]
 [ext_resource type="Script" uid="uid://c61a1j6oepgig" path="res://assets/Nodes/LevelEditor/editor_tooltip_sub_tile_icon.gd" id="70_5mcbv"]
+[ext_resource type="Texture2D" uid="uid://cwuu1ueioqy8r" path="res://assets/Sprites/Ui/menus/Editor/ChangeTileButton.png" id="71_be7jv"]
 [ext_resource type="Script" uid="uid://bj1n0pp1a8sc2" path="res://assets/Nodes/LevelEditor/editor_data_parser.gd" id="75_6jsng"]
 [ext_resource type="Texture2D" uid="uid://bpbooy4d8qxqx" path="res://assets/Sprites/Gameplay/Editor/TilesetGrid.png" id="76_7uchq"]
 [ext_resource type="Script" uid="uid://b4bm8emwrhku" path="res://assets/Nodes/LevelEditor/editor_player_trail.gd" id="78_jtl08"]
@@ -966,6 +969,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("52_ej6vm")
+}],
+"loop": true,
+"name": &"0_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_oadh4")
+}],
+"loop": true,
+"name": &"0_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bwmk8")
 }],
 "loop": true,
@@ -1101,6 +1120,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wcgsb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ej6vm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oadh4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6v6g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyxik"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edcu7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5byy5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uefb1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tk1t2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjgrg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n2ls0"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3sq2j"]
 size = Vector2(14, 14)
 
@@ -1158,8 +1199,8 @@ script = ExtResource("2_denb7")
 script = ExtResource("1_qesh2")
 Cursor = NodePath("EditorCursor")
 SelectableObjects = Array[Array]([["res://assets/Nodes/Obj/Gameplay/Enemie/enemie.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_special.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemie_skeleton.tscn"], ["res://assets/Nodes/Obj/Gameplay/falling_sand.tscn", "res://assets/Nodes/Obj/Gameplay/key.tscn", "res://assets/Nodes/Obj/Gameplay/open_box.tscn"], ["res://assets/Nodes/Obj/Gameplay/kill_box.tscn", "res://assets/Nodes/Obj/Gameplay/kill_box_blue.tscn", "res://assets/Nodes/Obj/Gameplay/laser.tscn"], ["res://assets/Nodes/Obj/Gameplay/float.tscn", "res://assets/Nodes/Obj/Gameplay/Enemie/enemy_fish_editor.tscn", "res://assets/Nodes/Obj/Gameplay/umbrella.tscn"], ["res://assets/Nodes/Obj/Gameplay/flag.tscn", "res://assets/Nodes/Obj/Gameplay/clock.tscn"]])
-SelectableAutotiles = Array[int]([0, 1])
-AutotileTilemapLayers = Array[int]([0, 1])
+SelectableAutotiles = Array[int]([0, 1, 2, 3])
+AutotileTilemapLayers = Array[int]([0, 2, 0, 0])
 TilesetLayers = [NodePath("LevelData/TileMapLayer0"), NodePath("LevelData/TileMapLayer2"), NodePath("LevelData/TileMapLayerWater")]
 EditorCamera = NodePath("EditorCamera")
 Time_Left = NodePath("LevelData/Time_Left")
@@ -1524,26 +1565,47 @@ EditorCursor = NodePath("../../../EditorCursor")
 [node name="icon" type="AnimatedSprite2D" parent="LevelEditor/CanvasLayer2/EditorTootlipUi/SampleButton" unique_id=1095463373]
 z_index = 2
 material = SubResource("ShaderMaterial_5mkwl")
-position = Vector2(23, 23)
+position = Vector2(41, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3sq2j")
-animation = &"0_0"
-centered = false
+animation = &"0"
 
 [node name="Button_Tile_Tooltip0" type="Button" parent="LevelEditor/CanvasLayer2" unique_id=768333151]
-offset_left = 11.0
-offset_top = 528.0
-offset_right = 67.0
-offset_bottom = 569.0
+offset_left = 129.0
+offset_top = 558.0
+offset_right = 193.0
+offset_bottom = 602.0
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wcgsb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ej6vm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oadh4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_x6v6g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cyxik")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_edcu7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5byy5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_uefb1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tk1t2")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_cjgrg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n2ls0")
 text = ">"
 
 [node name="Button_Tile_Tooltip1" type="Button" parent="LevelEditor/CanvasLayer2" unique_id=845095758]
-offset_left = 12.0
-offset_top = 580.0
-offset_right = 67.0
-offset_bottom = 624.0
+offset_left = 4.0
+offset_top = 559.0
+offset_right = 68.0
+offset_bottom = 602.0
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wcgsb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ej6vm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oadh4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_x6v6g")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cyxik")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_edcu7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5byy5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_uefb1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tk1t2")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_cjgrg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n2ls0")
 text = "<"
 
 [node name="EditorTooltipSubTileIcon" type="AnimatedSprite2D" parent="LevelEditor/CanvasLayer2" unique_id=1501288034 node_paths=PackedStringArray("EditorCursor")]
@@ -1552,7 +1614,7 @@ material = SubResource("ShaderMaterial_5mkwl")
 position = Vector2(78.000015, 558)
 scale = Vector2(2.8125, 2.8125)
 sprite_frames = SubResource("SpriteFrames_3sq2j")
-animation = &"0_0"
+animation = &"0"
 centered = false
 script = ExtResource("70_5mcbv")
 EditorCursor = NodePath("../../EditorCursor")
@@ -1591,10 +1653,10 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1139.0
-offset_top = 440.0
-offset_right = -1072.0
-offset_bottom = 511.0
+offset_left = -1140.0
+offset_top = 445.0
+offset_right = -1073.0
+offset_bottom = 516.0
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("79_qteqr")
 icon = ExtResource("68_tiw5i")
@@ -1606,6 +1668,11 @@ BUTTON_ACTION = 4
 ADITIONAL_ARGUMENT = "res://assets/Nodes/Ui/main_menu_w_level_preview.tscn"
 HoverDif = 20.0
 FadeTransition = true
+
+[node name="ChangeTileButton" type="Sprite2D" parent="LevelEditor/CanvasLayer2" unique_id=740325995]
+position = Vector2(109, 581)
+scale = Vector2(0.27706707, 0.27706707)
+texture = ExtResource("71_be7jv")
 
 [node name="EditorCursor" type="Area2D" parent="LevelEditor" unique_id=303845822 node_paths=PackedStringArray("EditorPlace", "TooltipUi")]
 self_modulate = Color(1, 1, 1, 0.8235294)
