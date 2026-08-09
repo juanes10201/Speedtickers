@@ -129,7 +129,7 @@ func _fill_slope_global_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : bo
 	var _pos_local2 = SelectedTilemap.to_local(pos2)
 	var tile_pos2: Vector2i = SelectedTilemap.local_to_map(_pos_local2)
 	
-	_fill_slope_local_tileset(tile_pos1, tile_pos2, RemoveTiles, CalcAngleY, 1)
+	_fill_slope_local_tileset(tile_pos1, tile_pos2, RemoveTiles, CalcAngleY, AutotileTerrain)
 
 func _fill_slope_local_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : bool = false, CalcAngleY : float = PreCalcAngleY, AutotileTerrain : int = 1) -> void:
 	var Cells : Array[Vector2i]
@@ -139,7 +139,11 @@ func _fill_slope_local_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : boo
 	for x in range(pos1.x, pos2.x):
 		var _posY : float = ceil(pos1.y - CalcAngleY*(x-pos1.x))
 		var Cell : Vector2i = Vector2i(x, _posY)
+		#var UpperCell : Vector2i = Vector2i(x, _posY-1)
 		Cells.append(Cell)
+		#Cells.append(UpperCell)
+	#if(Cells.size() > 0):
+	#	Cells.append(Vector2i(Cells[0].x+1, Cells[0].y) )
 	if(!RemoveTiles):
 		SelectedTilemap.set_cells_terrain_connect(Cells, 0,  AutotileTerrain, false)
 	else:

@@ -1213,7 +1213,7 @@ shader_parameter/border_color = Color(0.6, 0.85, 1, 0.6)
 shader_parameter/water_surface_y = 0.0
 
 [sub_resource type="Gradient" id="Gradient_jtl08"]
-colors = PackedColorArray(0.66882294, 0.00036126943, 0.6749954, 0.5294118, 1, 0.5882353, 1, 0.5137255)
+colors = PackedColorArray(0.67058825, 0.8039216, 0.6745098, 0.5294118, 0.25253218, 0.87526745, 0.77536225, 0.5137255)
 
 [node name="LevelEditorRework" type="Node2D" unique_id=1519603222]
 
