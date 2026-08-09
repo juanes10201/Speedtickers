@@ -69,6 +69,7 @@
 [ext_resource type="Script" uid="uid://cekeslpashr8u" path="res://assets/Nodes/Obj/Tileset/tile_map_layer_water.gd" id="49_j3kmy"]
 [ext_resource type="Texture2D" uid="uid://beswk1qtp7tad" path="res://assets/Sprites/Ui/menus/Editor/Icons/SLAM.png" id="52_ej6vm"]
 [ext_resource type="Texture2D" uid="uid://3x6g56fvrojo" path="res://assets/Sprites/Gameplay/enemies/slime/shoot/slime-bullet-sheet.png" id="52_i6xsk"]
+[ext_resource type="Texture2D" uid="uid://bw6pxfd05g3r1" path="res://assets/Sprites/Ui/Input/rectangle.png" id="52_oadh4"]
 [ext_resource type="Texture2D" uid="uid://c26ujmb2706pv" path="res://assets/Sprites/Ui/menus/Editor/Icons/SLIDE.png" id="53_oadh4"]
 [ext_resource type="Texture2D" uid="uid://ntb0befljsre" path="res://assets/Sprites/Gameplay/Tilesets/tiles_1.png" id="54_kwd4c"]
 [ext_resource type="Texture2D" uid="uid://bt7hwj175tx1b" path="res://assets/Sprites/Gameplay/Editor/laser-icon.png" id="56_crete"]
@@ -885,9 +886,13 @@ texture = ExtResource("49_be7jv")
 atlas = ExtResource("4_oksxi")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5mkwl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oadh4"]
 atlas = ExtResource("4_oksxi")
-region = Rect2(272, 352, 16, 16)
+region = Rect2(176, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6v6g"]
+atlas = ExtResource("4_oksxi")
+region = Rect2(144, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwmk8"]
 atlas = ExtResource("7_goktm")
@@ -941,6 +946,10 @@ region = Rect2(80, 272, 16, 16)
 atlas = ExtResource("12_w1obw")
 region = Rect2(48, 272, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mkwl"]
+atlas = ExtResource("4_oksxi")
+region = Rect2(272, 352, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3sq2j"]
 animations = [{
 "frames": [{
@@ -953,15 +962,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_goktm")
-}],
-"loop": true,
-"name": &"0_0",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5mkwl")
+"texture": ExtResource("52_oadh4")
 }],
 "loop": true,
 "name": &"0_1",
@@ -969,7 +970,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("52_ej6vm")
+"texture": SubResource("AtlasTexture_oadh4")
 }],
 "loop": true,
 "name": &"0_2",
@@ -977,7 +978,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("53_oadh4")
+"texture": SubResource("AtlasTexture_x6v6g")
 }],
 "loop": true,
 "name": &"0_3",
@@ -1117,6 +1118,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"SizeY",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goktm")
+}],
+"loop": true,
+"name": &"tileset_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mkwl")
+}],
+"loop": true,
+"name": &"tileset_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_ej6vm")
+}],
+"loop": true,
+"name": &"tileset_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_oadh4")
+}],
+"loop": true,
+"name": &"tileset_3",
 "speed": 5.0
 }]
 
@@ -1571,10 +1604,10 @@ sprite_frames = SubResource("SpriteFrames_3sq2j")
 animation = &"0"
 
 [node name="Button_Tile_Tooltip0" type="Button" parent="LevelEditor/CanvasLayer2" unique_id=768333151]
-offset_left = 129.0
-offset_top = 558.0
-offset_right = 193.0
-offset_bottom = 602.0
+offset_left = 136.0
+offset_top = 579.0
+offset_right = 200.0
+offset_bottom = 623.0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wcgsb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ej6vm")
@@ -1590,10 +1623,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_n2ls0")
 text = ">"
 
 [node name="Button_Tile_Tooltip1" type="Button" parent="LevelEditor/CanvasLayer2" unique_id=845095758]
-offset_left = 4.0
-offset_top = 559.0
-offset_right = 68.0
-offset_bottom = 602.0
+offset_left = 11.0
+offset_top = 580.0
+offset_right = 75.0
+offset_bottom = 623.0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wcgsb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ej6vm")
@@ -1611,7 +1644,7 @@ text = "<"
 [node name="EditorTooltipSubTileIcon" type="AnimatedSprite2D" parent="LevelEditor/CanvasLayer2" unique_id=1501288034 node_paths=PackedStringArray("EditorCursor")]
 z_index = 2
 material = SubResource("ShaderMaterial_5mkwl")
-position = Vector2(78.000015, 558)
+position = Vector2(85.000015, 579)
 scale = Vector2(2.8125, 2.8125)
 sprite_frames = SubResource("SpriteFrames_3sq2j")
 animation = &"0"
@@ -1653,10 +1686,10 @@ z_index = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1140.0
-offset_top = 445.0
-offset_right = -1073.0
-offset_bottom = 516.0
+offset_left = -935.0
+offset_top = 569.0
+offset_right = -868.0
+offset_bottom = 640.0
 grow_horizontal = 0
 theme_override_styles/focus = ExtResource("79_qteqr")
 icon = ExtResource("68_tiw5i")
@@ -1670,7 +1703,7 @@ HoverDif = 20.0
 FadeTransition = true
 
 [node name="ChangeTileButton" type="Sprite2D" parent="LevelEditor/CanvasLayer2" unique_id=740325995]
-position = Vector2(109, 581)
+position = Vector2(116, 602)
 scale = Vector2(0.27706707, 0.27706707)
 texture = ExtResource("71_be7jv")
 
@@ -1690,7 +1723,7 @@ shape = SubResource("RectangleShape2D_3sq2j")
 self_modulate = Color(1, 1, 1, 0.654902)
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_3sq2j")
-animation = &"0"
+animation = &"0_2"
 centered = false
 
 [node name="EditorCamera" type="Camera2D" parent="LevelEditor" unique_id=687561907]

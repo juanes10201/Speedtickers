@@ -122,26 +122,26 @@ var PreparingRemoveRectangle : bool = false
 var RectanglePos1 : Vector2 = Vector2(0.0, 0.0)
 var RectanglePos2 : Vector2 = Vector2(0.0, 0.0)
 
-func _fill_slope_global_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : bool = false) -> void:
+func _fill_slope_global_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : bool = false, CalcAngleY : float = PreCalcAngleY, AutotileTerrain : int = 1) -> void:
 	var _pos_local1 = SelectedTilemap.to_local(pos1)
 	var tile_pos1: Vector2i = SelectedTilemap.local_to_map(_pos_local1)
 	
 	var _pos_local2 = SelectedTilemap.to_local(pos2)
 	var tile_pos2: Vector2i = SelectedTilemap.local_to_map(_pos_local2)
 	
-	_fill_slope_local_tileset(tile_pos1, tile_pos2, RemoveTiles)
+	_fill_slope_local_tileset(tile_pos1, tile_pos2, RemoveTiles, CalcAngleY, 1)
 
-func _fill_slope_local_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : bool = false) -> void:
+func _fill_slope_local_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles : bool = false, CalcAngleY : float = PreCalcAngleY, AutotileTerrain : int = 1) -> void:
 	var Cells : Array[Vector2i]
 	#print("pos1: " + str(pos1))
 	#print("pos2: " + str(pos2))
 	#print(PreCalcAngleY)
 	for x in range(pos1.x, pos2.x):
-		var _posY : float = ceil(pos1.y - PreCalcAngleY*(x-pos1.x))
+		var _posY : float = ceil(pos1.y - CalcAngleY*(x-pos1.x))
 		var Cell : Vector2i = Vector2i(x, _posY)
 		Cells.append(Cell)
 	if(!RemoveTiles):
-		SelectedTilemap.set_cells_terrain_connect(Cells, 0,  1, false)
+		SelectedTilemap.set_cells_terrain_connect(Cells, 0,  AutotileTerrain, false)
 	else:
 		SelectedTilemap.set_cells_terrain_connect(Cells, 0, -1)
 
@@ -156,11 +156,15 @@ func _fill_rectangle_global_tileset(pos1 : Vector2, pos2 : Vector2, RemoveTiles 
 	_fill_rectangle_local_tileset(tile_pos1, tile_pos2, RemoveTiles)
 
 func _fill_rectangle_local_tileset(pos1 : Vector2i, pos2 : Vector2i, RemoveTiles : bool = false) -> void:
+	var min_pos : Vector2i = pos1 if pos1 < pos2 else pos2
+	var max_pos : Vector2i = pos1 if pos1 > pos2 else pos2
+	print("Pos1: " + str(pos1))
+	print("Pos2: " + str(pos2))
 	#Poner cada tile en la lista para luego enviarlo a pintar
 	var Cells : Array[Vector2i]
 	
-	for x in range(pos1.x, pos2.x+1):
-		for y in range(pos1.y, pos2.y+1):
+	for x in range(min_pos.x, max_pos.x+1):
+		for y in range(min_pos.y, max_pos.y+1):
 			var Cell : Vector2i = Vector2i(x, y)
 			Cells.append(Cell)
 	if(!RemoveTiles):
@@ -171,6 +175,8 @@ func _fill_rectangle_local_tileset(pos1 : Vector2i, pos2 : Vector2i, RemoveTiles
 #Angulo de la rampa
 var SlopeAngle : float = 22.5
 var PreCalcAngleY = .5#tan(deg_to_rad(SlopeAngle))
+var HalfSlopeSlopeAngle : float = 22.5
+var HalfSlopePreCalcAngleY = 1.0
 
 var TilesetSelection : Array[Vector2] = [Vector2(0.0, 0.0), Vector2(0.0, 0.0)]
 
@@ -308,11 +314,14 @@ func _tick_tileset(delta: float):
 			_fill_rectangle_global_tileset(RectanglePos1, RectanglePos2, true)
 			SpriteFill1.hide()
 			SpriteFill2.hide()
-	elif(EditorCursor.SelectedSubNode == EditorCursor.TileTools.Slope):
+	elif(EditorCursor.SelectedSubNode == EditorCursor.TileTools.Slope || EditorCursor.SelectedSubNode == EditorCursor.TileTools.HalfSlope):
 		if(PreparingRectangle || PreparingRemoveRectangle):
 			SpriteFill1.global_position = RectanglePos1
 			SpriteFill2.global_position.x = EditorCursor.global_position.x
-			SpriteFill2.global_position.y = SpriteFill1.global_position.y - PreCalcAngleY*abs(SpriteFill1.global_position.x - SpriteFill2.global_position.x)
+			if(EditorCursor.SelectedSubNode == EditorCursor.TileTools.Slope):
+				SpriteFill2.global_position.y = SpriteFill1.global_position.y - PreCalcAngleY*abs(SpriteFill1.global_position.x - SpriteFill2.global_position.x)
+			else:
+				SpriteFill2.global_position.y = SpriteFill1.global_position.y - HalfSlopePreCalcAngleY*abs(SpriteFill1.global_position.x - SpriteFill2.global_position.x)
 			SpriteFill1.show()
 			SpriteFill2.show()
 		if(Input.is_action_just_pressed("ui_editor_place") ):
@@ -323,7 +332,10 @@ func _tick_tileset(delta: float):
 			#RectanglePos2 = EditorCursor.global_position
 			PreparingRectangle = false
 			#print("Filling slope")
-			_fill_slope_global_tileset(SpriteFill1.global_position, SpriteFill2.global_position, false)
+			if(EditorCursor.SelectedSubNode == EditorCursor.TileTools.Slope):
+				_fill_slope_global_tileset(SpriteFill1.global_position, SpriteFill2.global_position, false)
+			else:
+				_fill_slope_global_tileset(SpriteFill1.global_position, SpriteFill2.global_position, false, HalfSlopePreCalcAngleY, 2)
 			SpriteFill1.hide()
 			SpriteFill2.hide()
 		

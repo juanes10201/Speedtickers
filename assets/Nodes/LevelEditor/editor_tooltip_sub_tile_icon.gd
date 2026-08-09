@@ -4,4 +4,4 @@ extends AnimatedSprite2D
 
 
 func _process(delta: float) -> void:
-	animation = "0_" + str(EditorCursor.SelectedSubTile)
+	animation = "tileset_" + str(EditorCursor.SelectedSubTile)

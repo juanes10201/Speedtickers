@@ -19,7 +19,8 @@ var SelectedSubTile : int = 0
 enum TileTools{
 	Pencil = 0,
 	Rectangle = 1,
-	Slope = 2
+	Slope = 2,
+	HalfSlope = 3
 }
 
 #La idea es que haya 2 posibles comportamientos
