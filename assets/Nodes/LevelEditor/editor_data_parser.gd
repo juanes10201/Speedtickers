@@ -24,7 +24,7 @@ extends Node2D
 
 #
 
-var Clipboard : Dictionary = { Vector2i(0, 0): "AAAAAAAAAZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"}
+var Clipboard : Dictionary[Vector2i, String] = {}#: "AAAAAAAAAZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"}
 const ChunkSize : int = 8
 const ChunkDefaultValue : String = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
 
@@ -91,8 +91,20 @@ func _reset_original_nodes() -> void:
 	for OriginalChild in ParentOriginalNodes.get_children():
 		OriginalChild.queue_free()
 
-func SaveDataTiles(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
+func SaveFilesDataTiles(SaveData : Dictionary) -> Array:# Dictionary[Vector2i, String]:
 	#var Current : int = 0
+	var Result : Array = []
+	for Tileset in LevelEditor.TilesetLayers:
+		var Saved = SaveDataAllTilesTileset(Tileset, SaveData)
+		#print(Saved)
+		print("Saved clipboard data")
+		Result.append(Saved)
+	return Result
+
+func SaveDataAllTilesTileset(Tileset : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
+	return SaveDataTileset(Tileset.get_used_cells(), Tileset, SaveData)
+
+func SaveDataTileset(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
 	var Saved : Dictionary[Vector2i, String] = { }
 	#print(floor(-0.25))
 	for Tile in Tiles:
@@ -111,14 +123,12 @@ func SaveDataTiles(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary)
 		##El valor del autotile se guarda en hexabinario porque why not
 		if(tiledata && ChunkIndex < Saved[Chunk].length() ):
 			Saved[Chunk][ChunkIndex] = char(65+abs(tiledata.terrain))
-	#print(Saved)
-	print("Saved clipboard data")
 	return Saved
 
 const SaveLocation : String = "res://assets/Saved/LevelEditor/"
 
 func SaveTilesToFile(FileName : String, Nodes : Array, Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
-	var SavedTileset = SaveDataTiles(Tiles, Tilemap, SaveData)
+	var SavedTileset = SaveFilesDataTiles(SaveData)
 	var SavedNodes = SaveDataNodes(Nodes)
 	var Saved : Dictionary = {
 		"Tileset" = SavedTileset,
@@ -134,20 +144,25 @@ func LoadJsonData(Path : String, Tileset : TileMapLayer) -> void:
 	if file:
 		var data = str_to_var(file.get_as_text())
 		GetSavedDataNodes(data["Nodes"])
-		LoadDataTiles(Tileset, data["Tileset"])
+		LoadDataTiles(LevelEditor.TilesetLayers, data["Tileset"])
 	file.close()
 
 func SaveDataTileToClipboard(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
-	Clipboard = SaveDataTiles(Tiles, Tilemap, SaveData)
+	Clipboard = SaveDataTileset(Tiles, Tilemap, SaveData)
 
-func LoadDataTiles(Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
-	for Chunk in SaveData:
-		for Index in range(0, SaveData[Chunk].length()):
+func LoadDataTiles(Tilemaps : Array[TileMapLayer], SaveData : Array) -> void:
+	for i in range(SaveData.size()):
+		if(i >= Tilemaps.size()): return
+		LoadDataTileset(Tilemaps[i], SaveData[i])
+
+func LoadDataTileset(Tilemap : TileMapLayer, SaveDataLayer : Dictionary) -> void:
+	for Chunk in SaveDataLayer:
+		for Index in range(0, SaveDataLayer[Chunk].length()):
 			var Pos : Vector2i = Vector2i(Chunk.x*ChunkSize+ Index%ChunkSize, Chunk.y*ChunkSize+ Index/ChunkSize)
 			#print(Pos)
-			if(SaveData[Chunk][Index] == 'Z'):
+			if(SaveDataLayer[Chunk][Index] == 'Z'):
 				EditorPlace._erase_tile_terrain_local_pos(Pos)
 			else:
-				var SubTile : int = SaveData[Chunk][Index].unicode_at(0) - 65
+				var SubTile : int = SaveDataLayer[Chunk][Index].unicode_at(0) - 65
 				#print(SubTile)
-				EditorPlace._place_tile_terrain_local_pos(Pos, EditorPlace.SelectedTilemap, SubTile)
+				EditorPlace._place_tile_terrain_local_pos(Pos, Tilemap, SubTile)

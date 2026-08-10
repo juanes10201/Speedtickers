@@ -226,17 +226,6 @@ func _select_multiple_tileset(delta: float):
 					TilePos.append(Vector2i(x, y))
 		#print(TilePos)
 		EditorDataParser.SaveDataTileToClipboard(TilePos, SelectedTilemap, EditorDataParser.Clipboard)
-	if(SelectingMultiple && Input.is_action_just_pressed("ui_editor_save")):
-		var TilePos : Array[Vector2i] = []
-		var Pos1 : Vector2i = _convert_coordinates_to_local(SpriteFill1.global_position)
-		var Pos2 : Vector2i = _convert_coordinates_to_local(SpriteFill2.global_position)
-		for x in range(Pos1.x, Pos2.x):
-			for y in range(Pos1.y, Pos2.y):
-				if(SelectedTilemap.get_cell_tile_data(Vector2i(x,y) )):
-					TilePos.append(Vector2i(x, y))
-		#print(TilePos)
-		var ChildrenNodes : Array = LevelEditor.get_level_data_gameplay_objects_node().get_children()
-		EditorDataParser.SaveTilesToFile("saveleveltest.json", ChildrenNodes,TilePos, SelectedTilemap, EditorDataParser.Clipboard)
 	if(Input.is_action_pressed("ui_editor_place")):
 		if(MultipleMadeSelection && CollidingBody && CollidingBody.is_in_group("AreaSelectMultiple")):
 			if(!MultipleMovingSelecting):
@@ -471,8 +460,12 @@ const RewindTimerWaitLess : float = .05
 func _process(delta: float) -> void:
 	if(ImGui.IsWindowHovered(ImGui.HoveredFlags_AnyWindow) || LevelEditor.ButtonHovered): return
 	
-	if(Input.is_action_pressed("ui_editor_load_file")):
+	if(Input.is_action_just_pressed("ui_editor_load_file")):
 		EditorDataParser.LoadJsonData("res://assets/Saved/LevelEditor/saveleveltest.json", SelectedTilemap)
+	if(Input.is_action_just_pressed("ui_editor_save")):
+		#print(TilePos)
+		var ChildrenNodes : Array = LevelEditor.get_level_data_gameplay_objects_node().get_children()
+		EditorDataParser.SaveTilesToFile("saveleveltest.json", ChildrenNodes,SelectedTilemap.get_used_cells(), SelectedTilemap, EditorDataParser.Clipboard)
 	
 	#print(EditorCursor.SelectedNode)
 	LevelEditor.IsTileMapSelected = (EditorCursor.SelectedNode == 0)

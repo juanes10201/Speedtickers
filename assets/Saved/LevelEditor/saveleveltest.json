@@ -2,81 +2,41 @@
 &"Nodes": [{
 "EditorId": Vector2i(0, 0),
 "Properties": {
-"global_position": Vector2(178.7335, -40.96154),
-"global_transform": Transform2D(1, 0, 0, 1, 178.7335, -40.96154),
-"position": Vector2(178.7335, -40.96154),
-"transform": Transform2D(1, 0, 0, 1, 178.7335, -40.96154)
+"global_position": Vector2(173.05348, -0.26535034),
+"global_transform": Transform2D(1, 0, 0, 1, 173.05348, -0.26535034),
+"position": Vector2(173.05348, -0.26535034),
+"transform": Transform2D(1, 0, 0, 1, 173.05348, -0.26535034)
 }
 }, {
 "EditorId": Vector2i(0, 0),
 "Properties": {
-"global_position": Vector2(243.52423, -38.076927),
-"global_transform": Transform2D(1, 0, 0, 1, 243.52423, -38.076927),
+"global_position": Vector2(230.83047, 17.017944),
+"global_transform": Transform2D(1, 0, 0, 1, 230.83047, 17.017944),
 "name": &"@CharacterBody2D@106",
-"position": Vector2(243.52423, -38.076927),
-"transform": Transform2D(1, 0, 0, 1, 243.52423, -38.076927)
+"position": Vector2(230.83047, 17.017944),
+"transform": Transform2D(1, 0, 0, 1, 230.83047, 17.017944)
 }
 }, {
 "EditorId": Vector2i(0, 0),
 "Properties": {
-"global_position": Vector2(316.3058, -32.019226),
-"global_transform": Transform2D(1, 0, 0, 1, 316.3058, -32.019226),
+"global_position": Vector2(278.44815, 30.849503),
+"global_transform": Transform2D(1, 0, 0, 1, 278.44815, 30.849503),
 "name": &"@CharacterBody2D@107",
-"position": Vector2(316.3058, -32.019226),
-"transform": Transform2D(1, 0, 0, 1, 316.3058, -32.019226)
-}
-}, {
-"EditorId": Vector2i(1, 0),
-"Properties": {
-"OldVel": Vector2(25740.656, 5334.568),
-"OriginalPos": Vector2(344, -8),
-"global_position": Vector2(344, -8),
-"global_transform": Transform2D(1, 0, 0, 1, 344, -8),
-"position": Vector2(344, -8),
-"transform": Transform2D(1, 0, 0, 1, 344, -8)
-}
-}, {
-"EditorId": Vector2i(1, 0),
-"Properties": {
-"OldVel": Vector2(27299.998, 6119.9995),
-"OriginalPos": Vector2(360, -8),
-"global_position": Vector2(360, -8),
-"global_transform": Transform2D(1, 0, 0, 1, 360, -8),
-"name": &"@RigidBody2D@108",
-"position": Vector2(360, -8),
-"transform": Transform2D(1, 0, 0, 1, 360, -8)
-}
-}, {
-"EditorId": Vector2i(1, 0),
-"Properties": {
-"OldVel": Vector2(28739.998, 4680),
-"OriginalPos": Vector2(376, -8),
-"global_position": Vector2(376, -8),
-"global_transform": Transform2D(1, 0, 0, 1, 376, -8),
-"name": &"@RigidBody2D@109",
-"position": Vector2(376, -8),
-"transform": Transform2D(1, 0, 0, 1, 376, -8)
-}
-}, {
-"EditorId": Vector2i(1, 0),
-"Properties": {
-"OldVel": Vector2(28739.998, 9000),
-"OriginalPos": Vector2(392, -8),
-"global_position": Vector2(392, -8),
-"global_transform": Transform2D(1, 0, 0, 1, 392, -8),
-"name": &"@RigidBody2D@110",
-"position": Vector2(392, -8),
-"transform": Transform2D(1, 0, 0, 1, 392, -8)
+"position": Vector2(278.44815, 30.849503),
+"transform": Transform2D(1, 0, 0, 1, 278.44815, 30.849503)
 }
 }],
-&"Tileset": Dictionary[Vector2i, String]({
+&"Tileset": [Dictionary[Vector2i, String]({
+Vector2i(-1, -1): "ZZZZZZZZZZZZZZZZZZAAAAAAZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
+Vector2i(-1, 0): "ZZZZZZZZZZZZZZZZZAAAZZZZAAAAZZZZAZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
+Vector2i(0, -1): "ZZZZZZZZZZZZZZZZAAAZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
 Vector2i(0, 0): "ZZZZZZZZAAZZZZZZAAZZZZZZAAZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
-Vector2i(1, -2): "ZZZZZZZZZZAAAAZZZZAAAAZZZZAAAAZZZZZZZZZZZZZZZZZZAAAAAAAAAAAAAAAA",
-Vector2i(1, -1): "ZZZZZZZZAAAAAAAAAAAAAAAAZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZAAAAAAAA",
-Vector2i(1, 0): "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZZZZZZZZZZZZZZZZ",
-Vector2i(2, -1): "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZAAAAZZZZ",
-Vector2i(2, 0): "AAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZZZZZZZZZZZZZZZZZ",
-Vector2i(3, -1): "ZZZZZZZZZZZZAAZZZZZZZAZZAAZZZZAZAAZZZZAZAZAZZZAZAZZAZZAZAZZZZZAZ",
-Vector2i(3, 0): "ZZZAZZZZZZZZAZZZZZZZZZZZZZZZZZZZZZZZAAZZZZZAZZZZZZZZZZZZZZZZZZZZ"
-})
+Vector2i(1, 0): "ZZZZZZZZZZZZZZZZZZZZZZZZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+Vector2i(2, 0): "ZZZZZZZZZZZZZZZZZZZZZZZZAZZZZZZZAZZZZZZZAZZZZZZZAZZZZZZZAZZZZZZZ"
+}), Dictionary[Vector2i, String]({}), Dictionary[Vector2i, String]({
+Vector2i(2, -1): "ZZZZZZZZZZZAAAAAZZZAAAAAZZZAAAAAZZZAAAAAZZZAAAAAZZZAAAAAZZZAAAAA",
+Vector2i(2, 0): "ZZZAAAAAZZZAAAAAZZZAAAAAZZZAAAAAZZZAAAAAZZZAAAAAZZZZZZZZZZZZZZZZ",
+Vector2i(3, -1): "ZZZZZZZZAAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZ",
+Vector2i(3, 0): "AAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZAAAAZZZZZZZZZZZZZZZZZZZZ"
+})]
 }
