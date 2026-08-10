@@ -45,10 +45,17 @@ func GetOriginalNode(Number : int, SubNumber : int) -> Node2D:
 func GetSavedDataNodes(Data : Array) -> void:
 	for NodeData in Data:
 		var EditorId : Vector2i = NodeData["EditorId"]
-		var Properties : Dictionary = NodeData["Properties"] 
+		var Properties : Dictionary = NodeData["Properties"]
+		
 		var _original_scene = GetOriginalNode(EditorId.x, EditorId.y)
+		var new_node = _original_scene.duplicate()
+		LevelEditor.add_child(new_node)
+		
 		for PropertyName in Properties:
 			var PropertyValue = Properties[PropertyName]
+			if(PropertyName in new_node):
+				new_node.set(PropertyName, PropertyValue)
+	_reset_original_nodes()
 
 func SaveDataNodes(Nodes : Array) -> Array:
 	print("Nodes: " + str(Nodes))
@@ -77,11 +84,14 @@ func SaveDataNodes(Nodes : Array) -> Array:
 			_node_result["Properties"] = Properties
 			_result.append(_node_result)
 	OriginalNodesLoaded = {}
-	for OriginalChild in ParentOriginalNodes.get_children():
-		OriginalChild.queue_free()
+	_reset_original_nodes()
 	return _result
 
-func GetSaveDataTiles(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
+func _reset_original_nodes() -> void:
+	for OriginalChild in ParentOriginalNodes.get_children():
+		OriginalChild.queue_free()
+
+func SaveDataTiles(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
 	#var Current : int = 0
 	var Saved : Dictionary[Vector2i, String] = { }
 	#print(floor(-0.25))
@@ -108,17 +118,27 @@ func GetSaveDataTiles(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictiona
 const SaveLocation : String = "res://assets/Saved/LevelEditor/"
 
 func SaveTilesToFile(FileName : String, Nodes : Array, Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
-	var SavedTileset = GetSaveDataTiles(Tiles, Tilemap, SaveData)
+	var SavedTileset = SaveDataTiles(Tiles, Tilemap, SaveData)
 	var SavedNodes = SaveDataNodes(Nodes)
 	var Saved : Dictionary = {
 		"Tileset" = SavedTileset,
 		"Nodes" = SavedNodes
 	}
-	SaveGame.SaveJsonFile(SaveLocation + FileName, Saved)
+	var file = FileAccess.open(SaveLocation + FileName, FileAccess.WRITE)
+	file.store_string(var_to_str(Saved))
+	file.close()
 	print("Saved!")
 
+func LoadJsonData(Path : String, Tileset : TileMapLayer) -> void:
+	var file = FileAccess.open(Path, FileAccess.READ)
+	if file:
+		var data = str_to_var(file.get_as_text())
+		GetSavedDataNodes(data["Nodes"])
+		LoadDataTiles(Tileset, data["Tileset"])
+	file.close()
+
 func SaveDataTileToClipboard(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
-	Clipboard = GetSaveDataTiles(Tiles, Tilemap, SaveData)
+	Clipboard = SaveDataTiles(Tiles, Tilemap, SaveData)
 
 func LoadDataTiles(Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
 	for Chunk in SaveData:

@@ -470,6 +470,10 @@ const RewindTimerWaitLess : float = .05
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(ImGui.IsWindowHovered(ImGui.HoveredFlags_AnyWindow) || LevelEditor.ButtonHovered): return
+	
+	if(Input.is_action_pressed("ui_editor_load_file")):
+		EditorDataParser.LoadJsonData("res://assets/Saved/LevelEditor/saveleveltest.json", SelectedTilemap)
+	
 	#print(EditorCursor.SelectedNode)
 	LevelEditor.IsTileMapSelected = (EditorCursor.SelectedNode == 0)
 	#print(CollidingBody)
