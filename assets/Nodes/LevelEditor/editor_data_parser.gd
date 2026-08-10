@@ -31,7 +31,26 @@ const ChunkDefaultValue : String = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 @export var ParentOriginalNodes : Node2D
 var OriginalNodesLoaded : Dictionary = {}
 
-func GetSaveDataNodes(Nodes : Array) -> Array:
+func GetOriginalNode(Number : int, SubNumber : int) -> Node2D:
+	var _original_scene_path = LevelEditor.SelectableObjects[Number][SubNumber]
+	var _original_scene = null
+	var DictionaryId : Vector2i = Vector2i(Number, SubNumber)
+	if(DictionaryId in OriginalNodesLoaded):
+		_original_scene = OriginalNodesLoaded[DictionaryId]
+	else:
+		_original_scene = GlobalFunctions.Create_node2d(_original_scene_path, ParentOriginalNodes) #_original_packed_scene.get_state()
+		OriginalNodesLoaded[DictionaryId] = _original_scene
+	return _original_scene
+
+func GetSavedDataNodes(Data : Array) -> void:
+	for NodeData in Data:
+		var EditorId : Vector2i = NodeData["EditorId"]
+		var Properties : Dictionary = NodeData["Properties"] 
+		var _original_scene = GetOriginalNode(EditorId.x, EditorId.y)
+		for PropertyName in Properties:
+			var PropertyValue = Properties[PropertyName]
+
+func SaveDataNodes(Nodes : Array) -> Array:
 	print("Nodes: " + str(Nodes))
 	var _result : Array = []
 	for _node in Nodes:
@@ -42,15 +61,9 @@ func GetSaveDataNodes(Nodes : Array) -> Array:
 			print("node number: " + str(_node_number))
 			print("node subnumber: " + str(_node_subnumber))
 			
-			var _original_scene_path = LevelEditor.SelectableObjects[_node_number][_node_subnumber]
-			var _original_scene = null
 			var DictionaryId : Vector2i = Vector2i(_node_number, _node_subnumber)
 			_node_result["EditorId"] = DictionaryId
-			if(DictionaryId in OriginalNodesLoaded):
-				_original_scene = OriginalNodesLoaded[DictionaryId]
-			else:
-				_original_scene = GlobalFunctions.Create_node2d(_original_scene_path, ParentOriginalNodes) #_original_packed_scene.get_state()
-				OriginalNodesLoaded[DictionaryId] = _original_scene
+			var _original_scene = GetOriginalNode(_node_number, _node_subnumber)
 			
 			var Properties : Dictionary = {}
 			for property in _original_scene.get_property_list():
@@ -63,14 +76,6 @@ func GetSaveDataNodes(Nodes : Array) -> Array:
 					#print("Value difference!: Name: " + str(property_name) + "; Value: " + str(property_value))
 			_node_result["Properties"] = Properties
 			_result.append(_node_result)
-			#var MainNodeId = 0
-			#for i in _original_scene_state.get_node_property_count(MainNodeId): #_original_scene_state.get_property_list():
-			#	var _property_value = _original_scene_state.get_node_property_value(MainNodeId, i)
-			#	var _property_name = _original_scene_state.get_node_property_name(MainNodeId, i)
-			#	#if(property.name in _original_scene_state && _node.get(property.name) != _original_scene_state.get(property.name)):
-			#	print("Property name: " + str(_property_name))
-			#	print("Property value: " + str(_property_value))
-			#print("!!!!!: " + str(_original_scene_state))
 	OriginalNodesLoaded = {}
 	for OriginalChild in ParentOriginalNodes.get_children():
 		OriginalChild.queue_free()
@@ -104,7 +109,7 @@ const SaveLocation : String = "res://assets/Saved/LevelEditor/"
 
 func SaveTilesToFile(FileName : String, Nodes : Array, Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
 	var SavedTileset = GetSaveDataTiles(Tiles, Tilemap, SaveData)
-	var SavedNodes = GetSaveDataNodes(Nodes)
+	var SavedNodes = SaveDataNodes(Nodes)
 	var Saved : Dictionary = {
 		"Tileset" = SavedTileset,
 		"Nodes" = SavedNodes
