@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody2D 
 class_name ClassPlayer
 
 func enemy_jump():
@@ -751,6 +751,8 @@ func _spawn_pause_menu() -> void:
 @onready var WaterTileset = SaveGame.get_group_node("WaterTileset")
 #region Water
 func _physics_water(delta: float) -> void:
+	if(!WaterTileset && Edition.Is_in_editor):
+		WaterTileset = get_parent().get_node("TileMapLayerWater")
 	if(OnWaterTile && WaterTileset && position.y >= WaterTileset.WaterLevel):
 		if(Slide): OnWaterInitialSlideTile = true
 		if(!OnWater): Dashed = false
@@ -1326,11 +1328,16 @@ func _on_water_area_area_exited(area: Area2D) -> void:
 
 func _on_water_area_body_entered(body: Node2D) -> void:
 	OnWaterTile = true
+	print(body)
+	#WaterTileset = body
 	if(Slide):
 		CoyoteTimer.start()
 		OnWaterInitialSlideTile = true
 
 
 func _on_water_area_body_exited(body: Node2D) -> void:
+	#WaterTileset = body
+	if(body.is_in_group("WaterTileset")):
+		WaterTileset = body
 	OnWaterTile = false
 	OnWaterInitialSlideTile = false

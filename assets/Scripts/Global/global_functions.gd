@@ -22,10 +22,20 @@ enum FUNCTIONS{
 	Set_Enemy_Time_To_Shoot
 }
 
+const EditorPrefix : String = "EditorTooltip"
+enum EDITOR_TOOLTIP_FUNCTIONS{
+	none = 0,
+	Save,
+	SaveAs,
+	Open,
+	Exit
+}
+
 #Uso un array de array, donde el primer sub-elemento de cada elemento contendra el nombre, el resto los valores cambiados
 var DoneActions : Array[Array] = []
 
 var LastOriginalvalue = 0
+var OpenedFileDialog : bool = false
 
 func Change_Railed_Nodes_Speed(Speed : float) -> void:
 	for Rail in get_tree().current_scene.get_children():

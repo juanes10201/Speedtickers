@@ -31,6 +31,22 @@ const ChunkDefaultValue : String = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 @export var ParentOriginalNodes : Node2D
 var OriginalNodesLoaded : Dictionary = {}
 
+var PrecalcEditorAllTerrainsId : Dictionary[Vector2i, int] = {}
+var PrecalculatedEditorTerrains : Array[Vector2i] = []
+
+func _ready() -> void:
+	PreCalcEditorTerrains()
+
+func PreCalcEditorTerrains(Tilemap : TileMapLayer = EditorPlace.SelectedTilemap) -> void:
+	var Tileset : TileSet = Tilemap.tile_set
+	var Count : int = 0
+	for i in range(Tileset.get_terrain_sets_count()):
+		for l in range(Tileset.get_terrains_count(i)):
+			Count += 1
+			var vector = Vector2i(i, l)
+			PrecalcEditorAllTerrainsId[vector] = Count
+			PrecalculatedEditorTerrains.append(vector)
+
 func GetOriginalNode(Number : int, SubNumber : int) -> Node2D:
 	var _original_scene_path = LevelEditor.SelectableObjects[Number][SubNumber]
 	var _original_scene = null
@@ -40,7 +56,9 @@ func GetOriginalNode(Number : int, SubNumber : int) -> Node2D:
 	else:
 		_original_scene = GlobalFunctions.Create_node2d(_original_scene_path, ParentOriginalNodes) #_original_packed_scene.get_state()
 		OriginalNodesLoaded[DictionaryId] = _original_scene
-	return _original_scene
+	if(_original_scene):
+		return _original_scene
+	return null
 
 func GetSavedDataNodes(Data : Array) -> void:
 	for NodeData in Data:
@@ -104,6 +122,19 @@ func SaveFilesDataTiles(SaveData : Dictionary) -> Array:# Dictionary[Vector2i, S
 func SaveDataAllTilesTileset(Tileset : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
 	return SaveDataTileset(Tileset.get_used_cells(), Tileset, SaveData)
 
+func GetTerrainFromPrecalcId(id : int) -> Vector2i:
+	if(id < 0):
+		return Vector2i(0, 0)
+	if(id < PrecalculatedEditorTerrains.size()):
+		return PrecalculatedEditorTerrains[id]
+	return Vector2i(0, 0)
+
+func GetPrecalcTerrainId(TerrainSet : int, SubTerrain : int) -> int:
+	var VectorPos = Vector2i(TerrainSet, SubTerrain)
+	if(VectorPos in PrecalcEditorAllTerrainsId):
+		return PrecalcEditorAllTerrainsId[VectorPos]-1
+	return -1
+
 func SaveDataTileset(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> Dictionary[Vector2i, String]:
 	var Saved : Dictionary[Vector2i, String] = { }
 	#print(floor(-0.25))
@@ -122,35 +153,42 @@ func SaveDataTileset(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionar
 		var tiledata : TileData = Tilemap.get_cell_tile_data(Tile)
 		##El valor del autotile se guarda en hexabinario porque why not
 		if(tiledata && ChunkIndex < Saved[Chunk].length() ):
-			Saved[Chunk][ChunkIndex] = char(65+abs(tiledata.terrain))
+			var terrain_id = GetPrecalcTerrainId(tiledata.terrain_set, tiledata.terrain)
+			Saved[Chunk][ChunkIndex] = char(65+abs(terrain_id))
+			print("Terrain: " + str(tiledata.terrain))
 	return Saved
 
-const SaveLocation : String = "res://assets/Saved/LevelEditor/"
+#const SaveLocation : String = "res://assets/Saved/LevelEditor/"
 
-func SaveTilesToFile(FileName : String, Nodes : Array, Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
+func SaveToFile(Path : String, Nodes : Array, Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
 	var SavedTileset = SaveFilesDataTiles(SaveData)
 	var SavedNodes = SaveDataNodes(Nodes)
 	var Saved : Dictionary = {
 		"Tileset" = SavedTileset,
 		"Nodes" = SavedNodes
 	}
-	var file = FileAccess.open(SaveLocation + FileName, FileAccess.WRITE)
+	var file = FileAccess.open(Path, FileAccess.WRITE)
 	file.store_string(var_to_str(Saved))
 	file.close()
 	print("Saved!")
 
-func LoadJsonData(Path : String, Tileset : TileMapLayer) -> void:
+func LoadData(Path : String) -> void:
+	print("Opening level data from " + str(Path))
 	var file = FileAccess.open(Path, FileAccess.READ)
 	if file:
 		var data = str_to_var(file.get_as_text())
 		GetSavedDataNodes(data["Nodes"])
 		LoadDataTiles(LevelEditor.TilesetLayers, data["Tileset"])
+	else:
+		print("File not found")
 	file.close()
 
 func SaveDataTileToClipboard(Tiles : Array, Tilemap : TileMapLayer, SaveData : Dictionary) -> void:
 	Clipboard = SaveDataTileset(Tiles, Tilemap, SaveData)
 
 func LoadDataTiles(Tilemaps : Array[TileMapLayer], SaveData : Array) -> void:
+	for Tilemap in Tilemaps:
+		Tilemap.clear()
 	for i in range(SaveData.size()):
 		if(i >= Tilemaps.size()): return
 		LoadDataTileset(Tilemaps[i], SaveData[i])
@@ -163,6 +201,20 @@ func LoadDataTileset(Tilemap : TileMapLayer, SaveDataLayer : Dictionary) -> void
 			if(SaveDataLayer[Chunk][Index] == 'Z'):
 				EditorPlace._erase_tile_terrain_local_pos(Pos)
 			else:
-				var SubTile : int = SaveDataLayer[Chunk][Index].unicode_at(0) - 65
+				var TerrainId : int = SaveDataLayer[Chunk][Index].unicode_at(0) - 65
+				var Terrain : Vector2i = GetTerrainFromPrecalcId(TerrainId)
 				#print(SubTile)
-				EditorPlace._place_tile_terrain_local_pos(Pos, Tilemap, SubTile)
+				EditorPlace._place_tile_terrain_local_pos(Pos, Tilemap, Terrain.x, Terrain.y)
+
+func SaveEverythingToFile(path : String) -> void:
+	var ChildrenNodes : Array = LevelEditor.get_level_data_gameplay_objects_node().get_children()
+	SaveToFile(path, ChildrenNodes, EditorPlace.SelectedTilemap.get_used_cells(), EditorPlace.SelectedTilemap, Clipboard)
+
+func _on_editor_save_file_dialog_file_selected(path: String) -> void:
+	SaveEverythingToFile(path)
+	GlobalFunctions.OpenedFileDialog = false
+
+
+func _on_editor_load_file_dialog_file_selected(path: String) -> void:
+	LoadData(path)
+	GlobalFunctions.OpenedFileDialog = false

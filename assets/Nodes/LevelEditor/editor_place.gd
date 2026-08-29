@@ -99,10 +99,10 @@ func _convert_coordinates_to_local(pos : Vector2) -> Vector2i:
 	var tile_pos: Vector2i = SelectedTilemap.local_to_map(_pos_local)
 	return tile_pos
 
-func _place_tile_terrain_local_pos(pos : Vector2i, tilemap : TileMapLayer = SelectedTilemap, subtile : int = EditorCursor.SelectedSubTile):
+func _place_tile_terrain_local_pos(pos : Vector2i, tilemap : TileMapLayer = SelectedTilemap, terrainset : int = EditorCursor.SelectedSubTile, subset : int = 0):
 	if(SelectedTilemap.get_cell_source_id(pos) == -1):
 		GlobalFunctions.record_action(GlobalFunctions.FUNCTIONS.Create_tile_local, pos, pos, SelectedTilemap)
-	tilemap.set_cells_terrain_connect([pos], subtile, 0, false)
+	tilemap.set_cells_terrain_connect([pos], terrainset, subset, false)
 
 func _place_tile_terrain_global_pos(pos : Vector2):
 	var _pos_local = SelectedTilemap.to_local(pos)
@@ -461,11 +461,9 @@ func _process(delta: float) -> void:
 	if(ImGui.IsWindowHovered(ImGui.HoveredFlags_AnyWindow) || LevelEditor.ButtonHovered): return
 	
 	if(Input.is_action_just_pressed("ui_editor_load_file")):
-		EditorDataParser.LoadJsonData("res://assets/Saved/LevelEditor/saveleveltest.json", SelectedTilemap)
-	if(Input.is_action_just_pressed("ui_editor_save")):
+		EditorDataParser.LoadData("res://assets/Saved/LevelEditor/saveleveltest.json", SelectedTilemap)
+	#if(Input.is_action_just_pressed("ui_editor_save")):
 		#print(TilePos)
-		var ChildrenNodes : Array = LevelEditor.get_level_data_gameplay_objects_node().get_children()
-		EditorDataParser.SaveTilesToFile("saveleveltest.json", ChildrenNodes,SelectedTilemap.get_used_cells(), SelectedTilemap, EditorDataParser.Clipboard)
 	
 	#print(EditorCursor.SelectedNode)
 	LevelEditor.IsTileMapSelected = (EditorCursor.SelectedNode == 0)

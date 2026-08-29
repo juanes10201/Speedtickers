@@ -16,6 +16,9 @@ var IsTileMapSelected : bool = false
 @export var EditorPlayerTrail : Line2D
 
 @export var EditorPlace : Node2D
+
+var OpenedFileDialog : bool = false
+
 var LevelDataGameplayObjects : Node2D
 var Paused : bool = false
 
@@ -145,6 +148,11 @@ func _ready() -> void:
 		Player._set_time_state(false, false)
 	
 func _process(delta: float) -> void:
+	if(OpenedFileDialog && !GlobalFunctions.OpenedFileDialog):
+		ButtonHovered = false
+	elif(GlobalFunctions.OpenedFileDialog):
+		ButtonHovered = true
+	OpenedFileDialog = GlobalFunctions.OpenedFileDialog
 	if(Player && !Edition.Is_playing_in_editor && (!Time_Left.is_stopped() || !Time_Left.paused) ):
 		Player._set_time_state(false, false)
 	_play_state_tick()
